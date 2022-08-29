@@ -1,0 +1,14 @@
+{
+    "datas": [
+        {
+            "name": "Panel01",
+            "path": "Panel01",
+            "isResourcePath": true
+        },
+        {
+            "name": "Panel02",
+            "path": "Panel02",
+            "isResourcePath": true
+        }
+    ]
+}

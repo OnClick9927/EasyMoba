@@ -1,0 +1,15 @@
+.idea/
+.vs/
+Temp/
+Logs/
+obj/
+Assembly-CSharp.csproj
+Assembly-CSharp-Editor.csproj
+IF_Git.sln
+NewAssembly.csproj
+Library/
+.vscode/
+IFramework.sln
+.vsconfig
+Client/DLC/
+Client/DLCDownLoad/

@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e032500462931bd4b862324ca75e46f1, type: 3}
+  m_Name: AssetBuildSetting
+  m_EditorClassIdentifier: 
+  fastMode: 0
+  option: 0
+  ignoreFileEtend:
+  - .cs
+  - .meta
+  atlasPaths:
+  - Assets/IFramework/HotFix/Asset/__Example/px
+  buildPaths:
+  - Assets/IFramework/HotFix/Asset/__Example
+  tree:
+    rootAssets:
+    - path: Assets/IFramework/HotFix/Asset/__Example
+      parentPath: 
+      dps: []
+    assets:
+    - path: Assets/IFramework/HotFix/Asset/__Example
+      parentPath: 
+      dps: []
+    - path: Assets/IFramework/HotFix/Asset/__Example/New Folder
+      parentPath: Assets/IFramework/HotFix/Asset/__Example
+      dps: []
+    - path: Assets/IFramework/HotFix/Asset/__Example/New Folder/Cube.prefab
+      parentPath: Assets/IFramework/HotFix/Asset/__Example/New Folder
+      dps:
+      - Assets/IFramework/HotFix/Asset/__Example/New Folder/New Material.mat
+      - Assets/XLua/XLua/Doc/logo.png
+    - path: Assets/IFramework/HotFix/Asset/__Example/New Folder/New Material.mat
+      parentPath: Assets/IFramework/HotFix/Asset/__Example/New Folder
+      dps:
+      - Assets/XLua/XLua/Doc/logo.png
+    - path: Assets/IFramework/HotFix/Asset/__Example/px
+      parentPath: Assets/IFramework/HotFix/Asset/__Example
+      dps: []
+    - path: Assets/IFramework/HotFix/Asset/__Example/px/1.png
+      parentPath: Assets/IFramework/HotFix/Asset/__Example/px
+      dps: []
+    - path: Assets/IFramework/HotFix/Asset/__Example/px/2.png
+      parentPath: Assets/IFramework/HotFix/Asset/__Example/px
+      dps: []
+    - path: Assets/IFramework/HotFix/Asset/__Example/px/3.png
+      parentPath: Assets/IFramework/HotFix/Asset/__Example/px
+      dps: []
+    - path: Assets/IFramework/HotFix/Asset/__Example/New Scene.unity
+      parentPath: Assets/IFramework/HotFix/Asset/__Example
+      dps: []
+    - path: Assets/IFramework/HotFix/Asset/__Example/New Scene2.unity
+      parentPath: Assets/IFramework/HotFix/Asset/__Example
+      dps: []
+    - path: Assets/IFramework/HotFix/Asset/__Example/px.spriteatlas
+      parentPath: Assets/IFramework/HotFix/Asset/__Example
+      dps: []
+    fileassets:
+    - Assets/XLua/XLua/Doc/logo.png

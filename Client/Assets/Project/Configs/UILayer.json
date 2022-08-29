@@ -1,0 +1,14 @@
+{
+    "configs": [
+        {
+            "name": "Panel01",
+            "layer": 3,
+            "order": 0
+        },
+        {
+            "name": "Panel02",
+            "layer": 3,
+            "order": 0
+        }
+    ]
+}

@@ -1,0 +1,80 @@
+--- @class VVMGroup:Unit
+local VVMGroup = class("VVMGroup")
+---@param panel IFramework.UI.UIPanel UI
+---@param view UIView_MVVM UIView
+---@param viewModel ViewModel ViewModel
+function VVMGroup:ctor(panel, view, viewModel)
+    self.viewModel = viewModel
+    ---@type UIView_MVVM
+    self.view = view
+    self.panel = panel
+    -- self.view:BindProperty()
+    self.viewModel:Initialize()
+end
+
+function VVMGroup:Dispose()
+    self.viewModel:Dispose()
+    local close = Handler(self.view.OnClose, self.view)
+    pcall(close)
+    -- self.view:Dispose()
+end
+
+---@class LuaGroups_MVVM:LuaGroups
+LuaGroups_MVVM = class("LuaGroups_Mvvm", LuaGroups)
+
+function LuaGroups_MVVM:OnDispose()
+    for i, group in pairs(self.groups) do
+        group:Dispose()
+    end
+    LuaGroups.onDispose(self)
+    self.groups = nil
+end
+
+function LuaGroups_MVVM:OnSubscribe(panel)
+    ---@type table<string,VVMGroup>
+    self.groups = self.groups or {}
+    local name = panel.name
+    if self:FindView(name) ~= nil then
+        print("same name with panel  " .. name)
+        return false
+    end
+    local vvmType
+
+    for i, v in pairs(self.map) do
+        if v.Name == name then
+            vvmType = v
+            break
+        end
+    end
+    if (vvmType == nil) then
+        error("not find vvm type with Name :" .. name)
+        return false
+    end
+
+    local viewModel = vvmType.VMType()
+    local view = vvmType.ViewType(viewModel, panel)
+    ---@type VVMGroup
+    local vvmGroup = VVMGroup(panel, view, viewModel)
+    self.groups[name] = vvmGroup
+end
+
+function LuaGroups_MVVM:OnUnSubscribe(panel)
+    local group = rawget(self.groups, panel.name)
+    if group ~= nil then
+        group:Dispose()
+        rawset(self.groups, panel.name, nil)
+        return true
+    end
+    return false
+end
+
+function LuaGroups_MVVM:FindView(name)
+    return self.groups[name] and self.groups[name].view or nil
+end
+
+function LuaGroups_MVVM:OnLoad(name)
+    ---@type UIView_MVVM
+    local view = self:FindView(name)
+    view:OnLoad()
+    view:BindProperty()
+end

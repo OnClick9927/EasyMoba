@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!162 &1
+EditorUserSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 4
+  m_ConfigSettings:
+    RecentlyUsedScenePath-0:
+      value: 22424703114646722b1c0d2f153450021d583025380e2f2862050832addf0b1dfae63bf9eb3f70102c03c83d093b4f2afc031d12
+      flags: 0
+    RecentlyUsedScenePath-1:
+      value: 2242470311464663211b0d6d280f4a1159230d3e233a2f3121663126e3c33534eec405e1e6282f731517ee1f05320d1ce1441c05ff1f13
+      flags: 0
+    RecentlyUsedScenePath-2:
+      value: 2242470311464663211b0d6d280f4a1159230d3e233a2f312166313ce3e4182de3d435fbee2a2b73150dee38012c4e1ce7191d04fb27050a150bef4004f1190708
+      flags: 0
+    RecentlyUsedScenePath-3:
+      value: 22424703114646722b1c0d2f153450021d583025380e2f2862080e20e7f47b07ddc22ee8ea2a3339762cea2b440d023afc0f5b45e305031f08
+      flags: 0
+    RecentlyUsedScenePath-4:
+      value: 2242470311464663211b0d6d280f4a1159230d3e233a2f312166313ce3e4182de3d435fbee2a2b731b1bdc2816370f38bd281038e21903051640e80018eb09
+      flags: 0
+    RecentlyUsedScenePath-5:
+      value: 22424703114646722b1c0d2f153450021d583025380e2f2862080e20e7f47b07ddc22ee8ea2a3339762cea2b440d023afc0f471ef8021e12
+      flags: 0
+    RecentlyUsedScenePath-6:
+      value: 2242470311464663211b0d6d280f4a1159230d3e233a2f3121663e00eae12628c1e63ae5cb2f3e731a31cc3d08322d2af3441c05ff1f13
+      flags: 0
+    RecentlyUsedScenePath-7:
+      value: 22424703114646722b1c0d2f153450021d582d03631c293f213a520cddc52c39eff73aeca8143a2b7931ec390a3b4f2afc031d12
+      flags: 0
+    RecentlyUsedScenePath-8:
+      value: 22424703114646722b1c0d2f153450021d582d036317191535281023eee57b0dcbe037e4e2742a323016f6
+      flags: 0
+    RecentlyUsedScenePath-9:
+      value: 22424703114646722b1c0d2f153450021d32003e2926227f193e1836ecf37b07ddc22ee8ea2a3339762cea2b440d023afc0f471ef8021e12
+      flags: 0
+    vcSharedLogLevel:
+      value: 0d5e400f0650
+      flags: 0
+  m_VCAutomaticAdd: 1
+  m_VCDebugCom: 0
+  m_VCDebugCmd: 0
+  m_VCDebugOut: 0
+  m_SemanticMergeMode: 2
+  m_VCShowFailedCheckout: 1
+  m_VCOverwriteFailedCheckoutAssets: 1
+  m_VCProjectOverlayIcons: 1
+  m_VCHierarchyOverlayIcons: 1
+  m_VCOtherOverlayIcons: 1
+  m_VCAllowAsyncUpdate: 1

@@ -1,0 +1,11 @@
+{
+    "enable": true,
+    "enable_L": true,
+    "enable_W": true,
+    "enable_E": true,
+    "dockWindow": true,
+    "Description": "Description",
+    "logIgnoreFiles": [
+        "Assets/IFramework/Core/Editor/EditorTools.UnityLogger.cs"
+    ]
+}

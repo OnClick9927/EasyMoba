@@ -1,0 +1,46 @@
+---@class LuaGroups_MVC:LuaGroups
+LuaGroups_MVC = class("LuaGroups_Mvc")
+
+
+function LuaGroups_MVC:OnDispose()
+    LuaGroups.onDispose(self)
+    self.groups = nil
+end
+
+function LuaGroups_MVC:OnSubscribe(panel)
+    ---@type table<string,UIView_MVC>
+    self.groups = self.groups or {}
+    local name = panel.name
+    if self:FindView(name) ~= nil then
+        print("same name with panel  " .. name)
+        return false
+    end
+    local vvmType
+
+    for i, v in pairs(self.map) do
+        if v.Name == name then
+            vvmType = v
+            break
+        end
+    end
+    if (vvmType == nil) then
+        error("not find view type with Name :" .. name)
+        return false
+    end
+
+    local view = vvmType.ViewType(panel)
+    self.groups[name] = view
+end
+
+function LuaGroups_MVC:OnUnSubscribe(panel)
+    local view = self:FindView(panel.name)
+    if view ~= nil then
+        self.groups[panel.name] = nil
+        return true
+    end
+    return false
+end
+
+function LuaGroups_MVC:FindView(name)
+    return self.groups[name]
+end
