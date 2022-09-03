@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e032500462931bd4b862324ca75e46f1, type: 3}
   m_Name: AssetBuildSetting
   m_EditorClassIdentifier: 
-  fastMode: 0
+  fastMode: 1
   option: 0
   ignoreFileEtend:
   - .cs

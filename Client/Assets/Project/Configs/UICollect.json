@@ -9,6 +9,11 @@
             "name": "Panel02",
             "path": "Panel02",
             "isResourcePath": true
+        },
+        {
+            "name": "UpdatePanel",
+            "path": "UI/UpdatePanel",
+            "isResourcePath": true
         }
     ]
 }

@@ -6,6 +6,10 @@
         {
             "panelName": "Panel01",
             "content": "{ Name = \"Panel01\",ViewType = require(\"UI.Panel01.Panel01View\"), VMType = require(\"UI.Panel01.Panel01ViewModel\") },"
+        },
+        {
+            "panelName": "UpdatePanel",
+            "content": "{ Name = \"UpdatePanel\",ViewType = require(\"UI.UpdatePanel.UpdatePanelView\") },"
         }
     ]
 }

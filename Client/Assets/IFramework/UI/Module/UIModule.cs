@@ -241,7 +241,7 @@ namespace IFramework.UI
             }
             else
             {
-                this.canvas = this.canvas;
+                this.canvas = canvas;
                 this.canvas.name = name;
             }
             CreateLayers();
