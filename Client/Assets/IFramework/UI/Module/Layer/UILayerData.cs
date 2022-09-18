@@ -12,7 +12,7 @@ namespace IFramework.UI
     [System.Serializable]
     public class UILayerData
     {
-        public string name;
+        public string panelPath;
         public UILayer layer;
         public int order;
     }

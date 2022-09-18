@@ -30,88 +30,87 @@ namespace IFramework.UI
         }
 
 
-        void IGroups.OnClose(string name)
+        void IGroups.OnClose(string path)
         {
-            if (_nameMap.ContainsKey(name))
+            if (_nameMap.ContainsKey(path))
             {
-                _nameMap[name].OnClose(name);
+                _nameMap[path].OnClose(path);
             }
             else
             {
-                Log.E("the panel have not subscribe  panel name :" + name);
+                Log.E("the panel have not subscribe  panel name :" + path);
             }
         }
 
-        void IGroups.OnHide(string name)
+        void IGroups.OnHide(string path)
         {
-            if (_nameMap.ContainsKey(name))
+            if (_nameMap.ContainsKey(path))
             {
-                _nameMap[name].OnHide(name);
+                _nameMap[path].OnHide(path);
             }
             else
             {
-                Log.E("the panel have not subscribe  panel name :" + name);
+                Log.E("the panel have not subscribe  panel name :" + path);
             }
         }
 
-        void IGroups.OnShow(string name)
+        void IGroups.OnShow(string path)
         {
-            if (_nameMap.ContainsKey(name))
+            if (_nameMap.ContainsKey(path))
             {
-                _nameMap[name].OnShow(name);
+                _nameMap[path].OnShow(path);
             }
             else
             {
-                Log.E("the panel have not subscribe  panel name :" + name);
+                Log.E("the panel have not subscribe  panel name :" + path);
             }
         }
 
-        public void OnLoad(string name)
+        public void OnLoad(string path)
         {
-            if (_nameMap.ContainsKey(name))
+            if (_nameMap.ContainsKey(path))
             {
-                _nameMap[name].OnLoad(name);
+                _nameMap[path].OnLoad(path);
             }
             else
             {
-                Log.E("the panel have not subscribe  panel name :" + name);
+                Log.E("the panel have not subscribe  panel name :" + path);
             }
         }
 
-        bool IGroups.Subscribe(UIPanel panel)
+        bool IGroups.Subscribe(string path,string name, UIPanel panel)
         {
             bool sucess = false;
             for (int i = 0; i < _groups.Length; i++)
             {
-                sucess |= _groups[i].Subscribe(panel);
+                sucess |= _groups[i].Subscribe(path,name,panel);
                 if (sucess)
                 {
-                    if (_nameMap.ContainsKey(panel.name))
+                    if (_nameMap.ContainsKey(path))
                     {
-                        Log.E("Same name, can't Subscribe the panel with name " + panel.name);
+                        Log.E("Same name, can't Subscribe the panel with name " + path);
                         return false;
                     }
-                    _nameMap[panel.name] = _groups[i];
+                    _nameMap[path] = _groups[i];
                     break;
                 }
             }
             if (!sucess)
             {
-                Log.E("can't Subscribe the panel with name " + panel.name);
+                Log.E("can't Subscribe the panel with name " + path);
             }
             return sucess;
         }
 
-        bool IGroups.UnSubscribe(UIPanel panel)
+        bool IGroups.UnSubscribe(string path)
         {
-            string name = panel.name;
-            if (_nameMap.ContainsKey(name))
+            if (_nameMap.ContainsKey(path))
             {
-                return _nameMap[name].UnSubscribe(panel);
+                return _nameMap[path].UnSubscribe(path);
             }
             else
             {
-                Log.E("the panel have not subscribe  panel name :" + name);
+                Log.E("the panel have not subscribe  panel name :" + path);
                 return false;
             }
         }

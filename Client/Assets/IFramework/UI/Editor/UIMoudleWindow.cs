@@ -74,7 +74,6 @@ namespace IFramework.UI
 
         const string path = "Assets/Project/Configs/UICollect.json";
         const string cs_path = "Assets/Project/Scripts/PanelNames.cs";
-        const string layer_path = "Assets/Project/Configs/UILayer.json";
 
         const string res = "Resources";
 
@@ -90,7 +89,6 @@ namespace IFramework.UI
                 if (u == null) continue;
                 var _path = path;
                 var is_res = path.Contains(res);
-                var name = Path.GetFileNameWithoutExtension(path);
                 if (is_res)
                 {
                     var index = path.IndexOf(res);
@@ -100,7 +98,6 @@ namespace IFramework.UI
                 {
                     isResourcePath = is_res,
                     path = _path,
-                    name = name
                 });
             }
             collect.WriteData(datas);
@@ -131,36 +128,14 @@ namespace IFramework.UI
                 "{\n";
             foreach (var data in collect.datas)
             {
-                s = s.Append($"\t public string {data.name} = \"{data.name}\";\n");
+                s = s.Append($"\t public static string {data.name} = \"{data.path}\";\n");
             }
             s = s.Append("}");
             File.WriteAllText(cs_path, s);
             AssetDatabase.Refresh();
         }
 
-        public static void BuildLayerConfig()
-        {
-            Collect();
-            UILayerConfig config;
-            if (File.Exists(layer_path))
-            {
-                config = JsonUtility.FromJson<UILayerConfig>(File.ReadAllText(layer_path));
-            }
-            else
-            {
-                config = new UILayerConfig();
-            }
-            foreach (var data in collect.datas)
-            {
-                var find = config.configs.Find((x) => { return x.name == data.name; });
-                if (find == null)
-                {
-                    config.configs.Add(new UILayerData() { name = data.name, layer = UILayer.Common, order = 0 });
-                }
-            }
-            File.WriteAllText(layer_path, JsonUtility.ToJson(config, true));
-            AssetDatabase.Refresh();
-        }
+
 
         private void OnDisable()
         {

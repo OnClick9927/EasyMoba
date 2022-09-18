@@ -30,12 +30,11 @@ function LuaGroups_MVVM:OnDispose()
     self.groups = nil
 end
 
-function LuaGroups_MVVM:OnSubscribe(panel)
+function LuaGroups_MVVM:OnSubscribe(path, name, panel)
     ---@type table<string,VVMGroup>
     self.groups = self.groups or {}
-    local name = panel.name
-    if self:FindView(name) ~= nil then
-        print("same name with panel  " .. name)
+    if self:FindView(path) ~= nil then
+        print("same name with panel  " .. path)
         return false
     end
     local vvmType
@@ -47,7 +46,7 @@ function LuaGroups_MVVM:OnSubscribe(panel)
         end
     end
     if (vvmType == nil) then
-        error("not find vvm type with Name :" .. name)
+        error("not find vvm type with Name :" .. path)
         return false
     end
 
@@ -55,26 +54,26 @@ function LuaGroups_MVVM:OnSubscribe(panel)
     local view = vvmType.ViewType(viewModel, panel)
     ---@type VVMGroup
     local vvmGroup = VVMGroup(panel, view, viewModel)
-    self.groups[name] = vvmGroup
+    self.groups[path] = vvmGroup
 end
 
-function LuaGroups_MVVM:OnUnSubscribe(panel)
-    local group = rawget(self.groups, panel.name)
+function LuaGroups_MVVM:OnUnSubscribe(path)
+    local group = self.groups[path]
     if group ~= nil then
         group:Dispose()
-        rawset(self.groups, panel.name, nil)
+        self.groups[path] = nil
         return true
     end
     return false
 end
 
-function LuaGroups_MVVM:FindView(name)
-    return self.groups[name] and self.groups[name].view or nil
+function LuaGroups_MVVM:FindView(path)
+    return self.groups[path] and self.groups[path].view or nil
 end
 
-function LuaGroups_MVVM:OnLoad(name)
+function LuaGroups_MVVM:OnLoad(path)
     ---@type UIView_MVVM
-    local view = self:FindView(name)
+    local view = self:FindView(path)
     view:OnLoad()
     view:BindProperty()
 end

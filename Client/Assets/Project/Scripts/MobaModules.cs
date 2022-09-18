@@ -16,8 +16,8 @@ namespace EasyMoba
     {
         public MobaAssetsUpdate update = new MobaAssetsUpdate();
 
-        public IUIModule UpdateUI { get { return Launcher.modules.GetModule<UIModule>("Update", priority: 2); } }
-        public IUIModule UI { get { return Launcher.modules.GetModule<UIModule>("Lua", priority: 100); } }
+        public UIModule UpdateUI { get { return Launcher.modules.GetModule<UIModule>("Update", priority: 2); } }
+        public UIModule UI { get { return Launcher.modules.GetModule<UIModule>("Lua", priority: 100); } }
 
         public XLuaModule Lua
         {

@@ -56,7 +56,7 @@ namespace EasyMoba
         {
             beginPrepare?.Invoke();
             await Assets.InitAsync();
-            var paths = AssetsInternal.GetAllAssetPaths();
+            var paths = Assets.GetAllAssetPaths();
             var prepareOP = Assets.PrepareAssets(paths.ToArray());
             Launcher.Instance.StartCoroutine(CallProgress(prepareOP));
         }

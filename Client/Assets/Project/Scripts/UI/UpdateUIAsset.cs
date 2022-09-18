@@ -28,9 +28,6 @@ namespace EasyMoba
             return false;
         }
 
-        public override void ReleaseItemAsset(string releaseAsset)
-        {
-
-        }
+      
     }
 }

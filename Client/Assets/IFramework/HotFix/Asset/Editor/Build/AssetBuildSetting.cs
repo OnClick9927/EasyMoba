@@ -1,4 +1,4 @@
-/*********************************************************************************
+﻿/*********************************************************************************
  *Author:         OnClick
  *Version:        0.0.2.204
  *UnityVersion:   2019.4.36f1c1
@@ -124,7 +124,7 @@ namespace IFramework.Hotfix.Asset
         public static string[] GetDirectories(string path)
         {
             return Directory.GetDirectories(path, "*", SearchOption.TopDirectoryOnly)
-                .Where(_ => { return !IsIgnorePath(path); }).ToArray();
+                .Where(path => { return !IsIgnorePath(path); }).ToArray();
         }
         public static bool IsIgnorePath(string path)
         {

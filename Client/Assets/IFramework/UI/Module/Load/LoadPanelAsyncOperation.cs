@@ -11,11 +11,11 @@ namespace IFramework.UI
 {
     public class LoadPanelAsyncOperation : UIAsyncOperation<UIPanel>
     {
-        public string panelName;
+        public string path;
         public new void SetToDefault()
         {
             base.SetToDefault();
-            panelName = null;
+            path = null;
         }
     }
 }

@@ -7,9 +7,7 @@
  *History:        2022-08-03--
 *********************************************************************************/
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using IFramework;
 
 namespace IFramework.UI.MVC
 {
@@ -41,53 +39,53 @@ namespace IFramework.UI.MVC
             return _views[name];
         }
 
-        void IGroups.OnClose(string name)
+        void IGroups.OnClose(string path)
         {
-            (FindView(name) as IViewEventHandler).OnClose();
+            (FindView(path) as IViewEventHandler).OnClose();
         }
 
-        void IGroups.OnHide(string name)
+        void IGroups.OnHide(string path)
         {
-            (FindView(name) as IViewEventHandler).OnHide();
+            (FindView(path) as IViewEventHandler).OnHide();
         }
 
-        void IGroups.OnLoad(string name)
+        void IGroups.OnLoad(string path)
         {
-            (FindView(name) as IViewEventHandler).OnLoad();
-
-        }
-
-        void IGroups.OnShow(string name)
-        {
-            (FindView(name) as IViewEventHandler).OnShow();
+            (FindView(path) as IViewEventHandler).OnLoad();
 
         }
 
-        public bool Subscribe(UIPanel panel)
+        void IGroups.OnShow(string path)
         {
-            var _view = FindView(panel.name);
+            (FindView(path) as IViewEventHandler).OnShow();
+
+        }
+
+        public bool Subscribe(string path,string name, UIPanel panel)
+        {
+            var _view = FindView(path);
             if (_view != null)
             {
-                Log.E(string.Format("Have Subscribe Panel Name: {0} ready", panel.name));
+                Log.E(string.Format("Have Subscribe Panel Name: {0} ready", path));
                 return false;
             }
             Type viewType;
-            if (!_typemap.TryGetValue(panel.name, out viewType))
+            if (!_typemap.TryGetValue(name, out viewType))
             {
                 return false;
             }
             _view = Activator.CreateInstance(viewType) as UIView;
             _view.panel = panel;
-            _views.Add(panel.name, _view);
+            _views.Add(path, _view);
             return true;
         }
 
-        public bool UnSubscribe(UIPanel panel)
+        public bool UnSubscribe(string path)
         {
-            var group = FindView(panel.name);
+            var group = FindView(path);
             if (group != null)
             {
-                _views.Remove(panel.name);
+                _views.Remove(path);
                 return true;
             }
             return false;

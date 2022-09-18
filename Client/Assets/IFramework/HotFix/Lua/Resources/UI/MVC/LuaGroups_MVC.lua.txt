@@ -7,12 +7,11 @@ function LuaGroups_MVC:OnDispose()
     self.groups = nil
 end
 
-function LuaGroups_MVC:OnSubscribe(panel)
+function LuaGroups_MVC:OnSubscribe(path, name, panel)
     ---@type table<string,UIView_MVC>
     self.groups = self.groups or {}
-    local name = panel.name
-    if self:FindView(name) ~= nil then
-        print("same name with panel  " .. name)
+    if self:FindView(path) ~= nil then
+        print("same name with panel  " .. path)
         return false
     end
     local vvmType
@@ -24,23 +23,23 @@ function LuaGroups_MVC:OnSubscribe(panel)
         end
     end
     if (vvmType == nil) then
-        error("not find view type with Name :" .. name)
+        error("not find view type with Name :" .. path)
         return false
     end
 
     local view = vvmType.ViewType(panel)
-    self.groups[name] = view
+    self.groups[path] = view
 end
 
-function LuaGroups_MVC:OnUnSubscribe(panel)
-    local view = self:FindView(panel.name)
+function LuaGroups_MVC:OnUnSubscribe(path)
+    local view = self:FindView(path)
     if view ~= nil then
-        self.groups[panel.name] = nil
+        self.groups[path] = nil
         return true
     end
     return false
 end
 
-function LuaGroups_MVC:FindView(name)
-    return self.groups[name]
+function LuaGroups_MVC:FindView(path)
+    return self.groups[path]
 end

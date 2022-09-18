@@ -9,6 +9,7 @@
 
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Analytics;
 using static IFramework.Hotfix.Asset.AssetsInternal;
 
 namespace IFramework.Hotfix.Asset
@@ -21,7 +22,10 @@ namespace IFramework.Hotfix.Asset
             return path.EndsWith("unity");
         }
 
-
+        public static IReadOnlyList<string> GetAllAssetPaths()
+        {
+            return AssetsInternal.GetAllAssetPaths();
+        }
         public static void SetAssetsSetting(AssetsSetting setting)
         {
             AssetsInternal.SetAssetsSetting(setting);

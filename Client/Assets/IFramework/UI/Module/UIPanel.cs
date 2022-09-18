@@ -12,5 +12,7 @@ namespace IFramework.UI
     /// <summary>
     /// ui 基类
     /// </summary>
-    public class UIPanel : MonoBehaviour { }
+    public class UIPanel : MonoBehaviour {
+        public string path;
+    }
 }

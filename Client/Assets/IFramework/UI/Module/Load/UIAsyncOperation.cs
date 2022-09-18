@@ -13,7 +13,7 @@ namespace IFramework.UI
 {
     public class UIAsyncOperation<T>
     {
-        public Action<T> callback;
+        public Action<string,T> callback;
         public T value;
         public bool _isDone = false;
 

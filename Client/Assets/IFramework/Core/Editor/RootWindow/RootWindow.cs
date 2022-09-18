@@ -1,4 +1,4 @@
-/*********************************************************************************
+﻿/*********************************************************************************
  *Author:         OnClick
  *Version:        0.0.2.51
  *UnityVersion:   2018.4.24f1
@@ -42,16 +42,16 @@ namespace IFramework
                 .DropDownButton(new GUIContent("Tools"), (rect) =>
                 {
                     GenericMenu menu = new GenericMenu();
-                    var _lista = EditorTools.EditorWindowTool.user_windows;
-                    foreach (var item in _lista)
+                    var _list = EditorTools.EditorWindowTool.user_windows;
+                    foreach (var item in _list)
                     {
                         Type type = item.type;
                         string name = item.searchName;
                         var find = EditorTools.EditorWindowTool.Find(type);
                         menu.AddItem(new GUIContent($"Open/{name}"), find != null, () =>
                         {
-                            var finds = EditorTools.EditorWindowTool.Find(type);
-                            if (finds == null)
+                            var find = EditorTools.EditorWindowTool.Find(type);
+                            if (find==null)
                             {
                                 OpenWindow(type);
                             }
@@ -146,10 +146,9 @@ namespace IFramework
                         richText = true,
                     };
                     GUILayout.Space(10);
-                    GUILayout.Label(showkey, new GUIStyle(GUIStyles.largeLabel)
-                    {
+                    GUILayout.Label(showkey, new GUIStyle(GUIStyles.largeLabel) {
                         alignment = TextAnchor.MiddleCenter,
-                        fontSize = 20,
+                        fontSize=20,
                         fontStyle = FontStyle.Bold,
                     });
                     var pos = new Rect(0, 0, 300, 200);

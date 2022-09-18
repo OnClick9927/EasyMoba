@@ -15,36 +15,36 @@ namespace IFramework.UI
     /// </summary>
     public interface IGroups : IDisposable
     {
-       
+
         /// <summary>
         /// 添加 ui 入组
         /// </summary>
         /// <param name="panel"></param>
-        bool Subscribe(UIPanel panel);
+        bool Subscribe(string path, string name, UIPanel panel);
         /// <summary>
         /// 移除 ui
         /// </summary>
         /// <param name="panel"></param>
-        bool UnSubscribe(UIPanel panel);
+        bool UnSubscribe(string path);
         /// <summary>
         /// 加载完毕
         /// </summary>
         /// <param name="name"></param>
-        void OnLoad(string name);
+        void OnLoad(string path);
         /// <summary>
         /// 要求显示
         /// </summary>
         /// <param name="name"></param>
-        void OnShow(string name);
+        void OnShow(string path);
         /// <summary>
         /// 要求隐藏
         /// </summary>
         /// <param name="name"></param>
-        void OnHide(string name);
+        void OnHide(string path);
         /// <summary>
         /// 要求关闭
         /// </summary>
         /// <param name="name"></param>
-        void OnClose(string name);
+        void OnClose(string path);
     }
 }

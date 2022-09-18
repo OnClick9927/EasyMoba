@@ -20,7 +20,7 @@ namespace IFramework.UI
         [System.Serializable]
         public class Data
         {
-            public string name;
+            public string name { get { return System.IO.Path.GetFileNameWithoutExtension(path); } }
             public string path;
             public bool isResourcePath;
         }
@@ -29,9 +29,9 @@ namespace IFramework.UI
         {
             this.datas = datas;
         }
-        public Data GetData(string name)
+        public Data GetData(string path)
         {
-            return datas.Find(x => x.name == name);
+            return datas.Find(x => x.path == path);
         }
     }
 }

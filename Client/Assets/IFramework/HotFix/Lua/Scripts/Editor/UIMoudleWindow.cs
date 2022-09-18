@@ -21,7 +21,7 @@ namespace IFramework.UI
                 "{\n";
             foreach (var data in collect.datas)
             {
-                s = s.Append($"\t {data.name} = \"{data.name}\";\n");
+                s = s.Append($"\t {data.name} = \"{data.path}\";\n");
             }
             s = s.Append("}\n" +
                 "return M");

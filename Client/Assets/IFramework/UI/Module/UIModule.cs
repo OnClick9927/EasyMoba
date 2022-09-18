@@ -13,7 +13,7 @@ using UnityEngine;
 using UnityEngine.UI;
 namespace IFramework.UI
 {
-    public partial class UIModule : UpdateModule, IUIModule
+    public partial class UIModule : UpdateModule
     {
         public Canvas canvas { get; private set; }
         private IGroups _groups;
@@ -51,9 +51,9 @@ namespace IFramework.UI
         }
 
 
-        private RectTransform CreateLayer(string name)
+        private RectTransform CreateLayer(string layerName)
         {
-            GameObject go = new GameObject(name);
+            GameObject go = new GameObject(layerName);
             RectTransform rect = go.AddComponent<RectTransform>();
             rect.SetParent(canvas.transform);
             rect.anchorMin = Vector2.zero;
@@ -65,25 +65,24 @@ namespace IFramework.UI
         }
         private void CreateLayers()
         {
-            var names = Enum.GetValues(typeof(UILayer));
-            foreach (UILayer item in names)
+            foreach (UILayer item in Enum.GetValues(typeof(UILayer)))
             {
                 var rect = CreateLayer(item.ToString());
                 _layers.Add(item, rect);
             }
-            var items = GetLayerParent(UILayer.Items);
+            var items = GetLayerRectTransform(UILayer.Items);
             CanvasGroup group = items.gameObject.AddComponent<CanvasGroup>();
             group.alpha = 0f;
             group.interactable = false;
         }
-        private RectTransform GetLayerParent(UILayer layer)
+        private RectTransform GetLayerRectTransform(UILayer layer)
         {
             return _layers[layer];
         }
-        private void SetOrder(UIPanel panel)
+        private void SetOrder(string path, UIPanel panel)
         {
-            UILayer layer = GetPanelLayer(panel);
-            int order = GetPanelLayerOrder(panel);
+            UILayer layer = GetPanelLayer(path);
+            int order = GetPanelLayerOrder(path);
             if (!_panelOrders.ContainsKey(layer))
                 _panelOrders.Add(layer, new List<UIPanel>());
             var list = _panelOrders[layer];
@@ -95,12 +94,12 @@ namespace IFramework.UI
                 _orderHelp.Add(_tmp);
             }
             if (_orderHelp.Contains(panel)) return;
-            _orderHelp.Sort((a, b) => { return GetPanelLayerOrder(a) - GetPanelLayerOrder(b); });
+            _orderHelp.Sort((a, b) => { return GetPanelLayerOrder(a.path) - GetPanelLayerOrder(b.path); });
             int sbindex = 0;
             bool bigExist = false;
             for (int i = 0; i < _orderHelp.Count; i++)
             {
-                if (GetPanelLayerOrder(_orderHelp[i]) > order)
+                if (GetPanelLayerOrder(_orderHelp[i].path) > order)
                 {
                     sbindex = _orderHelp[i].transform.GetSiblingIndex();
                     bigExist = true;
@@ -113,24 +112,24 @@ namespace IFramework.UI
             }
             list.Add(panel);
         }
-        private void DestroyPanel(UIPanel panel)
+        private void DestroyPanel(string path, UIPanel panel)
         {
-            _panelOrders[GetPanelLayer(panel)].Remove(panel);
+            _panelOrders[GetPanelLayer(path)].Remove(panel);
             _asset.DestoryPanel(panel.gameObject);
         }
-        private UILayer GetPanelLayer(UIPanel panel)
+        private UILayer GetPanelLayer(string path)
         {
-            if (_layerSettings.ContainsKey(panel.name))
+            if (_layerSettings.ContainsKey(path))
             {
-                return _layerSettings[panel.name].layer;
+                return _layerSettings[path].layer;
             }
             return UILayer.Common;
         }
-        private int GetPanelLayerOrder(UIPanel panel)
+        private int GetPanelLayerOrder(string path)
         {
-            if (_layerSettings.ContainsKey(panel.name))
+            if (_layerSettings.ContainsKey(path))
             {
-                return _layerSettings[panel.name].order;
+                return _layerSettings[path].order;
             }
             return 0;
         }
@@ -141,18 +140,20 @@ namespace IFramework.UI
 
 
 
-        private void UILoadComplete(UIPanel ui, string name, Action<UIPanel> callback)
+        private void UILoadComplete(UIPanel ui, string path, Action<string, UIPanel> callback)
         {
             if (ui != null)
             {
-                ui = UnityEngine.Object.Instantiate(ui, GetLayerParent(GetPanelLayer(ui)));
-                ui.name = name;
-                SetOrder(ui);
-                panels.Add(name, ui);
-                _groups.Subscribe(ui);
-                _groups.OnLoad(name);
+                ui = UnityEngine.Object.Instantiate(ui, GetLayerRectTransform(GetPanelLayer(path)));
+                string panelName = System.IO.Path.GetFileNameWithoutExtension(path);
+                ui.path = path;
+                ui.name = panelName;
+                SetOrder(path, ui);
+                panels.Add(path, ui);
+                _groups.Subscribe(path, panelName, ui);
+                _groups.OnLoad(path);
             }
-            callback?.Invoke(ui);
+            callback?.Invoke(path, ui);
         }
         private void CheckAsyncLoad()
         {
@@ -160,46 +161,46 @@ namespace IFramework.UI
             while (asyncLoadQueue.Count > 0 && asyncLoadQueue.Peek().isDone)
             {
                 LoadPanelAsyncOperation op = asyncLoadQueue.Dequeue();
-                UILoadComplete(op.value, op.panelName, op.callback);
+                UILoadComplete(op.value, op.path, op.callback);
                 op.SetToDefault();
                 op.GlobalRecyle();
             }
         }
-        private void OnShowCallBack(UIPanel panel)
+        private void OnShowCallBack(string path, UIPanel panel)
         {
             if (panel == null) return;
-            string name = panel.name;
-            this._groups.OnShow(name);
+
+            this._groups.OnShow(path);
         }
-        private UIPanel Find(string name)
+        private UIPanel Find(string path)
         {
             UIPanel ui;
-            panels.TryGetValue(name, out ui);
+            panels.TryGetValue(path, out ui);
             return ui;
         }
-        private void Load(string name, Action<UIPanel> callback)
+        private void Load(string path, Action<string, UIPanel> callback)
         {
             if (_groups == null)
                 throw new Exception("Please Set IGroups First");
             if (_asset == null)
                 throw new Exception("Please Set UILoader First");
-            var result = _asset.LoadPanel(name);
+            var result = _asset.LoadPanel(path);
             if (result != null)
             {
-                UILoadComplete(result, name, callback);
+                UILoadComplete(result, path, callback);
             }
             else
             {
                 LoadPanelAsyncOperation op = Framework.GlobalAllocate<LoadPanelAsyncOperation>();
                 op.callback = callback;
-                op.panelName = name;
-                if (_asset.LoadPanelAsync(name, op))
+                op.path = path;
+                if (_asset.LoadPanelAsync(path, op))
                 {
                     asyncLoadQueue.Enqueue(op);
                 }
                 else
                 {
-                    throw new Exception($"Can't load ui with Name: {name}");
+                    throw new Exception($"Can't load ui with Name: {path}");
 
                 }
             }
@@ -267,13 +268,13 @@ namespace IFramework.UI
         {
             foreach (var item in config.configs)
             {
-                if (_layerSettings.ContainsKey(item.name))
+                if (_layerSettings.ContainsKey(item.panelPath))
                 {
-                    _layerSettings[item.name] = item;
+                    _layerSettings[item.panelPath] = item;
                 }
                 else
                 {
-                    _layerSettings.Add(item.name, item);
+                    _layerSettings.Add(item.panelPath, item);
                 }
             }
         }
@@ -281,50 +282,50 @@ namespace IFramework.UI
         /// <summary>
         /// 展示一个界面
         /// </summary>
-        /// <param name="name"></param>
-        public void Show(string name)
+        /// <param name="path"></param>
+        public void Show(string path)
         {
-            var panel = Find(name);
+            var panel = Find(path);
             if (panel == null)
-                Load(name, OnShowCallBack);
+                Load(path, OnShowCallBack);
             else
-                OnShowCallBack(panel);
+                OnShowCallBack(path, panel);
         }
         /// <summary>
         /// 藏一个界面
         /// </summary>
-        /// <param name="name"></param>
-        public void Hide(string name)
+        /// <param name="path"></param>
+        public void Hide(string path)
         {
-            var panel = Find(name);
+            var panel = Find(path);
             if (panel != null)
             {
-                this._groups.OnHide(name);
+                this._groups.OnHide(path);
             }
         }
         /// <summary>
         /// 彻底关闭一个界面
         /// </summary>
-        /// <param name="name"></param>
-        public void Close(string name)
+        /// <param name="path"></param>
+        public void Close(string path)
         {
-            var panel = Find(name);
+            var panel = Find(path);
 
             if (panel != null)
             {
-                this._groups.OnClose(name);
-                _groups.UnSubscribe(panel);
-                panels.Remove(name);
-                DestroyPanel(panel);
+                this._groups.OnClose(path);
+                _groups.UnSubscribe(path);
+                panels.Remove(path);
+                DestroyPanel(path, panel);
             }
         }
 
         public void CloseAll()
         {
-            var names = panels.Keys.ToArray();
-            for (int i = 0; i < names.Length; i++)
+            var paths = panels.Keys.ToArray();
+            for (int i = 0; i < paths.Length; i++)
             {
-                Close(names[i]);
+                Close(paths[i]);
             }
         }
     }

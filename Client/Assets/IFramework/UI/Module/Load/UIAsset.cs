@@ -27,7 +27,10 @@ namespace IFramework.UI
 
         public abstract bool LoadItemAsync(string path, LoadItemAsyncOperation op);
 
-        public abstract void ReleaseItemAsset(string releaseAsset);
+        public virtual void ReleaseItemAsset(GameObject gameObject)
+        {
+            GameObject.Destroy(gameObject);
+        }
         public virtual void DestoryPanel(GameObject gameObject)
         {
             GameObject.Destroy(gameObject);

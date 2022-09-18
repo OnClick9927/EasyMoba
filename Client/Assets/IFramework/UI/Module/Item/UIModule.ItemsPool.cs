@@ -73,7 +73,7 @@ namespace IFramework.UI
                 works.Clear();
                 foreach (var item in pools.Keys)
                 {
-                    module._asset.ReleaseItemAsset(item);
+                    module._asset.ReleaseItemAsset(pools[item].prefab);
                 }
             }
 
@@ -93,7 +93,7 @@ namespace IFramework.UI
                     var pool = clear.Dequeue();
                     pools.Remove(pool.path);
                     pool.Dispose();
-                    module._asset.ReleaseItemAsset(pool.path);
+                    module._asset.ReleaseItemAsset(pool.prefab);
                 }
             }
         }

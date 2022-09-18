@@ -49,26 +49,26 @@ function LuaGroups:OnDispose()
     self.map = nil
 end
 
-function LuaGroups:OnSubscribe(panel) end
+function LuaGroups:OnSubscribe(path, name, panel) end
 
-function LuaGroups:OnUnSubscribe(panel) end
+function LuaGroups:OnUnSubscribe(path) end
 
 ---@return UIView
-function LuaGroups:FindView(name) end
+function LuaGroups:FindView(path) end
 
-function LuaGroups:OnLoad(name)
-    local view = self:FindView(name)
+function LuaGroups:OnLoad(path)
+    local view = self:FindView(path)
     view:OnLoad()
 end
 
-function LuaGroups:OnShow(name)
-    self:FindView(name):OnShow()
+function LuaGroups:OnShow(path)
+    self:FindView(path):OnShow()
 end
 
-function LuaGroups:OnHide(name)
-    self:FindView(name):OnHide()
+function LuaGroups:OnHide(path)
+    self:FindView(path):OnHide()
 end
 
-function LuaGroups:OnClose(name)
-    self:FindView(name):OnClose()
+function LuaGroups:OnClose(path)
+    self:FindView(path):OnClose()
 end

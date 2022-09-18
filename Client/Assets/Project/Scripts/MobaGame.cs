@@ -69,8 +69,8 @@ namespace EasyMoba
         }
         private void StartLua()
         {
-            //modules.Lua.AddLoader(new AssetsLoader());
-            //new XluaMain(modules.Lua);
+            modules.Lua.AddLoader(new AssetsLoader());
+            new XluaMain(modules.Lua);
         }
     }
 }

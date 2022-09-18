@@ -35,8 +35,9 @@ namespace EasyMoba
             LoadItem(op, path);
             return true;
         }
-        public override void ReleaseItemAsset(string releaseAsset)
+        public override void ReleaseItemAsset(GameObject releaseAsset)
         {
+            Assets.Destory(releaseAsset);
 
         }
         public override UIPanel LoadPanel(string name)
@@ -51,7 +52,7 @@ namespace EasyMoba
         }
         public override bool LoadPanelAsync(string name, LoadPanelAsyncOperation op)
         {
-            var find = collect.datas.Find(x => x.name == op.panelName);
+            var find = collect.datas.Find(x => x.path == op.path);
             if (find != null)
             {
                 if (find.isResourcePath)

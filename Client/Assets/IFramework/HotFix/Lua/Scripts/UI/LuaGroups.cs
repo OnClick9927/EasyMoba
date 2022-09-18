@@ -15,8 +15,8 @@ namespace IFramework.Hotfix.Lua
     public class LuaGroups : IGroups
     {
         public event Action onDispose;
-        public event Func<UIPanel, bool> onSubscribe;
-        public event Func<UIPanel, bool> onUnSubscribe;
+        public event Func<string,string,UIPanel, bool> onSubscribe;
+        public event Func<string, bool> onUnSubscribe;
         public event Action<string> onLoad;
         public event Action<string> onShow;
         public event Action<string> onHide;
@@ -33,12 +33,12 @@ namespace IFramework.Hotfix.Lua
             onUnSubscribe = null;
         }
 
-        void IGroups.OnLoad(string panel) => onLoad?.Invoke(panel);
-        void IGroups.OnClose(string name) => onClose?.Invoke(name);
-        void IGroups.OnHide(string name)=> onHide?.Invoke(name);
-        void IGroups.OnShow(string name) => onShow?.Invoke(name);
-        bool IGroups.Subscribe(UIPanel panel) => onSubscribe != null ? onSubscribe(panel) : false;
-        bool IGroups.UnSubscribe(UIPanel panel) => onUnSubscribe != null ? onUnSubscribe(panel) : false;
+        void IGroups.OnLoad(string path) => onLoad?.Invoke(path);
+        void IGroups.OnClose(string path) => onClose?.Invoke(path);
+        void IGroups.OnHide(string path)=> onHide?.Invoke(path);
+        void IGroups.OnShow(string path) => onShow?.Invoke(path);
+        bool IGroups.Subscribe(string path, string name, UIPanel panel) => onSubscribe != null ? onSubscribe(path,name,panel) : false;
+        bool IGroups.UnSubscribe(string path) => onUnSubscribe != null ? onUnSubscribe(path) : false;
     }
 
 }

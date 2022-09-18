@@ -33,22 +33,22 @@ namespace IFramework.UI.MVVM
             }
         }
 
-        private MVVMGroup FindGroup(string name)
+        private MVVMGroup FindGroup(string path)
         {
-            return _moudule.FindGroup(name);
+            return _moudule.FindGroup(path);
         }
 
-        bool IGroups.Subscribe(UIPanel panel)
+        bool IGroups.Subscribe(string path,string name,UIPanel panel)
         {
-            var _group = FindGroup(panel.name);
+            var _group = FindGroup(path);
             if (_group != null)
             {
-                Log.E(string.Format("Have Subscribe Panel Name: {0} ready", panel.name));
+                Log.E(string.Format("Have Subscribe Panel Name: {0} ready", path));
                 return false;
             }
 
             Tuple<Type, Type, Type> tuple;
-            _map.TryGetValue(panel.name, out tuple);
+            _map.TryGetValue(name, out tuple);
             if (tuple == null)
             {
                 return false;
@@ -59,13 +59,13 @@ namespace IFramework.UI.MVVM
             var vm = Activator.CreateInstance(tuple.Item3) as UIViewModel;
             view.panel = panel;
 
-            var group = new MVVMGroup(panel.name, view, vm, model);
+            var group = new MVVMGroup(path, view, vm, model);
             _moudule.AddGroup(group);
             return true;
         }
-        bool IGroups.UnSubscribe(UIPanel panel)
+        bool IGroups.UnSubscribe(string path)
         {
-            var group = FindGroup(panel.name);
+            var group = FindGroup(path);
             if (group != null)
             {
                 group.Dispose();
@@ -79,21 +79,21 @@ namespace IFramework.UI.MVVM
         }
 
 
-        void IGroups.OnShow(string panel)
+        void IGroups.OnShow(string path)
         {
-            (FindGroup(panel).view as IViewEventHandler).OnShow();
+            (FindGroup(path).view as IViewEventHandler).OnShow();
         }
-        void IGroups.OnHide(string panel)
+        void IGroups.OnHide(string path)
         {
-            (FindGroup(panel).view as IViewEventHandler).OnHide();
+            (FindGroup(path).view as IViewEventHandler).OnHide();
         }
-        void IGroups.OnClose(string panel)
+        void IGroups.OnClose(string path)
         {
-            (FindGroup(panel).view as IViewEventHandler).OnClose();
+            (FindGroup(path).view as IViewEventHandler).OnClose();
         }
-        void IGroups.OnLoad(string panel)
+        void IGroups.OnLoad(string path)
         {
-            (FindGroup(panel).view as IViewEventHandler).OnLoad();
+            (FindGroup(path).view as IViewEventHandler).OnLoad();
         }
     }
 }
