@@ -26,7 +26,7 @@ function LuaGroups_MVVM:OnDispose()
     for i, group in pairs(self.groups) do
         group:Dispose()
     end
-    LuaGroups.onDispose(self)
+    LuaGroups.OnDispose(self)
     self.groups = nil
 end
 

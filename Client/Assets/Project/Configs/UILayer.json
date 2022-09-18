@@ -4,6 +4,21 @@
             "panelPath": "UI/UpdatePanel",
             "layer": 3,
             "order": 0
+        },
+        {
+            "panelPath": "Assets/Project/Prefabs/UI/LoadScenePanel.prefab",
+            "layer": 3,
+            "order": 0
+        },
+        {
+            "panelPath": "Assets/Project/Prefabs/UI/MainPanel.prefab",
+            "layer": 3,
+            "order": 0
+        },
+        {
+            "panelPath": "Assets/Project/Prefabs/UI/LoginPanel.prefab",
+            "layer": 3,
+            "order": 0
         }
     ]
 }

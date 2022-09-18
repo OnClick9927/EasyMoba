@@ -47,7 +47,7 @@ namespace EasyMoba
         private async void Load(LoadPanelAsyncOperation op, string path)
         {
             var asset = await Assets.LoadAssetAsync(path);
-            var panel = asset.GetAsset<UIPanel>();
+            var panel = asset.GetAsset<GameObject>().GetComponent<UIPanel>();
             op.SetValue(panel);
         }
         public override bool LoadPanelAsync(string name, LoadPanelAsyncOperation op)
@@ -63,11 +63,9 @@ namespace EasyMoba
                 {
                     Load(op, find.path);
                 }
+                return true;
             }
-            else
-            {
-                Debug.LogError("重新生成路径文件");
-            }
+            Debug.LogError("重新生成路径文件");
             return false;
         }
 

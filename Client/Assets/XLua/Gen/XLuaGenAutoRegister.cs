@@ -1232,6 +1232,9 @@ namespace XLua.CSObjectWrap
             translator.DelayWrapLoader(typeof(EasyMoba.MobaModules), EasyMobaMobaModulesWrap.__Register);
         
         
+            translator.DelayWrapLoader(typeof(EasyMoba.TcpClient), EasyMobaTcpClientWrap.__Register);
+        
+        
             translator.DelayWrapLoader(typeof(EasyMoba.MobaPerfs), EasyMobaMobaPerfsWrap.__Register);
         
         
@@ -1270,13 +1273,13 @@ namespace XLua.CSObjectWrap
         
             translator.DelayWrapLoader(typeof(IFramework.UI.UIItem), IFrameworkUIUIItemWrap.__Register);
         
-        
-            translator.DelayWrapLoader(typeof(IFramework.UI.UIItemAwaiter), IFrameworkUIUIItemAwaiterWrap.__Register);
-        
         }
         
         static void wrapInit8(LuaEnv luaenv, ObjectTranslator translator)
         {
+        
+            translator.DelayWrapLoader(typeof(IFramework.UI.UIItemAwaiter), IFrameworkUIUIItemAwaiterWrap.__Register);
+        
         
             translator.DelayWrapLoader(typeof(IFramework.UI.UIModule), IFrameworkUIUIModuleWrap.__Register);
         
@@ -1427,13 +1430,13 @@ namespace XLua.CSObjectWrap
         
             translator.DelayWrapLoader(typeof(IFramework.IAwaterEx.AsyncOperationAwaiter), IFrameworkIAwaterExAsyncOperationAwaiterWrap.__Register);
         
-        
-            translator.DelayWrapLoader(typeof(IFramework.UI.UIModule.ItemPool), IFrameworkUIUIModuleItemPoolWrap.__Register);
-        
         }
         
         static void wrapInit9(LuaEnv luaenv, ObjectTranslator translator)
         {
+        
+            translator.DelayWrapLoader(typeof(IFramework.UI.UIModule.ItemPool), IFrameworkUIUIModuleItemPoolWrap.__Register);
+        
         
             translator.DelayWrapLoader(typeof(IFramework.UI.UIModule.ItemsPool), IFrameworkUIUIModuleItemsPoolWrap.__Register);
         
@@ -1584,13 +1587,13 @@ namespace XLua.CSObjectWrap
         
             translator.DelayWrapLoader(typeof(IFramework.Net.LockParam), IFrameworkNetLockParamWrap.__Register);
         
-        
-            translator.DelayWrapLoader(typeof(IFramework.Net.WebSocket.SslHelper), IFrameworkNetWebSocketSslHelperWrap.__Register);
-        
         }
         
         static void wrapInit10(LuaEnv luaenv, ObjectTranslator translator)
         {
+        
+            translator.DelayWrapLoader(typeof(IFramework.Net.WebSocket.SslHelper), IFrameworkNetWebSocketSslHelperWrap.__Register);
+        
         
             translator.DelayWrapLoader(typeof(IFramework.Net.WebSocket.WSConnectionItem), IFrameworkNetWebSocketWSConnectionItemWrap.__Register);
         
@@ -1741,13 +1744,13 @@ namespace XLua.CSObjectWrap
         
             translator.DelayWrapLoader(typeof(IFramework.Recorder.BaseState), IFrameworkRecorderBaseStateWrap.__Register);
         
-        
-            translator.DelayWrapLoader(typeof(IFramework.Recorder.CommandGroupState), IFrameworkRecorderCommandGroupStateWrap.__Register);
-        
         }
         
         static void wrapInit11(LuaEnv luaenv, ObjectTranslator translator)
         {
+        
+            translator.DelayWrapLoader(typeof(IFramework.Recorder.CommandGroupState), IFrameworkRecorderCommandGroupStateWrap.__Register);
+        
         
             translator.DelayWrapLoader(typeof(IFramework.Recorder.CommandState), IFrameworkRecorderCommandStateWrap.__Register);
         

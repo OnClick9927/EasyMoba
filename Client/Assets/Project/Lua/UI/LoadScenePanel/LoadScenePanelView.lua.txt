@@ -1,0 +1,47 @@
+--*********************************************************************************
+--Author:         OnClick
+--Version:        1.0
+--UnityVersion:   2020.3.3f1c1
+--Date:           2022-09-18
+--Description:    Description
+--History:        2022-09-18
+--*********************************************************************************
+
+---ViewUseFlag
+local RectTransform = StaticUsing("UnityEngine.RectTransform")
+local Slider = StaticUsing("UnityEngine.UI.Slider")
+
+---ViewUseFlag
+---@class LoadScenePanelView : UIView_MVC
+local LoadScenePanelView = class("LoadScenePanelView", UIView_MVC)
+
+function LoadScenePanelView:OnLoad()
+    self.Controls = {
+        ---@type UnityEngine.RectTransform
+        BG = self:GetComponent("BG", typeof(RectTransform)),
+        ---@type UnityEngine.UI.Slider
+        Progress = self:GetComponent("BG/Progress", typeof(Slider)),
+    }
+    SetActive(self.gameObject, false)
+    --BindUIEvent
+    Events:Subscribe(LuaEventTypes.ShowHideLoadSceneUI, function(show)
+        SetActive(self.gameObject, show)
+    end)
+    Events:Subscribe(LuaEventTypes.ShowLoadSceneProgress, function(progress)
+        self:SetSlider(self.Controls.Progress, progress)
+    end)
+end
+
+function LoadScenePanelView:OnShow()
+
+end
+
+function LoadScenePanelView:OnHide()
+
+end
+
+function LoadScenePanelView:OnClose()
+    self.Controls = nil
+end
+
+return LoadScenePanelView

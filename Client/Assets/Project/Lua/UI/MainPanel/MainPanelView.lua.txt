@@ -1,0 +1,37 @@
+--*********************************************************************************
+--Author:         OnClick
+--Version:        1.0
+--UnityVersion:   2020.3.3f1c1
+--Date:           2022-09-18
+--Description:    Description
+--History:        2022-09-18
+--*********************************************************************************
+
+---ViewUseFlag
+
+
+---ViewUseFlag
+---@class MainPanelView : UIView_MVC
+local MainPanelView = class("MainPanelView",UIView_MVC)
+
+function MainPanelView:OnLoad()
+	self.Controls = {
+
+	}
+	--BindUIEvent
+
+end
+
+function MainPanelView:OnShow()
+
+end
+
+function MainPanelView:OnHide()
+
+end
+
+function MainPanelView:OnClose()
+	self.Controls = nil
+end
+
+return MainPanelView

@@ -1,0 +1,60 @@
+---@class SceneCtrl:CtrlBase
+local M = Ctrls.NewCtrl()
+
+local path, callback, SceneAsset, lifeEntity, AsyncOperation
+
+local function CallProgress(progress)
+    Events:Publish(LuaEventTypes.ShowLoadSceneProgress, progress)
+end
+
+local function ShowHideUI(show)
+    Events:Publish(LuaEventTypes.ShowHideLoadSceneUI, show)
+end
+
+local function Update()
+    if AsyncOperation ~= nil then
+        CallProgress(AsyncOperation.progress * 0.5 + 0.5)
+        if AsyncOperation.isDone then
+            CallProgress(1)
+
+            lifeEntity:Dispose()
+            if callback then
+                callback()
+            end
+            ShowHideUI(false)
+            callback = nil
+            lifeEntity = nil
+            path = nil
+            AsyncOperation = nil
+            SceneAsset = nil
+        end
+        return
+    end
+    if SceneAsset ~= nil then
+        CallProgress(SceneAsset.progress * 0.5)
+
+        if SceneAsset.isDone then
+            local mode = CS.UnityEngine.SceneManagement.LoadSceneMode.Single
+            AsyncOperation = SceneAsset:LoadSceneAsync(mode)
+        end
+    end
+end
+
+local function LoadScene(_path, _callback)
+    if not _path or _path == "" then
+        return
+    end
+    path = _path
+    callback = _callback
+    SceneAsset = Assets.LoadSceneAssetAsync(path)
+
+    lifeEntity = LifeTimeEvent:Subscribe(LifeTimeEventType.Update, Update)
+    CallProgress(0)
+    ShowHideUI(true)
+end
+
+function M:Init()
+    self:SubscribeEvent(LuaEventTypes.LoadScene, LoadScene)
+end
+
+return M

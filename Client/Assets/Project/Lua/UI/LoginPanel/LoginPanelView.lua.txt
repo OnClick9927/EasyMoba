@@ -1,0 +1,38 @@
+--*********************************************************************************
+--Author:         OnClick
+--Version:        1.0
+--UnityVersion:   2020.3.3f1c1
+--Date:           2022-09-18
+--Description:    Description
+--History:        2022-09-18
+--*********************************************************************************
+
+---ViewUseFlag
+local Button = StaticUsing("UnityEngine.UI.Button")
+
+---ViewUseFlag
+---@class LoginPanelView : UIView_MVC
+local LoginPanelView = class("LoginPanelView",UIView_MVC)
+
+function LoginPanelView:OnLoad()
+	self.Controls = {
+		---@type UnityEngine.UI.Button
+		Login = self:GetComponent("Login", typeof(Button)),
+	}
+	--BindUIEvent
+
+end
+
+function LoginPanelView:OnShow()
+
+end
+
+function LoginPanelView:OnHide()
+
+end
+
+function LoginPanelView:OnClose()
+	self.Controls = nil
+end
+
+return LoginPanelView

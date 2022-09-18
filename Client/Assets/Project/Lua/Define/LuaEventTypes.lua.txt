@@ -1,0 +1,6 @@
+LuaEventTypes = {
+    LoadScene = "LoadScene",
+    ShowLoadSceneProgress = "ShowLoadSceneProgress",
+    ShowHideLoadSceneUI = "ShowHideLoadSceneUI",
+    LoginSucess = "LoginSucess",
+}

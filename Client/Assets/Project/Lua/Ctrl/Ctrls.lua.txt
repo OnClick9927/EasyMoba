@@ -1,0 +1,26 @@
+local M = {}
+local ctrlBase = require "Ctrl.CtrlBase"
+
+---@type CtrlBase[]
+local ctrls
+function M.NewCtrl()
+    local tab = setmetatable({}, { __index = ctrlBase })
+    return tab
+end
+
+function M.Init()
+    ctrls = {
+        require("Ctrl.SceneCtrl")
+    }
+    for index, value in ipairs(ctrls) do
+        value:Init()
+    end
+end
+
+function M.Quit()
+    for index, value in ipairs(ctrls) do
+        value:Quit()
+    end
+end
+
+return M

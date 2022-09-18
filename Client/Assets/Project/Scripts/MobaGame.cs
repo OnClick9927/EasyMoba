@@ -11,6 +11,8 @@ using IFramework.Hotfix.Asset;
 using IFramework.Hotfix.Lua;
 using IFramework.UI;
 using System.Collections.Generic;
+using System.Reflection;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 namespace EasyMoba
@@ -22,7 +24,8 @@ namespace EasyMoba
         public Canvas canvas;
         public bool AssetCheck;
         public string playerPrefsKey = "4654623498";
-
+        public string ip = "127.0.0.1";
+        public int port = 9633;
         public override void Init()
         {
             MobaPerfs.SetKey(playerPrefsKey);
@@ -65,7 +68,9 @@ namespace EasyMoba
             modules.UI.SetLayerConfig(_configs);
             Assets.Release(asset);
             modules.UI.canvas.transform.SetParent(this.transform, true);
+            modules.tcp = new TcpClient(ip, port);
             StartLua();
+            await modules.tcp.Connect();
         }
         private void StartLua()
         {

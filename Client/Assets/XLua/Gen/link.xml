@@ -21,6 +21,7 @@
 		<type fullname="EasyMoba.MobaAssetsUpdate" preserve="all"/>
 		<type fullname="EasyMoba.MobaGame" preserve="all"/>
 		<type fullname="EasyMoba.MobaModules" preserve="all"/>
+		<type fullname="EasyMoba.TcpClient" preserve="all"/>
 		<type fullname="EasyMoba.MobaPerfs" preserve="all"/>
 		<type fullname="EasyMoba.MVCMap" preserve="all"/>
 		<type fullname="EasyMoba.NormalUIAsset" preserve="all"/>

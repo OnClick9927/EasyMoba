@@ -1,0 +1,42 @@
+function NetEvents.HaveSaveData()
+    ---@type UserModel
+    local data = Datas:GetData(DataType.UserModel)
+    return data:HaveSaveData()
+end
+
+function NetEvents.Register()
+    ---@type CSRoleLogin
+    local data = {}
+    data.LoginType = NetEventDefine.Enums.LoginType.Signin
+    NetEvents.SendRequest(NetEventDefine.CSRoleLogin, data)
+end
+
+function NetEvents.Login()
+    ---@type SCRoleLogin
+    local data = {}
+    ---@type UserModel
+    local UserModel = Datas:GetData(DataType.UserModel)
+    local save = UserModel:GetSaveData()
+    data.LoginType = NetEventDefine.Enums.LoginType.Login
+    data.RoleID = save:GetRoleId()
+    data.Password = save:GetPassword()
+    NetEvents.SendRequest(NetEventDefine.CSRoleLogin, data)
+end
+
+---@param data SCRoleLogin
+local function OnLoginResPonse(data)
+    local LoginType = data.loginType
+    local Code = data.Code
+    local Password = data.Password
+    local RoleId = data.RoleID
+    ---@type UserModel
+    local UserData = Datas:GetData(DataType.UserModel)
+    if Code == NetEventDefine.ErrorCodes.LoginErrCode.Success then
+        UserData:SaveLoginResult(LoginType, RoleId, Password)
+        Events:Publish(LuaEventTypes.LoginSucess)
+    else
+
+    end
+end
+
+NetEvents.SetHandler(NetEventDefine.SCRoleLogin, OnLoginResPonse)

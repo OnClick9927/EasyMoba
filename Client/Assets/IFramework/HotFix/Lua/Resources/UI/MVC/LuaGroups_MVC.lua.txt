@@ -1,9 +1,9 @@
 ---@class LuaGroups_MVC:LuaGroups
-LuaGroups_MVC = class("LuaGroups_Mvc")
+LuaGroups_MVC = class("LuaGroups_Mvc", LuaGroups)
 
 
 function LuaGroups_MVC:OnDispose()
-    LuaGroups.onDispose(self)
+    LuaGroups.OnDispose(self)
     self.groups = nil
 end
 

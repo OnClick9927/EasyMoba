@@ -1,0 +1,39 @@
+
+NetEventDefine = {
+	SCRoleLogin = {
+		MainId = 1,
+		SubId = 1,
+	},
+	CSRoleLogin = {
+		MainId = 1,
+		SubId = 1,
+	},
+}
+
+---@class SCRoleLogin
+---@field Code number
+---@field loginType LoginType
+---@field Password string
+---@field RoleID number
+
+---@class CSRoleLogin
+---@field loginType LoginType
+---@field Password string
+---@field RoleID number
+
+---@class LoginType Enum
+
+NetEventDefine.Enums = {
+	LoginType = {
+		Login = 0,
+		Signin = 1,
+	},
+}
+
+NetEventDefine.ErrorCodes = {
+	LoginErrCode = {
+		NotExistRoleID = 2,
+		PasswordErr = 3,
+		Success = 0,
+	},
+}

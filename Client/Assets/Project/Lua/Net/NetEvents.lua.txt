@@ -1,0 +1,56 @@
+NetEvents = {}
+local NetEventHandler = {}
+local tcp = Game.modules.tcp
+function NetEvents.NewJsonArray(tbl)
+    return Json:newArray(tbl)
+end
+
+function NetEvents.NewJsonObject(tbl)
+    return Json:newObject(tbl)
+end
+
+local function OnNetMessage(code, subcode, json)
+    local func
+    if NetEventHandler[code] then
+        local map = NetEventHandler[code]
+        if map then
+            func = map[subcode]
+        end
+    else
+    end
+    if func then
+        local decode = Json:decode(json)
+        func(decode)
+    else
+        for key, value in pairs(NetEventDefine) do
+            local MainId = value.MainId
+            local SubId = value.SubId
+            if MainId == code and SubId == subcode then
+                Log.E("网络消息监听未曾实现: " .. key .. code .. "-" .. subcode)
+                return
+            end
+        end
+        Log.E("网络消息监听未曾实现 [" .. code .. "][" .. subcode .. "]")
+    end
+end
+
+tcp:onLuaResponse("+", OnNetMessage)
+LifeTimeEvent:Subscribe(
+    LifeTimeEventType.Dispose,
+    function()
+        tcp:onLuaResponse("-", OnNetMessage)
+    end
+)
+function NetEvents.SetHandler(response, func)
+    NetEventHandler[response.MainId] = NetEventHandler[response.MainId] or {}
+    NetEventHandler[response.MainId][response.SubId] = func
+end
+
+function NetEvents.SendRequest(request, data)
+    NetEvents.NewJsonObject(data)
+    tcp:SendLuaRequest(request.MainId, request.SubId, Json:encode(data))
+end
+
+---------------------------------------------------------------------------------------
+require("Net.NetEventDefine")
+require "Net.Handlers.Role"

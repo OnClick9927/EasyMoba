@@ -1,0 +1,8 @@
+local M = 
+{
+	 LoadScenePanel = "Assets/Project/Prefabs/UI/LoadScenePanel.prefab";
+	 MainPanel = "Assets/Project/Prefabs/UI/MainPanel.prefab";
+	 LoginPanel = "Assets/Project/Prefabs/UI/LoginPanel.prefab";
+	 UpdatePanel = "UI/UpdatePanel";
+}
+return M

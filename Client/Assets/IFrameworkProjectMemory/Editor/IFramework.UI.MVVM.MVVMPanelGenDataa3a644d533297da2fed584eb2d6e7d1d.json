@@ -10,6 +10,18 @@
         {
             "panelName": "UpdatePanel",
             "content": "{ Name = \"UpdatePanel\",ViewType = require(\"UI.UpdatePanel.UpdatePanelView\") },"
+        },
+        {
+            "panelName": "LoadScenePanel",
+            "content": "{ Name = \"LoadScenePanel\",ViewType = require(\"UI.LoadScenePanel.LoadScenePanelView\") },"
+        },
+        {
+            "panelName": "LoginPanel",
+            "content": "{ Name = \"LoginPanel\",ViewType = require(\"UI.LoginPanel.LoginPanelView\") },"
+        },
+        {
+            "panelName": "MainPanel",
+            "content": "{ Name = \"MainPanel\",ViewType = require(\"UI.MainPanel.MainPanelView\") },"
         }
     ]
 }

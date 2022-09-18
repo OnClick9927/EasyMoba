@@ -1,0 +1,38 @@
+---加载场景
+---@param scenePath string 场景路径
+---@param callback function
+function LoadScene(scenePath, callback)
+    Events:Publish(LuaEventTypes.LoadScene, scenePath, callback)
+end
+
+function ShowUI(panelName)
+    UI:Show(panelName)
+end
+
+function CloseUI(panelName)
+    UI:Close(panelName)
+end
+
+function SetActive(gameObject, active)
+    gameObject.gameObject:SetActive(active)
+end
+
+---@param key string
+---@return table
+function GetPerfs(key)
+    local str = Perfs.Read(key)
+    if string.IsNullOrEmtty(str) then
+        return nil
+    end
+    local decode = Json:decode(str)
+    return decode
+end
+
+---@param key string
+---@param tab table
+function SetPerfs(key, tab)
+    local encode = Json:encode(tab)
+    Perfs.Save(key, encode)
+end
+
+

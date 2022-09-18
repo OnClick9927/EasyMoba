@@ -18,7 +18,7 @@ function LuaGroups:SetMap(...)
     local map = {}
     for key, _ in pairs(tmp) do
         for key, value in pairs(_) do
-            table.insert(value)
+            table.insert(map, value)
         end
     end
     if map == nil then

@@ -1,0 +1,28 @@
+---@class CtrlBase
+local M = {}
+
+function M:Init()
+
+end
+
+function M:SubscribeEvent(code, func, ...)
+    local entity = Events:Subscribe(code, func, ...)
+    ---@type table<any,EventEntity>
+    self.events = self.events or {}
+    self.events[code] = entity
+end
+
+function M:UnSubscribeEvent(code)
+    local entity = self.events[code]
+    if entity then
+        entity:Dispose()
+    end
+end
+
+function M:Quit()
+    for key, value in pairs(self.events or {}) do
+        value:Dispose()
+    end
+end
+
+return M
