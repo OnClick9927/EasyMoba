@@ -1,3 +1,26 @@
 local M = {}
+local base = require "Model.ModelBase"
+
+function M.NewModel()
+    local tab = setmetatable({}, { __index = base })
+    return tab
+end
+
+function M.Init()
+    M.PlayerModel = require("Model.PlayerModel")
+    for key, value in pairs(M) do
+        if type(value) == LuaDataType.Table then
+            value:Init()
+        end
+    end
+end
+
+function M.Quit()
+    for key, value in pairs(M) do
+        if type(value) == LuaDataType.Table then
+            value:Quit()
+        end
+    end
+end
 
 return M

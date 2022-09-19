@@ -1,0 +1,12 @@
+---@class ModelBase
+local M = {}
+
+function M:Init()
+
+end
+
+function M:Quit()
+
+end
+
+return M

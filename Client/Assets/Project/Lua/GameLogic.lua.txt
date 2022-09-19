@@ -1,8 +1,20 @@
 Log.L('Game Logic')
-Ctrls.Init()
-local groups = LuaGroups_MVC()
-UI:SetGroups(groups:SetMap(require("UI.MVCMap")))
-ShowUI(PanelNames.LoadScenePanel)
-LoadScene(ResDefine.Scene.Login, function()
-    ShowUI(PanelNames.LoginPanel)
-end)
+local M = {}
+function M.Init()
+    LifeTimeEvent:Subscribe(LifeTimeEventType.Dispose, M.Quit)
+    Models.Init()
+    Ctrls.Init()
+    local groups = LuaGroups_MVC()
+    UI:SetGroups(groups:SetMap(require("UI.MVCMap")))
+    GameTools.ShowUI(PanelNames.LoadScenePanel)
+    GameTools.LoadScene(ResDefine.Scene.Login, function()
+        GameTools.ShowUI(PanelNames.LoginPanel)
+    end)
+end
+
+function M.Quit()
+    Models.Quit()
+    Ctrls.Quit()
+end
+
+M.Init()

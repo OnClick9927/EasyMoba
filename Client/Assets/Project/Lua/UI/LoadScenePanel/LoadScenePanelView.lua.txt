@@ -22,10 +22,10 @@ function LoadScenePanelView:OnLoad()
         ---@type UnityEngine.UI.Slider
         Progress = self:GetComponent("BG/Progress", typeof(Slider)),
     }
-    SetActive(self.gameObject, false)
+    GameTools.SetActive(self.gameObject, false)
     --BindUIEvent
     Events:Subscribe(LuaEventTypes.ShowHideLoadSceneUI, function(show)
-        SetActive(self.gameObject, show)
+        GameTools.SetActive(self.gameObject, show)
     end)
     Events:Subscribe(LuaEventTypes.ShowLoadSceneProgress, function(progress)
         self:SetSlider(self.Controls.Progress, progress)

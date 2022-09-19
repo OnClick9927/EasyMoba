@@ -1,3 +1,4 @@
+require("Define.NetEventDefine")
 NetEvents = {}
 local NetEventHandler = {}
 local tcp = Game.modules.tcp
@@ -51,6 +52,4 @@ function NetEvents.SendRequest(request, data)
     tcp:SendLuaRequest(request.MainId, request.SubId, Json:encode(data))
 end
 
----------------------------------------------------------------------------------------
-require("Net.NetEventDefine")
-require "Net.Handlers.Role"
+

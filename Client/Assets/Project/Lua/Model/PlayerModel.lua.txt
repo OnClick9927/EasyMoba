@@ -1,0 +1,12 @@
+---@class PlayerModel:ModelBase
+local M = Models.NewModel()
+
+function M:Init()
+
+end
+
+function M:Quit()
+
+end
+
+return M

@@ -1,25 +1,27 @@
+GameTools = {}
 ---加载场景
 ---@param scenePath string 场景路径
 ---@param callback function
-function LoadScene(scenePath, callback)
+function GameTools.LoadScene(scenePath, callback)
     Events:Publish(LuaEventTypes.LoadScene, scenePath, callback)
 end
 
-function ShowUI(panelName)
+function GameTools.ShowUI(panelName)
     UI:Show(panelName)
 end
 
-function CloseUI(panelName)
+function GameTools.CloseUI(panelName)
     UI:Close(panelName)
 end
 
-function SetActive(gameObject, active)
+function GameTools.SetActive(gameObject, active)
     gameObject.gameObject:SetActive(active)
 end
 
+local Perfs = CS.EasyMoba.MobaPerfs
 ---@param key string
 ---@return table
-function GetPerfs(key)
+function GameTools.GetPerfs(key)
     local str = Perfs.Read(key)
     if string.IsNullOrEmtty(str) then
         return nil
@@ -30,9 +32,7 @@ end
 
 ---@param key string
 ---@param tab table
-function SetPerfs(key, tab)
+function GameTools.SetPerfs(key, tab)
     local encode = Json:encode(tab)
     Perfs.Save(key, encode)
 end
-
-

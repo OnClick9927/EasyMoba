@@ -13,7 +13,7 @@ Ctrls = require("Ctrl.Ctrls")
 Models = require("Model.Models")
 Events = EventSystem()
 
-Perfs = CS.EasyMoba.MobaPerfs
+
 Game = CS.EasyMoba.MobaGame.Instance
 UI = Game.modules.UI
 Assets = CS.IFramework.Hotfix.Asset.Assets
@@ -21,6 +21,6 @@ Assets = CS.IFramework.Hotfix.Asset.Assets
 
 ---@type UIItemPool
 UIItems = UIItemPool(UI)
-require("Net.NetEvents")
+require("Ctrl.Net.NetEvents")
 ---------------------------------------------------------------------------------------
 require("GameTools")
