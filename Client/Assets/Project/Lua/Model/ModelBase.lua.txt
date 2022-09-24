@@ -1,12 +1,24 @@
----@class ModelBase
-local M = {}
+---@class ModelBase:Unit
+ModelBase = class("ModelBase")
 
-function M:Init()
-
-end
-
-function M:Quit()
+function ModelBase:Init()
 
 end
 
-return M
+function ModelBase:Quit()
+
+end
+
+function ModelBase:OnLoginSucess()
+
+end
+
+function ModelBase:GetPerfs()
+    return GameTools.GetPerfs(self.__classname)
+end
+
+function ModelBase:SetPerfs(tab)
+    GameTools.SetPerfs(self.__classname, tab)
+end
+
+return ModelBase

@@ -1,6 +1,10 @@
 LuaEventTypes = {
-    LoadScene = "LoadScene",
-    ShowLoadSceneProgress = "ShowLoadSceneProgress",
-    ShowHideLoadSceneUI = "ShowHideLoadSceneUI",
-    LoginSucess = "LoginSucess",
+    ShowLoadSceneProgress = 0,
+    ShowHideLoadSceneUI = 2,
+    LoginSucess = 3,
 }
+local index = 1
+for key, value in pairs(LuaEventTypes) do
+    LuaEventTypes[key] = index
+    index = index + 1
+end

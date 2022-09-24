@@ -1,10 +1,4 @@
 GameTools = {}
----加载场景
----@param scenePath string 场景路径
----@param callback function
-function GameTools.LoadScene(scenePath, callback)
-    Events:Publish(LuaEventTypes.LoadScene, scenePath, callback)
-end
 
 function GameTools.ShowUI(panelName)
     UI:Show(panelName)

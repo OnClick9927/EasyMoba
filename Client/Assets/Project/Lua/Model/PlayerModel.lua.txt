@@ -1,12 +1,29 @@
 ---@class PlayerModel:ModelBase
-local M = Models.NewModel()
+local M = class("PlayerModel", ModelBase)
 
 function M:Init()
-
+    self.player_save_data = self:GetPerfs()
 end
 
 function M:Quit()
 
+end
+
+function M:GetSaveData()
+    return self.player_save_data
+end
+
+function M:GetRoleID()
+    return self.player_save_data.RoleId
+end
+
+function M:SaveLoginResult(LoginType, RoleId, Password)
+    self.player_save_data = {
+        LoginType = LoginType,
+        RoleId = RoleId,
+        Password = Password
+    }
+    self:SetPerfs(self.player_save_data)
 end
 
 return M

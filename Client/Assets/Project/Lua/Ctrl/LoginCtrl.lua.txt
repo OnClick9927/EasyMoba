@@ -1,0 +1,43 @@
+local M = {}
+
+function M.Login()
+    ---@type SCRoleLogin
+    local data = {}
+    local save = Models.PlayerModel:GetSaveData()
+    if save then
+        data.LoginType = NetEventDefine.Enums.LoginType.Login
+        data.RoleID = save.RoleId
+        data.Password = save.Password
+    else
+        data.LoginType = NetEventDefine.Enums.LoginType.Signin
+    end
+    NetEvents.SendRequest(NetEventDefine.CSRoleLogin, data)
+end
+
+---@param data SCRoleLogin
+local function OnLoginResPonse(data)
+    local LoginType = data.loginType
+    local Code = data.Code
+    local Password = data.Password
+    local RoleId = data.RoleID
+
+    if Code == NetEventDefine.ErrorCodes.LoginErrCode.Success then
+        Models.PlayerModel:SaveLoginResult(LoginType, RoleId, Password)
+        LuaTask.Run(function()
+            await(LuaTask.Delay(1000 * 2))
+            GameTools.CloseUI(PanelNames.LoginPanel)
+            Ctrls.SceneCtrl.LoadScene(ResDefine.Scene.Home, function()
+                GameTools.ShowUI(PanelNames.MainPanel)
+            end)
+            Models.OnLoginSucess(RoleId)
+            Events:Publish(LuaEventTypes.LoginSucess)
+        end)
+
+    else
+
+    end
+end
+
+NetEvents.SetHandler(NetEventDefine.SCRoleLogin, OnLoginResPonse)
+
+return M

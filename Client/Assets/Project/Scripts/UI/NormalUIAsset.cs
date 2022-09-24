@@ -72,15 +72,8 @@ namespace EasyMoba
 
         public override void DestoryPanel(GameObject gameObject)
         {
-            var find = collect.datas.Find(x => x.name == gameObject.name);
-            if (find != null)
-            {
-                Assets.Destory(gameObject);
-            }
-            else
-            {
-                base.DestoryPanel(gameObject);
-            }
+            base.DestoryPanel(gameObject);
+
         }
         public override Canvas GetCanvas()
         {

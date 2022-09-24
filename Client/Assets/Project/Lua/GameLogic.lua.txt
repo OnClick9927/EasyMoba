@@ -1,5 +1,6 @@
 Log.L('Game Logic')
 local M = {}
+
 function M.Init()
     LifeTimeEvent:Subscribe(LifeTimeEventType.Dispose, M.Quit)
     Models.Init()
@@ -7,9 +8,13 @@ function M.Init()
     local groups = LuaGroups_MVC()
     UI:SetGroups(groups:SetMap(require("UI.MVCMap")))
     GameTools.ShowUI(PanelNames.LoadScenePanel)
-    GameTools.LoadScene(ResDefine.Scene.Login, function()
+    Ctrls.SceneCtrl.LoadScene(ResDefine.Scene.Login, function()
         GameTools.ShowUI(PanelNames.LoginPanel)
     end)
+    LuaTask.Run(function()
+        local connected = await(Game.modules.tcp:Connect())
+    end)
+
 end
 
 function M.Quit()

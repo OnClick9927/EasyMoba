@@ -12,15 +12,26 @@ local Button = StaticUsing("UnityEngine.UI.Button")
 
 ---ViewUseFlag
 ---@class LoginPanelView : UIView_MVC
-local LoginPanelView = class("LoginPanelView",UIView_MVC)
+local LoginPanelView = class("LoginPanelView", UIView_MVC)
 
 function LoginPanelView:OnLoad()
-	self.Controls = {
-		---@type UnityEngine.UI.Button
-		Login = self:GetComponent("Login", typeof(Button)),
-	}
-	--BindUIEvent
+    self.Controls = {
+        ---@type UnityEngine.UI.Button
+        Login = self:GetComponent("Login", typeof(Button)),
+    }
+    local function call_login()
+        Ctrls.LoginCtrl.Login()
 
+    end
+
+    --BindUIEvent
+    self:BindButton(self.Controls.Login, call_login)
+    local data = Models.PlayerModel:GetSaveData()
+    local hide = (data ~= nil)
+    GameTools.SetActive(self.Controls.Login, not hide)
+    if hide then
+        call_login()
+    end
 end
 
 function LoginPanelView:OnShow()
@@ -32,7 +43,7 @@ function LoginPanelView:OnHide()
 end
 
 function LoginPanelView:OnClose()
-	self.Controls = nil
+    self.Controls = nil
 end
 
 return LoginPanelView

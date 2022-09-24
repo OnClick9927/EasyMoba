@@ -1,5 +1,4 @@
----@class SceneCtrl:CtrlBase
-local M = Ctrls.NewCtrl()
+local M = {}
 
 local path, callback, SceneAsset, lifeEntity, AsyncOperation
 
@@ -53,8 +52,5 @@ local function LoadScene(_path, _callback)
     ShowHideUI(true)
 end
 
-function M:Init()
-    self:SubscribeEvent(LuaEventTypes.LoadScene, LoadScene)
-end
-
+M.LoadScene = LoadScene
 return M

@@ -1,13 +1,19 @@
-local M = {}
-local base = require "Model.ModelBase"
+require "Model.ModelBase"
+local Perfs = CS.EasyMoba.MobaPerfs
 
-function M.NewModel()
-    local tab = setmetatable({}, { __index = base })
-    return tab
+local M = {}
+M.PlayerModel = require("Model.PlayerModel")
+
+function M.OnLoginSucess(RoleId)
+    Perfs.SetKey(RoleId)
+    for key, value in pairs(M) do
+        if type(value) == LuaDataType.Table then
+            value:OnLoginSucess()
+        end
+    end
 end
 
 function M.Init()
-    M.PlayerModel = require("Model.PlayerModel")
     for key, value in pairs(M) do
         if type(value) == LuaDataType.Table then
             value:Init()

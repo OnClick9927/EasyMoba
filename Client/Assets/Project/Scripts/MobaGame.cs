@@ -70,7 +70,6 @@ namespace EasyMoba
             modules.UI.canvas.transform.SetParent(this.transform, true);
             modules.tcp = new TcpClient(ip, port);
             StartLua();
-            await modules.tcp.Connect();
         }
         private void StartLua()
         {
