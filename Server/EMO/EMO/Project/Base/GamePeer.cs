@@ -13,12 +13,12 @@ namespace EMO.Project.Base
     public abstract class GamePeer : NetPeer
     {
 
-        public PeerT? GetPeer<PeerT>() where PeerT : GamePeer
+        public static  PeerT? GetPeer<PeerT>() where PeerT : GamePeer
         {
             return sever.PeerPool.GetHandlePeer<PeerT>();
         }
 
-        public void SendResponse<TResponse>(long roleId, TResponse response) where TResponse : IResponse
+        public static void SendResponse<TResponse>(long roleId, TResponse response) where TResponse : ISeverMsg
         {
             var clientsData = sever.GetClientsData<NetPlayersData>();
             var token = clientsData.GetSTokenByRoleId(roleId);
@@ -27,12 +27,12 @@ namespace EMO.Project.Base
                 SendResponse(token, response);
             }
         }
-        public long GetRoleID(SocketToken token)
+        public static long GetRoleID(SocketToken token)
         {
             var clientsData = sever.GetClientsData<NetPlayersData>();
             return clientsData.GetRoleIdBySToken(token);
         }
-        public T GetDB<T>() where T : SqliteDbContext
+        public static T GetDB<T>() where T : SqliteDbContext
         {
             return SqliteDbContext.Get<T>();
         }

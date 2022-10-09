@@ -26,7 +26,7 @@ public static class NetServerHelper
         return ServerInstance.GetServer().PeerPool.GetHandlePeer<PeerT>();
     }
 
-    public static void SendResponse<TResponse>(SocketToken token, TResponse response) where TResponse : IResponse
+    public static void SendResponse<TResponse>(SocketToken token, TResponse response) where TResponse : ISeverMsg
     {
         Server.SendResponse<TResponse>(token, response);
     }
@@ -35,7 +35,7 @@ public static class NetServerHelper
         var clientsData = Server.GetClientsData<NetPlayersData>();
         return clientsData.GetSTokenByRoleId(roleId);
     }
-    public static void SendResponse<TResponse>(long roleId, TResponse response) where TResponse : IResponse
+    public static void SendResponse<TResponse>(long roleId, TResponse response) where TResponse : ISeverMsg
     {
         var clientsData = Server.GetClientsData<NetPlayersData>();
         var token = clientsData.GetSTokenByRoleId(roleId);

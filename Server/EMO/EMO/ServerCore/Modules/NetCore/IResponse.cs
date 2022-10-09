@@ -1,8 +1,12 @@
 ﻿namespace EMO.ServerCore.Modules.NetCore
 {
-    public interface IResponse
+    public interface ISeverMsg
     {
-        public  int Code { get; set; }
+
     }
-    
+    public interface IResponse : ISeverMsg
+    {
+        public int Code { get; set; }
+    }
+
 }

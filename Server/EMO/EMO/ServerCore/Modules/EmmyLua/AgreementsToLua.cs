@@ -26,7 +26,7 @@ namespace EMO.ServerCore.Modules.EmmyLua
         static string right = "}";
         public static void Build()
         {
-            var responseTypes = typeof(IResponse).GetSubTypesInAssemblys().ToList();
+            var responseTypes = typeof(ISeverMsg).GetSubTypesInAssemblys().ToList();
             var requestTypes = typeof(IRequest).GetSubTypesInAssemblys().ToList();
             List<Type> types = new List<Type>();
             List<Type> enumTypes = new List<Type>();
@@ -97,6 +97,7 @@ namespace EMO.ServerCore.Modules.EmmyLua
 
             foreach (Type type in types)
             {
+                if (type.IsInterface) continue;
                 NetMessageCode h = type.GetCustomAttributes(typeof(NetMessageCode), false).First() as NetMessageCode;
                 uint subId = h.SubId;
 

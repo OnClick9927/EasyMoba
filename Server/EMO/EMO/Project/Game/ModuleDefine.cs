@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EMO.Project.Game
+namespace EMO.Project.Game;
+public enum ModuleDefine
 {
-
-    public static class ModuleDefine
-    {
-        public const uint Role = 1;
-    }
+    Role = 1,
+    Match = 2,
+    Battle,
 }

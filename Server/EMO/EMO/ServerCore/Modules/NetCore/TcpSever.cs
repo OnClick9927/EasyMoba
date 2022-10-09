@@ -30,7 +30,11 @@ namespace EMO.ServerCore.Modules.NetCore
             public NetPeerPool(TcpSever sever)
             {
                 this.sever = sever;
-                responseMap = typeof(IResponse).GetSubTypesInAssemblys().ToList().ConvertAll((type) =>
+                NetPeer.sever = sever;
+
+                var list = typeof(ISeverMsg).GetSubTypesInAssemblys().ToList();
+                list.RemoveAll(type => type.IsInterface);
+                responseMap = list.ConvertAll((type) =>
                 {
                     NetMessageCode h =
                         type.GetCustomAttributes(typeof(NetMessageCode), false).First() as NetMessageCode;
@@ -81,12 +85,11 @@ namespace EMO.ServerCore.Modules.NetCore
                 }
                 if (!_reqTypeToPeerTypeDic.TryGetValue(reqType, out var peerType)) return null;
                 peer = Activator.CreateInstance(peerType) as NetPeer;
-                peer.sever = sever;
                 _reqTypeToPeerDic.Add(reqType, peer);
                 return peer;
             }
 
-            public Packet GetPacket<TResponse>(TResponse response) where TResponse : IResponse
+            public Packet GetPacket<TResponse>(TResponse response) where TResponse : ISeverMsg
             {
                 Type type = typeof(TResponse);
                 var msgHead = responseMap[type];
@@ -185,7 +188,7 @@ namespace EMO.ServerCore.Modules.NetCore
             Log.L($"TCP服务初始化完毕---------------------");
         }
 
-        public void SendResponse<TResponse>(SocketToken token, TResponse response) where TResponse : IResponse
+        public void SendResponse<TResponse>(SocketToken token, TResponse response) where TResponse : ISeverMsg
         {
             Packet pkg = PeerPool.GetPacket<TResponse>(response);
             Sever.Send(new SegmentToken(token, pkg.Pack()));

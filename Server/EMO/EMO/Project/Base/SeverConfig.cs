@@ -21,6 +21,7 @@ public static class SeverConst
     public static int port = 9633;
     public static int connections = 2000;
     public static int pkgSize = 1024 * 1024;
+    public static int udpPort = 9634;
     public static string rootPath = "";
     public static string dbPath
     {

@@ -1,13 +1,15 @@
-﻿namespace EMO.ServerCore.Modules.NetCore
+﻿using EMO.Project.Game;
+
+namespace EMO.ServerCore.Modules.NetCore
 {
     [AttributeUsage(AttributeTargets.Class, Inherited = false)]
     class NetMessageCode : Attribute
     {
         public uint MainId;
         public uint SubId;
-        public NetMessageCode(uint mainId,uint subId)
+        public NetMessageCode(ModuleDefine mainId,uint subId)
         {
-            this.MainId = mainId;
+            this.MainId = (uint)mainId;
             this.SubId = subId;
         }
     }

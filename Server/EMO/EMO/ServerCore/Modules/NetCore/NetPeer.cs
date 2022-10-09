@@ -4,9 +4,9 @@ namespace EMO.ServerCore.Modules.NetCore
 {
     public abstract class NetPeer
     {
-        public TcpSever sever;
+        public static TcpSever sever;
 
-        public void SendResponse<TResponse>(SocketToken token, TResponse response) where TResponse : IResponse
+        public static void SendResponse<TResponse>(SocketToken token, TResponse response) where TResponse : ISeverMsg
         {
             sever.SendResponse<TResponse>(token, response);
         }
