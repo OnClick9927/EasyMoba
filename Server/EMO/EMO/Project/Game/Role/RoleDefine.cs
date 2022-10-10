@@ -9,14 +9,14 @@ public enum LoginType
 }
 
 [NetMessageCode(ModuleDefine.Role, 1)]
-public class CSRoleLogin : IRequest
+public class CSRoleLogin : INetMsg
 {
     public LoginType loginType { get; set; }
     public string Password { get; set; }
     public long RoleID { get; set; }
 }
-[NetMessageCode(ModuleDefine.Role, 1)]
-public class SCRoleLogin : IResponse
+[NetMessageCode(ModuleDefine.Role, 2)]
+public class SCRoleLogin : ICode, INetMsg
 {
     public int Code { get; set; }
     public LoginType loginType { get; set; }

@@ -28,7 +28,7 @@ public class TcpSever : Unit
                 }
             });
         }
-        public void Handle(SocketToken token, IRequest request)
+        public void Handle(SocketToken token, INetMsg request)
         {
             var type = request.GetType();
             var m = _msgHandles[type];
@@ -41,9 +41,9 @@ public class TcpSever : Unit
         private Dictionary<Type, Tuple<uint, uint>> responseMap;
         private static Encoding en = Encoding.UTF8;
 
-        public NetCodeParser(TcpSever sever)
+        public NetCodeParser()
         {
-            var list = typeof(ISeverMsg).GetSubTypesInAssemblys().ToList();
+            var list = typeof(INetMsg).GetSubTypesInAssemblys().ToList();
             list.RemoveAll(type => type.IsInterface);
             responseMap = list.ConvertAll((type) =>
             {
@@ -55,8 +55,10 @@ public class TcpSever : Unit
                 (a) => Tuple.Create(a.MainId, a.SubId)
             );
             requstMap = new Dictionary<uint, Dictionary<uint, Type>>();
-            foreach (var type in typeof(IRequest).GetSubTypesInAssemblys())
+            foreach (var type in typeof(INetMsg).GetSubTypesInAssemblys())
             {
+                if (type.IsAbstract)
+                    continue;
                 NetMessageCode h =
                 type.GetCustomAttributes(typeof(NetMessageCode), false).First() as NetMessageCode;
                 var main = h.MainId;
@@ -93,7 +95,7 @@ public class TcpSever : Unit
             }
         }
 
-        public Packet GetPacket<TResponse>(TResponse response) where TResponse : ISeverMsg
+        public Packet GetPacket<TResponse>(TResponse response) where TResponse : INetMsg
         {
             Type type = typeof(TResponse);
             var msgHead = responseMap[type];
@@ -108,9 +110,9 @@ public class TcpSever : Unit
             return new Packet(1, Convert.ToUInt32(msgHead.Item1), Convert.ToUInt32(msgHead.Item2), 1, en.GetBytes(result));
         }
 
-        public IRequest? Parse(Packet pkg)
+        public INetMsg? Parse(Packet pkg)
         {
-            IRequest req = null;
+            INetMsg req = null;
             var type = requstMap[pkg.MainId][pkg.SubId];
             var str = en.GetString(pkg.message);
             object? msg = null;
@@ -126,7 +128,7 @@ public class TcpSever : Unit
 
             if (msg != null)
             {
-                req = msg as IRequest;
+                req = msg as INetMsg;
                 if (EnableLogMessage)
                 {
                     if (req != null) Log.L($"接收到给客户端请求 NetMessageCode: {pkg.MainId}({req.GetType()})");
@@ -149,7 +151,7 @@ public class TcpSever : Unit
 
     public TcpSever(int port, int connections, int pkgSize, IClientsData data)
     {
-        PeerPool = new NetCodeParser(this);
+        PeerPool = new NetCodeParser();
         data.SetPkgSize(pkgSize);
         _clientsData = data;
         handle = new MsgHandleGroup();
@@ -165,7 +167,7 @@ public class TcpSever : Unit
         Log.L($"TCP服务初始化完毕---------------------");
     }
 
-    public void SendResponse<TResponse>(SocketToken token, TResponse response) where TResponse : ISeverMsg
+    public void SendResponse<TResponse>(SocketToken token, TResponse response) where TResponse : INetMsg
     {
         Packet pkg = PeerPool.GetPacket(response);
         Sever.Send(new SegmentToken(token, pkg.Pack()));

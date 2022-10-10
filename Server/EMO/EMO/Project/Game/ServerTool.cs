@@ -22,7 +22,7 @@ static class ServerTool
         var clientsData = ServerInstance.GetServer().GetClientsData<NetPlayersData>();
         return clientsData.GetRoleIdBySToken(token);
     }
-    public static void SendResponse<TResponse>(long roleId, TResponse response) where TResponse : ISeverMsg
+    public static void SendResponse<TResponse>(long roleId, TResponse response) where TResponse : INetMsg
     {
         var clientsData = ServerInstance.GetServer().GetClientsData<NetPlayersData>();
         var token = clientsData.GetSTokenByRoleId(roleId);
@@ -31,7 +31,7 @@ static class ServerTool
             SendResponse(token, response);
         }
     }
-    public static void SendResponse<TResponse>(SocketToken token, TResponse response) where TResponse : ISeverMsg
+    public static void SendResponse<TResponse>(SocketToken token, TResponse response) where TResponse : INetMsg
     {
         ServerInstance.GetServer().SendResponse(token, response);
     }

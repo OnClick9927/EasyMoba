@@ -5,14 +5,14 @@ namespace EMO.Project.Game.Battle;
 
 
 [NetMessageCode(ModuleDefine.Battle, 1)]
-public class CSBattleReady : IRequest
+public class CSBattleReady : INetMsg
 {
     public long roleID { get; set; }
     public string roomID { get; set; }
 }
 
-[NetMessageCode(ModuleDefine.Battle, 1)]
-public class SPBattleAllReady : ISeverMsg
+[NetMessageCode(ModuleDefine.Battle, 2)]
+public class SPBattleAllReady : INetMsg
 {
 
 }
@@ -24,8 +24,8 @@ public class FrameData
     public string opText { get; set; }
 }
 
-[NetMessageCode(ModuleDefine.Battle, 2)]
-public class CSBattleFrame
+[NetMessageCode(ModuleDefine.Battle, 3)]
+public class CSBattleFrame : INetMsg
 {
     public string roomID { get; set; }
     public int frameID { get; set; }
@@ -35,8 +35,8 @@ public class CSBattleFrame
     public FrameData data { get; set; }
 }
 
-[NetMessageCode(ModuleDefine.Battle, 3)]
-public class SPBattleFrame
+[NetMessageCode(ModuleDefine.Battle, 4)]
+public class SPBattleFrame : INetMsg
 {
     public int frameID { get; set; }
 

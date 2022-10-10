@@ -25,13 +25,11 @@ namespace EMO.Project.Base.Utils
         static string right = "}";
         public static void Build()
         {
-            var responseTypes = typeof(ISeverMsg).GetSubTypesInAssemblys().ToList();
-            var requestTypes = typeof(IRequest).GetSubTypesInAssemblys().ToList();
+            var responseTypes = typeof(INetMsg).GetSubTypesInAssemblys().ToList();
             List<Type> types = new List<Type>();
             List<Type> enumTypes = new List<Type>();
 
             types.AddRange(responseTypes);
-            types.AddRange(requestTypes);
             string result = BuildOther(BuidRequestAndResponse(types), types, enumTypes);
             result = BuildErrCode(BuildEnum(result, enumTypes));
 
