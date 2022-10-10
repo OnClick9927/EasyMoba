@@ -1,9 +1,8 @@
-﻿using EMO.ServerCore.Modules.NetCore;
-using EMO.ServerCore.Utils;
+﻿using EMO.Project.Base.Net;
 using IFramework;
-using OPServer.IFramework;
 
-namespace EMO.ServerCore.Modules.EmmyLua
+
+namespace EMO.Project.Base.Utils
 {
     public class AgreementsToLua
     {
@@ -51,7 +50,7 @@ namespace EMO.ServerCore.Modules.EmmyLua
                 string name = type.Name;
                 result += $"\t{name} = {left}\n";
                 var _type = type;
-                while (_type != typeof(Object))
+                while (_type != typeof(object))
                 {
                     var fields = _type.GetFields();
                     foreach (var field in fields)
@@ -111,21 +110,21 @@ namespace EMO.ServerCore.Modules.EmmyLua
 
         private static Dictionary<Type, string> typeMap = new Dictionary<Type, string>()
         {
-            {typeof(System.String), "string"},
-            {typeof(System.Char), "string"},
+            {typeof(string), "string"},
+            {typeof(char), "string"},
 
-            {typeof(System.Int16), "number"},
-            {typeof(System.Int32), "number"},
-            {typeof(System.Int64), "number"},
-            {typeof(System.UInt16), "number"},
-            {typeof(System.UInt32), "number"},
-            {typeof(System.UInt64), "number"},
-            {typeof(System.Single), "number"},
-            {typeof(System.Double), "number"},
-            {typeof(System.DateTime), "number"},
+            {typeof(short), "number"},
+            {typeof(int), "number"},
+            {typeof(long), "number"},
+            {typeof(ushort), "number"},
+            {typeof(uint), "number"},
+            {typeof(ulong), "number"},
+            {typeof(float), "number"},
+            {typeof(double), "number"},
+            {typeof(DateTime), "number"},
 
 
-            {typeof(System.Boolean), "boolean"},
+            {typeof(bool), "boolean"},
         };
 
         public static string GetLuaType(Type type)
@@ -137,7 +136,7 @@ namespace EMO.ServerCore.Modules.EmmyLua
 
             return string.Empty;
         }
-        private static string WriteFields(string result,string fieldName,Type type,List<Type> other)
+        private static string WriteFields(string result, string fieldName, Type type, List<Type> other)
         {
             var luaType = GetLuaType(type);
             if (string.IsNullOrEmpty(luaType))

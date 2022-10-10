@@ -1,5 +1,4 @@
 ﻿using System;
-using EMO.IFramework;
 
 namespace IFramework.Singleton
 {

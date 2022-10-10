@@ -1,12 +1,9 @@
-﻿using EMO.Project.Base;
-using IFramework.Singleton;
+﻿using IFramework;
 
 
 namespace EMO.Project.Game.Match.Rooms;
-public class MathRooms : Singleton<MathRooms>
+public class MatchModule : UpdateModule
 {
-
-
     private Dictionary<MatchRoomType, Room> dic = new Dictionary<MatchRoomType, Room>();
     public bool AddRole(MatchRoomType type, long role)
     {
@@ -16,17 +13,20 @@ public class MathRooms : Singleton<MathRooms>
     {
         return dic[type].RemoveRole(role);
     }
-    protected override void OnSingletonInit()
+    protected override void Awake()
     {
         dic.Add(MatchRoomType.Normal, new NormalRoom());
-        ServerInstance.env.BindUpdate(Update);
     }
+
     protected override void OnDispose()
     {
-
+       
     }
-
-    private void Update()
+    protected override ModulePriority OnGetDefautPriority()
+    {
+        return base.OnGetDefautPriority() + 30;
+    }
+    protected override void OnUpdate()
     {
         foreach (var item in dic.Values)
         {

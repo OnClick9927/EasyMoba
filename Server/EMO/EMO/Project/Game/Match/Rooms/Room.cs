@@ -1,6 +1,4 @@
-﻿using EMO.Project.Base;
-using EMO.Project.Game.Battle;
-
+﻿using EMO.Project.Game.Battle.Rooms;
 
 namespace EMO.Project.Game.Match.Rooms;
 
@@ -39,11 +37,11 @@ abstract class Room
                 RemoveRole(enemy[i]);
         if (roles != null)
             for (int i = 0; i < roles.Length; i++)
-                GamePeer.SendResponse(roles[i], sp);
+                ServerTool.SendResponse(roles[i], sp);
         if (enemy != null)
             for (int i = 0; i < enemy.Length; i++)
-                GamePeer.SendResponse(enemy[i], sp);
+                ServerTool.SendResponse(enemy[i], sp);
 
-        BattleRooms.instance.BuildRoom(sp);
+        ServerTool.GetModule<BattleModule>().BuildRoom(sp);
     }
 }

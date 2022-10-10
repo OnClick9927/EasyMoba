@@ -1,6 +1,6 @@
 ﻿using IFramework;
 
-namespace EMO.IFramework
+namespace IFramework
 {
     /// <summary>
     /// 基类

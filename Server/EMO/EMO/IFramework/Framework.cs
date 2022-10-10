@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using IFramework;
 using Environment = IFramework.Environment;
 
-namespace OPServer.IFramework
+namespace IFramework
 {
     /// <summary>
     /// 框架入口

@@ -6,7 +6,6 @@ using IFramework.Message;
 using IFramework.Recorder;
 using IFramework.Timer;
 using IFramework.Queue;
-using EMO.IFramework;
 
 namespace IFramework
 {

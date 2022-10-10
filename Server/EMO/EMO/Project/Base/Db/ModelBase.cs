@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace EMO.ServerCore.Modules.Db;
+namespace EMO.Project.Base.Db;
 
 public class ModelBase
 {

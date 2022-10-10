@@ -1,68 +1,52 @@
 ﻿using EMO.Project.Base;
-using EMO.Project.Game.Battle.Rooms;
 using EMO.Project.Game.Match;
-using EMO.Project.Game.Match.Rooms;
-using EMO.ServerCore.Modules.NetCore;
 using IFramework;
 using IFramework.Net;
 using IFramework.Net.Udp;
-using IFramework.Packets;
-using IFramework.Singleton;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System.Net;
 using System.Text;
-using Room = EMO.Project.Game.Battle.Rooms.Room;
 
-namespace EMO.Project.Game.Battle;
+namespace EMO.Project.Game.Battle.Rooms;
 
-class BattleRooms : Singleton<BattleRooms>
+class BattleModule : IFramework.Module
 {
-
     private Dictionary<string, Room> rooms = new Dictionary<string, Room>();
     private IUdpServerProvider server;
     private Encoding en = Encoding.UTF8;
     private Dictionary<long, IPEndPoint> roles = new Dictionary<long, IPEndPoint>();
 
+    protected override ModulePriority OnGetDefautPriority()
+    {
+        return base.OnGetDefautPriority() + 20;
+    }
+    protected override void Awake()
+    {
+        server = NetTool.CreateUdpSever(ServerConst.udppkgSize, ServerConst.connections);
+        server.ReceivedOffsetHanlder += RecieveBattleFrame;
+        server.Start(ServerConst.udpPort);
+    }
+
+    protected override void OnDispose()
+    {
+
+    }
     public void BuildRoom(SPMatchSuccess sp)
     {
         List<long> roles = new List<long>(sp.enemy);
         roles.AddRange(sp.roles);
-        rooms.Add(sp.roomID, new Room()
-        {
-            type = sp.type,
-            roles = roles
-        });
+        rooms.Add(sp.roomID, new Room(sp.type, roles, 1000 / ServerConst.battleRoomTrickPerSecond));
     }
 
     private Room FindRoom(string id)
     {
         return rooms[id];
     }
-    protected override void OnSingletonInit()
-    {
-        server = NetTool.CreateUdpSever(SeverConst.pkgSize, SeverConst.connections);
-        server.ReceivedOffsetHanlder += RecieveBattleFrame;
-        server.Start(SeverConst.udpPort);
-    }
-
-
-
-
     public void PlayerReady(string roomID, long roleID)
     {
         if (FindRoom(roomID) != null)
         {
             rooms[roomID].Ready(roleID);
-        }
-    }
-    public void SendAllReady(Room room)
-    {
-        SPBattleAllReady sp = new SPBattleAllReady();
-        for (int i = 0; i < room.roles.Count; i++)
-        {
-            var roleID = room.roles[i];
-            GamePeer.SendResponse(roleID, sp);
         }
     }
 
@@ -90,10 +74,5 @@ class BattleRooms : Singleton<BattleRooms>
         {
             server.Send(dataSegment, point);
         }
-    }
-
-    protected override void OnDispose()
-    {
-
     }
 }

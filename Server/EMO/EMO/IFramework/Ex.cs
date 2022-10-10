@@ -5,7 +5,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace OPServer.IFramework
+namespace IFramework
 {
     public static class Ex
     {

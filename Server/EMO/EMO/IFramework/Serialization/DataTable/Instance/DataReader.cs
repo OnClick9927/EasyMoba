@@ -9,7 +9,6 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using EMO.IFramework;
 
 namespace IFramework.Serialization.DataTable
 {

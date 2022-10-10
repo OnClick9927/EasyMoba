@@ -1,4 +1,4 @@
-﻿namespace EMO.ServerCore.Utils;
+﻿namespace EMO.Project.Base.Utils;
 
 public static class FileUtils
 {

@@ -1,6 +1,6 @@
 ﻿using IFramework;
 
-namespace EMO.ServerCore.Plugins;
+namespace EMO.Project.Base.Utils;
 
 internal class Logger : ILoger
 {
@@ -8,7 +8,7 @@ internal class Logger : ILoger
     {
         private ConsoleColor preForegroundColor;
         private ConsoleColor preBackgroundColor;
-            
+
         public Color(ConsoleColor foregroundColor, ConsoleColor backgroundColor)
         {
             preForegroundColor = Console.ForegroundColor;

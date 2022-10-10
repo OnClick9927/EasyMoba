@@ -1,4 +1,4 @@
-﻿using EMO.ServerCore.Modules.NetCore;
+﻿using EMO.Project.Base.Net;
 
 
 namespace EMO.Project.Game.Battle;
@@ -28,7 +28,7 @@ public class FrameData
 public class CSBattleFrame
 {
     public string roomID { get; set; }
-    public long frameID { get; set; }
+    public int frameID { get; set; }
     public long roleID { get; set; }
 
 
@@ -38,7 +38,7 @@ public class CSBattleFrame
 [NetMessageCode(ModuleDefine.Battle, 3)]
 public class SPBattleFrame
 {
-    public long frameID { get; set; }
+    public int frameID { get; set; }
 
     public List<FrameData> datas { get; set; }
 }

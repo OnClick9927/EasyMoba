@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using OPServer.IFramework;
+
 
 namespace IFramework.Inject
 {

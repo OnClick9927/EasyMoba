@@ -1,4 +1,4 @@
-﻿using EMO.ServerCore.Modules.NetCore;
+﻿using EMO.Project.Base.Net;
 using IFramework.Net;
 
 namespace EMO.Project.Net;

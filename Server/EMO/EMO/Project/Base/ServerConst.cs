@@ -1,10 +1,11 @@
-﻿using EMO.ServerCore;
-using OPServer.IFramework;
+﻿
+using IFramework;
 
 namespace EMO.Project.Base;
 
-public static class SeverConst
+public static class ServerConst
 {
+
 
     /// <summary>
     /// 雪花算法 id 生成器配置
@@ -18,11 +19,14 @@ public static class SeverConst
     /// <summary>
     /// socket 配置
     /// </summary>
-    public static int port = 9633;
-    public static int connections = 2000;
-    public static int pkgSize = 1024 * 1024;
-    public static int udpPort = 9634;
-    public static string rootPath = "";
+    public const int port = 9633;
+    public const int connections = 2000;
+    public const int pkgSize = 1024 * 1024;
+    public const int udppkgSize = 1024 * 128;
+    public const int udpPort = 9634;
+    public const int battleRoomTrickPerSecond = 66;
+
+    public const string rootPath = "";
     public static string dbPath
     {
         get

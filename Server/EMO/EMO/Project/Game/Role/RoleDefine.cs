@@ -1,5 +1,5 @@
 ﻿using EMO.Project.Base;
-using EMO.ServerCore.Modules.NetCore;
+using EMO.Project.Base.Net;
 
 namespace EMO.Project.Game.Role;
 

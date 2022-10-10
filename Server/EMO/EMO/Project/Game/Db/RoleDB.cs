@@ -1,4 +1,4 @@
-﻿using EMO.ServerCore.Modules.Db;
+﻿using EMO.Project.Base.Db;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;

@@ -1,35 +1,19 @@
-﻿using EMO.Project.Base;
-using EMO.ServerCore.Modules.NetCore;
-using IFramework;
-using IFramework.Message;
+﻿using EMO.Project.Base.Net;
+using EMO.Project.Game;
 using IFramework.Net;
 
 namespace EMO.Project.Net;
 
-public class ClientStatusEvent : IEventArgs
-{
-    public ClientStatusEventType type;
-    public long roleId;
-    public SocketToken token;
-}
-
-public enum ClientStatusEventType
-{
-    Connect,
-    Disconnect,
-    RoleLogin,
-}
 
 public class NetPlayersData : ClientsData<NetPlayer>
 {
     private Dictionary<long, SocketToken?> mapRoleId = new Dictionary<long, SocketToken?>();
 
-    public void BindSTokenWithRole(long roleId, SocketToken sToken)
+    private void BindSTokenWithRole(long roleId, SocketToken sToken)
     {
         mapRoleId[roleId] = sToken;
     }
-
-    public void UnBindSTokenWithRole(long roleId)
+    private void UnBindSTokenWithRole(long roleId)
     {
         mapRoleId[roleId] = null;
         mapRoleId.Remove(roleId);
@@ -59,25 +43,14 @@ public class NetPlayersData : ClientsData<NetPlayer>
 
     protected override void OnAccept(SocketToken sToken)
     {
-        base.OnAccept(sToken);
-        ServerInstance.env.modules.message.Publish(this, new ClientStatusEvent()
-        {
-            token = sToken,
-            roleId = 0,
-            type = ClientStatusEventType.Connect,
-        }, 0, MessageUrgencyType.Immediately);
+        ServerTool.OnAccept(sToken);
     }
 
     protected override void OnDisconnect(SocketToken sToken)
     {
         var data = GetData(sToken);
         base.OnDisconnect(sToken);
-        ServerInstance.env.modules.message.Publish(this, new ClientStatusEvent()
-        {
-            token = sToken,
-            roleId = data.id,
-            type = ClientStatusEventType.Disconnect,
-        }, 0, MessageUrgencyType.Immediately);
+        ServerTool.OnDisconnect(sToken, data.id);
         if (data != null && data.id != 0)
         {
             UnBindSTokenWithRole(data.id);
@@ -93,14 +66,6 @@ public class NetPlayersData : ClientsData<NetPlayer>
             data.id = roleId;
         }
         BindSTokenWithRole(roleId, token);
-        ServerInstance.env.modules.message.Publish(this, new ClientStatusEvent()
-        {
-            token = token,
-            roleId = data.id,
-            type = ClientStatusEventType.RoleLogin,
-        }, 0, MessageUrgencyType.Immediately);
+        ServerTool.OnRoleLogIn(token, data.id);
     }
-
-
-
 }

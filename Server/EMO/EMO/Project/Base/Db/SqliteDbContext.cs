@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore;
-using OPServer.IFramework;
+﻿using IFramework;
+using Microsoft.EntityFrameworkCore;
 
-namespace EMO.ServerCore.Modules.Db;
+namespace EMO.Project.Base.Db;
 public class SqliteDbContext : DbContext
 {
     private string rootPath;
@@ -9,8 +9,8 @@ public class SqliteDbContext : DbContext
     {
         optionsBuilder.UseSqlite($"Data source={Path.Combine(rootPath, $"{GetType().Name}.db")}");    //创建文件夹的位置  
     }
-  
-    private async static Task<SqliteDbContext> Create(Type type,string rootPath)
+
+    private async static Task<SqliteDbContext> Create(Type type, string rootPath)
     {
         SqliteDbContext model = Activator.CreateInstance(type) as SqliteDbContext;
         model.rootPath = rootPath;
