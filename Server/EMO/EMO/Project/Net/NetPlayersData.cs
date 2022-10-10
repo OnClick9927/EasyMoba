@@ -49,10 +49,9 @@ public class NetPlayersData : ClientsData<NetPlayer>
     protected override void OnDisconnect(SocketToken sToken)
     {
         var data = GetData(sToken);
-        base.OnDisconnect(sToken);
-        ServerTool.OnDisconnect(sToken, data.id);
         if (data != null && data.id != 0)
         {
+            ServerTool.OnDisconnect(sToken, data.id);
             UnBindSTokenWithRole(data.id);
         }
     }

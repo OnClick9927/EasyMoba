@@ -30,3 +30,21 @@ function GameTools.SetPerfs(key, tab)
     local encode = Json:encode(tab)
     Perfs.Save(key, encode)
 end
+
+function GameTools.DelayRun(delaySecond, callBack)
+    local now = os.time()
+    local target = now + delaySecond
+    ---@type EventEntity
+    local entity
+
+    local function update(target)
+        if os.time() >= target then
+            callBack()
+            entity:Dispose()
+        end
+    end
+
+    entity = LifeTimeEvent:Subscribe(LifeTimeEventType.Update, update, target)
+
+    return entity
+end

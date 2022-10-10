@@ -1,39 +1,126 @@
 
 NetEventDefine = {
-	SCRoleLogin = {
-		MainId = 1,
-		SubId = 1,
-	},
 	CSRoleLogin = {
 		MainId = 1,
 		SubId = 1,
 	},
+	SCRoleLogin = {
+		MainId = 1,
+		SubId = 2,
+	},
+	CSMatch = {
+		MainId = 2,
+		SubId = 1,
+	},
+	SCMatch = {
+		MainId = 2,
+		SubId = 2,
+	},
+	CSDisMatch = {
+		MainId = 2,
+		SubId = 3,
+	},
+	SCDisMatch = {
+		MainId = 2,
+		SubId = 4,
+	},
+	SPMatchSuccess = {
+		MainId = 2,
+		SubId = 5,
+	},
+	CSBattleReady = {
+		MainId = 3,
+		SubId = 1,
+	},
+	SPBattleAllReady = {
+		MainId = 3,
+		SubId = 2,
+	},
+	CSBattleFrame = {
+		MainId = 3,
+		SubId = 3,
+	},
+	SPBattleFrame = {
+		MainId = 3,
+		SubId = 4,
+	},
 }
-
----@class SCRoleLogin
----@field Code number
----@field loginType LoginType
----@field Password string
----@field RoleID number
 
 ---@class CSRoleLogin
 ---@field loginType LoginType
 ---@field Password string
 ---@field RoleID number
 
+---@class SCRoleLogin
+---@field Code LoginErrCode
+---@field loginType LoginType
+---@field Password string
+---@field RoleID number
+
+---@class CSMatch
+---@field type MatchRoomType
+
+---@class SCMatch
+---@field Code MatchErrCode
+---@field type MatchRoomType
+
+---@class CSDisMatch
+---@field type MatchRoomType
+
+---@class SCDisMatch
+---@field type MatchRoomType
+---@field Code MatchErrCode
+
+---@class SPMatchSuccess
+---@field roles number[]
+---@field enemy number[]
+---@field type MatchRoomType
+---@field roomID string
+
+---@class CSBattleReady
+---@field roleID number
+---@field roomID string
+
+---@class SPBattleAllReady
+
+---@class CSBattleFrame
+---@field roomID string
+---@field frameID number
+---@field roleID number
+---@field data FrameData
+
+---@class SPBattleFrame
+---@field frameID number
+---@field datas FrameData[]
+
 ---@class LoginType Enum
+
+---@class LoginErrCode Enum
+
+---@class MatchRoomType Enum
+
+---@class MatchErrCode Enum
+
+---@class FrameData
+---@field roleID number
+---@field opText string
 
 NetEventDefine.Enums = {
 	LoginType = {
 		Login = 0,
 		Signin = 1,
 	},
-}
-
-NetEventDefine.ErrorCodes = {
 	LoginErrCode = {
-		NotExistRoleID = 2,
-		PasswordErr = 3,
 		Success = 0,
+		NotExistRoleID = 1,
+		PasswordErr = 2,
+	},
+	MatchRoomType = {
+		Normal = 0,
+	},
+	MatchErrCode = {
+		Success = 0,
+		ReadyInMatch = 1,
+		NotExistRole = 2,
 	},
 }

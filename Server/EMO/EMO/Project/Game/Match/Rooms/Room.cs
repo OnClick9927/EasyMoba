@@ -44,4 +44,9 @@ abstract class Room
 
         ServerTool.GetModule<BattleModule>().BuildRoom(sp);
     }
+
+    public void OnRoleDisConnect(long roleID)
+    {
+        RemoveRole(roleID);
+    }
 }

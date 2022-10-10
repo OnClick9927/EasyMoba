@@ -1,5 +1,3 @@
-local M = {}
-
 local path, callback, SceneAsset, lifeEntity, AsyncOperation
 
 local function CallProgress(progress)
@@ -52,5 +50,7 @@ local function LoadScene(_path, _callback)
     ShowHideUI(true)
 end
 
-M.LoadScene = LoadScene
-return M
+return {
+    LoadScene = LoadScene
+
+}

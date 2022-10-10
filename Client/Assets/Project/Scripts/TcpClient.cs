@@ -12,8 +12,8 @@ using System.Threading.Tasks;
 using UnityEngine;
 namespace EasyMoba
 {
-    public interface IResponse { }
-    public interface IRequest { }
+    public interface INetMsg { }
+
     [AttributeUsage(AttributeTargets.Class, Inherited = false)]
     class NetMessageCode : Attribute
     {
@@ -40,12 +40,12 @@ namespace EasyMoba
         private PacketReader reader = new PacketReader(1024 * 1024);
         private Encoding en = Encoding.UTF8;
         public bool connected { get { return client.IsConnected; } }
-        public event Action<Type, IResponse> onResponse;
+        public event Action<Type, INetMsg> onResponse;
         public event Action<uint, uint, string> onLuaResponse;
         public event Action onConnect, onDisconnect;
         private void Init()
         {
-            responseMap = typeof(IResponse).GetSubTypesInAssemblys().ToList().ConvertAll((type) =>
+            responseMap = typeof(INetMsg).GetSubTypesInAssemblys().ToList().ConvertAll((type) =>
             {
                 NetMessageCode h =
                     type.GetCustomAttributes(typeof(NetMessageCode), false).First() as NetMessageCode;
@@ -56,7 +56,7 @@ namespace EasyMoba
                 );
 
 
-            requstMap = typeof(IRequest).GetSubTypesInAssemblys().ToList().ToDictionary(
+            requstMap = typeof(INetMsg).GetSubTypesInAssemblys().ToList().ToDictionary(
                     (a) => a,
                     (type) =>
                     {
@@ -120,7 +120,7 @@ namespace EasyMoba
             client?.Send(new SegmentOffset(packet.Pack()));
         }
 
-        public void SendRequest<TRequest>(TRequest req) where TRequest : IRequest
+        public void SendRequest<TRequest>(TRequest req) where TRequest : INetMsg
         {
             Debug.Log(string.Format("<color=#209DBF>发送请求到服务器\n{0}</color>", JsonUtility.ToJson(req, true)));
 
@@ -148,7 +148,7 @@ namespace EasyMoba
                 if (responseMap.ContainsKey(key))
                 {
                     var type = responseMap[key];
-                    IResponse req = JsonUtility.FromJson(str, type) as IResponse;
+                    INetMsg req = JsonUtility.FromJson(str, type) as INetMsg;
                     Launcher.env.WaitEnvironmentFrame(() =>
                     {
                         onResponse?.Invoke(type, req);

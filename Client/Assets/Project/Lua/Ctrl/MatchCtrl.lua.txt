@@ -1,0 +1,48 @@
+local matchType = nil
+local function Match()
+    ---@type CSMatch
+    local data = {}
+    data.type = NetEventDefine.Enums.MatchRoomType.Normal
+    matchType = data.type
+    NetEvents.SendRequest(NetEventDefine.CSMatch, data)
+end
+
+local function DisMacth()
+    ---@type CSDisMatch
+    local data = {}
+    data.type = matchType
+    NetEvents.SendRequest(NetEventDefine.CSDisMatch, data)
+end
+
+---@param data SCMatch
+local function OnSCMatch(data)
+    if data.Code == NetEventDefine.Enums.MatchErrCode.Success then
+        GameTools.ShowUI(PanelNames.MatchPanel)
+    else
+        Log.E("匹配错误 " .. data.Code)
+    end
+end
+
+---@param data SCDisMatch
+local function OnSCDisMatch(data)
+    if data.Code == NetEventDefine.Enums.MatchErrCode.Success then
+        GameTools.CloseUI(PanelNames.MatchPanel)
+    else
+        Log.E("匹配错误 " .. data.Code)
+    end
+end
+
+---@param data SPMatchSuccess
+local function OnMatchSucess(data)
+    GameTools.CloseUI(PanelNames.MatchPanel)
+
+end
+
+NetEvents.SetHandler(NetEventDefine.SCMatch, OnSCMatch)
+NetEvents.SetHandler(NetEventDefine.SCDisMatch, OnSCDisMatch)
+NetEvents.SetHandler(NetEventDefine.SPMatchSuccess, OnMatchSucess)
+
+return {
+    Match = Match,
+    DisMacth = DisMacth
+}

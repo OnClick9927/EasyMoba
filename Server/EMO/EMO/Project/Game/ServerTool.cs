@@ -8,6 +8,8 @@ using Yitter.IdGenerator;
 using EMO.Project.Base.Net;
 using Newtonsoft.Json.Linq;
 using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
+using EMO.Project.Game.Match.Rooms;
+using EMO.Project.Game.Battle.Rooms;
 
 namespace EMO.Project.Game;
 
@@ -57,6 +59,8 @@ static class ServerTool
     internal static void OnDisconnect(SocketToken sToken, long id)
     {
         Log.L($"用户端掉线  {sToken.TokenIpEndPoint.Address}:{sToken.TokenIpEndPoint.Port}");
+        GetModule<MatchModule>().OnRoleDisConnect(id);
+        GetModule<BattleModule>().OnRoleDisConnect(id);
 
     }
 

@@ -18,6 +18,13 @@ public class MatchModule : UpdateModule
         dic.Add(MatchRoomType.Normal, new NormalRoom());
     }
 
+    public void OnRoleDisConnect(long roleID)
+    {
+        foreach (var item in dic.Values)
+        {
+            item.OnRoleDisConnect(roleID);
+        }
+    }
     protected override void OnDispose()
     {
        

@@ -1,6 +1,4 @@
-local M = {}
-
-function M.Login()
+local function Login()
     ---@type SCRoleLogin
     local data = {}
     local save = Models.PlayerModel:GetSaveData()
@@ -21,7 +19,7 @@ local function OnLoginResPonse(data)
     local Password = data.Password
     local RoleId = data.RoleID
 
-    if Code == NetEventDefine.ErrorCodes.LoginErrCode.Success then
+    if Code == NetEventDefine.Enums.LoginErrCode.Success then
         Models.PlayerModel:SaveLoginResult(LoginType, RoleId, Password)
         LuaTask.Run(function()
             await(LuaTask.Delay(1000 * 2))
@@ -40,4 +38,7 @@ end
 
 NetEvents.SetHandler(NetEventDefine.SCRoleLogin, OnLoginResPonse)
 
-return M
+return {
+    Login = Login,
+
+}

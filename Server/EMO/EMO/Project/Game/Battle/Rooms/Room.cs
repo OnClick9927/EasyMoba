@@ -106,4 +106,12 @@ class Room
             }
         }
     }
+
+    internal void OnRoleDisConnect(long roleID)
+    {
+        if (players.ContainsKey(roleID))
+        {
+            players[roleID].nextFrameID = 0;
+        }
+    }
 }

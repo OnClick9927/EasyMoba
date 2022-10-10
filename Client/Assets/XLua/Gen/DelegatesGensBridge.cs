@@ -554,7 +554,7 @@ namespace XLua
 #endif
 		}
         
-		public void __Gen_Delegate_Imp24(System.Type p0, EasyMoba.IResponse p1)
+		public void __Gen_Delegate_Imp24(System.Type p0, EasyMoba.INetMsg p1)
 		{
 #if THREAD_SAFE || HOTFIX_ENABLE
             lock (luaEnv.luaEnvLock)
@@ -1062,9 +1062,9 @@ namespace XLua
 			    return new System.Action<float>(__Gen_Delegate_Imp23);
 			}
 		
-		    if (type == typeof(System.Action<System.Type, EasyMoba.IResponse>))
+		    if (type == typeof(System.Action<System.Type, EasyMoba.INetMsg>))
 			{
-			    return new System.Action<System.Type, EasyMoba.IResponse>(__Gen_Delegate_Imp24);
+			    return new System.Action<System.Type, EasyMoba.INetMsg>(__Gen_Delegate_Imp24);
 			}
 		
 		    if (type == typeof(System.Action<uint, uint, string>))

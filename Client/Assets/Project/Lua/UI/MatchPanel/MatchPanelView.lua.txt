@@ -1,0 +1,51 @@
+--*********************************************************************************
+--Author:         OnClick
+--Version:        1.0
+--UnityVersion:   2020.3.3f1c1
+--Date:           2022-10-10
+--Description:    Description
+--History:        2022-10-10
+--*********************************************************************************
+
+---ViewUseFlag
+local Button = StaticUsing("UnityEngine.UI.Button")
+---ViewUseFlag
+---@class MatchPanelView : UIView_MVC
+local MatchPanelView = class("MatchPanelView", UIView_MVC)
+
+function MatchPanelView:OnLoad()
+    self.Controls = {
+		---@type UnityEngine.UI.Button
+		DisMatch = self:GetComponent("BG/DisMatch", typeof(Button)),
+	}
+    --BindUIEvent
+    self:ShowHideBtn(false)
+    self.delayEntity = GameTools.DelayRun(10, function()
+        self:ShowHideBtn(true)
+    end)
+    self:BindButton(self.Controls.DisMatch, function()
+        Ctrls.MatchCtrl.DisMacth()
+    end)
+end
+
+function MatchPanelView:ShowHideBtn(show)
+    GameTools.SetActive(self.Controls.DisMatch, show)
+end
+
+function MatchPanelView:OnShow()
+
+end
+
+function MatchPanelView:OnHide()
+
+end
+
+function MatchPanelView:OnClose()
+    if self.delayEntity then
+        self.delayEntity:Dispose()
+        self.delayEntity = nil
+    end
+    self.Controls = nil
+end
+
+return MatchPanelView

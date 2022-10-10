@@ -1,5 +1,6 @@
 local M = 
 {
+	 MatchPanel = "Assets/Project/Prefabs/UI/MatchPanel.prefab";
 	 LoadScenePanel = "Assets/Project/Prefabs/UI/LoadScenePanel.prefab";
 	 MainPanel = "Assets/Project/Prefabs/UI/MainPanel.prefab";
 	 LoginPanel = "Assets/Project/Prefabs/UI/LoginPanel.prefab";

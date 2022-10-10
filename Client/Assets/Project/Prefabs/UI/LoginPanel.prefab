@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3165909212848872715}
   - component: {fileID: 3165909212848872713}
   - component: {fileID: 3165909212848872712}
-  - component: {fileID: 3165909212848872719}
   - component: {fileID: 6851041783925149269}
   m_Layer: 5
   m_Name: LoginPanel
@@ -78,18 +77,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!225 &3165909212848872719
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3165909212848872714}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
 --- !u!114 &6851041783925149269
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -102,6 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13a4f9c99d05d3943bacfcef3be7b868, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  path: 
 --- !u!1 &3165909212894183265
 GameObject:
   m_ObjectHideFlags: 0
@@ -194,7 +182,6 @@ GameObject:
   - component: {fileID: 3165909213645824272}
   - component: {fileID: 3165909213645824275}
   - component: {fileID: 3165909213645824278}
-  - component: {fileID: 5191840982803362088}
   m_Layer: 5
   m_Name: Login
   m_TagString: Untagged
@@ -325,16 +312,3 @@ MonoBehaviour:
   - UnityEngine.UI.Button
   - IFramework.ScriptMark
   index: 3
---- !u!114 &5191840982803362088
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3165909213645824269}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b11e9480265fa044186375445495e5c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  path: Assets/Project/Audios/click.mp3

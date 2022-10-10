@@ -2,6 +2,7 @@ local M = {}
 
 M.SceneCtrl = require("Ctrl.SceneCtrl")
 M.LoginCtrl = require("Ctrl.LoginCtrl")
+M.MatchCtrl = require("Ctrl.MatchCtrl")
 function M.Init()
 
 end

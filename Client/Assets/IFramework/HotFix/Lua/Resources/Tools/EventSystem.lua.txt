@@ -15,11 +15,16 @@ function EventEntity:ctor(system, code, func)
     self.system = system
     self.code = code
     self.func = func
+    self.disposed = false
 end
 
 --- 释放监听
 function EventEntity:Dispose()
+    if self.disposed then
+        return
+    end
     self.system:UnSubscribe(self)
+    self.disposed = true
 end
 
 ---@class EventSystem 事件系统

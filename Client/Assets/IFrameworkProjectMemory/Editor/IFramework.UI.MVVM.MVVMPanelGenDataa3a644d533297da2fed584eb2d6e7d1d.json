@@ -4,14 +4,6 @@
     "workspace": "Assets/Project/Lua/UI",
     "map": [
         {
-            "panelName": "Panel01",
-            "content": "{ Name = \"Panel01\",ViewType = require(\"UI.Panel01.Panel01View\"), VMType = require(\"UI.Panel01.Panel01ViewModel\") },"
-        },
-        {
-            "panelName": "UpdatePanel",
-            "content": "{ Name = \"UpdatePanel\",ViewType = require(\"UI.UpdatePanel.UpdatePanelView\") },"
-        },
-        {
             "panelName": "LoadScenePanel",
             "content": "{ Name = \"LoadScenePanel\",ViewType = require(\"UI.LoadScenePanel.LoadScenePanelView\") },"
         },
@@ -22,6 +14,10 @@
         {
             "panelName": "MainPanel",
             "content": "{ Name = \"MainPanel\",ViewType = require(\"UI.MainPanel.MainPanelView\") },"
+        },
+        {
+            "panelName": "MatchPanel",
+            "content": "{ Name = \"MatchPanel\",ViewType = require(\"UI.MatchPanel.MatchPanelView\") },"
         }
     ]
 }

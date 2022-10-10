@@ -2,15 +2,16 @@
 --Author:         OnClick
 --Version:        1.0
 --UnityVersion:   2020.3.3f1c1
---Date:           2022-09-18
+--Date:           2022-10-11
 --Description:    Description
---History:        2022-09-18
+--History:        2022-10-11
 --*********************************************************************************
 local map =
 {
 	{ Name = "LoadScenePanel",ViewType = require("UI.LoadScenePanel.LoadScenePanelView") },
 	{ Name = "LoginPanel",ViewType = require("UI.LoginPanel.LoginPanelView") },
 	{ Name = "MainPanel",ViewType = require("UI.MainPanel.MainPanelView") },
+	{ Name = "MatchPanel",ViewType = require("UI.MatchPanel.MatchPanelView") },
 
 }
 return map

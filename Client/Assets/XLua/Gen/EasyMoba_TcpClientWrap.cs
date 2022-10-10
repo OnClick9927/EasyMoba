@@ -166,9 +166,9 @@ namespace XLua.CSObjectWrap
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			    int gen_param_count = LuaAPI.lua_gettop(L);
 			EasyMoba.TcpClient gen_to_be_invoked = (EasyMoba.TcpClient)translator.FastGetCSObj(L, 1);
-                System.Action<System.Type, EasyMoba.IResponse> gen_delegate = translator.GetDelegate<System.Action<System.Type, EasyMoba.IResponse>>(L, 3);
+                System.Action<System.Type, EasyMoba.INetMsg> gen_delegate = translator.GetDelegate<System.Action<System.Type, EasyMoba.INetMsg>>(L, 3);
                 if (gen_delegate == null) {
-                    return LuaAPI.luaL_error(L, "#3 need System.Action<System.Type, EasyMoba.IResponse>!");
+                    return LuaAPI.luaL_error(L, "#3 need System.Action<System.Type, EasyMoba.INetMsg>!");
                 }
 				
 				if (gen_param_count == 3)

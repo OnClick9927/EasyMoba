@@ -1,6 +1,10 @@
 {
     "datas": [
         {
+            "path": "Assets/Project/Prefabs/UI/MatchPanel.prefab",
+            "isResourcePath": false
+        },
+        {
             "path": "Assets/Project/Prefabs/UI/LoadScenePanel.prefab",
             "isResourcePath": false
         },

@@ -161,7 +161,6 @@ GameObject:
   - component: {fileID: 529743798554372104}
   - component: {fileID: 529743798554372106}
   - component: {fileID: 529743798554372107}
-  - component: {fileID: 529743798554372111}
   - component: {fileID: 2631690446444971799}
   m_Layer: 5
   m_Name: LoadScenePanel
@@ -228,18 +227,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!225 &529743798554372111
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 529743798554372105}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
 --- !u!114 &2631690446444971799
 MonoBehaviour:
   m_ObjectHideFlags: 0

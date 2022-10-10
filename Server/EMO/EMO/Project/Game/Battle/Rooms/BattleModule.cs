@@ -75,4 +75,11 @@ class BattleModule : IFramework.Module
             server.Send(dataSegment, point);
         }
     }
+    public void OnRoleDisConnect(long roleID)
+    {
+        foreach (var item in rooms.Values)
+        {
+            item.OnRoleDisConnect(roleID);
+        }
+    }
 }
