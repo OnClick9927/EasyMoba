@@ -31,42 +31,12 @@ namespace EMO.Project.Base.Utils
 
             types.AddRange(responseTypes);
             string result = BuildOther(BuidRequestAndResponse(types), types, enumTypes);
-            result = BuildErrCode(BuildEnum(result, enumTypes));
+            result = BuildEnum(result, enumTypes);
 
             File.WriteAllText(OutPutPathFileName, result);
             Log.L("---------------EmmyLua 协议生成完毕----------------------------");
         }
 
-        private static string BuildErrCode(string result)
-        {
-            var types = AppDomain.CurrentDomain.GetAssemblies()
-                   .SelectMany(item => item.GetTypes())
-                   .Where(t => t.IsDefined(typeof(NetworkErrCodeDefine), false)).ToList();
-            result += "\nNetEventDefine.ErrorCodes = {\n";
-            foreach (var type in types)
-            {
-                string name = type.Name;
-                result += $"\t{name} = {left}\n";
-                var _type = type;
-                while (_type != typeof(object))
-                {
-                    var fields = _type.GetFields();
-                    foreach (var field in fields)
-                    {
-                        string _name = field.Name;
-                        object value = field.GetValue(null);
-                        result += $"\t\t{_name} = {value},\n";
-                    }
-
-                    _type = _type.BaseType;
-                }
-                result += $"\t{right},\n";
-
-            }
-            result += "}\n";
-            return result;
-
-        }
         private static string BuildEnum(string result, List<Type> types)
         {
             types = types.Distinct().ToList();

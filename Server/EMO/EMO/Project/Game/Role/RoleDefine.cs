@@ -16,18 +16,19 @@ public class CSRoleLogin : INetMsg
     public long RoleID { get; set; }
 }
 [NetMessageCode(ModuleDefine.Role, 2)]
-public class SCRoleLogin : ICode, INetMsg
+public class SCRoleLogin : INetMsg
 {
-    public int Code { get; set; }
+    public LoginErrCode Code { get; set; }
     public LoginType loginType { get; set; }
     public string Password { get; set; }
     public long RoleID { get; set; }
 }
-[NetworkErrCodeDefine]
-public class LoginErrCode : ErrCodeDefine
+public enum LoginErrCode
 {
-    public static int NotExistRoleID = 2;
-    public static int PasswordErr = 3;
+    Success,
 
+    NotExistRoleID,
+    PasswordErr,
 }
+
 

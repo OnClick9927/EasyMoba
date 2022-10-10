@@ -3,10 +3,6 @@ using IFramework.Net;
 
 namespace EMO.Project.Base.Net;
 public interface INetMsg { }
-public interface ICode 
-{
-    public int Code { get; set; }
-}
 
 [AttributeUsage(AttributeTargets.Class, Inherited = false)]
 class NetMessageCode : Attribute
@@ -20,8 +16,7 @@ class NetMessageCode : Attribute
     }
 }
 
-[AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
-public class NetworkErrCodeDefine : Attribute { }
+
 [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
 public class RequestHandler : Attribute { }
 

@@ -14,9 +14,9 @@ public class CSMatch : INetMsg
     public MatchRoomType type { get; set; }
 }
 [NetMessageCode(ModuleDefine.Match, 2)]
-public class SCMatch : ICode, INetMsg
+public class SCMatch : INetMsg
 {
-    public int Code { get; set; }
+    public MatchErrCode Code { get; set; }
     public MatchRoomType type { get; set; }
 
 }
@@ -27,11 +27,11 @@ public class CSDisMatch : INetMsg
 
 }
 [NetMessageCode(ModuleDefine.Match, 4)]
-public class SCDisMatch : ICode, INetMsg
+public class SCDisMatch : INetMsg
 {
     public MatchRoomType type { get; set; }
 
-    public int Code { get; set; }
+public MatchErrCode Code { get; set; }
 }
 [NetMessageCode(ModuleDefine.Match, 5)]
 
@@ -42,12 +42,11 @@ public class SPMatchSuccess : INetMsg
     public long[] roles;
     public long[] enemy;
 }
-[NetworkErrCodeDefine]
-public class MatchErrCode : ErrCodeDefine
+
+public enum MatchErrCode
 {
-    public static int ReadyInMatch = 2;
-    public static int NotExistRole = 2;
-
-
+    Success,
+    ReadyInMatch,
+    NotExistRole,
 }
 
