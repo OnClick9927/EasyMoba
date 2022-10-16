@@ -1,0 +1,22 @@
+local udp = Game.modules.udp
+local ModeServer = require "Battle.Mode.ModeServer"
+---@class NormalModeServer:ModeServer
+local M = class("NormalModeServer", ModeServer)
+function M:ctor()
+    udp:CreateClient()
+    self.OnBattelFrame = Handler(self.SendBattleFrame, self)
+    udp:onResponse("+", self.OnBattelFrame)
+end
+
+function M:SendBattleFrame(roomid, roleid, frame, op)
+    udp:SendBattleFrame(roomid, roleid, frame, op)
+end
+
+function M:Dispose()
+    udp:onResponse("-", self.OnBattelFrame)
+    udp:CloseUdp()
+    self.OnBattelFrame = nil
+end
+
+return M
+

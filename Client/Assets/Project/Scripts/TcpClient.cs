@@ -27,13 +27,16 @@ namespace EasyMoba
     }
     public class TcpClient
     {
-        public TcpClient(string ip, int port)
+        
+        public TcpClient(string ip, int port,int bufsize)
         {
             this.ip = ip;
             this.port = port;
+            this.bufsize = bufsize;
         }
         private ITcpClientProvider client;
         private int port = 9633;
+        private readonly int bufsize;
         private string ip = "127.0.0.1";
         private Dictionary<Type, string> requstMap;
         private Dictionary<string, Type> responseMap;
@@ -66,7 +69,7 @@ namespace EasyMoba
                     }
                 );
             Launcher.env.BindDispose(Dispose);
-            client = NetTool.CreateTcpClient();
+            client = NetTool.CreateTcpClient(bufsize);
             client.ReceivedOffsetCallback += OnRecieve;
             client.ConnectedCallback += OnConnect;
             client.DisconnectedCallback += OnDIsConnect;

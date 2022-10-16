@@ -73,8 +73,6 @@ namespace EasyMoba
         public override void DestoryPanel(GameObject gameObject)
         {
             Assets.Destory(gameObject);
-            //base.DestoryPanel(gameObject);
-
         }
         public override Canvas GetCanvas()
         {

@@ -8,7 +8,7 @@ class Room
     public class Player
     {
         public long roleId;
-        public int nextFrameID;
+        public int frameID;
         public bool ready = false;
 
     }
@@ -77,7 +77,7 @@ class Room
     {
         foreach (var p in players.Values)
         {
-            var from = p.nextFrameID;
+            var from = p.frameID;
             for (int i = from; i <= curFrame; i++)
             {
                 ServerTool.GetModule<BattleModule>().SendBattleFrame(p.roleId, frames[i]);
@@ -89,17 +89,17 @@ class Room
 
     public void ReadBattleFrame(CSBattleFrame frame)
     {
-        var nextFrameID = frame.frameID;
+        var frameID = frame.frameID;
         var roleId = frame.roleID;
-        if (nextFrameID > curFrame) return;//这个人太快了
-        if (nextFrameID < curFrame)//这个人太慢了，不接受他的操作，只记录他同步到的fram
+        if (frameID > curFrame) return;//这个人太快了
+        if (frameID < curFrame)//这个人太慢了，不接受他的操作，只记录他同步到的fram
         {
-            players[roleId].nextFrameID = Math.Min(players[roleId].nextFrameID, nextFrameID);
+            players[roleId].frameID = Math.Min(players[roleId].frameID, frameID);
         }
         else//这个人很正常
         {
             var scFrame = GetCurFrame();
-            players[roleId].nextFrameID = nextFrameID;
+            players[roleId].frameID = frameID;
             if (scFrame.datas.Find(x => x.roleID == roleId) == null)
             {
                 scFrame.datas.Add(frame.data);
@@ -111,7 +111,7 @@ class Room
     {
         if (players.ContainsKey(roleID))
         {
-            players[roleID].nextFrameID = 0;
+            players[roleID].frameID = 0;
         }
     }
 }

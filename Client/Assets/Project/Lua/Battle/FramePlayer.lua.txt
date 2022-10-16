@@ -1,0 +1,12 @@
+---@param role_id number
+---@param op BattleOp
+local function PlayFrame(role_id, op)
+    local type = op.type
+    if type == BattleOpType.None then
+
+    end
+end
+
+return {
+    PlayFrame = PlayFrame
+}

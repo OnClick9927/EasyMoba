@@ -1,0 +1,58 @@
+require "Battle.Mode.BattleMode"
+
+
+
+---@type ModeServer
+local mode_server
+local room_id
+local role_id
+---@type FrameHandler
+local frame_handler
+local function StartGame(role, room, battle_mode)
+    room_id = room
+    role_id = role
+    local r
+    if battle_mode == BattleMode.Local then
+        r = require "Battle.Mode.LocalModeServer"
+    elseif battle_mode == BattleMode.Recorder then
+        r = require "Battle.Mode.RecordModeServer"
+    elseif battle_mode == BattleMode.Normal then
+        r = require "Battle.Mode.NormalModeServer"
+    end
+    mode_server = r()
+    frame_handler = require("Battle.FrameHandler")()
+end
+
+local function CloseGame()
+    mode_server:Dispose()
+    frame_handler = nil
+end
+
+---@param data SPBattleFrame
+local function OnBattelFrame(data)
+    frame_handler:OnBattelFrame(data)
+end
+
+---@param frame number
+---@param op_tab BattleOp
+local function SendBattleFrame(frame, op_tab)
+    NetEvents.NewJsonObject(op_tab)
+    local op = Json:encode(op_tab)
+    mode_server:SendBattleFrame(room_id, role_id, frame, op)
+end
+
+BattleOpType = {
+    None = 1,
+}
+---@class BattleOp
+---@field type number
+
+---@type BattleOp
+local empty_op = {}
+empty_op.type = BattleOpType.None
+Battle = {}
+Battle.empty_op = empty_op
+Battle.SendBattleFrame = SendBattleFrame
+Battle.OnBattelFrame = OnBattelFrame
+Battle.CloseGame = CloseGame
+Battle.StartGame = StartGame

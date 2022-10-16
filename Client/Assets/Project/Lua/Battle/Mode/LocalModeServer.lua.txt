@@ -1,0 +1,9 @@
+local ModeServer = require "Battle.Mode.ModeServer"
+---@class LocalModeServer:ModeServer
+local M = class("LocalModeServer", ModeServer)
+
+function M:SendBattleFrame(roomid, roleid, frame, op) end
+
+function M:Dispose() end
+
+return M

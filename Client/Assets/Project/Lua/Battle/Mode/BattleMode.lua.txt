@@ -1,0 +1,5 @@
+BattleMode = {
+    Normal = 1,
+    Local = 2,
+    Recorder = 4,
+}

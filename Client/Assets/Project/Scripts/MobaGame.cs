@@ -25,7 +25,11 @@ namespace EasyMoba
         public bool AssetCheck;
         public string playerPrefsKey = "4654623498";
         public string ip = "127.0.0.1";
-        public int port = 9633;
+        private int tcpPort = 9633;
+        private int UdpPort = 9634;
+        
+        private int udpbufSize = 1024 * 128;
+        private int tcpBufSize = 1024 * 1024;
         public override void Init()
         {
             MobaPerfs.SetKey(playerPrefsKey);
@@ -68,7 +72,9 @@ namespace EasyMoba
             modules.UI.SetLayerConfig(_configs);
             Assets.Release(asset);
             modules.UI.canvas.transform.SetParent(this.transform, true);
-            modules.tcp = new TcpClient(ip, port);
+            modules.tcp = new TcpClient(ip, tcpPort, tcpBufSize);
+            modules.udp = new UdpClient(UdpPort, udpbufSize, ip);
+
             StartLua();
         }
         private void StartLua()
