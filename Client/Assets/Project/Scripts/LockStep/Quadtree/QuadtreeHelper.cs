@@ -1,10 +1,17 @@
 ﻿using LMath;
 using System.Drawing;
+using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace LCollision2D
 {
     public class QuadtreeHelper
     {
+        public static int Repeat(int value, int length)
+        {
+            return (int)UnityEngine.Mathf.Repeat(value, length);
+        }
+
         public static Node AllocateNode()
         {
             return new Node();
