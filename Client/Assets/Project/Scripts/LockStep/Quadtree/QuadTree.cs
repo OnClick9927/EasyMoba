@@ -89,6 +89,7 @@ namespace LCollision2D
         public void AddShape(Shape shape)
         {
             if (shapes.Contains(shape)) return;
+            shape.SetDirty();
             shapes.Add(shape);
         }
         public void BuildTree()
@@ -101,6 +102,7 @@ namespace LCollision2D
             root = null;
             for (int i = 0; i < shapes.Count; i++)
             {
+                if (shapes[i].dirty) shapes[i].Build();
                 ExtendRootArea(shapes[i].position);
                 AddShapeToNode(root, shapes[i]);
             }
@@ -166,19 +168,20 @@ namespace LCollision2D
         public List<Shape> GetCollision(Shape shape, List<Shape> result)
         {
             result.Clear();
-            Get(root, shape, result);
+            GetCollision(root, shape, result);
             result.Remove(shape);
             return result;
         }
-        void Get(Node node, Shape shape, List<Shape> result)
+
+        void GetCollision(Node node, Shape shape, List<Shape> result)
         {
-            if (!node.CouldIntersect(shape)) return;
+            if (!QuadtreeHelper.CouldCollisionShape(node.area, node.maxRadius, shape)) return;
             if (node.HaveChildren())
             {
                 var children = node.GetChildren();
                 for (int i = 0; i < children.Count; i++)
                 {
-                    Get(children[i], shape, result);
+                    GetCollision(children[i], shape, result);
                 }
             }
             else
@@ -193,6 +196,37 @@ namespace LCollision2D
             }
         }
 
+        public bool RayCast(Ray ray, List<RayHit> hit)
+        {
+            if (hit == null)
+                hit = new List<RayHit>();
+            hit.Clear();
+            GetRayCast(root, ray, hit);
+            return hit.Count != 0;
+        }
+        void GetRayCast(Node node, Ray ray, List<RayHit> hits)
+        {
+            if (!QuadtreeHelper.CouldRaycastNode(ray, node.area)) return;
+            if (node.HaveChildren())
+            {
+                var children = node.GetChildren();
+                for (int i = 0; i < children.Count; i++)
+                {
+                    GetRayCast(children[i], ray, hits);
+                }
+            }
+            else
+            {
+                for (int i = 0; i < node.shapes.Count; i++)
+                {
+                    RayHit hit;
+                    if (QuadtreeHelper.RayCast(ray, node.shapes[i], out hit))
+                    {
+                        hits.Add(hit);
+                    }
+                }
+            }
+        }
     }
 }
 

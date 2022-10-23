@@ -1,12 +1,17 @@
 ﻿using LMath;
 using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
 namespace LCollision2D
 {
     public abstract class Shape
     {
+        public bool dirty { get; private set; } = true;
+        public void SetDirty()
+        {
+            dirty = true;
+        }
+        public LVector2 direction { get; private set; }
         /// <summary>
         /// 角度
         /// </summary>
@@ -24,7 +29,11 @@ namespace LCollision2D
         /// </summary>
         public LFloat maxRadius { get; protected set; }
 
-        public abstract void Build();
+        public virtual void Build()
+        {
+            dirty = false;
+            direction = LVector2.up.Rotate(angle);
+        }
     }
 
     /// <summary>
@@ -44,6 +53,7 @@ namespace LCollision2D
 
         public override void Build()
         {
+            base.Build();
             maxRadius = Radius;
             Radius = radius * scale;
         }
@@ -68,6 +78,8 @@ namespace LCollision2D
 
         public override void Build()
         {
+            base.Build();
+
             maxRadius = Math.Sqrt(Math.Sqr(Width) + Math.Sqr(Height)) / 2;
             Width = width * scale;
             Height = height * scale;
@@ -195,7 +207,7 @@ namespace LCollision2D
         /// <summary>
         /// 多边形的点
         /// </summary>
-        public Bound bound;
+        public LVector2[] points;
 
         /// <summary>
         /// 实际点
@@ -205,6 +217,8 @@ namespace LCollision2D
 
         public override void Build()
         {
+            base.Build();
+            Bound = new Bound(points);
             bounds = Bound.Split(Bound, new List<Bound>());
             LFloat maxRadiusSqr = 0;
             LFloat tmpRadiusSqr;
@@ -236,6 +250,8 @@ namespace LCollision2D
 
         public override void Build()
         {
+            base.Build();
+
             Radius = radius * scale;
             maxRadius = radius;
         }
@@ -251,47 +267,24 @@ namespace LCollision2D
         /// <summary>
         /// 位置
         /// </summary>
-        public LVector2 position;
+        public LVector2 start;
         /// <summary>
         /// 方向
         /// </summary>
         public LVector2 direction;
 
-        int layer;
     }
 
     /// <summary>
     /// 射线击中的shape
     /// </summary>
     public struct RayHit
-    {
-        public bool success;
-        public Shape[] shapes;
-    }
-
-    /// <summary>
-    /// 直线
-    /// </summary>
-    public struct Line
-    {
-        /// <summary>
-        /// 直线上一点
-        /// </summary>
+    {       
         public LVector2 point;
-        /// <summary>
-        /// 方向
-        /// </summary>
-        public LVector2 direction;
+        public LFloat distance;
+        public Shape shape;
     }
 
-    /// <summary>
-    /// 线段
-    /// </summary>
-    public struct Segment
-    {
-        public LVector2 point1;
-        public LVector2 point2;
-    }
 }
 
 

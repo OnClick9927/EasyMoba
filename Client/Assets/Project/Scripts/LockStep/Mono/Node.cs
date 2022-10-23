@@ -2,6 +2,7 @@
 using LMath;
 using System;
 using System.Collections.Generic;
+using UnityEngine.Purchasing;
 
 namespace LCollision2D
 {
@@ -71,20 +72,6 @@ namespace LCollision2D
         public List<Node> GetChildren()
         {
             return nodes;
-        }
-
-        public bool CouldIntersect(Shape shape)
-        {
-            var point = shape.position;
-
-            LFloat xDistance = LMath.Math.Max(point.x - area.xMax, area.x - point.x);
-            LFloat yDistance = LMath.Math.Max(point.y - area.yMax, area.y - point.y);
-            xDistance = LMath.Math.Max(xDistance, LFloat.zero);
-            yDistance = LMath.Math.Max(yDistance, LFloat.zero);
-
-            var cur_max = maxRadius;
-            var xx = cur_max + shape.maxRadius;
-            return xDistance * xDistance + yDistance * yDistance < xx * xx;
         }
 
     }

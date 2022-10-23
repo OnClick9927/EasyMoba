@@ -16,10 +16,9 @@ public class TestWindow : EditorWindow
     {
         data = Resources.Load<WindowData>("1");
     }
-    private void DrawLine(Line line)
+    private void DrawLine(Vector2 start, Vector2 end)
     {
-        Handles.color = line.color;
-        Handles.DrawAAPolyLine(2, line.start, line.end);
+        Handles.DrawAAPolyLine(2, start, end);
     }
     private void DrawPoint(Vector2 point)
     {
@@ -188,30 +187,64 @@ public class TestWindow : EditorWindow
     private void OnInspectorUpdate()
     {
         Repaint();
-        list.Clear();
-        Ga(data.polygon, list);
+        //list.Clear();
+        //Ga(data.polygon, list);
     }
-
+    private class Cir
+    {
+        public Vector2 pos = new Vector2(300, 50);
+        public float r = 50;
+    }
+    Cir c = new Cir();
     private void OnGUI()
     {
-        //foreach (var item in data.lines)
-        //{
-        //    DrawLine(item);
-        //}
-        //var v2 = GG(data.lines[0], data.lines[1]);
-        //DrawPoint(v2);
-        //GUILayout.Label($"ping  {ping}");
-        //GUILayout.Label($"jiao  {GG2(data.lines[0], data.lines[1])}");
-        GUILayout.Label($"jiao  {GGGG(data.polygon)}");
-        //var list = Ga(data.polygon, new List<Polygon>());
-        //DrawPolygon(data.polygon);
-        for (int i = 0; i < list.Count; i++)
+        DrawPolygon(data.polygon);
+        Handles.color = Color.green; ;
+        Handles.CircleHandleCap(3, c.pos, Quaternion.identity, c.r, EventType.Repaint);
+
+        //float range = 5f;
+        Vector2 tar = Event.current.mousePosition;
+        //+ new Vector2(Random.Range(-range, range), Random.Range(-range, range));
+        Vector2 move_dir = (tar - c.pos).normalized;
+        //Handles.CircleHandleCap(2, tar, Quaternion.identity, c.r, EventType.Repaint);
+
+
+        var _tar = tar;
+        for (int i = 0; i < 3; i++)
         {
-            DrawPolygon(list[i]);
+            Vector2 last = data.polygon.points[(int)Mathf.Repeat(i - 1, data.polygon.points.Length)];
+            Vector2 cur = data.polygon.points[i];
+            var line = cur - last;
+            var line_normal = new Vector2(line.y, -line.x);
+            if (Vector2.Dot(line_normal, c.pos-last) < 0)
+            {
+                line_normal = new Vector2(-line.y, line.x);
+            }
+            line_normal = line_normal.normalized;
+            var jiao = GG(c.pos, c.pos + line_normal, cur, last);
+            var h = jiao - tar;
+            DrawLine(c.pos, tar);
+            DrawLine(jiao, jiao+line_normal*100);
+
+
+            GUILayout.Label("h  " + Vector2.Dot(h.normalized, move_dir).ToString());
+            GUILayout.Label("l " + Vector2.Dot(line.normalized, move_dir).ToString());
+
+            if (Vector2.Dot(h, move_dir) > 0)
+            {
+                if (c.r >= h.magnitude)
+                {
+
+                    var move = line_normal * (c.r - h.magnitude);
+                    _tar += move;
+
+                }
+            }
 
         }
-        //var _list = data.polygon.points.ToList();
-        //RemoveSth(_list);
-        //System.Console.WriteLine(_list);
+
+        //c.pos = _tar;
+        //Handles.DrawWireCube(tar, Vector3.one * 5);
+
     }
 }
