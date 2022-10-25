@@ -206,7 +206,7 @@ namespace LCollision2D
         }
         void GetRayCast(Node node, Ray ray, List<RayHit> hits)
         {
-            if (!QuadtreeHelper.CouldRaycastNode(ray, node.area)) return;
+            if (!QuadtreeHelper.CouldRaycastNode(ray, node.area,node.maxRadius)) return;
             if (node.HaveChildren())
             {
                 var children = node.GetChildren();

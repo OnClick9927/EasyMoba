@@ -7,15 +7,12 @@ namespace LCollision2D
     public abstract class Shape
     {
         public bool dirty { get; private set; } = true;
-        public void SetDirty()
-        {
-            dirty = true;
-        }
+
         public LVector2 direction { get; private set; }
         /// <summary>
         /// 角度
         /// </summary>
-        public LFloat angle;
+        public LFloat angle = LFloat.zero;
         /// <summary>
         /// 位置
         /// </summary>
@@ -23,7 +20,7 @@ namespace LCollision2D
         /// <summary>
         /// 比例
         /// </summary>
-        public LFloat scale;
+        public LFloat scale = LFloat.one;
         /// <summary>
         /// 最大半径
         /// </summary>
@@ -33,6 +30,10 @@ namespace LCollision2D
         {
             dirty = false;
             direction = LVector2.up.Rotate(angle);
+        }
+        public void SetDirty()
+        {
+            dirty = true;
         }
     }
 
@@ -54,8 +55,8 @@ namespace LCollision2D
         public override void Build()
         {
             base.Build();
-            maxRadius = Radius;
             Radius = radius * scale;
+            maxRadius = Radius;
         }
     }
 
@@ -91,11 +92,95 @@ namespace LCollision2D
     /// </summary>
     public struct Bound
     {
+        /// <summary>
+        /// 世界坐标
+        /// </summary>
         public LVector2[] points;
+        public LVector2 center;
         public Bound(LVector2[] points)
         {
-            this.points = RemoveUselessPoint(points.ToList());
+            this.points = points;
+            LVector2 sum = LVector2.zero;
+            for (int i = 0; i < points.Length; i++)
+            {
+                sum += points[i];
+            }
+            center = sum / points.Length;
+
         }
+
+        public bool FindLine(LVector2 start, LVector2 end)
+        {
+            for (int i = 0; i < points.Length; i++)
+            {
+                if (points[i] == start)
+                {
+                    int last = (int)QuadtreeHelper.Repeat(i - 1, points.Length);
+                    int next = (int)QuadtreeHelper.Repeat(i + 1, points.Length);
+                    if (points[last] == end || points[next] == end)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+    }
+
+    /// <summary>
+    /// 多边形
+    /// </summary>
+    public class PolygonShape : Shape
+    {
+
+
+        public LVector2[] localPoints;
+        /// <summary>
+        /// 多边形的点,世界坐标
+        /// </summary>
+        private LVector2[] points;
+
+
+        public Bound[] bounds;
+        public LVector2[] nomals;
+        public override void Build()
+        {
+            base.Build();
+            LFloat maxRadiusSqr = 0;
+            points = new LVector2[localPoints.Length];
+            for (int i = 0; i < localPoints.Length; i++)
+            {
+                LVector2 point = localPoints[i];
+                point = point * scale;
+                maxRadiusSqr = Math.Max(maxRadiusSqr, point.sqrMagnitude);
+                point = point.Rotate(angle);
+                point = point + position;
+                points[i] = point;
+            }
+            maxRadius = Math.Sqrt(maxRadiusSqr);
+            bounds = SplitPoint2Bound(points, new List<Bound>());
+
+            nomals = new LVector2[points.Length];
+            for (int i = 0; i < points.Length; i++)
+            {
+                int last = (int)QuadtreeHelper.Repeat(i - 1, points.Length);
+                int cur = (int)QuadtreeHelper.Repeat(i, points.Length);
+                var _last_point = points[last];
+                var cur_point = points[cur];
+                for (int j = 0; j < bounds.Length; j++)
+                {
+                    if (bounds[i].FindLine(_last_point, cur_point))
+                    {
+                        var point = QuadtreeHelper.Point2LineIntersection(_last_point, cur_point, bounds[i].center);
+                        LVector2 normal = (point - bounds[i].center).normalized;
+                        nomals[i] = normal;
+                        break;
+                    }
+                }
+            }
+        }
+
+
         private static LVector2[] RemoveUselessPoint(List<LVector2> points)
         {
             for (int i = 0; i < points.Count; i++)
@@ -116,66 +201,66 @@ namespace LCollision2D
             return points.ToArray();
         }
 
-        private static bool MoreThan180(Bound p, int i)
+        private static bool MoreThan180(LVector2[] points, int i)
         {
-            LVector2 last = p.points[(int)QuadtreeHelper.Repeat(i - 1, p.points.Length)];
-            LVector2 cur = p.points[i];
-            LVector2 next = p.points[(int)QuadtreeHelper.Repeat(i + 1, p.points.Length)];
+            LVector2 last = points[(int)QuadtreeHelper.Repeat(i - 1, points.Length)];
+            LVector2 cur = points[i];
+            LVector2 next = points[(int)QuadtreeHelper.Repeat(i + 1, points.Length)];
             var dir = cur - last;
             var dir2 = next - cur;
             return LVector3.Cross(dir, dir2).z < 0;
         }
-        private static bool IsLeagal(Bound p)
+        private static bool IsLeagal(LVector2[] points)
         {
-            for (int i = 0; i < p.points.Length; i++)
+            for (int i = 0; i < points.Length; i++)
             {
-                if (MoreThan180(p, i))
+                if (MoreThan180(points, i))
                 {
                     return false;
                 }
             }
             return true;
         }
-        public static Bound[] Split(Bound p, List<Bound> list)
+        private static Bound[] SplitPoint2Bound(LVector2[] points, List<Bound> list)
         {
             if (list == null) list = new List<Bound>();
-            if (IsLeagal(p))
+            points = RemoveUselessPoint(points.ToList());
+            if (IsLeagal(points))
             {
-                list.Add(p);
+                list.Add(new Bound(points));
             }
             else
             {
-                for (int i = 0; i < p.points.Length; i++)
+                for (int i = 0; i < points.Length; i++)
                 {
-                    if (MoreThan180(p, i))
+                    if (MoreThan180(points, i))
                     {
                         int j = i;
                         while (true)
                         {
                             j++;
-                            int cur = (int)QuadtreeHelper.Repeat(j, p.points.Length);
-                            if (!MoreThan180(p, cur))
+                            int cur = (int)QuadtreeHelper.Repeat(j, points.Length);
+                            if (!MoreThan180(points, cur))
                             {
-                                int last = (int)QuadtreeHelper.Repeat(cur - 1, p.points.Length);
-                                int next = (int)QuadtreeHelper.Repeat(cur + 1, p.points.Length);
+                                int last = (int)QuadtreeHelper.Repeat(cur - 1, points.Length);
+                                int next = (int)QuadtreeHelper.Repeat(cur + 1, points.Length);
 
                                 LVector2[] points_1 = new LVector2[3];
                                 for (int k = 0; k < 3; k++)
                                 {
-                                    points_1[k] = p.points[(int)QuadtreeHelper.Repeat(last + k, p.points.Length)];
+                                    points_1[k] = points[(int)QuadtreeHelper.Repeat(last + k, points.Length)];
                                 }
-                                Bound _p1 = new Bound(points_1) { };
 
-                                list.Add(_p1);
-                                int p2_len = p.points.Length - 1;
+
+                                int p2_len = points.Length - 1;
                                 LVector2[] points_2 = new LVector2[p2_len];
 
                                 int _next = next;
                                 int _index = 0;
                                 while (true)
                                 {
-                                    _next = (int)QuadtreeHelper.Repeat(_next, p.points.Length);
-                                    points_2[_index] = p.points[_next];
+                                    _next = (int)QuadtreeHelper.Repeat(_next, points.Length);
+                                    points_2[_index] = points[_next];
                                     if (_next == last)
                                     {
                                         break;
@@ -183,8 +268,8 @@ namespace LCollision2D
                                     _index++;
                                     _next++;
                                 }
-                                Bound _p2 = new Bound(points_2) { };
-                                Split(_p2, list);
+                                SplitPoint2Bound(points_1, list);
+                                SplitPoint2Bound(points_2, list);
                                 break;
                             }
                         }
@@ -195,39 +280,6 @@ namespace LCollision2D
 
             }
             return list.ToArray();
-        }
-
-    }
-
-    /// <summary>
-    /// 多边形
-    /// </summary>
-    public class PolygonShape : Shape
-    {
-        /// <summary>
-        /// 多边形的点
-        /// </summary>
-        public LVector2[] points;
-
-        /// <summary>
-        /// 实际点
-        /// </summary>
-        public Bound Bound;
-        public Bound[] bounds;
-
-        public override void Build()
-        {
-            base.Build();
-            Bound = new Bound(points);
-            bounds = Bound.Split(Bound, new List<Bound>());
-            LFloat maxRadiusSqr = 0;
-            LFloat tmpRadiusSqr;
-            foreach (var point in Bound.points)
-            {
-                tmpRadiusSqr = Math.Sqr(point.x) + Math.Sqr(point.y);
-                maxRadiusSqr = Math.Max(maxRadiusSqr, tmpRadiusSqr);
-            }
-            maxRadius = Math.Sqrt(maxRadiusSqr);
         }
     }
 
@@ -279,7 +331,7 @@ namespace LCollision2D
     /// 射线击中的shape
     /// </summary>
     public struct RayHit
-    {       
+    {
         public LVector2 point;
         public LFloat distance;
         public Shape shape;

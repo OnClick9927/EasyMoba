@@ -1,5 +1,6 @@
 ﻿using IFramework;
 using LMath;
+using UnityEngine;
 using Math = LMath.Math;
 
 namespace LCollision2D
@@ -31,12 +32,16 @@ namespace LCollision2D
             var xx = maxRadius + shape.maxRadius;
             return xDistance * xDistance + yDistance * yDistance < xx * xx;
         }
-        public static bool CouldRaycastNode(Ray ray, LRect area)
+        public static bool CouldRaycastNode(Ray ray, LRect area, LFloat maxRadius)
         {
-            LVector2 lt = area.position;
-            LVector2 rd = new LVector2(area.xMax, area.yMax);
-            LVector2 ld = new LVector2(area.x, area.yMax);
-            LVector2 rt = new LVector2(area.xMax, area.y);
+            LFloat xmin = area.position.x - maxRadius;
+            LFloat xmax = area.xMax + maxRadius;
+            LFloat ymin = area.position.y - maxRadius;
+            LFloat ymax = area.yMax + maxRadius;
+            LVector2 lt = new LVector2(xmin, ymin);
+            LVector2 ld = new LVector2(xmin, ymax);
+            LVector2 rd = new LVector2(xmax, ymax);
+            LVector2 rt = new LVector2(xmax, ymin);
             if (CouldRaySegmentIntersect(ray.start, ray.start + ray.direction, lt, rd))
                 return true;
             if (CouldRaySegmentIntersect(ray.start, ray.start + ray.direction, ld, rt))
@@ -55,13 +60,28 @@ namespace LCollision2D
             return Math.Max(a.x._val, b.x._val) < Math.Min(a.y._val, b.y._val); ;
         }
 
-
+        /// <summary>
+        /// Ax+By+C=0 求ABC
+        /// </summary>
+        /// <param name="start"></param>
+        /// <param name="end"></param>
+        /// <param name="a"></param>
+        /// <param name="b"></param>
+        /// <param name="c"></param>
         private static void GetLineABC(LVector2 start, LVector2 end, out LFloat a, out LFloat b, out LFloat c)
         {
             a = (start.y - end.y);
             b = (end.x - start.x);
             c = -(a * start.x + b * start.y);
         }
+        /// <summary>
+        /// 俩直线交点
+        /// </summary>
+        /// <param name="a_start"></param>
+        /// <param name="a_end"></param>
+        /// <param name="b_start"></param>
+        /// <param name="b_end"></param>
+        /// <returns></returns>
         private static LVector2 LineLineIntersectPoint(LVector2 a_start, LVector2 a_end, LVector2 b_start, LVector2 b_end)
         {
             LFloat A1, B1, C1;
@@ -72,13 +92,29 @@ namespace LCollision2D
             LFloat y = (A1 * C2 - C1 * A2) / (B1 * A2 - A1 * B2);
             return new LVector2(x, y);
         }
-        private static LVector2 Point2LineIntersection(LVector2 a_start, LVector2 a_end, LVector2 point)
+
+        /// <summary>
+        /// 点往直线做垂线的交点
+        /// </summary>
+        /// <param name="line_start"></param>
+        /// <param name="line_end"></param>
+        /// <param name="point"></param>
+        /// <returns></returns>
+        public static LVector2 Point2LineIntersection(LVector2 line_start, LVector2 line_end, LVector2 point)
         {
-            var line = a_start - a_end;
+            var line = line_start - line_end;
             var normal = new LVector2(line.y, -line.x);
-            var _point = LineLineIntersectPoint(a_start, a_end, point, point + normal);
+            var _point = LineLineIntersectPoint(line_start, line_end, point, point + normal);
             return _point;
         }
+        /// <summary>
+        /// 判断直线是否不是平行
+        /// </summary>
+        /// <param name="a_start"></param>
+        /// <param name="a_end"></param>
+        /// <param name="b_start"></param>
+        /// <param name="b_end"></param>
+        /// <returns></returns>
         private static bool CouldlineLineIntersect(LVector2 a_start, LVector2 a_end, LVector2 b_start, LVector2 b_end)
         {
             var a = a_start - a_end;
@@ -89,7 +125,14 @@ namespace LCollision2D
             LFloat B2 = b.y;
             return A1 * B2 != A2 * B1 && A1 * B2 != -A2 * B1;
         }
-
+        /// <summary>
+        /// 判断射线与线段是否相交
+        /// </summary>
+        /// <param name="ray_start"></param>
+        /// <param name="ray_end"></param>
+        /// <param name="seg_start"></param>
+        /// <param name="seg_end"></param>
+        /// <returns></returns>
         private static bool CouldRaySegmentIntersect(LVector2 ray_start, LVector2 ray_end, LVector2 seg_start, LVector2 seg_end)
         {
             if (ray_start == seg_start)
@@ -112,7 +155,36 @@ namespace LCollision2D
             return LVector3.Dot(aa, bb) < 0;
         }
 
-        private static bool IsPointinCircle(CircleShape circle, LVector2 point)
+        /// <summary>
+        /// 获取点到线段最近的一个点
+        /// </summary>
+        /// <param name="seg_start"></param>
+        /// <param name="seg_end"></param>
+        /// <param name="point"></param>
+        /// <returns></returns>
+        private static LVector2 FindNearestPointInSegment(LVector2 seg_start, LVector2 seg_end, LVector2 point)
+        {
+            var seg_dir = seg_end - seg_start;
+            var dir = point - seg_start;
+            var percent = Math.Clamp01(LVector2.Dot(seg_dir, dir) / LVector2.Dot(dir, dir));
+            return seg_start + percent * seg_dir;
+        }
+
+        /// <summary>
+        /// 一个点在不在胶囊里面
+        /// </summary>
+        /// <param name="seg_start"></param>
+        /// <param name="seg_end"></param>
+        /// <param name="point"></param>
+        /// <param name="radius"></param>
+        /// <returns></returns>
+        private static bool IsPointInCapsule(LVector2 seg_start, LVector2 seg_end, LVector2 point, LFloat radius)
+        {
+            LVector2 near = FindNearestPointInSegment(seg_start, seg_end, point);
+            var dir = point - near;
+            return dir.sqrMagnitude < radius * radius;
+        }
+        private static bool IsPointInCircle(CircleShape circle, LVector2 point)
         {
             //比较半径和点与圆心的距离
             return circle.Radius * circle.Radius > (circle.position - point).sqrMagnitude;
@@ -120,6 +192,11 @@ namespace LCollision2D
         //-------------------------------------------------------------------------------
         public static bool CouldCollision(Shape a, Shape b)
         {
+            var dir = a.position - b.position;
+            if (dir.sqrMagnitude > a.maxRadius * a.maxRadius + b.maxRadius * b.maxRadius)
+            {
+                return false;
+            }
             var name_a = a.GetType().Name;
             var name_b = b.GetType().Name;
 
