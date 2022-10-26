@@ -1,6 +1,5 @@
 ﻿using IFramework;
 using LMath;
-using UnityEngine;
 using Math = LMath.Math;
 
 namespace LCollision2D
@@ -42,9 +41,9 @@ namespace LCollision2D
             LVector2 ld = new LVector2(xmin, ymax);
             LVector2 rd = new LVector2(xmax, ymax);
             LVector2 rt = new LVector2(xmax, ymin);
-            if (CouldRaySegmentIntersect(ray.start, ray.start + ray.direction, lt, rd))
+            if (CouldLightSegmentIntersect(ray.start, ray.start + ray.direction, lt, rd))
                 return true;
-            if (CouldRaySegmentIntersect(ray.start, ray.start + ray.direction, ld, rt))
+            if (CouldLightSegmentIntersect(ray.start, ray.start + ray.direction, ld, rt))
                 return true;
             return false;
         }
@@ -53,35 +52,21 @@ namespace LCollision2D
 
         public static int Repeat(int value, int length)
         {
-            return (int)UnityEngine.Mathf.Repeat(value, length);
+            return value % length;
         }
         private static bool IsRangeCross(LVector2 a, LVector2 b)
         {
             return Math.Max(a.x._val, b.x._val) < Math.Min(a.y._val, b.y._val); ;
         }
 
-        /// <summary>
-        /// Ax+By+C=0 求ABC
-        /// </summary>
-        /// <param name="start"></param>
-        /// <param name="end"></param>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <param name="c"></param>
+        // Ax+By+C=0 求ABC
         private static void GetLineABC(LVector2 start, LVector2 end, out LFloat a, out LFloat b, out LFloat c)
         {
             a = (start.y - end.y);
             b = (end.x - start.x);
             c = -(a * start.x + b * start.y);
         }
-        /// <summary>
-        /// 俩直线交点
-        /// </summary>
-        /// <param name="a_start"></param>
-        /// <param name="a_end"></param>
-        /// <param name="b_start"></param>
-        /// <param name="b_end"></param>
-        /// <returns></returns>
+        // 俩直线交点
         private static LVector2 LineLineIntersectPoint(LVector2 a_start, LVector2 a_end, LVector2 b_start, LVector2 b_end)
         {
             LFloat A1, B1, C1;
@@ -93,13 +78,7 @@ namespace LCollision2D
             return new LVector2(x, y);
         }
 
-        /// <summary>
-        /// 点往直线做垂线的交点
-        /// </summary>
-        /// <param name="line_start"></param>
-        /// <param name="line_end"></param>
-        /// <param name="point"></param>
-        /// <returns></returns>
+        // 点往直线做垂线的交点
         public static LVector2 Point2LineIntersection(LVector2 line_start, LVector2 line_end, LVector2 point)
         {
             var line = line_start - line_end;
@@ -107,14 +86,7 @@ namespace LCollision2D
             var _point = LineLineIntersectPoint(line_start, line_end, point, point + normal);
             return _point;
         }
-        /// <summary>
-        /// 判断直线是否不是平行
-        /// </summary>
-        /// <param name="a_start"></param>
-        /// <param name="a_end"></param>
-        /// <param name="b_start"></param>
-        /// <param name="b_end"></param>
-        /// <returns></returns>
+        // 判断直线是否不是平行
         private static bool CouldlineLineIntersect(LVector2 a_start, LVector2 a_end, LVector2 b_start, LVector2 b_end)
         {
             var a = a_start - a_end;
@@ -125,15 +97,8 @@ namespace LCollision2D
             LFloat B2 = b.y;
             return A1 * B2 != A2 * B1 && A1 * B2 != -A2 * B1;
         }
-        /// <summary>
-        /// 判断射线与线段是否相交
-        /// </summary>
-        /// <param name="ray_start"></param>
-        /// <param name="ray_end"></param>
-        /// <param name="seg_start"></param>
-        /// <param name="seg_end"></param>
-        /// <returns></returns>
-        private static bool CouldRaySegmentIntersect(LVector2 ray_start, LVector2 ray_end, LVector2 seg_start, LVector2 seg_end)
+        // 判断射线与线段是否相交
+        private static bool CouldLightSegmentIntersect(LVector2 ray_start, LVector2 ray_end, LVector2 seg_start, LVector2 seg_end)
         {
             if (ray_start == seg_start)
                 return true;
@@ -155,13 +120,7 @@ namespace LCollision2D
             return LVector3.Dot(aa, bb) < 0;
         }
 
-        /// <summary>
-        /// 获取点到线段最近的一个点
-        /// </summary>
-        /// <param name="seg_start"></param>
-        /// <param name="seg_end"></param>
-        /// <param name="point"></param>
-        /// <returns></returns>
+        // 获取点到线段最近的一个点
         private static LVector2 FindNearestPointInSegment(LVector2 seg_start, LVector2 seg_end, LVector2 point)
         {
             var seg_dir = seg_end - seg_start;
@@ -169,7 +128,26 @@ namespace LCollision2D
             var percent = Math.Clamp01(LVector2.Dot(seg_dir, dir) / LVector2.Dot(dir, dir));
             return seg_start + percent * seg_dir;
         }
+        // 获取点到射线最近的一个点
+        private static LVector2 FindNearestPointInLight(LVector2 ray_start, LVector2 ray_end, LVector2 point)
+        {
+            var seg_dir = ray_end - ray_start;
+            var dir = point - ray_start;
 
+            LFloat percent = Math.Max(LFloat.zero, LVector2.Dot(seg_dir, dir) / LVector2.Dot(dir, dir));
+            return ray_start + percent * seg_dir;
+        }
+
+        // 点是否在线段上
+        public static bool IsPointInSegment(LVector2 seg_start, LVector2 seg_end, LVector2 point)
+        {
+            return FindNearestPointInSegment(seg_start, seg_end, point) == point;
+        }
+        // 点是否在射线上
+        private static bool IsPointInLight(LVector2 seg_start, LVector2 seg_end, LVector2 point)
+        {
+            return FindNearestPointInLight(seg_start, seg_end, point) == point;
+        }
         /// <summary>
         /// 一个点在不在胶囊里面
         /// </summary>
@@ -184,10 +162,33 @@ namespace LCollision2D
             var dir = point - near;
             return dir.sqrMagnitude < radius * radius;
         }
-        private static bool IsPointInCircle(CircleShape circle, LVector2 point)
+        private static bool IsPointInCircle(LVector2 position, LFloat radius, LVector2 point)
         {
             //比较半径和点与圆心的距离
-            return circle.Radius * circle.Radius > (circle.position - point).sqrMagnitude;
+            return radius * radius > (position - point).sqrMagnitude;
+        }
+        private static bool IsPointInBound(Bound bound, LVector2 point)
+        {
+            bool flag = false;
+            for (int i = 0; i < bound.points.Length; i++)
+            {
+                var last = bound.points[Repeat(i - 1, bound.points.Length)];
+                var cur = bound.points[i];
+
+                LVector3 cross = LVector3.Cross(last - point, cur - point);
+                if (i == 1)
+                {
+                    flag = cross.z <= 0;
+                }
+                else
+                {
+                    if ((cross.z <= 0) != flag)
+                    {
+                        return false;
+                    }
+                }
+            }
+            return true;
         }
         //-------------------------------------------------------------------------------
         public static bool CouldCollision(Shape a, Shape b)
@@ -379,7 +380,7 @@ namespace LCollision2D
                 var last = a.points[Repeat(i - 1, a.points.Length)];
                 var cur = a.points[i];
 
-                if (CouldRaySegmentIntersect(ray_start, ray_end, last, cur))
+                if (CouldLightSegmentIntersect(ray_start, ray_end, last, cur))
                 {
                     var _point = LineLineIntersectPoint(ray_start, ray_end, last, cur);
                     var dir = _point - ray_start;
@@ -399,9 +400,7 @@ namespace LCollision2D
             }
             else
             {
-
                 hit = new RayHit() { point = point, distance = Math.Sqrt(sqrMagnitude) };
-
             }
             return index != -1;
         }
@@ -409,6 +408,18 @@ namespace LCollision2D
         private static bool RayPolygon(Ray ray, PolygonShape c, out RayHit hit)
         {
             hit = new RayHit();
+            if (IsPointInCircle(c.position, c.maxRadius, ray.start)) return false;
+            var point = FindNearestPointInLight(ray.start, ray.start + ray.direction, c.position);
+            if (point == c.position) return false;
+            var dir = point - c.position;
+            if (dir.sqrMagnitude > c.maxRadius * c.maxRadius) return false;
+            for (int i = 0; i < c.bounds.Length; i++)
+            {
+                if (IsPointInBound(c.bounds[i], ray.start))
+                {
+                    return false;
+                }
+            }
             int index = -1;
             for (int i = 0; i < c.bounds.Length; i++)
             {
@@ -431,40 +442,29 @@ namespace LCollision2D
         private static bool RayCircle(Ray ray, CircleShape c, out RayHit hit)
         {
             hit = new RayHit();
-            var ray_start = ray.start;
-            ray.direction = ray.direction.normalized;
-            var ray_end = ray.direction + ray.start;
+            if (IsPointInCircle(c.position, c.Radius, ray.start)) return false;
+            var point = FindNearestPointInLight(ray.start, ray.start + ray.direction, c.position);
+            if (point == c.position) return false;
+            var dir = point - c.position;
+            if (dir.sqrMagnitude > c.Radius * c.radius) return false;
 
-            var normal = new LVector2(ray.direction.y, -ray.direction.x);
-            var tmp = c.position + normal;
-            if (CouldRaySegmentIntersect(ray_start, ray_end, c.position, tmp))
+            var _base = Math.Sqrt(c.Radius * c.radius - dir.sqrMagnitude);
+            var p1 = point + ray.direction * _base;
+            var p2 = point - ray.direction * _base;
+            var dis_1 = (p1 - ray.direction).sqrMagnitude;
+            var dis_2 = (p2 - ray.direction).sqrMagnitude;
+            hit.shape = c;
+            if (dis_1 < dis_2)
             {
-                var point = Point2LineIntersection(ray_start, ray_end, c.position);
-                var dir = point - c.position;
-                if (dir.sqrMagnitude > c.Radius * c.radius)
-                {
-                    return false;
-                }
-
-                var _base = Math.Sqrt(c.Radius * c.radius - dir.sqrMagnitude);
-                var p1 = point + ray.direction * _base;
-                var p2 = point - ray.direction * _base;
-                var dis_1 = (p1 - ray.direction).sqrMagnitude;
-                var dis_2 = (p2 - ray.direction).sqrMagnitude;
-                hit.shape = c;
-                if (dis_1 < dis_2)
-                {
-                    hit.point = p1;
-                    hit.distance = Math.Sqrt(dis_1);
-                }
-                else
-                {
-                    hit.point = p2;
-                    hit.distance = Math.Sqrt(dis_2);
-                }
-                return true;
+                hit.point = p1;
+                hit.distance = Math.Sqrt(dis_1);
             }
-            return false;
+            else
+            {
+                hit.point = p2;
+                hit.distance = Math.Sqrt(dis_2);
+            }
+            return true;
         }
 
         //-------------------------------------------------------------------------------

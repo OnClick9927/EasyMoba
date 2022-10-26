@@ -189,9 +189,7 @@ namespace LCollision2D
                 LVector2 cur = points[i];
                 LVector2 next = points[(int)QuadtreeHelper.Repeat(i + 1, points.Count)];
 
-                var dir1 = cur - last;
-                var dir2 = next - last;
-                if (dir1.x / dir1.y == dir2.x / dir2.y)
+                if (QuadtreeHelper.IsPointInSegment(last, next, cur))
                 {
                     points.RemoveAt(i);
                     RemoveUselessPoint(points);
