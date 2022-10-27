@@ -1,11 +1,14 @@
 ﻿using LMath;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 
 namespace LCollision2D
 {
+
     public abstract class Shape
     {
+        public ShapeLayer layer;
         public bool dirty { get; private set; } = true;
 
         public LVector2 direction { get; private set; }
@@ -60,32 +63,6 @@ namespace LCollision2D
         }
     }
 
-    /// <summary>
-    /// 矩形
-    /// </summary>
-    public class RectangleShape : Shape
-    {
-        public LFloat width;
-        public LFloat height;
-
-        /// <summary>
-        /// 实际宽
-        /// </summary>
-        public LFloat Width { get; private set; }
-        /// <summary>
-        /// 实际高
-        /// </summary>
-        public LFloat Height { get; private set; }
-
-        public override void Build()
-        {
-            base.Build();
-
-            maxRadius = Math.Sqrt(Math.Sqr(Width) + Math.Sqr(Height)) / 2;
-            Width = width * scale;
-            Height = height * scale;
-        }
-    }
 
     /// <summary>
     /// 点的集合
@@ -322,6 +299,7 @@ namespace LCollision2D
         /// 方向
         /// </summary>
         public LVector2 direction;
+        public ShapeLayer layer;
 
     }
 

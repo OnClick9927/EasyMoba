@@ -6,6 +6,7 @@ namespace LCollision2D
 {
     public class QuadtreeHelper
     {
+
         public static Node AllocateNode()
         {
             return Framework.GlobalAllocate<Node>();
@@ -41,9 +42,9 @@ namespace LCollision2D
             LVector2 ld = new LVector2(xmin, ymax);
             LVector2 rd = new LVector2(xmax, ymax);
             LVector2 rt = new LVector2(xmax, ymin);
-            if (CouldLightSegmentIntersect(ray.start, ray.start + ray.direction, lt, rd))
+            if (CouldLightSegmentIntersect(ray.start, ray.direction, lt, rd))
                 return true;
-            if (CouldLightSegmentIntersect(ray.start, ray.start + ray.direction, ld, rt))
+            if (CouldLightSegmentIntersect(ray.start, ray.direction, ld, rt))
                 return true;
             return false;
         }
@@ -98,25 +99,21 @@ namespace LCollision2D
             return A1 * B2 != A2 * B1 && A1 * B2 != -A2 * B1;
         }
         // 判断射线与线段是否相交
-        private static bool CouldLightSegmentIntersect(LVector2 ray_start, LVector2 ray_end, LVector2 seg_start, LVector2 seg_end)
+        private static bool CouldLightSegmentIntersect(LVector2 ray_start, LVector2 ray_dir, LVector2 seg_start, LVector2 seg_end)
         {
             if (ray_start == seg_start)
                 return true;
             if (ray_start == seg_end)
                 return true;
-            if (ray_end == seg_start)
-                return true;
-            if (ray_end == seg_end)
-                return true;
-            if (!CouldlineLineIntersect(ray_start, ray_end, seg_start, seg_end))
+
+            if (!CouldlineLineIntersect(ray_start, ray_start + ray_dir, seg_start, seg_end))
             {
                 return false;
             }
-            var dir = ray_end - ray_start;
             var dir2 = seg_start - ray_start;
             var dir3 = seg_end - ray_start;
-            var aa = LVector3.Cross(dir, dir2);
-            var bb = LVector3.Cross(dir, dir3);
+            var aa = LVector3.Cross(ray_dir, dir2);
+            var bb = LVector3.Cross(ray_dir, dir3);
             return LVector3.Dot(aa, bb) < 0;
         }
 
@@ -129,13 +126,12 @@ namespace LCollision2D
             return seg_start + percent * seg_dir;
         }
         // 获取点到射线最近的一个点
-        private static LVector2 FindNearestPointInLight(LVector2 ray_start, LVector2 ray_end, LVector2 point)
+        private static LVector2 FindNearestPointInLight(LVector2 ray_start, LVector2 ray_dir, LVector2 point)
         {
-            var seg_dir = ray_end - ray_start;
             var dir = point - ray_start;
 
-            LFloat percent = Math.Max(LFloat.zero, LVector2.Dot(seg_dir, dir) / LVector2.Dot(dir, dir));
-            return ray_start + percent * seg_dir;
+            LFloat percent = Math.Max(LFloat.zero, LVector2.Dot(ray_dir, dir) / LVector2.Dot(dir, dir));
+            return ray_start + percent * ray_dir;
         }
 
         // 点是否在线段上
@@ -144,9 +140,9 @@ namespace LCollision2D
             return FindNearestPointInSegment(seg_start, seg_end, point) == point;
         }
         // 点是否在射线上
-        private static bool IsPointInLight(LVector2 seg_start, LVector2 seg_end, LVector2 point)
+        private static bool IsPointInLight(LVector2 seg_start, LVector2 ray_dir, LVector2 point)
         {
-            return FindNearestPointInLight(seg_start, seg_end, point) == point;
+            return FindNearestPointInLight(seg_start, ray_dir, point) == point;
         }
         /// <summary>
         /// 一个点在不在胶囊里面
@@ -193,6 +189,7 @@ namespace LCollision2D
         //-------------------------------------------------------------------------------
         public static bool CouldCollision(Shape a, Shape b)
         {
+            if (!new LayerConfig().CouldLayerCollision(a.layer, b.layer)) return false;
             var dir = a.position - b.position;
             if (dir.sqrMagnitude > a.maxRadius * a.maxRadius + b.maxRadius * b.maxRadius)
             {
@@ -210,6 +207,8 @@ namespace LCollision2D
                             return Circle2Circle(a as CircleShape, b as CircleShape);
                         case nameof(PolygonShape):
                             return Circle2Polygon(a as CircleShape, b as PolygonShape);
+                        case nameof(SectorShape):
+                            return Circle2SectorShape(a as CircleShape, b as SectorShape);
                     }
                     break;
                 case nameof(PolygonShape):
@@ -221,11 +220,38 @@ namespace LCollision2D
                             return Polygon2Polygon(a as PolygonShape, b as PolygonShape);
                     }
                     break;
+                case nameof(SectorShape):
+                    switch (name_b)
+                    {
+                        case nameof(CircleShape):
+                            return Circle2SectorShape(b as CircleShape, a as SectorShape);
+                    }
+                    break;
             }
 
             return false;
         }
 
+        private static bool Circle2SectorShape(CircleShape circle, SectorShape b)
+        {
+            LVector2 dir = circle.position - b.position;
+            LFloat rsum = circle.Radius + b.Radius;
+            if (dir.sqrMagnitude > rsum * rsum)
+                return false;
+            var angle = b.sectorAngle / 2;
+            var p1_dir = b.direction.Rotate(angle) * b.Radius;
+            var p2_dir = b.direction.Rotate(-angle) * b.Radius;
+            //同一方向，说明在外面
+            if (LVector3.Dot(LVector3.Cross(dir, p1_dir), LVector3.Cross(dir, p2_dir)) > 0)
+                return false;
+            var p1 = p1_dir + b.position;
+            var p2 = p2_dir + b.position;
+            var point1 = FindNearestPointInSegment(b.position, p1, circle.position);
+            var point2 = FindNearestPointInSegment(b.position, p2, circle.position);
+
+            return (point1 - circle.position).sqrMagnitude <= circle.Radius * circle.Radius
+                || (point2 - circle.position).sqrMagnitude <= circle.Radius * circle.Radius;
+        }
 
         private static LVector2 GetRange(Bound bound, LVector2 normal)
         {
@@ -252,7 +278,7 @@ namespace LCollision2D
         private static LVector2 GetRange(CircleShape c, LVector2 normal)
         {
             var value = LVector2.Dot(normal, c.position);
-            return new LVector2(value - c.Radius, value + c.radius);
+            return new LVector2(value - c.Radius, value + c.Radius);
         }
 
         private static bool Bound2Bound(Bound a, Bound b)
@@ -357,6 +383,8 @@ namespace LCollision2D
         public static bool RayCast(Ray ray, Shape b, out RayHit hit)
         {
             hit = new RayHit();
+            if (!ray.layer.HasFlag(b.layer)) return false;
+
             switch (b.GetType().Name)
             {
                 case nameof(CircleShape):
@@ -373,16 +401,15 @@ namespace LCollision2D
             LFloat sqrMagnitude = new LFloat();
             LVector2 point = new LVector2();
             var ray_start = ray.start;
-            var ray_end = ray.direction + ray.start;
             int index = -1;
             for (int i = 0; i < a.points.Length; i++)
             {
                 var last = a.points[Repeat(i - 1, a.points.Length)];
                 var cur = a.points[i];
 
-                if (CouldLightSegmentIntersect(ray_start, ray_end, last, cur))
+                if (CouldLightSegmentIntersect(ray_start, ray.direction, last, cur))
                 {
-                    var _point = LineLineIntersectPoint(ray_start, ray_end, last, cur);
+                    var _point = LineLineIntersectPoint(ray_start, ray.direction + ray.start, last, cur);
                     var dir = _point - ray_start;
                     var _sqrMagnitude = dir.sqrMagnitude;
                     if (index == -1 || sqrMagnitude > _sqrMagnitude)
@@ -408,9 +435,8 @@ namespace LCollision2D
         private static bool RayPolygon(Ray ray, PolygonShape c, out RayHit hit)
         {
             hit = new RayHit();
-            if (IsPointInCircle(c.position, c.maxRadius, ray.start)) return false;
-            var point = FindNearestPointInLight(ray.start, ray.start + ray.direction, c.position);
-            if (point == c.position) return false;
+            var point = FindNearestPointInLight(ray.start, ray.direction, c.position);
+            if (point == ray.start) return false;
             var dir = point - c.position;
             if (dir.sqrMagnitude > c.maxRadius * c.maxRadius) return false;
             for (int i = 0; i < c.bounds.Length; i++)
@@ -443,12 +469,12 @@ namespace LCollision2D
         {
             hit = new RayHit();
             if (IsPointInCircle(c.position, c.Radius, ray.start)) return false;
-            var point = FindNearestPointInLight(ray.start, ray.start + ray.direction, c.position);
-            if (point == c.position) return false;
+            var point = FindNearestPointInLight(ray.start, ray.direction, c.position);
+            if (point == ray.start) return false;
             var dir = point - c.position;
-            if (dir.sqrMagnitude > c.Radius * c.radius) return false;
+            if (dir.sqrMagnitude > c.Radius * c.Radius) return false;
 
-            var _base = Math.Sqrt(c.Radius * c.radius - dir.sqrMagnitude);
+            var _base = Math.Sqrt(c.Radius * c.Radius - dir.sqrMagnitude);
             var p1 = point + ray.direction * _base;
             var p2 = point - ray.direction * _base;
             var dis_1 = (p1 - ray.direction).sqrMagnitude;
@@ -469,85 +495,10 @@ namespace LCollision2D
 
         //-------------------------------------------------------------------------------
 
-
-
-
-        /// <summary>
-        /// 圆矩形碰撞
-        /// </summary>
-        /// <param name="circle">圆形</param>
-        /// <param name="rect">矩形</param>
-        /// <returns>是否碰撞</returns>
-        static bool Circle2Rectangle(CircleShape circle, RectangleShape rect)
-        {
-            //旋转圆心（角度为b的角度）得到新的坐标
-            LVector2 newCenter = new LVector2();
-            if (rect.angle != 0)
-            {
-                newCenter.x = Math.Cos(rect.angle) * (circle.position.x - rect.position.x) - Math.Sin(rect.angle) * (circle.position.y - rect.position.y) + rect.position.x;
-                newCenter.y = Math.Cos(rect.angle) * (circle.position.x - rect.position.x) + Math.Cos(rect.angle) * (circle.position.y - rect.position.y) + rect.position.x;
-            }
-            else
-            {
-                newCenter = circle.position;
-            }
-            //判断圆心与矩形的碰撞
-
-            //获取最近的点
-            LVector2 nearPoint = new LVector2();
-            if (newCenter.x < (rect.position.x - rect.Width / 2))
-            {
-                nearPoint.x = rect.position.x - rect.Width / 2;
-
-            }
-            else if (newCenter.x > (rect.position.x + rect.Width / 2))
-            {
-                nearPoint.x = rect.position.x + rect.Width / 2;
-            }
-            else
-            {
-                nearPoint.x = newCenter.x;
-            }
-
-            if (newCenter.y < (rect.position.y - rect.Height / 2))
-            {
-                nearPoint.y = rect.position.y - rect.Height / 2;
-            }
-            else if (newCenter.y > rect.position.y + rect.Height / 2)
-            {
-                nearPoint.x = rect.position.x + rect.Height / 2;
-            }
-            else
-            {
-                nearPoint.y = newCenter.y;
-            }
-
-            var distance = Math.Sqrt(Math.Sqr(nearPoint.x - newCenter.x) + Math.Sqr(nearPoint.y - newCenter.y));
-
-            return distance < circle.Radius;
-        }
         static LFloat SegmentPointSqrDistance(LVector2 x0, LVector2 u, LVector2 x)
         {
             LFloat t = LVector2.Dot(x - x0, u) / u.sqrMagnitude;
             return (x - (x0 + Math.Clamp(t, LFloat.zero, LFloat.one) * u)).sqrMagnitude;
-        }
-        static bool Circle2SectorShape(CircleShape circle, SectorShape b)
-        {
-            LVector2 dir = circle.position - b.position;
-            LFloat rsum = circle.Radius + b.Radius;
-            if (dir.sqrMagnitude > rsum * rsum)
-                return false;
-            LFloat px = LVector2.Dot(dir, b.direction);
-            LFloat py = Math.Abs(LVector2.Dot(dir, new LVector2(-b.direction.y, b.direction.x)));
-
-            // 3. 如果 p_x > ||p|| cos theta，两形状相交
-            if (px > dir.magnitude * Math.Cos(b.sectorAngle))
-                return true;
-
-            // 4. 求左边线段与圆盘是否相交
-            LVector2 q = b.Radius * new LVector2(Math.Cos(b.sectorAngle), Math.Sin(b.sectorAngle));
-            LVector2 p = new LVector2(px, py);
-            return SegmentPointSqrDistance(LVector2.zero, q, p) <= circle.Radius * circle.Radius;
         }
 
     }
