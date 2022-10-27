@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 namespace LCollision2D
 {
@@ -11,16 +10,16 @@ namespace LCollision2D
         public class LayerData
         {
             public string name;
-            public ShapeLayer layer;
-            public ShapeLayer collinons;
+            public CollisionLayer layer;
+            public CollisionLayer collinons;
         }
         public List<LayerData> Layers;
-        public bool CouldLayerCollision(ShapeLayer shap_a, ShapeLayer shap_b)
+        public bool CouldLayerCollision(CollisionLayer shap_a, CollisionLayer shap_b)
         {
             var find = Layers.Find(x => x.layer == shap_a);
             return find.collinons.HasFlag(shap_b);
         }
-        public string GetName(ShapeLayer shap_a)
+        public string GetName(CollisionLayer shap_a)
         {
             var find = Layers.Find(x => x.layer == shap_a);
             if (find == null)
@@ -30,7 +29,7 @@ namespace LCollision2D
             }
             return find.name;
         }
-        public void SetName(ShapeLayer shap_a, string name)
+        public void SetName(CollisionLayer shap_a, string name)
         {
             var find = Layers.Find(x => x.layer == shap_a);
             find.name = name;

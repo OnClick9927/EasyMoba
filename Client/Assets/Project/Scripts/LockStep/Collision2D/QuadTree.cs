@@ -34,7 +34,7 @@ namespace LCollision2D
         }
         private Node CreateNode(LRect area, Node parrent)
         {
-            Node node = QuadtreeHelper.AllocateNode();
+            Node node = CollisionHelper.AllocateNode();
             node.area = area;
             node.parrent = parrent;
             if (parrent != null)
@@ -73,7 +73,7 @@ namespace LCollision2D
                 }
 
                 new_root.RemoveNode(find);
-                QuadtreeHelper.RecyleNode(find);
+                CollisionHelper.RecyleNode(find);
 
                 new_root.AddNode(root);
 
@@ -96,7 +96,7 @@ namespace LCollision2D
         {
             for (int i = 0; i < nodes.Count; i++)
             {
-                QuadtreeHelper.RecyleNode(nodes[i]);
+                CollisionHelper.RecyleNode(nodes[i]);
             }
             nodes.Clear();
             root = null;
@@ -175,7 +175,7 @@ namespace LCollision2D
 
         void GetCollision(Node node, Shape shape, List<Shape> result)
         {
-            if (!QuadtreeHelper.CouldCollisionShape(node.area, node.maxRadius, shape)) return;
+            if (!CollisionHelper.CouldCollisionShape(node.area, node.maxRadius, shape)) return;
             if (node.HaveChildren())
             {
                 var children = node.GetChildren();
@@ -188,7 +188,7 @@ namespace LCollision2D
             {
                 for (int i = 0; i < node.shapes.Count; i++)
                 {
-                    if (QuadtreeHelper.CouldCollision(shape, node.shapes[i]))
+                    if (CollisionHelper.CouldCollision(shape, node.shapes[i]))
                     {
                         result.Add(node.shapes[i]);
                     }
@@ -206,7 +206,7 @@ namespace LCollision2D
         }
         void GetRayCast(Node node, Ray ray, List<RayHit> hits)
         {
-            if (!QuadtreeHelper.CouldRaycastNode(ray, node.area,node.maxRadius)) return;
+            if (!CollisionHelper.CouldRaycastNode(ray, node.area,node.maxRadius)) return;
             if (node.HaveChildren())
             {
                 var children = node.GetChildren();
@@ -220,7 +220,7 @@ namespace LCollision2D
                 for (int i = 0; i < node.shapes.Count; i++)
                 {
                     RayHit hit;
-                    if (QuadtreeHelper.RayCast(ray, node.shapes[i], out hit))
+                    if (CollisionHelper.RayCast(ray, node.shapes[i], out hit))
                     {
                         hits.Add(hit);
                     }

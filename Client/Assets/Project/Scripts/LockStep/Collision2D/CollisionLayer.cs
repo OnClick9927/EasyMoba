@@ -1,7 +1,7 @@
 ﻿namespace LCollision2D
 {
     [System.Flags]
-    public enum ShapeLayer
+    public enum CollisionLayer
     {
         _0 = 1,
         _1 = 2,

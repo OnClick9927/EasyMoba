@@ -4,7 +4,7 @@ using Math = LMath.Math;
 
 namespace LCollision2D
 {
-    public class QuadtreeHelper
+    public class CollisionHelper
     {
 
         public static Node AllocateNode()

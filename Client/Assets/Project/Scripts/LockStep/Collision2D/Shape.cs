@@ -1,32 +1,118 @@
 ﻿using LMath;
 using System.Collections.Generic;
-using System.Dynamic;
 using System.Linq;
 
 namespace LCollision2D
 {
+    public class Transform
+    {
+        public string name;
+        private LFloat _localangle = LFloat.zero;
+        private LVector2 _localPosition = LVector2.zero;
+        private LFloat _localScele = LFloat.one;
+        public LVector2 localPosition { get { return _localPosition; } set { _localPosition = value; } }
+        public LFloat localScale { get { return _localScele; } set { _localScele = value; } }
+        public LFloat localAngle { get { return _localangle; } set { _localangle = value; } }
+
+        public LVector2 position
+        {
+            get
+            {
+                if (parent != null)
+                    return parent.position + _localPosition;
+                return _localPosition;
+            }
+            set
+            {
+                if (parent != null)
+                    _localPosition = value;
+                else
+                    _localPosition = value - parent.position;
+            }
+        }
+        public LFloat scale
+        {
+            get
+            {
+                if (parent != null)
+                    return parent.scale * _localScele;
+                return _localScele;
+            }
+            set
+            {
+                if (parent != null)
+                    _localScele = value;
+                else
+                    _localScele = value / parent.scale;
+            }
+        }
+
+        public LFloat angle
+        {
+            get
+            {
+                if (parent != null)
+                    return parent.angle + _localangle;
+                return _localangle;
+            }
+            set
+            {
+                if (parent != null)
+                    _localangle = value;
+                else
+                    _localangle = value - parent.angle;
+            }
+        }
+        public LVector2 forward { get { return LVector2.up.Rotate(angle); } }
+        public int ChildCount { get { return children.Count; } }
+
+        public Transform GetChild(int index)
+        {
+            return children[index];
+        }
+        private List<Transform> children = new List<Transform>();
+        public Transform _parent;
+        public Transform parent { get { return _parent; } set { } }
+        public void SetParent(Transform parent, bool stay_word_pos = true)
+        {
+            LFloat last_angle = this.angle;
+            LVector2 last_pos = this.position;
+            LFloat last_scale = this.scale;
+
+            if (this._parent != null)
+                this._parent.children.Remove(this);
+            this._parent = parent;
+            if (this._parent != null)
+                this._parent.children.Add(this);
+
+            if (stay_word_pos)
+            {
+                this.position = last_pos;
+            }
+            this.angle = last_angle;
+            this.scale = last_scale;
+   
+        }
+
+        public void Update() { }
+        public void FixedUpdate(int trick,LFloat delta) { }
+
+        public void OnCollisionEnter() { }
+        public void OnCollisionStay() { }
+        public void OnCollisionExist() { }
+        public void OnTriggerEnter() { }
+        public void OnTriggerStay() { }
+        public void OnTriggerExist() { }
+    }
 
     public abstract class Shape
     {
-        public ShapeLayer layer;
+        public CollisionLayer layer;
         public bool dirty { get; private set; } = true;
-
         public LVector2 direction { get; private set; }
-        /// <summary>
-        /// 角度
-        /// </summary>
         public LFloat angle = LFloat.zero;
-        /// <summary>
-        /// 位置
-        /// </summary>
         public LVector2 position;
-        /// <summary>
-        /// 比例
-        /// </summary>
         public LFloat scale = LFloat.one;
-        /// <summary>
-        /// 最大半径
-        /// </summary>
         public LFloat maxRadius { get; protected set; }
 
         public virtual void Build()
@@ -92,8 +178,8 @@ namespace LCollision2D
             {
                 if (points[i] == start)
                 {
-                    int last = (int)QuadtreeHelper.Repeat(i - 1, points.Length);
-                    int next = (int)QuadtreeHelper.Repeat(i + 1, points.Length);
+                    int last = (int)CollisionHelper.Repeat(i - 1, points.Length);
+                    int next = (int)CollisionHelper.Repeat(i + 1, points.Length);
                     if (points[last] == end || points[next] == end)
                     {
                         return true;
@@ -140,15 +226,15 @@ namespace LCollision2D
             nomals = new LVector2[points.Length];
             for (int i = 0; i < points.Length; i++)
             {
-                int last = (int)QuadtreeHelper.Repeat(i - 1, points.Length);
-                int cur = (int)QuadtreeHelper.Repeat(i, points.Length);
+                int last = (int)CollisionHelper.Repeat(i - 1, points.Length);
+                int cur = (int)CollisionHelper.Repeat(i, points.Length);
                 var _last_point = points[last];
                 var cur_point = points[cur];
                 for (int j = 0; j < bounds.Length; j++)
                 {
                     if (bounds[i].FindLine(_last_point, cur_point))
                     {
-                        var point = QuadtreeHelper.Point2LineIntersection(_last_point, cur_point, bounds[i].center);
+                        var point = CollisionHelper.Point2LineIntersection(_last_point, cur_point, bounds[i].center);
                         LVector2 normal = (point - bounds[i].center).normalized;
                         nomals[i] = normal;
                         break;
@@ -162,11 +248,11 @@ namespace LCollision2D
         {
             for (int i = 0; i < points.Count; i++)
             {
-                LVector2 last = points[(int)QuadtreeHelper.Repeat(i - 1, points.Count)];
+                LVector2 last = points[(int)CollisionHelper.Repeat(i - 1, points.Count)];
                 LVector2 cur = points[i];
-                LVector2 next = points[(int)QuadtreeHelper.Repeat(i + 1, points.Count)];
+                LVector2 next = points[(int)CollisionHelper.Repeat(i + 1, points.Count)];
 
-                if (QuadtreeHelper.IsPointInSegment(last, next, cur))
+                if (CollisionHelper.IsPointInSegment(last, next, cur))
                 {
                     points.RemoveAt(i);
                     RemoveUselessPoint(points);
@@ -178,9 +264,9 @@ namespace LCollision2D
 
         private static bool MoreThan180(LVector2[] points, int i)
         {
-            LVector2 last = points[(int)QuadtreeHelper.Repeat(i - 1, points.Length)];
+            LVector2 last = points[(int)CollisionHelper.Repeat(i - 1, points.Length)];
             LVector2 cur = points[i];
-            LVector2 next = points[(int)QuadtreeHelper.Repeat(i + 1, points.Length)];
+            LVector2 next = points[(int)CollisionHelper.Repeat(i + 1, points.Length)];
             var dir = cur - last;
             var dir2 = next - cur;
             return LVector3.Cross(dir, dir2).z < 0;
@@ -214,16 +300,16 @@ namespace LCollision2D
                         while (true)
                         {
                             j++;
-                            int cur = (int)QuadtreeHelper.Repeat(j, points.Length);
+                            int cur = (int)CollisionHelper.Repeat(j, points.Length);
                             if (!MoreThan180(points, cur))
                             {
-                                int last = (int)QuadtreeHelper.Repeat(cur - 1, points.Length);
-                                int next = (int)QuadtreeHelper.Repeat(cur + 1, points.Length);
+                                int last = (int)CollisionHelper.Repeat(cur - 1, points.Length);
+                                int next = (int)CollisionHelper.Repeat(cur + 1, points.Length);
 
                                 LVector2[] points_1 = new LVector2[3];
                                 for (int k = 0; k < 3; k++)
                                 {
-                                    points_1[k] = points[(int)QuadtreeHelper.Repeat(last + k, points.Length)];
+                                    points_1[k] = points[(int)CollisionHelper.Repeat(last + k, points.Length)];
                                 }
 
 
@@ -234,7 +320,7 @@ namespace LCollision2D
                                 int _index = 0;
                                 while (true)
                                 {
-                                    _next = (int)QuadtreeHelper.Repeat(_next, points.Length);
+                                    _next = (int)CollisionHelper.Repeat(_next, points.Length);
                                     points_2[_index] = points[_next];
                                     if (_next == last)
                                     {
@@ -282,35 +368,6 @@ namespace LCollision2D
             Radius = radius * scale;
             maxRadius = radius;
         }
-    }
-
-
-
-    /// <summary>
-    /// 射线
-    /// </summary>
-    public struct Ray
-    {
-        /// <summary>
-        /// 位置
-        /// </summary>
-        public LVector2 start;
-        /// <summary>
-        /// 方向
-        /// </summary>
-        public LVector2 direction;
-        public ShapeLayer layer;
-
-    }
-
-    /// <summary>
-    /// 射线击中的shape
-    /// </summary>
-    public struct RayHit
-    {
-        public LVector2 point;
-        public LFloat distance;
-        public Shape shape;
     }
 
 }
