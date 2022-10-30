@@ -3,7 +3,7 @@
 using System;
 
 
-namespace LMath
+namespace LockStep.Math
 {
     public struct LQuaternion {
         #region public members
@@ -77,7 +77,7 @@ namespace LMath
         public LVector3 eulerAngles {
             get {
                 LMatrix33 m = QuaternionToMatrix(this);
-                return (180 / Math.PI * MatrixToEuler(m));
+                return (180 / LMath.PI * MatrixToEuler(m));
             }
             set { this = Euler(value); }
         }
@@ -94,7 +94,7 @@ namespace LMath
         /// <returns></returns>
         public static LFloat Angle(LQuaternion a, LQuaternion b){
             LFloat single = Dot(a, b);
-            return Math.Acos(Math.Min(Math.Abs(single), LFloat.one)) * 2 * (180 / Math.PI);
+            return LMath.Acos(LMath.Min(LMath.Abs(single), LFloat.one)) * 2 * (180 / LMath.PI);
         }
 
         /// <summary>
@@ -105,14 +105,14 @@ namespace LMath
         /// <returns></returns>
         public static LQuaternion AngleAxis(LFloat angle, LVector3 axis){
             axis = axis.normalized;
-            angle = angle * Math.Deg2Rad;
+            angle = angle * LMath.Deg2Rad;
 
             LQuaternion q = new LQuaternion();
 
             LFloat halfAngle = angle * LFloat.half;
-            LFloat s = Math.Sin(halfAngle);
+            LFloat s = LMath.Sin(halfAngle);
 
-            q.w = Math.Cos(halfAngle);
+            q.w = LMath.Cos(halfAngle);
             q.x = s * axis.x;
             q.y = s * axis.y;
             q.z = s * axis.z;
@@ -147,14 +147,14 @@ namespace LMath
         /// <param name="z"></param>
         /// <returns></returns>
         public static LQuaternion Euler(LFloat x, LFloat y, LFloat z){
-            LFloat cX = Math.Cos(x * Math.PI / 360);
-            LFloat sX = Math.Sin(x * Math.PI / 360);
+            LFloat cX = LMath.Cos(x * LMath.PI / 360);
+            LFloat sX = LMath.Sin(x * LMath.PI / 360);
 
-            LFloat cY = Math.Cos(y * Math.PI / 360);
-            LFloat sY = Math.Sin(y * Math.PI / 360);
+            LFloat cY = LMath.Cos(y * LMath.PI / 360);
+            LFloat sY = LMath.Sin(y * LMath.PI / 360);
 
-            LFloat cZ = Math.Cos(z * Math.PI / 360);
-            LFloat sZ = Math.Sin(z * Math.PI / 360);
+            LFloat cZ = LMath.Cos(z * LMath.PI / 360);
+            LFloat sZ = LMath.Sin(z * LMath.PI / 360);
 
             LQuaternion qX = new LQuaternion(sX, LFloat.zero, LFloat.zero, cX);
             LQuaternion qY = new LQuaternion(LFloat.zero, sY, LFloat.zero, cY);
@@ -225,7 +225,7 @@ namespace LMath
                     a.w + t * (b.w - a.w));
             }
 
-            LFloat nor = Math.Sqrt(Dot(tmpQuat, tmpQuat));
+            LFloat nor = LMath.Sqrt(Dot(tmpQuat, tmpQuat));
             return new LQuaternion(tmpQuat.x / nor, tmpQuat.y / nor, tmpQuat.z / nor, tmpQuat.w / nor);
         }
 
@@ -264,7 +264,7 @@ namespace LMath
                 result = to;
             }
             else {
-                LFloat t = Math.Min(LFloat.one, maxDegreesDelta / num);
+                LFloat t = LMath.Min(LFloat.one, maxDegreesDelta / num);
                 result = LQuaternion.SlerpUnclamped(from, to, t);
             }
 
@@ -310,11 +310,11 @@ namespace LMath
 
 
             if (dot < 1) {
-                LFloat angle = Math.Acos(dot);
+                LFloat angle = LMath.Acos(dot);
                 LFloat sinadiv, sinat, sinaomt;
-                sinadiv = 1 / Math.Sin(angle);
-                sinat = Math.Sin(angle * t);
-                sinaomt = Math.Sin(angle * (1 - t));
+                sinadiv = 1 / LMath.Sin(angle);
+                sinat = LMath.Sin(angle * t);
+                sinaomt = LMath.Sin(angle * (1 - t));
                 tmpQuat.Set((q1.x * sinaomt + tmpQuat.x * sinat) * sinadiv,
                     (q1.y * sinaomt + tmpQuat.y * sinat) * sinadiv,
                     (q1.z * sinaomt + tmpQuat.z * sinat) * sinadiv,
@@ -372,15 +372,15 @@ namespace LMath
         /// <param name="angle"></param>
         /// <param name="axis"></param>
         public void ToAngleAxis(out LFloat angle, out LVector3 axis){
-            angle = 2 * Math.Acos(w);
+            angle = 2 * LMath.Acos(w);
             if (angle == 0) {
                 axis = LVector3.right;
                 return;
             }
 
-            LFloat div = 1 / Math.Sqrt(1 - w * w);
+            LFloat div = 1 / LMath.Sqrt(1 - w * w);
             axis = new LVector3(x * div, y * div, z * div);
-            angle = angle * 180 / Math.PI;
+            angle = angle * 180 / LMath.PI;
         }
 
         public override string ToString(){
@@ -404,28 +404,28 @@ namespace LMath
             LVector3 v = new LVector3();
             if (m[1, 2] < 1) {
                 if (m[1, 2] > -1) {
-                    v.x = Math.Asin(-m[1, 2]);
-                    v.y = Math.Atan2(m[0, 2], m[2, 2]);
-                    v.z = Math.Atan2(m[1, 0], m[1, 1]);
+                    v.x = LMath.Asin(-m[1, 2]);
+                    v.y = LMath.Atan2(m[0, 2], m[2, 2]);
+                    v.z = LMath.Atan2(m[1, 0], m[1, 1]);
                 }
                 else {
-                    v.x = Math.PI * LFloat.half;
-                    v.y = Math.Atan2(m[0, 1], m[0, 0]);
+                    v.x = LMath.PI * LFloat.half;
+                    v.y = LMath.Atan2(m[0, 1], m[0, 0]);
                     v.z = (LFloat) 0;
                 }
             }
             else {
-                v.x = -Math.PI * LFloat.half;
-                v.y = Math.Atan2(-m[0, 1], m[0, 0]);
+                v.x = -LMath.PI * LFloat.half;
+                v.y = LMath.Atan2(-m[0, 1], m[0, 0]);
                 v.z = (LFloat) 0;
             }
 
             for (int i = 0; i < 3; i++) {
                 if (v[i] < 0) {
-                    v[i] += Math.PI2;
+                    v[i] += LMath.PI2;
                 }
-                else if (v[i] > Math.PI2) {
-                    v[i] -= Math.PI2;
+                else if (v[i] > LMath.PI2) {
+                    v[i] -= LMath.PI2;
                 }
             }
 
@@ -470,7 +470,7 @@ namespace LMath
             LFloat root;
 
             if (fTrace > 0) {
-                root = Math.Sqrt(fTrace + 1);
+                root = LMath.Sqrt(fTrace + 1);
                 quat.w = LFloat.half * root;
                 root = LFloat.half / root;
                 quat.x = (m[2, 1] - m[1, 2]) * root;
@@ -491,7 +491,7 @@ namespace LMath
                 int j = s_iNext[i];
                 int k = s_iNext[j];
 
-                root = Math.Sqrt(m[i, i] - m[j, j] - m[k, k] + 1);
+                root = LMath.Sqrt(m[i, i] - m[j, j] - m[k, k] + 1);
                 if (root < 0) {
                     throw new IndexOutOfRangeException("error!");
                 }
@@ -503,7 +503,7 @@ namespace LMath
                 quat[k] = (m[k, i] + m[i, k]) * root;
             }
 
-            LFloat nor = Math.Sqrt(Dot(quat, quat));
+            LFloat nor = LMath.Sqrt(Dot(quat, quat));
             quat = new LQuaternion(quat.x / nor, quat.y / nor, quat.z / nor, quat.w / nor);
 
             return quat;
@@ -520,7 +520,7 @@ namespace LMath
 
             z /= mag;
 
-            LVector3 x = Math.Cross(upVec, z);
+            LVector3 x = LMath.Cross(upVec, z);
             mag = x.magnitude;
             if (mag <= 0) {
                 m = LMatrix33.identity;
@@ -528,7 +528,7 @@ namespace LMath
 
             x /= mag;
 
-            LVector3 y = Math.Cross(z, x);
+            LVector3 y = LMath.Cross(z, x);
 
             m[0, 0] = x.x;
             m[0, 1] = y.x;

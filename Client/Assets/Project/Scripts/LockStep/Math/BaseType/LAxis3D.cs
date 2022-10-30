@@ -1,5 +1,5 @@
 
-namespace LMath
+namespace LockStep.Math
 {
     public struct LAxis3D
     {
@@ -17,9 +17,9 @@ namespace LMath
 
         public LVector3 WorldToLocal(LVector3 vec)
         {
-            var _x = Math.Dot(x, vec);
-            var _y = Math.Dot(y, vec);
-            var _z = Math.Dot(z, vec);
+            var _x = LMath.Dot(x, vec);
+            var _y = LMath.Dot(y, vec);
+            var _z = LMath.Dot(z, vec);
             return new LVector3(_x, _y, _z);
         }
         public LVector3 LocalToWorld(LVector3 vec)

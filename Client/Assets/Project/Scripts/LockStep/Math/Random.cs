@@ -2,7 +2,7 @@
 
 using System;
 
-namespace LMath {
+namespace LockStep.Math {
     public partial struct Random {
         public ulong randSeed ;
         public Random(uint seed = 17){

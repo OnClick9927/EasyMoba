@@ -1,7 +1,7 @@
 
 using System;
 
-namespace LMath
+namespace LockStep.Math
 {
     public struct LMatrix33 : IEquatable<LMatrix33>
     {

@@ -1,9 +1,8 @@
-﻿namespace LCollision2D
+﻿namespace LockStep.LCollision2D
 {
     [System.Flags]
     public enum CollisionLayer
     {
-        _0 = 1,
         _1 = 2,
         _2 = 4,
         _3 = 8,

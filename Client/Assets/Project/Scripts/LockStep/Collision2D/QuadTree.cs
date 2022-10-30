@@ -1,17 +1,20 @@
 ﻿
-using LMath;
+using LockStep.Math;
 using System.Collections.Generic;
 
 
-namespace LCollision2D
+namespace LockStep.LCollision2D
 {
     public class QuadTree
     {
         private Node root;
         private LVector2 startSize;
-        public QuadTree(LVector2 startSize)
+        public readonly CollisionLayerConfig layer;
+
+        public QuadTree(LVector2 startSize, CollisionLayerConfig layer)
         {
             this.startSize = startSize;
+            this.layer = layer;
         }
 
         public List<Node> nodes = new List<Node>();
@@ -188,7 +191,7 @@ namespace LCollision2D
             {
                 for (int i = 0; i < node.shapes.Count; i++)
                 {
-                    if (CollisionHelper.CouldCollision(shape, node.shapes[i]))
+                    if (CollisionHelper.CouldCollision(shape, node.shapes[i], this))
                     {
                         result.Add(node.shapes[i]);
                     }
@@ -206,7 +209,7 @@ namespace LCollision2D
         }
         void GetRayCast(Node node, Ray ray, List<RayHit> hits)
         {
-            if (!CollisionHelper.CouldRaycastNode(ray, node.area,node.maxRadius)) return;
+            if (!CollisionHelper.CouldRaycastNode(ray, node.area, node.maxRadius)) return;
             if (node.HaveChildren())
             {
                 var children = node.GetChildren();

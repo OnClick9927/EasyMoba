@@ -3,7 +3,7 @@
 using System;
 using System.Runtime.CompilerServices;
 
-namespace LMath
+namespace LockStep.Math
 {
     [Serializable]
     public struct LFloat : IEquatable<LFloat>, IComparable<LFloat> {

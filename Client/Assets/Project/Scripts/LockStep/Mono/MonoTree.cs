@@ -1,5 +1,5 @@
-using LCollision2D;
-using LMath;
+using LockStep.LCollision2D;
+using LockStep.Math;
 using UnityEditor;
 using UnityEngine;
 
@@ -7,12 +7,12 @@ public class MonoTree : MonoBehaviour
 {
 
     public Vector2 v1;
-    public LCollision2D.QuadTree tree;
+    public LockStep.LCollision2D.QuadTree tree;
     public static MonoTree ins;
     private void Awake()
     {
         ins = this;
-        tree = new LCollision2D.QuadTree(v1.ToLVector2());
+        tree = new LockStep.LCollision2D.QuadTree(v1.ToLVector2(),new CollisionLayerConfig());
 
     }
     private void Update()

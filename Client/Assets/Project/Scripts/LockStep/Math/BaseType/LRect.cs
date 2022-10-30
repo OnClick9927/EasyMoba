@@ -1,6 +1,6 @@
 
 
-namespace LMath
+namespace LockStep.Math
 {
     [System.Serializable]
     public struct LRect {
@@ -168,8 +168,8 @@ namespace LMath
         public static LVector2 NormalizedToPoint(
             LRect rectangle,
             LVector2 normalizedRectCoordinates){
-            return new LVector2(Math.Lerp(rectangle.x, rectangle.xMax, normalizedRectCoordinates.x),
-                Math.Lerp(rectangle.y, rectangle.yMax, normalizedRectCoordinates.y));
+            return new LVector2(LMath.Lerp(rectangle.x, rectangle.xMax, normalizedRectCoordinates.x),
+                LMath.Lerp(rectangle.y, rectangle.yMax, normalizedRectCoordinates.y));
         }
 
 

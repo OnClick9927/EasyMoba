@@ -1,6 +1,6 @@
 
 
-namespace LMath.Util {
+namespace LockStep.Math.Util {
     public static class HashCodeExtension {
         class PrimerLUT
         {

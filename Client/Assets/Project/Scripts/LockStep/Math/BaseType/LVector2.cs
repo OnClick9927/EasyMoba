@@ -2,7 +2,7 @@
 using System;
 using System.Runtime.CompilerServices;
 
-namespace LMath
+namespace LockStep.Math
 {
     [Serializable]
     public struct LVector2 {
@@ -86,28 +86,28 @@ namespace LMath
         }
 
         public LVector2 Rotate( LFloat deg){
-            var rad = Math.Deg2Rad * deg;
+            var rad = LMath.Deg2Rad * deg;
             LFloat cos, sin;
-            Math.SinCos(out sin, out cos, rad);
+            LMath.SinCos(out sin, out cos, rad);
             return new LVector2(x * cos - y * sin, x * sin + y * cos);
         }
 
         public static LVector2 Min(LVector2 a, LVector2 b){
-            return new LVector2(true, Math.Min(a._x, b._x), Math.Min(a._y, b._y));
+            return new LVector2(true, LMath.Min(a._x, b._x), LMath.Min(a._y, b._y));
         }
 
         public static LVector2 Max(LVector2 a, LVector2 b){
-            return new LVector2(true, Math.Max(a._x, b._x), Math.Max(a._y, b._y));
+            return new LVector2(true, LMath.Max(a._x, b._x), LMath.Max(a._y, b._y));
         }
 
         public void Min(ref LVector2 r){
-            this._x = Math.Min(this._x, r._x);
-            this._y = Math.Min(this._y, r._y);
+            this._x = LMath.Min(this._x, r._x);
+            this._y = LMath.Min(this._y, r._y);
         }
 
         public void Max(ref LVector2 r){
-            this._x = Math.Max(this._x, r._x);
-            this._y = Math.Max(this._y, r._y);
+            this._x = LMath.Max(this._x, r._x);
+            this._y = LMath.Max(this._y, r._y);
         }
 
 
@@ -117,7 +117,7 @@ namespace LMath
                 return;
             }
 
-            long b = (long)Math.Sqrt(sqr);
+            long b = (long)LMath.Sqrt(sqr);
             this._x = (_x * LFloat.Precision / b);
             this._y = (_y * LFloat.Precision / b);
         }
@@ -136,7 +136,7 @@ namespace LMath
 
         public LFloat magnitude {
             get {
-                return new LFloat(true, Math.Sqrt(_x * _x + _y * _y));
+                return new LFloat(true, LMath.Sqrt(_x * _x + _y * _y));
             }
         }
 

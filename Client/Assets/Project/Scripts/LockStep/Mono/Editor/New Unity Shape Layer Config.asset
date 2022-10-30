@@ -9,7 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2066f163358b0934c8894b7bb956d80a, type: 3}
-  m_Name: New Layer Config
+  m_Script: {fileID: 11500000, guid: 41866b0289e219747b0ea8e40d7620fa, type: 3}
+  m_Name: New Unity Shape Layer Config
   m_EditorClassIdentifier: 
-  Layers: []

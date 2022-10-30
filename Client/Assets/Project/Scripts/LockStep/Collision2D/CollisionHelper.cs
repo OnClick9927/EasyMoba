@@ -1,8 +1,10 @@
 ﻿using IFramework;
-using LMath;
-using Math = LMath.Math;
+using LockStep.Math;
+using System.Collections.Generic;
+using System.Runtime.ConstrainedExecution;
+using LMath = LockStep.Math.LMath;
 
-namespace LCollision2D
+namespace LockStep.LCollision2D
 {
     public class CollisionHelper
     {
@@ -24,10 +26,10 @@ namespace LCollision2D
         {
             var point = shape.position;
 
-            LFloat xDistance = Math.Max(point.x - area.xMax, area.x - point.x);
-            LFloat yDistance = Math.Max(point.y - area.yMax, area.y - point.y);
-            xDistance = Math.Max(xDistance, LFloat.zero);
-            yDistance = Math.Max(yDistance, LFloat.zero);
+            LFloat xDistance = LMath.Max(point.x - area.xMax, area.x - point.x);
+            LFloat yDistance = LMath.Max(point.y - area.yMax, area.y - point.y);
+            xDistance = LMath.Max(xDistance, LFloat.zero);
+            yDistance = LMath.Max(yDistance, LFloat.zero);
 
             var xx = maxRadius + shape.maxRadius;
             return xDistance * xDistance + yDistance * yDistance < xx * xx;
@@ -57,7 +59,7 @@ namespace LCollision2D
         }
         private static bool IsRangeCross(LVector2 a, LVector2 b)
         {
-            return Math.Max(a.x._val, b.x._val) < Math.Min(a.y._val, b.y._val); ;
+            return LMath.Max(a.x._val, b.x._val) < LMath.Min(a.y._val, b.y._val); ;
         }
 
         // Ax+By+C=0 求ABC
@@ -122,7 +124,7 @@ namespace LCollision2D
         {
             var seg_dir = seg_end - seg_start;
             var dir = point - seg_start;
-            var percent = Math.Clamp01(LVector2.Dot(seg_dir, dir) / LVector2.Dot(dir, dir));
+            var percent = LMath.Clamp01(LVector2.Dot(seg_dir, dir) / LVector2.Dot(dir, dir));
             return seg_start + percent * seg_dir;
         }
         // 获取点到射线最近的一个点
@@ -130,9 +132,10 @@ namespace LCollision2D
         {
             var dir = point - ray_start;
 
-            LFloat percent = Math.Max(LFloat.zero, LVector2.Dot(ray_dir, dir) / LVector2.Dot(dir, dir));
+            LFloat percent = LMath.Max(LFloat.zero, LVector2.Dot(ray_dir, dir) / LVector2.Dot(dir, dir));
             return ray_start + percent * ray_dir;
         }
+
 
         // 点是否在线段上
         public static bool IsPointInSegment(LVector2 seg_start, LVector2 seg_end, LVector2 point)
@@ -187,9 +190,9 @@ namespace LCollision2D
             return true;
         }
         //-------------------------------------------------------------------------------
-        public static bool CouldCollision(Shape a, Shape b)
+        public static bool CouldCollision(Shape a, Shape b, QuadTree tree)
         {
-            if (!new LayerConfig().CouldLayerCollision(a.layer, b.layer)) return false;
+            if (!tree.layer.CouldLayerCollision(a.layer, b.layer)) return false;
             var dir = a.position - b.position;
             if (dir.sqrMagnitude > a.maxRadius * a.maxRadius + b.maxRadius * b.maxRadius)
             {
@@ -427,7 +430,7 @@ namespace LCollision2D
             }
             else
             {
-                hit = new RayHit() { point = point, distance = Math.Sqrt(sqrMagnitude) };
+                hit = new RayHit() { point = point, distance = LMath.Sqrt(sqrMagnitude) };
             }
             return index != -1;
         }
@@ -474,7 +477,7 @@ namespace LCollision2D
             var dir = point - c.position;
             if (dir.sqrMagnitude > c.Radius * c.Radius) return false;
 
-            var _base = Math.Sqrt(c.Radius * c.Radius - dir.sqrMagnitude);
+            var _base = LMath.Sqrt(c.Radius * c.Radius - dir.sqrMagnitude);
             var p1 = point + ray.direction * _base;
             var p2 = point - ray.direction * _base;
             var dis_1 = (p1 - ray.direction).sqrMagnitude;
@@ -483,23 +486,88 @@ namespace LCollision2D
             if (dis_1 < dis_2)
             {
                 hit.point = p1;
-                hit.distance = Math.Sqrt(dis_1);
+                hit.distance = LMath.Sqrt(dis_1);
             }
             else
             {
                 hit.point = p2;
-                hit.distance = Math.Sqrt(dis_2);
+                hit.distance = LMath.Sqrt(dis_2);
             }
             return true;
         }
 
         //-------------------------------------------------------------------------------
 
-        static LFloat SegmentPointSqrDistance(LVector2 x0, LVector2 u, LVector2 x)
+        public static LVector2 PositionCorrection(LVector2 lastPos, Shape shape, List<Shape> collisons)
         {
-            LFloat t = LVector2.Dot(x - x0, u) / u.sqrMagnitude;
-            return (x - (x0 + Math.Clamp(t, LFloat.zero, LFloat.one) * u)).sqrMagnitude;
+            if (!(shape is CircleShape)) return LVector2.zero;
+            CircleShape move = shape as CircleShape;
+            LVector2 light = LVector2.zero;
+            LVector2 cur = shape.position;
+            var dir = cur - lastPos;
+            for (int i = 0; i < collisons.Count; i++)
+            {
+                var c = collisons[i];
+                var name_b = c.GetType().Name;
+
+                switch (name_b)
+                {
+                    case nameof(CircleShape):
+                        {
+                            CircleShape cir = c as CircleShape;
+                            var normal = (lastPos - cir.position).normalized;
+                            var add_dir = normal;
+                            var _dir = move.position - cir.position;
+                            if (LVector2.Dot(normal, dir) > 0)
+                            {
+                                var length = cir.Radius + move.Radius - _dir.magnitude;
+                                add_dir *= length;
+                            }
+                            else
+                            {
+                                var length = cir.Radius + move.Radius + _dir.magnitude;
+                                add_dir *= length;
+                            }
+                            light += add_dir;
+                        }
+                        break;
+                    case nameof(PolygonShape):
+                        {
+                            PolygonShape p = c as PolygonShape;
+                            var move_dir = move.position - lastPos;
+                            for (int j = 0; j < p.points.Length; j++)
+                            {
+                                int last = (int)CollisionHelper.Repeat(j - 1, p.points.Length);
+                                int _cur = (int)CollisionHelper.Repeat(j, p.points.Length);
+                                var normal = p.nomals[j];
+
+                                if (LVector2.Dot(move_dir, normal) > 0) continue;
+                                var jiao = Point2LineIntersection(p.points[last], p.points[_cur], move.position);
+                                var _dir = shape.position - jiao;
+                                var add_dir = normal;
+
+                                if (LVector2.Dot(_dir, normal) > 0)
+                                {
+                                    var length = move.Radius - _dir.magnitude;
+                                    add_dir *= length;
+
+                                }
+                                else
+                                {
+                                    var length = move.Radius + _dir.magnitude;
+                                    add_dir *= length;
+
+                                }
+                                light += add_dir;
+
+                            }
+                        }
+                        break;
+                }
+            }
+            return light;
         }
+
 
     }
 }

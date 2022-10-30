@@ -6,7 +6,7 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 #endif
 
-namespace LMath
+namespace LockStep.Math
 {
     [Serializable]
     public struct LVector3 : IEquatable<LVector3>
@@ -84,7 +84,7 @@ namespace LMath
         {
             get
             {
-                return new LFloat(true, Math.Sqrt(_x * _x + _y * _y + _z * _z));
+                return new LFloat(true, LMath.Sqrt(_x * _x + _y * _y + _z * _z));
             }
         }
 
@@ -102,7 +102,7 @@ namespace LMath
 
         public LVector3 abs
         {
-            get { return new LVector3(true, Math.Abs(this._x), Math.Abs(this._y), Math.Abs(this._z)); }
+            get { return new LVector3(true, LMath.Abs(this._x), LMath.Abs(this._y), LMath.Abs(this._z)); }
         }
 
         public LVector3 Normalize()
@@ -117,7 +117,7 @@ namespace LMath
             {
                 return LVector3.zero;
             }
-            long b = Math.Sqrt(sqr);
+            long b = LMath.Sqrt(sqr);
             _x = (_x * LFloat.Precision / b);
             _y = (_y * LFloat.Precision / b);
             _z = (_z * LFloat.Precision / b);
@@ -135,7 +135,7 @@ namespace LMath
                 }
 
                 var ret = new LVector3();
-                long b = Math.Sqrt(sqr);
+                long b = LMath.Sqrt(sqr);
                 ret._x = (_x * LFloat.Precision / b);
                 ret._y = (_y * LFloat.Precision / b);
                 ret._z = (_z * LFloat.Precision / b);

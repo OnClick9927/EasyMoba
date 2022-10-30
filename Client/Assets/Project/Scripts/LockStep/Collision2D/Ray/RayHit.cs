@@ -1,6 +1,6 @@
-﻿using LMath;
+﻿using LockStep.Math;
 
-namespace LCollision2D
+namespace LockStep.LCollision2D
 {
     /// <summary>
     /// 射线击中的shape

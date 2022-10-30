@@ -2,7 +2,7 @@
 
 using System;
 
-namespace LMath
+namespace LockStep.Math
 {
     public struct LVector2Int : IEquatable<LVector2Int> {
         public class Mathf {

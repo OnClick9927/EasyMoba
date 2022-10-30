@@ -1,0 +1,79 @@
+{
+    "Layers": [
+        {
+            "name": "wall",
+            "layer": 2,
+            "collinons": 32768
+        },
+        {
+            "name": "",
+            "layer": 4,
+            "collinons": 0
+        },
+        {
+            "name": "",
+            "layer": 8,
+            "collinons": 0
+        },
+        {
+            "name": "",
+            "layer": 16,
+            "collinons": 0
+        },
+        {
+            "name": "",
+            "layer": 32,
+            "collinons": 0
+        },
+        {
+            "name": "",
+            "layer": 64,
+            "collinons": 0
+        },
+        {
+            "name": "",
+            "layer": 128,
+            "collinons": 0
+        },
+        {
+            "name": "",
+            "layer": 256,
+            "collinons": 0
+        },
+        {
+            "name": "",
+            "layer": 512,
+            "collinons": 0
+        },
+        {
+            "name": "",
+            "layer": 1024,
+            "collinons": 0
+        },
+        {
+            "name": "",
+            "layer": 2048,
+            "collinons": 0
+        },
+        {
+            "name": "",
+            "layer": 4096,
+            "collinons": 0
+        },
+        {
+            "name": "",
+            "layer": 8192,
+            "collinons": 0
+        },
+        {
+            "name": "",
+            "layer": 16384,
+            "collinons": 0
+        },
+        {
+            "name": "",
+            "layer": 32768,
+            "collinons": 2
+        }
+    ]
+}

@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace LMath
+namespace LockStep.Math
 {
-    public static partial class Math
+    public static partial class LMath
     {
         public const long LPIQuad = 785398L;  //0.7853981
         public const long LPIHalf = 1570796L;  //1.5707963
@@ -30,12 +30,12 @@ namespace LMath
                     return 0;
                 }
 
-                return x < 0 ? Math.LPI : 0;
+                return x < 0 ? LMath.LPI : 0;
             }
 
             if (x == 0)
             {
-                return y > 0 ? Math.LPIHalf : -Math.LPIHalf;
+                return y > 0 ? LMath.LPIHalf : -LMath.LPIHalf;
             }
 
             //决定象限
@@ -69,20 +69,20 @@ namespace LMath
             {
                 return info.offset;
             }
-            var deg = _LutATan(factor) - Math.LPIQuad;
+            var deg = _LutATan(factor) - LMath.LPIQuad;
             return info.sign * deg + info.offset;
         }
 
         private static LutAtan2Helper[] idx2LutInfo = new LutAtan2Helper[] {
-            new LutAtan2Helper(-1, Math.LPIQuad),
-            new LutAtan2Helper(1, Math.LPIQuad),
-            new LutAtan2Helper(1, -Math.LPIQuad),
-            new LutAtan2Helper(-1, -Math.LPIQuad),
+            new LutAtan2Helper(-1, LMath.LPIQuad),
+            new LutAtan2Helper(1, LMath.LPIQuad),
+            new LutAtan2Helper(1, -LMath.LPIQuad),
+            new LutAtan2Helper(-1, -LMath.LPIQuad),
 
-            new LutAtan2Helper(1, Math.LPIQuad * 3),
-            new LutAtan2Helper(-1, Math.LPIQuad * 3),
-            new LutAtan2Helper(-1, -Math.LPIQuad * 3),
-            new LutAtan2Helper(1, -Math.LPIQuad * 3),
+            new LutAtan2Helper(1, LMath.LPIQuad * 3),
+            new LutAtan2Helper(-1, LMath.LPIQuad * 3),
+            new LutAtan2Helper(-1, -LMath.LPIQuad * 3),
+            new LutAtan2Helper(1, -LMath.LPIQuad * 3),
         };
         public struct LutAtan2Helper
         {
@@ -98,7 +98,7 @@ namespace LMath
 
         public static long _LutATan(LFloat ydx)
         {
-            if (ydx >= LUTAtan2.MaxQueryIdx) return Math.LPIHalf;
+            if (ydx >= LUTAtan2.MaxQueryIdx) return LMath.LPIHalf;
             var iydx = (int)ydx;
             var startIdx = LUTAtan2._startIdx[iydx - 1];
             var size = LUTAtan2._arySize[iydx - 1];
@@ -148,9 +148,9 @@ namespace LMath
 
         private static int _GetIdx(LFloat radians)
         {
-            var rawVal = radians._val % Math.LPI2;
-            if (rawVal < 0) rawVal += Math.LPI2;
-            var val = new LFloat(true, rawVal) / Math.PI2;
+            var rawVal = radians._val % LMath.LPI2;
+            if (rawVal < 0) rawVal += LMath.LPI2;
+            var val = new LFloat(true, rawVal) / LMath.PI2;
             var idx = (int)(val * LUTCos.COUNT);
             idx = Clamp(idx, 0, LUTCos.COUNT);
             return idx;
@@ -212,7 +212,7 @@ namespace LMath
                 return 0;
             }
 
-            return (int)Math.Sqrt32((uint)a);
+            return (int)LMath.Sqrt32((uint)a);
         }
 
         public static long Sqrt(long a)
@@ -224,10 +224,10 @@ namespace LMath
 
             if (a <= (long)(0xffffffffu))
             {
-                return (long)Math.Sqrt32((uint)a);
+                return (long)LMath.Sqrt32((uint)a);
             }
 
-            return (long)Math.Sqrt64((ulong)a);
+            return (long)LMath.Sqrt64((ulong)a);
         }
 
         public static LFloat Sqrt(LFloat a)
@@ -602,21 +602,21 @@ namespace LMath
         {
             LVector3 up = LVector3.up;
             LVector3 vInt = Cross(LVector3.up, forward);
-            return Math.Transform(ref point, ref vInt, ref up, ref forward, ref trans);
+            return LMath.Transform(ref point, ref vInt, ref up, ref forward, ref trans);
         }
 
         public static LVector3 Transform(LVector3 point, LVector3 forward, LVector3 trans)
         {
             LVector3 up = LVector3.up;
             LVector3 vInt = Cross(LVector3.up, forward);
-            return Math.Transform(ref point, ref vInt, ref up, ref forward, ref trans);
+            return LMath.Transform(ref point, ref vInt, ref up, ref forward, ref trans);
         }
 
         public static LVector3 Transform(LVector3 point, LVector3 forward, LVector3 trans, LVector3 scale)
         {
             LVector3 up = LVector3.up;
             LVector3 vInt = Cross(LVector3.up, forward);
-            return Math.Transform(ref point, ref vInt, ref up, ref forward, ref trans, ref scale);
+            return LMath.Transform(ref point, ref vInt, ref up, ref forward, ref trans, ref scale);
         }
 
         public static LVector3 MoveTowards(LVector3 from, LVector3 to, LFloat dt)
@@ -632,7 +632,7 @@ namespace LMath
 
         public static LFloat AngleInt(LVector3 lhs, LVector3 rhs)
         {
-            return Math.Acos(Dot(lhs, rhs));
+            return LMath.Acos(Dot(lhs, rhs));
         }
 #if UNITY_5_3_OR_NEWER
 
@@ -668,22 +668,22 @@ namespace LMath
         public static LVector2 ToLVector2(this Vector2 vec)
         {
             return new LVector2(
-                Math.ToLFloat(vec.x),
-                Math.ToLFloat(vec.y));
+                LMath.ToLFloat(vec.x),
+                LMath.ToLFloat(vec.y));
         }
 
         public static LVector3 ToLVector3(this Vector3 vec)
         {
             return new LVector3(
-                Math.ToLFloat(vec.x),
-                Math.ToLFloat(vec.y),
-                Math.ToLFloat(vec.z));
+                LMath.ToLFloat(vec.x),
+                LMath.ToLFloat(vec.y),
+                LMath.ToLFloat(vec.z));
         }
         public static LVector2 ToLVector2XZ(this Vector3 vec)
         {
             return new LVector2(
-                Math.ToLFloat(vec.x),
-                Math.ToLFloat(vec.z));
+                LMath.ToLFloat(vec.x),
+                LMath.ToLFloat(vec.z));
         }
         public static Vector2 ToVector2(this LVector2 vec)
         {
@@ -733,15 +733,15 @@ namespace LMath
 
         public static LVector2Int Floor(this LVector2 vec)
         {
-            return new LVector2Int(Math.FloorToInt(vec.x), Math.FloorToInt(vec.y));
+            return new LVector2Int(LMath.FloorToInt(vec.x), LMath.FloorToInt(vec.y));
         }
 
         public static LVector3Int Floor(this LVector3 vec)
         {
             return new LVector3Int(
-                Math.FloorToInt(vec.x),
-                Math.FloorToInt(vec.y),
-                Math.FloorToInt(vec.z)
+                LMath.FloorToInt(vec.x),
+                LMath.FloorToInt(vec.y),
+                LMath.FloorToInt(vec.z)
             );
         }
         public static LVector2 RightVec(this LVector2 vec)

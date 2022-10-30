@@ -1,7 +1,7 @@
 // Copyright 2019 谭杰鹏. All Rights Reserved //https://github.com/JiepengTan 
 
 
-namespace LMath
+namespace LockStep.Math
 {
    
     public struct LAxis2D

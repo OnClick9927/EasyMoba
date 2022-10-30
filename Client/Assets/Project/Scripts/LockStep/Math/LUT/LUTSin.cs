@@ -1,7 +1,7 @@
 
-namespace LMath
+namespace LockStep.Math
 {
-    partial class Math
+    partial class LMath
     {
         static class LUTSin
         {

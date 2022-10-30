@@ -2,7 +2,7 @@
 using System;
 
 
-namespace LMath
+namespace LockStep.Math
 {
     /// <summary>
     ///   <para>Representation of 3D vectors and points using integers.</para>

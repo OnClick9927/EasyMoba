@@ -1,10 +1,10 @@
 ﻿
-using LMath;
+using LockStep.Math;
 using System;
 using System.Collections.Generic;
 using UnityEngine.Purchasing;
 
-namespace LCollision2D
+namespace LockStep.LCollision2D
 {
     public class Node
     {

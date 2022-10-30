@@ -1,15 +1,15 @@
-﻿using LCollision2D;
-using LMath;
+﻿using LockStep.LCollision2D;
+using LockStep.Math;
 using System.Collections.Generic;
 using UnityEngine;
-using Math = LMath.Math;
+using LMath = LockStep.Math.LMath;
 
 public class CircleShapeMono : MonoBehaviour
 {
     public Color c;
     private CircleShape shape;
     public float radius;
-    private LCollision2D.QuadTree tree { get { return MonoTree.ins.tree; } }
+    private LockStep.LCollision2D.QuadTree tree { get { return MonoTree.ins.tree; } }
     private List<Shape> result = new List<Shape>();
     private void Awake()
     {
@@ -46,7 +46,7 @@ public class CircleShapeMono : MonoBehaviour
         // 绘制圆环
         Vector3 beginPoint = Vector3.zero;
         Vector3 firstPoint = Vector3.zero;
-        for (float theta = 0; theta < 2 * Math.PI; theta += m_Theta)
+        for (float theta = 0; theta < 2 * LMath.PI; theta += m_Theta)
         {
             float x = radius * UnityEngine.Mathf.Cos(theta);
             float z = radius * UnityEngine.Mathf.Sin(theta);
