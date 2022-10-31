@@ -3,11 +3,8 @@ using System.Collections.Generic;
 
 namespace LockStep.LCollision2D
 {
-
-
     public class LogicUnit
     {
-
         public class CollisionPart
         {
             private List<Shape> last_result = new List<Shape>();
