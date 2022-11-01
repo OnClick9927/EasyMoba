@@ -12,12 +12,12 @@
             "content": "{ Name = \"LoginPanel\",ViewType = require(\"UI.LoginPanel.LoginPanelView\") },"
         },
         {
-            "panelName": "MainPanel",
-            "content": "{ Name = \"MainPanel\",ViewType = require(\"UI.MainPanel.MainPanelView\") },"
-        },
-        {
             "panelName": "MatchPanel",
             "content": "{ Name = \"MatchPanel\",ViewType = require(\"UI.MatchPanel.MatchPanelView\") },"
+        },
+        {
+            "panelName": "MainPanel",
+            "content": "{ Name = \"MainPanel\",ViewType = require(\"UI.MainPanel.MainPanelView\") },"
         }
     ]
 }

@@ -36,14 +36,19 @@ end
 ---@param data SPMatchSuccess
 local function OnMatchSucess(data)
     GameTools.CloseUI(PanelNames.MatchPanel)
-
+    -- Battle.StartGame(BattlePlayMode.Normal, data)
 end
 
 NetEvents.SetHandler(NetEventDefine.SCMatch, OnSCMatch)
 NetEvents.SetHandler(NetEventDefine.SCDisMatch, OnSCDisMatch)
 NetEvents.SetHandler(NetEventDefine.SPMatchSuccess, OnMatchSucess)
 
+local function LocalMatch()
+    Battle.StartGame(BattlePlayMode.Normal, "local", { Models.PlayerModel:GetRoleID() })
+end
+
 return {
     Match = Match,
-    DisMacth = DisMacth
+    DisMacth = DisMacth,
+    LocalMatch = LocalMatch
 }

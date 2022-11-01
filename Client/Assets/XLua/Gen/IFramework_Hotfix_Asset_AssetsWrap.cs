@@ -46,7 +46,7 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.CLS_IDX, "PrepareAssets", _m_PrepareAssets_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "Instantiate", _m_Instantiate_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "InstantiateAsync", _m_InstantiateAsync_xlua_st_);
-            Utils.RegisterFunc(L, Utils.CLS_IDX, "Destory", _m_Destory_xlua_st_);
+            Utils.RegisterFunc(L, Utils.CLS_IDX, "Destroy", _m_Destroy_xlua_st_);
             
 			
             
@@ -474,7 +474,7 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_Destory_xlua_st_(RealStatePtr L)
+        static int _m_Destroy_xlua_st_(RealStatePtr L)
         {
 		    try {
             

@@ -15,12 +15,12 @@ using System.Collections.Generic;
 namespace XLua.CSObjectWrap
 {
     using Utils = XLua.Utils;
-    public class EasyMobaCSBattleFrameWrap 
+    public class CSBattleFrameWrap 
     {
         public static void __Register(RealStatePtr L)
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			System.Type type = typeof(EasyMoba.CSBattleFrame);
+			System.Type type = typeof(CSBattleFrame);
 			Utils.BeginObjectRegister(type, L, translator, 0, 0, 4, 4);
 			
 			
@@ -58,7 +58,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					EasyMoba.CSBattleFrame gen_ret = new EasyMoba.CSBattleFrame();
+					CSBattleFrame gen_ret = new CSBattleFrame();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -68,7 +68,7 @@ namespace XLua.CSObjectWrap
 			catch(System.Exception gen_e) {
 				return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
 			}
-            return LuaAPI.luaL_error(L, "invalid arguments to EasyMoba.CSBattleFrame constructor!");
+            return LuaAPI.luaL_error(L, "invalid arguments to CSBattleFrame constructor!");
             
         }
         
@@ -88,7 +88,7 @@ namespace XLua.CSObjectWrap
 		    try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			
-                EasyMoba.CSBattleFrame gen_to_be_invoked = (EasyMoba.CSBattleFrame)translator.FastGetCSObj(L, 1);
+                CSBattleFrame gen_to_be_invoked = (CSBattleFrame)translator.FastGetCSObj(L, 1);
                 LuaAPI.lua_pushstring(L, gen_to_be_invoked.roomID);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
@@ -102,7 +102,7 @@ namespace XLua.CSObjectWrap
 		    try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			
-                EasyMoba.CSBattleFrame gen_to_be_invoked = (EasyMoba.CSBattleFrame)translator.FastGetCSObj(L, 1);
+                CSBattleFrame gen_to_be_invoked = (CSBattleFrame)translator.FastGetCSObj(L, 1);
                 LuaAPI.xlua_pushinteger(L, gen_to_be_invoked.frameID);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
@@ -116,7 +116,7 @@ namespace XLua.CSObjectWrap
 		    try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			
-                EasyMoba.CSBattleFrame gen_to_be_invoked = (EasyMoba.CSBattleFrame)translator.FastGetCSObj(L, 1);
+                CSBattleFrame gen_to_be_invoked = (CSBattleFrame)translator.FastGetCSObj(L, 1);
                 LuaAPI.lua_pushint64(L, gen_to_be_invoked.roleID);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
@@ -130,7 +130,7 @@ namespace XLua.CSObjectWrap
 		    try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			
-                EasyMoba.CSBattleFrame gen_to_be_invoked = (EasyMoba.CSBattleFrame)translator.FastGetCSObj(L, 1);
+                CSBattleFrame gen_to_be_invoked = (CSBattleFrame)translator.FastGetCSObj(L, 1);
                 translator.Push(L, gen_to_be_invoked.data);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
@@ -146,7 +146,7 @@ namespace XLua.CSObjectWrap
 		    try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			
-                EasyMoba.CSBattleFrame gen_to_be_invoked = (EasyMoba.CSBattleFrame)translator.FastGetCSObj(L, 1);
+                CSBattleFrame gen_to_be_invoked = (CSBattleFrame)translator.FastGetCSObj(L, 1);
                 gen_to_be_invoked.roomID = LuaAPI.lua_tostring(L, 2);
             
             } catch(System.Exception gen_e) {
@@ -161,7 +161,7 @@ namespace XLua.CSObjectWrap
 		    try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			
-                EasyMoba.CSBattleFrame gen_to_be_invoked = (EasyMoba.CSBattleFrame)translator.FastGetCSObj(L, 1);
+                CSBattleFrame gen_to_be_invoked = (CSBattleFrame)translator.FastGetCSObj(L, 1);
                 gen_to_be_invoked.frameID = LuaAPI.xlua_tointeger(L, 2);
             
             } catch(System.Exception gen_e) {
@@ -176,7 +176,7 @@ namespace XLua.CSObjectWrap
 		    try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			
-                EasyMoba.CSBattleFrame gen_to_be_invoked = (EasyMoba.CSBattleFrame)translator.FastGetCSObj(L, 1);
+                CSBattleFrame gen_to_be_invoked = (CSBattleFrame)translator.FastGetCSObj(L, 1);
                 gen_to_be_invoked.roleID = LuaAPI.lua_toint64(L, 2);
             
             } catch(System.Exception gen_e) {
@@ -191,8 +191,8 @@ namespace XLua.CSObjectWrap
 		    try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			
-                EasyMoba.CSBattleFrame gen_to_be_invoked = (EasyMoba.CSBattleFrame)translator.FastGetCSObj(L, 1);
-                gen_to_be_invoked.data = (EasyMoba.FrameData)translator.GetObject(L, 2, typeof(EasyMoba.FrameData));
+                CSBattleFrame gen_to_be_invoked = (CSBattleFrame)translator.FastGetCSObj(L, 1);
+                gen_to_be_invoked.data = (FrameData)translator.GetObject(L, 2, typeof(FrameData));
             
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);

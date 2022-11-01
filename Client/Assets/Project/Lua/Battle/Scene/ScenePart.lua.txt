@@ -1,0 +1,15 @@
+
+
+
+local function OnSceneLoadCompelete()
+    -- body
+end
+
+local function LoadScene()
+    Ctrls.SceneCtrl.LoadScene(ResDefine.Scene.Battle, OnSceneLoadCompelete)
+end
+
+return {
+    LoadScene = LoadScene
+
+}

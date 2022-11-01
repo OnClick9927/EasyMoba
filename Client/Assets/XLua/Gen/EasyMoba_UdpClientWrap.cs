@@ -121,7 +121,7 @@ namespace XLua.CSObjectWrap
                     string _roomid = LuaAPI.lua_tostring(L, 2);
                     long _roleid = LuaAPI.lua_toint64(L, 3);
                     int _frame = LuaAPI.xlua_tointeger(L, 4);
-                    string _op = LuaAPI.lua_tostring(L, 5);
+                    FrameData _op = (FrameData)translator.GetObject(L, 5, typeof(FrameData));
                     
                     gen_to_be_invoked.SendBattleFrame( _roomid, _roleid, _frame, _op );
                     
@@ -177,9 +177,9 @@ namespace XLua.CSObjectWrap
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			    int gen_param_count = LuaAPI.lua_gettop(L);
 			EasyMoba.UdpClient gen_to_be_invoked = (EasyMoba.UdpClient)translator.FastGetCSObj(L, 1);
-                System.Action<EasyMoba.SPBattleFrame> gen_delegate = translator.GetDelegate<System.Action<EasyMoba.SPBattleFrame>>(L, 3);
+                System.Action<SPBattleFrame> gen_delegate = translator.GetDelegate<System.Action<SPBattleFrame>>(L, 3);
                 if (gen_delegate == null) {
-                    return LuaAPI.luaL_error(L, "#3 need System.Action<EasyMoba.SPBattleFrame>!");
+                    return LuaAPI.luaL_error(L, "#3 need System.Action<SPBattleFrame>!");
                 }
 				
 				if (gen_param_count == 3)

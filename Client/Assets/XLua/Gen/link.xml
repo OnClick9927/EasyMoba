@@ -11,6 +11,10 @@
 		<type fullname="IFramework.Hotfix.Lua.LuaField" preserve="all"/>
 		<type fullname="IFramework.Hotfix.Lua.LuaBehaviour" preserve="all"/>
 		<type fullname="Tutorial.DerivedClass+TestEnumInner" preserve="all"/>
+		<type fullname="FrameData" preserve="all"/>
+		<type fullname="CSBattleFrame" preserve="all"/>
+		<type fullname="SPBattleFrame" preserve="all"/>
+		<type fullname="MatchRoomType" preserve="all"/>
 		<type fullname="LuaCallCs" preserve="all"/>
 		<type fullname="Tutorial.CSCallLua" preserve="all"/>
 		<type fullname="Tutorial.ByFile" preserve="all"/>
@@ -59,9 +63,6 @@
 		<type fullname="EasyMoba.UpdatePanel" preserve="all"/>
 		<type fullname="EasyMoba.UpdatePanelView" preserve="all"/>
 		<type fullname="EasyMoba.UpdateUIAsset" preserve="all"/>
-		<type fullname="EasyMoba.FrameData" preserve="all"/>
-		<type fullname="EasyMoba.CSBattleFrame" preserve="all"/>
-		<type fullname="EasyMoba.SPBattleFrame" preserve="all"/>
 		<type fullname="EasyMoba.UdpClient" preserve="all"/>
 		<type fullname="IFramework.Game" preserve="all"/>
 		<type fullname="IFramework.IAwaterEx" preserve="all"/>
@@ -118,6 +119,7 @@
 		<type fullname="IFramework.Hotfix.Asset.LocalSetting" preserve="all"/>
 		<type fullname="IFramework.Hotfix.Asset.AssetExample" preserve="all"/>
 		<type fullname="IFramework.Singleton.MonoSingletonPath" preserve="all"/>
+		<type fullname="FrameData+OPJoyStick" preserve="all"/>
 		<type fullname="Tutorial.CSCallLua+DClass" preserve="all"/>
 		<type fullname="LockStep.Math.LVector2Int+Mathf" preserve="all"/>
 		<type fullname="LockStep.Math.LVector3Int+Mathf" preserve="all"/>

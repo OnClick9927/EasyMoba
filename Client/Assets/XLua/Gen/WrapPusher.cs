@@ -36,6 +36,7 @@ namespace XLua
 				translator.RegisterPushAndGetAndUpdate<UnityEngine.Ray2D>(translator.PushUnityEngineRay2D, translator.Get, translator.UpdateUnityEngineRay2D);
 				translator.RegisterPushAndGetAndUpdate<Tutorial.TestEnum>(translator.PushTutorialTestEnum, translator.Get, translator.UpdateTutorialTestEnum);
 				translator.RegisterPushAndGetAndUpdate<Tutorial.DerivedClass.TestEnumInner>(translator.PushTutorialDerivedClassTestEnumInner, translator.Get, translator.UpdateTutorialDerivedClassTestEnumInner);
+				translator.RegisterPushAndGetAndUpdate<MatchRoomType>(translator.PushMatchRoomType, translator.Get, translator.UpdateMatchRoomType);
 			
 			}
         }
@@ -740,6 +741,90 @@ namespace XLua
             }
         }
         
+        int MatchRoomType_TypeID = -1;
+		int MatchRoomType_EnumRef = -1;
+        
+        public void PushMatchRoomType(RealStatePtr L, MatchRoomType val)
+        {
+            if (MatchRoomType_TypeID == -1)
+            {
+			    bool is_first;
+                MatchRoomType_TypeID = getTypeId(L, typeof(MatchRoomType), out is_first);
+				
+				if (MatchRoomType_EnumRef == -1)
+				{
+				    Utils.LoadCSTable(L, typeof(MatchRoomType));
+				    MatchRoomType_EnumRef = LuaAPI.luaL_ref(L, LuaIndexes.LUA_REGISTRYINDEX);
+				}
+				
+            }
+			
+			if (LuaAPI.xlua_tryget_cachedud(L, (int)val, MatchRoomType_EnumRef) == 1)
+            {
+			    return;
+			}
+			
+            IntPtr buff = LuaAPI.xlua_pushstruct(L, 4, MatchRoomType_TypeID);
+            if (!CopyByValue.Pack(buff, 0, (int)val))
+            {
+                throw new Exception("pack fail fail for MatchRoomType ,value="+val);
+            }
+			
+			LuaAPI.lua_getref(L, MatchRoomType_EnumRef);
+			LuaAPI.lua_pushvalue(L, -2);
+			LuaAPI.xlua_rawseti(L, -2, (int)val);
+			LuaAPI.lua_pop(L, 1);
+			
+        }
+		
+        public void Get(RealStatePtr L, int index, out MatchRoomType val)
+        {
+		    LuaTypes type = LuaAPI.lua_type(L, index);
+            if (type == LuaTypes.LUA_TUSERDATA )
+            {
+			    if (LuaAPI.xlua_gettypeid(L, index) != MatchRoomType_TypeID)
+				{
+				    throw new Exception("invalid userdata for MatchRoomType");
+				}
+				
+                IntPtr buff = LuaAPI.lua_touserdata(L, index);
+				int e;
+                if (!CopyByValue.UnPack(buff, 0, out e))
+                {
+                    throw new Exception("unpack fail for MatchRoomType");
+                }
+				val = (MatchRoomType)e;
+                
+            }
+            else
+            {
+                val = (MatchRoomType)objectCasters.GetCaster(typeof(MatchRoomType))(L, index, null);
+            }
+        }
+		
+        public void UpdateMatchRoomType(RealStatePtr L, int index, MatchRoomType val)
+        {
+		    
+            if (LuaAPI.lua_type(L, index) == LuaTypes.LUA_TUSERDATA)
+            {
+			    if (LuaAPI.xlua_gettypeid(L, index) != MatchRoomType_TypeID)
+				{
+				    throw new Exception("invalid userdata for MatchRoomType");
+				}
+				
+                IntPtr buff = LuaAPI.lua_touserdata(L, index);
+                if (!CopyByValue.Pack(buff, 0,  (int)val))
+                {
+                    throw new Exception("pack fail for MatchRoomType ,value="+val);
+                }
+            }
+			
+            else
+            {
+                throw new Exception("try to update a data with lua type:" + LuaAPI.lua_type(L, index));
+            }
+        }
+        
         
 		// table cast optimze
 		
@@ -811,6 +896,12 @@ namespace XLua
 				translator.PushTutorialDerivedClassTestEnumInner(L, array[index]);
 				return true;
 			}
+			else if (type == typeof(MatchRoomType[]))
+			{
+			    MatchRoomType[] array = obj as MatchRoomType[];
+				translator.PushMatchRoomType(L, array[index]);
+				return true;
+			}
             return false;
 		}
 		
@@ -874,6 +965,12 @@ namespace XLua
 			else if (type == typeof(Tutorial.DerivedClass.TestEnumInner[]))
 			{
 			    Tutorial.DerivedClass.TestEnumInner[] array = obj as Tutorial.DerivedClass.TestEnumInner[];
+				translator.Get(L, obj_idx, out array[array_idx]);
+				return true;
+			}
+			else if (type == typeof(MatchRoomType[]))
+			{
+			    MatchRoomType[] array = obj as MatchRoomType[];
 				translator.Get(L, obj_idx, out array[array_idx]);
 				return true;
 			}

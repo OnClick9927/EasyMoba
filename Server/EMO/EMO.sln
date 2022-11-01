@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32825.248
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EMO", "EMO\EMO.csproj", "{CB3EC4A8-1371-471C-8AA3-ACF4FAD6EE26}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EMO", "EMO\EMO.csproj", "{CB3EC4A8-1371-471C-8AA3-ACF4FAD6EE26}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LockStep", "LockStep\LockStep.csproj", "{4BD417B3-386F-4386-9DED-0818497DE56D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IFramework", "IFramework\IFramework.csproj", "{DFC940CC-6A3F-426D-90AA-E0DFFB98F63E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{CB3EC4A8-1371-471C-8AA3-ACF4FAD6EE26}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CB3EC4A8-1371-471C-8AA3-ACF4FAD6EE26}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CB3EC4A8-1371-471C-8AA3-ACF4FAD6EE26}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BD417B3-386F-4386-9DED-0818497DE56D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BD417B3-386F-4386-9DED-0818497DE56D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BD417B3-386F-4386-9DED-0818497DE56D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BD417B3-386F-4386-9DED-0818497DE56D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DFC940CC-6A3F-426D-90AA-E0DFFB98F63E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DFC940CC-6A3F-426D-90AA-E0DFFB98F63E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DFC940CC-6A3F-426D-90AA-E0DFFB98F63E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DFC940CC-6A3F-426D-90AA-E0DFFB98F63E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

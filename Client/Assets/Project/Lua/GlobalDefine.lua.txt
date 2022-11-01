@@ -19,6 +19,7 @@ Ctrls = require("Ctrl.Ctrls")
 ---@type UIItemPool
 UIItems = UIItemPool(UI)
 PanelNames = require("UI.PanelNames")
+require("Battle.Battle.lua")
 
 ---------------------------------------------------------------------------------------
 require("GameTools")

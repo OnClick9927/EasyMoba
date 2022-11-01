@@ -23,7 +23,7 @@ namespace XLua.CSObjectWrap
 			System.Type type = typeof(IFramework.Hotfix.Asset.Assets.InstantiateObjectOperation);
 			Utils.BeginObjectRegister(type, L, translator, 0, 2, 2, 1);
 			
-			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Destory", _m_Destory);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Destroy", _m_Destroy);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetAwaiter", _m_GetAwaiter);
 			
 			
@@ -37,7 +37,7 @@ namespace XLua.CSObjectWrap
 			    null, null, null);
 
 		    Utils.BeginClassRegister(type, L, __CreateInstance, 2, 0, 0);
-			Utils.RegisterFunc(L, Utils.CLS_IDX, "Destory", _m_Destory_xlua_st_);
+			Utils.RegisterFunc(L, Utils.CLS_IDX, "Destroy", _m_Destroy_xlua_st_);
             
 			
             
@@ -81,7 +81,7 @@ namespace XLua.CSObjectWrap
         
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_Destory(RealStatePtr L)
+        static int _m_Destroy(RealStatePtr L)
         {
 		    try {
             
@@ -108,7 +108,7 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_Destory_xlua_st_(RealStatePtr L)
+        static int _m_Destroy_xlua_st_(RealStatePtr L)
         {
 		    try {
             

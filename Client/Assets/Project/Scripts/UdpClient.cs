@@ -17,28 +17,7 @@ using UnityEngine;
 
 namespace EasyMoba
 {
-    [System.Serializable]
-    public class FrameData
-    {
-        public long roleID;
 
-        public string opText;
-    }
-
-    [System.Serializable]
-    public class CSBattleFrame : INetMsg
-    {
-        public string roomID;
-        public int frameID;
-        public long roleID;
-        public FrameData data;
-    }
-    [System.Serializable]
-    public class SPBattleFrame : INetMsg
-    {
-        public int frameID;
-        public List<FrameData> datas;
-    }
     public class UdpClient
     {
         private int port = 9633;
@@ -62,11 +41,11 @@ namespace EasyMoba
             client.StartReceive();
             client.ReceivedOffsetHandler += Recieve;
         }
-        public void SendBattleFrame(string roomid, long roleid, int frame, string op)
+        public void SendBattleFrame(string roomid, long roleid, int frame, FrameData op)
         {
             CSBattleFrame cs = new CSBattleFrame()
             {
-                data = new FrameData() { roleID = roleid, opText = op },
+                data = op,
                 frameID = frame,
                 roleID = roleid,
                 roomID = roomid,

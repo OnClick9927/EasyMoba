@@ -15,4 +15,9 @@
     <PackageReference Include="Yitter.IdGenerator" Version="1.0.14" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\IFramework\IFramework.csproj" />
+    <ProjectReference Include="..\LockStep\LockStep.csproj" />
+  </ItemGroup>
+
 </Project>

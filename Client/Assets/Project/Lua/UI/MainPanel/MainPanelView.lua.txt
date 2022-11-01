@@ -15,12 +15,17 @@ local MainPanelView = class("MainPanelView", UIView_MVC)
 
 function MainPanelView:OnLoad()
     self.Controls = {
-        ---@type UnityEngine.UI.Button
-        Match = self:GetComponent("BG/Match", typeof(Button)),
-    }
+		---@type UnityEngine.UI.Button
+		Match = self:GetComponent("BG/Match", typeof(Button)),
+		---@type UnityEngine.UI.Button
+		LocalMatch = self:GetComponent("BG/LocalMatch", typeof(Button)),
+	}
     --BindUIEvent
     self:BindButton(self.Controls.Match, function()
         Ctrls.MatchCtrl.Match()
+    end)
+    self:BindButton(self.Controls.LocalMatch, function()
+        Ctrls.MatchCtrl.LocalMatch()
     end)
 end
 

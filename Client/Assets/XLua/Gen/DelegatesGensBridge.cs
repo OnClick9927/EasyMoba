@@ -601,7 +601,7 @@ namespace XLua
 #endif
 		}
         
-		public void __Gen_Delegate_Imp26(EasyMoba.SPBattleFrame p0)
+		public void __Gen_Delegate_Imp26(SPBattleFrame p0)
 		{
 #if THREAD_SAFE || HOTFIX_ENABLE
             lock (luaEnv.luaEnvLock)
@@ -1094,9 +1094,9 @@ namespace XLua
 			    return new System.Action<uint, uint, string>(__Gen_Delegate_Imp25);
 			}
 		
-		    if (type == typeof(System.Action<EasyMoba.SPBattleFrame>))
+		    if (type == typeof(System.Action<SPBattleFrame>))
 			{
-			    return new System.Action<EasyMoba.SPBattleFrame>(__Gen_Delegate_Imp26);
+			    return new System.Action<SPBattleFrame>(__Gen_Delegate_Imp26);
 			}
 		
 		    if (type == typeof(System.Action<UnityEngine.GameObject, int>))

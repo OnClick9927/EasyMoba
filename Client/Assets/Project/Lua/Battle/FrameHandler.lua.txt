@@ -30,7 +30,6 @@ function M:PlayFrame(data)
         local op_tab = Json.decode(op)
         player.PlayFrame(role, op_tab)
     end
-    Battle.SendBattleFrame(self.curFrame, Battle.empty_op)
 end
 
 return M
