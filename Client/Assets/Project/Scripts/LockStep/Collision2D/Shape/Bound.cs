@@ -5,6 +5,7 @@ namespace LockStep.LCollision2D
     /// <summary>
     /// 点的集合
     /// </summary>
+    [System.Serializable]
     public struct Bound
     {
         /// <summary>

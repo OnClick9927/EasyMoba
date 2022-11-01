@@ -7,6 +7,7 @@ namespace LockStep.LCollision2D
     /// <summary>
     /// 多边形
     /// </summary>
+    [System.Serializable]
     public class PolygonShape : Shape
     {
 

@@ -5,6 +5,7 @@ namespace LockStep.LCollision2D
     /// <summary>
     /// 圆
     /// </summary>
+    [System.Serializable]
     public class CircleShape : Shape
     {
         /// <summary>

@@ -14,3 +14,4 @@ IFramework.sln
 Client/DLC/
 Client/DLCDownLoad/
 Server/EMO/EMO/bin/
+*.csproj

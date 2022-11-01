@@ -6,6 +6,11 @@ namespace LockStep.LCollision2D
     public class UnityShapeLayerConfig : UnityEngine.ScriptableObject
     {
         public CollisionLayerConfig cfg = new CollisionLayerConfig();
+        public static string[] GetLayerNames()
+        {
+            UnityShapeLayerConfig c = Resources.FindObjectsOfTypeAll<UnityShapeLayerConfig>()[0];
+            return c.cfg.Layers.ConvertAll(x => x.name).ToArray();
+        }
         public string GetName(CollisionLayer layer)
         {
             return cfg.GetName(layer);

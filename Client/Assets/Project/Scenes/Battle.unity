@@ -215,6 +215,7 @@ GameObject:
   - component: {fileID: 203776287}
   - component: {fileID: 203776289}
   - component: {fileID: 203776288}
+  - component: {fileID: 203776290}
   m_Layer: 0
   m_Name: Wall (2)
   m_TagString: Untagged
@@ -285,6 +286,42 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 203776286}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &203776290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 203776286}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dfdfeb5c8d52324480c61fc36e14116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: {r: 0, g: 0.19215679, b: 1, a: 1}
+  layer: 2
+  logic: 0
+  rigid: 1
+  points:
+  - {x: -6, y: 0, z: -1}
+  - {x: -6, y: 0, z: 1}
+  - {x: 6, y: 0, z: 1}
+  - {x: 6, y: 0, z: -1}
+  shape:
+    rigidbody: 0
+    logic: 0
+    layer: 0
+    angle:
+      _val: 0
+    position:
+      _x: 0
+      _y: 0
+    scale:
+      _val: 1000000
+    localPoints: []
+    points: []
+    bounds: []
+    nomals: []
 --- !u!1 &290202069
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,12 +416,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dfdfeb5c8d52324480c61fc36e14116, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  color: {r: 0, g: 0.19215679, b: 1, a: 1}
+  layer: 2
+  logic: 0
+  rigid: 1
   points:
-  - {x: 31, y: 0, z: 33}
-  - {x: 33, y: 0, z: 33}
-  - {x: 33, y: 0, z: -33}
-  - {x: 31, y: 0, z: -33}
-  color: {r: 0, g: 0, b: 0, a: 1}
+  - {x: -1, y: 0, z: 33}
+  - {x: 1, y: 0, z: 33}
+  - {x: 1, y: 0, z: -33}
+  - {x: -1, y: 0, z: -33}
+  shape:
+    rigidbody: 0
+    logic: 0
+    layer: 0
+    angle:
+      _val: 0
+    position:
+      _x: 0
+      _y: 0
+    scale:
+      _val: 1000000
+    localPoints: []
+    points: []
+    bounds: []
+    nomals: []
 --- !u!1 &771478199
 GameObject:
   m_ObjectHideFlags: 0
@@ -396,6 +451,7 @@ GameObject:
   - component: {fileID: 771478200}
   - component: {fileID: 771478202}
   - component: {fileID: 771478201}
+  - component: {fileID: 771478203}
   m_Layer: 0
   m_Name: Wall
   m_TagString: Untagged
@@ -466,6 +522,42 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 771478199}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &771478203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 771478199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dfdfeb5c8d52324480c61fc36e14116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: {r: 0, g: 0.19215679, b: 1, a: 1}
+  layer: 2
+  logic: 0
+  rigid: 1
+  points:
+  - {x: -32, y: 0, z: -1}
+  - {x: -32, y: 0, z: 1}
+  - {x: 32, y: 0, z: 1}
+  - {x: 32, y: 0, z: -1}
+  shape:
+    rigidbody: 0
+    logic: 0
+    layer: 0
+    angle:
+      _val: 0
+    position:
+      _x: 0
+      _y: 0
+    scale:
+      _val: 1000000
+    localPoints: []
+    points: []
+    bounds: []
+    nomals: []
 --- !u!1 &843002369
 GameObject:
   m_ObjectHideFlags: 0
@@ -477,6 +569,7 @@ GameObject:
   - component: {fileID: 843002370}
   - component: {fileID: 843002372}
   - component: {fileID: 843002371}
+  - component: {fileID: 843002373}
   m_Layer: 0
   m_Name: Wall (4)
   m_TagString: Untagged
@@ -491,13 +584,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 843002369}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0.8, y: 0, z: -8.1}
+  m_LocalRotation: {x: -0.000000049803642, y: 0.9882718, z: 0.000000049803646, w: 0.15270521}
+  m_LocalPosition: {x: -9, y: 0, z: -12.2}
   m_LocalScale: {x: 1, y: 1, z: 12}
   m_Children: []
   m_Father: {fileID: 858451250}
   m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 162.433, z: 0}
 --- !u!23 &843002371
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -547,6 +640,42 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 843002369}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &843002373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 843002369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dfdfeb5c8d52324480c61fc36e14116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: {r: 0, g: 0.19215679, b: 1, a: 1}
+  layer: 2
+  logic: 0
+  rigid: 1
+  points:
+  - {x: -3.04, y: 0, z: 5.43}
+  - {x: -1.13, y: 0, z: 6.31}
+  - {x: 2.94, y: 0, z: -6.03}
+  - {x: 1.04, y: 0, z: -6.74}
+  shape:
+    rigidbody: 0
+    logic: 0
+    layer: 0
+    angle:
+      _val: 0
+    position:
+      _x: 0
+      _y: 0
+    scale:
+      _val: 1000000
+    localPoints: []
+    points: []
+    bounds: []
+    nomals: []
 --- !u!1 &858451249
 GameObject:
   m_ObjectHideFlags: 0
@@ -556,6 +685,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 858451250}
+  - component: {fileID: 858451251}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -583,9 +713,285 @@ Transform:
   - {fileID: 203776287}
   - {fileID: 1839970966}
   - {fileID: 843002370}
+  - {fileID: 1792676405}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &858451251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858451249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e8225b0cf125c447a441ffa7a606e0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shapes:
+    ps:
+    - position:
+        _x: 32000000
+        _y: 0
+      angle:
+        _val: 0
+      scale:
+        _val: 1000000
+      shape:
+        rigidbody: 1
+        logic: 0
+        layer: 2
+        angle:
+          _val: 0
+        position:
+          _x: 0
+          _y: 0
+        scale:
+          _val: 1000000
+        localPoints:
+        - _x: -1000000
+          _y: 33000000
+        - _x: 1000000
+          _y: 33000000
+        - _x: 1000000
+          _y: -33000000
+        - _x: -1000000
+          _y: -33000000
+        points: []
+        bounds: []
+        nomals: []
+    - position:
+        _x: -32000000
+        _y: 0
+      angle:
+        _val: 0
+      scale:
+        _val: 1000000
+      shape:
+        rigidbody: 1
+        logic: 0
+        layer: 2
+        angle:
+          _val: 0
+        position:
+          _x: 0
+          _y: 0
+        scale:
+          _val: 1000000
+        localPoints:
+        - _x: -1000000
+          _y: 33000000
+        - _x: 1000000
+          _y: 33000000
+        - _x: 1000000
+          _y: -33000000
+        - _x: -1000000
+          _y: -33000000
+        points: []
+        bounds: []
+        nomals: []
+    - position:
+        _x: 0
+        _y: 32000000
+      angle:
+        _val: 0
+      scale:
+        _val: 1000000
+      shape:
+        rigidbody: 1
+        logic: 0
+        layer: 2
+        angle:
+          _val: 0
+        position:
+          _x: 0
+          _y: 0
+        scale:
+          _val: 1000000
+        localPoints:
+        - _x: -32000000
+          _y: -1000000
+        - _x: -32000000
+          _y: 1000000
+        - _x: 32000000
+          _y: 1000000
+        - _x: 32000000
+          _y: -1000000
+        points: []
+        bounds: []
+        nomals: []
+    - position:
+        _x: 0
+        _y: -32000000
+      angle:
+        _val: 0
+      scale:
+        _val: 1000000
+      shape:
+        rigidbody: 1
+        logic: 0
+        layer: 2
+        angle:
+          _val: 0
+        position:
+          _x: 0
+          _y: 0
+        scale:
+          _val: 1000000
+        localPoints:
+        - _x: -32000000
+          _y: -1000000
+        - _x: -32000000
+          _y: 1000000
+        - _x: 32000000
+          _y: 1000000
+        - _x: 32000000
+          _y: -1000000
+        points: []
+        bounds: []
+        nomals: []
+    - position:
+        _x: -13800000
+        _y: -1299999
+      angle:
+        _val: 0
+      scale:
+        _val: 1000000
+      shape:
+        rigidbody: 1
+        logic: 0
+        layer: 2
+        angle:
+          _val: 0
+        position:
+          _x: 0
+          _y: 0
+        scale:
+          _val: 1000000
+        localPoints:
+        - _x: -6000000
+          _y: -1000000
+        - _x: -6000000
+          _y: 1000000
+        - _x: 6000000
+          _y: 1000000
+        - _x: 6000000
+          _y: -1000000
+        points: []
+        bounds: []
+        nomals: []
+    - position:
+        _x: 15300000
+        _y: -2400000
+      angle:
+        _val: 0
+      scale:
+        _val: 1000000
+      shape:
+        rigidbody: 1
+        logic: 0
+        layer: 2
+        angle:
+          _val: 0
+        position:
+          _x: 0
+          _y: 0
+        scale:
+          _val: 1000000
+        localPoints:
+        - _x: -6000000
+          _y: -1000000
+        - _x: -6000000
+          _y: 1000000
+        - _x: 6000000
+          _y: 1000000
+        - _x: 6000000
+          _y: -1000000
+        points: []
+        bounds: []
+        nomals: []
+    - position:
+        _x: -100000
+        _y: 4900000
+      angle:
+        _val: 0
+      scale:
+        _val: 1000000
+      shape:
+        rigidbody: 1
+        logic: 0
+        layer: 2
+        angle:
+          _val: 0
+        position:
+          _x: 0
+          _y: 0
+        scale:
+          _val: 1000000
+        localPoints:
+        - _x: -6000000
+          _y: -1000000
+        - _x: -6000000
+          _y: 1000000
+        - _x: 6000000
+          _y: 1000000
+        - _x: 6000000
+          _y: -1000000
+        points: []
+        bounds: []
+        nomals: []
+    - position:
+        _x: -9000000
+        _y: -12199999
+      angle:
+        _val: 0
+      scale:
+        _val: 1000000
+      shape:
+        rigidbody: 1
+        logic: 0
+        layer: 2
+        angle:
+          _val: 0
+        position:
+          _x: 0
+          _y: 0
+        scale:
+          _val: 1000000
+        localPoints:
+        - _x: -3039999
+          _y: 5429999
+        - _x: -1129999
+          _y: 6309999
+        - _x: 2940000
+          _y: -6030000
+        - _x: 1039999
+          _y: -6739999
+        points: []
+        bounds: []
+        nomals: []
+    cs:
+    - position:
+        _x: 32000000
+        _y: 0
+      angle:
+        _val: 0
+      scale:
+        _val: 1000000
+      shape:
+        rigidbody: 1
+        logic: 0
+        layer: 2
+        angle:
+          _val: 0
+        position:
+          _x: 0
+          _y: 0
+        scale:
+          _val: 1000000
+        radius:
+          _val: 2549999
 --- !u!1 &1024635368
 GameObject:
   m_ObjectHideFlags: 0
@@ -597,6 +1003,7 @@ GameObject:
   - component: {fileID: 1024635369}
   - component: {fileID: 1024635371}
   - component: {fileID: 1024635370}
+  - component: {fileID: 1024635372}
   m_Layer: 0
   m_Name: Wall
   m_TagString: Untagged
@@ -667,6 +1074,42 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1024635368}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1024635372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1024635368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dfdfeb5c8d52324480c61fc36e14116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: {r: 0, g: 0.19215679, b: 1, a: 1}
+  layer: 2
+  logic: 0
+  rigid: 1
+  points:
+  - {x: -32, y: 0, z: -1}
+  - {x: -32, y: 0, z: 1}
+  - {x: 32, y: 0, z: 1}
+  - {x: 32, y: 0, z: -1}
+  shape:
+    rigidbody: 0
+    logic: 0
+    layer: 0
+    angle:
+      _val: 0
+    position:
+      _x: 0
+      _y: 0
+    scale:
+      _val: 1000000
+    localPoints: []
+    points: []
+    bounds: []
+    nomals: []
 --- !u!1 &1281216190
 GameObject:
   m_ObjectHideFlags: 0
@@ -678,6 +1121,7 @@ GameObject:
   - component: {fileID: 1281216191}
   - component: {fileID: 1281216193}
   - component: {fileID: 1281216192}
+  - component: {fileID: 1281216194}
   m_Layer: 0
   m_Name: Wall
   m_TagString: Untagged
@@ -748,6 +1192,42 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1281216190}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1281216194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1281216190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dfdfeb5c8d52324480c61fc36e14116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: {r: 0, g: 0.19215679, b: 1, a: 1}
+  layer: 2
+  logic: 0
+  rigid: 1
+  points:
+  - {x: -1, y: 0, z: 33}
+  - {x: 1, y: 0, z: 33}
+  - {x: 1, y: 0, z: -33}
+  - {x: -1, y: 0, z: -33}
+  shape:
+    rigidbody: 0
+    logic: 0
+    layer: 0
+    angle:
+      _val: 0
+    position:
+      _x: 0
+      _y: 0
+    scale:
+      _val: 1000000
+    localPoints: []
+    points: []
+    bounds: []
+    nomals: []
 --- !u!1 &1281898040
 GameObject:
   m_ObjectHideFlags: 0
@@ -924,6 +1404,105 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1792676404
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1792676405}
+  - component: {fileID: 1792676408}
+  - component: {fileID: 1792676407}
+  - component: {fileID: 1792676406}
+  m_Layer: 0
+  m_Name: Sphere
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1792676405
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792676404}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.7, y: 0, z: -20.2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 858451250}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1792676406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792676404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a8dc015f4f78da4dacb2802bc8915f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: {r: 0, g: 0.25224662, b: 1, a: 1}
+  layer: 2
+  logic: 0
+  rigid: 1
+  radius: 2.55
+--- !u!23 &1792676407
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792676404}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1792676408
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792676404}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1839970965
 GameObject:
   m_ObjectHideFlags: 0
@@ -935,6 +1514,7 @@ GameObject:
   - component: {fileID: 1839970966}
   - component: {fileID: 1839970968}
   - component: {fileID: 1839970967}
+  - component: {fileID: 1839970969}
   m_Layer: 0
   m_Name: Wall (3)
   m_TagString: Untagged
@@ -1005,6 +1585,42 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1839970965}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1839970969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1839970965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dfdfeb5c8d52324480c61fc36e14116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: {r: 0, g: 0.19215679, b: 1, a: 1}
+  layer: 2
+  logic: 0
+  rigid: 1
+  points:
+  - {x: -6, y: 0, z: -1}
+  - {x: -6, y: 0, z: 1}
+  - {x: 6, y: 0, z: 1}
+  - {x: 6, y: 0, z: -1}
+  shape:
+    rigidbody: 0
+    logic: 0
+    layer: 0
+    angle:
+      _val: 0
+    position:
+      _x: 0
+      _y: 0
+    scale:
+      _val: 1000000
+    localPoints: []
+    points: []
+    bounds: []
+    nomals: []
 --- !u!1 &2124701682
 GameObject:
   m_ObjectHideFlags: 0
@@ -1016,6 +1632,7 @@ GameObject:
   - component: {fileID: 2124701683}
   - component: {fileID: 2124701685}
   - component: {fileID: 2124701684}
+  - component: {fileID: 2124701686}
   m_Layer: 0
   m_Name: Wall (1)
   m_TagString: Untagged
@@ -1031,7 +1648,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2124701682}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -16.1, y: 0, z: -2.4}
+  m_LocalPosition: {x: -13.8, y: 0, z: -1.3}
   m_LocalScale: {x: 1, y: 1, z: 12}
   m_Children: []
   m_Father: {fileID: 858451250}
@@ -1086,3 +1703,39 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2124701682}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2124701686
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2124701682}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dfdfeb5c8d52324480c61fc36e14116, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  color: {r: 0, g: 0.19215679, b: 1, a: 1}
+  layer: 2
+  logic: 0
+  rigid: 1
+  points:
+  - {x: -6, y: 0, z: -1}
+  - {x: -6, y: 0, z: 1}
+  - {x: 6, y: 0, z: 1}
+  - {x: 6, y: 0, z: -1}
+  shape:
+    rigidbody: 0
+    logic: 0
+    layer: 0
+    angle:
+      _val: 0
+    position:
+      _x: 0
+      _y: 0
+    scale:
+      _val: 1000000
+    localPoints: []
+    points: []
+    bounds: []
+    nomals: []
