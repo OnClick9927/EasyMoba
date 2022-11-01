@@ -34,7 +34,7 @@ function Battle.StartGame(battle_mode, room, players)
     end
     mode_server = r()
     frame_handler = require("Battle.FrameHandler")()
-    Battle.scene_part.LoadScene()
+    Battle.ScenePart.LoadScene()
 end
 
 function Battle.CloseGame()
