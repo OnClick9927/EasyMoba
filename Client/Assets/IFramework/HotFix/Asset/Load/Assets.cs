@@ -95,9 +95,9 @@ namespace IFramework.Hotfix.Asset
         {
             return new InstantiateObjectOperation(path, parent, true);
         }
-        public static void Destory(GameObject gameObject)
+        public static void Destroy(GameObject gameObject)
         {
-            InstantiateObjectOperation.Destory(gameObject);
+            InstantiateObjectOperation.Destroy(gameObject);
         }
     }
 }

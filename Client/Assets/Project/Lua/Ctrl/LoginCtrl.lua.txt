@@ -22,13 +22,12 @@ local function OnLoginResPonse(data)
     if Code == NetEventDefine.Enums.LoginErrCode.Success then
         Models.PlayerModel:SaveLoginResult(LoginType, RoleId, Password)
         LuaTask.Run(function()
-            await(LuaTask.Delay(1000 * 2))
+            await(LuaTask.Delay(100))
             GameTools.CloseUI(PanelNames.LoginPanel)
             Ctrls.SceneCtrl.LoadScene(ResDefine.Scene.Home, function()
                 GameTools.ShowUI(PanelNames.MainPanel)
             end)
             Models.OnLoginSucess(RoleId)
-            Events:Publish(LuaEventTypes.LoginSucess)
         end)
 
     else

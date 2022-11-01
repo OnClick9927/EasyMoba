@@ -37,7 +37,7 @@ namespace EasyMoba
         }
         public override void ReleaseItemAsset(GameObject releaseAsset)
         {
-            Assets.Destory(releaseAsset);
+            Assets.Destroy(releaseAsset);
 
         }
         public override UIPanel LoadPanel(string name)
@@ -46,8 +46,8 @@ namespace EasyMoba
         }
         private async void Load(LoadPanelAsyncOperation op, string path)
         {
-            var asset = await Assets.InstantiateAsync(path,null);
-            var panel = asset.gameObject.GetComponent<UIPanel>();
+            var asset = await Assets.LoadAssetAsync(path);
+            var panel = asset.GetAsset<GameObject>().GetComponent<UIPanel>();
             op.SetValue(panel);
         }
         public override bool LoadPanelAsync(string name, LoadPanelAsyncOperation op)
@@ -72,7 +72,7 @@ namespace EasyMoba
 
         public override void DestoryPanel(GameObject gameObject)
         {
-            Assets.Destory(gameObject);
+            GameObject.Destroy(gameObject);
         }
         public override Canvas GetCanvas()
         {

@@ -12,6 +12,7 @@ local function DisMacth()
     local data = {}
     data.type = matchType
     NetEvents.SendRequest(NetEventDefine.CSDisMatch, data)
+
 end
 
 ---@param data SCMatch

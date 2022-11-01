@@ -47,17 +47,18 @@ namespace IFramework.Hotfix.Asset
                 map[gameObject] = asset;
                 this.InvokeComplete();
             }
-            public void Destory()
+            public void Destroy()
             {
-                Destory(this.gameObject);
+                Destroy(this.gameObject);
             }
-            public static void Destory(GameObject gameObject)
+            public static void Destroy(GameObject gameObject)
             {
                 if (map.ContainsKey(gameObject))
                 {
                     var asset = map[gameObject];
                     Assets.Release(asset);
                     map.Remove(gameObject);
+                    GameObject.Destroy(gameObject);
                 }
             }
         }
