@@ -52,7 +52,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					IFramework.Queue.FastPriorityQueueNode gen_ret = new IFramework.Queue.FastPriorityQueueNode();
+					var gen_ret = new IFramework.Queue.FastPriorityQueueNode();
 					translator.Push(L, gen_ret);
                     
 					return 1;

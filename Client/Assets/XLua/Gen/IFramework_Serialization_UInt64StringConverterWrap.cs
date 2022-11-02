@@ -51,7 +51,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					IFramework.Serialization.UInt64StringConverter gen_ret = new IFramework.Serialization.UInt64StringConverter();
+					var gen_ret = new IFramework.Serialization.UInt64StringConverter();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -88,7 +88,7 @@ namespace XLua.CSObjectWrap
                     string _self = LuaAPI.lua_tostring(L, 2);
                     ulong _result;
                     
-                        bool gen_ret = gen_to_be_invoked.TryConvert( _self, out _result );
+                        var gen_ret = gen_to_be_invoked.TryConvert( _self, out _result );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     LuaAPI.lua_pushuint64(L, _result);
                         

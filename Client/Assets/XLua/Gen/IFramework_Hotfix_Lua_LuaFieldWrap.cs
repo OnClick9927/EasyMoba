@@ -54,7 +54,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					IFramework.Hotfix.Lua.LuaField gen_ret = new IFramework.Hotfix.Lua.LuaField();
+					var gen_ret = new IFramework.Hotfix.Lua.LuaField();
 					translator.Push(L, gen_ret);
                     
 					return 1;

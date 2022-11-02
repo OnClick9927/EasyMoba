@@ -59,7 +59,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					IFramework.Message.MessageModule gen_ret = new IFramework.Message.MessageModule();
+					var gen_ret = new IFramework.Message.MessageModule();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -188,7 +188,7 @@ namespace XLua.CSObjectWrap
                     int _code = LuaAPI.xlua_tointeger(L, 4);
                     IFramework.Message.MessageUrgencyType _priority;translator.Get(L, 5, out _priority);
                     
-                        IFramework.Message.IMessage gen_ret = gen_to_be_invoked.Publish( _type, _args, _code, _priority );
+                        var gen_ret = gen_to_be_invoked.Publish( _type, _args, _code, _priority );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -201,7 +201,7 @@ namespace XLua.CSObjectWrap
                     IFramework.IEventArgs _args = (IFramework.IEventArgs)translator.GetObject(L, 3, typeof(IFramework.IEventArgs));
                     int _code = LuaAPI.xlua_tointeger(L, 4);
                     
-                        IFramework.Message.IMessage gen_ret = gen_to_be_invoked.Publish( _type, _args, _code );
+                        var gen_ret = gen_to_be_invoked.Publish( _type, _args, _code );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -213,7 +213,7 @@ namespace XLua.CSObjectWrap
                     System.Type _type = (System.Type)translator.GetObject(L, 2, typeof(System.Type));
                     IFramework.IEventArgs _args = (IFramework.IEventArgs)translator.GetObject(L, 3, typeof(IFramework.IEventArgs));
                     
-                        IFramework.Message.IMessage gen_ret = gen_to_be_invoked.Publish( _type, _args );
+                        var gen_ret = gen_to_be_invoked.Publish( _type, _args );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -249,7 +249,7 @@ namespace XLua.CSObjectWrap
                     int _code = LuaAPI.xlua_tointeger(L, 4);
                     int _priority = LuaAPI.xlua_tointeger(L, 5);
                     
-                        IFramework.Message.IMessage gen_ret = gen_to_be_invoked.PublishByNumber( _type, _args, _code, _priority );
+                        var gen_ret = gen_to_be_invoked.PublishByNumber( _type, _args, _code, _priority );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -262,7 +262,7 @@ namespace XLua.CSObjectWrap
                     IFramework.IEventArgs _args = (IFramework.IEventArgs)translator.GetObject(L, 3, typeof(IFramework.IEventArgs));
                     int _code = LuaAPI.xlua_tointeger(L, 4);
                     
-                        IFramework.Message.IMessage gen_ret = gen_to_be_invoked.PublishByNumber( _type, _args, _code );
+                        var gen_ret = gen_to_be_invoked.PublishByNumber( _type, _args, _code );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -274,7 +274,7 @@ namespace XLua.CSObjectWrap
                     System.Type _type = (System.Type)translator.GetObject(L, 2, typeof(System.Type));
                     IFramework.IEventArgs _args = (IFramework.IEventArgs)translator.GetObject(L, 3, typeof(IFramework.IEventArgs));
                     
-                        IFramework.Message.IMessage gen_ret = gen_to_be_invoked.PublishByNumber( _type, _args );
+                        var gen_ret = gen_to_be_invoked.PublishByNumber( _type, _args );
                         translator.PushAny(L, gen_ret);
                     
                     

@@ -51,7 +51,7 @@ namespace XLua.CSObjectWrap
 				{
 					System.Func<bool> _condition = translator.GetDelegate<System.Func<bool>>(L, 2);
 					
-					IFramework.Coroutine.WaitUtil gen_ret = new IFramework.Coroutine.WaitUtil(_condition);
+					var gen_ret = new IFramework.Coroutine.WaitUtil(_condition);
 					translator.Push(L, gen_ret);
                     
 					return 1;

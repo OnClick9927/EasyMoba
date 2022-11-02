@@ -54,7 +54,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.PhysicsMaterial2D gen_ret = new UnityEngine.PhysicsMaterial2D();
+					var gen_ret = new UnityEngine.PhysicsMaterial2D();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -63,7 +63,7 @@ namespace XLua.CSObjectWrap
 				{
 					string _name = LuaAPI.lua_tostring(L, 2);
 					
-					UnityEngine.PhysicsMaterial2D gen_ret = new UnityEngine.PhysicsMaterial2D(_name);
+					var gen_ret = new UnityEngine.PhysicsMaterial2D(_name);
 					translator.Push(L, gen_ret);
                     
 					return 1;

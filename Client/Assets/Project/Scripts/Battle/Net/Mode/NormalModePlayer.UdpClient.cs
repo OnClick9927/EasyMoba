@@ -31,15 +31,8 @@ namespace EasyMoba
                 client.StartReceive();
                 client.ReceivedOffsetHandler += Recieve;
             }
-            public void SendBattleFrame(string roomid, long roleid, int frame, FrameData op)
+            public void SendBattleFrame(CSBattleFrame cs)
             {
-                CSBattleFrame cs = new CSBattleFrame()
-                {
-                    data = op,
-                    frameID = frame,
-                    roleID = roleid,
-                    roomID = roomid,
-                };
                 var json = JsonUtility.ToJson(cs);
                 Debug.Log(string.Format("<color=#209DBF>发送战斗帧到服务器\n{0}</color>", json));
 
@@ -54,7 +47,7 @@ namespace EasyMoba
                 if (scfram == null) return;
                 Launcher.env.WaitEnvironmentFrame(() =>
                 {
-                    player.call_lua(scfram);
+                    player.CallLuaFrame(scfram);
                 });
 
             }

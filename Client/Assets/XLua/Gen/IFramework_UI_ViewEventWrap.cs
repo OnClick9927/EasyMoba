@@ -88,7 +88,7 @@ namespace XLua.CSObjectWrap
                 {
                     IFramework.UI.ViewEventType _type;translator.Get(L, 2, out _type);
                     
-                        IFramework.UI.ViewEvent gen_ret = gen_to_be_invoked.SetType( _type );
+                        var gen_ret = gen_to_be_invoked.SetType( _type );
                         translator.Push(L, gen_ret);
                     
                     
@@ -119,7 +119,7 @@ namespace XLua.CSObjectWrap
                 {
                     IFramework.IEventArgs _arg = (IFramework.IEventArgs)translator.GetObject(L, 2, typeof(IFramework.IEventArgs));
                     
-                        IFramework.UI.ViewEvent gen_ret = gen_to_be_invoked.SetPanelArgs( _arg );
+                        var gen_ret = gen_to_be_invoked.SetPanelArgs( _arg );
                         translator.Push(L, gen_ret);
                     
                     

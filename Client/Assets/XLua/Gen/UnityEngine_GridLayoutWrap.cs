@@ -67,7 +67,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.GridLayout gen_ret = new UnityEngine.GridLayout();
+					var gen_ret = new UnityEngine.GridLayout();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -105,7 +105,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Vector3Int _cellPosition;translator.Get(L, 2, out _cellPosition);
                     
-                        UnityEngine.Bounds gen_ret = gen_to_be_invoked.GetBoundsLocal( _cellPosition );
+                        var gen_ret = gen_to_be_invoked.GetBoundsLocal( _cellPosition );
                         translator.PushUnityEngineBounds(L, gen_ret);
                     
                     
@@ -117,7 +117,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Vector3 _origin;translator.Get(L, 2, out _origin);
                     UnityEngine.Vector3 _size;translator.Get(L, 3, out _size);
                     
-                        UnityEngine.Bounds gen_ret = gen_to_be_invoked.GetBoundsLocal( _origin, _size );
+                        var gen_ret = gen_to_be_invoked.GetBoundsLocal( _origin, _size );
                         translator.PushUnityEngineBounds(L, gen_ret);
                     
                     
@@ -148,7 +148,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Vector3Int _cellPosition;translator.Get(L, 2, out _cellPosition);
                     
-                        UnityEngine.Vector3 gen_ret = gen_to_be_invoked.CellToLocal( _cellPosition );
+                        var gen_ret = gen_to_be_invoked.CellToLocal( _cellPosition );
                         translator.PushUnityEngineVector3(L, gen_ret);
                     
                     
@@ -177,7 +177,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Vector3 _localPosition;translator.Get(L, 2, out _localPosition);
                     
-                        UnityEngine.Vector3Int gen_ret = gen_to_be_invoked.LocalToCell( _localPosition );
+                        var gen_ret = gen_to_be_invoked.LocalToCell( _localPosition );
                         translator.Push(L, gen_ret);
                     
                     
@@ -206,7 +206,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Vector3 _cellPosition;translator.Get(L, 2, out _cellPosition);
                     
-                        UnityEngine.Vector3 gen_ret = gen_to_be_invoked.CellToLocalInterpolated( _cellPosition );
+                        var gen_ret = gen_to_be_invoked.CellToLocalInterpolated( _cellPosition );
                         translator.PushUnityEngineVector3(L, gen_ret);
                     
                     
@@ -235,7 +235,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Vector3 _localPosition;translator.Get(L, 2, out _localPosition);
                     
-                        UnityEngine.Vector3 gen_ret = gen_to_be_invoked.LocalToCellInterpolated( _localPosition );
+                        var gen_ret = gen_to_be_invoked.LocalToCellInterpolated( _localPosition );
                         translator.PushUnityEngineVector3(L, gen_ret);
                     
                     
@@ -264,7 +264,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Vector3Int _cellPosition;translator.Get(L, 2, out _cellPosition);
                     
-                        UnityEngine.Vector3 gen_ret = gen_to_be_invoked.CellToWorld( _cellPosition );
+                        var gen_ret = gen_to_be_invoked.CellToWorld( _cellPosition );
                         translator.PushUnityEngineVector3(L, gen_ret);
                     
                     
@@ -293,7 +293,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Vector3 _worldPosition;translator.Get(L, 2, out _worldPosition);
                     
-                        UnityEngine.Vector3Int gen_ret = gen_to_be_invoked.WorldToCell( _worldPosition );
+                        var gen_ret = gen_to_be_invoked.WorldToCell( _worldPosition );
                         translator.Push(L, gen_ret);
                     
                     
@@ -322,7 +322,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Vector3 _localPosition;translator.Get(L, 2, out _localPosition);
                     
-                        UnityEngine.Vector3 gen_ret = gen_to_be_invoked.LocalToWorld( _localPosition );
+                        var gen_ret = gen_to_be_invoked.LocalToWorld( _localPosition );
                         translator.PushUnityEngineVector3(L, gen_ret);
                     
                     
@@ -351,7 +351,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Vector3 _worldPosition;translator.Get(L, 2, out _worldPosition);
                     
-                        UnityEngine.Vector3 gen_ret = gen_to_be_invoked.WorldToLocal( _worldPosition );
+                        var gen_ret = gen_to_be_invoked.WorldToLocal( _worldPosition );
                         translator.PushUnityEngineVector3(L, gen_ret);
                     
                     
@@ -379,7 +379,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Vector3 gen_ret = gen_to_be_invoked.GetLayoutCellCenter(  );
+                        var gen_ret = gen_to_be_invoked.GetLayoutCellCenter(  );
                         translator.PushUnityEngineVector3(L, gen_ret);
                     
                     
@@ -407,7 +407,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.MakeComponentExist(  );
+                        var gen_ret = gen_to_be_invoked.MakeComponentExist(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -462,7 +462,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.LocalIdentity(  );
+                        var gen_ret = gen_to_be_invoked.LocalIdentity(  );
                         translator.Push(L, gen_ret);
                     
                     

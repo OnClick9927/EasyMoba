@@ -52,7 +52,7 @@ namespace XLua.CSObjectWrap
 				{
 					string _pathInHierarchy = LuaAPI.lua_tostring(L, 2);
 					
-					IFramework.Singleton.MonoSingletonPath gen_ret = new IFramework.Singleton.MonoSingletonPath(_pathInHierarchy);
+					var gen_ret = new IFramework.Singleton.MonoSingletonPath(_pathInHierarchy);
 					translator.Push(L, gen_ret);
                     
 					return 1;

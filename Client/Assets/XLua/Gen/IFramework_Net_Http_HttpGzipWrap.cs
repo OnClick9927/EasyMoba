@@ -53,7 +53,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					IFramework.Net.Http.HttpGzip gen_ret = new IFramework.Net.Http.HttpGzip();
+					var gen_ret = new IFramework.Net.Http.HttpGzip();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -88,7 +88,7 @@ namespace XLua.CSObjectWrap
                     byte[] _content = LuaAPI.lua_tobytes(L, 1);
                     string _encoding = LuaAPI.lua_tostring(L, 2);
                     
-                        string gen_ret = IFramework.Net.Http.HttpGzip.UnzipToString( _content, _encoding );
+                        var gen_ret = IFramework.Net.Http.HttpGzip.UnzipToString( _content, _encoding );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -99,7 +99,7 @@ namespace XLua.CSObjectWrap
                 {
                     byte[] _content = LuaAPI.lua_tobytes(L, 1);
                     
-                        string gen_ret = IFramework.Net.Http.HttpGzip.UnzipToString( _content );
+                        var gen_ret = IFramework.Net.Http.HttpGzip.UnzipToString( _content );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -126,7 +126,7 @@ namespace XLua.CSObjectWrap
                 {
                     byte[] _content = LuaAPI.lua_tobytes(L, 1);
                     
-                        byte[] gen_ret = IFramework.Net.Http.HttpGzip.UnzipToBytes( _content );
+                        var gen_ret = IFramework.Net.Http.HttpGzip.UnzipToBytes( _content );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -153,7 +153,7 @@ namespace XLua.CSObjectWrap
                 {
                     byte[] _content = LuaAPI.lua_tobytes(L, 1);
                     
-                        byte[] gen_ret = IFramework.Net.Http.HttpGzip.ZipToBytes( _content );
+                        var gen_ret = IFramework.Net.Http.HttpGzip.ZipToBytes( _content );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -165,7 +165,7 @@ namespace XLua.CSObjectWrap
                     string _content = LuaAPI.lua_tostring(L, 1);
                     string _encoding = LuaAPI.lua_tostring(L, 2);
                     
-                        byte[] gen_ret = IFramework.Net.Http.HttpGzip.ZipToBytes( _content, _encoding );
+                        var gen_ret = IFramework.Net.Http.HttpGzip.ZipToBytes( _content, _encoding );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -176,7 +176,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _content = LuaAPI.lua_tostring(L, 1);
                     
-                        byte[] gen_ret = IFramework.Net.Http.HttpGzip.ZipToBytes( _content );
+                        var gen_ret = IFramework.Net.Http.HttpGzip.ZipToBytes( _content );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     

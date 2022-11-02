@@ -101,7 +101,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.Event gen_ret = new UnityEngine.Event();
+					var gen_ret = new UnityEngine.Event();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -110,7 +110,7 @@ namespace XLua.CSObjectWrap
 				{
 					int _displayIndex = LuaAPI.xlua_tointeger(L, 2);
 					
-					UnityEngine.Event gen_ret = new UnityEngine.Event(_displayIndex);
+					var gen_ret = new UnityEngine.Event(_displayIndex);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -119,7 +119,7 @@ namespace XLua.CSObjectWrap
 				{
 					UnityEngine.Event _other = (UnityEngine.Event)translator.GetObject(L, 2, typeof(UnityEngine.Event));
 					
-					UnityEngine.Event gen_ret = new UnityEngine.Event(_other);
+					var gen_ret = new UnityEngine.Event(_other);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -155,7 +155,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _controlID = LuaAPI.xlua_tointeger(L, 2);
                     
-                        UnityEngine.EventType gen_ret = gen_to_be_invoked.GetTypeForControl( _controlID );
+                        var gen_ret = gen_to_be_invoked.GetTypeForControl( _controlID );
                         translator.Push(L, gen_ret);
                     
                     
@@ -182,7 +182,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Event _outEvent = (UnityEngine.Event)translator.GetObject(L, 1, typeof(UnityEngine.Event));
                     
-                        bool gen_ret = UnityEngine.Event.PopEvent( _outEvent );
+                        var gen_ret = UnityEngine.Event.PopEvent( _outEvent );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -206,7 +206,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        int gen_ret = UnityEngine.Event.GetEventCount(  );
+                        var gen_ret = UnityEngine.Event.GetEventCount(  );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -233,7 +233,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _key = LuaAPI.lua_tostring(L, 1);
                     
-                        UnityEngine.Event gen_ret = UnityEngine.Event.KeyboardEvent( _key );
+                        var gen_ret = UnityEngine.Event.KeyboardEvent( _key );
                         translator.Push(L, gen_ret);
                     
                     
@@ -261,7 +261,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        int gen_ret = gen_to_be_invoked.GetHashCode(  );
+                        var gen_ret = gen_to_be_invoked.GetHashCode(  );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -290,7 +290,7 @@ namespace XLua.CSObjectWrap
                 {
                     object _obj = translator.GetObject(L, 2, typeof(object));
                     
-                        bool gen_ret = gen_to_be_invoked.Equals( _obj );
+                        var gen_ret = gen_to_be_invoked.Equals( _obj );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -318,7 +318,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        string gen_ret = gen_to_be_invoked.ToString(  );
+                        var gen_ret = gen_to_be_invoked.ToString(  );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     

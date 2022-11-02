@@ -85,7 +85,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _layer = LuaAPI.xlua_tointeger(L, 1);
                     
-                        string gen_ret = UnityEngine.LayerMask.LayerToName( _layer );
+                        var gen_ret = UnityEngine.LayerMask.LayerToName( _layer );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -110,7 +110,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _layerName = LuaAPI.lua_tostring(L, 1);
                     
-                        int gen_ret = UnityEngine.LayerMask.NameToLayer( _layerName );
+                        var gen_ret = UnityEngine.LayerMask.NameToLayer( _layerName );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -137,7 +137,7 @@ namespace XLua.CSObjectWrap
                 {
                     string[] _layerNames = translator.GetParams<string>(L, 1);
                     
-                        int gen_ret = UnityEngine.LayerMask.GetMask( _layerNames );
+                        var gen_ret = UnityEngine.LayerMask.GetMask( _layerNames );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     

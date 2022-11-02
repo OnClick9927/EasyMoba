@@ -103,7 +103,7 @@ namespace XLua.CSObjectWrap
                     float _minInclusive = (float)LuaAPI.lua_tonumber(L, 1);
                     float _maxInclusive = (float)LuaAPI.lua_tonumber(L, 2);
                     
-                        float gen_ret = UnityEngine.Random.Range( _minInclusive, _maxInclusive );
+                        var gen_ret = UnityEngine.Random.Range( _minInclusive, _maxInclusive );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -115,7 +115,7 @@ namespace XLua.CSObjectWrap
                     int _minInclusive = LuaAPI.xlua_tointeger(L, 1);
                     int _maxExclusive = LuaAPI.xlua_tointeger(L, 2);
                     
-                        int gen_ret = UnityEngine.Random.Range( _minInclusive, _maxExclusive );
+                        var gen_ret = UnityEngine.Random.Range( _minInclusive, _maxExclusive );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -145,7 +145,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 0) 
                 {
                     
-                        UnityEngine.Color gen_ret = UnityEngine.Random.ColorHSV(  );
+                        var gen_ret = UnityEngine.Random.ColorHSV(  );
                         translator.PushUnityEngineColor(L, gen_ret);
                     
                     
@@ -157,7 +157,7 @@ namespace XLua.CSObjectWrap
                     float _hueMin = (float)LuaAPI.lua_tonumber(L, 1);
                     float _hueMax = (float)LuaAPI.lua_tonumber(L, 2);
                     
-                        UnityEngine.Color gen_ret = UnityEngine.Random.ColorHSV( _hueMin, _hueMax );
+                        var gen_ret = UnityEngine.Random.ColorHSV( _hueMin, _hueMax );
                         translator.PushUnityEngineColor(L, gen_ret);
                     
                     
@@ -171,7 +171,7 @@ namespace XLua.CSObjectWrap
                     float _saturationMin = (float)LuaAPI.lua_tonumber(L, 3);
                     float _saturationMax = (float)LuaAPI.lua_tonumber(L, 4);
                     
-                        UnityEngine.Color gen_ret = UnityEngine.Random.ColorHSV( _hueMin, _hueMax, _saturationMin, _saturationMax );
+                        var gen_ret = UnityEngine.Random.ColorHSV( _hueMin, _hueMax, _saturationMin, _saturationMax );
                         translator.PushUnityEngineColor(L, gen_ret);
                     
                     
@@ -187,7 +187,7 @@ namespace XLua.CSObjectWrap
                     float _valueMin = (float)LuaAPI.lua_tonumber(L, 5);
                     float _valueMax = (float)LuaAPI.lua_tonumber(L, 6);
                     
-                        UnityEngine.Color gen_ret = UnityEngine.Random.ColorHSV( _hueMin, _hueMax, _saturationMin, _saturationMax, _valueMin, _valueMax );
+                        var gen_ret = UnityEngine.Random.ColorHSV( _hueMin, _hueMax, _saturationMin, _saturationMax, _valueMin, _valueMax );
                         translator.PushUnityEngineColor(L, gen_ret);
                     
                     
@@ -205,7 +205,7 @@ namespace XLua.CSObjectWrap
                     float _alphaMin = (float)LuaAPI.lua_tonumber(L, 7);
                     float _alphaMax = (float)LuaAPI.lua_tonumber(L, 8);
                     
-                        UnityEngine.Color gen_ret = UnityEngine.Random.ColorHSV( _hueMin, _hueMax, _saturationMin, _saturationMax, _valueMin, _valueMax, _alphaMin, _alphaMax );
+                        var gen_ret = UnityEngine.Random.ColorHSV( _hueMin, _hueMax, _saturationMin, _saturationMax, _valueMin, _valueMax, _alphaMin, _alphaMax );
                         translator.PushUnityEngineColor(L, gen_ret);
                     
                     

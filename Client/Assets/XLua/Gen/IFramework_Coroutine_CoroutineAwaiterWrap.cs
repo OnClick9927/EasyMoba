@@ -55,7 +55,7 @@ namespace XLua.CSObjectWrap
 				{
 					IFramework.Coroutine.ICoroutine _cor = (IFramework.Coroutine.ICoroutine)translator.GetObject(L, 2, typeof(IFramework.Coroutine.ICoroutine));
 					
-					IFramework.Coroutine.CoroutineAwaiter gen_ret = new IFramework.Coroutine.CoroutineAwaiter(_cor);
+					var gen_ret = new IFramework.Coroutine.CoroutineAwaiter(_cor);
 					translator.Push(L, gen_ret);
                     
 					return 1;

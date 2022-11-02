@@ -1,8 +1,16 @@
-﻿namespace EasyMoba
+﻿using System.Collections.Generic;
+
+namespace EasyMoba
 {
     public class RecordModePlayer : BattleModePlayer
     {
-        public RecordModePlayer() : base() { }
+        public RecordModePlayer(MatchRoomType type, List<long> roles) : base(type,roles) { }
+
+        public override void CallServerReady(long role_id, string room_id)
+        {
+           
+        }
+
         public override void Dispose()
         {
 

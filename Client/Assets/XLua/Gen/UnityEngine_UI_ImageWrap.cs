@@ -279,7 +279,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Vector2 _screenPoint;translator.Get(L, 2, out _screenPoint);
                     UnityEngine.Camera _eventCamera = (UnityEngine.Camera)translator.GetObject(L, 3, typeof(UnityEngine.Camera));
                     
-                        bool gen_ret = gen_to_be_invoked.IsRaycastLocationValid( _screenPoint, _eventCamera );
+                        var gen_ret = gen_to_be_invoked.IsRaycastLocationValid( _screenPoint, _eventCamera );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -307,7 +307,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.MakeComponentExist(  );
+                        var gen_ret = gen_to_be_invoked.MakeComponentExist(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -362,7 +362,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.LocalIdentity(  );
+                        var gen_ret = gen_to_be_invoked.LocalIdentity(  );
                         translator.Push(L, gen_ret);
                     
                     

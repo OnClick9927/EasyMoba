@@ -60,7 +60,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.AvatarMask gen_ret = new UnityEngine.AvatarMask();
+					var gen_ret = new UnityEngine.AvatarMask();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -96,7 +96,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.AvatarMaskBodyPart _index;translator.Get(L, 2, out _index);
                     
-                        bool gen_ret = gen_to_be_invoked.GetHumanoidBodyPartActive( _index );
+                        var gen_ret = gen_to_be_invoked.GetHumanoidBodyPartActive( _index );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -240,7 +240,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _index = LuaAPI.xlua_tointeger(L, 2);
                     
-                        string gen_ret = gen_to_be_invoked.GetTransformPath( _index );
+                        var gen_ret = gen_to_be_invoked.GetTransformPath( _index );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -298,7 +298,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _index = LuaAPI.xlua_tointeger(L, 2);
                     
-                        bool gen_ret = gen_to_be_invoked.GetTransformActive( _index );
+                        var gen_ret = gen_to_be_invoked.GetTransformActive( _index );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     

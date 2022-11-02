@@ -50,7 +50,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					IFramework.Net.LockParam gen_ret = new IFramework.Net.LockParam();
+					var gen_ret = new IFramework.Net.LockParam();
 					translator.Push(L, gen_ret);
                     
 					return 1;

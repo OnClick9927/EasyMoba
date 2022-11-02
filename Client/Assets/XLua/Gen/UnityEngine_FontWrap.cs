@@ -68,7 +68,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.Font gen_ret = new UnityEngine.Font();
+					var gen_ret = new UnityEngine.Font();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -77,7 +77,7 @@ namespace XLua.CSObjectWrap
 				{
 					string _name = LuaAPI.lua_tostring(L, 2);
 					
-					UnityEngine.Font gen_ret = new UnityEngine.Font(_name);
+					var gen_ret = new UnityEngine.Font(_name);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -114,7 +114,7 @@ namespace XLua.CSObjectWrap
                     string _fontname = LuaAPI.lua_tostring(L, 1);
                     int _size = LuaAPI.xlua_tointeger(L, 2);
                     
-                        UnityEngine.Font gen_ret = UnityEngine.Font.CreateDynamicFontFromOSFont( _fontname, _size );
+                        var gen_ret = UnityEngine.Font.CreateDynamicFontFromOSFont( _fontname, _size );
                         translator.Push(L, gen_ret);
                     
                     
@@ -126,7 +126,7 @@ namespace XLua.CSObjectWrap
                     string[] _fontnames = (string[])translator.GetObject(L, 1, typeof(string[]));
                     int _size = LuaAPI.xlua_tointeger(L, 2);
                     
-                        UnityEngine.Font gen_ret = UnityEngine.Font.CreateDynamicFontFromOSFont( _fontnames, _size );
+                        var gen_ret = UnityEngine.Font.CreateDynamicFontFromOSFont( _fontnames, _size );
                         translator.Push(L, gen_ret);
                     
                     
@@ -153,7 +153,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _str = LuaAPI.lua_tostring(L, 1);
                     
-                        int gen_ret = UnityEngine.Font.GetMaxVertsForString( _str );
+                        var gen_ret = UnityEngine.Font.GetMaxVertsForString( _str );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -182,7 +182,7 @@ namespace XLua.CSObjectWrap
                 {
                     char _c = (char)LuaAPI.xlua_tointeger(L, 2);
                     
-                        bool gen_ret = gen_to_be_invoked.HasCharacter( _c );
+                        var gen_ret = gen_to_be_invoked.HasCharacter( _c );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -208,7 +208,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        string[] gen_ret = UnityEngine.Font.GetOSInstalledFontNames(  );
+                        var gen_ret = UnityEngine.Font.GetOSInstalledFontNames(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -234,7 +234,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        string[] gen_ret = UnityEngine.Font.GetPathsToOSFonts(  );
+                        var gen_ret = UnityEngine.Font.GetPathsToOSFonts(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -266,7 +266,7 @@ namespace XLua.CSObjectWrap
                     char _ch = (char)LuaAPI.xlua_tointeger(L, 2);
                     UnityEngine.CharacterInfo _info;
                     
-                        bool gen_ret = gen_to_be_invoked.GetCharacterInfo( _ch, out _info );
+                        var gen_ret = gen_to_be_invoked.GetCharacterInfo( _ch, out _info );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     translator.Push(L, _info);
                         
@@ -281,7 +281,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.CharacterInfo _info;
                     int _size = LuaAPI.xlua_tointeger(L, 3);
                     
-                        bool gen_ret = gen_to_be_invoked.GetCharacterInfo( _ch, out _info, _size );
+                        var gen_ret = gen_to_be_invoked.GetCharacterInfo( _ch, out _info, _size );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     translator.Push(L, _info);
                         
@@ -297,7 +297,7 @@ namespace XLua.CSObjectWrap
                     int _size = LuaAPI.xlua_tointeger(L, 3);
                     UnityEngine.FontStyle _style;translator.Get(L, 4, out _style);
                     
-                        bool gen_ret = gen_to_be_invoked.GetCharacterInfo( _ch, out _info, _size, _style );
+                        var gen_ret = gen_to_be_invoked.GetCharacterInfo( _ch, out _info, _size, _style );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     translator.Push(L, _info);
                         

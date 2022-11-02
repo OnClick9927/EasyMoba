@@ -60,7 +60,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.PlayerPrefs gen_ret = new UnityEngine.PlayerPrefs();
+					var gen_ret = new UnityEngine.PlayerPrefs();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -119,7 +119,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _key = LuaAPI.lua_tostring(L, 1);
                     
-                        int gen_ret = UnityEngine.PlayerPrefs.GetInt( _key );
+                        var gen_ret = UnityEngine.PlayerPrefs.GetInt( _key );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -131,7 +131,7 @@ namespace XLua.CSObjectWrap
                     string _key = LuaAPI.lua_tostring(L, 1);
                     int _defaultValue = LuaAPI.xlua_tointeger(L, 2);
                     
-                        int gen_ret = UnityEngine.PlayerPrefs.GetInt( _key, _defaultValue );
+                        var gen_ret = UnityEngine.PlayerPrefs.GetInt( _key, _defaultValue );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -185,7 +185,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _key = LuaAPI.lua_tostring(L, 1);
                     
-                        float gen_ret = UnityEngine.PlayerPrefs.GetFloat( _key );
+                        var gen_ret = UnityEngine.PlayerPrefs.GetFloat( _key );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -197,7 +197,7 @@ namespace XLua.CSObjectWrap
                     string _key = LuaAPI.lua_tostring(L, 1);
                     float _defaultValue = (float)LuaAPI.lua_tonumber(L, 2);
                     
-                        float gen_ret = UnityEngine.PlayerPrefs.GetFloat( _key, _defaultValue );
+                        var gen_ret = UnityEngine.PlayerPrefs.GetFloat( _key, _defaultValue );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -251,7 +251,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _key = LuaAPI.lua_tostring(L, 1);
                     
-                        string gen_ret = UnityEngine.PlayerPrefs.GetString( _key );
+                        var gen_ret = UnityEngine.PlayerPrefs.GetString( _key );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -263,7 +263,7 @@ namespace XLua.CSObjectWrap
                     string _key = LuaAPI.lua_tostring(L, 1);
                     string _defaultValue = LuaAPI.lua_tostring(L, 2);
                     
-                        string gen_ret = UnityEngine.PlayerPrefs.GetString( _key, _defaultValue );
+                        var gen_ret = UnityEngine.PlayerPrefs.GetString( _key, _defaultValue );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -290,7 +290,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _key = LuaAPI.lua_tostring(L, 1);
                     
-                        bool gen_ret = UnityEngine.PlayerPrefs.HasKey( _key );
+                        var gen_ret = UnityEngine.PlayerPrefs.HasKey( _key );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     

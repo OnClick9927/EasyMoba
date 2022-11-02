@@ -59,7 +59,7 @@ namespace XLua.CSObjectWrap
 					UnityEngine.Avatar _avatar = (UnityEngine.Avatar)translator.GetObject(L, 2, typeof(UnityEngine.Avatar));
 					UnityEngine.Transform _root = (UnityEngine.Transform)translator.GetObject(L, 3, typeof(UnityEngine.Transform));
 					
-					UnityEngine.HumanPoseHandler gen_ret = new UnityEngine.HumanPoseHandler(_avatar, _root);
+					var gen_ret = new UnityEngine.HumanPoseHandler(_avatar, _root);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -69,7 +69,7 @@ namespace XLua.CSObjectWrap
 					UnityEngine.Avatar _avatar = (UnityEngine.Avatar)translator.GetObject(L, 2, typeof(UnityEngine.Avatar));
 					string[] _jointPaths = (string[])translator.GetObject(L, 3, typeof(string[]));
 					
-					UnityEngine.HumanPoseHandler gen_ret = new UnityEngine.HumanPoseHandler(_avatar, _jointPaths);
+					var gen_ret = new UnityEngine.HumanPoseHandler(_avatar, _jointPaths);
 					translator.Push(L, gen_ret);
                     
 					return 1;

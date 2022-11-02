@@ -58,7 +58,7 @@ namespace XLua.CSObjectWrap
 				{
 					LockStep.LCollision2D.CollisionLayerConfig _layer = (LockStep.LCollision2D.CollisionLayerConfig)translator.GetObject(L, 2, typeof(LockStep.LCollision2D.CollisionLayerConfig));
 					
-					LockStep.LCollision2D.LogocWorld gen_ret = new LockStep.LCollision2D.LogocWorld(_layer);
+					var gen_ret = new LockStep.LCollision2D.LogocWorld(_layer);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -94,7 +94,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _name = LuaAPI.lua_tostring(L, 2);
                     
-                        LockStep.LCollision2D.LogicUnit gen_ret = gen_to_be_invoked.CreateTransform( _name );
+                        var gen_ret = gen_to_be_invoked.CreateTransform( _name );
                         translator.Push(L, gen_ret);
                     
                     

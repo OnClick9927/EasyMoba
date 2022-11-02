@@ -73,7 +73,7 @@ namespace XLua.CSObjectWrap
                     IFramework.Serialization.DataTable.IDataRow _rowReader = (IFramework.Serialization.DataTable.IDataRow)translator.GetObject(L, 2, typeof(IFramework.Serialization.DataTable.IDataRow));
                     IFramework.Serialization.DataTable.IDataExplainer _explainer = (IFramework.Serialization.DataTable.IDataExplainer)translator.GetObject(L, 3, typeof(IFramework.Serialization.DataTable.IDataExplainer));
                     
-                        IFramework.Serialization.DataTable.IDataReader gen_ret = IFramework.Serialization.DataTable.DataTableTool.CreateReader( _streamReader, _rowReader, _explainer );
+                        var gen_ret = IFramework.Serialization.DataTable.DataTableTool.CreateReader( _streamReader, _rowReader, _explainer );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -86,7 +86,7 @@ namespace XLua.CSObjectWrap
                     IFramework.Serialization.DataTable.IDataRow _rowReader = (IFramework.Serialization.DataTable.IDataRow)translator.GetObject(L, 2, typeof(IFramework.Serialization.DataTable.IDataRow));
                     IFramework.Serialization.DataTable.IDataExplainer _explainer = (IFramework.Serialization.DataTable.IDataExplainer)translator.GetObject(L, 3, typeof(IFramework.Serialization.DataTable.IDataExplainer));
                     
-                        IFramework.Serialization.DataTable.IDataReader gen_ret = IFramework.Serialization.DataTable.DataTableTool.CreateReader( _text, _rowReader, _explainer );
+                        var gen_ret = IFramework.Serialization.DataTable.DataTableTool.CreateReader( _text, _rowReader, _explainer );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -117,7 +117,7 @@ namespace XLua.CSObjectWrap
                     IFramework.Serialization.DataTable.IDataRow _rowWriter = (IFramework.Serialization.DataTable.IDataRow)translator.GetObject(L, 2, typeof(IFramework.Serialization.DataTable.IDataRow));
                     IFramework.Serialization.DataTable.IDataExplainer _explainer = (IFramework.Serialization.DataTable.IDataExplainer)translator.GetObject(L, 3, typeof(IFramework.Serialization.DataTable.IDataExplainer));
                     
-                        IFramework.Serialization.DataTable.IDataWriter gen_ret = IFramework.Serialization.DataTable.DataTableTool.CreateWriter( _streamWriter, _rowWriter, _explainer );
+                        var gen_ret = IFramework.Serialization.DataTable.DataTableTool.CreateWriter( _streamWriter, _rowWriter, _explainer );
                         translator.PushAny(L, gen_ret);
                     
                     

@@ -214,7 +214,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.Camera gen_ret = new UnityEngine.Camera();
+					var gen_ret = new UnityEngine.Camera();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -413,7 +413,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        float gen_ret = gen_to_be_invoked.GetGateFittedFieldOfView(  );
+                        var gen_ret = gen_to_be_invoked.GetGateFittedFieldOfView(  );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -441,7 +441,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Vector2 gen_ret = gen_to_be_invoked.GetGateFittedLensShift(  );
+                        var gen_ret = gen_to_be_invoked.GetGateFittedLensShift(  );
                         translator.PushUnityEngineVector2(L, gen_ret);
                     
                     
@@ -568,7 +568,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Vector4 _clipPlane;translator.Get(L, 2, out _clipPlane);
                     
-                        UnityEngine.Matrix4x4 gen_ret = gen_to_be_invoked.CalculateObliqueMatrix( _clipPlane );
+                        var gen_ret = gen_to_be_invoked.CalculateObliqueMatrix( _clipPlane );
                         translator.Push(L, gen_ret);
                     
                     
@@ -599,7 +599,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Vector3 _position;translator.Get(L, 2, out _position);
                     
-                        UnityEngine.Vector3 gen_ret = gen_to_be_invoked.WorldToScreenPoint( _position );
+                        var gen_ret = gen_to_be_invoked.WorldToScreenPoint( _position );
                         translator.PushUnityEngineVector3(L, gen_ret);
                     
                     
@@ -611,7 +611,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Vector3 _position;translator.Get(L, 2, out _position);
                     UnityEngine.Camera.MonoOrStereoscopicEye _eye;translator.Get(L, 3, out _eye);
                     
-                        UnityEngine.Vector3 gen_ret = gen_to_be_invoked.WorldToScreenPoint( _position, _eye );
+                        var gen_ret = gen_to_be_invoked.WorldToScreenPoint( _position, _eye );
                         translator.PushUnityEngineVector3(L, gen_ret);
                     
                     
@@ -644,7 +644,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Vector3 _position;translator.Get(L, 2, out _position);
                     
-                        UnityEngine.Vector3 gen_ret = gen_to_be_invoked.WorldToViewportPoint( _position );
+                        var gen_ret = gen_to_be_invoked.WorldToViewportPoint( _position );
                         translator.PushUnityEngineVector3(L, gen_ret);
                     
                     
@@ -656,7 +656,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Vector3 _position;translator.Get(L, 2, out _position);
                     UnityEngine.Camera.MonoOrStereoscopicEye _eye;translator.Get(L, 3, out _eye);
                     
-                        UnityEngine.Vector3 gen_ret = gen_to_be_invoked.WorldToViewportPoint( _position, _eye );
+                        var gen_ret = gen_to_be_invoked.WorldToViewportPoint( _position, _eye );
                         translator.PushUnityEngineVector3(L, gen_ret);
                     
                     
@@ -689,7 +689,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Vector3 _position;translator.Get(L, 2, out _position);
                     
-                        UnityEngine.Vector3 gen_ret = gen_to_be_invoked.ViewportToWorldPoint( _position );
+                        var gen_ret = gen_to_be_invoked.ViewportToWorldPoint( _position );
                         translator.PushUnityEngineVector3(L, gen_ret);
                     
                     
@@ -701,7 +701,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Vector3 _position;translator.Get(L, 2, out _position);
                     UnityEngine.Camera.MonoOrStereoscopicEye _eye;translator.Get(L, 3, out _eye);
                     
-                        UnityEngine.Vector3 gen_ret = gen_to_be_invoked.ViewportToWorldPoint( _position, _eye );
+                        var gen_ret = gen_to_be_invoked.ViewportToWorldPoint( _position, _eye );
                         translator.PushUnityEngineVector3(L, gen_ret);
                     
                     
@@ -734,7 +734,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Vector3 _position;translator.Get(L, 2, out _position);
                     
-                        UnityEngine.Vector3 gen_ret = gen_to_be_invoked.ScreenToWorldPoint( _position );
+                        var gen_ret = gen_to_be_invoked.ScreenToWorldPoint( _position );
                         translator.PushUnityEngineVector3(L, gen_ret);
                     
                     
@@ -746,7 +746,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Vector3 _position;translator.Get(L, 2, out _position);
                     UnityEngine.Camera.MonoOrStereoscopicEye _eye;translator.Get(L, 3, out _eye);
                     
-                        UnityEngine.Vector3 gen_ret = gen_to_be_invoked.ScreenToWorldPoint( _position, _eye );
+                        var gen_ret = gen_to_be_invoked.ScreenToWorldPoint( _position, _eye );
                         translator.PushUnityEngineVector3(L, gen_ret);
                     
                     
@@ -777,7 +777,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Vector3 _position;translator.Get(L, 2, out _position);
                     
-                        UnityEngine.Vector3 gen_ret = gen_to_be_invoked.ScreenToViewportPoint( _position );
+                        var gen_ret = gen_to_be_invoked.ScreenToViewportPoint( _position );
                         translator.PushUnityEngineVector3(L, gen_ret);
                     
                     
@@ -806,7 +806,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Vector3 _position;translator.Get(L, 2, out _position);
                     
-                        UnityEngine.Vector3 gen_ret = gen_to_be_invoked.ViewportToScreenPoint( _position );
+                        var gen_ret = gen_to_be_invoked.ViewportToScreenPoint( _position );
                         translator.PushUnityEngineVector3(L, gen_ret);
                     
                     
@@ -837,7 +837,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Vector3 _pos;translator.Get(L, 2, out _pos);
                     
-                        UnityEngine.Ray gen_ret = gen_to_be_invoked.ViewportPointToRay( _pos );
+                        var gen_ret = gen_to_be_invoked.ViewportPointToRay( _pos );
                         translator.PushUnityEngineRay(L, gen_ret);
                     
                     
@@ -849,7 +849,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Vector3 _pos;translator.Get(L, 2, out _pos);
                     UnityEngine.Camera.MonoOrStereoscopicEye _eye;translator.Get(L, 3, out _eye);
                     
-                        UnityEngine.Ray gen_ret = gen_to_be_invoked.ViewportPointToRay( _pos, _eye );
+                        var gen_ret = gen_to_be_invoked.ViewportPointToRay( _pos, _eye );
                         translator.PushUnityEngineRay(L, gen_ret);
                     
                     
@@ -882,7 +882,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Vector3 _pos;translator.Get(L, 2, out _pos);
                     
-                        UnityEngine.Ray gen_ret = gen_to_be_invoked.ScreenPointToRay( _pos );
+                        var gen_ret = gen_to_be_invoked.ScreenPointToRay( _pos );
                         translator.PushUnityEngineRay(L, gen_ret);
                     
                     
@@ -894,7 +894,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Vector3 _pos;translator.Get(L, 2, out _pos);
                     UnityEngine.Camera.MonoOrStereoscopicEye _eye;translator.Get(L, 3, out _eye);
                     
-                        UnityEngine.Ray gen_ret = gen_to_be_invoked.ScreenPointToRay( _pos, _eye );
+                        var gen_ret = gen_to_be_invoked.ScreenPointToRay( _pos, _eye );
                         translator.PushUnityEngineRay(L, gen_ret);
                     
                     
@@ -1008,7 +1008,7 @@ namespace XLua.CSObjectWrap
                     float _focalLength = (float)LuaAPI.lua_tonumber(L, 1);
                     float _sensorSize = (float)LuaAPI.lua_tonumber(L, 2);
                     
-                        float gen_ret = UnityEngine.Camera.FocalLengthToFieldOfView( _focalLength, _sensorSize );
+                        var gen_ret = UnityEngine.Camera.FocalLengthToFieldOfView( _focalLength, _sensorSize );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -1034,7 +1034,7 @@ namespace XLua.CSObjectWrap
                     float _fieldOfView = (float)LuaAPI.lua_tonumber(L, 1);
                     float _sensorSize = (float)LuaAPI.lua_tonumber(L, 2);
                     
-                        float gen_ret = UnityEngine.Camera.FieldOfViewToFocalLength( _fieldOfView, _sensorSize );
+                        var gen_ret = UnityEngine.Camera.FieldOfViewToFocalLength( _fieldOfView, _sensorSize );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -1060,7 +1060,7 @@ namespace XLua.CSObjectWrap
                     float _horizontalFieldOfView = (float)LuaAPI.lua_tonumber(L, 1);
                     float _aspectRatio = (float)LuaAPI.lua_tonumber(L, 2);
                     
-                        float gen_ret = UnityEngine.Camera.HorizontalToVerticalFieldOfView( _horizontalFieldOfView, _aspectRatio );
+                        var gen_ret = UnityEngine.Camera.HorizontalToVerticalFieldOfView( _horizontalFieldOfView, _aspectRatio );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -1086,7 +1086,7 @@ namespace XLua.CSObjectWrap
                     float _verticalFieldOfView = (float)LuaAPI.lua_tonumber(L, 1);
                     float _aspectRatio = (float)LuaAPI.lua_tonumber(L, 2);
                     
-                        float gen_ret = UnityEngine.Camera.VerticalToHorizontalFieldOfView( _verticalFieldOfView, _aspectRatio );
+                        var gen_ret = UnityEngine.Camera.VerticalToHorizontalFieldOfView( _verticalFieldOfView, _aspectRatio );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -1115,7 +1115,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Camera.StereoscopicEye _eye;translator.Get(L, 2, out _eye);
                     
-                        UnityEngine.Matrix4x4 gen_ret = gen_to_be_invoked.GetStereoNonJitteredProjectionMatrix( _eye );
+                        var gen_ret = gen_to_be_invoked.GetStereoNonJitteredProjectionMatrix( _eye );
                         translator.Push(L, gen_ret);
                     
                     
@@ -1144,7 +1144,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Camera.StereoscopicEye _eye;translator.Get(L, 2, out _eye);
                     
-                        UnityEngine.Matrix4x4 gen_ret = gen_to_be_invoked.GetStereoViewMatrix( _eye );
+                        var gen_ret = gen_to_be_invoked.GetStereoViewMatrix( _eye );
                         translator.Push(L, gen_ret);
                     
                     
@@ -1201,7 +1201,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Camera.StereoscopicEye _eye;translator.Get(L, 2, out _eye);
                     
-                        UnityEngine.Matrix4x4 gen_ret = gen_to_be_invoked.GetStereoProjectionMatrix( _eye );
+                        var gen_ret = gen_to_be_invoked.GetStereoProjectionMatrix( _eye );
                         translator.Push(L, gen_ret);
                     
                     
@@ -1340,7 +1340,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Camera[] _cameras = (UnityEngine.Camera[])translator.GetObject(L, 1, typeof(UnityEngine.Camera[]));
                     
-                        int gen_ret = UnityEngine.Camera.GetAllCameras( _cameras );
+                        var gen_ret = UnityEngine.Camera.GetAllCameras( _cameras );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -1371,7 +1371,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Cubemap _cubemap = (UnityEngine.Cubemap)translator.GetObject(L, 2, typeof(UnityEngine.Cubemap));
                     
-                        bool gen_ret = gen_to_be_invoked.RenderToCubemap( _cubemap );
+                        var gen_ret = gen_to_be_invoked.RenderToCubemap( _cubemap );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -1382,7 +1382,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.RenderTexture _cubemap = (UnityEngine.RenderTexture)translator.GetObject(L, 2, typeof(UnityEngine.RenderTexture));
                     
-                        bool gen_ret = gen_to_be_invoked.RenderToCubemap( _cubemap );
+                        var gen_ret = gen_to_be_invoked.RenderToCubemap( _cubemap );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -1394,7 +1394,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Cubemap _cubemap = (UnityEngine.Cubemap)translator.GetObject(L, 2, typeof(UnityEngine.Cubemap));
                     int _faceMask = LuaAPI.xlua_tointeger(L, 3);
                     
-                        bool gen_ret = gen_to_be_invoked.RenderToCubemap( _cubemap, _faceMask );
+                        var gen_ret = gen_to_be_invoked.RenderToCubemap( _cubemap, _faceMask );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -1406,7 +1406,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.RenderTexture _cubemap = (UnityEngine.RenderTexture)translator.GetObject(L, 2, typeof(UnityEngine.RenderTexture));
                     int _faceMask = LuaAPI.xlua_tointeger(L, 3);
                     
-                        bool gen_ret = gen_to_be_invoked.RenderToCubemap( _cubemap, _faceMask );
+                        var gen_ret = gen_to_be_invoked.RenderToCubemap( _cubemap, _faceMask );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -1419,7 +1419,7 @@ namespace XLua.CSObjectWrap
                     int _faceMask = LuaAPI.xlua_tointeger(L, 3);
                     UnityEngine.Camera.MonoOrStereoscopicEye _stereoEye;translator.Get(L, 4, out _stereoEye);
                     
-                        bool gen_ret = gen_to_be_invoked.RenderToCubemap( _cubemap, _faceMask, _stereoEye );
+                        var gen_ret = gen_to_be_invoked.RenderToCubemap( _cubemap, _faceMask, _stereoEye );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -1758,7 +1758,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Rendering.CameraEvent _evt;translator.Get(L, 2, out _evt);
                     
-                        UnityEngine.Rendering.CommandBuffer[] gen_ret = gen_to_be_invoked.GetCommandBuffers( _evt );
+                        var gen_ret = gen_to_be_invoked.GetCommandBuffers( _evt );
                         translator.Push(L, gen_ret);
                     
                     
@@ -1789,7 +1789,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Rendering.ScriptableCullingParameters _cullingParameters;
                     
-                        bool gen_ret = gen_to_be_invoked.TryGetCullingParameters( out _cullingParameters );
+                        var gen_ret = gen_to_be_invoked.TryGetCullingParameters( out _cullingParameters );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     translator.Push(L, _cullingParameters);
                         
@@ -1803,7 +1803,7 @@ namespace XLua.CSObjectWrap
                     bool _stereoAware = LuaAPI.lua_toboolean(L, 2);
                     UnityEngine.Rendering.ScriptableCullingParameters _cullingParameters;
                     
-                        bool gen_ret = gen_to_be_invoked.TryGetCullingParameters( _stereoAware, out _cullingParameters );
+                        var gen_ret = gen_to_be_invoked.TryGetCullingParameters( _stereoAware, out _cullingParameters );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     translator.Push(L, _cullingParameters);
                         
@@ -1835,7 +1835,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.MakeComponentExist(  );
+                        var gen_ret = gen_to_be_invoked.MakeComponentExist(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -1890,7 +1890,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.LocalIdentity(  );
+                        var gen_ret = gen_to_be_invoked.LocalIdentity(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -1919,7 +1919,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Rect _rect;translator.Get(L, 2, out _rect);
                     
-                        UnityEngine.Texture2D gen_ret = gen_to_be_invoked.Screenshot( _rect );
+                        var gen_ret = gen_to_be_invoked.Screenshot( _rect );
                         translator.Push(L, gen_ret);
                     
                     

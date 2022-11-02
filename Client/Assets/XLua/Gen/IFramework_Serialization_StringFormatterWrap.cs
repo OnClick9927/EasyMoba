@@ -101,7 +101,7 @@ namespace XLua.CSObjectWrap
                     string _str = LuaAPI.lua_tostring(L, 2);
                     object _result;
                     
-                        bool gen_ret = gen_to_be_invoked.TryConvertObject( _str, out _result );
+                        var gen_ret = gen_to_be_invoked.TryConvertObject( _str, out _result );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     translator.PushAny(L, _result);
                         

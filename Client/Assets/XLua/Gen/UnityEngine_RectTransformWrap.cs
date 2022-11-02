@@ -81,7 +81,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.RectTransform gen_ret = new UnityEngine.RectTransform();
+					var gen_ret = new UnityEngine.RectTransform();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -258,7 +258,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.MakeComponentExist(  );
+                        var gen_ret = gen_to_be_invoked.MakeComponentExist(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -313,7 +313,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.LocalIdentity(  );
+                        var gen_ret = gen_to_be_invoked.LocalIdentity(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -342,7 +342,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Transform _rootTrans = (UnityEngine.Transform)translator.GetObject(L, 2, typeof(UnityEngine.Transform));
                     
-                        UnityEngine.Vector2 gen_ret = gen_to_be_invoked.GetPosInRootTrans( _rootTrans );
+                        var gen_ret = gen_to_be_invoked.GetPosInRootTrans( _rootTrans );
                         translator.PushUnityEngineVector2(L, gen_ret);
                     
                     
@@ -371,7 +371,7 @@ namespace XLua.CSObjectWrap
                 {
                     float _anchorPosX = (float)LuaAPI.lua_tonumber(L, 2);
                     
-                        UnityEngine.RectTransform gen_ret = gen_to_be_invoked.AnchorPosX( _anchorPosX );
+                        var gen_ret = gen_to_be_invoked.AnchorPosX( _anchorPosX );
                         translator.Push(L, gen_ret);
                     
                     
@@ -400,7 +400,7 @@ namespace XLua.CSObjectWrap
                 {
                     float _sizeWidth = (float)LuaAPI.lua_tonumber(L, 2);
                     
-                        UnityEngine.RectTransform gen_ret = gen_to_be_invoked.SetSizeWidth( _sizeWidth );
+                        var gen_ret = gen_to_be_invoked.SetSizeWidth( _sizeWidth );
                         translator.Push(L, gen_ret);
                     
                     
@@ -429,7 +429,7 @@ namespace XLua.CSObjectWrap
                 {
                     float _sizeHeight = (float)LuaAPI.lua_tonumber(L, 2);
                     
-                        UnityEngine.RectTransform gen_ret = gen_to_be_invoked.SetSizeHeight( _sizeHeight );
+                        var gen_ret = gen_to_be_invoked.SetSizeHeight( _sizeHeight );
                         translator.Push(L, gen_ret);
                     
                     
@@ -457,7 +457,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Vector2 gen_ret = gen_to_be_invoked.GetWorldSize(  );
+                        var gen_ret = gen_to_be_invoked.GetWorldSize(  );
                         translator.PushUnityEngineVector2(L, gen_ret);
                     
                     

@@ -108,7 +108,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.ReflectionProbe gen_ret = new UnityEngine.ReflectionProbe();
+					var gen_ret = new UnityEngine.ReflectionProbe();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -172,7 +172,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 1) 
                 {
                     
-                        int gen_ret = gen_to_be_invoked.RenderProbe(  );
+                        var gen_ret = gen_to_be_invoked.RenderProbe(  );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -183,7 +183,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.RenderTexture _targetTexture = (UnityEngine.RenderTexture)translator.GetObject(L, 2, typeof(UnityEngine.RenderTexture));
                     
-                        int gen_ret = gen_to_be_invoked.RenderProbe( _targetTexture );
+                        var gen_ret = gen_to_be_invoked.RenderProbe( _targetTexture );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -214,7 +214,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _renderId = LuaAPI.xlua_tointeger(L, 2);
                     
-                        bool gen_ret = gen_to_be_invoked.IsFinishedRendering( _renderId );
+                        var gen_ret = gen_to_be_invoked.IsFinishedRendering( _renderId );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -244,7 +244,7 @@ namespace XLua.CSObjectWrap
                     float _blend = (float)LuaAPI.lua_tonumber(L, 3);
                     UnityEngine.RenderTexture _target = (UnityEngine.RenderTexture)translator.GetObject(L, 4, typeof(UnityEngine.RenderTexture));
                     
-                        bool gen_ret = UnityEngine.ReflectionProbe.BlendCubemap( _src, _dst, _blend, _target );
+                        var gen_ret = UnityEngine.ReflectionProbe.BlendCubemap( _src, _dst, _blend, _target );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -272,7 +272,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.MakeComponentExist(  );
+                        var gen_ret = gen_to_be_invoked.MakeComponentExist(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -327,7 +327,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.LocalIdentity(  );
+                        var gen_ret = gen_to_be_invoked.LocalIdentity(  );
                         translator.Push(L, gen_ret);
                     
                     

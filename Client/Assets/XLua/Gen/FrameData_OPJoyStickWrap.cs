@@ -54,7 +54,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					FrameData.OPJoyStick gen_ret = new FrameData.OPJoyStick();
+					var gen_ret = new FrameData.OPJoyStick();
 					translator.Push(L, gen_ret);
                     
 					return 1;

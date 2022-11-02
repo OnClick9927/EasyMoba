@@ -53,7 +53,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.ColorUtility gen_ret = new UnityEngine.ColorUtility();
+					var gen_ret = new UnityEngine.ColorUtility();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -88,7 +88,7 @@ namespace XLua.CSObjectWrap
                     string _htmlString = LuaAPI.lua_tostring(L, 1);
                     UnityEngine.Color _color;
                     
-                        bool gen_ret = UnityEngine.ColorUtility.TryParseHtmlString( _htmlString, out _color );
+                        var gen_ret = UnityEngine.ColorUtility.TryParseHtmlString( _htmlString, out _color );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     translator.PushUnityEngineColor(L, _color);
                         
@@ -117,7 +117,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Color _color;translator.Get(L, 1, out _color);
                     
-                        string gen_ret = UnityEngine.ColorUtility.ToHtmlStringRGB( _color );
+                        var gen_ret = UnityEngine.ColorUtility.ToHtmlStringRGB( _color );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -144,7 +144,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Color _color;translator.Get(L, 1, out _color);
                     
-                        string gen_ret = UnityEngine.ColorUtility.ToHtmlStringRGBA( _color );
+                        var gen_ret = UnityEngine.ColorUtility.ToHtmlStringRGBA( _color );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     

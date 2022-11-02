@@ -55,7 +55,7 @@ namespace XLua.CSObjectWrap
 				{
 					IFramework.UI.UIModule _module = (IFramework.UI.UIModule)translator.GetObject(L, 2, typeof(IFramework.UI.UIModule));
 					
-					IFramework.UI.UIModule.ItemsPool gen_ret = new IFramework.UI.UIModule.ItemsPool(_module);
+					var gen_ret = new IFramework.UI.UIModule.ItemsPool(_module);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -91,7 +91,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _path = LuaAPI.lua_tostring(L, 2);
                     
-                        IFramework.UI.UIItem gen_ret = gen_to_be_invoked.Get( _path );
+                        var gen_ret = gen_to_be_invoked.Get( _path );
                         translator.Push(L, gen_ret);
                     
                     

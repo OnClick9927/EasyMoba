@@ -53,7 +53,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					EasyMoba.UpdateUIAsset gen_ret = new EasyMoba.UpdateUIAsset();
+					var gen_ret = new EasyMoba.UpdateUIAsset();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -90,7 +90,7 @@ namespace XLua.CSObjectWrap
                     string _path = LuaAPI.lua_tostring(L, 2);
                     IFramework.UI.LoadItemAsyncOperation _op = (IFramework.UI.LoadItemAsyncOperation)translator.GetObject(L, 3, typeof(IFramework.UI.LoadItemAsyncOperation));
                     
-                        bool gen_ret = gen_to_be_invoked.LoadItemAsync( _path, _op );
+                        var gen_ret = gen_to_be_invoked.LoadItemAsync( _path, _op );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -119,7 +119,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _name = LuaAPI.lua_tostring(L, 2);
                     
-                        IFramework.UI.UIPanel gen_ret = gen_to_be_invoked.LoadPanel( _name );
+                        var gen_ret = gen_to_be_invoked.LoadPanel( _name );
                         translator.Push(L, gen_ret);
                     
                     
@@ -149,7 +149,7 @@ namespace XLua.CSObjectWrap
                     string _name = LuaAPI.lua_tostring(L, 2);
                     IFramework.UI.LoadPanelAsyncOperation _op = (IFramework.UI.LoadPanelAsyncOperation)translator.GetObject(L, 3, typeof(IFramework.UI.LoadPanelAsyncOperation));
                     
-                        bool gen_ret = gen_to_be_invoked.LoadPanelAsync( _name, _op );
+                        var gen_ret = gen_to_be_invoked.LoadPanelAsync( _name, _op );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     

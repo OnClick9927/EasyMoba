@@ -254,7 +254,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _index = LuaAPI.xlua_tointeger(L, 1);
                     
-                        UnityEngine.Rendering.RenderPipelineAsset gen_ret = UnityEngine.QualitySettings.GetRenderPipelineAssetAt( _index );
+                        var gen_ret = UnityEngine.QualitySettings.GetRenderPipelineAssetAt( _index );
                         translator.Push(L, gen_ret);
                     
                     
@@ -278,7 +278,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        int gen_ret = UnityEngine.QualitySettings.GetQualityLevel(  );
+                        var gen_ret = UnityEngine.QualitySettings.GetQualityLevel(  );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     

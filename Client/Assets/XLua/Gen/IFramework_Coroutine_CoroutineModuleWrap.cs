@@ -55,7 +55,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					IFramework.Coroutine.CoroutineModule gen_ret = new IFramework.Coroutine.CoroutineModule();
+					var gen_ret = new IFramework.Coroutine.CoroutineModule();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -91,7 +91,7 @@ namespace XLua.CSObjectWrap
                 {
                     System.Collections.IEnumerator _routine = (System.Collections.IEnumerator)translator.GetObject(L, 2, typeof(System.Collections.IEnumerator));
                     
-                        IFramework.Coroutine.ICoroutine gen_ret = gen_to_be_invoked.CreateCoroutine( _routine );
+                        var gen_ret = gen_to_be_invoked.CreateCoroutine( _routine );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -120,7 +120,7 @@ namespace XLua.CSObjectWrap
                 {
                     System.Collections.IEnumerator _routine = (System.Collections.IEnumerator)translator.GetObject(L, 2, typeof(System.Collections.IEnumerator));
                     
-                        IFramework.Coroutine.ICoroutine gen_ret = gen_to_be_invoked.StartCoroutine( _routine );
+                        var gen_ret = gen_to_be_invoked.StartCoroutine( _routine );
                         translator.PushAny(L, gen_ret);
                     
                     

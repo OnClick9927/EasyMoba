@@ -53,7 +53,7 @@ namespace XLua.CSObjectWrap
 				{
 					int _length = LuaAPI.xlua_tointeger(L, 2);
 					
-					IFramework.ArrayPoolArg gen_ret = new IFramework.ArrayPoolArg(_length);
+					var gen_ret = new IFramework.ArrayPoolArg(_length);
 					translator.Push(L, gen_ret);
                     
 					return 1;

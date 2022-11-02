@@ -89,7 +89,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.GL gen_ret = new UnityEngine.GL();
+					var gen_ret = new UnityEngine.GL();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -612,7 +612,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Matrix4x4 _proj;translator.Get(L, 1, out _proj);
                     bool _renderIntoTexture = LuaAPI.lua_toboolean(L, 2);
                     
-                        UnityEngine.Matrix4x4 gen_ret = UnityEngine.GL.GetGPUProjectionMatrix( _proj, _renderIntoTexture );
+                        var gen_ret = UnityEngine.GL.GetGPUProjectionMatrix( _proj, _renderIntoTexture );
                         translator.Push(L, gen_ret);
                     
                     

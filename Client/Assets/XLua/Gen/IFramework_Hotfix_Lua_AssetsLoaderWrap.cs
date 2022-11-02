@@ -52,7 +52,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					IFramework.Hotfix.Lua.AssetsLoader gen_ret = new IFramework.Hotfix.Lua.AssetsLoader();
+					var gen_ret = new IFramework.Hotfix.Lua.AssetsLoader();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -88,7 +88,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _path = LuaAPI.lua_tostring(L, 2);
                     
-                        byte[] gen_ret = gen_to_be_invoked.load( ref _path );
+                        var gen_ret = gen_to_be_invoked.load( ref _path );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     LuaAPI.lua_pushstring(L, _path);
                         

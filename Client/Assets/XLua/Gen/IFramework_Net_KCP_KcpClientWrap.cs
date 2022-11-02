@@ -62,7 +62,7 @@ namespace XLua.CSObjectWrap
 					IFramework.Net.KCP.IKcpSocket _client = (IFramework.Net.KCP.IKcpSocket)translator.GetObject(L, 2, typeof(IFramework.Net.KCP.IKcpSocket));
 					IFramework.Net.KCP.ISessionListener _listen = (IFramework.Net.KCP.ISessionListener)translator.GetObject(L, 3, typeof(IFramework.Net.KCP.ISessionListener));
 					
-					IFramework.Net.KCP.KcpClient gen_ret = new IFramework.Net.KCP.KcpClient(_client, _listen);
+					var gen_ret = new IFramework.Net.KCP.KcpClient(_client, _listen);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -129,7 +129,7 @@ namespace XLua.CSObjectWrap
                     int _index = LuaAPI.xlua_tointeger(L, 3);
                     int _length = LuaAPI.xlua_tointeger(L, 4);
                     
-                        int gen_ret = gen_to_be_invoked.Send( _data, _index, _length );
+                        var gen_ret = gen_to_be_invoked.Send( _data, _index, _length );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     

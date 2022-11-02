@@ -79,7 +79,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.Graphics gen_ret = new UnityEngine.Graphics();
+					var gen_ret = new UnityEngine.Graphics();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -486,7 +486,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Texture _src = (UnityEngine.Texture)translator.GetObject(L, 1, typeof(UnityEngine.Texture));
                     UnityEngine.Texture _dst = (UnityEngine.Texture)translator.GetObject(L, 2, typeof(UnityEngine.Texture));
                     
-                        bool gen_ret = UnityEngine.Graphics.ConvertTexture( _src, _dst );
+                        var gen_ret = UnityEngine.Graphics.ConvertTexture( _src, _dst );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -500,7 +500,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Texture _dst = (UnityEngine.Texture)translator.GetObject(L, 3, typeof(UnityEngine.Texture));
                     int _dstElement = LuaAPI.xlua_tointeger(L, 4);
                     
-                        bool gen_ret = UnityEngine.Graphics.ConvertTexture( _src, _srcElement, _dst, _dstElement );
+                        var gen_ret = UnityEngine.Graphics.ConvertTexture( _src, _srcElement, _dst, _dstElement );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -530,7 +530,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 0) 
                 {
                     
-                        UnityEngine.Rendering.GraphicsFence gen_ret = UnityEngine.Graphics.CreateAsyncGraphicsFence(  );
+                        var gen_ret = UnityEngine.Graphics.CreateAsyncGraphicsFence(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -541,7 +541,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Rendering.SynchronisationStage _stage;translator.Get(L, 1, out _stage);
                     
-                        UnityEngine.Rendering.GraphicsFence gen_ret = UnityEngine.Graphics.CreateAsyncGraphicsFence( _stage );
+                        var gen_ret = UnityEngine.Graphics.CreateAsyncGraphicsFence( _stage );
                         translator.Push(L, gen_ret);
                     
                     
@@ -571,7 +571,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Rendering.GraphicsFenceType _fenceType;translator.Get(L, 1, out _fenceType);
                     UnityEngine.Rendering.SynchronisationStageFlags _stage;translator.Get(L, 2, out _stage);
                     
-                        UnityEngine.Rendering.GraphicsFence gen_ret = UnityEngine.Graphics.CreateGraphicsFence( _fenceType, _stage );
+                        var gen_ret = UnityEngine.Graphics.CreateGraphicsFence( _fenceType, _stage );
                         translator.Push(L, gen_ret);
                     
                     

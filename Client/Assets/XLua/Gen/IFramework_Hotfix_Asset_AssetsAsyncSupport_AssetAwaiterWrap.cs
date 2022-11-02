@@ -55,7 +55,7 @@ namespace XLua.CSObjectWrap
 				{
 					IFramework.Hotfix.Asset.Asset _task = (IFramework.Hotfix.Asset.Asset)translator.GetObject(L, 2, typeof(IFramework.Hotfix.Asset.Asset));
 					
-					IFramework.Hotfix.Asset.AssetsAsyncSupport.AssetAwaiter gen_ret = new IFramework.Hotfix.Asset.AssetsAsyncSupport.AssetAwaiter(_task);
+					var gen_ret = new IFramework.Hotfix.Asset.AssetsAsyncSupport.AssetAwaiter(_task);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -96,7 +96,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        IFramework.Hotfix.Asset.Asset gen_ret = gen_to_be_invoked.GetResult(  );
+                        var gen_ret = gen_to_be_invoked.GetResult(  );
                         translator.Push(L, gen_ret);
                     
                     

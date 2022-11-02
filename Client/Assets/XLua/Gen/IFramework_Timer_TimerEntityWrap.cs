@@ -68,7 +68,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					IFramework.Timer.TimerEntity gen_ret = new IFramework.Timer.TimerEntity();
+					var gen_ret = new IFramework.Timer.TimerEntity();
 					translator.Push(L, gen_ret);
                     
 					return 1;

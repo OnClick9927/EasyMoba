@@ -89,7 +89,7 @@ namespace XLua.CSObjectWrap
 					LockStep.Math.LFloat _width;translator.Get(L, 4, out _width);
 					LockStep.Math.LFloat _heigh;translator.Get(L, 5, out _heigh);
 					
-					LockStep.Math.LRect gen_ret = new LockStep.Math.LRect(_x, _y, _width, _heigh);
+					var gen_ret = new LockStep.Math.LRect(_x, _y, _width, _heigh);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -99,7 +99,7 @@ namespace XLua.CSObjectWrap
 					LockStep.Math.LVector2 _position;translator.Get(L, 2, out _position);
 					LockStep.Math.LVector2 _size;translator.Get(L, 3, out _size);
 					
-					LockStep.Math.LRect gen_ret = new LockStep.Math.LRect(_position, _size);
+					var gen_ret = new LockStep.Math.LRect(_position, _size);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -166,7 +166,7 @@ namespace XLua.CSObjectWrap
                     LockStep.Math.LVector2 _center;translator.Get(L, 1, out _center);
                     LockStep.Math.LVector2 _halfSize;translator.Get(L, 2, out _halfSize);
                     
-                        LockStep.Math.LRect gen_ret = LockStep.Math.LRect.CreateRect( _center, _halfSize );
+                        var gen_ret = LockStep.Math.LRect.CreateRect( _center, _halfSize );
                         translator.Push(L, gen_ret);
                     
                     
@@ -196,7 +196,7 @@ namespace XLua.CSObjectWrap
                     LockStep.Math.LFloat _xmax;translator.Get(L, 3, out _xmax);
                     LockStep.Math.LFloat _ymax;translator.Get(L, 4, out _ymax);
                     
-                        LockStep.Math.LRect gen_ret = LockStep.Math.LRect.MinMaxRect( _xmin, _ymin, _xmax, _ymax );
+                        var gen_ret = LockStep.Math.LRect.MinMaxRect( _xmin, _ymin, _xmax, _ymax );
                         translator.Push(L, gen_ret);
                     
                     
@@ -260,7 +260,7 @@ namespace XLua.CSObjectWrap
                 {
                     LockStep.Math.LVector2 _point;translator.Get(L, 2, out _point);
                     
-                        bool gen_ret = gen_to_be_invoked.Contains( _point );
+                        var gen_ret = gen_to_be_invoked.Contains( _point );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -273,7 +273,7 @@ namespace XLua.CSObjectWrap
                 {
                     LockStep.Math.LVector3 _point;translator.Get(L, 2, out _point);
                     
-                        bool gen_ret = gen_to_be_invoked.Contains( _point );
+                        var gen_ret = gen_to_be_invoked.Contains( _point );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -308,7 +308,7 @@ namespace XLua.CSObjectWrap
                 {
                     LockStep.Math.LRect _other;translator.Get(L, 2, out _other);
                     
-                        bool gen_ret = gen_to_be_invoked.Overlaps( _other );
+                        var gen_ret = gen_to_be_invoked.Overlaps( _other );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -322,7 +322,7 @@ namespace XLua.CSObjectWrap
                     LockStep.Math.LRect _other;translator.Get(L, 2, out _other);
                     bool _allowInverse = LuaAPI.lua_toboolean(L, 3);
                     
-                        bool gen_ret = gen_to_be_invoked.Overlaps( _other, _allowInverse );
+                        var gen_ret = gen_to_be_invoked.Overlaps( _other, _allowInverse );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -354,7 +354,7 @@ namespace XLua.CSObjectWrap
                     LockStep.Math.LRect _rectangle;translator.Get(L, 1, out _rectangle);
                     LockStep.Math.LVector2 _normalizedRectCoordinates;translator.Get(L, 2, out _normalizedRectCoordinates);
                     
-                        LockStep.Math.LVector2 gen_ret = LockStep.Math.LRect.NormalizedToPoint( _rectangle, _normalizedRectCoordinates );
+                        var gen_ret = LockStep.Math.LRect.NormalizedToPoint( _rectangle, _normalizedRectCoordinates );
                         translator.Push(L, gen_ret);
                     
                     
@@ -382,7 +382,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        int gen_ret = gen_to_be_invoked.GetHashCode(  );
+                        var gen_ret = gen_to_be_invoked.GetHashCode(  );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -415,7 +415,7 @@ namespace XLua.CSObjectWrap
                 {
                     object _other = translator.GetObject(L, 2, typeof(object));
                     
-                        bool gen_ret = gen_to_be_invoked.Equals( _other );
+                        var gen_ret = gen_to_be_invoked.Equals( _other );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -428,7 +428,7 @@ namespace XLua.CSObjectWrap
                 {
                     LockStep.Math.LRect _other;translator.Get(L, 2, out _other);
                     
-                        bool gen_ret = gen_to_be_invoked.Equals( _other );
+                        var gen_ret = gen_to_be_invoked.Equals( _other );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -460,7 +460,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        string gen_ret = gen_to_be_invoked.ToString(  );
+                        var gen_ret = gen_to_be_invoked.ToString(  );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -490,7 +490,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Rect gen_ret = gen_to_be_invoked.ToRect(  );
+                        var gen_ret = gen_to_be_invoked.ToRect(  );
                         translator.Push(L, gen_ret);
                     
                     

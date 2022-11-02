@@ -60,7 +60,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.UI.LayoutRebuilder gen_ret = new UnityEngine.UI.LayoutRebuilder();
+					var gen_ret = new UnityEngine.UI.LayoutRebuilder();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -95,7 +95,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        bool gen_ret = gen_to_be_invoked.IsDestroyed(  );
+                        var gen_ret = gen_to_be_invoked.IsDestroyed(  );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -257,7 +257,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        int gen_ret = gen_to_be_invoked.GetHashCode(  );
+                        var gen_ret = gen_to_be_invoked.GetHashCode(  );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -286,7 +286,7 @@ namespace XLua.CSObjectWrap
                 {
                     object _obj = translator.GetObject(L, 2, typeof(object));
                     
-                        bool gen_ret = gen_to_be_invoked.Equals( _obj );
+                        var gen_ret = gen_to_be_invoked.Equals( _obj );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -314,7 +314,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        string gen_ret = gen_to_be_invoked.ToString(  );
+                        var gen_ret = gen_to_be_invoked.ToString(  );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     

@@ -50,7 +50,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.SerializeReference gen_ret = new UnityEngine.SerializeReference();
+					var gen_ret = new UnityEngine.SerializeReference();
 					translator.Push(L, gen_ret);
                     
 					return 1;

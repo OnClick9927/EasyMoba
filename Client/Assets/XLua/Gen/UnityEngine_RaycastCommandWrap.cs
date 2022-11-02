@@ -66,7 +66,7 @@ namespace XLua.CSObjectWrap
 					int _layerMask = LuaAPI.xlua_tointeger(L, 5);
 					int _maxHits = LuaAPI.xlua_tointeger(L, 6);
 					
-					UnityEngine.RaycastCommand gen_ret = new UnityEngine.RaycastCommand(_from, _direction, _distance, _layerMask, _maxHits);
+					var gen_ret = new UnityEngine.RaycastCommand(_from, _direction, _distance, _layerMask, _maxHits);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -78,7 +78,7 @@ namespace XLua.CSObjectWrap
 					float _distance = (float)LuaAPI.lua_tonumber(L, 4);
 					int _layerMask = LuaAPI.xlua_tointeger(L, 5);
 					
-					UnityEngine.RaycastCommand gen_ret = new UnityEngine.RaycastCommand(_from, _direction, _distance, _layerMask);
+					var gen_ret = new UnityEngine.RaycastCommand(_from, _direction, _distance, _layerMask);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -89,7 +89,7 @@ namespace XLua.CSObjectWrap
 					UnityEngine.Vector3 _direction;translator.Get(L, 3, out _direction);
 					float _distance = (float)LuaAPI.lua_tonumber(L, 4);
 					
-					UnityEngine.RaycastCommand gen_ret = new UnityEngine.RaycastCommand(_from, _direction, _distance);
+					var gen_ret = new UnityEngine.RaycastCommand(_from, _direction, _distance);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -99,7 +99,7 @@ namespace XLua.CSObjectWrap
 					UnityEngine.Vector3 _from;translator.Get(L, 2, out _from);
 					UnityEngine.Vector3 _direction;translator.Get(L, 3, out _direction);
 					
-					UnityEngine.RaycastCommand gen_ret = new UnityEngine.RaycastCommand(_from, _direction);
+					var gen_ret = new UnityEngine.RaycastCommand(_from, _direction);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -144,7 +144,7 @@ namespace XLua.CSObjectWrap
                     int _minCommandsPerJob = LuaAPI.xlua_tointeger(L, 3);
                     Unity.Jobs.JobHandle _dependsOn;translator.Get(L, 4, out _dependsOn);
                     
-                        Unity.Jobs.JobHandle gen_ret = UnityEngine.RaycastCommand.ScheduleBatch( _commands, _results, _minCommandsPerJob, _dependsOn );
+                        var gen_ret = UnityEngine.RaycastCommand.ScheduleBatch( _commands, _results, _minCommandsPerJob, _dependsOn );
                         translator.Push(L, gen_ret);
                     
                     
@@ -157,7 +157,7 @@ namespace XLua.CSObjectWrap
                     Unity.Collections.NativeArray<UnityEngine.RaycastHit> _results;translator.Get(L, 2, out _results);
                     int _minCommandsPerJob = LuaAPI.xlua_tointeger(L, 3);
                     
-                        Unity.Jobs.JobHandle gen_ret = UnityEngine.RaycastCommand.ScheduleBatch( _commands, _results, _minCommandsPerJob );
+                        var gen_ret = UnityEngine.RaycastCommand.ScheduleBatch( _commands, _results, _minCommandsPerJob );
                         translator.Push(L, gen_ret);
                     
                     

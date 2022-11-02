@@ -65,7 +65,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					IFramework.Hotfix.Asset.Assets gen_ret = new IFramework.Hotfix.Asset.Assets();
+					var gen_ret = new IFramework.Hotfix.Asset.Assets();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -98,7 +98,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        System.Collections.Generic.IReadOnlyList<string> gen_ret = IFramework.Hotfix.Asset.Assets.GetAllAssetPaths(  );
+                        var gen_ret = IFramework.Hotfix.Asset.Assets.GetAllAssetPaths(  );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -150,7 +150,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        IFramework.Hotfix.Asset.AssetsInternal.CheckBundleVersionOperation gen_ret = IFramework.Hotfix.Asset.Assets.VersionCheck(  );
+                        var gen_ret = IFramework.Hotfix.Asset.Assets.VersionCheck(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -177,7 +177,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _bundleName = LuaAPI.lua_tostring(L, 1);
                     
-                        IFramework.Hotfix.Asset.AssetsInternal.DownLoadBundleOperation gen_ret = IFramework.Hotfix.Asset.Assets.DownLoadBundle( _bundleName );
+                        var gen_ret = IFramework.Hotfix.Asset.Assets.DownLoadBundle( _bundleName );
                         translator.Push(L, gen_ret);
                     
                     
@@ -201,7 +201,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        bool gen_ret = IFramework.Hotfix.Asset.Assets.Initialized(  );
+                        var gen_ret = IFramework.Hotfix.Asset.Assets.Initialized(  );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -230,7 +230,7 @@ namespace XLua.CSObjectWrap
                 {
                     bool _again = LuaAPI.lua_toboolean(L, 1);
                     
-                        IFramework.Hotfix.Asset.AssetsInternal.LoadManifestOperation gen_ret = IFramework.Hotfix.Asset.Assets.InitAsync( _again );
+                        var gen_ret = IFramework.Hotfix.Asset.Assets.InitAsync( _again );
                         translator.Push(L, gen_ret);
                     
                     
@@ -240,7 +240,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 0) 
                 {
                     
-                        IFramework.Hotfix.Asset.AssetsInternal.LoadManifestOperation gen_ret = IFramework.Hotfix.Asset.Assets.InitAsync(  );
+                        var gen_ret = IFramework.Hotfix.Asset.Assets.InitAsync(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -269,7 +269,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _path = LuaAPI.lua_tostring(L, 1);
                     
-                        IFramework.Hotfix.Asset.Asset gen_ret = IFramework.Hotfix.Asset.Assets.LoadAsset( _path );
+                        var gen_ret = IFramework.Hotfix.Asset.Assets.LoadAsset( _path );
                         translator.Push(L, gen_ret);
                     
                     
@@ -296,7 +296,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _path = LuaAPI.lua_tostring(L, 1);
                     
-                        IFramework.Hotfix.Asset.Asset gen_ret = IFramework.Hotfix.Asset.Assets.LoadAssetAsync( _path );
+                        var gen_ret = IFramework.Hotfix.Asset.Assets.LoadAssetAsync( _path );
                         translator.Push(L, gen_ret);
                     
                     
@@ -323,7 +323,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _path = LuaAPI.lua_tostring(L, 1);
                     
-                        IFramework.Hotfix.Asset.SceneAsset gen_ret = IFramework.Hotfix.Asset.Assets.LoadSceneAssetAsync( _path );
+                        var gen_ret = IFramework.Hotfix.Asset.Assets.LoadSceneAssetAsync( _path );
                         translator.Push(L, gen_ret);
                     
                     
@@ -350,7 +350,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _path = LuaAPI.lua_tostring(L, 1);
                     
-                        IFramework.Hotfix.Asset.SceneAsset gen_ret = IFramework.Hotfix.Asset.Assets.LoadSceneAsset( _path );
+                        var gen_ret = IFramework.Hotfix.Asset.Assets.LoadSceneAsset( _path );
                         translator.Push(L, gen_ret);
                     
                     
@@ -403,7 +403,7 @@ namespace XLua.CSObjectWrap
                 {
                     string[] _paths = (string[])translator.GetObject(L, 1, typeof(string[]));
                     
-                        IFramework.Hotfix.Asset.AssetsInternal.AssetsGroupOperation gen_ret = IFramework.Hotfix.Asset.Assets.PrepareAssets( _paths );
+                        var gen_ret = IFramework.Hotfix.Asset.Assets.PrepareAssets( _paths );
                         translator.Push(L, gen_ret);
                     
                     
@@ -431,7 +431,7 @@ namespace XLua.CSObjectWrap
                     string _path = LuaAPI.lua_tostring(L, 1);
                     UnityEngine.Transform _parent = (UnityEngine.Transform)translator.GetObject(L, 2, typeof(UnityEngine.Transform));
                     
-                        IFramework.Hotfix.Asset.Assets.InstantiateObjectOperation gen_ret = IFramework.Hotfix.Asset.Assets.Instantiate( _path, _parent );
+                        var gen_ret = IFramework.Hotfix.Asset.Assets.Instantiate( _path, _parent );
                         translator.Push(L, gen_ret);
                     
                     
@@ -459,7 +459,7 @@ namespace XLua.CSObjectWrap
                     string _path = LuaAPI.lua_tostring(L, 1);
                     UnityEngine.Transform _parent = (UnityEngine.Transform)translator.GetObject(L, 2, typeof(UnityEngine.Transform));
                     
-                        IFramework.Hotfix.Asset.Assets.InstantiateObjectOperation gen_ret = IFramework.Hotfix.Asset.Assets.InstantiateAsync( _path, _parent );
+                        var gen_ret = IFramework.Hotfix.Asset.Assets.InstantiateAsync( _path, _parent );
                         translator.Push(L, gen_ret);
                     
                     

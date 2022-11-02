@@ -2,6 +2,11 @@
 
 namespace EMO.Project.Game.Battle.Rooms;
 
+public interface ICanCallClientBattleMsg
+{
+    void SendResponse(long role_id, SPBattleAllReady response);
+    void SendBattleFrame(long roleID, SPBattleFrame frame);
+}
 class Room
 {
     public MatchRoomType type;
@@ -18,9 +23,10 @@ class Room
     private int curFrame = 0;
     private int gap;
     private Timer timer;
-
-    public Room(MatchRoomType type, List<long> roles,int gap)
+    private ICanCallClientBattleMsg call;
+    public Room(MatchRoomType type, List<long> roles, int gap, ICanCallClientBattleMsg call)
     {
+        this.call = call;
         this.type = type;
         this.gap = gap;
         for (int i = 0; i < roles.Count; i++)
@@ -66,7 +72,7 @@ class Room
         SPBattleAllReady sp = new SPBattleAllReady();
         foreach (var roleID in players.Keys)
         {
-            ServerTool.SendResponse(roleID, sp);
+            call.SendResponse(roleID, sp);
         }
         CreateSPFrame();
         timer = new Timer(Update, null, gap * 2, gap);
@@ -80,7 +86,7 @@ class Room
             var from = p.frameID;
             for (int i = from; i <= curFrame; i++)
             {
-                ServerTool.GetModule<BattleModule>().SendBattleFrame(p.roleId, frames[i]);
+                call.SendBattleFrame(p.roleId, frames[i]);
             }
         }
         curFrame++;

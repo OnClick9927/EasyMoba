@@ -53,7 +53,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					IFramework.Recorder.ActionGroupState gen_ret = new IFramework.Recorder.ActionGroupState();
+					var gen_ret = new IFramework.Recorder.ActionGroupState();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -88,7 +88,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        object gen_ret = gen_to_be_invoked.Clone(  );
+                        var gen_ret = gen_to_be_invoked.Clone(  );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -118,7 +118,7 @@ namespace XLua.CSObjectWrap
                     System.Action _redo = translator.GetDelegate<System.Action>(L, 2);
                     System.Action _undo = translator.GetDelegate<System.Action>(L, 3);
                     
-                        IFramework.Recorder.ActionGroupState gen_ret = gen_to_be_invoked.SetGroupCommand( _redo, _undo );
+                        var gen_ret = gen_to_be_invoked.SetGroupCommand( _redo, _undo );
                         translator.Push(L, gen_ret);
                     
                     
@@ -149,7 +149,7 @@ namespace XLua.CSObjectWrap
                 {
                     bool _redo = LuaAPI.lua_toboolean(L, 2);
                     
-                        IFramework.Recorder.BaseState gen_ret = gen_to_be_invoked.Subscribe( _redo );
+                        var gen_ret = gen_to_be_invoked.Subscribe( _redo );
                         translator.Push(L, gen_ret);
                     
                     
@@ -159,7 +159,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 1) 
                 {
                     
-                        IFramework.Recorder.BaseState gen_ret = gen_to_be_invoked.Subscribe(  );
+                        var gen_ret = gen_to_be_invoked.Subscribe(  );
                         translator.Push(L, gen_ret);
                     
                     

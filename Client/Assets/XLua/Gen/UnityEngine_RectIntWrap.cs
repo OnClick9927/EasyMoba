@@ -86,7 +86,7 @@ namespace XLua.CSObjectWrap
 					int _width = LuaAPI.xlua_tointeger(L, 4);
 					int _height = LuaAPI.xlua_tointeger(L, 5);
 					
-					UnityEngine.RectInt gen_ret = new UnityEngine.RectInt(_xMin, _yMin, _width, _height);
+					var gen_ret = new UnityEngine.RectInt(_xMin, _yMin, _width, _height);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -96,7 +96,7 @@ namespace XLua.CSObjectWrap
 					UnityEngine.Vector2Int _position;translator.Get(L, 2, out _position);
 					UnityEngine.Vector2Int _size;translator.Get(L, 3, out _size);
 					
-					UnityEngine.RectInt gen_ret = new UnityEngine.RectInt(_position, _size);
+					var gen_ret = new UnityEngine.RectInt(_position, _size);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -199,7 +199,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Vector2Int _position;translator.Get(L, 2, out _position);
                     
-                        bool gen_ret = gen_to_be_invoked.Contains( _position );
+                        var gen_ret = gen_to_be_invoked.Contains( _position );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -230,7 +230,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.RectInt _other;translator.Get(L, 2, out _other);
                     
-                        bool gen_ret = gen_to_be_invoked.Overlaps( _other );
+                        var gen_ret = gen_to_be_invoked.Overlaps( _other );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -262,7 +262,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 1) 
                 {
                     
-                        string gen_ret = gen_to_be_invoked.ToString(  );
+                        var gen_ret = gen_to_be_invoked.ToString(  );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -275,7 +275,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _format = LuaAPI.lua_tostring(L, 2);
                     
-                        string gen_ret = gen_to_be_invoked.ToString( _format );
+                        var gen_ret = gen_to_be_invoked.ToString( _format );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -289,7 +289,7 @@ namespace XLua.CSObjectWrap
                     string _format = LuaAPI.lua_tostring(L, 2);
                     System.IFormatProvider _formatProvider = (System.IFormatProvider)translator.GetObject(L, 3, typeof(System.IFormatProvider));
                     
-                        string gen_ret = gen_to_be_invoked.ToString( _format, _formatProvider );
+                        var gen_ret = gen_to_be_invoked.ToString( _format, _formatProvider );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -322,7 +322,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.RectInt _other;translator.Get(L, 2, out _other);
                     
-                        bool gen_ret = gen_to_be_invoked.Equals( _other );
+                        var gen_ret = gen_to_be_invoked.Equals( _other );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     

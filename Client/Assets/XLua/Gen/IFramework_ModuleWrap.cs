@@ -81,7 +81,7 @@ namespace XLua.CSObjectWrap
                     string _name = LuaAPI.lua_tostring(L, 2);
                     int _priority = LuaAPI.xlua_tointeger(L, 3);
                     
-                        IFramework.Module gen_ret = IFramework.Module.CreatInstance( _type, _name, _priority );
+                        var gen_ret = IFramework.Module.CreatInstance( _type, _name, _priority );
                         translator.Push(L, gen_ret);
                     
                     
@@ -93,7 +93,7 @@ namespace XLua.CSObjectWrap
                     System.Type _type = (System.Type)translator.GetObject(L, 1, typeof(System.Type));
                     string _name = LuaAPI.lua_tostring(L, 2);
                     
-                        IFramework.Module gen_ret = IFramework.Module.CreatInstance( _type, _name );
+                        var gen_ret = IFramework.Module.CreatInstance( _type, _name );
                         translator.Push(L, gen_ret);
                     
                     
@@ -104,7 +104,7 @@ namespace XLua.CSObjectWrap
                 {
                     System.Type _type = (System.Type)translator.GetObject(L, 1, typeof(System.Type));
                     
-                        IFramework.Module gen_ret = IFramework.Module.CreatInstance( _type );
+                        var gen_ret = IFramework.Module.CreatInstance( _type );
                         translator.Push(L, gen_ret);
                     
                     

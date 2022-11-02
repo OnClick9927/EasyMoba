@@ -53,7 +53,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					LockStep.Math.LVector2Int.Mathf gen_ret = new LockStep.Math.LVector2Int.Mathf();
+					var gen_ret = new LockStep.Math.LVector2Int.Mathf();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -86,7 +86,7 @@ namespace XLua.CSObjectWrap
                     int _a = LuaAPI.xlua_tointeger(L, 1);
                     int _b = LuaAPI.xlua_tointeger(L, 2);
                     
-                        int gen_ret = LockStep.Math.LVector2Int.Mathf.Min( _a, _b );
+                        var gen_ret = LockStep.Math.LVector2Int.Mathf.Min( _a, _b );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -112,7 +112,7 @@ namespace XLua.CSObjectWrap
                     int _a = LuaAPI.xlua_tointeger(L, 1);
                     int _b = LuaAPI.xlua_tointeger(L, 2);
                     
-                        int gen_ret = LockStep.Math.LVector2Int.Mathf.Max( _a, _b );
+                        var gen_ret = LockStep.Math.LVector2Int.Mathf.Max( _a, _b );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -139,7 +139,7 @@ namespace XLua.CSObjectWrap
                 {
                     LockStep.Math.LFloat _val;translator.Get(L, 1, out _val);
                     
-                        LockStep.Math.LFloat gen_ret = LockStep.Math.LVector2Int.Mathf.Sqrt( _val );
+                        var gen_ret = LockStep.Math.LVector2Int.Mathf.Sqrt( _val );
                         translator.Push(L, gen_ret);
                     
                     

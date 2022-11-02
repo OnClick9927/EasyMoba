@@ -53,7 +53,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					IFramework.UI.LoadPanelAsyncOperation gen_ret = new IFramework.UI.LoadPanelAsyncOperation();
+					var gen_ret = new IFramework.UI.LoadPanelAsyncOperation();
 					translator.Push(L, gen_ret);
                     
 					return 1;

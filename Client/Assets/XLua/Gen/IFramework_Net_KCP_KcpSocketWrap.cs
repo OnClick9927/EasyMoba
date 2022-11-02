@@ -59,7 +59,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					IFramework.Net.KCP.KcpSocket gen_ret = new IFramework.Net.KCP.KcpSocket();
+					var gen_ret = new IFramework.Net.KCP.KcpSocket();
 					translator.Push(L, gen_ret);
                     
 					return 1;

@@ -57,7 +57,7 @@ namespace XLua.CSObjectWrap
 					string _ip = LuaAPI.lua_tostring(L, 4);
 					EasyMoba.NormalModePlayer _player = (EasyMoba.NormalModePlayer)translator.GetObject(L, 5, typeof(EasyMoba.NormalModePlayer));
 					
-					EasyMoba.NormalModePlayer.UdpClient gen_ret = new EasyMoba.NormalModePlayer.UdpClient(_port, _bufsize, _ip, _player);
+					var gen_ret = new EasyMoba.NormalModePlayer.UdpClient(_port, _bufsize, _ip, _player);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -118,12 +118,9 @@ namespace XLua.CSObjectWrap
             
                 
                 {
-                    string _roomid = LuaAPI.lua_tostring(L, 2);
-                    long _roleid = LuaAPI.lua_toint64(L, 3);
-                    int _frame = LuaAPI.xlua_tointeger(L, 4);
-                    FrameData _op = (FrameData)translator.GetObject(L, 5, typeof(FrameData));
+                    CSBattleFrame _cs = (CSBattleFrame)translator.GetObject(L, 2, typeof(CSBattleFrame));
                     
-                    gen_to_be_invoked.SendBattleFrame( _roomid, _roleid, _frame, _op );
+                    gen_to_be_invoked.SendBattleFrame( _cs );
                     
                     
                     

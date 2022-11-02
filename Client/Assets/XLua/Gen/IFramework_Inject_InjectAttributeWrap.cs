@@ -52,7 +52,7 @@ namespace XLua.CSObjectWrap
 				{
 					string _name = LuaAPI.lua_tostring(L, 2);
 					
-					IFramework.Inject.InjectAttribute gen_ret = new IFramework.Inject.InjectAttribute(_name);
+					var gen_ret = new IFramework.Inject.InjectAttribute(_name);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -60,7 +60,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					IFramework.Inject.InjectAttribute gen_ret = new IFramework.Inject.InjectAttribute();
+					var gen_ret = new IFramework.Inject.InjectAttribute();
 					translator.Push(L, gen_ret);
                     
 					return 1;

@@ -55,7 +55,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					IFramework.UI.PanelPathCollect.Data gen_ret = new IFramework.UI.PanelPathCollect.Data();
+					var gen_ret = new IFramework.UI.PanelPathCollect.Data();
 					translator.Push(L, gen_ret);
                     
 					return 1;

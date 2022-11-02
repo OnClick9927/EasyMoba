@@ -52,7 +52,7 @@ namespace XLua.CSObjectWrap
 				{
 					int _index = LuaAPI.xlua_tointeger(L, 2);
 					
-					IFramework.Serialization.DataTable.DataReadColumnIndexAttribute gen_ret = new IFramework.Serialization.DataTable.DataReadColumnIndexAttribute(_index);
+					var gen_ret = new IFramework.Serialization.DataTable.DataReadColumnIndexAttribute(_index);
 					translator.Push(L, gen_ret);
                     
 					return 1;

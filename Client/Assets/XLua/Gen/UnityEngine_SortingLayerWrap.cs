@@ -89,7 +89,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _id = LuaAPI.xlua_tointeger(L, 1);
                     
-                        int gen_ret = UnityEngine.SortingLayer.GetLayerValueFromID( _id );
+                        var gen_ret = UnityEngine.SortingLayer.GetLayerValueFromID( _id );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -114,7 +114,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _name = LuaAPI.lua_tostring(L, 1);
                     
-                        int gen_ret = UnityEngine.SortingLayer.GetLayerValueFromName( _name );
+                        var gen_ret = UnityEngine.SortingLayer.GetLayerValueFromName( _name );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -139,7 +139,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _name = LuaAPI.lua_tostring(L, 1);
                     
-                        int gen_ret = UnityEngine.SortingLayer.NameToID( _name );
+                        var gen_ret = UnityEngine.SortingLayer.NameToID( _name );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -164,7 +164,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _id = LuaAPI.xlua_tointeger(L, 1);
                     
-                        string gen_ret = UnityEngine.SortingLayer.IDToName( _id );
+                        var gen_ret = UnityEngine.SortingLayer.IDToName( _id );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -189,7 +189,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _id = LuaAPI.xlua_tointeger(L, 1);
                     
-                        bool gen_ret = UnityEngine.SortingLayer.IsValid( _id );
+                        var gen_ret = UnityEngine.SortingLayer.IsValid( _id );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     

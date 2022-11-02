@@ -56,7 +56,7 @@ namespace XLua.CSObjectWrap
 					IFramework.UI.LoadItemAsyncOperation _op = (IFramework.UI.LoadItemAsyncOperation)translator.GetObject(L, 2, typeof(IFramework.UI.LoadItemAsyncOperation));
 					IFramework.UI.UIModule _module = (IFramework.UI.UIModule)translator.GetObject(L, 3, typeof(IFramework.UI.UIModule));
 					
-					IFramework.UI.UIModule.ItemPool gen_ret = new IFramework.UI.UIModule.ItemPool(_op, _module);
+					var gen_ret = new IFramework.UI.UIModule.ItemPool(_op, _module);
 					translator.Push(L, gen_ret);
                     
 					return 1;

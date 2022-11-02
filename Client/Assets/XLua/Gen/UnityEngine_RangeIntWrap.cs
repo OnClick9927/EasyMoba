@@ -57,7 +57,7 @@ namespace XLua.CSObjectWrap
 					int _start = LuaAPI.xlua_tointeger(L, 2);
 					int _length = LuaAPI.xlua_tointeger(L, 3);
 					
-					UnityEngine.RangeInt gen_ret = new UnityEngine.RangeInt(_start, _length);
+					var gen_ret = new UnityEngine.RangeInt(_start, _length);
 					translator.Push(L, gen_ret);
                     
 					return 1;

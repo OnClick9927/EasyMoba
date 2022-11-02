@@ -53,7 +53,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					EasyMoba.MobaPerfs gen_ret = new EasyMoba.MobaPerfs();
+					var gen_ret = new EasyMoba.MobaPerfs();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -147,7 +147,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _key = LuaAPI.lua_tostring(L, 1);
                     
-                        string gen_ret = EasyMoba.MobaPerfs.Read( _key );
+                        var gen_ret = EasyMoba.MobaPerfs.Read( _key );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     

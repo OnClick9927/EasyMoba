@@ -61,7 +61,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.AnimatorControllerParameter gen_ret = new UnityEngine.AnimatorControllerParameter();
+					var gen_ret = new UnityEngine.AnimatorControllerParameter();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -97,7 +97,7 @@ namespace XLua.CSObjectWrap
                 {
                     object _o = translator.GetObject(L, 2, typeof(object));
                     
-                        bool gen_ret = gen_to_be_invoked.Equals( _o );
+                        var gen_ret = gen_to_be_invoked.Equals( _o );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -125,7 +125,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        int gen_ret = gen_to_be_invoked.GetHashCode(  );
+                        var gen_ret = gen_to_be_invoked.GetHashCode(  );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     

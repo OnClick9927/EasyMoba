@@ -50,7 +50,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.WaitForFixedUpdate gen_ret = new UnityEngine.WaitForFixedUpdate();
+					var gen_ret = new UnityEngine.WaitForFixedUpdate();
 					translator.Push(L, gen_ret);
                     
 					return 1;

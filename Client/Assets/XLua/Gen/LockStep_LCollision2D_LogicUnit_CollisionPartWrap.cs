@@ -57,7 +57,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					LockStep.LCollision2D.LogicUnit.CollisionPart gen_ret = new LockStep.LCollision2D.LogicUnit.CollisionPart();
+					var gen_ret = new LockStep.LCollision2D.LogicUnit.CollisionPart();
 					translator.Push(L, gen_ret);
                     
 					return 1;

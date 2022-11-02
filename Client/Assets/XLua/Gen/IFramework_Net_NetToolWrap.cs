@@ -82,7 +82,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _capacity = LuaAPI.xlua_tointeger(L, 1);
                     
-                        IFramework.Net.INetPacketProvider gen_ret = IFramework.Net.NetTool.CreatePacketsProvider( _capacity );
+                        var gen_ret = IFramework.Net.NetTool.CreatePacketsProvider( _capacity );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -92,7 +92,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 0) 
                 {
                     
-                        IFramework.Net.INetPacketProvider gen_ret = IFramework.Net.NetTool.CreatePacketsProvider(  );
+                        var gen_ret = IFramework.Net.NetTool.CreatePacketsProvider(  );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -120,7 +120,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        IFramework.Net.INetProtocolProvider gen_ret = IFramework.Net.NetTool.CreateProtocolProvider(  );
+                        var gen_ret = IFramework.Net.NetTool.CreateProtocolProvider(  );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -149,7 +149,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _taskExecutePeriod = LuaAPI.xlua_tointeger(L, 1);
                     
-                        IFramework.Net.INetTokenPoolProvider gen_ret = IFramework.Net.NetTool.CreateTokenPoolProvider( _taskExecutePeriod );
+                        var gen_ret = IFramework.Net.NetTool.CreateTokenPoolProvider( _taskExecutePeriod );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -159,7 +159,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 0) 
                 {
                     
-                        IFramework.Net.INetTokenPoolProvider gen_ret = IFramework.Net.NetTool.CreateTokenPoolProvider(  );
+                        var gen_ret = IFramework.Net.NetTool.CreateTokenPoolProvider(  );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -191,7 +191,7 @@ namespace XLua.CSObjectWrap
                     int _chunkBufferSize = LuaAPI.xlua_tointeger(L, 1);
                     int _sendConcurrentSize = LuaAPI.xlua_tointeger(L, 2);
                     
-                        IFramework.Net.Tcp.ITcpClientProvider gen_ret = IFramework.Net.NetTool.CreateTcpClient( _chunkBufferSize, _sendConcurrentSize );
+                        var gen_ret = IFramework.Net.NetTool.CreateTcpClient( _chunkBufferSize, _sendConcurrentSize );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -202,7 +202,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _chunkBufferSize = LuaAPI.xlua_tointeger(L, 1);
                     
-                        IFramework.Net.Tcp.ITcpClientProvider gen_ret = IFramework.Net.NetTool.CreateTcpClient( _chunkBufferSize );
+                        var gen_ret = IFramework.Net.NetTool.CreateTcpClient( _chunkBufferSize );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -212,7 +212,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 0) 
                 {
                     
-                        IFramework.Net.Tcp.ITcpClientProvider gen_ret = IFramework.Net.NetTool.CreateTcpClient(  );
+                        var gen_ret = IFramework.Net.NetTool.CreateTcpClient(  );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -244,7 +244,7 @@ namespace XLua.CSObjectWrap
                     int _chunkBufferSize = LuaAPI.xlua_tointeger(L, 1);
                     int _maxNumberOfConnections = LuaAPI.xlua_tointeger(L, 2);
                     
-                        IFramework.Net.Tcp.ITcpServerProvider gen_ret = IFramework.Net.NetTool.CreateTcpSever( _chunkBufferSize, _maxNumberOfConnections );
+                        var gen_ret = IFramework.Net.NetTool.CreateTcpSever( _chunkBufferSize, _maxNumberOfConnections );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -255,7 +255,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _chunkBufferSize = LuaAPI.xlua_tointeger(L, 1);
                     
-                        IFramework.Net.Tcp.ITcpServerProvider gen_ret = IFramework.Net.NetTool.CreateTcpSever( _chunkBufferSize );
+                        var gen_ret = IFramework.Net.NetTool.CreateTcpSever( _chunkBufferSize );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -265,7 +265,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 0) 
                 {
                     
-                        IFramework.Net.Tcp.ITcpServerProvider gen_ret = IFramework.Net.NetTool.CreateTcpSever(  );
+                        var gen_ret = IFramework.Net.NetTool.CreateTcpSever(  );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -297,7 +297,7 @@ namespace XLua.CSObjectWrap
                     int _chunkBufferSize = LuaAPI.xlua_tointeger(L, 1);
                     int _sendConcurrentSize = LuaAPI.xlua_tointeger(L, 2);
                     
-                        IFramework.Net.Udp.IUdpClientProvider gen_ret = IFramework.Net.NetTool.CreateUdpClient( _chunkBufferSize, _sendConcurrentSize );
+                        var gen_ret = IFramework.Net.NetTool.CreateUdpClient( _chunkBufferSize, _sendConcurrentSize );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -308,7 +308,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _chunkBufferSize = LuaAPI.xlua_tointeger(L, 1);
                     
-                        IFramework.Net.Udp.IUdpClientProvider gen_ret = IFramework.Net.NetTool.CreateUdpClient( _chunkBufferSize );
+                        var gen_ret = IFramework.Net.NetTool.CreateUdpClient( _chunkBufferSize );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -318,7 +318,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 0) 
                 {
                     
-                        IFramework.Net.Udp.IUdpClientProvider gen_ret = IFramework.Net.NetTool.CreateUdpClient(  );
+                        var gen_ret = IFramework.Net.NetTool.CreateUdpClient(  );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -351,7 +351,7 @@ namespace XLua.CSObjectWrap
                     int _maxNumberOfConnections = LuaAPI.xlua_tointeger(L, 2);
                     bool _broadcast = LuaAPI.lua_toboolean(L, 3);
                     
-                        IFramework.Net.Udp.IUdpServerProvider gen_ret = IFramework.Net.NetTool.CreateUdpSever( _chunkBufferSize, _maxNumberOfConnections, _broadcast );
+                        var gen_ret = IFramework.Net.NetTool.CreateUdpSever( _chunkBufferSize, _maxNumberOfConnections, _broadcast );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -363,7 +363,7 @@ namespace XLua.CSObjectWrap
                     int _chunkBufferSize = LuaAPI.xlua_tointeger(L, 1);
                     int _maxNumberOfConnections = LuaAPI.xlua_tointeger(L, 2);
                     
-                        IFramework.Net.Udp.IUdpServerProvider gen_ret = IFramework.Net.NetTool.CreateUdpSever( _chunkBufferSize, _maxNumberOfConnections );
+                        var gen_ret = IFramework.Net.NetTool.CreateUdpSever( _chunkBufferSize, _maxNumberOfConnections );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -374,7 +374,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _chunkBufferSize = LuaAPI.xlua_tointeger(L, 1);
                     
-                        IFramework.Net.Udp.IUdpServerProvider gen_ret = IFramework.Net.NetTool.CreateUdpSever( _chunkBufferSize );
+                        var gen_ret = IFramework.Net.NetTool.CreateUdpSever( _chunkBufferSize );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -384,7 +384,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 0) 
                 {
                     
-                        IFramework.Net.Udp.IUdpServerProvider gen_ret = IFramework.Net.NetTool.CreateUdpSever(  );
+                        var gen_ret = IFramework.Net.NetTool.CreateUdpSever(  );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -416,7 +416,7 @@ namespace XLua.CSObjectWrap
                     int _chunkBufferSize = LuaAPI.xlua_tointeger(L, 1);
                     int _sendConcurrentSize = LuaAPI.xlua_tointeger(L, 2);
                     
-                        IFramework.Net.WebSocket.IWSClientProvider gen_ret = IFramework.Net.NetTool.CreateWSClient( _chunkBufferSize, _sendConcurrentSize );
+                        var gen_ret = IFramework.Net.NetTool.CreateWSClient( _chunkBufferSize, _sendConcurrentSize );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -427,7 +427,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _chunkBufferSize = LuaAPI.xlua_tointeger(L, 1);
                     
-                        IFramework.Net.WebSocket.IWSClientProvider gen_ret = IFramework.Net.NetTool.CreateWSClient( _chunkBufferSize );
+                        var gen_ret = IFramework.Net.NetTool.CreateWSClient( _chunkBufferSize );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -437,7 +437,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 0) 
                 {
                     
-                        IFramework.Net.WebSocket.IWSClientProvider gen_ret = IFramework.Net.NetTool.CreateWSClient(  );
+                        var gen_ret = IFramework.Net.NetTool.CreateWSClient(  );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -469,7 +469,7 @@ namespace XLua.CSObjectWrap
                     int _chunkBufferSize = LuaAPI.xlua_tointeger(L, 1);
                     int _maxNumberOfConnections = LuaAPI.xlua_tointeger(L, 2);
                     
-                        IFramework.Net.WebSocket.IWSServerProvider gen_ret = IFramework.Net.NetTool.CreateWSSever( _chunkBufferSize, _maxNumberOfConnections );
+                        var gen_ret = IFramework.Net.NetTool.CreateWSSever( _chunkBufferSize, _maxNumberOfConnections );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -480,7 +480,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _chunkBufferSize = LuaAPI.xlua_tointeger(L, 1);
                     
-                        IFramework.Net.WebSocket.IWSServerProvider gen_ret = IFramework.Net.NetTool.CreateWSSever( _chunkBufferSize );
+                        var gen_ret = IFramework.Net.NetTool.CreateWSSever( _chunkBufferSize );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -490,7 +490,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 0) 
                 {
                     
-                        IFramework.Net.WebSocket.IWSServerProvider gen_ret = IFramework.Net.NetTool.CreateWSSever(  );
+                        var gen_ret = IFramework.Net.NetTool.CreateWSSever(  );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -522,7 +522,7 @@ namespace XLua.CSObjectWrap
                     int _maxPoolCount = LuaAPI.xlua_tointeger(L, 1);
                     int _blockSize = LuaAPI.xlua_tointeger(L, 2);
                     
-                        IFramework.Net.Http.IHttpServerProvider gen_ret = IFramework.Net.NetTool.CreateHttpSever( _maxPoolCount, _blockSize );
+                        var gen_ret = IFramework.Net.NetTool.CreateHttpSever( _maxPoolCount, _blockSize );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -533,7 +533,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _maxPoolCount = LuaAPI.xlua_tointeger(L, 1);
                     
-                        IFramework.Net.Http.IHttpServerProvider gen_ret = IFramework.Net.NetTool.CreateHttpSever( _maxPoolCount );
+                        var gen_ret = IFramework.Net.NetTool.CreateHttpSever( _maxPoolCount );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -543,7 +543,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 0) 
                 {
                     
-                        IFramework.Net.Http.IHttpServerProvider gen_ret = IFramework.Net.NetTool.CreateHttpSever(  );
+                        var gen_ret = IFramework.Net.NetTool.CreateHttpSever(  );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -571,7 +571,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        System.Net.IPAddress[] gen_ret = IFramework.Net.NetTool.GetLoacalIpv4(  );
+                        var gen_ret = IFramework.Net.NetTool.GetLoacalIpv4(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -597,7 +597,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        System.Net.IPAddress[] gen_ret = IFramework.Net.NetTool.GetLoacalIpv6(  );
+                        var gen_ret = IFramework.Net.NetTool.GetLoacalIpv6(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -621,7 +621,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        string gen_ret = IFramework.Net.NetTool.GetOutSideIP(  );
+                        var gen_ret = IFramework.Net.NetTool.GetOutSideIP(  );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     

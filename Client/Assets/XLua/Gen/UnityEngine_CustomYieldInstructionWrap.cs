@@ -72,7 +72,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        bool gen_ret = gen_to_be_invoked.MoveNext(  );
+                        var gen_ret = gen_to_be_invoked.MoveNext(  );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     

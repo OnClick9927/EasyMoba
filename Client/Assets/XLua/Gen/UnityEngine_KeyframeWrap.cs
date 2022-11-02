@@ -66,7 +66,7 @@ namespace XLua.CSObjectWrap
 					float _time = (float)LuaAPI.lua_tonumber(L, 2);
 					float _value = (float)LuaAPI.lua_tonumber(L, 3);
 					
-					UnityEngine.Keyframe gen_ret = new UnityEngine.Keyframe(_time, _value);
+					var gen_ret = new UnityEngine.Keyframe(_time, _value);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -78,7 +78,7 @@ namespace XLua.CSObjectWrap
 					float _inTangent = (float)LuaAPI.lua_tonumber(L, 4);
 					float _outTangent = (float)LuaAPI.lua_tonumber(L, 5);
 					
-					UnityEngine.Keyframe gen_ret = new UnityEngine.Keyframe(_time, _value, _inTangent, _outTangent);
+					var gen_ret = new UnityEngine.Keyframe(_time, _value, _inTangent, _outTangent);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -92,7 +92,7 @@ namespace XLua.CSObjectWrap
 					float _inWeight = (float)LuaAPI.lua_tonumber(L, 6);
 					float _outWeight = (float)LuaAPI.lua_tonumber(L, 7);
 					
-					UnityEngine.Keyframe gen_ret = new UnityEngine.Keyframe(_time, _value, _inTangent, _outTangent, _inWeight, _outWeight);
+					var gen_ret = new UnityEngine.Keyframe(_time, _value, _inTangent, _outTangent, _inWeight, _outWeight);
 					translator.Push(L, gen_ret);
                     
 					return 1;

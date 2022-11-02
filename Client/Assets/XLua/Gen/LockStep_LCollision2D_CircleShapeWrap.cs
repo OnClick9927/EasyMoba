@@ -54,7 +54,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					LockStep.LCollision2D.CircleShape gen_ret = new LockStep.LCollision2D.CircleShape();
+					var gen_ret = new LockStep.LCollision2D.CircleShape();
 					translator.Push(L, gen_ret);
                     
 					return 1;

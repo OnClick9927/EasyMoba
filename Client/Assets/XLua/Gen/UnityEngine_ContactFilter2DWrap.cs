@@ -118,7 +118,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.ContactFilter2D gen_ret = gen_to_be_invoked.NoFilter(  );
+                        var gen_ret = gen_to_be_invoked.NoFilter(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -328,7 +328,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Collider2D _collider = (UnityEngine.Collider2D)translator.GetObject(L, 2, typeof(UnityEngine.Collider2D));
                     
-                        bool gen_ret = gen_to_be_invoked.IsFilteringTrigger( _collider );
+                        var gen_ret = gen_to_be_invoked.IsFilteringTrigger( _collider );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -359,7 +359,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.GameObject _obj = (UnityEngine.GameObject)translator.GetObject(L, 2, typeof(UnityEngine.GameObject));
                     
-                        bool gen_ret = gen_to_be_invoked.IsFilteringLayerMask( _obj );
+                        var gen_ret = gen_to_be_invoked.IsFilteringLayerMask( _obj );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -390,7 +390,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.GameObject _obj = (UnityEngine.GameObject)translator.GetObject(L, 2, typeof(UnityEngine.GameObject));
                     
-                        bool gen_ret = gen_to_be_invoked.IsFilteringDepth( _obj );
+                        var gen_ret = gen_to_be_invoked.IsFilteringDepth( _obj );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -423,7 +423,7 @@ namespace XLua.CSObjectWrap
                 {
                     float _angle = (float)LuaAPI.lua_tonumber(L, 2);
                     
-                        bool gen_ret = gen_to_be_invoked.IsFilteringNormalAngle( _angle );
+                        var gen_ret = gen_to_be_invoked.IsFilteringNormalAngle( _angle );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -436,7 +436,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Vector2 _normal;translator.Get(L, 2, out _normal);
                     
-                        bool gen_ret = gen_to_be_invoked.IsFilteringNormalAngle( _normal );
+                        var gen_ret = gen_to_be_invoked.IsFilteringNormalAngle( _normal );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     

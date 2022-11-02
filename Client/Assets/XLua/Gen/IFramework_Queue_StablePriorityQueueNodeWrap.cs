@@ -51,7 +51,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					IFramework.Queue.StablePriorityQueueNode gen_ret = new IFramework.Queue.StablePriorityQueueNode();
+					var gen_ret = new IFramework.Queue.StablePriorityQueueNode();
 					translator.Push(L, gen_ret);
                     
 					return 1;

@@ -91,7 +91,7 @@ namespace XLua.CSObjectWrap
 					int _width = LuaAPI.xlua_tointeger(L, 2);
 					int _height = LuaAPI.xlua_tointeger(L, 3);
 					
-					UnityEngine.RenderTextureDescriptor gen_ret = new UnityEngine.RenderTextureDescriptor(_width, _height);
+					var gen_ret = new UnityEngine.RenderTextureDescriptor(_width, _height);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -102,7 +102,7 @@ namespace XLua.CSObjectWrap
 					int _height = LuaAPI.xlua_tointeger(L, 3);
 					UnityEngine.RenderTextureFormat _colorFormat;translator.Get(L, 4, out _colorFormat);
 					
-					UnityEngine.RenderTextureDescriptor gen_ret = new UnityEngine.RenderTextureDescriptor(_width, _height, _colorFormat);
+					var gen_ret = new UnityEngine.RenderTextureDescriptor(_width, _height, _colorFormat);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -114,7 +114,7 @@ namespace XLua.CSObjectWrap
 					UnityEngine.RenderTextureFormat _colorFormat;translator.Get(L, 4, out _colorFormat);
 					int _depthBufferBits = LuaAPI.xlua_tointeger(L, 5);
 					
-					UnityEngine.RenderTextureDescriptor gen_ret = new UnityEngine.RenderTextureDescriptor(_width, _height, _colorFormat, _depthBufferBits);
+					var gen_ret = new UnityEngine.RenderTextureDescriptor(_width, _height, _colorFormat, _depthBufferBits);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -126,7 +126,7 @@ namespace XLua.CSObjectWrap
 					UnityEngine.Experimental.Rendering.GraphicsFormat _colorFormat;translator.Get(L, 4, out _colorFormat);
 					int _depthBufferBits = LuaAPI.xlua_tointeger(L, 5);
 					
-					UnityEngine.RenderTextureDescriptor gen_ret = new UnityEngine.RenderTextureDescriptor(_width, _height, _colorFormat, _depthBufferBits);
+					var gen_ret = new UnityEngine.RenderTextureDescriptor(_width, _height, _colorFormat, _depthBufferBits);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -139,7 +139,7 @@ namespace XLua.CSObjectWrap
 					int _depthBufferBits = LuaAPI.xlua_tointeger(L, 5);
 					int _mipCount = LuaAPI.xlua_tointeger(L, 6);
 					
-					UnityEngine.RenderTextureDescriptor gen_ret = new UnityEngine.RenderTextureDescriptor(_width, _height, _colorFormat, _depthBufferBits, _mipCount);
+					var gen_ret = new UnityEngine.RenderTextureDescriptor(_width, _height, _colorFormat, _depthBufferBits, _mipCount);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -152,7 +152,7 @@ namespace XLua.CSObjectWrap
 					int _depthBufferBits = LuaAPI.xlua_tointeger(L, 5);
 					int _mipCount = LuaAPI.xlua_tointeger(L, 6);
 					
-					UnityEngine.RenderTextureDescriptor gen_ret = new UnityEngine.RenderTextureDescriptor(_width, _height, _colorFormat, _depthBufferBits, _mipCount);
+					var gen_ret = new UnityEngine.RenderTextureDescriptor(_width, _height, _colorFormat, _depthBufferBits, _mipCount);
 					translator.Push(L, gen_ret);
                     
 					return 1;

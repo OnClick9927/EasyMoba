@@ -53,7 +53,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					IFramework.ObservableObjectHandler gen_ret = new IFramework.ObservableObjectHandler();
+					var gen_ret = new IFramework.ObservableObjectHandler();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -91,7 +91,7 @@ namespace XLua.CSObjectWrap
                     string _propertyName = LuaAPI.lua_tostring(L, 3);
                     System.Action _listenner = translator.GetDelegate<System.Action>(L, 4);
                     
-                        IFramework.ObservableObjectHandler gen_ret = gen_to_be_invoked.Subscribe( __object, _propertyName, _listenner );
+                        var gen_ret = gen_to_be_invoked.Subscribe( __object, _propertyName, _listenner );
                         translator.Push(L, gen_ret);
                     
                     
@@ -120,7 +120,7 @@ namespace XLua.CSObjectWrap
                 {
                     System.Action _setter = translator.GetDelegate<System.Action>(L, 2);
                     
-                        IFramework.ObservableObjectHandler gen_ret = gen_to_be_invoked.BindProperty( _setter );
+                        var gen_ret = gen_to_be_invoked.BindProperty( _setter );
                         translator.Push(L, gen_ret);
                     
                     

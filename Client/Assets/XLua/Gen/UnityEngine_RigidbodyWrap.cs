@@ -117,7 +117,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.Rigidbody gen_ret = new UnityEngine.Rigidbody();
+					var gen_ret = new UnityEngine.Rigidbody();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -263,7 +263,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        bool gen_ret = gen_to_be_invoked.IsSleeping(  );
+                        var gen_ret = gen_to_be_invoked.IsSleeping(  );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -373,7 +373,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Vector3 _relativePoint;translator.Get(L, 2, out _relativePoint);
                     
-                        UnityEngine.Vector3 gen_ret = gen_to_be_invoked.GetRelativePointVelocity( _relativePoint );
+                        var gen_ret = gen_to_be_invoked.GetRelativePointVelocity( _relativePoint );
                         translator.PushUnityEngineVector3(L, gen_ret);
                     
                     
@@ -402,7 +402,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Vector3 _worldPoint;translator.Get(L, 2, out _worldPoint);
                     
-                        UnityEngine.Vector3 gen_ret = gen_to_be_invoked.GetPointVelocity( _worldPoint );
+                        var gen_ret = gen_to_be_invoked.GetPointVelocity( _worldPoint );
                         translator.PushUnityEngineVector3(L, gen_ret);
                     
                     
@@ -809,7 +809,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Vector3 _position;translator.Get(L, 2, out _position);
                     
-                        UnityEngine.Vector3 gen_ret = gen_to_be_invoked.ClosestPointOnBounds( _position );
+                        var gen_ret = gen_to_be_invoked.ClosestPointOnBounds( _position );
                         translator.PushUnityEngineVector3(L, gen_ret);
                     
                     
@@ -841,7 +841,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Vector3 _direction;translator.Get(L, 2, out _direction);
                     UnityEngine.RaycastHit _hitInfo;
                     
-                        bool gen_ret = gen_to_be_invoked.SweepTest( _direction, out _hitInfo );
+                        var gen_ret = gen_to_be_invoked.SweepTest( _direction, out _hitInfo );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     translator.Push(L, _hitInfo);
                         
@@ -856,7 +856,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.RaycastHit _hitInfo;
                     float _maxDistance = (float)LuaAPI.lua_tonumber(L, 3);
                     
-                        bool gen_ret = gen_to_be_invoked.SweepTest( _direction, out _hitInfo, _maxDistance );
+                        var gen_ret = gen_to_be_invoked.SweepTest( _direction, out _hitInfo, _maxDistance );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     translator.Push(L, _hitInfo);
                         
@@ -872,7 +872,7 @@ namespace XLua.CSObjectWrap
                     float _maxDistance = (float)LuaAPI.lua_tonumber(L, 3);
                     UnityEngine.QueryTriggerInteraction _queryTriggerInteraction;translator.Get(L, 4, out _queryTriggerInteraction);
                     
-                        bool gen_ret = gen_to_be_invoked.SweepTest( _direction, out _hitInfo, _maxDistance, _queryTriggerInteraction );
+                        var gen_ret = gen_to_be_invoked.SweepTest( _direction, out _hitInfo, _maxDistance, _queryTriggerInteraction );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     translator.Push(L, _hitInfo);
                         
@@ -907,7 +907,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Vector3 _direction;translator.Get(L, 2, out _direction);
                     
-                        UnityEngine.RaycastHit[] gen_ret = gen_to_be_invoked.SweepTestAll( _direction );
+                        var gen_ret = gen_to_be_invoked.SweepTestAll( _direction );
                         translator.Push(L, gen_ret);
                     
                     
@@ -919,7 +919,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Vector3 _direction;translator.Get(L, 2, out _direction);
                     float _maxDistance = (float)LuaAPI.lua_tonumber(L, 3);
                     
-                        UnityEngine.RaycastHit[] gen_ret = gen_to_be_invoked.SweepTestAll( _direction, _maxDistance );
+                        var gen_ret = gen_to_be_invoked.SweepTestAll( _direction, _maxDistance );
                         translator.Push(L, gen_ret);
                     
                     
@@ -932,7 +932,7 @@ namespace XLua.CSObjectWrap
                     float _maxDistance = (float)LuaAPI.lua_tonumber(L, 3);
                     UnityEngine.QueryTriggerInteraction _queryTriggerInteraction;translator.Get(L, 4, out _queryTriggerInteraction);
                     
-                        UnityEngine.RaycastHit[] gen_ret = gen_to_be_invoked.SweepTestAll( _direction, _maxDistance, _queryTriggerInteraction );
+                        var gen_ret = gen_to_be_invoked.SweepTestAll( _direction, _maxDistance, _queryTriggerInteraction );
                         translator.Push(L, gen_ret);
                     
                     
@@ -962,7 +962,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.MakeComponentExist(  );
+                        var gen_ret = gen_to_be_invoked.MakeComponentExist(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -1017,7 +1017,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.LocalIdentity(  );
+                        var gen_ret = gen_to_be_invoked.LocalIdentity(  );
                         translator.Push(L, gen_ret);
                     
                     

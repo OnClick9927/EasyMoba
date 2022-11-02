@@ -55,7 +55,7 @@ namespace XLua.CSObjectWrap
 				{
 					string _certificateFile = LuaAPI.lua_tostring(L, 2);
 					
-					IFramework.Net.WebSocket.SslHelper gen_ret = new IFramework.Net.WebSocket.SslHelper(_certificateFile);
+					var gen_ret = new IFramework.Net.WebSocket.SslHelper(_certificateFile);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -93,7 +93,7 @@ namespace XLua.CSObjectWrap
                     int _offset = LuaAPI.xlua_tointeger(L, 3);
                     int _size = LuaAPI.xlua_tointeger(L, 4);
                     
-                        byte[] gen_ret = gen_to_be_invoked.DeCryptFromServer( _buffer, _offset, _size );
+                        var gen_ret = gen_to_be_invoked.DeCryptFromServer( _buffer, _offset, _size );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -121,7 +121,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        byte[] gen_ret = gen_to_be_invoked.EnCryptFromServer(  );
+                        var gen_ret = gen_to_be_invoked.EnCryptFromServer(  );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -149,7 +149,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        byte[] gen_ret = gen_to_be_invoked.DeCryptFromClient(  );
+                        var gen_ret = gen_to_be_invoked.DeCryptFromClient(  );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -177,7 +177,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        byte[] gen_ret = gen_to_be_invoked.EnCryptFromClient(  );
+                        var gen_ret = gen_to_be_invoked.EnCryptFromClient(  );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     

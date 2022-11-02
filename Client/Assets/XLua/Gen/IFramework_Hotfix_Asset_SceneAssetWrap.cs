@@ -59,7 +59,7 @@ namespace XLua.CSObjectWrap
 					System.Collections.Generic.List<IFramework.Hotfix.Asset.Asset> _dps = (System.Collections.Generic.List<IFramework.Hotfix.Asset.Asset>)translator.GetObject(L, 4, typeof(System.Collections.Generic.List<IFramework.Hotfix.Asset.Asset>));
 					IFramework.Hotfix.Asset.SceneAssetLoadArgs _loadArgs;translator.Get(L, 5, out _loadArgs);
 					
-					IFramework.Hotfix.Asset.SceneAsset gen_ret = new IFramework.Hotfix.Asset.SceneAsset(_async, _bundle, _dps, _loadArgs);
+					var gen_ret = new IFramework.Hotfix.Asset.SceneAsset(_async, _bundle, _dps, _loadArgs);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -107,7 +107,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.SceneManagement.LoadSceneParameters _parameters;translator.Get(L, 2, out _parameters);
                     
-                        UnityEngine.SceneManagement.Scene gen_ret = gen_to_be_invoked.LoadScene( _parameters );
+                        var gen_ret = gen_to_be_invoked.LoadScene( _parameters );
                         translator.Push(L, gen_ret);
                     
                     
@@ -140,7 +140,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.SceneManagement.LoadSceneParameters _parameters;translator.Get(L, 2, out _parameters);
                     
-                        UnityEngine.AsyncOperation gen_ret = gen_to_be_invoked.LoadSceneAsync( _parameters );
+                        var gen_ret = gen_to_be_invoked.LoadSceneAsync( _parameters );
                         translator.Push(L, gen_ret);
                     
                     
@@ -151,7 +151,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.SceneManagement.LoadSceneMode _mode;translator.Get(L, 2, out _mode);
                     
-                        UnityEngine.AsyncOperation gen_ret = gen_to_be_invoked.LoadSceneAsync( _mode );
+                        var gen_ret = gen_to_be_invoked.LoadSceneAsync( _mode );
                         translator.Push(L, gen_ret);
                     
                     
@@ -181,7 +181,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        IFramework.IAwaiter<IFramework.Hotfix.Asset.SceneAsset> gen_ret = gen_to_be_invoked.GetAwaiter(  );
+                        var gen_ret = gen_to_be_invoked.GetAwaiter(  );
                         translator.PushAny(L, gen_ret);
                     
                     

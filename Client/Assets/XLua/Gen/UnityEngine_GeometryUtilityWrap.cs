@@ -54,7 +54,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.GeometryUtility gen_ret = new UnityEngine.GeometryUtility();
+					var gen_ret = new UnityEngine.GeometryUtility();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -90,7 +90,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Camera _camera = (UnityEngine.Camera)translator.GetObject(L, 1, typeof(UnityEngine.Camera));
                     
-                        UnityEngine.Plane[] gen_ret = UnityEngine.GeometryUtility.CalculateFrustumPlanes( _camera );
+                        var gen_ret = UnityEngine.GeometryUtility.CalculateFrustumPlanes( _camera );
                         translator.Push(L, gen_ret);
                     
                     
@@ -101,7 +101,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Matrix4x4 _worldToProjectionMatrix;translator.Get(L, 1, out _worldToProjectionMatrix);
                     
-                        UnityEngine.Plane[] gen_ret = UnityEngine.GeometryUtility.CalculateFrustumPlanes( _worldToProjectionMatrix );
+                        var gen_ret = UnityEngine.GeometryUtility.CalculateFrustumPlanes( _worldToProjectionMatrix );
                         translator.Push(L, gen_ret);
                     
                     
@@ -153,7 +153,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Vector3[] _positions = (UnityEngine.Vector3[])translator.GetObject(L, 1, typeof(UnityEngine.Vector3[]));
                     UnityEngine.Matrix4x4 _transform;translator.Get(L, 2, out _transform);
                     
-                        UnityEngine.Bounds gen_ret = UnityEngine.GeometryUtility.CalculateBounds( _positions, _transform );
+                        var gen_ret = UnityEngine.GeometryUtility.CalculateBounds( _positions, _transform );
                         translator.PushUnityEngineBounds(L, gen_ret);
                     
                     
@@ -181,7 +181,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Vector3[] _vertices = (UnityEngine.Vector3[])translator.GetObject(L, 1, typeof(UnityEngine.Vector3[]));
                     UnityEngine.Plane _plane;
                     
-                        bool gen_ret = UnityEngine.GeometryUtility.TryCreatePlaneFromPolygon( _vertices, out _plane );
+                        var gen_ret = UnityEngine.GeometryUtility.TryCreatePlaneFromPolygon( _vertices, out _plane );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     translator.Push(L, _plane);
                         
@@ -211,7 +211,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Plane[] _planes = (UnityEngine.Plane[])translator.GetObject(L, 1, typeof(UnityEngine.Plane[]));
                     UnityEngine.Bounds _bounds;translator.Get(L, 2, out _bounds);
                     
-                        bool gen_ret = UnityEngine.GeometryUtility.TestPlanesAABB( _planes, _bounds );
+                        var gen_ret = UnityEngine.GeometryUtility.TestPlanesAABB( _planes, _bounds );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     

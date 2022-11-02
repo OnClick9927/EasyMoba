@@ -105,7 +105,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.Application gen_ret = new UnityEngine.Application();
+					var gen_ret = new UnityEngine.Application();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -199,7 +199,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _levelIndex = LuaAPI.xlua_tointeger(L, 1);
                     
-                        bool gen_ret = UnityEngine.Application.CanStreamedLevelBeLoaded( _levelIndex );
+                        var gen_ret = UnityEngine.Application.CanStreamedLevelBeLoaded( _levelIndex );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -210,7 +210,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _levelName = LuaAPI.lua_tostring(L, 1);
                     
-                        bool gen_ret = UnityEngine.Application.CanStreamedLevelBeLoaded( _levelName );
+                        var gen_ret = UnityEngine.Application.CanStreamedLevelBeLoaded( _levelName );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -239,7 +239,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Object _obj = (UnityEngine.Object)translator.GetObject(L, 1, typeof(UnityEngine.Object));
                     
-                        bool gen_ret = UnityEngine.Application.IsPlaying( _obj );
+                        var gen_ret = UnityEngine.Application.IsPlaying( _obj );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -265,7 +265,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        string[] gen_ret = UnityEngine.Application.GetBuildTags(  );
+                        var gen_ret = UnityEngine.Application.GetBuildTags(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -315,7 +315,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        bool gen_ret = UnityEngine.Application.HasProLicense(  );
+                        var gen_ret = UnityEngine.Application.HasProLicense(  );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -342,7 +342,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Application.AdvertisingIdentifierCallback _delegateMethod = translator.GetDelegate<UnityEngine.Application.AdvertisingIdentifierCallback>(L, 1);
                     
-                        bool gen_ret = UnityEngine.Application.RequestAdvertisingIdentifierAsync( _delegateMethod );
+                        var gen_ret = UnityEngine.Application.RequestAdvertisingIdentifierAsync( _delegateMethod );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -393,7 +393,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.LogType _logType;translator.Get(L, 1, out _logType);
                     
-                        UnityEngine.StackTraceLogType gen_ret = UnityEngine.Application.GetStackTraceLogType( _logType );
+                        var gen_ret = UnityEngine.Application.GetStackTraceLogType( _logType );
                         translator.Push(L, gen_ret);
                     
                     
@@ -447,7 +447,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.UserAuthorization _mode;translator.Get(L, 1, out _mode);
                     
-                        UnityEngine.AsyncOperation gen_ret = UnityEngine.Application.RequestUserAuthorization( _mode );
+                        var gen_ret = UnityEngine.Application.RequestUserAuthorization( _mode );
                         translator.Push(L, gen_ret);
                     
                     
@@ -474,7 +474,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.UserAuthorization _mode;translator.Get(L, 1, out _mode);
                     
-                        bool gen_ret = UnityEngine.Application.HasUserAuthorization( _mode );
+                        var gen_ret = UnityEngine.Application.HasUserAuthorization( _mode );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     

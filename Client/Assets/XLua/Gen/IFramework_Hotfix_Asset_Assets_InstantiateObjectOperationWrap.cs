@@ -59,7 +59,7 @@ namespace XLua.CSObjectWrap
 					UnityEngine.Transform _parent = (UnityEngine.Transform)translator.GetObject(L, 3, typeof(UnityEngine.Transform));
 					bool _async = LuaAPI.lua_toboolean(L, 4);
 					
-					IFramework.Hotfix.Asset.Assets.InstantiateObjectOperation gen_ret = new IFramework.Hotfix.Asset.Assets.InstantiateObjectOperation(_path, _parent, _async);
+					var gen_ret = new IFramework.Hotfix.Asset.Assets.InstantiateObjectOperation(_path, _parent, _async);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -147,7 +147,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        IFramework.IAwaiter<IFramework.Hotfix.Asset.Assets.InstantiateObjectOperation> gen_ret = gen_to_be_invoked.GetAwaiter(  );
+                        var gen_ret = gen_to_be_invoked.GetAwaiter(  );
                         translator.PushAny(L, gen_ret);
                     
                     

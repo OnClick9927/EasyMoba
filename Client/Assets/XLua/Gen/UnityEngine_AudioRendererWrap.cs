@@ -54,7 +54,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.AudioRenderer gen_ret = new UnityEngine.AudioRenderer();
+					var gen_ret = new UnityEngine.AudioRenderer();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -85,7 +85,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        bool gen_ret = UnityEngine.AudioRenderer.Start(  );
+                        var gen_ret = UnityEngine.AudioRenderer.Start(  );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -109,7 +109,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        bool gen_ret = UnityEngine.AudioRenderer.Stop(  );
+                        var gen_ret = UnityEngine.AudioRenderer.Stop(  );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -133,7 +133,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        int gen_ret = UnityEngine.AudioRenderer.GetSampleCountForCaptureFrame(  );
+                        var gen_ret = UnityEngine.AudioRenderer.GetSampleCountForCaptureFrame(  );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -160,7 +160,7 @@ namespace XLua.CSObjectWrap
                 {
                     Unity.Collections.NativeArray<float> _buffer;translator.Get(L, 1, out _buffer);
                     
-                        bool gen_ret = UnityEngine.AudioRenderer.Render( _buffer );
+                        var gen_ret = UnityEngine.AudioRenderer.Render( _buffer );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     

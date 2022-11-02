@@ -67,7 +67,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.BillboardAsset gen_ret = new UnityEngine.BillboardAsset();
+					var gen_ret = new UnityEngine.BillboardAsset();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -104,7 +104,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 1) 
                 {
                     
-                        UnityEngine.Vector4[] gen_ret = gen_to_be_invoked.GetImageTexCoords(  );
+                        var gen_ret = gen_to_be_invoked.GetImageTexCoords(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -188,7 +188,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 1) 
                 {
                     
-                        UnityEngine.Vector2[] gen_ret = gen_to_be_invoked.GetVertices(  );
+                        var gen_ret = gen_to_be_invoked.GetVertices(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -272,7 +272,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 1) 
                 {
                     
-                        ushort[] gen_ret = gen_to_be_invoked.GetIndices(  );
+                        var gen_ret = gen_to_be_invoked.GetIndices(  );
                         translator.Push(L, gen_ret);
                     
                     

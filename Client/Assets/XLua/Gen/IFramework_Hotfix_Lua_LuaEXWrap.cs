@@ -68,7 +68,7 @@ namespace XLua.CSObjectWrap
                 {
                     IFramework.Hotfix.Lua.ILuaTask _target = (IFramework.Hotfix.Lua.ILuaTask)translator.GetObject(L, 1, typeof(IFramework.Hotfix.Lua.ILuaTask));
                     
-                        IFramework.IAwaiter gen_ret = IFramework.Hotfix.Lua.LuaEX.GetAwaiter( _target );
+                        var gen_ret = IFramework.Hotfix.Lua.LuaEX.GetAwaiter( _target );
                         translator.PushAny(L, gen_ret);
                     
                     

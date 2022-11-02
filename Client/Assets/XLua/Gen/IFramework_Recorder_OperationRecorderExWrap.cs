@@ -71,7 +71,7 @@ namespace XLua.CSObjectWrap
                 {
                     IFramework.Recorder.IOperationRecorderModule _t = (IFramework.Recorder.IOperationRecorderModule)translator.GetObject(L, 1, typeof(IFramework.Recorder.IOperationRecorderModule));
                     
-                        IFramework.Recorder.CommandState gen_ret = IFramework.Recorder.OperationRecorderEx.AllocateCommand( _t );
+                        var gen_ret = IFramework.Recorder.OperationRecorderEx.AllocateCommand( _t );
                         translator.Push(L, gen_ret);
                     
                     
@@ -98,7 +98,7 @@ namespace XLua.CSObjectWrap
                 {
                     IFramework.Recorder.IOperationRecorderModule _t = (IFramework.Recorder.IOperationRecorderModule)translator.GetObject(L, 1, typeof(IFramework.Recorder.IOperationRecorderModule));
                     
-                        IFramework.Recorder.ActionState gen_ret = IFramework.Recorder.OperationRecorderEx.AllocateAction( _t );
+                        var gen_ret = IFramework.Recorder.OperationRecorderEx.AllocateAction( _t );
                         translator.Push(L, gen_ret);
                     
                     
@@ -125,7 +125,7 @@ namespace XLua.CSObjectWrap
                 {
                     IFramework.Recorder.IOperationRecorderModule _t = (IFramework.Recorder.IOperationRecorderModule)translator.GetObject(L, 1, typeof(IFramework.Recorder.IOperationRecorderModule));
                     
-                        IFramework.Recorder.CommandGroupState gen_ret = IFramework.Recorder.OperationRecorderEx.AllocateCommandGroup( _t );
+                        var gen_ret = IFramework.Recorder.OperationRecorderEx.AllocateCommandGroup( _t );
                         translator.Push(L, gen_ret);
                     
                     
@@ -152,7 +152,7 @@ namespace XLua.CSObjectWrap
                 {
                     IFramework.Recorder.IOperationRecorderModule _t = (IFramework.Recorder.IOperationRecorderModule)translator.GetObject(L, 1, typeof(IFramework.Recorder.IOperationRecorderModule));
                     
-                        IFramework.Recorder.ActionGroupState gen_ret = IFramework.Recorder.OperationRecorderEx.AllocateActionGroup( _t );
+                        var gen_ret = IFramework.Recorder.OperationRecorderEx.AllocateActionGroup( _t );
                         translator.Push(L, gen_ret);
                     
                     

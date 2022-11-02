@@ -58,7 +58,7 @@ namespace XLua.CSObjectWrap
 					int _rows = LuaAPI.xlua_tointeger(L, 2);
 					int _cols = LuaAPI.xlua_tointeger(L, 3);
 					
-					UnityEngine.ArticulationJacobian gen_ret = new UnityEngine.ArticulationJacobian(_rows, _cols);
+					var gen_ret = new UnityEngine.ArticulationJacobian(_rows, _cols);
 					translator.Push(L, gen_ret);
                     
 					return 1;

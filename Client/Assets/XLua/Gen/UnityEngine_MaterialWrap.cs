@@ -114,7 +114,7 @@ namespace XLua.CSObjectWrap
 				{
 					UnityEngine.Shader _shader = (UnityEngine.Shader)translator.GetObject(L, 2, typeof(UnityEngine.Shader));
 					
-					UnityEngine.Material gen_ret = new UnityEngine.Material(_shader);
+					var gen_ret = new UnityEngine.Material(_shader);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -123,7 +123,7 @@ namespace XLua.CSObjectWrap
 				{
 					UnityEngine.Material _source = (UnityEngine.Material)translator.GetObject(L, 2, typeof(UnityEngine.Material));
 					
-					UnityEngine.Material gen_ret = new UnityEngine.Material(_source);
+					var gen_ret = new UnityEngine.Material(_source);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -161,7 +161,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _nameID = LuaAPI.xlua_tointeger(L, 2);
                     
-                        bool gen_ret = gen_to_be_invoked.HasProperty( _nameID );
+                        var gen_ret = gen_to_be_invoked.HasProperty( _nameID );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -172,7 +172,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _name = LuaAPI.lua_tostring(L, 2);
                     
-                        bool gen_ret = gen_to_be_invoked.HasProperty( _name );
+                        var gen_ret = gen_to_be_invoked.HasProperty( _name );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -259,7 +259,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _keyword = LuaAPI.lua_tostring(L, 2);
                     
-                        bool gen_ret = gen_to_be_invoked.IsKeywordEnabled( _keyword );
+                        var gen_ret = gen_to_be_invoked.IsKeywordEnabled( _keyword );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -317,7 +317,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _passName = LuaAPI.lua_tostring(L, 2);
                     
-                        bool gen_ret = gen_to_be_invoked.GetShaderPassEnabled( _passName );
+                        var gen_ret = gen_to_be_invoked.GetShaderPassEnabled( _passName );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -346,7 +346,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _pass = LuaAPI.xlua_tointeger(L, 2);
                     
-                        string gen_ret = gen_to_be_invoked.GetPassName( _pass );
+                        var gen_ret = gen_to_be_invoked.GetPassName( _pass );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -375,7 +375,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _passName = LuaAPI.lua_tostring(L, 2);
                     
-                        int gen_ret = gen_to_be_invoked.FindPass( _passName );
+                        var gen_ret = gen_to_be_invoked.FindPass( _passName );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -436,7 +436,7 @@ namespace XLua.CSObjectWrap
                     string _tag = LuaAPI.lua_tostring(L, 2);
                     bool _searchFallbacks = LuaAPI.lua_toboolean(L, 3);
                     
-                        string gen_ret = gen_to_be_invoked.GetTag( _tag, _searchFallbacks );
+                        var gen_ret = gen_to_be_invoked.GetTag( _tag, _searchFallbacks );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -449,7 +449,7 @@ namespace XLua.CSObjectWrap
                     bool _searchFallbacks = LuaAPI.lua_toboolean(L, 3);
                     string _defaultValue = LuaAPI.lua_tostring(L, 4);
                     
-                        string gen_ret = gen_to_be_invoked.GetTag( _tag, _searchFallbacks, _defaultValue );
+                        var gen_ret = gen_to_be_invoked.GetTag( _tag, _searchFallbacks, _defaultValue );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -510,7 +510,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _pass = LuaAPI.xlua_tointeger(L, 2);
                     
-                        bool gen_ret = gen_to_be_invoked.SetPass( _pass );
+                        var gen_ret = gen_to_be_invoked.SetPass( _pass );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -566,7 +566,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        int gen_ret = gen_to_be_invoked.ComputeCRC(  );
+                        var gen_ret = gen_to_be_invoked.ComputeCRC(  );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -596,7 +596,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 1) 
                 {
                     
-                        string[] gen_ret = gen_to_be_invoked.GetTexturePropertyNames(  );
+                        var gen_ret = gen_to_be_invoked.GetTexturePropertyNames(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -638,7 +638,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 1) 
                 {
                     
-                        int[] gen_ret = gen_to_be_invoked.GetTexturePropertyNameIDs(  );
+                        var gen_ret = gen_to_be_invoked.GetTexturePropertyNameIDs(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -1373,7 +1373,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _nameID = LuaAPI.xlua_tointeger(L, 2);
                     
-                        float gen_ret = gen_to_be_invoked.GetFloat( _nameID );
+                        var gen_ret = gen_to_be_invoked.GetFloat( _nameID );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -1384,7 +1384,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _name = LuaAPI.lua_tostring(L, 2);
                     
-                        float gen_ret = gen_to_be_invoked.GetFloat( _name );
+                        var gen_ret = gen_to_be_invoked.GetFloat( _name );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -1417,7 +1417,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _nameID = LuaAPI.xlua_tointeger(L, 2);
                     
-                        int gen_ret = gen_to_be_invoked.GetInt( _nameID );
+                        var gen_ret = gen_to_be_invoked.GetInt( _nameID );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -1428,7 +1428,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _name = LuaAPI.lua_tostring(L, 2);
                     
-                        int gen_ret = gen_to_be_invoked.GetInt( _name );
+                        var gen_ret = gen_to_be_invoked.GetInt( _name );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -1461,7 +1461,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _nameID = LuaAPI.xlua_tointeger(L, 2);
                     
-                        UnityEngine.Color gen_ret = gen_to_be_invoked.GetColor( _nameID );
+                        var gen_ret = gen_to_be_invoked.GetColor( _nameID );
                         translator.PushUnityEngineColor(L, gen_ret);
                     
                     
@@ -1472,7 +1472,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _name = LuaAPI.lua_tostring(L, 2);
                     
-                        UnityEngine.Color gen_ret = gen_to_be_invoked.GetColor( _name );
+                        var gen_ret = gen_to_be_invoked.GetColor( _name );
                         translator.PushUnityEngineColor(L, gen_ret);
                     
                     
@@ -1505,7 +1505,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _nameID = LuaAPI.xlua_tointeger(L, 2);
                     
-                        UnityEngine.Vector4 gen_ret = gen_to_be_invoked.GetVector( _nameID );
+                        var gen_ret = gen_to_be_invoked.GetVector( _nameID );
                         translator.PushUnityEngineVector4(L, gen_ret);
                     
                     
@@ -1516,7 +1516,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _name = LuaAPI.lua_tostring(L, 2);
                     
-                        UnityEngine.Vector4 gen_ret = gen_to_be_invoked.GetVector( _name );
+                        var gen_ret = gen_to_be_invoked.GetVector( _name );
                         translator.PushUnityEngineVector4(L, gen_ret);
                     
                     
@@ -1549,7 +1549,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _nameID = LuaAPI.xlua_tointeger(L, 2);
                     
-                        UnityEngine.Matrix4x4 gen_ret = gen_to_be_invoked.GetMatrix( _nameID );
+                        var gen_ret = gen_to_be_invoked.GetMatrix( _nameID );
                         translator.Push(L, gen_ret);
                     
                     
@@ -1560,7 +1560,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _name = LuaAPI.lua_tostring(L, 2);
                     
-                        UnityEngine.Matrix4x4 gen_ret = gen_to_be_invoked.GetMatrix( _name );
+                        var gen_ret = gen_to_be_invoked.GetMatrix( _name );
                         translator.Push(L, gen_ret);
                     
                     
@@ -1593,7 +1593,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _nameID = LuaAPI.xlua_tointeger(L, 2);
                     
-                        UnityEngine.Texture gen_ret = gen_to_be_invoked.GetTexture( _nameID );
+                        var gen_ret = gen_to_be_invoked.GetTexture( _nameID );
                         translator.Push(L, gen_ret);
                     
                     
@@ -1604,7 +1604,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _name = LuaAPI.lua_tostring(L, 2);
                     
-                        UnityEngine.Texture gen_ret = gen_to_be_invoked.GetTexture( _name );
+                        var gen_ret = gen_to_be_invoked.GetTexture( _name );
                         translator.Push(L, gen_ret);
                     
                     
@@ -1637,7 +1637,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _nameID = LuaAPI.xlua_tointeger(L, 2);
                     
-                        float[] gen_ret = gen_to_be_invoked.GetFloatArray( _nameID );
+                        var gen_ret = gen_to_be_invoked.GetFloatArray( _nameID );
                         translator.Push(L, gen_ret);
                     
                     
@@ -1648,7 +1648,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _name = LuaAPI.lua_tostring(L, 2);
                     
-                        float[] gen_ret = gen_to_be_invoked.GetFloatArray( _name );
+                        var gen_ret = gen_to_be_invoked.GetFloatArray( _name );
                         translator.Push(L, gen_ret);
                     
                     
@@ -1703,7 +1703,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _nameID = LuaAPI.xlua_tointeger(L, 2);
                     
-                        UnityEngine.Color[] gen_ret = gen_to_be_invoked.GetColorArray( _nameID );
+                        var gen_ret = gen_to_be_invoked.GetColorArray( _nameID );
                         translator.Push(L, gen_ret);
                     
                     
@@ -1714,7 +1714,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _name = LuaAPI.lua_tostring(L, 2);
                     
-                        UnityEngine.Color[] gen_ret = gen_to_be_invoked.GetColorArray( _name );
+                        var gen_ret = gen_to_be_invoked.GetColorArray( _name );
                         translator.Push(L, gen_ret);
                     
                     
@@ -1769,7 +1769,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _nameID = LuaAPI.xlua_tointeger(L, 2);
                     
-                        UnityEngine.Vector4[] gen_ret = gen_to_be_invoked.GetVectorArray( _nameID );
+                        var gen_ret = gen_to_be_invoked.GetVectorArray( _nameID );
                         translator.Push(L, gen_ret);
                     
                     
@@ -1780,7 +1780,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _name = LuaAPI.lua_tostring(L, 2);
                     
-                        UnityEngine.Vector4[] gen_ret = gen_to_be_invoked.GetVectorArray( _name );
+                        var gen_ret = gen_to_be_invoked.GetVectorArray( _name );
                         translator.Push(L, gen_ret);
                     
                     
@@ -1835,7 +1835,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _nameID = LuaAPI.xlua_tointeger(L, 2);
                     
-                        UnityEngine.Matrix4x4[] gen_ret = gen_to_be_invoked.GetMatrixArray( _nameID );
+                        var gen_ret = gen_to_be_invoked.GetMatrixArray( _nameID );
                         translator.Push(L, gen_ret);
                     
                     
@@ -1846,7 +1846,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _name = LuaAPI.lua_tostring(L, 2);
                     
-                        UnityEngine.Matrix4x4[] gen_ret = gen_to_be_invoked.GetMatrixArray( _name );
+                        var gen_ret = gen_to_be_invoked.GetMatrixArray( _name );
                         translator.Push(L, gen_ret);
                     
                     
@@ -1989,7 +1989,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _nameID = LuaAPI.xlua_tointeger(L, 2);
                     
-                        UnityEngine.Vector2 gen_ret = gen_to_be_invoked.GetTextureOffset( _nameID );
+                        var gen_ret = gen_to_be_invoked.GetTextureOffset( _nameID );
                         translator.PushUnityEngineVector2(L, gen_ret);
                     
                     
@@ -2000,7 +2000,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _name = LuaAPI.lua_tostring(L, 2);
                     
-                        UnityEngine.Vector2 gen_ret = gen_to_be_invoked.GetTextureOffset( _name );
+                        var gen_ret = gen_to_be_invoked.GetTextureOffset( _name );
                         translator.PushUnityEngineVector2(L, gen_ret);
                     
                     
@@ -2033,7 +2033,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _nameID = LuaAPI.xlua_tointeger(L, 2);
                     
-                        UnityEngine.Vector2 gen_ret = gen_to_be_invoked.GetTextureScale( _nameID );
+                        var gen_ret = gen_to_be_invoked.GetTextureScale( _nameID );
                         translator.PushUnityEngineVector2(L, gen_ret);
                     
                     
@@ -2044,7 +2044,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _name = LuaAPI.lua_tostring(L, 2);
                     
-                        UnityEngine.Vector2 gen_ret = gen_to_be_invoked.GetTextureScale( _name );
+                        var gen_ret = gen_to_be_invoked.GetTextureScale( _name );
                         translator.PushUnityEngineVector2(L, gen_ret);
                     
                     

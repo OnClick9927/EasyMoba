@@ -60,7 +60,7 @@ namespace XLua.CSObjectWrap
 					int _port = LuaAPI.xlua_tointeger(L, 3);
 					int _bufsize = LuaAPI.xlua_tointeger(L, 4);
 					
-					EasyMoba.TcpClient gen_ret = new EasyMoba.TcpClient(_ip, _port, _bufsize);
+					var gen_ret = new EasyMoba.TcpClient(_ip, _port, _bufsize);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -95,7 +95,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        System.Threading.Tasks.Task<bool> gen_ret = gen_to_be_invoked.Connect(  );
+                        var gen_ret = gen_to_be_invoked.Connect(  );
                         translator.Push(L, gen_ret);
                     
                     

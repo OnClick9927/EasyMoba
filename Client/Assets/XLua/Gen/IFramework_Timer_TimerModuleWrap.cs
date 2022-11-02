@@ -53,7 +53,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					IFramework.Timer.TimerModule gen_ret = new IFramework.Timer.TimerModule();
+					var gen_ret = new IFramework.Timer.TimerModule();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -150,7 +150,7 @@ namespace XLua.CSObjectWrap
                     float _delay = (float)LuaAPI.lua_tonumber(L, 5);
                     float _timeScale = (float)LuaAPI.lua_tonumber(L, 6);
                     
-                        IFramework.Timer.ITimerEntity gen_ret = gen_to_be_invoked.Allocate( _action, _repeatDelay, _repeat, _delay, _timeScale );
+                        var gen_ret = gen_to_be_invoked.Allocate( _action, _repeatDelay, _repeat, _delay, _timeScale );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -164,7 +164,7 @@ namespace XLua.CSObjectWrap
                     int _repeat = LuaAPI.xlua_tointeger(L, 4);
                     float _delay = (float)LuaAPI.lua_tonumber(L, 5);
                     
-                        IFramework.Timer.ITimerEntity gen_ret = gen_to_be_invoked.Allocate( _action, _repeatDelay, _repeat, _delay );
+                        var gen_ret = gen_to_be_invoked.Allocate( _action, _repeatDelay, _repeat, _delay );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -177,7 +177,7 @@ namespace XLua.CSObjectWrap
                     float _repeatDelay = (float)LuaAPI.lua_tonumber(L, 3);
                     int _repeat = LuaAPI.xlua_tointeger(L, 4);
                     
-                        IFramework.Timer.ITimerEntity gen_ret = gen_to_be_invoked.Allocate( _action, _repeatDelay, _repeat );
+                        var gen_ret = gen_to_be_invoked.Allocate( _action, _repeatDelay, _repeat );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -189,7 +189,7 @@ namespace XLua.CSObjectWrap
                     System.Action _action = translator.GetDelegate<System.Action>(L, 2);
                     float _repeatDelay = (float)LuaAPI.lua_tonumber(L, 3);
                     
-                        IFramework.Timer.ITimerEntity gen_ret = gen_to_be_invoked.Allocate( _action, _repeatDelay );
+                        var gen_ret = gen_to_be_invoked.Allocate( _action, _repeatDelay );
                         translator.PushAny(L, gen_ret);
                     
                     

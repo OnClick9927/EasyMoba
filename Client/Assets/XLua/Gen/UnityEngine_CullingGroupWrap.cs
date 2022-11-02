@@ -65,7 +65,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.CullingGroup gen_ret = new UnityEngine.CullingGroup();
+					var gen_ret = new UnityEngine.CullingGroup();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -216,7 +216,7 @@ namespace XLua.CSObjectWrap
                     int[] _result = (int[])translator.GetObject(L, 3, typeof(int[]));
                     int _firstIndex = LuaAPI.xlua_tointeger(L, 4);
                     
-                        int gen_ret = gen_to_be_invoked.QueryIndices( _visible, _result, _firstIndex );
+                        var gen_ret = gen_to_be_invoked.QueryIndices( _visible, _result, _firstIndex );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -229,7 +229,7 @@ namespace XLua.CSObjectWrap
                     int[] _result = (int[])translator.GetObject(L, 3, typeof(int[]));
                     int _firstIndex = LuaAPI.xlua_tointeger(L, 4);
                     
-                        int gen_ret = gen_to_be_invoked.QueryIndices( _distanceIndex, _result, _firstIndex );
+                        var gen_ret = gen_to_be_invoked.QueryIndices( _distanceIndex, _result, _firstIndex );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -243,7 +243,7 @@ namespace XLua.CSObjectWrap
                     int[] _result = (int[])translator.GetObject(L, 4, typeof(int[]));
                     int _firstIndex = LuaAPI.xlua_tointeger(L, 5);
                     
-                        int gen_ret = gen_to_be_invoked.QueryIndices( _visible, _distanceIndex, _result, _firstIndex );
+                        var gen_ret = gen_to_be_invoked.QueryIndices( _visible, _distanceIndex, _result, _firstIndex );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -274,7 +274,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _index = LuaAPI.xlua_tointeger(L, 2);
                     
-                        bool gen_ret = gen_to_be_invoked.IsVisible( _index );
+                        var gen_ret = gen_to_be_invoked.IsVisible( _index );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -303,7 +303,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _index = LuaAPI.xlua_tointeger(L, 2);
                     
-                        int gen_ret = gen_to_be_invoked.GetDistance( _index );
+                        var gen_ret = gen_to_be_invoked.GetDistance( _index );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     

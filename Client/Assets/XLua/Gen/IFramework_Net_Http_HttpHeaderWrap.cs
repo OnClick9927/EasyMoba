@@ -93,7 +93,7 @@ namespace XLua.CSObjectWrap
 				{
 					string _httpContent = LuaAPI.lua_tostring(L, 2);
 					
-					IFramework.Net.Http.HttpHeader gen_ret = new IFramework.Net.Http.HttpHeader(_httpContent);
+					var gen_ret = new IFramework.Net.Http.HttpHeader(_httpContent);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -102,7 +102,7 @@ namespace XLua.CSObjectWrap
 				{
 					IFramework.Net.SegmentOffset _segment = (IFramework.Net.SegmentOffset)translator.GetObject(L, 2, typeof(IFramework.Net.SegmentOffset));
 					
-					IFramework.Net.Http.HttpHeader gen_ret = new IFramework.Net.Http.HttpHeader(_segment);
+					var gen_ret = new IFramework.Net.Http.HttpHeader(_segment);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -138,7 +138,7 @@ namespace XLua.CSObjectWrap
                 {
                     IFramework.Net.Http.HttpStatusCode _httpStatusCode;translator.Get(L, 2, out _httpStatusCode);
                     
-                        string gen_ret = gen_to_be_invoked.ToHeaderString( _httpStatusCode );
+                        var gen_ret = gen_to_be_invoked.ToHeaderString( _httpStatusCode );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     

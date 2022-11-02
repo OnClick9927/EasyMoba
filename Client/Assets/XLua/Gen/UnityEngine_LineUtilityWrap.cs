@@ -51,7 +51,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.LineUtility gen_ret = new UnityEngine.LineUtility();
+					var gen_ret = new UnityEngine.LineUtility();
 					translator.Push(L, gen_ret);
                     
 					return 1;

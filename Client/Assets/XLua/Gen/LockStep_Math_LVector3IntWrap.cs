@@ -83,7 +83,7 @@ namespace XLua.CSObjectWrap
 					int _y = LuaAPI.xlua_tointeger(L, 3);
 					int _z = LuaAPI.xlua_tointeger(L, 4);
 					
-					LockStep.Math.LVector3Int gen_ret = new LockStep.Math.LVector3Int(_x, _y, _z);
+					var gen_ret = new LockStep.Math.LVector3Int(_x, _y, _z);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -322,7 +322,7 @@ namespace XLua.CSObjectWrap
                     LockStep.Math.LVector3Int _a;translator.Get(L, 1, out _a);
                     LockStep.Math.LVector3Int _b;translator.Get(L, 2, out _b);
                     
-                        LockStep.Math.LFloat gen_ret = LockStep.Math.LVector3Int.Distance( _a, _b );
+                        var gen_ret = LockStep.Math.LVector3Int.Distance( _a, _b );
                         translator.Push(L, gen_ret);
                     
                     
@@ -350,7 +350,7 @@ namespace XLua.CSObjectWrap
                     LockStep.Math.LVector3Int _lhs;translator.Get(L, 1, out _lhs);
                     LockStep.Math.LVector3Int _rhs;translator.Get(L, 2, out _rhs);
                     
-                        LockStep.Math.LVector3Int gen_ret = LockStep.Math.LVector3Int.Min( _lhs, _rhs );
+                        var gen_ret = LockStep.Math.LVector3Int.Min( _lhs, _rhs );
                         translator.Push(L, gen_ret);
                     
                     
@@ -378,7 +378,7 @@ namespace XLua.CSObjectWrap
                     LockStep.Math.LVector3Int _lhs;translator.Get(L, 1, out _lhs);
                     LockStep.Math.LVector3Int _rhs;translator.Get(L, 2, out _rhs);
                     
-                        LockStep.Math.LVector3Int gen_ret = LockStep.Math.LVector3Int.Max( _lhs, _rhs );
+                        var gen_ret = LockStep.Math.LVector3Int.Max( _lhs, _rhs );
                         translator.Push(L, gen_ret);
                     
                     
@@ -406,7 +406,7 @@ namespace XLua.CSObjectWrap
                     LockStep.Math.LVector3Int _a;translator.Get(L, 1, out _a);
                     LockStep.Math.LVector3Int _b;translator.Get(L, 2, out _b);
                     
-                        LockStep.Math.LVector3Int gen_ret = LockStep.Math.LVector3Int.Scale( _a, _b );
+                        var gen_ret = LockStep.Math.LVector3Int.Scale( _a, _b );
                         translator.Push(L, gen_ret);
                     
                     
@@ -498,7 +498,7 @@ namespace XLua.CSObjectWrap
                 {
                     object _other = translator.GetObject(L, 2, typeof(object));
                     
-                        bool gen_ret = gen_to_be_invoked.Equals( _other );
+                        var gen_ret = gen_to_be_invoked.Equals( _other );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -511,7 +511,7 @@ namespace XLua.CSObjectWrap
                 {
                     LockStep.Math.LVector3Int _other;translator.Get(L, 2, out _other);
                     
-                        bool gen_ret = gen_to_be_invoked.Equals( _other );
+                        var gen_ret = gen_to_be_invoked.Equals( _other );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -543,7 +543,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        int gen_ret = gen_to_be_invoked.GetHashCode(  );
+                        var gen_ret = gen_to_be_invoked.GetHashCode(  );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -575,7 +575,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 1) 
                 {
                     
-                        string gen_ret = gen_to_be_invoked.ToString(  );
+                        var gen_ret = gen_to_be_invoked.ToString(  );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -588,7 +588,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _format = LuaAPI.lua_tostring(L, 2);
                     
-                        string gen_ret = gen_to_be_invoked.ToString( _format );
+                        var gen_ret = gen_to_be_invoked.ToString( _format );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -620,7 +620,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Vector3Int gen_ret = gen_to_be_invoked.ToVector3Int(  );
+                        var gen_ret = gen_to_be_invoked.ToVector3Int(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -650,7 +650,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        LockStep.Math.LVector3 gen_ret = gen_to_be_invoked.ToLVector3(  );
+                        var gen_ret = gen_to_be_invoked.ToLVector3(  );
                         translator.Push(L, gen_ret);
                     
                     

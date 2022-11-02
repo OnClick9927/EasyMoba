@@ -187,7 +187,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Vector3 _inputMouseCoordinates;translator.Get(L, 1, out _inputMouseCoordinates);
                     
-                        UnityEngine.Vector3 gen_ret = UnityEngine.Display.RelativeMouseAt( _inputMouseCoordinates );
+                        var gen_ret = UnityEngine.Display.RelativeMouseAt( _inputMouseCoordinates );
                         translator.PushUnityEngineVector3(L, gen_ret);
                     
                     

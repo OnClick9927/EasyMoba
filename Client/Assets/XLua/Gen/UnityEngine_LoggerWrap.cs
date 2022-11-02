@@ -63,7 +63,7 @@ namespace XLua.CSObjectWrap
 				{
 					UnityEngine.ILogHandler _logHandler = (UnityEngine.ILogHandler)translator.GetObject(L, 2, typeof(UnityEngine.ILogHandler));
 					
-					UnityEngine.Logger gen_ret = new UnityEngine.Logger(_logHandler);
+					var gen_ret = new UnityEngine.Logger(_logHandler);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -99,7 +99,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.LogType _logType;translator.Get(L, 2, out _logType);
                     
-                        bool gen_ret = gen_to_be_invoked.IsLogTypeAllowed( _logType );
+                        var gen_ret = gen_to_be_invoked.IsLogTypeAllowed( _logType );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     

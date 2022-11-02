@@ -87,7 +87,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.WheelCollider gen_ret = new UnityEngine.WheelCollider();
+					var gen_ret = new UnityEngine.WheelCollider();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -213,7 +213,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.WheelHit _hit;
                     
-                        bool gen_ret = gen_to_be_invoked.GetGroundHit( out _hit );
+                        var gen_ret = gen_to_be_invoked.GetGroundHit( out _hit );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     translator.Push(L, _hit);
                         
@@ -243,7 +243,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.MakeComponentExist(  );
+                        var gen_ret = gen_to_be_invoked.MakeComponentExist(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -298,7 +298,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.LocalIdentity(  );
+                        var gen_ret = gen_to_be_invoked.LocalIdentity(  );
                         translator.Push(L, gen_ret);
                     
                     

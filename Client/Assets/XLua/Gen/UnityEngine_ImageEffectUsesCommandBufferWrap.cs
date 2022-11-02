@@ -50,7 +50,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.ImageEffectUsesCommandBuffer gen_ret = new UnityEngine.ImageEffectUsesCommandBuffer();
+					var gen_ret = new UnityEngine.ImageEffectUsesCommandBuffer();
 					translator.Push(L, gen_ret);
                     
 					return 1;

@@ -56,7 +56,7 @@ namespace XLua.CSObjectWrap
 				{
 					LockStep.Math.LVector2[] _points = (LockStep.Math.LVector2[])translator.GetObject(L, 2, typeof(LockStep.Math.LVector2[]));
 					
-					LockStep.LCollision2D.Bound gen_ret = new LockStep.LCollision2D.Bound(_points);
+					var gen_ret = new LockStep.LCollision2D.Bound(_points);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -99,7 +99,7 @@ namespace XLua.CSObjectWrap
                     LockStep.Math.LVector2 _start;translator.Get(L, 2, out _start);
                     LockStep.Math.LVector2 _end;translator.Get(L, 3, out _end);
                     
-                        bool gen_ret = gen_to_be_invoked.FindLine( _start, _end );
+                        var gen_ret = gen_to_be_invoked.FindLine( _start, _end );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     

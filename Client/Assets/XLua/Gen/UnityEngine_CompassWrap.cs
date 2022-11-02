@@ -57,7 +57,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.Compass gen_ret = new UnityEngine.Compass();
+					var gen_ret = new UnityEngine.Compass();
 					translator.Push(L, gen_ret);
                     
 					return 1;

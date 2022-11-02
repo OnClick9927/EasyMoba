@@ -207,7 +207,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        bool gen_ret = gen_to_be_invoked.AnyTogglesOn(  );
+                        var gen_ret = gen_to_be_invoked.AnyTogglesOn(  );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -235,7 +235,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        System.Collections.Generic.IEnumerable<UnityEngine.UI.Toggle> gen_ret = gen_to_be_invoked.ActiveToggles(  );
+                        var gen_ret = gen_to_be_invoked.ActiveToggles(  );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -263,7 +263,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.UI.Toggle gen_ret = gen_to_be_invoked.GetFirstActiveToggle(  );
+                        var gen_ret = gen_to_be_invoked.GetFirstActiveToggle(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -332,7 +332,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.MakeComponentExist(  );
+                        var gen_ret = gen_to_be_invoked.MakeComponentExist(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -387,7 +387,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.LocalIdentity(  );
+                        var gen_ret = gen_to_be_invoked.LocalIdentity(  );
                         translator.Push(L, gen_ret);
                     
                     

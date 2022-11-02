@@ -76,7 +76,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Rendering.CompareFunction _compareFunction;translator.Get(L, 4, out _compareFunction);
                     UnityEngine.Rendering.ColorWriteMask _colorWriteMask;translator.Get(L, 5, out _colorWriteMask);
                     
-                        UnityEngine.Material gen_ret = UnityEngine.UI.StencilMaterial.Add( _baseMat, _stencilID, _operation, _compareFunction, _colorWriteMask );
+                        var gen_ret = UnityEngine.UI.StencilMaterial.Add( _baseMat, _stencilID, _operation, _compareFunction, _colorWriteMask );
                         translator.Push(L, gen_ret);
                     
                     
@@ -93,7 +93,7 @@ namespace XLua.CSObjectWrap
                     int _readMask = LuaAPI.xlua_tointeger(L, 6);
                     int _writeMask = LuaAPI.xlua_tointeger(L, 7);
                     
-                        UnityEngine.Material gen_ret = UnityEngine.UI.StencilMaterial.Add( _baseMat, _stencilID, _operation, _compareFunction, _colorWriteMask, _readMask, _writeMask );
+                        var gen_ret = UnityEngine.UI.StencilMaterial.Add( _baseMat, _stencilID, _operation, _compareFunction, _colorWriteMask, _readMask, _writeMask );
                         translator.Push(L, gen_ret);
                     
                     

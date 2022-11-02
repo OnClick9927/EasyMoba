@@ -123,7 +123,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        string gen_ret = gen_to_be_invoked.ToString(  );
+                        var gen_ret = gen_to_be_invoked.ToString(  );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -153,7 +153,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        int gen_ret = gen_to_be_invoked.GetHashCode(  );
+                        var gen_ret = gen_to_be_invoked.GetHashCode(  );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -186,7 +186,7 @@ namespace XLua.CSObjectWrap
                 {
                     object _other = translator.GetObject(L, 2, typeof(object));
                     
-                        bool gen_ret = gen_to_be_invoked.Equals( _other );
+                        var gen_ret = gen_to_be_invoked.Equals( _other );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -199,7 +199,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.PhysicsScene _other;translator.Get(L, 2, out _other);
                     
-                        bool gen_ret = gen_to_be_invoked.Equals( _other );
+                        var gen_ret = gen_to_be_invoked.Equals( _other );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -231,7 +231,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        bool gen_ret = gen_to_be_invoked.IsValid(  );
+                        var gen_ret = gen_to_be_invoked.IsValid(  );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -261,7 +261,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        bool gen_ret = gen_to_be_invoked.IsEmpty(  );
+                        var gen_ret = gen_to_be_invoked.IsEmpty(  );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -328,7 +328,7 @@ namespace XLua.CSObjectWrap
                     int _layerMask = LuaAPI.xlua_tointeger(L, 5);
                     UnityEngine.QueryTriggerInteraction _queryTriggerInteraction;translator.Get(L, 6, out _queryTriggerInteraction);
                     
-                        bool gen_ret = gen_to_be_invoked.Raycast( _origin, _direction, _maxDistance, _layerMask, _queryTriggerInteraction );
+                        var gen_ret = gen_to_be_invoked.Raycast( _origin, _direction, _maxDistance, _layerMask, _queryTriggerInteraction );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -344,7 +344,7 @@ namespace XLua.CSObjectWrap
                     float _maxDistance = (float)LuaAPI.lua_tonumber(L, 4);
                     int _layerMask = LuaAPI.xlua_tointeger(L, 5);
                     
-                        bool gen_ret = gen_to_be_invoked.Raycast( _origin, _direction, _maxDistance, _layerMask );
+                        var gen_ret = gen_to_be_invoked.Raycast( _origin, _direction, _maxDistance, _layerMask );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -359,7 +359,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Vector3 _direction;translator.Get(L, 3, out _direction);
                     float _maxDistance = (float)LuaAPI.lua_tonumber(L, 4);
                     
-                        bool gen_ret = gen_to_be_invoked.Raycast( _origin, _direction, _maxDistance );
+                        var gen_ret = gen_to_be_invoked.Raycast( _origin, _direction, _maxDistance );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -373,7 +373,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Vector3 _origin;translator.Get(L, 2, out _origin);
                     UnityEngine.Vector3 _direction;translator.Get(L, 3, out _direction);
                     
-                        bool gen_ret = gen_to_be_invoked.Raycast( _origin, _direction );
+                        var gen_ret = gen_to_be_invoked.Raycast( _origin, _direction );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -391,7 +391,7 @@ namespace XLua.CSObjectWrap
                     int _layerMask = LuaAPI.xlua_tointeger(L, 5);
                     UnityEngine.QueryTriggerInteraction _queryTriggerInteraction;translator.Get(L, 6, out _queryTriggerInteraction);
                     
-                        bool gen_ret = gen_to_be_invoked.Raycast( _origin, _direction, out _hitInfo, _maxDistance, _layerMask, _queryTriggerInteraction );
+                        var gen_ret = gen_to_be_invoked.Raycast( _origin, _direction, out _hitInfo, _maxDistance, _layerMask, _queryTriggerInteraction );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     translator.Push(L, _hitInfo);
                         
@@ -410,7 +410,7 @@ namespace XLua.CSObjectWrap
                     float _maxDistance = (float)LuaAPI.lua_tonumber(L, 4);
                     int _layerMask = LuaAPI.xlua_tointeger(L, 5);
                     
-                        bool gen_ret = gen_to_be_invoked.Raycast( _origin, _direction, out _hitInfo, _maxDistance, _layerMask );
+                        var gen_ret = gen_to_be_invoked.Raycast( _origin, _direction, out _hitInfo, _maxDistance, _layerMask );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     translator.Push(L, _hitInfo);
                         
@@ -428,7 +428,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.RaycastHit _hitInfo;
                     float _maxDistance = (float)LuaAPI.lua_tonumber(L, 4);
                     
-                        bool gen_ret = gen_to_be_invoked.Raycast( _origin, _direction, out _hitInfo, _maxDistance );
+                        var gen_ret = gen_to_be_invoked.Raycast( _origin, _direction, out _hitInfo, _maxDistance );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     translator.Push(L, _hitInfo);
                         
@@ -445,7 +445,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Vector3 _direction;translator.Get(L, 3, out _direction);
                     UnityEngine.RaycastHit _hitInfo;
                     
-                        bool gen_ret = gen_to_be_invoked.Raycast( _origin, _direction, out _hitInfo );
+                        var gen_ret = gen_to_be_invoked.Raycast( _origin, _direction, out _hitInfo );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     translator.Push(L, _hitInfo);
                         
@@ -465,7 +465,7 @@ namespace XLua.CSObjectWrap
                     int _layerMask = LuaAPI.xlua_tointeger(L, 6);
                     UnityEngine.QueryTriggerInteraction _queryTriggerInteraction;translator.Get(L, 7, out _queryTriggerInteraction);
                     
-                        int gen_ret = gen_to_be_invoked.Raycast( _origin, _direction, _raycastHits, _maxDistance, _layerMask, _queryTriggerInteraction );
+                        var gen_ret = gen_to_be_invoked.Raycast( _origin, _direction, _raycastHits, _maxDistance, _layerMask, _queryTriggerInteraction );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -482,7 +482,7 @@ namespace XLua.CSObjectWrap
                     float _maxDistance = (float)LuaAPI.lua_tonumber(L, 5);
                     int _layerMask = LuaAPI.xlua_tointeger(L, 6);
                     
-                        int gen_ret = gen_to_be_invoked.Raycast( _origin, _direction, _raycastHits, _maxDistance, _layerMask );
+                        var gen_ret = gen_to_be_invoked.Raycast( _origin, _direction, _raycastHits, _maxDistance, _layerMask );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -498,7 +498,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.RaycastHit[] _raycastHits = (UnityEngine.RaycastHit[])translator.GetObject(L, 4, typeof(UnityEngine.RaycastHit[]));
                     float _maxDistance = (float)LuaAPI.lua_tonumber(L, 5);
                     
-                        int gen_ret = gen_to_be_invoked.Raycast( _origin, _direction, _raycastHits, _maxDistance );
+                        var gen_ret = gen_to_be_invoked.Raycast( _origin, _direction, _raycastHits, _maxDistance );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -513,7 +513,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Vector3 _direction;translator.Get(L, 3, out _direction);
                     UnityEngine.RaycastHit[] _raycastHits = (UnityEngine.RaycastHit[])translator.GetObject(L, 4, typeof(UnityEngine.RaycastHit[]));
                     
-                        int gen_ret = gen_to_be_invoked.Raycast( _origin, _direction, _raycastHits );
+                        var gen_ret = gen_to_be_invoked.Raycast( _origin, _direction, _raycastHits );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -555,7 +555,7 @@ namespace XLua.CSObjectWrap
                     int _layerMask = LuaAPI.xlua_tointeger(L, 7);
                     UnityEngine.QueryTriggerInteraction _queryTriggerInteraction;translator.Get(L, 8, out _queryTriggerInteraction);
                     
-                        bool gen_ret = gen_to_be_invoked.CapsuleCast( _point1, _point2, _radius, _direction, out _hitInfo, _maxDistance, _layerMask, _queryTriggerInteraction );
+                        var gen_ret = gen_to_be_invoked.CapsuleCast( _point1, _point2, _radius, _direction, out _hitInfo, _maxDistance, _layerMask, _queryTriggerInteraction );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     translator.Push(L, _hitInfo);
                         
@@ -576,7 +576,7 @@ namespace XLua.CSObjectWrap
                     float _maxDistance = (float)LuaAPI.lua_tonumber(L, 6);
                     int _layerMask = LuaAPI.xlua_tointeger(L, 7);
                     
-                        bool gen_ret = gen_to_be_invoked.CapsuleCast( _point1, _point2, _radius, _direction, out _hitInfo, _maxDistance, _layerMask );
+                        var gen_ret = gen_to_be_invoked.CapsuleCast( _point1, _point2, _radius, _direction, out _hitInfo, _maxDistance, _layerMask );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     translator.Push(L, _hitInfo);
                         
@@ -596,7 +596,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.RaycastHit _hitInfo;
                     float _maxDistance = (float)LuaAPI.lua_tonumber(L, 6);
                     
-                        bool gen_ret = gen_to_be_invoked.CapsuleCast( _point1, _point2, _radius, _direction, out _hitInfo, _maxDistance );
+                        var gen_ret = gen_to_be_invoked.CapsuleCast( _point1, _point2, _radius, _direction, out _hitInfo, _maxDistance );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     translator.Push(L, _hitInfo);
                         
@@ -615,7 +615,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Vector3 _direction;translator.Get(L, 5, out _direction);
                     UnityEngine.RaycastHit _hitInfo;
                     
-                        bool gen_ret = gen_to_be_invoked.CapsuleCast( _point1, _point2, _radius, _direction, out _hitInfo );
+                        var gen_ret = gen_to_be_invoked.CapsuleCast( _point1, _point2, _radius, _direction, out _hitInfo );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     translator.Push(L, _hitInfo);
                         
@@ -637,7 +637,7 @@ namespace XLua.CSObjectWrap
                     int _layerMask = LuaAPI.xlua_tointeger(L, 8);
                     UnityEngine.QueryTriggerInteraction _queryTriggerInteraction;translator.Get(L, 9, out _queryTriggerInteraction);
                     
-                        int gen_ret = gen_to_be_invoked.CapsuleCast( _point1, _point2, _radius, _direction, _results, _maxDistance, _layerMask, _queryTriggerInteraction );
+                        var gen_ret = gen_to_be_invoked.CapsuleCast( _point1, _point2, _radius, _direction, _results, _maxDistance, _layerMask, _queryTriggerInteraction );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -656,7 +656,7 @@ namespace XLua.CSObjectWrap
                     float _maxDistance = (float)LuaAPI.lua_tonumber(L, 7);
                     int _layerMask = LuaAPI.xlua_tointeger(L, 8);
                     
-                        int gen_ret = gen_to_be_invoked.CapsuleCast( _point1, _point2, _radius, _direction, _results, _maxDistance, _layerMask );
+                        var gen_ret = gen_to_be_invoked.CapsuleCast( _point1, _point2, _radius, _direction, _results, _maxDistance, _layerMask );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -674,7 +674,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.RaycastHit[] _results = (UnityEngine.RaycastHit[])translator.GetObject(L, 6, typeof(UnityEngine.RaycastHit[]));
                     float _maxDistance = (float)LuaAPI.lua_tonumber(L, 7);
                     
-                        int gen_ret = gen_to_be_invoked.CapsuleCast( _point1, _point2, _radius, _direction, _results, _maxDistance );
+                        var gen_ret = gen_to_be_invoked.CapsuleCast( _point1, _point2, _radius, _direction, _results, _maxDistance );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -691,7 +691,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Vector3 _direction;translator.Get(L, 5, out _direction);
                     UnityEngine.RaycastHit[] _results = (UnityEngine.RaycastHit[])translator.GetObject(L, 6, typeof(UnityEngine.RaycastHit[]));
                     
-                        int gen_ret = gen_to_be_invoked.CapsuleCast( _point1, _point2, _radius, _direction, _results );
+                        var gen_ret = gen_to_be_invoked.CapsuleCast( _point1, _point2, _radius, _direction, _results );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -731,7 +731,7 @@ namespace XLua.CSObjectWrap
                     int _layerMask = LuaAPI.xlua_tointeger(L, 6);
                     UnityEngine.QueryTriggerInteraction _queryTriggerInteraction;translator.Get(L, 7, out _queryTriggerInteraction);
                     
-                        int gen_ret = gen_to_be_invoked.OverlapCapsule( _point0, _point1, _radius, _results, _layerMask, _queryTriggerInteraction );
+                        var gen_ret = gen_to_be_invoked.OverlapCapsule( _point0, _point1, _radius, _results, _layerMask, _queryTriggerInteraction );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -748,7 +748,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Collider[] _results = (UnityEngine.Collider[])translator.GetObject(L, 5, typeof(UnityEngine.Collider[]));
                     int _layerMask = LuaAPI.xlua_tointeger(L, 6);
                     
-                        int gen_ret = gen_to_be_invoked.OverlapCapsule( _point0, _point1, _radius, _results, _layerMask );
+                        var gen_ret = gen_to_be_invoked.OverlapCapsule( _point0, _point1, _radius, _results, _layerMask );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -764,7 +764,7 @@ namespace XLua.CSObjectWrap
                     float _radius = (float)LuaAPI.lua_tonumber(L, 4);
                     UnityEngine.Collider[] _results = (UnityEngine.Collider[])translator.GetObject(L, 5, typeof(UnityEngine.Collider[]));
                     
-                        int gen_ret = gen_to_be_invoked.OverlapCapsule( _point0, _point1, _radius, _results );
+                        var gen_ret = gen_to_be_invoked.OverlapCapsule( _point0, _point1, _radius, _results );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -805,7 +805,7 @@ namespace XLua.CSObjectWrap
                     int _layerMask = LuaAPI.xlua_tointeger(L, 6);
                     UnityEngine.QueryTriggerInteraction _queryTriggerInteraction;translator.Get(L, 7, out _queryTriggerInteraction);
                     
-                        bool gen_ret = gen_to_be_invoked.SphereCast( _origin, _radius, _direction, out _hitInfo, _maxDistance, _layerMask, _queryTriggerInteraction );
+                        var gen_ret = gen_to_be_invoked.SphereCast( _origin, _radius, _direction, out _hitInfo, _maxDistance, _layerMask, _queryTriggerInteraction );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     translator.Push(L, _hitInfo);
                         
@@ -825,7 +825,7 @@ namespace XLua.CSObjectWrap
                     float _maxDistance = (float)LuaAPI.lua_tonumber(L, 5);
                     int _layerMask = LuaAPI.xlua_tointeger(L, 6);
                     
-                        bool gen_ret = gen_to_be_invoked.SphereCast( _origin, _radius, _direction, out _hitInfo, _maxDistance, _layerMask );
+                        var gen_ret = gen_to_be_invoked.SphereCast( _origin, _radius, _direction, out _hitInfo, _maxDistance, _layerMask );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     translator.Push(L, _hitInfo);
                         
@@ -844,7 +844,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.RaycastHit _hitInfo;
                     float _maxDistance = (float)LuaAPI.lua_tonumber(L, 5);
                     
-                        bool gen_ret = gen_to_be_invoked.SphereCast( _origin, _radius, _direction, out _hitInfo, _maxDistance );
+                        var gen_ret = gen_to_be_invoked.SphereCast( _origin, _radius, _direction, out _hitInfo, _maxDistance );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     translator.Push(L, _hitInfo);
                         
@@ -862,7 +862,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Vector3 _direction;translator.Get(L, 4, out _direction);
                     UnityEngine.RaycastHit _hitInfo;
                     
-                        bool gen_ret = gen_to_be_invoked.SphereCast( _origin, _radius, _direction, out _hitInfo );
+                        var gen_ret = gen_to_be_invoked.SphereCast( _origin, _radius, _direction, out _hitInfo );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     translator.Push(L, _hitInfo);
                         
@@ -883,7 +883,7 @@ namespace XLua.CSObjectWrap
                     int _layerMask = LuaAPI.xlua_tointeger(L, 7);
                     UnityEngine.QueryTriggerInteraction _queryTriggerInteraction;translator.Get(L, 8, out _queryTriggerInteraction);
                     
-                        int gen_ret = gen_to_be_invoked.SphereCast( _origin, _radius, _direction, _results, _maxDistance, _layerMask, _queryTriggerInteraction );
+                        var gen_ret = gen_to_be_invoked.SphereCast( _origin, _radius, _direction, _results, _maxDistance, _layerMask, _queryTriggerInteraction );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -901,7 +901,7 @@ namespace XLua.CSObjectWrap
                     float _maxDistance = (float)LuaAPI.lua_tonumber(L, 6);
                     int _layerMask = LuaAPI.xlua_tointeger(L, 7);
                     
-                        int gen_ret = gen_to_be_invoked.SphereCast( _origin, _radius, _direction, _results, _maxDistance, _layerMask );
+                        var gen_ret = gen_to_be_invoked.SphereCast( _origin, _radius, _direction, _results, _maxDistance, _layerMask );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -918,7 +918,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.RaycastHit[] _results = (UnityEngine.RaycastHit[])translator.GetObject(L, 5, typeof(UnityEngine.RaycastHit[]));
                     float _maxDistance = (float)LuaAPI.lua_tonumber(L, 6);
                     
-                        int gen_ret = gen_to_be_invoked.SphereCast( _origin, _radius, _direction, _results, _maxDistance );
+                        var gen_ret = gen_to_be_invoked.SphereCast( _origin, _radius, _direction, _results, _maxDistance );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -934,7 +934,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Vector3 _direction;translator.Get(L, 4, out _direction);
                     UnityEngine.RaycastHit[] _results = (UnityEngine.RaycastHit[])translator.GetObject(L, 5, typeof(UnityEngine.RaycastHit[]));
                     
-                        int gen_ret = gen_to_be_invoked.SphereCast( _origin, _radius, _direction, _results );
+                        var gen_ret = gen_to_be_invoked.SphereCast( _origin, _radius, _direction, _results );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -971,7 +971,7 @@ namespace XLua.CSObjectWrap
                     int _layerMask = LuaAPI.xlua_tointeger(L, 5);
                     UnityEngine.QueryTriggerInteraction _queryTriggerInteraction;translator.Get(L, 6, out _queryTriggerInteraction);
                     
-                        int gen_ret = gen_to_be_invoked.OverlapSphere( _position, _radius, _results, _layerMask, _queryTriggerInteraction );
+                        var gen_ret = gen_to_be_invoked.OverlapSphere( _position, _radius, _results, _layerMask, _queryTriggerInteraction );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -1007,7 +1007,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Vector3 _direction;translator.Get(L, 4, out _direction);
                     UnityEngine.RaycastHit _hitInfo;
                     
-                        bool gen_ret = gen_to_be_invoked.BoxCast( _center, _halfExtents, _direction, out _hitInfo );
+                        var gen_ret = gen_to_be_invoked.BoxCast( _center, _halfExtents, _direction, out _hitInfo );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     translator.Push(L, _hitInfo);
                         
@@ -1025,7 +1025,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Vector3 _direction;translator.Get(L, 4, out _direction);
                     UnityEngine.RaycastHit[] _results = (UnityEngine.RaycastHit[])translator.GetObject(L, 5, typeof(UnityEngine.RaycastHit[]));
                     
-                        int gen_ret = gen_to_be_invoked.BoxCast( _center, _halfExtents, _direction, _results );
+                        var gen_ret = gen_to_be_invoked.BoxCast( _center, _halfExtents, _direction, _results );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -1045,7 +1045,7 @@ namespace XLua.CSObjectWrap
                     int _layerMask = LuaAPI.xlua_tointeger(L, 7);
                     UnityEngine.QueryTriggerInteraction _queryTriggerInteraction;translator.Get(L, 8, out _queryTriggerInteraction);
                     
-                        bool gen_ret = gen_to_be_invoked.BoxCast( _center, _halfExtents, _direction, out _hitInfo, _orientation, _maxDistance, _layerMask, _queryTriggerInteraction );
+                        var gen_ret = gen_to_be_invoked.BoxCast( _center, _halfExtents, _direction, out _hitInfo, _orientation, _maxDistance, _layerMask, _queryTriggerInteraction );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     translator.Push(L, _hitInfo);
                         
@@ -1066,7 +1066,7 @@ namespace XLua.CSObjectWrap
                     float _maxDistance = (float)LuaAPI.lua_tonumber(L, 6);
                     int _layerMask = LuaAPI.xlua_tointeger(L, 7);
                     
-                        bool gen_ret = gen_to_be_invoked.BoxCast( _center, _halfExtents, _direction, out _hitInfo, _orientation, _maxDistance, _layerMask );
+                        var gen_ret = gen_to_be_invoked.BoxCast( _center, _halfExtents, _direction, out _hitInfo, _orientation, _maxDistance, _layerMask );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     translator.Push(L, _hitInfo);
                         
@@ -1086,7 +1086,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Quaternion _orientation;translator.Get(L, 5, out _orientation);
                     float _maxDistance = (float)LuaAPI.lua_tonumber(L, 6);
                     
-                        bool gen_ret = gen_to_be_invoked.BoxCast( _center, _halfExtents, _direction, out _hitInfo, _orientation, _maxDistance );
+                        var gen_ret = gen_to_be_invoked.BoxCast( _center, _halfExtents, _direction, out _hitInfo, _orientation, _maxDistance );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     translator.Push(L, _hitInfo);
                         
@@ -1105,7 +1105,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.RaycastHit _hitInfo;
                     UnityEngine.Quaternion _orientation;translator.Get(L, 5, out _orientation);
                     
-                        bool gen_ret = gen_to_be_invoked.BoxCast( _center, _halfExtents, _direction, out _hitInfo, _orientation );
+                        var gen_ret = gen_to_be_invoked.BoxCast( _center, _halfExtents, _direction, out _hitInfo, _orientation );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     translator.Push(L, _hitInfo);
                         
@@ -1127,7 +1127,7 @@ namespace XLua.CSObjectWrap
                     int _layerMask = LuaAPI.xlua_tointeger(L, 8);
                     UnityEngine.QueryTriggerInteraction _queryTriggerInteraction;translator.Get(L, 9, out _queryTriggerInteraction);
                     
-                        int gen_ret = gen_to_be_invoked.BoxCast( _center, _halfExtents, _direction, _results, _orientation, _maxDistance, _layerMask, _queryTriggerInteraction );
+                        var gen_ret = gen_to_be_invoked.BoxCast( _center, _halfExtents, _direction, _results, _orientation, _maxDistance, _layerMask, _queryTriggerInteraction );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -1146,7 +1146,7 @@ namespace XLua.CSObjectWrap
                     float _maxDistance = (float)LuaAPI.lua_tonumber(L, 7);
                     int _layerMask = LuaAPI.xlua_tointeger(L, 8);
                     
-                        int gen_ret = gen_to_be_invoked.BoxCast( _center, _halfExtents, _direction, _results, _orientation, _maxDistance, _layerMask );
+                        var gen_ret = gen_to_be_invoked.BoxCast( _center, _halfExtents, _direction, _results, _orientation, _maxDistance, _layerMask );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -1164,7 +1164,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Quaternion _orientation;translator.Get(L, 6, out _orientation);
                     float _maxDistance = (float)LuaAPI.lua_tonumber(L, 7);
                     
-                        int gen_ret = gen_to_be_invoked.BoxCast( _center, _halfExtents, _direction, _results, _orientation, _maxDistance );
+                        var gen_ret = gen_to_be_invoked.BoxCast( _center, _halfExtents, _direction, _results, _orientation, _maxDistance );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -1181,7 +1181,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.RaycastHit[] _results = (UnityEngine.RaycastHit[])translator.GetObject(L, 5, typeof(UnityEngine.RaycastHit[]));
                     UnityEngine.Quaternion _orientation;translator.Get(L, 6, out _orientation);
                     
-                        int gen_ret = gen_to_be_invoked.BoxCast( _center, _halfExtents, _direction, _results, _orientation );
+                        var gen_ret = gen_to_be_invoked.BoxCast( _center, _halfExtents, _direction, _results, _orientation );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -1218,7 +1218,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Vector3 _halfExtents;translator.Get(L, 3, out _halfExtents);
                     UnityEngine.Collider[] _results = (UnityEngine.Collider[])translator.GetObject(L, 4, typeof(UnityEngine.Collider[]));
                     
-                        int gen_ret = gen_to_be_invoked.OverlapBox( _center, _halfExtents, _results );
+                        var gen_ret = gen_to_be_invoked.OverlapBox( _center, _halfExtents, _results );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -1236,7 +1236,7 @@ namespace XLua.CSObjectWrap
                     int _layerMask = LuaAPI.xlua_tointeger(L, 6);
                     UnityEngine.QueryTriggerInteraction _queryTriggerInteraction;translator.Get(L, 7, out _queryTriggerInteraction);
                     
-                        int gen_ret = gen_to_be_invoked.OverlapBox( _center, _halfExtents, _results, _orientation, _layerMask, _queryTriggerInteraction );
+                        var gen_ret = gen_to_be_invoked.OverlapBox( _center, _halfExtents, _results, _orientation, _layerMask, _queryTriggerInteraction );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -1253,7 +1253,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Quaternion _orientation;translator.Get(L, 5, out _orientation);
                     int _layerMask = LuaAPI.xlua_tointeger(L, 6);
                     
-                        int gen_ret = gen_to_be_invoked.OverlapBox( _center, _halfExtents, _results, _orientation, _layerMask );
+                        var gen_ret = gen_to_be_invoked.OverlapBox( _center, _halfExtents, _results, _orientation, _layerMask );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -1269,7 +1269,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Collider[] _results = (UnityEngine.Collider[])translator.GetObject(L, 4, typeof(UnityEngine.Collider[]));
                     UnityEngine.Quaternion _orientation;translator.Get(L, 5, out _orientation);
                     
-                        int gen_ret = gen_to_be_invoked.OverlapBox( _center, _halfExtents, _results, _orientation );
+                        var gen_ret = gen_to_be_invoked.OverlapBox( _center, _halfExtents, _results, _orientation );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     

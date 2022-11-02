@@ -50,7 +50,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.WaitForEndOfFrame gen_ret = new UnityEngine.WaitForEndOfFrame();
+					var gen_ret = new UnityEngine.WaitForEndOfFrame();
 					translator.Push(L, gen_ret);
                     
 					return 1;

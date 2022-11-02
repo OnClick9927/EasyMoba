@@ -71,7 +71,7 @@ namespace XLua.CSObjectWrap
                 {
                     IFramework.EnvironmentType _envType;translator.Get(L, 1, out _envType);
                     
-                        IFramework.IEnvironment gen_ret = IFramework.Framework.CreateEnv( _envType );
+                        var gen_ret = IFramework.Framework.CreateEnv( _envType );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -98,7 +98,7 @@ namespace XLua.CSObjectWrap
                 {
                     IFramework.EnvironmentType _envType;translator.Get(L, 1, out _envType);
                     
-                        IFramework.IEnvironment gen_ret = IFramework.Framework.GetEnv( _envType );
+                        var gen_ret = IFramework.Framework.GetEnv( _envType );
                         translator.PushAny(L, gen_ret);
                     
                     

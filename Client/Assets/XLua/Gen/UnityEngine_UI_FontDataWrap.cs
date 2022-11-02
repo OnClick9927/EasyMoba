@@ -75,7 +75,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.UI.FontData gen_ret = new UnityEngine.UI.FontData();
+					var gen_ret = new UnityEngine.UI.FontData();
 					translator.Push(L, gen_ret);
                     
 					return 1;

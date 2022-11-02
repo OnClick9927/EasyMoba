@@ -60,7 +60,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					LockStep.LCollision2D.CollisionHelper gen_ret = new LockStep.LCollision2D.CollisionHelper();
+					var gen_ret = new LockStep.LCollision2D.CollisionHelper();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -93,7 +93,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        LockStep.LCollision2D.Node gen_ret = LockStep.LCollision2D.CollisionHelper.AllocateNode(  );
+                        var gen_ret = LockStep.LCollision2D.CollisionHelper.AllocateNode(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -148,7 +148,7 @@ namespace XLua.CSObjectWrap
                     LockStep.Math.LFloat _maxRadius;translator.Get(L, 2, out _maxRadius);
                     LockStep.LCollision2D.Shape _shape = (LockStep.LCollision2D.Shape)translator.GetObject(L, 3, typeof(LockStep.LCollision2D.Shape));
                     
-                        bool gen_ret = LockStep.LCollision2D.CollisionHelper.CouldCollisionShape( _area, _maxRadius, _shape );
+                        var gen_ret = LockStep.LCollision2D.CollisionHelper.CouldCollisionShape( _area, _maxRadius, _shape );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -177,7 +177,7 @@ namespace XLua.CSObjectWrap
                     LockStep.Math.LRect _area;translator.Get(L, 2, out _area);
                     LockStep.Math.LFloat _maxRadius;translator.Get(L, 3, out _maxRadius);
                     
-                        bool gen_ret = LockStep.LCollision2D.CollisionHelper.CouldRaycastNode( _ray, _area, _maxRadius );
+                        var gen_ret = LockStep.LCollision2D.CollisionHelper.CouldRaycastNode( _ray, _area, _maxRadius );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -203,7 +203,7 @@ namespace XLua.CSObjectWrap
                     int _value = LuaAPI.xlua_tointeger(L, 1);
                     int _length = LuaAPI.xlua_tointeger(L, 2);
                     
-                        int gen_ret = LockStep.LCollision2D.CollisionHelper.Repeat( _value, _length );
+                        var gen_ret = LockStep.LCollision2D.CollisionHelper.Repeat( _value, _length );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -232,7 +232,7 @@ namespace XLua.CSObjectWrap
                     LockStep.Math.LVector2 _line_end;translator.Get(L, 2, out _line_end);
                     LockStep.Math.LVector2 _point;translator.Get(L, 3, out _point);
                     
-                        LockStep.Math.LVector2 gen_ret = LockStep.LCollision2D.CollisionHelper.Point2LineIntersection( _line_start, _line_end, _point );
+                        var gen_ret = LockStep.LCollision2D.CollisionHelper.Point2LineIntersection( _line_start, _line_end, _point );
                         translator.Push(L, gen_ret);
                     
                     
@@ -261,7 +261,7 @@ namespace XLua.CSObjectWrap
                     LockStep.Math.LVector2 _seg_end;translator.Get(L, 2, out _seg_end);
                     LockStep.Math.LVector2 _point;translator.Get(L, 3, out _point);
                     
-                        bool gen_ret = LockStep.LCollision2D.CollisionHelper.IsPointInSegment( _seg_start, _seg_end, _point );
+                        var gen_ret = LockStep.LCollision2D.CollisionHelper.IsPointInSegment( _seg_start, _seg_end, _point );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -290,7 +290,7 @@ namespace XLua.CSObjectWrap
                     LockStep.LCollision2D.Shape _b = (LockStep.LCollision2D.Shape)translator.GetObject(L, 2, typeof(LockStep.LCollision2D.Shape));
                     LockStep.LCollision2D.QuadTree _tree = (LockStep.LCollision2D.QuadTree)translator.GetObject(L, 3, typeof(LockStep.LCollision2D.QuadTree));
                     
-                        bool gen_ret = LockStep.LCollision2D.CollisionHelper.CouldCollision( _a, _b, _tree );
+                        var gen_ret = LockStep.LCollision2D.CollisionHelper.CouldCollision( _a, _b, _tree );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -319,7 +319,7 @@ namespace XLua.CSObjectWrap
                     LockStep.LCollision2D.Shape _b = (LockStep.LCollision2D.Shape)translator.GetObject(L, 2, typeof(LockStep.LCollision2D.Shape));
                     LockStep.LCollision2D.RayHit _hit;
                     
-                        bool gen_ret = LockStep.LCollision2D.CollisionHelper.RayCast( _ray, _b, out _hit );
+                        var gen_ret = LockStep.LCollision2D.CollisionHelper.RayCast( _ray, _b, out _hit );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     translator.Push(L, _hit);
                         
@@ -350,7 +350,7 @@ namespace XLua.CSObjectWrap
                     LockStep.LCollision2D.Shape _shape = (LockStep.LCollision2D.Shape)translator.GetObject(L, 2, typeof(LockStep.LCollision2D.Shape));
                     System.Collections.Generic.List<LockStep.LCollision2D.Shape> _collisons = (System.Collections.Generic.List<LockStep.LCollision2D.Shape>)translator.GetObject(L, 3, typeof(System.Collections.Generic.List<LockStep.LCollision2D.Shape>));
                     
-                        LockStep.Math.LVector2 gen_ret = LockStep.LCollision2D.CollisionHelper.PositionCorrection( _lastPos, _shape, _collisons );
+                        var gen_ret = LockStep.LCollision2D.CollisionHelper.PositionCorrection( _lastPos, _shape, _collisons );
                         translator.Push(L, gen_ret);
                     
                     

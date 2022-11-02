@@ -63,7 +63,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.MonoBehaviour gen_ret = new UnityEngine.MonoBehaviour();
+					var gen_ret = new UnityEngine.MonoBehaviour();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -100,7 +100,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 1) 
                 {
                     
-                        bool gen_ret = gen_to_be_invoked.IsInvoking(  );
+                        var gen_ret = gen_to_be_invoked.IsInvoking(  );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -111,7 +111,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _methodName = LuaAPI.lua_tostring(L, 2);
                     
-                        bool gen_ret = gen_to_be_invoked.IsInvoking( _methodName );
+                        var gen_ret = gen_to_be_invoked.IsInvoking( _methodName );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -244,7 +244,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _methodName = LuaAPI.lua_tostring(L, 2);
                     
-                        UnityEngine.Coroutine gen_ret = gen_to_be_invoked.StartCoroutine( _methodName );
+                        var gen_ret = gen_to_be_invoked.StartCoroutine( _methodName );
                         translator.Push(L, gen_ret);
                     
                     
@@ -255,7 +255,7 @@ namespace XLua.CSObjectWrap
                 {
                     System.Collections.IEnumerator _routine = (System.Collections.IEnumerator)translator.GetObject(L, 2, typeof(System.Collections.IEnumerator));
                     
-                        UnityEngine.Coroutine gen_ret = gen_to_be_invoked.StartCoroutine( _routine );
+                        var gen_ret = gen_to_be_invoked.StartCoroutine( _routine );
                         translator.Push(L, gen_ret);
                     
                     
@@ -267,7 +267,7 @@ namespace XLua.CSObjectWrap
                     string _methodName = LuaAPI.lua_tostring(L, 2);
                     object _value = translator.GetObject(L, 3, typeof(object));
                     
-                        UnityEngine.Coroutine gen_ret = gen_to_be_invoked.StartCoroutine( _methodName, _value );
+                        var gen_ret = gen_to_be_invoked.StartCoroutine( _methodName, _value );
                         translator.Push(L, gen_ret);
                     
                     
@@ -402,7 +402,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.MakeComponentExist(  );
+                        var gen_ret = gen_to_be_invoked.MakeComponentExist(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -457,7 +457,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.LocalIdentity(  );
+                        var gen_ret = gen_to_be_invoked.LocalIdentity(  );
                         translator.Push(L, gen_ret);
                     
                     

@@ -101,7 +101,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.ParticleSystemRenderer gen_ret = new UnityEngine.ParticleSystemRenderer();
+					var gen_ret = new UnityEngine.ParticleSystemRenderer();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -137,7 +137,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Mesh[] _meshes = (UnityEngine.Mesh[])translator.GetObject(L, 2, typeof(UnityEngine.Mesh[]));
                     
-                        int gen_ret = gen_to_be_invoked.GetMeshes( _meshes );
+                        var gen_ret = gen_to_be_invoked.GetMeshes( _meshes );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -396,7 +396,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.MakeComponentExist(  );
+                        var gen_ret = gen_to_be_invoked.MakeComponentExist(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -451,7 +451,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.LocalIdentity(  );
+                        var gen_ret = gen_to_be_invoked.LocalIdentity(  );
                         translator.Push(L, gen_ret);
                     
                     

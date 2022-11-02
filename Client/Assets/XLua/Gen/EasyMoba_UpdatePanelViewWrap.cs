@@ -50,7 +50,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					EasyMoba.UpdatePanelView gen_ret = new EasyMoba.UpdatePanelView();
+					var gen_ret = new EasyMoba.UpdatePanelView();
 					translator.Push(L, gen_ret);
                     
 					return 1;

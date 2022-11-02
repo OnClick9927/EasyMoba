@@ -2,12 +2,229 @@
 
 <linker>
 
+	<assembly fullname="mscorlib">
+	    <type fullname="System.Object" preserve="all"/>
+		<type fullname="System.Collections.Generic.List`1[System.Int32]" preserve="all"/>
+		
+	</assembly>
+
+	<assembly fullname="UnityEngine.CoreModule">
+	    <type fullname="UnityEngine.Object" preserve="all"/>
+		<type fullname="UnityEngine.Vector2" preserve="all"/>
+		<type fullname="UnityEngine.Vector3" preserve="all"/>
+		<type fullname="UnityEngine.Vector4" preserve="all"/>
+		<type fullname="UnityEngine.Quaternion" preserve="all"/>
+		<type fullname="UnityEngine.Color" preserve="all"/>
+		<type fullname="UnityEngine.Ray" preserve="all"/>
+		<type fullname="UnityEngine.Bounds" preserve="all"/>
+		<type fullname="UnityEngine.Ray2D" preserve="all"/>
+		<type fullname="UnityEngine.Time" preserve="all"/>
+		<type fullname="UnityEngine.GameObject" preserve="all"/>
+		<type fullname="UnityEngine.Component" preserve="all"/>
+		<type fullname="UnityEngine.Behaviour" preserve="all"/>
+		<type fullname="UnityEngine.Transform" preserve="all"/>
+		<type fullname="UnityEngine.Resources" preserve="all"/>
+		<type fullname="UnityEngine.TextAsset" preserve="all"/>
+		<type fullname="UnityEngine.Keyframe" preserve="all"/>
+		<type fullname="UnityEngine.AnimationCurve" preserve="all"/>
+		<type fullname="UnityEngine.MonoBehaviour" preserve="all"/>
+		<type fullname="UnityEngine.SkinnedMeshRenderer" preserve="all"/>
+		<type fullname="UnityEngine.Renderer" preserve="all"/>
+		<type fullname="UnityEngine.Light" preserve="all"/>
+		<type fullname="UnityEngine.Mathf" preserve="all"/>
+		<type fullname="UnityEngine.Debug" preserve="all"/>
+		<type fullname="UnityEngine.WaitForSeconds" preserve="all"/>
+		<type fullname="UnityEngine.SortingLayer" preserve="all"/>
+		<type fullname="UnityEngine.Application" preserve="all"/>
+		<type fullname="UnityEngine.CachedAssetBundle" preserve="all"/>
+		<type fullname="UnityEngine.Cache" preserve="all"/>
+		<type fullname="UnityEngine.Camera" preserve="all"/>
+		<type fullname="UnityEngine.BoundingSphere" preserve="all"/>
+		<type fullname="UnityEngine.CullingGroupEvent" preserve="all"/>
+		<type fullname="UnityEngine.CullingGroup" preserve="all"/>
+		<type fullname="UnityEngine.FlareLayer" preserve="all"/>
+		<type fullname="UnityEngine.ReflectionProbe" preserve="all"/>
+		<type fullname="UnityEngine.CrashReport" preserve="all"/>
+		<type fullname="UnityEngine.ExposedPropertyResolver" preserve="all"/>
+		<type fullname="UnityEngine.BoundsInt" preserve="all"/>
+		<type fullname="UnityEngine.GeometryUtility" preserve="all"/>
+		<type fullname="UnityEngine.Plane" preserve="all"/>
+		<type fullname="UnityEngine.Rect" preserve="all"/>
+		<type fullname="UnityEngine.RectInt" preserve="all"/>
+		<type fullname="UnityEngine.RectOffset" preserve="all"/>
+		<type fullname="UnityEngine.DynamicGI" preserve="all"/>
+		<type fullname="UnityEngine.BillboardAsset" preserve="all"/>
+		<type fullname="UnityEngine.BillboardRenderer" preserve="all"/>
+		<type fullname="UnityEngine.CustomRenderTextureManager" preserve="all"/>
+		<type fullname="UnityEngine.Display" preserve="all"/>
+		<type fullname="UnityEngine.SleepTimeout" preserve="all"/>
+		<type fullname="UnityEngine.Screen" preserve="all"/>
+		<type fullname="UnityEngine.RenderBuffer" preserve="all"/>
+		<type fullname="UnityEngine.Graphics" preserve="all"/>
+		<type fullname="UnityEngine.GL" preserve="all"/>
+		<type fullname="UnityEngine.ScalableBufferManager" preserve="all"/>
+		<type fullname="UnityEngine.FrameTiming" preserve="all"/>
+		<type fullname="UnityEngine.FrameTimingManager" preserve="all"/>
+		<type fullname="UnityEngine.LightmapData" preserve="all"/>
+		<type fullname="UnityEngine.LightmapSettings" preserve="all"/>
+		<type fullname="UnityEngine.LightProbes" preserve="all"/>
+		<type fullname="UnityEngine.HDROutputSettings" preserve="all"/>
+		<type fullname="UnityEngine.Resolution" preserve="all"/>
+		<type fullname="UnityEngine.RenderTargetSetup" preserve="all"/>
+		<type fullname="UnityEngine.QualitySettings" preserve="all"/>
+		<type fullname="UnityEngine.RendererExtensions" preserve="all"/>
+		<type fullname="UnityEngine.ImageEffectTransformsToLDR" preserve="all"/>
+		<type fullname="UnityEngine.ImageEffectAllowedInSceneView" preserve="all"/>
+		<type fullname="UnityEngine.ImageEffectOpaque" preserve="all"/>
+		<type fullname="UnityEngine.ImageEffectAfterScale" preserve="all"/>
+		<type fullname="UnityEngine.ImageEffectUsesCommandBuffer" preserve="all"/>
+		<type fullname="UnityEngine.Mesh" preserve="all"/>
+		<type fullname="UnityEngine.Projector" preserve="all"/>
+		<type fullname="UnityEngine.Shader" preserve="all"/>
+		<type fullname="UnityEngine.TrailRenderer" preserve="all"/>
+		<type fullname="UnityEngine.LineRenderer" preserve="all"/>
+		<type fullname="UnityEngine.MaterialPropertyBlock" preserve="all"/>
+		<type fullname="UnityEngine.RenderSettings" preserve="all"/>
+		<type fullname="UnityEngine.Material" preserve="all"/>
+		<type fullname="UnityEngine.GraphicsBuffer" preserve="all"/>
+		<type fullname="UnityEngine.OcclusionPortal" preserve="all"/>
+		<type fullname="UnityEngine.OcclusionArea" preserve="all"/>
+		<type fullname="UnityEngine.Flare" preserve="all"/>
+		<type fullname="UnityEngine.LensFlare" preserve="all"/>
+		<type fullname="UnityEngine.LightBakingOutput" preserve="all"/>
+		<type fullname="UnityEngine.Skybox" preserve="all"/>
+		<type fullname="UnityEngine.MeshFilter" preserve="all"/>
+		<type fullname="UnityEngine.LightProbeProxyVolume" preserve="all"/>
+		<type fullname="UnityEngine.MeshRenderer" preserve="all"/>
+		<type fullname="UnityEngine.LightProbeGroup" preserve="all"/>
+		<type fullname="UnityEngine.LineUtility" preserve="all"/>
+		<type fullname="UnityEngine.LOD" preserve="all"/>
+		<type fullname="UnityEngine.LODGroup" preserve="all"/>
+		<type fullname="UnityEngine.BoneWeight" preserve="all"/>
+		<type fullname="UnityEngine.BoneWeight1" preserve="all"/>
+		<type fullname="UnityEngine.CombineInstance" preserve="all"/>
+		<type fullname="UnityEngine.Texture" preserve="all"/>
+		<type fullname="UnityEngine.Texture2D" preserve="all"/>
+		<type fullname="UnityEngine.Cubemap" preserve="all"/>
+		<type fullname="UnityEngine.Texture3D" preserve="all"/>
+		<type fullname="UnityEngine.Texture2DArray" preserve="all"/>
+		<type fullname="UnityEngine.CubemapArray" preserve="all"/>
+		<type fullname="UnityEngine.SparseTexture" preserve="all"/>
+		<type fullname="UnityEngine.RenderTexture" preserve="all"/>
+		<type fullname="UnityEngine.CustomRenderTextureUpdateZone" preserve="all"/>
+		<type fullname="UnityEngine.CustomRenderTexture" preserve="all"/>
+		<type fullname="UnityEngine.RenderTextureDescriptor" preserve="all"/>
+		<type fullname="UnityEngine.Hash128" preserve="all"/>
+		<type fullname="UnityEngine.HashUtilities" preserve="all"/>
+		<type fullname="UnityEngine.HashUnsafeUtilities" preserve="all"/>
+		<type fullname="UnityEngine.Logger" preserve="all"/>
+		<type fullname="UnityEngine.Color32" preserve="all"/>
+		<type fullname="UnityEngine.ColorUtility" preserve="all"/>
+		<type fullname="UnityEngine.GradientColorKey" preserve="all"/>
+		<type fullname="UnityEngine.GradientAlphaKey" preserve="all"/>
+		<type fullname="UnityEngine.Gradient" preserve="all"/>
+		<type fullname="UnityEngine.FrustumPlanes" preserve="all"/>
+		<type fullname="UnityEngine.Matrix4x4" preserve="all"/>
+		<type fullname="UnityEngine.Vector2Int" preserve="all"/>
+		<type fullname="UnityEngine.Vector3Int" preserve="all"/>
+		<type fullname="UnityEngine.PlayerPrefsException" preserve="all"/>
+		<type fullname="UnityEngine.PlayerPrefs" preserve="all"/>
+		<type fullname="UnityEngine.PropertyName" preserve="all"/>
+		<type fullname="UnityEngine.Random" preserve="all"/>
+		<type fullname="UnityEngine.ResourceRequest" preserve="all"/>
+		<type fullname="UnityEngine.ResourcesAPI" preserve="all"/>
+		<type fullname="UnityEngine.AsyncOperation" preserve="all"/>
+		<type fullname="UnityEngine.ExecuteAlways" preserve="all"/>
+		<type fullname="UnityEngine.DefaultExecutionOrder" preserve="all"/>
+		<type fullname="UnityEngine.Coroutine" preserve="all"/>
+		<type fullname="UnityEngine.CustomYieldInstruction" preserve="all"/>
+		<type fullname="UnityEngine.LayerMask" preserve="all"/>
+		<type fullname="UnityEngine.RangeInt" preserve="all"/>
+		<type fullname="UnityEngine.ScriptableObject" preserve="all"/>
+		<type fullname="UnityEngine.StackTraceUtility" preserve="all"/>
+		<type fullname="UnityEngine.UnityException" preserve="all"/>
+		<type fullname="UnityEngine.MissingComponentException" preserve="all"/>
+		<type fullname="UnityEngine.UnassignedReferenceException" preserve="all"/>
+		<type fullname="UnityEngine.MissingReferenceException" preserve="all"/>
+		<type fullname="UnityEngine.WaitForEndOfFrame" preserve="all"/>
+		<type fullname="UnityEngine.WaitForFixedUpdate" preserve="all"/>
+		<type fullname="UnityEngine.WaitForSecondsRealtime" preserve="all"/>
+		<type fullname="UnityEngine.WaitUntil" preserve="all"/>
+		<type fullname="UnityEngine.WaitWhile" preserve="all"/>
+		<type fullname="UnityEngine.YieldInstruction" preserve="all"/>
+		<type fullname="UnityEngine.Security" preserve="all"/>
+		<type fullname="UnityEngine.SerializeReference" preserve="all"/>
+		<type fullname="UnityEngine.PreferBinarySerialization" preserve="all"/>
+		<type fullname="UnityEngine.ComputeBuffer" preserve="all"/>
+		<type fullname="UnityEngine.ComputeShader" preserve="all"/>
+		<type fullname="UnityEngine.Snapping" preserve="all"/>
+		<type fullname="UnityEngine.StaticBatchingUtility" preserve="all"/>
+		<type fullname="UnityEngine.SystemInfo" preserve="all"/>
+		<type fullname="UnityEngine.UnityEventQueueSystem" preserve="all"/>
+		<type fullname="UnityEngine.Pose" preserve="all"/>
+		<type fullname="UnityEngine.DrivenRectTransformTracker" preserve="all"/>
+		<type fullname="UnityEngine.RectTransform" preserve="all"/>
+		<type fullname="UnityEngine.SpriteRenderer" preserve="all"/>
+		<type fullname="UnityEngine.SecondarySpriteTexture" preserve="all"/>
+		<type fullname="UnityEngine.Sprite" preserve="all"/>
+		
+	</assembly>
+
+	<assembly fullname="UnityEngine.AnimationModule">
+	    <type fullname="UnityEngine.AnimationClip" preserve="all"/>
+		<type fullname="UnityEngine.Animator" preserve="all"/>
+		<type fullname="UnityEngine.StateMachineBehaviour" preserve="all"/>
+		<type fullname="UnityEngine.Animation" preserve="all"/>
+		<type fullname="UnityEngine.AnimationState" preserve="all"/>
+		<type fullname="UnityEngine.AnimationEvent" preserve="all"/>
+		<type fullname="UnityEngine.AnimatorClipInfo" preserve="all"/>
+		<type fullname="UnityEngine.AnimatorStateInfo" preserve="all"/>
+		<type fullname="UnityEngine.AnimatorTransitionInfo" preserve="all"/>
+		<type fullname="UnityEngine.MatchTargetWeightMask" preserve="all"/>
+		<type fullname="UnityEngine.AnimatorControllerParameter" preserve="all"/>
+		<type fullname="UnityEngine.AnimatorOverrideController" preserve="all"/>
+		<type fullname="UnityEngine.AnimatorUtility" preserve="all"/>
+		<type fullname="UnityEngine.Avatar" preserve="all"/>
+		<type fullname="UnityEngine.SkeletonBone" preserve="all"/>
+		<type fullname="UnityEngine.HumanLimit" preserve="all"/>
+		<type fullname="UnityEngine.HumanBone" preserve="all"/>
+		<type fullname="UnityEngine.HumanDescription" preserve="all"/>
+		<type fullname="UnityEngine.AvatarBuilder" preserve="all"/>
+		<type fullname="UnityEngine.AvatarMask" preserve="all"/>
+		<type fullname="UnityEngine.HumanPose" preserve="all"/>
+		<type fullname="UnityEngine.HumanPoseHandler" preserve="all"/>
+		<type fullname="UnityEngine.HumanTrait" preserve="all"/>
+		<type fullname="UnityEngine.RuntimeAnimatorController" preserve="all"/>
+		
+	</assembly>
+
+	<assembly fullname="UnityEngine.ParticleSystemModule">
+	    <type fullname="UnityEngine.ParticleSystem" preserve="all"/>
+		<type fullname="UnityEngine.ParticlePhysicsExtensions" preserve="all"/>
+		<type fullname="UnityEngine.ParticleCollisionEvent" preserve="all"/>
+		<type fullname="UnityEngine.ParticleSystemRenderer" preserve="all"/>
+		<type fullname="UnityEngine.ParticleSystemForceField" preserve="all"/>
+		
+	</assembly>
+
 	<assembly fullname="Assembly-CSharp">
 	    <type fullname="Tutorial.BaseClass" preserve="all"/>
 		<type fullname="Tutorial.TestEnum" preserve="all"/>
 		<type fullname="Tutorial.DerivedClass" preserve="all"/>
 		<type fullname="Tutorial.ICalc" preserve="all"/>
 		<type fullname="Tutorial.DerivedClassExtensions" preserve="all"/>
+		<type fullname="XLuaTest.LuaBehaviour" preserve="all"/>
+		<type fullname="XLuaTest.Pedding" preserve="all"/>
+		<type fullname="XLuaTest.MyStruct" preserve="all"/>
+		<type fullname="XLuaTest.MyEnum" preserve="all"/>
+		<type fullname="XLuaTest.NoGc" preserve="all"/>
+		<type fullname="XLuaTest.BaseTest" preserve="all"/>
+		<type fullname="XLuaTest.Foo1Parent" preserve="all"/>
+		<type fullname="XLuaTest.Foo2Parent" preserve="all"/>
+		<type fullname="XLuaTest.Foo1Child" preserve="all"/>
+		<type fullname="XLuaTest.Foo2Child" preserve="all"/>
+		<type fullname="XLuaTest.Foo" preserve="all"/>
+		<type fullname="XLuaTest.FooExtension" preserve="all"/>
 		<type fullname="IFramework.Hotfix.Lua.LuaField" preserve="all"/>
 		<type fullname="IFramework.Hotfix.Lua.LuaBehaviour" preserve="all"/>
 		<type fullname="Tutorial.DerivedClass+TestEnumInner" preserve="all"/>
@@ -15,6 +232,11 @@
 		<type fullname="CSBattleFrame" preserve="all"/>
 		<type fullname="SPBattleFrame" preserve="all"/>
 		<type fullname="MatchRoomType" preserve="all"/>
+		<type fullname="ModuleDefine" preserve="all"/>
+		<type fullname="SPBattleAllReady" preserve="all"/>
+		<type fullname="CSBattleReady" preserve="all"/>
+		<type fullname="ICanCallClientBattleMsg" preserve="all"/>
+		<type fullname="ExampleGenConfig" preserve="all"/>
 		<type fullname="LuaCallCs" preserve="all"/>
 		<type fullname="Tutorial.CSCallLua" preserve="all"/>
 		<type fullname="Tutorial.ByFile" preserve="all"/>
@@ -163,34 +385,6 @@
 		
 	</assembly>
 
-	<assembly fullname="UnityEngine.AnimationModule">
-	    <type fullname="UnityEngine.Animator" preserve="all"/>
-		<type fullname="UnityEngine.StateMachineBehaviour" preserve="all"/>
-		<type fullname="UnityEngine.Animation" preserve="all"/>
-		<type fullname="UnityEngine.AnimationState" preserve="all"/>
-		<type fullname="UnityEngine.AnimationEvent" preserve="all"/>
-		<type fullname="UnityEngine.AnimationClip" preserve="all"/>
-		<type fullname="UnityEngine.AnimatorClipInfo" preserve="all"/>
-		<type fullname="UnityEngine.AnimatorStateInfo" preserve="all"/>
-		<type fullname="UnityEngine.AnimatorTransitionInfo" preserve="all"/>
-		<type fullname="UnityEngine.MatchTargetWeightMask" preserve="all"/>
-		<type fullname="UnityEngine.AnimatorControllerParameter" preserve="all"/>
-		<type fullname="UnityEngine.AnimatorOverrideController" preserve="all"/>
-		<type fullname="UnityEngine.AnimatorUtility" preserve="all"/>
-		<type fullname="UnityEngine.Avatar" preserve="all"/>
-		<type fullname="UnityEngine.SkeletonBone" preserve="all"/>
-		<type fullname="UnityEngine.HumanLimit" preserve="all"/>
-		<type fullname="UnityEngine.HumanBone" preserve="all"/>
-		<type fullname="UnityEngine.HumanDescription" preserve="all"/>
-		<type fullname="UnityEngine.AvatarBuilder" preserve="all"/>
-		<type fullname="UnityEngine.AvatarMask" preserve="all"/>
-		<type fullname="UnityEngine.HumanPose" preserve="all"/>
-		<type fullname="UnityEngine.HumanPoseHandler" preserve="all"/>
-		<type fullname="UnityEngine.HumanTrait" preserve="all"/>
-		<type fullname="UnityEngine.RuntimeAnimatorController" preserve="all"/>
-		
-	</assembly>
-
 	<assembly fullname="UnityEngine.AssetBundleModule">
 	    <type fullname="UnityEngine.AssetBundle" preserve="all"/>
 		<type fullname="UnityEngine.AssetBundleCreateRequest" preserve="all"/>
@@ -232,168 +426,6 @@
 		
 	</assembly>
 
-	<assembly fullname="UnityEngine.CoreModule">
-	    <type fullname="UnityEngine.SortingLayer" preserve="all"/>
-		<type fullname="UnityEngine.Keyframe" preserve="all"/>
-		<type fullname="UnityEngine.AnimationCurve" preserve="all"/>
-		<type fullname="UnityEngine.Application" preserve="all"/>
-		<type fullname="UnityEngine.CachedAssetBundle" preserve="all"/>
-		<type fullname="UnityEngine.Cache" preserve="all"/>
-		<type fullname="UnityEngine.Camera" preserve="all"/>
-		<type fullname="UnityEngine.BoundingSphere" preserve="all"/>
-		<type fullname="UnityEngine.CullingGroupEvent" preserve="all"/>
-		<type fullname="UnityEngine.CullingGroup" preserve="all"/>
-		<type fullname="UnityEngine.FlareLayer" preserve="all"/>
-		<type fullname="UnityEngine.ReflectionProbe" preserve="all"/>
-		<type fullname="UnityEngine.CrashReport" preserve="all"/>
-		<type fullname="UnityEngine.Debug" preserve="all"/>
-		<type fullname="UnityEngine.ExposedPropertyResolver" preserve="all"/>
-		<type fullname="UnityEngine.Bounds" preserve="all"/>
-		<type fullname="UnityEngine.BoundsInt" preserve="all"/>
-		<type fullname="UnityEngine.GeometryUtility" preserve="all"/>
-		<type fullname="UnityEngine.Plane" preserve="all"/>
-		<type fullname="UnityEngine.Ray" preserve="all"/>
-		<type fullname="UnityEngine.Ray2D" preserve="all"/>
-		<type fullname="UnityEngine.Rect" preserve="all"/>
-		<type fullname="UnityEngine.RectInt" preserve="all"/>
-		<type fullname="UnityEngine.RectOffset" preserve="all"/>
-		<type fullname="UnityEngine.DynamicGI" preserve="all"/>
-		<type fullname="UnityEngine.BillboardAsset" preserve="all"/>
-		<type fullname="UnityEngine.BillboardRenderer" preserve="all"/>
-		<type fullname="UnityEngine.CustomRenderTextureManager" preserve="all"/>
-		<type fullname="UnityEngine.Display" preserve="all"/>
-		<type fullname="UnityEngine.SleepTimeout" preserve="all"/>
-		<type fullname="UnityEngine.Screen" preserve="all"/>
-		<type fullname="UnityEngine.RenderBuffer" preserve="all"/>
-		<type fullname="UnityEngine.Graphics" preserve="all"/>
-		<type fullname="UnityEngine.GL" preserve="all"/>
-		<type fullname="UnityEngine.ScalableBufferManager" preserve="all"/>
-		<type fullname="UnityEngine.FrameTiming" preserve="all"/>
-		<type fullname="UnityEngine.FrameTimingManager" preserve="all"/>
-		<type fullname="UnityEngine.LightmapData" preserve="all"/>
-		<type fullname="UnityEngine.LightmapSettings" preserve="all"/>
-		<type fullname="UnityEngine.LightProbes" preserve="all"/>
-		<type fullname="UnityEngine.HDROutputSettings" preserve="all"/>
-		<type fullname="UnityEngine.Resolution" preserve="all"/>
-		<type fullname="UnityEngine.RenderTargetSetup" preserve="all"/>
-		<type fullname="UnityEngine.QualitySettings" preserve="all"/>
-		<type fullname="UnityEngine.RendererExtensions" preserve="all"/>
-		<type fullname="UnityEngine.ImageEffectTransformsToLDR" preserve="all"/>
-		<type fullname="UnityEngine.ImageEffectAllowedInSceneView" preserve="all"/>
-		<type fullname="UnityEngine.ImageEffectOpaque" preserve="all"/>
-		<type fullname="UnityEngine.ImageEffectAfterScale" preserve="all"/>
-		<type fullname="UnityEngine.ImageEffectUsesCommandBuffer" preserve="all"/>
-		<type fullname="UnityEngine.Mesh" preserve="all"/>
-		<type fullname="UnityEngine.Renderer" preserve="all"/>
-		<type fullname="UnityEngine.Projector" preserve="all"/>
-		<type fullname="UnityEngine.Shader" preserve="all"/>
-		<type fullname="UnityEngine.TrailRenderer" preserve="all"/>
-		<type fullname="UnityEngine.LineRenderer" preserve="all"/>
-		<type fullname="UnityEngine.MaterialPropertyBlock" preserve="all"/>
-		<type fullname="UnityEngine.RenderSettings" preserve="all"/>
-		<type fullname="UnityEngine.Material" preserve="all"/>
-		<type fullname="UnityEngine.GraphicsBuffer" preserve="all"/>
-		<type fullname="UnityEngine.OcclusionPortal" preserve="all"/>
-		<type fullname="UnityEngine.OcclusionArea" preserve="all"/>
-		<type fullname="UnityEngine.Flare" preserve="all"/>
-		<type fullname="UnityEngine.LensFlare" preserve="all"/>
-		<type fullname="UnityEngine.LightBakingOutput" preserve="all"/>
-		<type fullname="UnityEngine.Light" preserve="all"/>
-		<type fullname="UnityEngine.Skybox" preserve="all"/>
-		<type fullname="UnityEngine.MeshFilter" preserve="all"/>
-		<type fullname="UnityEngine.LightProbeProxyVolume" preserve="all"/>
-		<type fullname="UnityEngine.SkinnedMeshRenderer" preserve="all"/>
-		<type fullname="UnityEngine.MeshRenderer" preserve="all"/>
-		<type fullname="UnityEngine.LightProbeGroup" preserve="all"/>
-		<type fullname="UnityEngine.LineUtility" preserve="all"/>
-		<type fullname="UnityEngine.LOD" preserve="all"/>
-		<type fullname="UnityEngine.LODGroup" preserve="all"/>
-		<type fullname="UnityEngine.BoneWeight" preserve="all"/>
-		<type fullname="UnityEngine.BoneWeight1" preserve="all"/>
-		<type fullname="UnityEngine.CombineInstance" preserve="all"/>
-		<type fullname="UnityEngine.Texture" preserve="all"/>
-		<type fullname="UnityEngine.Texture2D" preserve="all"/>
-		<type fullname="UnityEngine.Cubemap" preserve="all"/>
-		<type fullname="UnityEngine.Texture3D" preserve="all"/>
-		<type fullname="UnityEngine.Texture2DArray" preserve="all"/>
-		<type fullname="UnityEngine.CubemapArray" preserve="all"/>
-		<type fullname="UnityEngine.SparseTexture" preserve="all"/>
-		<type fullname="UnityEngine.RenderTexture" preserve="all"/>
-		<type fullname="UnityEngine.CustomRenderTextureUpdateZone" preserve="all"/>
-		<type fullname="UnityEngine.CustomRenderTexture" preserve="all"/>
-		<type fullname="UnityEngine.RenderTextureDescriptor" preserve="all"/>
-		<type fullname="UnityEngine.Hash128" preserve="all"/>
-		<type fullname="UnityEngine.HashUtilities" preserve="all"/>
-		<type fullname="UnityEngine.HashUnsafeUtilities" preserve="all"/>
-		<type fullname="UnityEngine.Logger" preserve="all"/>
-		<type fullname="UnityEngine.Color" preserve="all"/>
-		<type fullname="UnityEngine.Color32" preserve="all"/>
-		<type fullname="UnityEngine.ColorUtility" preserve="all"/>
-		<type fullname="UnityEngine.GradientColorKey" preserve="all"/>
-		<type fullname="UnityEngine.GradientAlphaKey" preserve="all"/>
-		<type fullname="UnityEngine.Gradient" preserve="all"/>
-		<type fullname="UnityEngine.FrustumPlanes" preserve="all"/>
-		<type fullname="UnityEngine.Matrix4x4" preserve="all"/>
-		<type fullname="UnityEngine.Vector3" preserve="all"/>
-		<type fullname="UnityEngine.Quaternion" preserve="all"/>
-		<type fullname="UnityEngine.Mathf" preserve="all"/>
-		<type fullname="UnityEngine.Vector2" preserve="all"/>
-		<type fullname="UnityEngine.Vector2Int" preserve="all"/>
-		<type fullname="UnityEngine.Vector3Int" preserve="all"/>
-		<type fullname="UnityEngine.Vector4" preserve="all"/>
-		<type fullname="UnityEngine.PlayerPrefsException" preserve="all"/>
-		<type fullname="UnityEngine.PlayerPrefs" preserve="all"/>
-		<type fullname="UnityEngine.PropertyName" preserve="all"/>
-		<type fullname="UnityEngine.Random" preserve="all"/>
-		<type fullname="UnityEngine.ResourceRequest" preserve="all"/>
-		<type fullname="UnityEngine.ResourcesAPI" preserve="all"/>
-		<type fullname="UnityEngine.Resources" preserve="all"/>
-		<type fullname="UnityEngine.AsyncOperation" preserve="all"/>
-		<type fullname="UnityEngine.ExecuteAlways" preserve="all"/>
-		<type fullname="UnityEngine.DefaultExecutionOrder" preserve="all"/>
-		<type fullname="UnityEngine.Behaviour" preserve="all"/>
-		<type fullname="UnityEngine.Component" preserve="all"/>
-		<type fullname="UnityEngine.Coroutine" preserve="all"/>
-		<type fullname="UnityEngine.CustomYieldInstruction" preserve="all"/>
-		<type fullname="UnityEngine.GameObject" preserve="all"/>
-		<type fullname="UnityEngine.LayerMask" preserve="all"/>
-		<type fullname="UnityEngine.MonoBehaviour" preserve="all"/>
-		<type fullname="UnityEngine.RangeInt" preserve="all"/>
-		<type fullname="UnityEngine.ScriptableObject" preserve="all"/>
-		<type fullname="UnityEngine.StackTraceUtility" preserve="all"/>
-		<type fullname="UnityEngine.UnityException" preserve="all"/>
-		<type fullname="UnityEngine.MissingComponentException" preserve="all"/>
-		<type fullname="UnityEngine.UnassignedReferenceException" preserve="all"/>
-		<type fullname="UnityEngine.MissingReferenceException" preserve="all"/>
-		<type fullname="UnityEngine.TextAsset" preserve="all"/>
-		<type fullname="UnityEngine.Object" preserve="all"/>
-		<type fullname="UnityEngine.WaitForEndOfFrame" preserve="all"/>
-		<type fullname="UnityEngine.WaitForFixedUpdate" preserve="all"/>
-		<type fullname="UnityEngine.WaitForSeconds" preserve="all"/>
-		<type fullname="UnityEngine.WaitForSecondsRealtime" preserve="all"/>
-		<type fullname="UnityEngine.WaitUntil" preserve="all"/>
-		<type fullname="UnityEngine.WaitWhile" preserve="all"/>
-		<type fullname="UnityEngine.YieldInstruction" preserve="all"/>
-		<type fullname="UnityEngine.Security" preserve="all"/>
-		<type fullname="UnityEngine.SerializeReference" preserve="all"/>
-		<type fullname="UnityEngine.PreferBinarySerialization" preserve="all"/>
-		<type fullname="UnityEngine.ComputeBuffer" preserve="all"/>
-		<type fullname="UnityEngine.ComputeShader" preserve="all"/>
-		<type fullname="UnityEngine.Snapping" preserve="all"/>
-		<type fullname="UnityEngine.StaticBatchingUtility" preserve="all"/>
-		<type fullname="UnityEngine.SystemInfo" preserve="all"/>
-		<type fullname="UnityEngine.Time" preserve="all"/>
-		<type fullname="UnityEngine.UnityEventQueueSystem" preserve="all"/>
-		<type fullname="UnityEngine.Pose" preserve="all"/>
-		<type fullname="UnityEngine.DrivenRectTransformTracker" preserve="all"/>
-		<type fullname="UnityEngine.RectTransform" preserve="all"/>
-		<type fullname="UnityEngine.Transform" preserve="all"/>
-		<type fullname="UnityEngine.SpriteRenderer" preserve="all"/>
-		<type fullname="UnityEngine.SecondarySpriteTexture" preserve="all"/>
-		<type fullname="UnityEngine.Sprite" preserve="all"/>
-		
-	</assembly>
-
 	<assembly fullname="UnityEngine.GridModule">
 	    <type fullname="UnityEngine.Grid" preserve="all"/>
 		<type fullname="UnityEngine.GridLayout" preserve="all"/>
@@ -428,15 +460,6 @@
 
 	<assembly fullname="UnityEngine.LocalizationModule">
 	    <type fullname="UnityEngine.LocalizationAsset" preserve="all"/>
-		
-	</assembly>
-
-	<assembly fullname="UnityEngine.ParticleSystemModule">
-	    <type fullname="UnityEngine.ParticleSystem" preserve="all"/>
-		<type fullname="UnityEngine.ParticlePhysicsExtensions" preserve="all"/>
-		<type fullname="UnityEngine.ParticleCollisionEvent" preserve="all"/>
-		<type fullname="UnityEngine.ParticleSystemRenderer" preserve="all"/>
-		<type fullname="UnityEngine.ParticleSystemForceField" preserve="all"/>
 		
 	</assembly>
 

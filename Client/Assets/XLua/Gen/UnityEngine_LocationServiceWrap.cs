@@ -55,7 +55,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.LocationService gen_ret = new UnityEngine.LocationService();
+					var gen_ret = new UnityEngine.LocationService();
 					translator.Push(L, gen_ret);
                     
 					return 1;

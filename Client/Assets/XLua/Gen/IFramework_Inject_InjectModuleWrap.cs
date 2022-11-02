@@ -57,7 +57,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					IFramework.Inject.InjectModule gen_ret = new IFramework.Inject.InjectModule();
+					var gen_ret = new IFramework.Inject.InjectModule();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -271,7 +271,7 @@ namespace XLua.CSObjectWrap
                     string _name = LuaAPI.lua_tostring(L, 3);
                     object[] _constructorArgs = translator.GetParams<object>(L, 4);
                     
-                        object gen_ret = gen_to_be_invoked.GetValue( _baseType, _name, _constructorArgs );
+                        var gen_ret = gen_to_be_invoked.GetValue( _baseType, _name, _constructorArgs );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -283,7 +283,7 @@ namespace XLua.CSObjectWrap
                     System.Type _baseType = (System.Type)translator.GetObject(L, 2, typeof(System.Type));
                     string _name = LuaAPI.lua_tostring(L, 3);
                     
-                        object gen_ret = gen_to_be_invoked.GetValue( _baseType, _name );
+                        var gen_ret = gen_to_be_invoked.GetValue( _baseType, _name );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -294,7 +294,7 @@ namespace XLua.CSObjectWrap
                 {
                     System.Type _baseType = (System.Type)translator.GetObject(L, 2, typeof(System.Type));
                     
-                        object gen_ret = gen_to_be_invoked.GetValue( _baseType );
+                        var gen_ret = gen_to_be_invoked.GetValue( _baseType );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -325,7 +325,7 @@ namespace XLua.CSObjectWrap
                 {
                     System.Type _type = (System.Type)translator.GetObject(L, 2, typeof(System.Type));
                     
-                        System.Collections.Generic.IEnumerable<object> gen_ret = gen_to_be_invoked.GetValues( _type );
+                        var gen_ret = gen_to_be_invoked.GetValues( _type );
                         translator.PushAny(L, gen_ret);
                     
                     

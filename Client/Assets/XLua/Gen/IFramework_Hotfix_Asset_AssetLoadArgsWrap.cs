@@ -53,7 +53,7 @@ namespace XLua.CSObjectWrap
 				{
 					string _path = LuaAPI.lua_tostring(L, 2);
 					
-					IFramework.Hotfix.Asset.AssetLoadArgs gen_ret = new IFramework.Hotfix.Asset.AssetLoadArgs(_path);
+					var gen_ret = new IFramework.Hotfix.Asset.AssetLoadArgs(_path);
 					translator.Push(L, gen_ret);
                     
 					return 1;

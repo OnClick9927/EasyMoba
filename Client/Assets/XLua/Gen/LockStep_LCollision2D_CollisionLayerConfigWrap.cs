@@ -55,7 +55,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					LockStep.LCollision2D.CollisionLayerConfig gen_ret = new LockStep.LCollision2D.CollisionLayerConfig();
+					var gen_ret = new LockStep.LCollision2D.CollisionLayerConfig();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -91,7 +91,7 @@ namespace XLua.CSObjectWrap
                 {
                     LockStep.LCollision2D.CollisionLayer _layer;translator.Get(L, 2, out _layer);
                     
-                        string gen_ret = gen_to_be_invoked.GetName( _layer );
+                        var gen_ret = gen_to_be_invoked.GetName( _layer );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -121,7 +121,7 @@ namespace XLua.CSObjectWrap
                     LockStep.LCollision2D.CollisionLayer _shap_a;translator.Get(L, 2, out _shap_a);
                     LockStep.LCollision2D.CollisionLayer _shap_b;translator.Get(L, 3, out _shap_b);
                     
-                        bool gen_ret = gen_to_be_invoked.CouldLayerCollision( _shap_a, _shap_b );
+                        var gen_ret = gen_to_be_invoked.CouldLayerCollision( _shap_a, _shap_b );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -150,7 +150,7 @@ namespace XLua.CSObjectWrap
                 {
                     LockStep.LCollision2D.CollisionLayer _layer;translator.Get(L, 2, out _layer);
                     
-                        LockStep.LCollision2D.CollisionLayerConfig.LayerData gen_ret = gen_to_be_invoked.Find( _layer );
+                        var gen_ret = gen_to_be_invoked.Find( _layer );
                         translator.Push(L, gen_ret);
                     
                     

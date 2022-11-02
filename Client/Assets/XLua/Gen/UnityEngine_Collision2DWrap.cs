@@ -62,7 +62,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.Collision2D gen_ret = new UnityEngine.Collision2D();
+					var gen_ret = new UnityEngine.Collision2D();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -98,7 +98,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _index = LuaAPI.xlua_tointeger(L, 2);
                     
-                        UnityEngine.ContactPoint2D gen_ret = gen_to_be_invoked.GetContact( _index );
+                        var gen_ret = gen_to_be_invoked.GetContact( _index );
                         translator.Push(L, gen_ret);
                     
                     
@@ -129,7 +129,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.ContactPoint2D[] _contacts = (UnityEngine.ContactPoint2D[])translator.GetObject(L, 2, typeof(UnityEngine.ContactPoint2D[]));
                     
-                        int gen_ret = gen_to_be_invoked.GetContacts( _contacts );
+                        var gen_ret = gen_to_be_invoked.GetContacts( _contacts );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -140,7 +140,7 @@ namespace XLua.CSObjectWrap
                 {
                     System.Collections.Generic.List<UnityEngine.ContactPoint2D> _contacts = (System.Collections.Generic.List<UnityEngine.ContactPoint2D>)translator.GetObject(L, 2, typeof(System.Collections.Generic.List<UnityEngine.ContactPoint2D>));
                     
-                        int gen_ret = gen_to_be_invoked.GetContacts( _contacts );
+                        var gen_ret = gen_to_be_invoked.GetContacts( _contacts );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     

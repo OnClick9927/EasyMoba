@@ -21,8 +21,9 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(EasyMoba.RecordModePlayer);
-			Utils.BeginObjectRegister(type, L, translator, 0, 1, 0, 0);
+			Utils.BeginObjectRegister(type, L, translator, 0, 2, 0, 0);
 			
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "CallServerReady", _m_CallServerReady);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Dispose", _m_Dispose);
 			
 			
@@ -48,10 +49,12 @@ namespace XLua.CSObjectWrap
             
 			try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-				if(LuaAPI.lua_gettop(L) == 1)
+				if(LuaAPI.lua_gettop(L) == 3 && translator.Assignable<MatchRoomType>(L, 2) && translator.Assignable<System.Collections.Generic.List<long>>(L, 3))
 				{
+					MatchRoomType _type;translator.Get(L, 2, out _type);
+					System.Collections.Generic.List<long> _roles = (System.Collections.Generic.List<long>)translator.GetObject(L, 3, typeof(System.Collections.Generic.List<long>));
 					
-					EasyMoba.RecordModePlayer gen_ret = new EasyMoba.RecordModePlayer();
+					var gen_ret = new EasyMoba.RecordModePlayer(_type, _roles);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -71,6 +74,35 @@ namespace XLua.CSObjectWrap
         
         
         
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_CallServerReady(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                EasyMoba.RecordModePlayer gen_to_be_invoked = (EasyMoba.RecordModePlayer)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    long _role_id = LuaAPI.lua_toint64(L, 2);
+                    string _room_id = LuaAPI.lua_tostring(L, 3);
+                    
+                    gen_to_be_invoked.CallServerReady( _role_id, _room_id );
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _m_Dispose(RealStatePtr L)

@@ -55,7 +55,7 @@ namespace XLua.CSObjectWrap
 				{
 					UnityEngine.ResourceRequest _task = (UnityEngine.ResourceRequest)translator.GetObject(L, 2, typeof(UnityEngine.ResourceRequest));
 					
-					IFramework.IAwaterEx.ResourceRequestAwaiter gen_ret = new IFramework.IAwaterEx.ResourceRequestAwaiter(_task);
+					var gen_ret = new IFramework.IAwaterEx.ResourceRequestAwaiter(_task);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -96,7 +96,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Object gen_ret = gen_to_be_invoked.GetResult(  );
+                        var gen_ret = gen_to_be_invoked.GetResult(  );
                         translator.Push(L, gen_ret);
                     
                     

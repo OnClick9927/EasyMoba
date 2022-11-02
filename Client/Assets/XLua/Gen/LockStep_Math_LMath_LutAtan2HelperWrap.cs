@@ -56,7 +56,7 @@ namespace XLua.CSObjectWrap
 					long _sign = LuaAPI.lua_toint64(L, 2);
 					long _offset = LuaAPI.lua_toint64(L, 3);
 					
-					LockStep.Math.LMath.LutAtan2Helper gen_ret = new LockStep.Math.LMath.LutAtan2Helper(_sign, _offset);
+					var gen_ret = new LockStep.Math.LMath.LutAtan2Helper(_sign, _offset);
 					translator.Push(L, gen_ret);
                     
 					return 1;

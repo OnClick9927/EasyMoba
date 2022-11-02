@@ -62,7 +62,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.HumanTrait gen_ret = new UnityEngine.HumanTrait();
+					var gen_ret = new UnityEngine.HumanTrait();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -95,7 +95,7 @@ namespace XLua.CSObjectWrap
                     int _i = LuaAPI.xlua_tointeger(L, 1);
                     int _dofIndex = LuaAPI.xlua_tointeger(L, 2);
                     
-                        int gen_ret = UnityEngine.HumanTrait.MuscleFromBone( _i, _dofIndex );
+                        var gen_ret = UnityEngine.HumanTrait.MuscleFromBone( _i, _dofIndex );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -120,7 +120,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _i = LuaAPI.xlua_tointeger(L, 1);
                     
-                        int gen_ret = UnityEngine.HumanTrait.BoneFromMuscle( _i );
+                        var gen_ret = UnityEngine.HumanTrait.BoneFromMuscle( _i );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -145,7 +145,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _i = LuaAPI.xlua_tointeger(L, 1);
                     
-                        bool gen_ret = UnityEngine.HumanTrait.RequiredBone( _i );
+                        var gen_ret = UnityEngine.HumanTrait.RequiredBone( _i );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -170,7 +170,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _i = LuaAPI.xlua_tointeger(L, 1);
                     
-                        float gen_ret = UnityEngine.HumanTrait.GetMuscleDefaultMin( _i );
+                        var gen_ret = UnityEngine.HumanTrait.GetMuscleDefaultMin( _i );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -195,7 +195,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _i = LuaAPI.xlua_tointeger(L, 1);
                     
-                        float gen_ret = UnityEngine.HumanTrait.GetMuscleDefaultMax( _i );
+                        var gen_ret = UnityEngine.HumanTrait.GetMuscleDefaultMax( _i );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -220,7 +220,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _i = LuaAPI.xlua_tointeger(L, 1);
                     
-                        float gen_ret = UnityEngine.HumanTrait.GetBoneDefaultHierarchyMass( _i );
+                        var gen_ret = UnityEngine.HumanTrait.GetBoneDefaultHierarchyMass( _i );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -245,7 +245,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _i = LuaAPI.xlua_tointeger(L, 1);
                     
-                        int gen_ret = UnityEngine.HumanTrait.GetParentBone( _i );
+                        var gen_ret = UnityEngine.HumanTrait.GetParentBone( _i );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     

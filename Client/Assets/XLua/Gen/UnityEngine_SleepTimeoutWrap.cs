@@ -52,7 +52,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.SleepTimeout gen_ret = new UnityEngine.SleepTimeout();
+					var gen_ret = new UnityEngine.SleepTimeout();
 					translator.Push(L, gen_ret);
                     
 					return 1;

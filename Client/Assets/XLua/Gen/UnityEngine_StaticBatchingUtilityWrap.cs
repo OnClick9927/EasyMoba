@@ -51,7 +51,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.StaticBatchingUtility gen_ret = new UnityEngine.StaticBatchingUtility();
+					var gen_ret = new UnityEngine.StaticBatchingUtility();
 					translator.Push(L, gen_ret);
                     
 					return 1;

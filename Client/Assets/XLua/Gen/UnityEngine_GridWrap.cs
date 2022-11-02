@@ -65,7 +65,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.Grid gen_ret = new UnityEngine.Grid();
+					var gen_ret = new UnityEngine.Grid();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -101,7 +101,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Vector3Int _position;translator.Get(L, 2, out _position);
                     
-                        UnityEngine.Vector3 gen_ret = gen_to_be_invoked.GetCellCenterLocal( _position );
+                        var gen_ret = gen_to_be_invoked.GetCellCenterLocal( _position );
                         translator.PushUnityEngineVector3(L, gen_ret);
                     
                     
@@ -130,7 +130,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Vector3Int _position;translator.Get(L, 2, out _position);
                     
-                        UnityEngine.Vector3 gen_ret = gen_to_be_invoked.GetCellCenterWorld( _position );
+                        var gen_ret = gen_to_be_invoked.GetCellCenterWorld( _position );
                         translator.PushUnityEngineVector3(L, gen_ret);
                     
                     
@@ -158,7 +158,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.GridLayout.CellSwizzle _swizzle;translator.Get(L, 1, out _swizzle);
                     UnityEngine.Vector3 _position;translator.Get(L, 2, out _position);
                     
-                        UnityEngine.Vector3 gen_ret = UnityEngine.Grid.Swizzle( _swizzle, _position );
+                        var gen_ret = UnityEngine.Grid.Swizzle( _swizzle, _position );
                         translator.PushUnityEngineVector3(L, gen_ret);
                     
                     
@@ -186,7 +186,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.GridLayout.CellSwizzle _swizzle;translator.Get(L, 1, out _swizzle);
                     UnityEngine.Vector3 _position;translator.Get(L, 2, out _position);
                     
-                        UnityEngine.Vector3 gen_ret = UnityEngine.Grid.InverseSwizzle( _swizzle, _position );
+                        var gen_ret = UnityEngine.Grid.InverseSwizzle( _swizzle, _position );
                         translator.PushUnityEngineVector3(L, gen_ret);
                     
                     
@@ -214,7 +214,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.MakeComponentExist(  );
+                        var gen_ret = gen_to_be_invoked.MakeComponentExist(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -269,7 +269,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.LocalIdentity(  );
+                        var gen_ret = gen_to_be_invoked.LocalIdentity(  );
                         translator.Push(L, gen_ret);
                     
                     

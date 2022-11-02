@@ -56,7 +56,7 @@ namespace XLua.CSObjectWrap
 					UnityEngine.Vector3 _pos;translator.Get(L, 2, out _pos);
 					float _rad = (float)LuaAPI.lua_tonumber(L, 3);
 					
-					UnityEngine.BoundingSphere gen_ret = new UnityEngine.BoundingSphere(_pos, _rad);
+					var gen_ret = new UnityEngine.BoundingSphere(_pos, _rad);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -65,7 +65,7 @@ namespace XLua.CSObjectWrap
 				{
 					UnityEngine.Vector4 _packedSphere;translator.Get(L, 2, out _packedSphere);
 					
-					UnityEngine.BoundingSphere gen_ret = new UnityEngine.BoundingSphere(_packedSphere);
+					var gen_ret = new UnityEngine.BoundingSphere(_packedSphere);
 					translator.Push(L, gen_ret);
                     
 					return 1;

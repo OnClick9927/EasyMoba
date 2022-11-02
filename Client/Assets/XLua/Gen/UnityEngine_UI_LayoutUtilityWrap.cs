@@ -78,7 +78,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.RectTransform _rect = (UnityEngine.RectTransform)translator.GetObject(L, 1, typeof(UnityEngine.RectTransform));
                     int _axis = LuaAPI.xlua_tointeger(L, 2);
                     
-                        float gen_ret = UnityEngine.UI.LayoutUtility.GetMinSize( _rect, _axis );
+                        var gen_ret = UnityEngine.UI.LayoutUtility.GetMinSize( _rect, _axis );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -106,7 +106,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.RectTransform _rect = (UnityEngine.RectTransform)translator.GetObject(L, 1, typeof(UnityEngine.RectTransform));
                     int _axis = LuaAPI.xlua_tointeger(L, 2);
                     
-                        float gen_ret = UnityEngine.UI.LayoutUtility.GetPreferredSize( _rect, _axis );
+                        var gen_ret = UnityEngine.UI.LayoutUtility.GetPreferredSize( _rect, _axis );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -134,7 +134,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.RectTransform _rect = (UnityEngine.RectTransform)translator.GetObject(L, 1, typeof(UnityEngine.RectTransform));
                     int _axis = LuaAPI.xlua_tointeger(L, 2);
                     
-                        float gen_ret = UnityEngine.UI.LayoutUtility.GetFlexibleSize( _rect, _axis );
+                        var gen_ret = UnityEngine.UI.LayoutUtility.GetFlexibleSize( _rect, _axis );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -161,7 +161,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.RectTransform _rect = (UnityEngine.RectTransform)translator.GetObject(L, 1, typeof(UnityEngine.RectTransform));
                     
-                        float gen_ret = UnityEngine.UI.LayoutUtility.GetMinWidth( _rect );
+                        var gen_ret = UnityEngine.UI.LayoutUtility.GetMinWidth( _rect );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -188,7 +188,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.RectTransform _rect = (UnityEngine.RectTransform)translator.GetObject(L, 1, typeof(UnityEngine.RectTransform));
                     
-                        float gen_ret = UnityEngine.UI.LayoutUtility.GetPreferredWidth( _rect );
+                        var gen_ret = UnityEngine.UI.LayoutUtility.GetPreferredWidth( _rect );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -215,7 +215,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.RectTransform _rect = (UnityEngine.RectTransform)translator.GetObject(L, 1, typeof(UnityEngine.RectTransform));
                     
-                        float gen_ret = UnityEngine.UI.LayoutUtility.GetFlexibleWidth( _rect );
+                        var gen_ret = UnityEngine.UI.LayoutUtility.GetFlexibleWidth( _rect );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -242,7 +242,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.RectTransform _rect = (UnityEngine.RectTransform)translator.GetObject(L, 1, typeof(UnityEngine.RectTransform));
                     
-                        float gen_ret = UnityEngine.UI.LayoutUtility.GetMinHeight( _rect );
+                        var gen_ret = UnityEngine.UI.LayoutUtility.GetMinHeight( _rect );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -269,7 +269,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.RectTransform _rect = (UnityEngine.RectTransform)translator.GetObject(L, 1, typeof(UnityEngine.RectTransform));
                     
-                        float gen_ret = UnityEngine.UI.LayoutUtility.GetPreferredHeight( _rect );
+                        var gen_ret = UnityEngine.UI.LayoutUtility.GetPreferredHeight( _rect );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -296,7 +296,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.RectTransform _rect = (UnityEngine.RectTransform)translator.GetObject(L, 1, typeof(UnityEngine.RectTransform));
                     
-                        float gen_ret = UnityEngine.UI.LayoutUtility.GetFlexibleHeight( _rect );
+                        var gen_ret = UnityEngine.UI.LayoutUtility.GetFlexibleHeight( _rect );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -327,7 +327,7 @@ namespace XLua.CSObjectWrap
                     System.Func<UnityEngine.UI.ILayoutElement, float> _property = translator.GetDelegate<System.Func<UnityEngine.UI.ILayoutElement, float>>(L, 2);
                     float _defaultValue = (float)LuaAPI.lua_tonumber(L, 3);
                     
-                        float gen_ret = UnityEngine.UI.LayoutUtility.GetLayoutProperty( _rect, _property, _defaultValue );
+                        var gen_ret = UnityEngine.UI.LayoutUtility.GetLayoutProperty( _rect, _property, _defaultValue );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -341,7 +341,7 @@ namespace XLua.CSObjectWrap
                     float _defaultValue = (float)LuaAPI.lua_tonumber(L, 3);
                     UnityEngine.UI.ILayoutElement _source;
                     
-                        float gen_ret = UnityEngine.UI.LayoutUtility.GetLayoutProperty( _rect, _property, _defaultValue, out _source );
+                        var gen_ret = UnityEngine.UI.LayoutUtility.GetLayoutProperty( _rect, _property, _defaultValue, out _source );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     translator.PushAny(L, _source);
                         

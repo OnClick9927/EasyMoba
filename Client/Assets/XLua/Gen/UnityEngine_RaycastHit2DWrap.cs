@@ -98,7 +98,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.RaycastHit2D _other;translator.Get(L, 2, out _other);
                     
-                        int gen_ret = gen_to_be_invoked.CompareTo( _other );
+                        var gen_ret = gen_to_be_invoked.CompareTo( _other );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     

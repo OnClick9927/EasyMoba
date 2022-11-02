@@ -62,7 +62,7 @@ namespace XLua.CSObjectWrap
 					LockStep.Math.LVector3 _up;translator.Get(L, 3, out _up);
 					LockStep.Math.LVector3 _forward;translator.Get(L, 4, out _forward);
 					
-					LockStep.Math.LAxis3D gen_ret = new LockStep.Math.LAxis3D(_right, _up, _forward);
+					var gen_ret = new LockStep.Math.LAxis3D(_right, _up, _forward);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -156,7 +156,7 @@ namespace XLua.CSObjectWrap
                 {
                     LockStep.Math.LVector3 _vec;translator.Get(L, 2, out _vec);
                     
-                        LockStep.Math.LVector3 gen_ret = gen_to_be_invoked.WorldToLocal( _vec );
+                        var gen_ret = gen_to_be_invoked.WorldToLocal( _vec );
                         translator.Push(L, gen_ret);
                     
                     
@@ -187,7 +187,7 @@ namespace XLua.CSObjectWrap
                 {
                     LockStep.Math.LVector3 _vec;translator.Get(L, 2, out _vec);
                     
-                        LockStep.Math.LVector3 gen_ret = gen_to_be_invoked.LocalToWorld( _vec );
+                        var gen_ret = gen_to_be_invoked.LocalToWorld( _vec );
                         translator.Push(L, gen_ret);
                     
                     

@@ -57,7 +57,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.AnimatorOverrideController gen_ret = new UnityEngine.AnimatorOverrideController();
+					var gen_ret = new UnityEngine.AnimatorOverrideController();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -66,7 +66,7 @@ namespace XLua.CSObjectWrap
 				{
 					UnityEngine.RuntimeAnimatorController _controller = (UnityEngine.RuntimeAnimatorController)translator.GetObject(L, 2, typeof(UnityEngine.RuntimeAnimatorController));
 					
-					UnityEngine.AnimatorOverrideController gen_ret = new UnityEngine.AnimatorOverrideController(_controller);
+					var gen_ret = new UnityEngine.AnimatorOverrideController(_controller);
 					translator.Push(L, gen_ret);
                     
 					return 1;

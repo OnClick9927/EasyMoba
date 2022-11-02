@@ -55,7 +55,7 @@ namespace XLua.CSObjectWrap
 				{
 					IFramework.Message.IMessage _cor = (IFramework.Message.IMessage)translator.GetObject(L, 2, typeof(IFramework.Message.IMessage));
 					
-					IFramework.Message.MessageAwaiter gen_ret = new IFramework.Message.MessageAwaiter(_cor);
+					var gen_ret = new IFramework.Message.MessageAwaiter(_cor);
 					translator.Push(L, gen_ret);
                     
 					return 1;

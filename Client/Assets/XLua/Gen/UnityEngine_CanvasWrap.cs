@@ -92,7 +92,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.Canvas gen_ret = new UnityEngine.Canvas();
+					var gen_ret = new UnityEngine.Canvas();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -125,7 +125,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Material gen_ret = UnityEngine.Canvas.GetDefaultCanvasMaterial(  );
+                        var gen_ret = UnityEngine.Canvas.GetDefaultCanvasMaterial(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -151,7 +151,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Material gen_ret = UnityEngine.Canvas.GetETC1SupportedCanvasMaterial(  );
+                        var gen_ret = UnityEngine.Canvas.GetETC1SupportedCanvasMaterial(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -202,7 +202,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.MakeComponentExist(  );
+                        var gen_ret = gen_to_be_invoked.MakeComponentExist(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -257,7 +257,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.LocalIdentity(  );
+                        var gen_ret = gen_to_be_invoked.LocalIdentity(  );
                         translator.Push(L, gen_ret);
                     
                     

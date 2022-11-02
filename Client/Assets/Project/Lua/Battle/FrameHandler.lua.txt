@@ -10,7 +10,7 @@ function M:ctor()
 end
 
 ---@param data SPBattleFrame
-function M:OnBattelFrame(data)
+function M:OnBattleFrame(data)
     local frame = data.frameID
     if frame >= self.curFrame then
         self.frames[frame] = data
@@ -23,13 +23,13 @@ end
 
 ---@param data SPBattleFrame
 function M:PlayFrame(data)
-    for index, value in ipairs(data.datas) do
-        local role = value.roleID
-        local op = value.opText
-        ---@type BattleOp
-        local op_tab = Json.decode(op)
-        player.PlayFrame(role, op_tab)
-    end
+    -- for index, value in ipairs(data.datas) do
+    --     local role = value.roleID
+    --     local op = value.opText
+    --     ---@type BattleOp
+    --     local op_tab = Json.decode(op)
+    --     player.PlayFrame(role, op_tab)
+    -- end
 end
 
 return M

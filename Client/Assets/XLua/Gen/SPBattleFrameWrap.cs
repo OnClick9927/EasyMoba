@@ -54,7 +54,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					SPBattleFrame gen_ret = new SPBattleFrame();
+					var gen_ret = new SPBattleFrame();
 					translator.Push(L, gen_ret);
                     
 					return 1;

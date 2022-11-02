@@ -1,8 +1,5 @@
-
-
-
 local function OnSceneLoadCompelete()
-    -- body
+    Battle.CallServerReady()
 end
 
 local function LoadScene()

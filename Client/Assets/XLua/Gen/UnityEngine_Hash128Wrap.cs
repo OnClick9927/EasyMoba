@@ -64,7 +64,7 @@ namespace XLua.CSObjectWrap
 					uint _u32_2 = LuaAPI.xlua_touint(L, 4);
 					uint _u32_3 = LuaAPI.xlua_touint(L, 5);
 					
-					UnityEngine.Hash128 gen_ret = new UnityEngine.Hash128(_u32_0, _u32_1, _u32_2, _u32_3);
+					var gen_ret = new UnityEngine.Hash128(_u32_0, _u32_1, _u32_2, _u32_3);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -74,7 +74,7 @@ namespace XLua.CSObjectWrap
 					ulong _u64_0 = LuaAPI.lua_touint64(L, 2);
 					ulong _u64_1 = LuaAPI.lua_touint64(L, 3);
 					
-					UnityEngine.Hash128 gen_ret = new UnityEngine.Hash128(_u64_0, _u64_1);
+					var gen_ret = new UnityEngine.Hash128(_u64_0, _u64_1);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -170,7 +170,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Hash128 _rhs;translator.Get(L, 2, out _rhs);
                     
-                        int gen_ret = gen_to_be_invoked.CompareTo( _rhs );
+                        var gen_ret = gen_to_be_invoked.CompareTo( _rhs );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -183,7 +183,7 @@ namespace XLua.CSObjectWrap
                 {
                     object _obj = translator.GetObject(L, 2, typeof(object));
                     
-                        int gen_ret = gen_to_be_invoked.CompareTo( _obj );
+                        var gen_ret = gen_to_be_invoked.CompareTo( _obj );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -215,7 +215,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        string gen_ret = gen_to_be_invoked.ToString(  );
+                        var gen_ret = gen_to_be_invoked.ToString(  );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -244,7 +244,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _hashString = LuaAPI.lua_tostring(L, 1);
                     
-                        UnityEngine.Hash128 gen_ret = UnityEngine.Hash128.Parse( _hashString );
+                        var gen_ret = UnityEngine.Hash128.Parse( _hashString );
                         translator.Push(L, gen_ret);
                     
                     
@@ -273,7 +273,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _val = LuaAPI.xlua_tointeger(L, 1);
                     
-                        UnityEngine.Hash128 gen_ret = UnityEngine.Hash128.Compute( _val );
+                        var gen_ret = UnityEngine.Hash128.Compute( _val );
                         translator.Push(L, gen_ret);
                     
                     
@@ -284,7 +284,7 @@ namespace XLua.CSObjectWrap
                 {
                     float _val = (float)LuaAPI.lua_tonumber(L, 1);
                     
-                        UnityEngine.Hash128 gen_ret = UnityEngine.Hash128.Compute( _val );
+                        var gen_ret = UnityEngine.Hash128.Compute( _val );
                         translator.Push(L, gen_ret);
                     
                     
@@ -295,7 +295,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _data = LuaAPI.lua_tostring(L, 1);
                     
-                        UnityEngine.Hash128 gen_ret = UnityEngine.Hash128.Compute( _data );
+                        var gen_ret = UnityEngine.Hash128.Compute( _data );
                         translator.Push(L, gen_ret);
                     
                     
@@ -386,7 +386,7 @@ namespace XLua.CSObjectWrap
                 {
                     object _obj = translator.GetObject(L, 2, typeof(object));
                     
-                        bool gen_ret = gen_to_be_invoked.Equals( _obj );
+                        var gen_ret = gen_to_be_invoked.Equals( _obj );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -399,7 +399,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Hash128 _obj;translator.Get(L, 2, out _obj);
                     
-                        bool gen_ret = gen_to_be_invoked.Equals( _obj );
+                        var gen_ret = gen_to_be_invoked.Equals( _obj );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -431,7 +431,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        int gen_ret = gen_to_be_invoked.GetHashCode(  );
+                        var gen_ret = gen_to_be_invoked.GetHashCode(  );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     

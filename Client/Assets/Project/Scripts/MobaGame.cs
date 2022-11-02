@@ -31,6 +31,7 @@ namespace EasyMoba
 
         public static int udpbufSize = 1024 * 128;
         public static int tcpBufSize = 1024 * 1024;
+        public static int udpGap = 1000 / 66;
         public override void Init()
         {
             MobaPerfs.SetKey(playerPrefsKey);

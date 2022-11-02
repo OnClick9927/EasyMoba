@@ -52,7 +52,7 @@ namespace XLua.CSObjectWrap
 				{
 					int _order = LuaAPI.xlua_tointeger(L, 2);
 					
-					UnityEngine.DefaultExecutionOrder gen_ret = new UnityEngine.DefaultExecutionOrder(_order);
+					var gen_ret = new UnityEngine.DefaultExecutionOrder(_order);
 					translator.Push(L, gen_ret);
                     
 					return 1;

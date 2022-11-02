@@ -56,7 +56,7 @@ namespace XLua.CSObjectWrap
 					float _alpha = (float)LuaAPI.lua_tonumber(L, 2);
 					float _time = (float)LuaAPI.lua_tonumber(L, 3);
 					
-					UnityEngine.GradientAlphaKey gen_ret = new UnityEngine.GradientAlphaKey(_alpha, _time);
+					var gen_ret = new UnityEngine.GradientAlphaKey(_alpha, _time);
 					translator.Push(L, gen_ret);
                     
 					return 1;

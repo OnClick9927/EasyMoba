@@ -57,7 +57,7 @@ namespace XLua.CSObjectWrap
 					LockStep.Math.LVector3 _x;translator.Get(L, 2, out _x);
 					LockStep.Math.LVector3 _y;translator.Get(L, 3, out _y);
 					
-					LockStep.Math.LAxis2D gen_ret = new LockStep.Math.LAxis2D(_x, _y);
+					var gen_ret = new LockStep.Math.LAxis2D(_x, _y);
 					translator.Push(L, gen_ret);
                     
 					return 1;

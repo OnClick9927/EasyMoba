@@ -87,7 +87,7 @@ namespace XLua.CSObjectWrap
 					LockStep.Math.LFloat _p_z;translator.Get(L, 4, out _p_z);
 					LockStep.Math.LFloat _p_w;translator.Get(L, 5, out _p_w);
 					
-					LockStep.Math.LQuaternion gen_ret = new LockStep.Math.LQuaternion(_p_x, _p_y, _p_z, _p_w);
+					var gen_ret = new LockStep.Math.LQuaternion(_p_x, _p_y, _p_z, _p_w);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -99,7 +99,7 @@ namespace XLua.CSObjectWrap
 					int _p_z = LuaAPI.xlua_tointeger(L, 4);
 					int _p_w = LuaAPI.xlua_tointeger(L, 5);
 					
-					LockStep.Math.LQuaternion gen_ret = new LockStep.Math.LQuaternion(_p_x, _p_y, _p_z, _p_w);
+					var gen_ret = new LockStep.Math.LQuaternion(_p_x, _p_y, _p_z, _p_w);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -255,7 +255,7 @@ namespace XLua.CSObjectWrap
                     LockStep.Math.LQuaternion _a;translator.Get(L, 1, out _a);
                     LockStep.Math.LQuaternion _b;translator.Get(L, 2, out _b);
                     
-                        LockStep.Math.LFloat gen_ret = LockStep.Math.LQuaternion.Angle( _a, _b );
+                        var gen_ret = LockStep.Math.LQuaternion.Angle( _a, _b );
                         translator.Push(L, gen_ret);
                     
                     
@@ -283,7 +283,7 @@ namespace XLua.CSObjectWrap
                     LockStep.Math.LFloat _angle;translator.Get(L, 1, out _angle);
                     LockStep.Math.LVector3 _axis;translator.Get(L, 2, out _axis);
                     
-                        LockStep.Math.LQuaternion gen_ret = LockStep.Math.LQuaternion.AngleAxis( _angle, _axis );
+                        var gen_ret = LockStep.Math.LQuaternion.AngleAxis( _angle, _axis );
                         translator.Push(L, gen_ret);
                     
                     
@@ -311,7 +311,7 @@ namespace XLua.CSObjectWrap
                     LockStep.Math.LQuaternion _a;translator.Get(L, 1, out _a);
                     LockStep.Math.LQuaternion _b;translator.Get(L, 2, out _b);
                     
-                        LockStep.Math.LFloat gen_ret = LockStep.Math.LQuaternion.Dot( _a, _b );
+                        var gen_ret = LockStep.Math.LQuaternion.Dot( _a, _b );
                         translator.Push(L, gen_ret);
                     
                     
@@ -340,7 +340,7 @@ namespace XLua.CSObjectWrap
                 {
                     LockStep.Math.LVector3 _euler;translator.Get(L, 1, out _euler);
                     
-                        LockStep.Math.LQuaternion gen_ret = LockStep.Math.LQuaternion.Euler( _euler );
+                        var gen_ret = LockStep.Math.LQuaternion.Euler( _euler );
                         translator.Push(L, gen_ret);
                     
                     
@@ -353,7 +353,7 @@ namespace XLua.CSObjectWrap
                     LockStep.Math.LFloat _y;translator.Get(L, 2, out _y);
                     LockStep.Math.LFloat _z;translator.Get(L, 3, out _z);
                     
-                        LockStep.Math.LQuaternion gen_ret = LockStep.Math.LQuaternion.Euler( _x, _y, _z );
+                        var gen_ret = LockStep.Math.LQuaternion.Euler( _x, _y, _z );
                         translator.Push(L, gen_ret);
                     
                     
@@ -383,7 +383,7 @@ namespace XLua.CSObjectWrap
                     LockStep.Math.LVector3 _fromDirection;translator.Get(L, 1, out _fromDirection);
                     LockStep.Math.LVector3 _toDirection;translator.Get(L, 2, out _toDirection);
                     
-                        LockStep.Math.LQuaternion gen_ret = LockStep.Math.LQuaternion.FromToRotation( _fromDirection, _toDirection );
+                        var gen_ret = LockStep.Math.LQuaternion.FromToRotation( _fromDirection, _toDirection );
                         translator.Push(L, gen_ret);
                     
                     
@@ -410,7 +410,7 @@ namespace XLua.CSObjectWrap
                 {
                     LockStep.Math.LQuaternion _rotation;translator.Get(L, 1, out _rotation);
                     
-                        LockStep.Math.LQuaternion gen_ret = LockStep.Math.LQuaternion.Inverse( _rotation );
+                        var gen_ret = LockStep.Math.LQuaternion.Inverse( _rotation );
                         translator.Push(L, gen_ret);
                     
                     
@@ -439,7 +439,7 @@ namespace XLua.CSObjectWrap
                     LockStep.Math.LQuaternion _b;translator.Get(L, 2, out _b);
                     LockStep.Math.LFloat _t;translator.Get(L, 3, out _t);
                     
-                        LockStep.Math.LQuaternion gen_ret = LockStep.Math.LQuaternion.Lerp( _a, _b, _t );
+                        var gen_ret = LockStep.Math.LQuaternion.Lerp( _a, _b, _t );
                         translator.Push(L, gen_ret);
                     
                     
@@ -468,7 +468,7 @@ namespace XLua.CSObjectWrap
                     LockStep.Math.LQuaternion _b;translator.Get(L, 2, out _b);
                     LockStep.Math.LFloat _t;translator.Get(L, 3, out _t);
                     
-                        LockStep.Math.LQuaternion gen_ret = LockStep.Math.LQuaternion.LerpUnclamped( _a, _b, _t );
+                        var gen_ret = LockStep.Math.LQuaternion.LerpUnclamped( _a, _b, _t );
                         translator.Push(L, gen_ret);
                     
                     
@@ -497,7 +497,7 @@ namespace XLua.CSObjectWrap
                 {
                     LockStep.Math.LVector3 _forward;translator.Get(L, 1, out _forward);
                     
-                        LockStep.Math.LQuaternion gen_ret = LockStep.Math.LQuaternion.LookRotation( _forward );
+                        var gen_ret = LockStep.Math.LQuaternion.LookRotation( _forward );
                         translator.Push(L, gen_ret);
                     
                     
@@ -509,7 +509,7 @@ namespace XLua.CSObjectWrap
                     LockStep.Math.LVector3 _forward;translator.Get(L, 1, out _forward);
                     LockStep.Math.LVector3 _upwards;translator.Get(L, 2, out _upwards);
                     
-                        LockStep.Math.LQuaternion gen_ret = LockStep.Math.LQuaternion.LookRotation( _forward, _upwards );
+                        var gen_ret = LockStep.Math.LQuaternion.LookRotation( _forward, _upwards );
                         translator.Push(L, gen_ret);
                     
                     
@@ -540,7 +540,7 @@ namespace XLua.CSObjectWrap
                     LockStep.Math.LQuaternion _to;translator.Get(L, 2, out _to);
                     LockStep.Math.LFloat _maxDegreesDelta;translator.Get(L, 3, out _maxDegreesDelta);
                     
-                        LockStep.Math.LQuaternion gen_ret = LockStep.Math.LQuaternion.RotateTowards( _from, _to, _maxDegreesDelta );
+                        var gen_ret = LockStep.Math.LQuaternion.RotateTowards( _from, _to, _maxDegreesDelta );
                         translator.Push(L, gen_ret);
                     
                     
@@ -569,7 +569,7 @@ namespace XLua.CSObjectWrap
                     LockStep.Math.LQuaternion _b;translator.Get(L, 2, out _b);
                     LockStep.Math.LFloat _t;translator.Get(L, 3, out _t);
                     
-                        LockStep.Math.LQuaternion gen_ret = LockStep.Math.LQuaternion.Slerp( _a, _b, _t );
+                        var gen_ret = LockStep.Math.LQuaternion.Slerp( _a, _b, _t );
                         translator.Push(L, gen_ret);
                     
                     
@@ -598,7 +598,7 @@ namespace XLua.CSObjectWrap
                     LockStep.Math.LQuaternion _q2;translator.Get(L, 2, out _q2);
                     LockStep.Math.LFloat _t;translator.Get(L, 3, out _t);
                     
-                        LockStep.Math.LQuaternion gen_ret = LockStep.Math.LQuaternion.SlerpUnclamped( _q1, _q2, _t );
+                        var gen_ret = LockStep.Math.LQuaternion.SlerpUnclamped( _q1, _q2, _t );
                         translator.Push(L, gen_ret);
                     
                     
@@ -772,7 +772,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        string gen_ret = gen_to_be_invoked.ToString(  );
+                        var gen_ret = gen_to_be_invoked.ToString(  );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -802,7 +802,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        int gen_ret = gen_to_be_invoked.GetHashCode(  );
+                        var gen_ret = gen_to_be_invoked.GetHashCode(  );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -833,7 +833,7 @@ namespace XLua.CSObjectWrap
                 {
                     object _other = translator.GetObject(L, 2, typeof(object));
                     
-                        bool gen_ret = gen_to_be_invoked.Equals( _other );
+                        var gen_ret = gen_to_be_invoked.Equals( _other );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -862,7 +862,7 @@ namespace XLua.CSObjectWrap
                 {
                     LockStep.Math.LQuaternion _quat;translator.Get(L, 1, out _quat);
                     
-                        LockStep.Math.LMatrix33 gen_ret = LockStep.Math.LQuaternion.QuaternionToMatrix( _quat );
+                        var gen_ret = LockStep.Math.LQuaternion.QuaternionToMatrix( _quat );
                         translator.Push(L, gen_ret);
                     
                     

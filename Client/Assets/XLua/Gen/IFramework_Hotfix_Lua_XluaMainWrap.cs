@@ -52,7 +52,7 @@ namespace XLua.CSObjectWrap
 				{
 					IFramework.Hotfix.Lua.XLuaModule _module = (IFramework.Hotfix.Lua.XLuaModule)translator.GetObject(L, 2, typeof(IFramework.Hotfix.Lua.XLuaModule));
 					
-					IFramework.Hotfix.Lua.XluaMain gen_ret = new IFramework.Hotfix.Lua.XluaMain(_module);
+					var gen_ret = new IFramework.Hotfix.Lua.XluaMain(_module);
 					translator.Push(L, gen_ret);
                     
 					return 1;

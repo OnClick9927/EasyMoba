@@ -60,7 +60,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					IFramework.Packets.Packet gen_ret = new IFramework.Packets.Packet();
+					var gen_ret = new IFramework.Packets.Packet();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -73,7 +73,7 @@ namespace XLua.CSObjectWrap
 					byte _pkgType = (byte)LuaAPI.xlua_tointeger(L, 5);
 					byte[] _buffer = LuaAPI.lua_tobytes(L, 6);
 					
-					IFramework.Packets.Packet gen_ret = new IFramework.Packets.Packet(_pkgCount, _mainId, _subId, _pkgType, _buffer);
+					var gen_ret = new IFramework.Packets.Packet(_pkgCount, _mainId, _subId, _pkgType, _buffer);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -140,7 +140,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        byte[] gen_ret = gen_to_be_invoked.Pack(  );
+                        var gen_ret = gen_to_be_invoked.Pack(  );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -169,7 +169,7 @@ namespace XLua.CSObjectWrap
                     int _offset = LuaAPI.xlua_tointeger(L, 2);
                     int _size = LuaAPI.xlua_tointeger(L, 3);
                     
-                        IFramework.Packets.Packet gen_ret = IFramework.Packets.Packet.UnPackPacket( _buffer, _offset, _size );
+                        var gen_ret = IFramework.Packets.Packet.UnPackPacket( _buffer, _offset, _size );
                         translator.Push(L, gen_ret);
                     
                     

@@ -82,7 +82,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.Collider2D gen_ret = new UnityEngine.Collider2D();
+					var gen_ret = new UnityEngine.Collider2D();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -119,7 +119,7 @@ namespace XLua.CSObjectWrap
                     bool _useBodyPosition = LuaAPI.lua_toboolean(L, 2);
                     bool _useBodyRotation = LuaAPI.lua_toboolean(L, 3);
                     
-                        UnityEngine.Mesh gen_ret = gen_to_be_invoked.CreateMesh( _useBodyPosition, _useBodyRotation );
+                        var gen_ret = gen_to_be_invoked.CreateMesh( _useBodyPosition, _useBodyRotation );
                         translator.Push(L, gen_ret);
                     
                     
@@ -147,7 +147,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        uint gen_ret = gen_to_be_invoked.GetShapeHash(  );
+                        var gen_ret = gen_to_be_invoked.GetShapeHash(  );
                         LuaAPI.xlua_pushuint(L, gen_ret);
                     
                     
@@ -178,7 +178,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Collider2D _collider = (UnityEngine.Collider2D)translator.GetObject(L, 2, typeof(UnityEngine.Collider2D));
                     
-                        bool gen_ret = gen_to_be_invoked.IsTouching( _collider );
+                        var gen_ret = gen_to_be_invoked.IsTouching( _collider );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -189,7 +189,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.ContactFilter2D _contactFilter;translator.Get(L, 2, out _contactFilter);
                     
-                        bool gen_ret = gen_to_be_invoked.IsTouching( _contactFilter );
+                        var gen_ret = gen_to_be_invoked.IsTouching( _contactFilter );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -201,7 +201,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Collider2D _collider = (UnityEngine.Collider2D)translator.GetObject(L, 2, typeof(UnityEngine.Collider2D));
                     UnityEngine.ContactFilter2D _contactFilter;translator.Get(L, 3, out _contactFilter);
                     
-                        bool gen_ret = gen_to_be_invoked.IsTouching( _collider, _contactFilter );
+                        var gen_ret = gen_to_be_invoked.IsTouching( _collider, _contactFilter );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -233,7 +233,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 1) 
                 {
                     
-                        bool gen_ret = gen_to_be_invoked.IsTouchingLayers(  );
+                        var gen_ret = gen_to_be_invoked.IsTouchingLayers(  );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -244,7 +244,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _layerMask = LuaAPI.xlua_tointeger(L, 2);
                     
-                        bool gen_ret = gen_to_be_invoked.IsTouchingLayers( _layerMask );
+                        var gen_ret = gen_to_be_invoked.IsTouchingLayers( _layerMask );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -275,7 +275,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Vector2 _point;translator.Get(L, 2, out _point);
                     
-                        bool gen_ret = gen_to_be_invoked.OverlapPoint( _point );
+                        var gen_ret = gen_to_be_invoked.OverlapPoint( _point );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -304,7 +304,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Collider2D _collider = (UnityEngine.Collider2D)translator.GetObject(L, 2, typeof(UnityEngine.Collider2D));
                     
-                        UnityEngine.ColliderDistance2D gen_ret = gen_to_be_invoked.Distance( _collider );
+                        var gen_ret = gen_to_be_invoked.Distance( _collider );
                         translator.Push(L, gen_ret);
                     
                     
@@ -336,7 +336,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.ContactFilter2D _contactFilter;translator.Get(L, 2, out _contactFilter);
                     UnityEngine.Collider2D[] _results = (UnityEngine.Collider2D[])translator.GetObject(L, 3, typeof(UnityEngine.Collider2D[]));
                     
-                        int gen_ret = gen_to_be_invoked.OverlapCollider( _contactFilter, _results );
+                        var gen_ret = gen_to_be_invoked.OverlapCollider( _contactFilter, _results );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -348,7 +348,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.ContactFilter2D _contactFilter;translator.Get(L, 2, out _contactFilter);
                     System.Collections.Generic.List<UnityEngine.Collider2D> _results = (System.Collections.Generic.List<UnityEngine.Collider2D>)translator.GetObject(L, 3, typeof(System.Collections.Generic.List<UnityEngine.Collider2D>));
                     
-                        int gen_ret = gen_to_be_invoked.OverlapCollider( _contactFilter, _results );
+                        var gen_ret = gen_to_be_invoked.OverlapCollider( _contactFilter, _results );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -381,7 +381,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.ContactPoint2D[] _contacts = (UnityEngine.ContactPoint2D[])translator.GetObject(L, 2, typeof(UnityEngine.ContactPoint2D[]));
                     
-                        int gen_ret = gen_to_be_invoked.GetContacts( _contacts );
+                        var gen_ret = gen_to_be_invoked.GetContacts( _contacts );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -392,7 +392,7 @@ namespace XLua.CSObjectWrap
                 {
                     System.Collections.Generic.List<UnityEngine.ContactPoint2D> _contacts = (System.Collections.Generic.List<UnityEngine.ContactPoint2D>)translator.GetObject(L, 2, typeof(System.Collections.Generic.List<UnityEngine.ContactPoint2D>));
                     
-                        int gen_ret = gen_to_be_invoked.GetContacts( _contacts );
+                        var gen_ret = gen_to_be_invoked.GetContacts( _contacts );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -403,7 +403,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Collider2D[] _colliders = (UnityEngine.Collider2D[])translator.GetObject(L, 2, typeof(UnityEngine.Collider2D[]));
                     
-                        int gen_ret = gen_to_be_invoked.GetContacts( _colliders );
+                        var gen_ret = gen_to_be_invoked.GetContacts( _colliders );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -414,7 +414,7 @@ namespace XLua.CSObjectWrap
                 {
                     System.Collections.Generic.List<UnityEngine.Collider2D> _colliders = (System.Collections.Generic.List<UnityEngine.Collider2D>)translator.GetObject(L, 2, typeof(System.Collections.Generic.List<UnityEngine.Collider2D>));
                     
-                        int gen_ret = gen_to_be_invoked.GetContacts( _colliders );
+                        var gen_ret = gen_to_be_invoked.GetContacts( _colliders );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -426,7 +426,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.ContactFilter2D _contactFilter;translator.Get(L, 2, out _contactFilter);
                     UnityEngine.ContactPoint2D[] _contacts = (UnityEngine.ContactPoint2D[])translator.GetObject(L, 3, typeof(UnityEngine.ContactPoint2D[]));
                     
-                        int gen_ret = gen_to_be_invoked.GetContacts( _contactFilter, _contacts );
+                        var gen_ret = gen_to_be_invoked.GetContacts( _contactFilter, _contacts );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -438,7 +438,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.ContactFilter2D _contactFilter;translator.Get(L, 2, out _contactFilter);
                     System.Collections.Generic.List<UnityEngine.ContactPoint2D> _contacts = (System.Collections.Generic.List<UnityEngine.ContactPoint2D>)translator.GetObject(L, 3, typeof(System.Collections.Generic.List<UnityEngine.ContactPoint2D>));
                     
-                        int gen_ret = gen_to_be_invoked.GetContacts( _contactFilter, _contacts );
+                        var gen_ret = gen_to_be_invoked.GetContacts( _contactFilter, _contacts );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -450,7 +450,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.ContactFilter2D _contactFilter;translator.Get(L, 2, out _contactFilter);
                     UnityEngine.Collider2D[] _colliders = (UnityEngine.Collider2D[])translator.GetObject(L, 3, typeof(UnityEngine.Collider2D[]));
                     
-                        int gen_ret = gen_to_be_invoked.GetContacts( _contactFilter, _colliders );
+                        var gen_ret = gen_to_be_invoked.GetContacts( _contactFilter, _colliders );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -462,7 +462,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.ContactFilter2D _contactFilter;translator.Get(L, 2, out _contactFilter);
                     System.Collections.Generic.List<UnityEngine.Collider2D> _colliders = (System.Collections.Generic.List<UnityEngine.Collider2D>)translator.GetObject(L, 3, typeof(System.Collections.Generic.List<UnityEngine.Collider2D>));
                     
-                        int gen_ret = gen_to_be_invoked.GetContacts( _contactFilter, _colliders );
+                        var gen_ret = gen_to_be_invoked.GetContacts( _contactFilter, _colliders );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -496,7 +496,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Vector2 _direction;translator.Get(L, 2, out _direction);
                     UnityEngine.RaycastHit2D[] _results = (UnityEngine.RaycastHit2D[])translator.GetObject(L, 3, typeof(UnityEngine.RaycastHit2D[]));
                     
-                        int gen_ret = gen_to_be_invoked.Cast( _direction, _results );
+                        var gen_ret = gen_to_be_invoked.Cast( _direction, _results );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -509,7 +509,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.RaycastHit2D[] _results = (UnityEngine.RaycastHit2D[])translator.GetObject(L, 3, typeof(UnityEngine.RaycastHit2D[]));
                     float _distance = (float)LuaAPI.lua_tonumber(L, 4);
                     
-                        int gen_ret = gen_to_be_invoked.Cast( _direction, _results, _distance );
+                        var gen_ret = gen_to_be_invoked.Cast( _direction, _results, _distance );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -523,7 +523,7 @@ namespace XLua.CSObjectWrap
                     float _distance = (float)LuaAPI.lua_tonumber(L, 4);
                     bool _ignoreSiblingColliders = LuaAPI.lua_toboolean(L, 5);
                     
-                        int gen_ret = gen_to_be_invoked.Cast( _direction, _results, _distance, _ignoreSiblingColliders );
+                        var gen_ret = gen_to_be_invoked.Cast( _direction, _results, _distance, _ignoreSiblingColliders );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -536,7 +536,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.ContactFilter2D _contactFilter;translator.Get(L, 3, out _contactFilter);
                     UnityEngine.RaycastHit2D[] _results = (UnityEngine.RaycastHit2D[])translator.GetObject(L, 4, typeof(UnityEngine.RaycastHit2D[]));
                     
-                        int gen_ret = gen_to_be_invoked.Cast( _direction, _contactFilter, _results );
+                        var gen_ret = gen_to_be_invoked.Cast( _direction, _contactFilter, _results );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -550,7 +550,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.RaycastHit2D[] _results = (UnityEngine.RaycastHit2D[])translator.GetObject(L, 4, typeof(UnityEngine.RaycastHit2D[]));
                     float _distance = (float)LuaAPI.lua_tonumber(L, 5);
                     
-                        int gen_ret = gen_to_be_invoked.Cast( _direction, _contactFilter, _results, _distance );
+                        var gen_ret = gen_to_be_invoked.Cast( _direction, _contactFilter, _results, _distance );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -565,7 +565,7 @@ namespace XLua.CSObjectWrap
                     float _distance = (float)LuaAPI.lua_tonumber(L, 5);
                     bool _ignoreSiblingColliders = LuaAPI.lua_toboolean(L, 6);
                     
-                        int gen_ret = gen_to_be_invoked.Cast( _direction, _contactFilter, _results, _distance, _ignoreSiblingColliders );
+                        var gen_ret = gen_to_be_invoked.Cast( _direction, _contactFilter, _results, _distance, _ignoreSiblingColliders );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -580,7 +580,7 @@ namespace XLua.CSObjectWrap
                     float _distance = (float)LuaAPI.lua_tonumber(L, 5);
                     bool _ignoreSiblingColliders = LuaAPI.lua_toboolean(L, 6);
                     
-                        int gen_ret = gen_to_be_invoked.Cast( _direction, _contactFilter, _results, _distance, _ignoreSiblingColliders );
+                        var gen_ret = gen_to_be_invoked.Cast( _direction, _contactFilter, _results, _distance, _ignoreSiblingColliders );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -594,7 +594,7 @@ namespace XLua.CSObjectWrap
                     System.Collections.Generic.List<UnityEngine.RaycastHit2D> _results = (System.Collections.Generic.List<UnityEngine.RaycastHit2D>)translator.GetObject(L, 4, typeof(System.Collections.Generic.List<UnityEngine.RaycastHit2D>));
                     float _distance = (float)LuaAPI.lua_tonumber(L, 5);
                     
-                        int gen_ret = gen_to_be_invoked.Cast( _direction, _contactFilter, _results, _distance );
+                        var gen_ret = gen_to_be_invoked.Cast( _direction, _contactFilter, _results, _distance );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -607,7 +607,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.ContactFilter2D _contactFilter;translator.Get(L, 3, out _contactFilter);
                     System.Collections.Generic.List<UnityEngine.RaycastHit2D> _results = (System.Collections.Generic.List<UnityEngine.RaycastHit2D>)translator.GetObject(L, 4, typeof(System.Collections.Generic.List<UnityEngine.RaycastHit2D>));
                     
-                        int gen_ret = gen_to_be_invoked.Cast( _direction, _contactFilter, _results );
+                        var gen_ret = gen_to_be_invoked.Cast( _direction, _contactFilter, _results );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -641,7 +641,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Vector2 _direction;translator.Get(L, 2, out _direction);
                     UnityEngine.RaycastHit2D[] _results = (UnityEngine.RaycastHit2D[])translator.GetObject(L, 3, typeof(UnityEngine.RaycastHit2D[]));
                     
-                        int gen_ret = gen_to_be_invoked.Raycast( _direction, _results );
+                        var gen_ret = gen_to_be_invoked.Raycast( _direction, _results );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -654,7 +654,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.RaycastHit2D[] _results = (UnityEngine.RaycastHit2D[])translator.GetObject(L, 3, typeof(UnityEngine.RaycastHit2D[]));
                     float _distance = (float)LuaAPI.lua_tonumber(L, 4);
                     
-                        int gen_ret = gen_to_be_invoked.Raycast( _direction, _results, _distance );
+                        var gen_ret = gen_to_be_invoked.Raycast( _direction, _results, _distance );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -668,7 +668,7 @@ namespace XLua.CSObjectWrap
                     float _distance = (float)LuaAPI.lua_tonumber(L, 4);
                     int _layerMask = LuaAPI.xlua_tointeger(L, 5);
                     
-                        int gen_ret = gen_to_be_invoked.Raycast( _direction, _results, _distance, _layerMask );
+                        var gen_ret = gen_to_be_invoked.Raycast( _direction, _results, _distance, _layerMask );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -683,7 +683,7 @@ namespace XLua.CSObjectWrap
                     int _layerMask = LuaAPI.xlua_tointeger(L, 5);
                     float _minDepth = (float)LuaAPI.lua_tonumber(L, 6);
                     
-                        int gen_ret = gen_to_be_invoked.Raycast( _direction, _results, _distance, _layerMask, _minDepth );
+                        var gen_ret = gen_to_be_invoked.Raycast( _direction, _results, _distance, _layerMask, _minDepth );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -699,7 +699,7 @@ namespace XLua.CSObjectWrap
                     float _minDepth = (float)LuaAPI.lua_tonumber(L, 6);
                     float _maxDepth = (float)LuaAPI.lua_tonumber(L, 7);
                     
-                        int gen_ret = gen_to_be_invoked.Raycast( _direction, _results, _distance, _layerMask, _minDepth, _maxDepth );
+                        var gen_ret = gen_to_be_invoked.Raycast( _direction, _results, _distance, _layerMask, _minDepth, _maxDepth );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -712,7 +712,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.ContactFilter2D _contactFilter;translator.Get(L, 3, out _contactFilter);
                     UnityEngine.RaycastHit2D[] _results = (UnityEngine.RaycastHit2D[])translator.GetObject(L, 4, typeof(UnityEngine.RaycastHit2D[]));
                     
-                        int gen_ret = gen_to_be_invoked.Raycast( _direction, _contactFilter, _results );
+                        var gen_ret = gen_to_be_invoked.Raycast( _direction, _contactFilter, _results );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -726,7 +726,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.RaycastHit2D[] _results = (UnityEngine.RaycastHit2D[])translator.GetObject(L, 4, typeof(UnityEngine.RaycastHit2D[]));
                     float _distance = (float)LuaAPI.lua_tonumber(L, 5);
                     
-                        int gen_ret = gen_to_be_invoked.Raycast( _direction, _contactFilter, _results, _distance );
+                        var gen_ret = gen_to_be_invoked.Raycast( _direction, _contactFilter, _results, _distance );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -740,7 +740,7 @@ namespace XLua.CSObjectWrap
                     System.Collections.Generic.List<UnityEngine.RaycastHit2D> _results = (System.Collections.Generic.List<UnityEngine.RaycastHit2D>)translator.GetObject(L, 4, typeof(System.Collections.Generic.List<UnityEngine.RaycastHit2D>));
                     float _distance = (float)LuaAPI.lua_tonumber(L, 5);
                     
-                        int gen_ret = gen_to_be_invoked.Raycast( _direction, _contactFilter, _results, _distance );
+                        var gen_ret = gen_to_be_invoked.Raycast( _direction, _contactFilter, _results, _distance );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -753,7 +753,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.ContactFilter2D _contactFilter;translator.Get(L, 3, out _contactFilter);
                     System.Collections.Generic.List<UnityEngine.RaycastHit2D> _results = (System.Collections.Generic.List<UnityEngine.RaycastHit2D>)translator.GetObject(L, 4, typeof(System.Collections.Generic.List<UnityEngine.RaycastHit2D>));
                     
-                        int gen_ret = gen_to_be_invoked.Raycast( _direction, _contactFilter, _results );
+                        var gen_ret = gen_to_be_invoked.Raycast( _direction, _contactFilter, _results );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -784,7 +784,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Vector2 _position;translator.Get(L, 2, out _position);
                     
-                        UnityEngine.Vector2 gen_ret = gen_to_be_invoked.ClosestPoint( _position );
+                        var gen_ret = gen_to_be_invoked.ClosestPoint( _position );
                         translator.PushUnityEngineVector2(L, gen_ret);
                     
                     
@@ -812,7 +812,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.MakeComponentExist(  );
+                        var gen_ret = gen_to_be_invoked.MakeComponentExist(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -867,7 +867,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.LocalIdentity(  );
+                        var gen_ret = gen_to_be_invoked.LocalIdentity(  );
                         translator.Push(L, gen_ret);
                     
                     

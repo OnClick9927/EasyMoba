@@ -105,7 +105,7 @@ namespace XLua.CSObjectWrap
 				{
 					UnityEngine.RenderTextureDescriptor _desc;translator.Get(L, 2, out _desc);
 					
-					UnityEngine.RenderTexture gen_ret = new UnityEngine.RenderTexture(_desc);
+					var gen_ret = new UnityEngine.RenderTexture(_desc);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -114,7 +114,7 @@ namespace XLua.CSObjectWrap
 				{
 					UnityEngine.RenderTexture _textureToCopy = (UnityEngine.RenderTexture)translator.GetObject(L, 2, typeof(UnityEngine.RenderTexture));
 					
-					UnityEngine.RenderTexture gen_ret = new UnityEngine.RenderTexture(_textureToCopy);
+					var gen_ret = new UnityEngine.RenderTexture(_textureToCopy);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -126,7 +126,7 @@ namespace XLua.CSObjectWrap
 					int _depth = LuaAPI.xlua_tointeger(L, 4);
 					UnityEngine.Experimental.Rendering.DefaultFormat _format;translator.Get(L, 5, out _format);
 					
-					UnityEngine.RenderTexture gen_ret = new UnityEngine.RenderTexture(_width, _height, _depth, _format);
+					var gen_ret = new UnityEngine.RenderTexture(_width, _height, _depth, _format);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -138,7 +138,7 @@ namespace XLua.CSObjectWrap
 					int _depth = LuaAPI.xlua_tointeger(L, 4);
 					UnityEngine.Experimental.Rendering.GraphicsFormat _format;translator.Get(L, 5, out _format);
 					
-					UnityEngine.RenderTexture gen_ret = new UnityEngine.RenderTexture(_width, _height, _depth, _format);
+					var gen_ret = new UnityEngine.RenderTexture(_width, _height, _depth, _format);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -151,7 +151,7 @@ namespace XLua.CSObjectWrap
 					UnityEngine.Experimental.Rendering.GraphicsFormat _format;translator.Get(L, 5, out _format);
 					int _mipCount = LuaAPI.xlua_tointeger(L, 6);
 					
-					UnityEngine.RenderTexture gen_ret = new UnityEngine.RenderTexture(_width, _height, _depth, _format, _mipCount);
+					var gen_ret = new UnityEngine.RenderTexture(_width, _height, _depth, _format, _mipCount);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -164,7 +164,7 @@ namespace XLua.CSObjectWrap
 					UnityEngine.RenderTextureFormat _format;translator.Get(L, 5, out _format);
 					UnityEngine.RenderTextureReadWrite _readWrite;translator.Get(L, 6, out _readWrite);
 					
-					UnityEngine.RenderTexture gen_ret = new UnityEngine.RenderTexture(_width, _height, _depth, _format, _readWrite);
+					var gen_ret = new UnityEngine.RenderTexture(_width, _height, _depth, _format, _readWrite);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -176,7 +176,7 @@ namespace XLua.CSObjectWrap
 					int _depth = LuaAPI.xlua_tointeger(L, 4);
 					UnityEngine.RenderTextureFormat _format;translator.Get(L, 5, out _format);
 					
-					UnityEngine.RenderTexture gen_ret = new UnityEngine.RenderTexture(_width, _height, _depth, _format);
+					var gen_ret = new UnityEngine.RenderTexture(_width, _height, _depth, _format);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -187,7 +187,7 @@ namespace XLua.CSObjectWrap
 					int _height = LuaAPI.xlua_tointeger(L, 3);
 					int _depth = LuaAPI.xlua_tointeger(L, 4);
 					
-					UnityEngine.RenderTexture gen_ret = new UnityEngine.RenderTexture(_width, _height, _depth);
+					var gen_ret = new UnityEngine.RenderTexture(_width, _height, _depth);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -200,7 +200,7 @@ namespace XLua.CSObjectWrap
 					UnityEngine.RenderTextureFormat _format;translator.Get(L, 5, out _format);
 					int _mipCount = LuaAPI.xlua_tointeger(L, 6);
 					
-					UnityEngine.RenderTexture gen_ret = new UnityEngine.RenderTexture(_width, _height, _depth, _format, _mipCount);
+					var gen_ret = new UnityEngine.RenderTexture(_width, _height, _depth, _format, _mipCount);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -235,7 +235,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        System.IntPtr gen_ret = gen_to_be_invoked.GetNativeDepthBufferPtr(  );
+                        var gen_ret = gen_to_be_invoked.GetNativeDepthBufferPtr(  );
                         LuaAPI.lua_pushlightuserdata(L, gen_ret);
                     
                     
@@ -401,7 +401,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        bool gen_ret = gen_to_be_invoked.Create(  );
+                        var gen_ret = gen_to_be_invoked.Create(  );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -456,7 +456,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        bool gen_ret = gen_to_be_invoked.IsCreated(  );
+                        var gen_ret = gen_to_be_invoked.IsCreated(  );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -553,7 +553,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.RenderTexture _rt = (UnityEngine.RenderTexture)translator.GetObject(L, 1, typeof(UnityEngine.RenderTexture));
                     
-                        bool gen_ret = UnityEngine.RenderTexture.SupportsStencil( _rt );
+                        var gen_ret = UnityEngine.RenderTexture.SupportsStencil( _rt );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -609,7 +609,7 @@ namespace XLua.CSObjectWrap
                     int _width = LuaAPI.xlua_tointeger(L, 1);
                     int _height = LuaAPI.xlua_tointeger(L, 2);
                     
-                        UnityEngine.RenderTexture gen_ret = UnityEngine.RenderTexture.GetTemporary( _width, _height );
+                        var gen_ret = UnityEngine.RenderTexture.GetTemporary( _width, _height );
                         translator.Push(L, gen_ret);
                     
                     
@@ -622,7 +622,7 @@ namespace XLua.CSObjectWrap
                     int _height = LuaAPI.xlua_tointeger(L, 2);
                     int _depthBuffer = LuaAPI.xlua_tointeger(L, 3);
                     
-                        UnityEngine.RenderTexture gen_ret = UnityEngine.RenderTexture.GetTemporary( _width, _height, _depthBuffer );
+                        var gen_ret = UnityEngine.RenderTexture.GetTemporary( _width, _height, _depthBuffer );
                         translator.Push(L, gen_ret);
                     
                     
@@ -633,7 +633,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.RenderTextureDescriptor _desc;translator.Get(L, 1, out _desc);
                     
-                        UnityEngine.RenderTexture gen_ret = UnityEngine.RenderTexture.GetTemporary( _desc );
+                        var gen_ret = UnityEngine.RenderTexture.GetTemporary( _desc );
                         translator.Push(L, gen_ret);
                     
                     
@@ -647,7 +647,7 @@ namespace XLua.CSObjectWrap
                     int _depthBuffer = LuaAPI.xlua_tointeger(L, 3);
                     UnityEngine.Experimental.Rendering.GraphicsFormat _format;translator.Get(L, 4, out _format);
                     
-                        UnityEngine.RenderTexture gen_ret = UnityEngine.RenderTexture.GetTemporary( _width, _height, _depthBuffer, _format );
+                        var gen_ret = UnityEngine.RenderTexture.GetTemporary( _width, _height, _depthBuffer, _format );
                         translator.Push(L, gen_ret);
                     
                     
@@ -661,7 +661,7 @@ namespace XLua.CSObjectWrap
                     int _depthBuffer = LuaAPI.xlua_tointeger(L, 3);
                     UnityEngine.RenderTextureFormat _format;translator.Get(L, 4, out _format);
                     
-                        UnityEngine.RenderTexture gen_ret = UnityEngine.RenderTexture.GetTemporary( _width, _height, _depthBuffer, _format );
+                        var gen_ret = UnityEngine.RenderTexture.GetTemporary( _width, _height, _depthBuffer, _format );
                         translator.Push(L, gen_ret);
                     
                     
@@ -676,7 +676,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Experimental.Rendering.GraphicsFormat _format;translator.Get(L, 4, out _format);
                     int _antiAliasing = LuaAPI.xlua_tointeger(L, 5);
                     
-                        UnityEngine.RenderTexture gen_ret = UnityEngine.RenderTexture.GetTemporary( _width, _height, _depthBuffer, _format, _antiAliasing );
+                        var gen_ret = UnityEngine.RenderTexture.GetTemporary( _width, _height, _depthBuffer, _format, _antiAliasing );
                         translator.Push(L, gen_ret);
                     
                     
@@ -691,7 +691,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.RenderTextureFormat _format;translator.Get(L, 4, out _format);
                     UnityEngine.RenderTextureReadWrite _readWrite;translator.Get(L, 5, out _readWrite);
                     
-                        UnityEngine.RenderTexture gen_ret = UnityEngine.RenderTexture.GetTemporary( _width, _height, _depthBuffer, _format, _readWrite );
+                        var gen_ret = UnityEngine.RenderTexture.GetTemporary( _width, _height, _depthBuffer, _format, _readWrite );
                         translator.Push(L, gen_ret);
                     
                     
@@ -707,7 +707,7 @@ namespace XLua.CSObjectWrap
                     int _antiAliasing = LuaAPI.xlua_tointeger(L, 5);
                     UnityEngine.RenderTextureMemoryless _memorylessMode;translator.Get(L, 6, out _memorylessMode);
                     
-                        UnityEngine.RenderTexture gen_ret = UnityEngine.RenderTexture.GetTemporary( _width, _height, _depthBuffer, _format, _antiAliasing, _memorylessMode );
+                        var gen_ret = UnityEngine.RenderTexture.GetTemporary( _width, _height, _depthBuffer, _format, _antiAliasing, _memorylessMode );
                         translator.Push(L, gen_ret);
                     
                     
@@ -723,7 +723,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.RenderTextureReadWrite _readWrite;translator.Get(L, 5, out _readWrite);
                     int _antiAliasing = LuaAPI.xlua_tointeger(L, 6);
                     
-                        UnityEngine.RenderTexture gen_ret = UnityEngine.RenderTexture.GetTemporary( _width, _height, _depthBuffer, _format, _readWrite, _antiAliasing );
+                        var gen_ret = UnityEngine.RenderTexture.GetTemporary( _width, _height, _depthBuffer, _format, _readWrite, _antiAliasing );
                         translator.Push(L, gen_ret);
                     
                     
@@ -740,7 +740,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.RenderTextureMemoryless _memorylessMode;translator.Get(L, 6, out _memorylessMode);
                     UnityEngine.VRTextureUsage _vrUsage;translator.Get(L, 7, out _vrUsage);
                     
-                        UnityEngine.RenderTexture gen_ret = UnityEngine.RenderTexture.GetTemporary( _width, _height, _depthBuffer, _format, _antiAliasing, _memorylessMode, _vrUsage );
+                        var gen_ret = UnityEngine.RenderTexture.GetTemporary( _width, _height, _depthBuffer, _format, _antiAliasing, _memorylessMode, _vrUsage );
                         translator.Push(L, gen_ret);
                     
                     
@@ -757,7 +757,7 @@ namespace XLua.CSObjectWrap
                     int _antiAliasing = LuaAPI.xlua_tointeger(L, 6);
                     UnityEngine.RenderTextureMemoryless _memorylessMode;translator.Get(L, 7, out _memorylessMode);
                     
-                        UnityEngine.RenderTexture gen_ret = UnityEngine.RenderTexture.GetTemporary( _width, _height, _depthBuffer, _format, _readWrite, _antiAliasing, _memorylessMode );
+                        var gen_ret = UnityEngine.RenderTexture.GetTemporary( _width, _height, _depthBuffer, _format, _readWrite, _antiAliasing, _memorylessMode );
                         translator.Push(L, gen_ret);
                     
                     
@@ -775,7 +775,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.VRTextureUsage _vrUsage;translator.Get(L, 7, out _vrUsage);
                     bool _useDynamicScale = LuaAPI.lua_toboolean(L, 8);
                     
-                        UnityEngine.RenderTexture gen_ret = UnityEngine.RenderTexture.GetTemporary( _width, _height, _depthBuffer, _format, _antiAliasing, _memorylessMode, _vrUsage, _useDynamicScale );
+                        var gen_ret = UnityEngine.RenderTexture.GetTemporary( _width, _height, _depthBuffer, _format, _antiAliasing, _memorylessMode, _vrUsage, _useDynamicScale );
                         translator.Push(L, gen_ret);
                     
                     
@@ -793,7 +793,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.RenderTextureMemoryless _memorylessMode;translator.Get(L, 7, out _memorylessMode);
                     UnityEngine.VRTextureUsage _vrUsage;translator.Get(L, 8, out _vrUsage);
                     
-                        UnityEngine.RenderTexture gen_ret = UnityEngine.RenderTexture.GetTemporary( _width, _height, _depthBuffer, _format, _readWrite, _antiAliasing, _memorylessMode, _vrUsage );
+                        var gen_ret = UnityEngine.RenderTexture.GetTemporary( _width, _height, _depthBuffer, _format, _readWrite, _antiAliasing, _memorylessMode, _vrUsage );
                         translator.Push(L, gen_ret);
                     
                     
@@ -812,7 +812,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.VRTextureUsage _vrUsage;translator.Get(L, 8, out _vrUsage);
                     bool _useDynamicScale = LuaAPI.lua_toboolean(L, 9);
                     
-                        UnityEngine.RenderTexture gen_ret = UnityEngine.RenderTexture.GetTemporary( _width, _height, _depthBuffer, _format, _readWrite, _antiAliasing, _memorylessMode, _vrUsage, _useDynamicScale );
+                        var gen_ret = UnityEngine.RenderTexture.GetTemporary( _width, _height, _depthBuffer, _format, _readWrite, _antiAliasing, _memorylessMode, _vrUsage, _useDynamicScale );
                         translator.Push(L, gen_ret);
                     
                     

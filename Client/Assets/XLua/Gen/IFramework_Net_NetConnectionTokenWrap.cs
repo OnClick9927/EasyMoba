@@ -59,7 +59,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					IFramework.Net.NetConnectionToken gen_ret = new IFramework.Net.NetConnectionToken();
+					var gen_ret = new IFramework.Net.NetConnectionToken();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -68,7 +68,7 @@ namespace XLua.CSObjectWrap
 				{
 					IFramework.Net.SocketToken _sToken = (IFramework.Net.SocketToken)translator.GetObject(L, 2, typeof(IFramework.Net.SocketToken));
 					
-					IFramework.Net.NetConnectionToken gen_ret = new IFramework.Net.NetConnectionToken(_sToken);
+					var gen_ret = new IFramework.Net.NetConnectionToken(_sToken);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -104,7 +104,7 @@ namespace XLua.CSObjectWrap
                 {
                     IFramework.Net.NetConnectionToken _item = (IFramework.Net.NetConnectionToken)translator.GetObject(L, 2, typeof(IFramework.Net.NetConnectionToken));
                     
-                        int gen_ret = gen_to_be_invoked.CompareTo( _item );
+                        var gen_ret = gen_to_be_invoked.CompareTo( _item );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -133,7 +133,7 @@ namespace XLua.CSObjectWrap
                 {
                     object _obj = translator.GetObject(L, 2, typeof(object));
                     
-                        bool gen_ret = gen_to_be_invoked.Equals( _obj );
+                        var gen_ret = gen_to_be_invoked.Equals( _obj );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -161,7 +161,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        int gen_ret = gen_to_be_invoked.GetHashCode(  );
+                        var gen_ret = gen_to_be_invoked.GetHashCode(  );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     

@@ -107,7 +107,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					IFramework.UI.SuperScrollView.LoopListView gen_ret = new IFramework.UI.SuperScrollView.LoopListView();
+					var gen_ret = new IFramework.UI.SuperScrollView.LoopListView();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -143,7 +143,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _index = LuaAPI.xlua_tointeger(L, 2);
                     
-                        IFramework.UI.SuperScrollView.LoopListViewItem gen_ret = gen_to_be_invoked.GetShownItemByIndex( _index );
+                        var gen_ret = gen_to_be_invoked.GetShownItemByIndex( _index );
                         translator.Push(L, gen_ret);
                     
                     
@@ -172,7 +172,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _index = LuaAPI.xlua_tointeger(L, 2);
                     
-                        IFramework.UI.SuperScrollView.LoopListViewItem gen_ret = gen_to_be_invoked.GetShownItemByIndexWithoutCheck( _index );
+                        var gen_ret = gen_to_be_invoked.GetShownItemByIndexWithoutCheck( _index );
                         translator.Push(L, gen_ret);
                     
                     
@@ -201,7 +201,7 @@ namespace XLua.CSObjectWrap
                 {
                     IFramework.UI.SuperScrollView.LoopListViewItem _item = (IFramework.UI.SuperScrollView.LoopListViewItem)translator.GetObject(L, 2, typeof(IFramework.UI.SuperScrollView.LoopListViewItem));
                     
-                        int gen_ret = gen_to_be_invoked.GetIndexInShownItemList( _item );
+                        var gen_ret = gen_to_be_invoked.GetIndexInShownItemList( _item );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -259,7 +259,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _path = LuaAPI.lua_tostring(L, 2);
                     
-                        IFramework.UI.SuperScrollView.LoopListViewItem gen_ret = gen_to_be_invoked.NewListViewItem( _path );
+                        var gen_ret = gen_to_be_invoked.NewListViewItem( _path );
                         translator.Push(L, gen_ret);
                     
                     
@@ -487,7 +487,7 @@ namespace XLua.CSObjectWrap
                     IFramework.UI.SuperScrollView.LoopListViewItem _item = (IFramework.UI.SuperScrollView.LoopListViewItem)translator.GetObject(L, 2, typeof(IFramework.UI.SuperScrollView.LoopListViewItem));
                     IFramework.UI.SuperScrollView.LoopListView.CornerEnum _corner;translator.Get(L, 3, out _corner);
                     
-                        UnityEngine.Vector3 gen_ret = gen_to_be_invoked.GetItemCornerPosInViewPort( _item, _corner );
+                        var gen_ret = gen_to_be_invoked.GetItemCornerPosInViewPort( _item, _corner );
                         translator.PushUnityEngineVector3(L, gen_ret);
                     
                     
@@ -498,7 +498,7 @@ namespace XLua.CSObjectWrap
                 {
                     IFramework.UI.SuperScrollView.LoopListViewItem _item = (IFramework.UI.SuperScrollView.LoopListViewItem)translator.GetObject(L, 2, typeof(IFramework.UI.SuperScrollView.LoopListViewItem));
                     
-                        UnityEngine.Vector3 gen_ret = gen_to_be_invoked.GetItemCornerPosInViewPort( _item );
+                        var gen_ret = gen_to_be_invoked.GetItemCornerPosInViewPort( _item );
                         translator.PushUnityEngineVector3(L, gen_ret);
                     
                     
@@ -697,7 +697,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _path = LuaAPI.lua_tostring(L, 2);
                     
-                        IFramework.UI.SuperScrollView.LoopListView.PrefabConfData gen_ret = gen_to_be_invoked.GetItemPrefabConfData( _path );
+                        var gen_ret = gen_to_be_invoked.GetItemPrefabConfData( _path );
                         translator.Push(L, gen_ret);
                     
                     
@@ -871,7 +871,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _itemIndex = LuaAPI.xlua_tointeger(L, 2);
                     
-                        IFramework.UI.SuperScrollView.LoopListViewItem gen_ret = gen_to_be_invoked.GetShownItemByItemIndex( _itemIndex );
+                        var gen_ret = gen_to_be_invoked.GetShownItemByItemIndex( _itemIndex );
                         translator.Push(L, gen_ret);
                     
                     
@@ -983,7 +983,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.MakeComponentExist(  );
+                        var gen_ret = gen_to_be_invoked.MakeComponentExist(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -1038,7 +1038,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.LocalIdentity(  );
+                        var gen_ret = gen_to_be_invoked.LocalIdentity(  );
                         translator.Push(L, gen_ret);
                     
                     

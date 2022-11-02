@@ -8,6 +8,10 @@ function GameTools.CloseUI(panelName)
     UI:Close(panelName)
 end
 
+function GameTools.CloseAllUI()
+    UI:CloseAll()
+end
+
 function GameTools.SetActive(gameObject, active)
     gameObject.gameObject:SetActive(active)
 end

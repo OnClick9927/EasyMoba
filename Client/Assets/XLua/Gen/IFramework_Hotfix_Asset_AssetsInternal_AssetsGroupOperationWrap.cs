@@ -54,7 +54,7 @@ namespace XLua.CSObjectWrap
 				{
 					string[] _paths = (string[])translator.GetObject(L, 2, typeof(string[]));
 					
-					IFramework.Hotfix.Asset.AssetsInternal.AssetsGroupOperation gen_ret = new IFramework.Hotfix.Asset.AssetsInternal.AssetsGroupOperation(_paths);
+					var gen_ret = new IFramework.Hotfix.Asset.AssetsInternal.AssetsGroupOperation(_paths);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -116,7 +116,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        IFramework.IAwaiter<IFramework.Hotfix.Asset.AssetsInternal.AssetsGroupOperation> gen_ret = gen_to_be_invoked.GetAwaiter(  );
+                        var gen_ret = gen_to_be_invoked.GetAwaiter(  );
                         translator.PushAny(L, gen_ret);
                     
                     

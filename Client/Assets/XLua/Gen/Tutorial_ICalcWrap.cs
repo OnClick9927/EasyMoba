@@ -71,7 +71,7 @@ namespace XLua.CSObjectWrap
                     int _a = LuaAPI.xlua_tointeger(L, 2);
                     int _b = LuaAPI.xlua_tointeger(L, 3);
                     
-                        int gen_ret = gen_to_be_invoked.add( _a, _b );
+                        var gen_ret = gen_to_be_invoked.add( _a, _b );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     

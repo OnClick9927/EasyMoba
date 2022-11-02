@@ -78,7 +78,7 @@ namespace XLua.CSObjectWrap
                     object _self = translator.GetObject(L, 1, typeof(object));
                     System.Type _type = (System.Type)translator.GetObject(L, 2, typeof(System.Type));
                     
-                        string gen_ret = IFramework.Serialization.StringConvert.ConvertToString( _self, _type );
+                        var gen_ret = IFramework.Serialization.StringConvert.ConvertToString( _self, _type );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -107,7 +107,7 @@ namespace XLua.CSObjectWrap
                     System.Type _type = (System.Type)translator.GetObject(L, 2, typeof(System.Type));
                     object _obj = translator.GetObject(L, 3, typeof(object));
                     
-                        bool gen_ret = IFramework.Serialization.StringConvert.TryConvert( _self, _type, ref _obj );
+                        var gen_ret = IFramework.Serialization.StringConvert.TryConvert( _self, _type, ref _obj );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     translator.PushAny(L, _obj);
                         
@@ -136,7 +136,7 @@ namespace XLua.CSObjectWrap
                 {
                     System.Type _type = (System.Type)translator.GetObject(L, 1, typeof(System.Type));
                     
-                        IFramework.Serialization.StringConverter gen_ret = IFramework.Serialization.StringConvert.GetConverter( _type );
+                        var gen_ret = IFramework.Serialization.StringConvert.GetConverter( _type );
                         translator.Push(L, gen_ret);
                     
                     
@@ -163,7 +163,7 @@ namespace XLua.CSObjectWrap
                 {
                     System.Type _type = (System.Type)translator.GetObject(L, 1, typeof(System.Type));
                     
-                        IFramework.Serialization.StringFormatter gen_ret = IFramework.Serialization.StringConvert.GetFormatter( _type );
+                        var gen_ret = IFramework.Serialization.StringConvert.GetFormatter( _type );
                         translator.Push(L, gen_ret);
                     
                     

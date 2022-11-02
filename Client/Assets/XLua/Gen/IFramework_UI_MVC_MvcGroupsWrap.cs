@@ -54,7 +54,7 @@ namespace XLua.CSObjectWrap
 				{
 					System.Collections.Generic.Dictionary<string, System.Type>[] _maps = (System.Collections.Generic.Dictionary<string, System.Type>[])translator.GetObject(L, 2, typeof(System.Collections.Generic.Dictionary<string, System.Type>[]));
 					
-					IFramework.UI.MVC.MvcGroups gen_ret = new IFramework.UI.MVC.MvcGroups(_maps);
+					var gen_ret = new IFramework.UI.MVC.MvcGroups(_maps);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -119,7 +119,7 @@ namespace XLua.CSObjectWrap
                     string _name = LuaAPI.lua_tostring(L, 3);
                     IFramework.UI.UIPanel _panel = (IFramework.UI.UIPanel)translator.GetObject(L, 4, typeof(IFramework.UI.UIPanel));
                     
-                        bool gen_ret = gen_to_be_invoked.Subscribe( _path, _name, _panel );
+                        var gen_ret = gen_to_be_invoked.Subscribe( _path, _name, _panel );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -148,7 +148,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _path = LuaAPI.lua_tostring(L, 2);
                     
-                        bool gen_ret = gen_to_be_invoked.UnSubscribe( _path );
+                        var gen_ret = gen_to_be_invoked.UnSubscribe( _path );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     

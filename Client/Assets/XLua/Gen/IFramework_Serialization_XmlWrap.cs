@@ -52,7 +52,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					IFramework.Serialization.Xml gen_ret = new IFramework.Serialization.Xml();
+					var gen_ret = new IFramework.Serialization.Xml();
 					translator.Push(L, gen_ret);
                     
 					return 1;

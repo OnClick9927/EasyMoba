@@ -106,7 +106,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					IFramework.UI.UGUIEventListener gen_ret = new IFramework.UI.UGUIEventListener();
+					var gen_ret = new IFramework.UI.UGUIEventListener();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -140,7 +140,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.GameObject _go = (UnityEngine.GameObject)translator.GetObject(L, 1, typeof(UnityEngine.GameObject));
                     
-                        IFramework.UI.UGUIEventListener gen_ret = IFramework.UI.UGUIEventListener.Get( _go );
+                        var gen_ret = IFramework.UI.UGUIEventListener.Get( _go );
                         translator.Push(L, gen_ret);
                     
                     
@@ -587,7 +587,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.MakeComponentExist(  );
+                        var gen_ret = gen_to_be_invoked.MakeComponentExist(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -642,7 +642,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.LocalIdentity(  );
+                        var gen_ret = gen_to_be_invoked.LocalIdentity(  );
                         translator.Push(L, gen_ret);
                     
                     

@@ -76,7 +76,7 @@ namespace XLua.CSObjectWrap
 					UnityEngine.Rendering.RenderBufferLoadAction _depthLoad;translator.Get(L, 8, out _depthLoad);
 					UnityEngine.Rendering.RenderBufferStoreAction _depthStore;translator.Get(L, 9, out _depthStore);
 					
-					UnityEngine.RenderTargetSetup gen_ret = new UnityEngine.RenderTargetSetup(_color, _depth, _mip, _face, _colorLoad, _colorStore, _depthLoad, _depthStore);
+					var gen_ret = new UnityEngine.RenderTargetSetup(_color, _depth, _mip, _face, _colorLoad, _colorStore, _depthLoad, _depthStore);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -86,7 +86,7 @@ namespace XLua.CSObjectWrap
 					UnityEngine.RenderBuffer _color;translator.Get(L, 2, out _color);
 					UnityEngine.RenderBuffer _depth;translator.Get(L, 3, out _depth);
 					
-					UnityEngine.RenderTargetSetup gen_ret = new UnityEngine.RenderTargetSetup(_color, _depth);
+					var gen_ret = new UnityEngine.RenderTargetSetup(_color, _depth);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -97,7 +97,7 @@ namespace XLua.CSObjectWrap
 					UnityEngine.RenderBuffer _depth;translator.Get(L, 3, out _depth);
 					int _mipLevel = LuaAPI.xlua_tointeger(L, 4);
 					
-					UnityEngine.RenderTargetSetup gen_ret = new UnityEngine.RenderTargetSetup(_color, _depth, _mipLevel);
+					var gen_ret = new UnityEngine.RenderTargetSetup(_color, _depth, _mipLevel);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -109,7 +109,7 @@ namespace XLua.CSObjectWrap
 					int _mipLevel = LuaAPI.xlua_tointeger(L, 4);
 					UnityEngine.CubemapFace _face;translator.Get(L, 5, out _face);
 					
-					UnityEngine.RenderTargetSetup gen_ret = new UnityEngine.RenderTargetSetup(_color, _depth, _mipLevel, _face);
+					var gen_ret = new UnityEngine.RenderTargetSetup(_color, _depth, _mipLevel, _face);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -122,7 +122,7 @@ namespace XLua.CSObjectWrap
 					UnityEngine.CubemapFace _face;translator.Get(L, 5, out _face);
 					int _depthSlice = LuaAPI.xlua_tointeger(L, 6);
 					
-					UnityEngine.RenderTargetSetup gen_ret = new UnityEngine.RenderTargetSetup(_color, _depth, _mipLevel, _face, _depthSlice);
+					var gen_ret = new UnityEngine.RenderTargetSetup(_color, _depth, _mipLevel, _face, _depthSlice);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -132,7 +132,7 @@ namespace XLua.CSObjectWrap
 					UnityEngine.RenderBuffer[] _color = (UnityEngine.RenderBuffer[])translator.GetObject(L, 2, typeof(UnityEngine.RenderBuffer[]));
 					UnityEngine.RenderBuffer _depth;translator.Get(L, 3, out _depth);
 					
-					UnityEngine.RenderTargetSetup gen_ret = new UnityEngine.RenderTargetSetup(_color, _depth);
+					var gen_ret = new UnityEngine.RenderTargetSetup(_color, _depth);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -143,7 +143,7 @@ namespace XLua.CSObjectWrap
 					UnityEngine.RenderBuffer _depth;translator.Get(L, 3, out _depth);
 					int _mipLevel = LuaAPI.xlua_tointeger(L, 4);
 					
-					UnityEngine.RenderTargetSetup gen_ret = new UnityEngine.RenderTargetSetup(_color, _depth, _mipLevel);
+					var gen_ret = new UnityEngine.RenderTargetSetup(_color, _depth, _mipLevel);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -155,7 +155,7 @@ namespace XLua.CSObjectWrap
 					int _mip = LuaAPI.xlua_tointeger(L, 4);
 					UnityEngine.CubemapFace _face;translator.Get(L, 5, out _face);
 					
-					UnityEngine.RenderTargetSetup gen_ret = new UnityEngine.RenderTargetSetup(_color, _depth, _mip, _face);
+					var gen_ret = new UnityEngine.RenderTargetSetup(_color, _depth, _mip, _face);
 					translator.Push(L, gen_ret);
                     
 					return 1;

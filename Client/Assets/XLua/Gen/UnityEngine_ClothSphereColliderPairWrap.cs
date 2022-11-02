@@ -55,7 +55,7 @@ namespace XLua.CSObjectWrap
 				{
 					UnityEngine.SphereCollider _a = (UnityEngine.SphereCollider)translator.GetObject(L, 2, typeof(UnityEngine.SphereCollider));
 					
-					UnityEngine.ClothSphereColliderPair gen_ret = new UnityEngine.ClothSphereColliderPair(_a);
+					var gen_ret = new UnityEngine.ClothSphereColliderPair(_a);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -65,7 +65,7 @@ namespace XLua.CSObjectWrap
 					UnityEngine.SphereCollider _a = (UnityEngine.SphereCollider)translator.GetObject(L, 2, typeof(UnityEngine.SphereCollider));
 					UnityEngine.SphereCollider _b = (UnityEngine.SphereCollider)translator.GetObject(L, 3, typeof(UnityEngine.SphereCollider));
 					
-					UnityEngine.ClothSphereColliderPair gen_ret = new UnityEngine.ClothSphereColliderPair(_a, _b);
+					var gen_ret = new UnityEngine.ClothSphereColliderPair(_a, _b);
 					translator.Push(L, gen_ret);
                     
 					return 1;

@@ -59,7 +59,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.Resources gen_ret = new UnityEngine.Resources();
+					var gen_ret = new UnityEngine.Resources();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -93,7 +93,7 @@ namespace XLua.CSObjectWrap
                 {
                     System.Type _type = (System.Type)translator.GetObject(L, 1, typeof(System.Type));
                     
-                        UnityEngine.Object[] gen_ret = UnityEngine.Resources.FindObjectsOfTypeAll( _type );
+                        var gen_ret = UnityEngine.Resources.FindObjectsOfTypeAll( _type );
                         translator.Push(L, gen_ret);
                     
                     
@@ -122,7 +122,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _path = LuaAPI.lua_tostring(L, 1);
                     
-                        UnityEngine.Object gen_ret = UnityEngine.Resources.Load( _path );
+                        var gen_ret = UnityEngine.Resources.Load( _path );
                         translator.Push(L, gen_ret);
                     
                     
@@ -134,7 +134,7 @@ namespace XLua.CSObjectWrap
                     string _path = LuaAPI.lua_tostring(L, 1);
                     System.Type _systemTypeInstance = (System.Type)translator.GetObject(L, 2, typeof(System.Type));
                     
-                        UnityEngine.Object gen_ret = UnityEngine.Resources.Load( _path, _systemTypeInstance );
+                        var gen_ret = UnityEngine.Resources.Load( _path, _systemTypeInstance );
                         translator.Push(L, gen_ret);
                     
                     
@@ -165,7 +165,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _path = LuaAPI.lua_tostring(L, 1);
                     
-                        UnityEngine.ResourceRequest gen_ret = UnityEngine.Resources.LoadAsync( _path );
+                        var gen_ret = UnityEngine.Resources.LoadAsync( _path );
                         translator.Push(L, gen_ret);
                     
                     
@@ -177,7 +177,7 @@ namespace XLua.CSObjectWrap
                     string _path = LuaAPI.lua_tostring(L, 1);
                     System.Type _type = (System.Type)translator.GetObject(L, 2, typeof(System.Type));
                     
-                        UnityEngine.ResourceRequest gen_ret = UnityEngine.Resources.LoadAsync( _path, _type );
+                        var gen_ret = UnityEngine.Resources.LoadAsync( _path, _type );
                         translator.Push(L, gen_ret);
                     
                     
@@ -208,7 +208,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _path = LuaAPI.lua_tostring(L, 1);
                     
-                        UnityEngine.Object[] gen_ret = UnityEngine.Resources.LoadAll( _path );
+                        var gen_ret = UnityEngine.Resources.LoadAll( _path );
                         translator.Push(L, gen_ret);
                     
                     
@@ -220,7 +220,7 @@ namespace XLua.CSObjectWrap
                     string _path = LuaAPI.lua_tostring(L, 1);
                     System.Type _systemTypeInstance = (System.Type)translator.GetObject(L, 2, typeof(System.Type));
                     
-                        UnityEngine.Object[] gen_ret = UnityEngine.Resources.LoadAll( _path, _systemTypeInstance );
+                        var gen_ret = UnityEngine.Resources.LoadAll( _path, _systemTypeInstance );
                         translator.Push(L, gen_ret);
                     
                     
@@ -250,7 +250,7 @@ namespace XLua.CSObjectWrap
                     System.Type _type = (System.Type)translator.GetObject(L, 1, typeof(System.Type));
                     string _path = LuaAPI.lua_tostring(L, 2);
                     
-                        UnityEngine.Object gen_ret = UnityEngine.Resources.GetBuiltinResource( _type, _path );
+                        var gen_ret = UnityEngine.Resources.GetBuiltinResource( _type, _path );
                         translator.Push(L, gen_ret);
                     
                     
@@ -302,7 +302,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.AsyncOperation gen_ret = UnityEngine.Resources.UnloadUnusedAssets(  );
+                        var gen_ret = UnityEngine.Resources.UnloadUnusedAssets(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -329,7 +329,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _instanceID = LuaAPI.xlua_tointeger(L, 1);
                     
-                        UnityEngine.Object gen_ret = UnityEngine.Resources.InstanceIDToObject( _instanceID );
+                        var gen_ret = UnityEngine.Resources.InstanceIDToObject( _instanceID );
                         translator.Push(L, gen_ret);
                     
                     

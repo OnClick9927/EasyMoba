@@ -133,7 +133,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _value = LuaAPI.xlua_tointeger(L, 1);
                     
-                        int gen_ret = UnityEngine.Mathf.ClosestPowerOfTwo( _value );
+                        var gen_ret = UnityEngine.Mathf.ClosestPowerOfTwo( _value );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -158,7 +158,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _value = LuaAPI.xlua_tointeger(L, 1);
                     
-                        bool gen_ret = UnityEngine.Mathf.IsPowerOfTwo( _value );
+                        var gen_ret = UnityEngine.Mathf.IsPowerOfTwo( _value );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -183,7 +183,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _value = LuaAPI.xlua_tointeger(L, 1);
                     
-                        int gen_ret = UnityEngine.Mathf.NextPowerOfTwo( _value );
+                        var gen_ret = UnityEngine.Mathf.NextPowerOfTwo( _value );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -208,7 +208,7 @@ namespace XLua.CSObjectWrap
                 {
                     float _value = (float)LuaAPI.lua_tonumber(L, 1);
                     
-                        float gen_ret = UnityEngine.Mathf.GammaToLinearSpace( _value );
+                        var gen_ret = UnityEngine.Mathf.GammaToLinearSpace( _value );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -233,7 +233,7 @@ namespace XLua.CSObjectWrap
                 {
                     float _value = (float)LuaAPI.lua_tonumber(L, 1);
                     
-                        float gen_ret = UnityEngine.Mathf.LinearToGammaSpace( _value );
+                        var gen_ret = UnityEngine.Mathf.LinearToGammaSpace( _value );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -260,7 +260,7 @@ namespace XLua.CSObjectWrap
                 {
                     float _kelvin = (float)LuaAPI.lua_tonumber(L, 1);
                     
-                        UnityEngine.Color gen_ret = UnityEngine.Mathf.CorrelatedColorTemperatureToRGB( _kelvin );
+                        var gen_ret = UnityEngine.Mathf.CorrelatedColorTemperatureToRGB( _kelvin );
                         translator.PushUnityEngineColor(L, gen_ret);
                     
                     
@@ -285,7 +285,7 @@ namespace XLua.CSObjectWrap
                 {
                     float _val = (float)LuaAPI.lua_tonumber(L, 1);
                     
-                        ushort gen_ret = UnityEngine.Mathf.FloatToHalf( _val );
+                        var gen_ret = UnityEngine.Mathf.FloatToHalf( _val );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -310,7 +310,7 @@ namespace XLua.CSObjectWrap
                 {
                     ushort _val = (ushort)LuaAPI.xlua_tointeger(L, 1);
                     
-                        float gen_ret = UnityEngine.Mathf.HalfToFloat( _val );
+                        var gen_ret = UnityEngine.Mathf.HalfToFloat( _val );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -336,7 +336,7 @@ namespace XLua.CSObjectWrap
                     float _x = (float)LuaAPI.lua_tonumber(L, 1);
                     float _y = (float)LuaAPI.lua_tonumber(L, 2);
                     
-                        float gen_ret = UnityEngine.Mathf.PerlinNoise( _x, _y );
+                        var gen_ret = UnityEngine.Mathf.PerlinNoise( _x, _y );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -361,7 +361,7 @@ namespace XLua.CSObjectWrap
                 {
                     float _f = (float)LuaAPI.lua_tonumber(L, 1);
                     
-                        float gen_ret = UnityEngine.Mathf.Sin( _f );
+                        var gen_ret = UnityEngine.Mathf.Sin( _f );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -386,7 +386,7 @@ namespace XLua.CSObjectWrap
                 {
                     float _f = (float)LuaAPI.lua_tonumber(L, 1);
                     
-                        float gen_ret = UnityEngine.Mathf.Cos( _f );
+                        var gen_ret = UnityEngine.Mathf.Cos( _f );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -411,7 +411,7 @@ namespace XLua.CSObjectWrap
                 {
                     float _f = (float)LuaAPI.lua_tonumber(L, 1);
                     
-                        float gen_ret = UnityEngine.Mathf.Tan( _f );
+                        var gen_ret = UnityEngine.Mathf.Tan( _f );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -436,7 +436,7 @@ namespace XLua.CSObjectWrap
                 {
                     float _f = (float)LuaAPI.lua_tonumber(L, 1);
                     
-                        float gen_ret = UnityEngine.Mathf.Asin( _f );
+                        var gen_ret = UnityEngine.Mathf.Asin( _f );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -461,7 +461,7 @@ namespace XLua.CSObjectWrap
                 {
                     float _f = (float)LuaAPI.lua_tonumber(L, 1);
                     
-                        float gen_ret = UnityEngine.Mathf.Acos( _f );
+                        var gen_ret = UnityEngine.Mathf.Acos( _f );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -486,7 +486,7 @@ namespace XLua.CSObjectWrap
                 {
                     float _f = (float)LuaAPI.lua_tonumber(L, 1);
                     
-                        float gen_ret = UnityEngine.Mathf.Atan( _f );
+                        var gen_ret = UnityEngine.Mathf.Atan( _f );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -512,7 +512,7 @@ namespace XLua.CSObjectWrap
                     float _y = (float)LuaAPI.lua_tonumber(L, 1);
                     float _x = (float)LuaAPI.lua_tonumber(L, 2);
                     
-                        float gen_ret = UnityEngine.Mathf.Atan2( _y, _x );
+                        var gen_ret = UnityEngine.Mathf.Atan2( _y, _x );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -537,7 +537,7 @@ namespace XLua.CSObjectWrap
                 {
                     float _f = (float)LuaAPI.lua_tonumber(L, 1);
                     
-                        float gen_ret = UnityEngine.Mathf.Sqrt( _f );
+                        var gen_ret = UnityEngine.Mathf.Sqrt( _f );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -564,7 +564,7 @@ namespace XLua.CSObjectWrap
                 {
                     float _f = (float)LuaAPI.lua_tonumber(L, 1);
                     
-                        float gen_ret = UnityEngine.Mathf.Abs( _f );
+                        var gen_ret = UnityEngine.Mathf.Abs( _f );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -575,7 +575,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _value = LuaAPI.xlua_tointeger(L, 1);
                     
-                        int gen_ret = UnityEngine.Mathf.Abs( _value );
+                        var gen_ret = UnityEngine.Mathf.Abs( _value );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -607,7 +607,7 @@ namespace XLua.CSObjectWrap
                     float _a = (float)LuaAPI.lua_tonumber(L, 1);
                     float _b = (float)LuaAPI.lua_tonumber(L, 2);
                     
-                        float gen_ret = UnityEngine.Mathf.Min( _a, _b );
+                        var gen_ret = UnityEngine.Mathf.Min( _a, _b );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -619,7 +619,7 @@ namespace XLua.CSObjectWrap
                     int _a = LuaAPI.xlua_tointeger(L, 1);
                     int _b = LuaAPI.xlua_tointeger(L, 2);
                     
-                        int gen_ret = UnityEngine.Mathf.Min( _a, _b );
+                        var gen_ret = UnityEngine.Mathf.Min( _a, _b );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -630,7 +630,7 @@ namespace XLua.CSObjectWrap
                 {
                     float[] _values = translator.GetParams<float>(L, 1);
                     
-                        float gen_ret = UnityEngine.Mathf.Min( _values );
+                        var gen_ret = UnityEngine.Mathf.Min( _values );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -641,7 +641,7 @@ namespace XLua.CSObjectWrap
                 {
                     int[] _values = translator.GetParams<int>(L, 1);
                     
-                        int gen_ret = UnityEngine.Mathf.Min( _values );
+                        var gen_ret = UnityEngine.Mathf.Min( _values );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -673,7 +673,7 @@ namespace XLua.CSObjectWrap
                     float _a = (float)LuaAPI.lua_tonumber(L, 1);
                     float _b = (float)LuaAPI.lua_tonumber(L, 2);
                     
-                        float gen_ret = UnityEngine.Mathf.Max( _a, _b );
+                        var gen_ret = UnityEngine.Mathf.Max( _a, _b );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -685,7 +685,7 @@ namespace XLua.CSObjectWrap
                     int _a = LuaAPI.xlua_tointeger(L, 1);
                     int _b = LuaAPI.xlua_tointeger(L, 2);
                     
-                        int gen_ret = UnityEngine.Mathf.Max( _a, _b );
+                        var gen_ret = UnityEngine.Mathf.Max( _a, _b );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -696,7 +696,7 @@ namespace XLua.CSObjectWrap
                 {
                     float[] _values = translator.GetParams<float>(L, 1);
                     
-                        float gen_ret = UnityEngine.Mathf.Max( _values );
+                        var gen_ret = UnityEngine.Mathf.Max( _values );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -707,7 +707,7 @@ namespace XLua.CSObjectWrap
                 {
                     int[] _values = translator.GetParams<int>(L, 1);
                     
-                        int gen_ret = UnityEngine.Mathf.Max( _values );
+                        var gen_ret = UnityEngine.Mathf.Max( _values );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -735,7 +735,7 @@ namespace XLua.CSObjectWrap
                     float _f = (float)LuaAPI.lua_tonumber(L, 1);
                     float _p = (float)LuaAPI.lua_tonumber(L, 2);
                     
-                        float gen_ret = UnityEngine.Mathf.Pow( _f, _p );
+                        var gen_ret = UnityEngine.Mathf.Pow( _f, _p );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -760,7 +760,7 @@ namespace XLua.CSObjectWrap
                 {
                     float _power = (float)LuaAPI.lua_tonumber(L, 1);
                     
-                        float gen_ret = UnityEngine.Mathf.Exp( _power );
+                        var gen_ret = UnityEngine.Mathf.Exp( _power );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -787,7 +787,7 @@ namespace XLua.CSObjectWrap
                 {
                     float _f = (float)LuaAPI.lua_tonumber(L, 1);
                     
-                        float gen_ret = UnityEngine.Mathf.Log( _f );
+                        var gen_ret = UnityEngine.Mathf.Log( _f );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -799,7 +799,7 @@ namespace XLua.CSObjectWrap
                     float _f = (float)LuaAPI.lua_tonumber(L, 1);
                     float _p = (float)LuaAPI.lua_tonumber(L, 2);
                     
-                        float gen_ret = UnityEngine.Mathf.Log( _f, _p );
+                        var gen_ret = UnityEngine.Mathf.Log( _f, _p );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -826,7 +826,7 @@ namespace XLua.CSObjectWrap
                 {
                     float _f = (float)LuaAPI.lua_tonumber(L, 1);
                     
-                        float gen_ret = UnityEngine.Mathf.Log10( _f );
+                        var gen_ret = UnityEngine.Mathf.Log10( _f );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -851,7 +851,7 @@ namespace XLua.CSObjectWrap
                 {
                     float _f = (float)LuaAPI.lua_tonumber(L, 1);
                     
-                        float gen_ret = UnityEngine.Mathf.Ceil( _f );
+                        var gen_ret = UnityEngine.Mathf.Ceil( _f );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -876,7 +876,7 @@ namespace XLua.CSObjectWrap
                 {
                     float _f = (float)LuaAPI.lua_tonumber(L, 1);
                     
-                        float gen_ret = UnityEngine.Mathf.Floor( _f );
+                        var gen_ret = UnityEngine.Mathf.Floor( _f );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -901,7 +901,7 @@ namespace XLua.CSObjectWrap
                 {
                     float _f = (float)LuaAPI.lua_tonumber(L, 1);
                     
-                        float gen_ret = UnityEngine.Mathf.Round( _f );
+                        var gen_ret = UnityEngine.Mathf.Round( _f );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -926,7 +926,7 @@ namespace XLua.CSObjectWrap
                 {
                     float _f = (float)LuaAPI.lua_tonumber(L, 1);
                     
-                        int gen_ret = UnityEngine.Mathf.CeilToInt( _f );
+                        var gen_ret = UnityEngine.Mathf.CeilToInt( _f );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -951,7 +951,7 @@ namespace XLua.CSObjectWrap
                 {
                     float _f = (float)LuaAPI.lua_tonumber(L, 1);
                     
-                        int gen_ret = UnityEngine.Mathf.FloorToInt( _f );
+                        var gen_ret = UnityEngine.Mathf.FloorToInt( _f );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -976,7 +976,7 @@ namespace XLua.CSObjectWrap
                 {
                     float _f = (float)LuaAPI.lua_tonumber(L, 1);
                     
-                        int gen_ret = UnityEngine.Mathf.RoundToInt( _f );
+                        var gen_ret = UnityEngine.Mathf.RoundToInt( _f );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -1001,7 +1001,7 @@ namespace XLua.CSObjectWrap
                 {
                     float _f = (float)LuaAPI.lua_tonumber(L, 1);
                     
-                        float gen_ret = UnityEngine.Mathf.Sign( _f );
+                        var gen_ret = UnityEngine.Mathf.Sign( _f );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -1030,7 +1030,7 @@ namespace XLua.CSObjectWrap
                     float _min = (float)LuaAPI.lua_tonumber(L, 2);
                     float _max = (float)LuaAPI.lua_tonumber(L, 3);
                     
-                        float gen_ret = UnityEngine.Mathf.Clamp( _value, _min, _max );
+                        var gen_ret = UnityEngine.Mathf.Clamp( _value, _min, _max );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -1043,7 +1043,7 @@ namespace XLua.CSObjectWrap
                     int _min = LuaAPI.xlua_tointeger(L, 2);
                     int _max = LuaAPI.xlua_tointeger(L, 3);
                     
-                        int gen_ret = UnityEngine.Mathf.Clamp( _value, _min, _max );
+                        var gen_ret = UnityEngine.Mathf.Clamp( _value, _min, _max );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -1070,7 +1070,7 @@ namespace XLua.CSObjectWrap
                 {
                     float _value = (float)LuaAPI.lua_tonumber(L, 1);
                     
-                        float gen_ret = UnityEngine.Mathf.Clamp01( _value );
+                        var gen_ret = UnityEngine.Mathf.Clamp01( _value );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -1097,7 +1097,7 @@ namespace XLua.CSObjectWrap
                     float _b = (float)LuaAPI.lua_tonumber(L, 2);
                     float _t = (float)LuaAPI.lua_tonumber(L, 3);
                     
-                        float gen_ret = UnityEngine.Mathf.Lerp( _a, _b, _t );
+                        var gen_ret = UnityEngine.Mathf.Lerp( _a, _b, _t );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -1124,7 +1124,7 @@ namespace XLua.CSObjectWrap
                     float _b = (float)LuaAPI.lua_tonumber(L, 2);
                     float _t = (float)LuaAPI.lua_tonumber(L, 3);
                     
-                        float gen_ret = UnityEngine.Mathf.LerpUnclamped( _a, _b, _t );
+                        var gen_ret = UnityEngine.Mathf.LerpUnclamped( _a, _b, _t );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -1151,7 +1151,7 @@ namespace XLua.CSObjectWrap
                     float _b = (float)LuaAPI.lua_tonumber(L, 2);
                     float _t = (float)LuaAPI.lua_tonumber(L, 3);
                     
-                        float gen_ret = UnityEngine.Mathf.LerpAngle( _a, _b, _t );
+                        var gen_ret = UnityEngine.Mathf.LerpAngle( _a, _b, _t );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -1178,7 +1178,7 @@ namespace XLua.CSObjectWrap
                     float _target = (float)LuaAPI.lua_tonumber(L, 2);
                     float _maxDelta = (float)LuaAPI.lua_tonumber(L, 3);
                     
-                        float gen_ret = UnityEngine.Mathf.MoveTowards( _current, _target, _maxDelta );
+                        var gen_ret = UnityEngine.Mathf.MoveTowards( _current, _target, _maxDelta );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -1205,7 +1205,7 @@ namespace XLua.CSObjectWrap
                     float _target = (float)LuaAPI.lua_tonumber(L, 2);
                     float _maxDelta = (float)LuaAPI.lua_tonumber(L, 3);
                     
-                        float gen_ret = UnityEngine.Mathf.MoveTowardsAngle( _current, _target, _maxDelta );
+                        var gen_ret = UnityEngine.Mathf.MoveTowardsAngle( _current, _target, _maxDelta );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -1232,7 +1232,7 @@ namespace XLua.CSObjectWrap
                     float _to = (float)LuaAPI.lua_tonumber(L, 2);
                     float _t = (float)LuaAPI.lua_tonumber(L, 3);
                     
-                        float gen_ret = UnityEngine.Mathf.SmoothStep( _from, _to, _t );
+                        var gen_ret = UnityEngine.Mathf.SmoothStep( _from, _to, _t );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -1259,7 +1259,7 @@ namespace XLua.CSObjectWrap
                     float _absmax = (float)LuaAPI.lua_tonumber(L, 2);
                     float _gamma = (float)LuaAPI.lua_tonumber(L, 3);
                     
-                        float gen_ret = UnityEngine.Mathf.Gamma( _value, _absmax, _gamma );
+                        var gen_ret = UnityEngine.Mathf.Gamma( _value, _absmax, _gamma );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -1285,7 +1285,7 @@ namespace XLua.CSObjectWrap
                     float _a = (float)LuaAPI.lua_tonumber(L, 1);
                     float _b = (float)LuaAPI.lua_tonumber(L, 2);
                     
-                        bool gen_ret = UnityEngine.Mathf.Approximately( _a, _b );
+                        var gen_ret = UnityEngine.Mathf.Approximately( _a, _b );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -1315,7 +1315,7 @@ namespace XLua.CSObjectWrap
                     float _currentVelocity = (float)LuaAPI.lua_tonumber(L, 3);
                     float _smoothTime = (float)LuaAPI.lua_tonumber(L, 4);
                     
-                        float gen_ret = UnityEngine.Mathf.SmoothDamp( _current, _target, ref _currentVelocity, _smoothTime );
+                        var gen_ret = UnityEngine.Mathf.SmoothDamp( _current, _target, ref _currentVelocity, _smoothTime );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     LuaAPI.lua_pushnumber(L, _currentVelocity);
                         
@@ -1332,7 +1332,7 @@ namespace XLua.CSObjectWrap
                     float _smoothTime = (float)LuaAPI.lua_tonumber(L, 4);
                     float _maxSpeed = (float)LuaAPI.lua_tonumber(L, 5);
                     
-                        float gen_ret = UnityEngine.Mathf.SmoothDamp( _current, _target, ref _currentVelocity, _smoothTime, _maxSpeed );
+                        var gen_ret = UnityEngine.Mathf.SmoothDamp( _current, _target, ref _currentVelocity, _smoothTime, _maxSpeed );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     LuaAPI.lua_pushnumber(L, _currentVelocity);
                         
@@ -1350,7 +1350,7 @@ namespace XLua.CSObjectWrap
                     float _maxSpeed = (float)LuaAPI.lua_tonumber(L, 5);
                     float _deltaTime = (float)LuaAPI.lua_tonumber(L, 6);
                     
-                        float gen_ret = UnityEngine.Mathf.SmoothDamp( _current, _target, ref _currentVelocity, _smoothTime, _maxSpeed, _deltaTime );
+                        var gen_ret = UnityEngine.Mathf.SmoothDamp( _current, _target, ref _currentVelocity, _smoothTime, _maxSpeed, _deltaTime );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     LuaAPI.lua_pushnumber(L, _currentVelocity);
                         
@@ -1384,7 +1384,7 @@ namespace XLua.CSObjectWrap
                     float _currentVelocity = (float)LuaAPI.lua_tonumber(L, 3);
                     float _smoothTime = (float)LuaAPI.lua_tonumber(L, 4);
                     
-                        float gen_ret = UnityEngine.Mathf.SmoothDampAngle( _current, _target, ref _currentVelocity, _smoothTime );
+                        var gen_ret = UnityEngine.Mathf.SmoothDampAngle( _current, _target, ref _currentVelocity, _smoothTime );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     LuaAPI.lua_pushnumber(L, _currentVelocity);
                         
@@ -1401,7 +1401,7 @@ namespace XLua.CSObjectWrap
                     float _smoothTime = (float)LuaAPI.lua_tonumber(L, 4);
                     float _maxSpeed = (float)LuaAPI.lua_tonumber(L, 5);
                     
-                        float gen_ret = UnityEngine.Mathf.SmoothDampAngle( _current, _target, ref _currentVelocity, _smoothTime, _maxSpeed );
+                        var gen_ret = UnityEngine.Mathf.SmoothDampAngle( _current, _target, ref _currentVelocity, _smoothTime, _maxSpeed );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     LuaAPI.lua_pushnumber(L, _currentVelocity);
                         
@@ -1419,7 +1419,7 @@ namespace XLua.CSObjectWrap
                     float _maxSpeed = (float)LuaAPI.lua_tonumber(L, 5);
                     float _deltaTime = (float)LuaAPI.lua_tonumber(L, 6);
                     
-                        float gen_ret = UnityEngine.Mathf.SmoothDampAngle( _current, _target, ref _currentVelocity, _smoothTime, _maxSpeed, _deltaTime );
+                        var gen_ret = UnityEngine.Mathf.SmoothDampAngle( _current, _target, ref _currentVelocity, _smoothTime, _maxSpeed, _deltaTime );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     LuaAPI.lua_pushnumber(L, _currentVelocity);
                         
@@ -1449,7 +1449,7 @@ namespace XLua.CSObjectWrap
                     float _t = (float)LuaAPI.lua_tonumber(L, 1);
                     float _length = (float)LuaAPI.lua_tonumber(L, 2);
                     
-                        float gen_ret = UnityEngine.Mathf.Repeat( _t, _length );
+                        var gen_ret = UnityEngine.Mathf.Repeat( _t, _length );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -1475,7 +1475,7 @@ namespace XLua.CSObjectWrap
                     float _t = (float)LuaAPI.lua_tonumber(L, 1);
                     float _length = (float)LuaAPI.lua_tonumber(L, 2);
                     
-                        float gen_ret = UnityEngine.Mathf.PingPong( _t, _length );
+                        var gen_ret = UnityEngine.Mathf.PingPong( _t, _length );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -1502,7 +1502,7 @@ namespace XLua.CSObjectWrap
                     float _b = (float)LuaAPI.lua_tonumber(L, 2);
                     float _value = (float)LuaAPI.lua_tonumber(L, 3);
                     
-                        float gen_ret = UnityEngine.Mathf.InverseLerp( _a, _b, _value );
+                        var gen_ret = UnityEngine.Mathf.InverseLerp( _a, _b, _value );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -1528,7 +1528,7 @@ namespace XLua.CSObjectWrap
                     float _current = (float)LuaAPI.lua_tonumber(L, 1);
                     float _target = (float)LuaAPI.lua_tonumber(L, 2);
                     
-                        float gen_ret = UnityEngine.Mathf.DeltaAngle( _current, _target );
+                        var gen_ret = UnityEngine.Mathf.DeltaAngle( _current, _target );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     

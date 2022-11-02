@@ -97,7 +97,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.Input gen_ret = new UnityEngine.Input();
+					var gen_ret = new UnityEngine.Input();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -129,7 +129,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _axisName = LuaAPI.lua_tostring(L, 1);
                     
-                        float gen_ret = UnityEngine.Input.GetAxis( _axisName );
+                        var gen_ret = UnityEngine.Input.GetAxis( _axisName );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -154,7 +154,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _axisName = LuaAPI.lua_tostring(L, 1);
                     
-                        float gen_ret = UnityEngine.Input.GetAxisRaw( _axisName );
+                        var gen_ret = UnityEngine.Input.GetAxisRaw( _axisName );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -179,7 +179,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _buttonName = LuaAPI.lua_tostring(L, 1);
                     
-                        bool gen_ret = UnityEngine.Input.GetButton( _buttonName );
+                        var gen_ret = UnityEngine.Input.GetButton( _buttonName );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -204,7 +204,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _buttonName = LuaAPI.lua_tostring(L, 1);
                     
-                        bool gen_ret = UnityEngine.Input.GetButtonDown( _buttonName );
+                        var gen_ret = UnityEngine.Input.GetButtonDown( _buttonName );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -229,7 +229,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _buttonName = LuaAPI.lua_tostring(L, 1);
                     
-                        bool gen_ret = UnityEngine.Input.GetButtonUp( _buttonName );
+                        var gen_ret = UnityEngine.Input.GetButtonUp( _buttonName );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -254,7 +254,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _button = LuaAPI.xlua_tointeger(L, 1);
                     
-                        bool gen_ret = UnityEngine.Input.GetMouseButton( _button );
+                        var gen_ret = UnityEngine.Input.GetMouseButton( _button );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -279,7 +279,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _button = LuaAPI.xlua_tointeger(L, 1);
                     
-                        bool gen_ret = UnityEngine.Input.GetMouseButtonDown( _button );
+                        var gen_ret = UnityEngine.Input.GetMouseButtonDown( _button );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -304,7 +304,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _button = LuaAPI.xlua_tointeger(L, 1);
                     
-                        bool gen_ret = UnityEngine.Input.GetMouseButtonUp( _button );
+                        var gen_ret = UnityEngine.Input.GetMouseButtonUp( _button );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -353,7 +353,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        string[] gen_ret = UnityEngine.Input.GetJoystickNames(  );
+                        var gen_ret = UnityEngine.Input.GetJoystickNames(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -380,7 +380,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _index = LuaAPI.xlua_tointeger(L, 1);
                     
-                        UnityEngine.Touch gen_ret = UnityEngine.Input.GetTouch( _index );
+                        var gen_ret = UnityEngine.Input.GetTouch( _index );
                         translator.Push(L, gen_ret);
                     
                     
@@ -407,7 +407,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _index = LuaAPI.xlua_tointeger(L, 1);
                     
-                        UnityEngine.AccelerationEvent gen_ret = UnityEngine.Input.GetAccelerationEvent( _index );
+                        var gen_ret = UnityEngine.Input.GetAccelerationEvent( _index );
                         translator.Push(L, gen_ret);
                     
                     
@@ -436,7 +436,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.KeyCode _key;translator.Get(L, 1, out _key);
                     
-                        bool gen_ret = UnityEngine.Input.GetKey( _key );
+                        var gen_ret = UnityEngine.Input.GetKey( _key );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -447,7 +447,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _name = LuaAPI.lua_tostring(L, 1);
                     
-                        bool gen_ret = UnityEngine.Input.GetKey( _name );
+                        var gen_ret = UnityEngine.Input.GetKey( _name );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -478,7 +478,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.KeyCode _key;translator.Get(L, 1, out _key);
                     
-                        bool gen_ret = UnityEngine.Input.GetKeyUp( _key );
+                        var gen_ret = UnityEngine.Input.GetKeyUp( _key );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -489,7 +489,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _name = LuaAPI.lua_tostring(L, 1);
                     
-                        bool gen_ret = UnityEngine.Input.GetKeyUp( _name );
+                        var gen_ret = UnityEngine.Input.GetKeyUp( _name );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -520,7 +520,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.KeyCode _key;translator.Get(L, 1, out _key);
                     
-                        bool gen_ret = UnityEngine.Input.GetKeyDown( _key );
+                        var gen_ret = UnityEngine.Input.GetKeyDown( _key );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -531,7 +531,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _name = LuaAPI.lua_tostring(L, 1);
                     
-                        bool gen_ret = UnityEngine.Input.GetKeyDown( _name );
+                        var gen_ret = UnityEngine.Input.GetKeyDown( _name );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     

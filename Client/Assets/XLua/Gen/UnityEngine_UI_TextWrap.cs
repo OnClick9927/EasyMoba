@@ -141,7 +141,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Vector2 _extents;translator.Get(L, 2, out _extents);
                     
-                        UnityEngine.TextGenerationSettings gen_ret = gen_to_be_invoked.GetGenerationSettings( _extents );
+                        var gen_ret = gen_to_be_invoked.GetGenerationSettings( _extents );
                         translator.Push(L, gen_ret);
                     
                     
@@ -168,7 +168,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.TextAnchor _anchor;translator.Get(L, 1, out _anchor);
                     
-                        UnityEngine.Vector2 gen_ret = UnityEngine.UI.Text.GetTextAnchorPivot( _anchor );
+                        var gen_ret = UnityEngine.UI.Text.GetTextAnchorPivot( _anchor );
                         translator.PushUnityEngineVector2(L, gen_ret);
                     
                     
@@ -250,7 +250,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.MakeComponentExist(  );
+                        var gen_ret = gen_to_be_invoked.MakeComponentExist(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -305,7 +305,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.LocalIdentity(  );
+                        var gen_ret = gen_to_be_invoked.LocalIdentity(  );
                         translator.Push(L, gen_ret);
                     
                     

@@ -51,7 +51,7 @@ namespace XLua.CSObjectWrap
 				{
 					System.Collections.Generic.Dictionary<string, System.Tuple<System.Type, System.Type, System.Type>>[] _maps = (System.Collections.Generic.Dictionary<string, System.Tuple<System.Type, System.Type, System.Type>>[])translator.GetObject(L, 2, typeof(System.Collections.Generic.Dictionary<string, System.Tuple<System.Type, System.Type, System.Type>>[]));
 					
-					IFramework.UI.MVVM.MvvmGroups gen_ret = new IFramework.UI.MVVM.MvvmGroups(_maps);
+					var gen_ret = new IFramework.UI.MVVM.MvvmGroups(_maps);
 					translator.Push(L, gen_ret);
                     
 					return 1;

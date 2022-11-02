@@ -52,7 +52,7 @@ namespace XLua.CSObjectWrap
 				{
 					System.Func<bool> _predicate = translator.GetDelegate<System.Func<bool>>(L, 2);
 					
-					UnityEngine.WaitUntil gen_ret = new UnityEngine.WaitUntil(_predicate);
+					var gen_ret = new UnityEngine.WaitUntil(_predicate);
 					translator.Push(L, gen_ret);
                     
 					return 1;

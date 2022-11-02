@@ -65,7 +65,7 @@ namespace XLua.CSObjectWrap
 					byte _b = (byte)LuaAPI.xlua_tointeger(L, 4);
 					byte _a = (byte)LuaAPI.xlua_tointeger(L, 5);
 					
-					UnityEngine.Color32 gen_ret = new UnityEngine.Color32(_r, _g, _b, _a);
+					var gen_ret = new UnityEngine.Color32(_r, _g, _b, _a);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -158,7 +158,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Color32 _b;translator.Get(L, 2, out _b);
                     float _t = (float)LuaAPI.lua_tonumber(L, 3);
                     
-                        UnityEngine.Color32 gen_ret = UnityEngine.Color32.Lerp( _a, _b, _t );
+                        var gen_ret = UnityEngine.Color32.Lerp( _a, _b, _t );
                         translator.Push(L, gen_ret);
                     
                     
@@ -187,7 +187,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Color32 _b;translator.Get(L, 2, out _b);
                     float _t = (float)LuaAPI.lua_tonumber(L, 3);
                     
-                        UnityEngine.Color32 gen_ret = UnityEngine.Color32.LerpUnclamped( _a, _b, _t );
+                        var gen_ret = UnityEngine.Color32.LerpUnclamped( _a, _b, _t );
                         translator.Push(L, gen_ret);
                     
                     
@@ -217,7 +217,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 1) 
                 {
                     
-                        string gen_ret = gen_to_be_invoked.ToString(  );
+                        var gen_ret = gen_to_be_invoked.ToString(  );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -230,7 +230,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _format = LuaAPI.lua_tostring(L, 2);
                     
-                        string gen_ret = gen_to_be_invoked.ToString( _format );
+                        var gen_ret = gen_to_be_invoked.ToString( _format );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -244,7 +244,7 @@ namespace XLua.CSObjectWrap
                     string _format = LuaAPI.lua_tostring(L, 2);
                     System.IFormatProvider _formatProvider = (System.IFormatProvider)translator.GetObject(L, 3, typeof(System.IFormatProvider));
                     
-                        string gen_ret = gen_to_be_invoked.ToString( _format, _formatProvider );
+                        var gen_ret = gen_to_be_invoked.ToString( _format, _formatProvider );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     

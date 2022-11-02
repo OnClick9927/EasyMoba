@@ -62,7 +62,7 @@ namespace XLua.CSObjectWrap
 					uint _crc = LuaAPI.xlua_touint(L, 4);
 					ulong _offset = LuaAPI.lua_touint64(L, 5);
 					
-					IFramework.Hotfix.Asset.BundleLoadArgs gen_ret = new IFramework.Hotfix.Asset.BundleLoadArgs(_type, _path, _crc, _offset);
+					var gen_ret = new IFramework.Hotfix.Asset.BundleLoadArgs(_type, _path, _crc, _offset);
 					translator.Push(L, gen_ret);
                     
 					return 1;

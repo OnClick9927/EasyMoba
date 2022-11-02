@@ -50,7 +50,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.ImageEffectOpaque gen_ret = new UnityEngine.ImageEffectOpaque();
+					var gen_ret = new UnityEngine.ImageEffectOpaque();
 					translator.Push(L, gen_ret);
                     
 					return 1;

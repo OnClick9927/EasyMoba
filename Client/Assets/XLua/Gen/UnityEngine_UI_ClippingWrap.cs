@@ -69,7 +69,7 @@ namespace XLua.CSObjectWrap
                     System.Collections.Generic.List<UnityEngine.UI.RectMask2D> _rectMaskParents = (System.Collections.Generic.List<UnityEngine.UI.RectMask2D>)translator.GetObject(L, 1, typeof(System.Collections.Generic.List<UnityEngine.UI.RectMask2D>));
                     bool _validRect;
                     
-                        UnityEngine.Rect gen_ret = UnityEngine.UI.Clipping.FindCullAndClipWorldRect( _rectMaskParents, out _validRect );
+                        var gen_ret = UnityEngine.UI.Clipping.FindCullAndClipWorldRect( _rectMaskParents, out _validRect );
                         translator.Push(L, gen_ret);
                     LuaAPI.lua_pushboolean(L, _validRect);
                         

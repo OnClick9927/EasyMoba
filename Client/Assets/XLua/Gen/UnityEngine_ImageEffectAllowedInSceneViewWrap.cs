@@ -50,7 +50,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.ImageEffectAllowedInSceneView gen_ret = new UnityEngine.ImageEffectAllowedInSceneView();
+					var gen_ret = new UnityEngine.ImageEffectAllowedInSceneView();
 					translator.Push(L, gen_ret);
                     
 					return 1;

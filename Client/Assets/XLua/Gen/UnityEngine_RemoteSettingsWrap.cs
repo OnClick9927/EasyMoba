@@ -102,7 +102,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        bool gen_ret = UnityEngine.RemoteSettings.WasLastUpdatedFromServer(  );
+                        var gen_ret = UnityEngine.RemoteSettings.WasLastUpdatedFromServer(  );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -129,7 +129,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _key = LuaAPI.lua_tostring(L, 1);
                     
-                        int gen_ret = UnityEngine.RemoteSettings.GetInt( _key );
+                        var gen_ret = UnityEngine.RemoteSettings.GetInt( _key );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -141,7 +141,7 @@ namespace XLua.CSObjectWrap
                     string _key = LuaAPI.lua_tostring(L, 1);
                     int _defaultValue = LuaAPI.xlua_tointeger(L, 2);
                     
-                        int gen_ret = UnityEngine.RemoteSettings.GetInt( _key, _defaultValue );
+                        var gen_ret = UnityEngine.RemoteSettings.GetInt( _key, _defaultValue );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -170,7 +170,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _key = LuaAPI.lua_tostring(L, 1);
                     
-                        long gen_ret = UnityEngine.RemoteSettings.GetLong( _key );
+                        var gen_ret = UnityEngine.RemoteSettings.GetLong( _key );
                         LuaAPI.lua_pushint64(L, gen_ret);
                     
                     
@@ -182,7 +182,7 @@ namespace XLua.CSObjectWrap
                     string _key = LuaAPI.lua_tostring(L, 1);
                     long _defaultValue = LuaAPI.lua_toint64(L, 2);
                     
-                        long gen_ret = UnityEngine.RemoteSettings.GetLong( _key, _defaultValue );
+                        var gen_ret = UnityEngine.RemoteSettings.GetLong( _key, _defaultValue );
                         LuaAPI.lua_pushint64(L, gen_ret);
                     
                     
@@ -211,7 +211,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _key = LuaAPI.lua_tostring(L, 1);
                     
-                        float gen_ret = UnityEngine.RemoteSettings.GetFloat( _key );
+                        var gen_ret = UnityEngine.RemoteSettings.GetFloat( _key );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -223,7 +223,7 @@ namespace XLua.CSObjectWrap
                     string _key = LuaAPI.lua_tostring(L, 1);
                     float _defaultValue = (float)LuaAPI.lua_tonumber(L, 2);
                     
-                        float gen_ret = UnityEngine.RemoteSettings.GetFloat( _key, _defaultValue );
+                        var gen_ret = UnityEngine.RemoteSettings.GetFloat( _key, _defaultValue );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -252,7 +252,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _key = LuaAPI.lua_tostring(L, 1);
                     
-                        string gen_ret = UnityEngine.RemoteSettings.GetString( _key );
+                        var gen_ret = UnityEngine.RemoteSettings.GetString( _key );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -264,7 +264,7 @@ namespace XLua.CSObjectWrap
                     string _key = LuaAPI.lua_tostring(L, 1);
                     string _defaultValue = LuaAPI.lua_tostring(L, 2);
                     
-                        string gen_ret = UnityEngine.RemoteSettings.GetString( _key, _defaultValue );
+                        var gen_ret = UnityEngine.RemoteSettings.GetString( _key, _defaultValue );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -293,7 +293,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _key = LuaAPI.lua_tostring(L, 1);
                     
-                        bool gen_ret = UnityEngine.RemoteSettings.GetBool( _key );
+                        var gen_ret = UnityEngine.RemoteSettings.GetBool( _key );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -305,7 +305,7 @@ namespace XLua.CSObjectWrap
                     string _key = LuaAPI.lua_tostring(L, 1);
                     bool _defaultValue = LuaAPI.lua_toboolean(L, 2);
                     
-                        bool gen_ret = UnityEngine.RemoteSettings.GetBool( _key, _defaultValue );
+                        var gen_ret = UnityEngine.RemoteSettings.GetBool( _key, _defaultValue );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -332,7 +332,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _key = LuaAPI.lua_tostring(L, 1);
                     
-                        bool gen_ret = UnityEngine.RemoteSettings.HasKey( _key );
+                        var gen_ret = UnityEngine.RemoteSettings.HasKey( _key );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -356,7 +356,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        int gen_ret = UnityEngine.RemoteSettings.GetCount(  );
+                        var gen_ret = UnityEngine.RemoteSettings.GetCount(  );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -382,7 +382,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        string[] gen_ret = UnityEngine.RemoteSettings.GetKeys(  );
+                        var gen_ret = UnityEngine.RemoteSettings.GetKeys(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -412,7 +412,7 @@ namespace XLua.CSObjectWrap
                     System.Type _type = (System.Type)translator.GetObject(L, 1, typeof(System.Type));
                     string _key = LuaAPI.lua_tostring(L, 2);
                     
-                        object gen_ret = UnityEngine.RemoteSettings.GetObject( _type, _key );
+                        var gen_ret = UnityEngine.RemoteSettings.GetObject( _type, _key );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -423,7 +423,7 @@ namespace XLua.CSObjectWrap
                 {
                     System.Type _type = (System.Type)translator.GetObject(L, 1, typeof(System.Type));
                     
-                        object gen_ret = UnityEngine.RemoteSettings.GetObject( _type );
+                        var gen_ret = UnityEngine.RemoteSettings.GetObject( _type );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -435,7 +435,7 @@ namespace XLua.CSObjectWrap
                     string _key = LuaAPI.lua_tostring(L, 1);
                     object _defaultValue = translator.GetObject(L, 2, typeof(object));
                     
-                        object gen_ret = UnityEngine.RemoteSettings.GetObject( _key, _defaultValue );
+                        var gen_ret = UnityEngine.RemoteSettings.GetObject( _key, _defaultValue );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -466,7 +466,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _key = LuaAPI.lua_tostring(L, 1);
                     
-                        System.Collections.Generic.IDictionary<string, object> gen_ret = UnityEngine.RemoteSettings.GetDictionary( _key );
+                        var gen_ret = UnityEngine.RemoteSettings.GetDictionary( _key );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -476,7 +476,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 0) 
                 {
                     
-                        System.Collections.Generic.IDictionary<string, object> gen_ret = UnityEngine.RemoteSettings.GetDictionary(  );
+                        var gen_ret = UnityEngine.RemoteSettings.GetDictionary(  );
                         translator.PushAny(L, gen_ret);
                     
                     

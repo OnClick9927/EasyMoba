@@ -50,7 +50,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.ImageEffectTransformsToLDR gen_ret = new UnityEngine.ImageEffectTransformsToLDR();
+					var gen_ret = new UnityEngine.ImageEffectTransformsToLDR();
 					translator.Push(L, gen_ret);
                     
 					return 1;

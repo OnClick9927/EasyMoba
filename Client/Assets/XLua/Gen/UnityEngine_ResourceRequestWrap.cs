@@ -52,7 +52,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.ResourceRequest gen_ret = new UnityEngine.ResourceRequest();
+					var gen_ret = new UnityEngine.ResourceRequest();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -87,7 +87,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        IFramework.IAwaiter<UnityEngine.Object> gen_ret = gen_to_be_invoked.GetAwaiter(  );
+                        var gen_ret = gen_to_be_invoked.GetAwaiter(  );
                         translator.PushAny(L, gen_ret);
                     
                     

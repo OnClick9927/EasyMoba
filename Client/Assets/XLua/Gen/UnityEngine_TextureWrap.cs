@@ -145,7 +145,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        System.IntPtr gen_ret = gen_to_be_invoked.GetNativeTexturePtr(  );
+                        var gen_ret = gen_to_be_invoked.GetNativeTexturePtr(  );
                         LuaAPI.lua_pushlightuserdata(L, gen_ret);
                     
                     
@@ -223,7 +223,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Texture2D gen_ret = gen_to_be_invoked.CreateReadableTexture(  );
+                        var gen_ret = gen_to_be_invoked.CreateReadableTexture(  );
                         translator.Push(L, gen_ret);
                     
                     

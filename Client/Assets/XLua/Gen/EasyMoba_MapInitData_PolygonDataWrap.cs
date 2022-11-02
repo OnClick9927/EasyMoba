@@ -50,7 +50,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					EasyMoba.MapInitData.PolygonData gen_ret = new EasyMoba.MapInitData.PolygonData();
+					var gen_ret = new EasyMoba.MapInitData.PolygonData();
 					translator.Push(L, gen_ret);
                     
 					return 1;

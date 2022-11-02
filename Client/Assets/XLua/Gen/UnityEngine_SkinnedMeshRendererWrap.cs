@@ -72,7 +72,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.SkinnedMeshRenderer gen_ret = new UnityEngine.SkinnedMeshRenderer();
+					var gen_ret = new UnityEngine.SkinnedMeshRenderer();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -108,7 +108,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _index = LuaAPI.xlua_tointeger(L, 2);
                     
-                        float gen_ret = gen_to_be_invoked.GetBlendShapeWeight( _index );
+                        var gen_ret = gen_to_be_invoked.GetBlendShapeWeight( _index );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -208,7 +208,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.MakeComponentExist(  );
+                        var gen_ret = gen_to_be_invoked.MakeComponentExist(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -263,7 +263,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.LocalIdentity(  );
+                        var gen_ret = gen_to_be_invoked.LocalIdentity(  );
                         translator.Push(L, gen_ret);
                     
                     

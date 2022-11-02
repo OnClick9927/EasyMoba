@@ -78,7 +78,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.UI.DefaultControls.Resources _resources;translator.Get(L, 1, out _resources);
                     
-                        UnityEngine.GameObject gen_ret = UnityEngine.UI.DefaultControls.CreatePanel( _resources );
+                        var gen_ret = UnityEngine.UI.DefaultControls.CreatePanel( _resources );
                         translator.Push(L, gen_ret);
                     
                     
@@ -105,7 +105,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.UI.DefaultControls.Resources _resources;translator.Get(L, 1, out _resources);
                     
-                        UnityEngine.GameObject gen_ret = UnityEngine.UI.DefaultControls.CreateButton( _resources );
+                        var gen_ret = UnityEngine.UI.DefaultControls.CreateButton( _resources );
                         translator.Push(L, gen_ret);
                     
                     
@@ -132,7 +132,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.UI.DefaultControls.Resources _resources;translator.Get(L, 1, out _resources);
                     
-                        UnityEngine.GameObject gen_ret = UnityEngine.UI.DefaultControls.CreateText( _resources );
+                        var gen_ret = UnityEngine.UI.DefaultControls.CreateText( _resources );
                         translator.Push(L, gen_ret);
                     
                     
@@ -159,7 +159,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.UI.DefaultControls.Resources _resources;translator.Get(L, 1, out _resources);
                     
-                        UnityEngine.GameObject gen_ret = UnityEngine.UI.DefaultControls.CreateImage( _resources );
+                        var gen_ret = UnityEngine.UI.DefaultControls.CreateImage( _resources );
                         translator.Push(L, gen_ret);
                     
                     
@@ -186,7 +186,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.UI.DefaultControls.Resources _resources;translator.Get(L, 1, out _resources);
                     
-                        UnityEngine.GameObject gen_ret = UnityEngine.UI.DefaultControls.CreateRawImage( _resources );
+                        var gen_ret = UnityEngine.UI.DefaultControls.CreateRawImage( _resources );
                         translator.Push(L, gen_ret);
                     
                     
@@ -213,7 +213,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.UI.DefaultControls.Resources _resources;translator.Get(L, 1, out _resources);
                     
-                        UnityEngine.GameObject gen_ret = UnityEngine.UI.DefaultControls.CreateSlider( _resources );
+                        var gen_ret = UnityEngine.UI.DefaultControls.CreateSlider( _resources );
                         translator.Push(L, gen_ret);
                     
                     
@@ -240,7 +240,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.UI.DefaultControls.Resources _resources;translator.Get(L, 1, out _resources);
                     
-                        UnityEngine.GameObject gen_ret = UnityEngine.UI.DefaultControls.CreateScrollbar( _resources );
+                        var gen_ret = UnityEngine.UI.DefaultControls.CreateScrollbar( _resources );
                         translator.Push(L, gen_ret);
                     
                     
@@ -267,7 +267,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.UI.DefaultControls.Resources _resources;translator.Get(L, 1, out _resources);
                     
-                        UnityEngine.GameObject gen_ret = UnityEngine.UI.DefaultControls.CreateToggle( _resources );
+                        var gen_ret = UnityEngine.UI.DefaultControls.CreateToggle( _resources );
                         translator.Push(L, gen_ret);
                     
                     
@@ -294,7 +294,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.UI.DefaultControls.Resources _resources;translator.Get(L, 1, out _resources);
                     
-                        UnityEngine.GameObject gen_ret = UnityEngine.UI.DefaultControls.CreateInputField( _resources );
+                        var gen_ret = UnityEngine.UI.DefaultControls.CreateInputField( _resources );
                         translator.Push(L, gen_ret);
                     
                     
@@ -321,7 +321,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.UI.DefaultControls.Resources _resources;translator.Get(L, 1, out _resources);
                     
-                        UnityEngine.GameObject gen_ret = UnityEngine.UI.DefaultControls.CreateDropdown( _resources );
+                        var gen_ret = UnityEngine.UI.DefaultControls.CreateDropdown( _resources );
                         translator.Push(L, gen_ret);
                     
                     
@@ -348,7 +348,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.UI.DefaultControls.Resources _resources;translator.Get(L, 1, out _resources);
                     
-                        UnityEngine.GameObject gen_ret = UnityEngine.UI.DefaultControls.CreateScrollView( _resources );
+                        var gen_ret = UnityEngine.UI.DefaultControls.CreateScrollView( _resources );
                         translator.Push(L, gen_ret);
                     
                     

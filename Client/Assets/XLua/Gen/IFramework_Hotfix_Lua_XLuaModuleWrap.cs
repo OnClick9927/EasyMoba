@@ -62,7 +62,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					IFramework.Hotfix.Lua.XLuaModule gen_ret = new IFramework.Hotfix.Lua.XLuaModule();
+					var gen_ret = new IFramework.Hotfix.Lua.XLuaModule();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -153,7 +153,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        XLua.LuaTable gen_ret = gen_to_be_invoked.NewTable(  );
+                        var gen_ret = gen_to_be_invoked.NewTable(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -214,7 +214,7 @@ namespace XLua.CSObjectWrap
                     string _chunkName = LuaAPI.lua_tostring(L, 3);
                     XLua.LuaTable _env = (XLua.LuaTable)translator.GetObject(L, 4, typeof(XLua.LuaTable));
                     
-                        XLua.LuaFunction gen_ret = gen_to_be_invoked.LoadString( _chunk, _chunkName, _env );
+                        var gen_ret = gen_to_be_invoked.LoadString( _chunk, _chunkName, _env );
                         translator.Push(L, gen_ret);
                     
                     
@@ -226,7 +226,7 @@ namespace XLua.CSObjectWrap
                     string _chunk = LuaAPI.lua_tostring(L, 2);
                     string _chunkName = LuaAPI.lua_tostring(L, 3);
                     
-                        XLua.LuaFunction gen_ret = gen_to_be_invoked.LoadString( _chunk, _chunkName );
+                        var gen_ret = gen_to_be_invoked.LoadString( _chunk, _chunkName );
                         translator.Push(L, gen_ret);
                     
                     
@@ -237,7 +237,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _chunk = LuaAPI.lua_tostring(L, 2);
                     
-                        XLua.LuaFunction gen_ret = gen_to_be_invoked.LoadString( _chunk );
+                        var gen_ret = gen_to_be_invoked.LoadString( _chunk );
                         translator.Push(L, gen_ret);
                     
                     
@@ -272,7 +272,7 @@ namespace XLua.CSObjectWrap
                     string _chunkName = LuaAPI.lua_tostring(L, 3);
                     XLua.LuaTable _env = (XLua.LuaTable)translator.GetObject(L, 4, typeof(XLua.LuaTable));
                     
-                        object[] gen_ret = gen_to_be_invoked.DoString( _chunk, _chunkName, _env );
+                        var gen_ret = gen_to_be_invoked.DoString( _chunk, _chunkName, _env );
                         translator.Push(L, gen_ret);
                     
                     
@@ -284,7 +284,7 @@ namespace XLua.CSObjectWrap
                     byte[] _chunk = LuaAPI.lua_tobytes(L, 2);
                     string _chunkName = LuaAPI.lua_tostring(L, 3);
                     
-                        object[] gen_ret = gen_to_be_invoked.DoString( _chunk, _chunkName );
+                        var gen_ret = gen_to_be_invoked.DoString( _chunk, _chunkName );
                         translator.Push(L, gen_ret);
                     
                     
@@ -295,7 +295,7 @@ namespace XLua.CSObjectWrap
                 {
                     byte[] _chunk = LuaAPI.lua_tobytes(L, 2);
                     
-                        object[] gen_ret = gen_to_be_invoked.DoString( _chunk );
+                        var gen_ret = gen_to_be_invoked.DoString( _chunk );
                         translator.Push(L, gen_ret);
                     
                     
@@ -308,7 +308,7 @@ namespace XLua.CSObjectWrap
                     string _chunkName = LuaAPI.lua_tostring(L, 3);
                     XLua.LuaTable _env = (XLua.LuaTable)translator.GetObject(L, 4, typeof(XLua.LuaTable));
                     
-                        object[] gen_ret = gen_to_be_invoked.DoString( _chunk, _chunkName, _env );
+                        var gen_ret = gen_to_be_invoked.DoString( _chunk, _chunkName, _env );
                         translator.Push(L, gen_ret);
                     
                     
@@ -320,7 +320,7 @@ namespace XLua.CSObjectWrap
                     string _chunk = LuaAPI.lua_tostring(L, 2);
                     string _chunkName = LuaAPI.lua_tostring(L, 3);
                     
-                        object[] gen_ret = gen_to_be_invoked.DoString( _chunk, _chunkName );
+                        var gen_ret = gen_to_be_invoked.DoString( _chunk, _chunkName );
                         translator.Push(L, gen_ret);
                     
                     
@@ -331,7 +331,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _chunk = LuaAPI.lua_tostring(L, 2);
                     
-                        object[] gen_ret = gen_to_be_invoked.DoString( _chunk );
+                        var gen_ret = gen_to_be_invoked.DoString( _chunk );
                         translator.Push(L, gen_ret);
                     
                     
@@ -365,7 +365,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.TextAsset _luaScript = (UnityEngine.TextAsset)translator.GetObject(L, 2, typeof(UnityEngine.TextAsset));
                     string _chunkName = LuaAPI.lua_tostring(L, 3);
                     
-                        XLua.LuaTable gen_ret = gen_to_be_invoked.GetTable( _luaScript, _chunkName );
+                        var gen_ret = gen_to_be_invoked.GetTable( _luaScript, _chunkName );
                         translator.Push(L, gen_ret);
                     
                     
@@ -376,7 +376,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.TextAsset _luaScript = (UnityEngine.TextAsset)translator.GetObject(L, 2, typeof(UnityEngine.TextAsset));
                     
-                        XLua.LuaTable gen_ret = gen_to_be_invoked.GetTable( _luaScript );
+                        var gen_ret = gen_to_be_invoked.GetTable( _luaScript );
                         translator.Push(L, gen_ret);
                     
                     

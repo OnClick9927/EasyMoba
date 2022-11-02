@@ -59,7 +59,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.ControllerColliderHit gen_ret = new UnityEngine.ControllerColliderHit();
+					var gen_ret = new UnityEngine.ControllerColliderHit();
 					translator.Push(L, gen_ret);
                     
 					return 1;

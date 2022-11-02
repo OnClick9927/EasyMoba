@@ -63,7 +63,7 @@ namespace XLua.CSObjectWrap
 				{
 					int _id = LuaAPI.xlua_tointeger(L, 2);
 					
-					IFramework.Net.SocketToken gen_ret = new IFramework.Net.SocketToken(_id);
+					var gen_ret = new IFramework.Net.SocketToken(_id);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -71,7 +71,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					IFramework.Net.SocketToken gen_ret = new IFramework.Net.SocketToken();
+					var gen_ret = new IFramework.Net.SocketToken();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -161,7 +161,7 @@ namespace XLua.CSObjectWrap
                 {
                     System.Net.Sockets.SocketAsyncEventArgs _args = (System.Net.Sockets.SocketAsyncEventArgs)translator.GetObject(L, 2, typeof(System.Net.Sockets.SocketAsyncEventArgs));
                     
-                        bool gen_ret = gen_to_be_invoked.SendAsync( _args );
+                        var gen_ret = gen_to_be_invoked.SendAsync( _args );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -190,7 +190,7 @@ namespace XLua.CSObjectWrap
                 {
                     System.Net.Sockets.SocketAsyncEventArgs _args = (System.Net.Sockets.SocketAsyncEventArgs)translator.GetObject(L, 2, typeof(System.Net.Sockets.SocketAsyncEventArgs));
                     
-                        bool gen_ret = gen_to_be_invoked.DisconnectAsync( _args );
+                        var gen_ret = gen_to_be_invoked.DisconnectAsync( _args );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -219,7 +219,7 @@ namespace XLua.CSObjectWrap
                 {
                     IFramework.Net.SocketToken _sToken = (IFramework.Net.SocketToken)translator.GetObject(L, 2, typeof(IFramework.Net.SocketToken));
                     
-                        int gen_ret = gen_to_be_invoked.CompareTo( _sToken );
+                        var gen_ret = gen_to_be_invoked.CompareTo( _sToken );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -248,7 +248,7 @@ namespace XLua.CSObjectWrap
                 {
                     IFramework.Net.SegmentOffset _dataSegment = (IFramework.Net.SegmentOffset)translator.GetObject(L, 2, typeof(IFramework.Net.SegmentOffset));
                     
-                        int gen_ret = gen_to_be_invoked.Send( _dataSegment );
+                        var gen_ret = gen_to_be_invoked.Send( _dataSegment );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     

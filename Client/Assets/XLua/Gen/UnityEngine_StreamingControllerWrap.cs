@@ -58,7 +58,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.StreamingController gen_ret = new UnityEngine.StreamingController();
+					var gen_ret = new UnityEngine.StreamingController();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -184,7 +184,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        bool gen_ret = gen_to_be_invoked.IsPreloading(  );
+                        var gen_ret = gen_to_be_invoked.IsPreloading(  );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -212,7 +212,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.MakeComponentExist(  );
+                        var gen_ret = gen_to_be_invoked.MakeComponentExist(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -267,7 +267,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.LocalIdentity(  );
+                        var gen_ret = gen_to_be_invoked.LocalIdentity(  );
                         translator.Push(L, gen_ret);
                     
                     

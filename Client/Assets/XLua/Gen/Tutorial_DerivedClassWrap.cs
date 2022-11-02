@@ -67,7 +67,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					Tutorial.DerivedClass gen_ret = new Tutorial.DerivedClass();
+					var gen_ret = new Tutorial.DerivedClass();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -160,7 +160,7 @@ namespace XLua.CSObjectWrap
                     System.Action _luafunc = translator.GetDelegate<System.Action>(L, 4);
                     System.Action _csfunc;
                     
-                        double gen_ret = gen_to_be_invoked.ComplexFunc( _p1, ref _p2, out _p3, _luafunc, out _csfunc );
+                        var gen_ret = gen_to_be_invoked.ComplexFunc( _p1, ref _p2, out _p3, _luafunc, out _csfunc );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     LuaAPI.xlua_pushinteger(L, _p2);
                         
@@ -330,7 +330,7 @@ namespace XLua.CSObjectWrap
                 {
                     Tutorial.TestEnum _e;translator.Get(L, 2, out _e);
                     
-                        Tutorial.TestEnum gen_ret = gen_to_be_invoked.EnumTestFunc( _e );
+                        var gen_ret = gen_to_be_invoked.EnumTestFunc( _e );
                         translator.PushTutorialTestEnum(L, gen_ret);
                     
                     
@@ -386,7 +386,7 @@ namespace XLua.CSObjectWrap
                 {
                     long _n = LuaAPI.lua_toint64(L, 2);
                     
-                        ulong gen_ret = gen_to_be_invoked.TestLong( _n );
+                        var gen_ret = gen_to_be_invoked.TestLong( _n );
                         LuaAPI.lua_pushuint64(L, gen_ret);
                     
                     
@@ -414,7 +414,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        Tutorial.ICalc gen_ret = gen_to_be_invoked.GetCalc(  );
+                        var gen_ret = gen_to_be_invoked.GetCalc(  );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -442,7 +442,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        int gen_ret = gen_to_be_invoked.GetSomeData(  );
+                        var gen_ret = gen_to_be_invoked.GetSomeData(  );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     

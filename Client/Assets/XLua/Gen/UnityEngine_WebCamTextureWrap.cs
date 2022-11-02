@@ -76,7 +76,7 @@ namespace XLua.CSObjectWrap
 					int _requestedHeight = LuaAPI.xlua_tointeger(L, 4);
 					int _requestedFPS = LuaAPI.xlua_tointeger(L, 5);
 					
-					UnityEngine.WebCamTexture gen_ret = new UnityEngine.WebCamTexture(_deviceName, _requestedWidth, _requestedHeight, _requestedFPS);
+					var gen_ret = new UnityEngine.WebCamTexture(_deviceName, _requestedWidth, _requestedHeight, _requestedFPS);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -87,7 +87,7 @@ namespace XLua.CSObjectWrap
 					int _requestedWidth = LuaAPI.xlua_tointeger(L, 3);
 					int _requestedHeight = LuaAPI.xlua_tointeger(L, 4);
 					
-					UnityEngine.WebCamTexture gen_ret = new UnityEngine.WebCamTexture(_deviceName, _requestedWidth, _requestedHeight);
+					var gen_ret = new UnityEngine.WebCamTexture(_deviceName, _requestedWidth, _requestedHeight);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -96,7 +96,7 @@ namespace XLua.CSObjectWrap
 				{
 					string _deviceName = LuaAPI.lua_tostring(L, 2);
 					
-					UnityEngine.WebCamTexture gen_ret = new UnityEngine.WebCamTexture(_deviceName);
+					var gen_ret = new UnityEngine.WebCamTexture(_deviceName);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -107,7 +107,7 @@ namespace XLua.CSObjectWrap
 					int _requestedHeight = LuaAPI.xlua_tointeger(L, 3);
 					int _requestedFPS = LuaAPI.xlua_tointeger(L, 4);
 					
-					UnityEngine.WebCamTexture gen_ret = new UnityEngine.WebCamTexture(_requestedWidth, _requestedHeight, _requestedFPS);
+					var gen_ret = new UnityEngine.WebCamTexture(_requestedWidth, _requestedHeight, _requestedFPS);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -117,7 +117,7 @@ namespace XLua.CSObjectWrap
 					int _requestedWidth = LuaAPI.xlua_tointeger(L, 2);
 					int _requestedHeight = LuaAPI.xlua_tointeger(L, 3);
 					
-					UnityEngine.WebCamTexture gen_ret = new UnityEngine.WebCamTexture(_requestedWidth, _requestedHeight);
+					var gen_ret = new UnityEngine.WebCamTexture(_requestedWidth, _requestedHeight);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -125,7 +125,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.WebCamTexture gen_ret = new UnityEngine.WebCamTexture();
+					var gen_ret = new UnityEngine.WebCamTexture();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -243,7 +243,7 @@ namespace XLua.CSObjectWrap
                     int _x = LuaAPI.xlua_tointeger(L, 2);
                     int _y = LuaAPI.xlua_tointeger(L, 3);
                     
-                        UnityEngine.Color gen_ret = gen_to_be_invoked.GetPixel( _x, _y );
+                        var gen_ret = gen_to_be_invoked.GetPixel( _x, _y );
                         translator.PushUnityEngineColor(L, gen_ret);
                     
                     
@@ -273,7 +273,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 1) 
                 {
                     
-                        UnityEngine.Color[] gen_ret = gen_to_be_invoked.GetPixels(  );
+                        var gen_ret = gen_to_be_invoked.GetPixels(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -287,7 +287,7 @@ namespace XLua.CSObjectWrap
                     int _blockWidth = LuaAPI.xlua_tointeger(L, 4);
                     int _blockHeight = LuaAPI.xlua_tointeger(L, 5);
                     
-                        UnityEngine.Color[] gen_ret = gen_to_be_invoked.GetPixels( _x, _y, _blockWidth, _blockHeight );
+                        var gen_ret = gen_to_be_invoked.GetPixels( _x, _y, _blockWidth, _blockHeight );
                         translator.Push(L, gen_ret);
                     
                     
@@ -319,7 +319,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 1) 
                 {
                     
-                        UnityEngine.Color32[] gen_ret = gen_to_be_invoked.GetPixels32(  );
+                        var gen_ret = gen_to_be_invoked.GetPixels32(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -330,7 +330,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Color32[] _colors = (UnityEngine.Color32[])translator.GetObject(L, 2, typeof(UnityEngine.Color32[]));
                     
-                        UnityEngine.Color32[] gen_ret = gen_to_be_invoked.GetPixels32( _colors );
+                        var gen_ret = gen_to_be_invoked.GetPixels32( _colors );
                         translator.Push(L, gen_ret);
                     
                     

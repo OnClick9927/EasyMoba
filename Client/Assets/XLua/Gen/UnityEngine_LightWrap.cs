@@ -124,7 +124,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.Light gen_ret = new UnityEngine.Light();
+					var gen_ret = new UnityEngine.Light();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -363,7 +363,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Rendering.LightEvent _evt;translator.Get(L, 2, out _evt);
                     
-                        UnityEngine.Rendering.CommandBuffer[] gen_ret = gen_to_be_invoked.GetCommandBuffers( _evt );
+                        var gen_ret = gen_to_be_invoked.GetCommandBuffers( _evt );
                         translator.Push(L, gen_ret);
                     
                     
@@ -391,7 +391,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.LightType _type;translator.Get(L, 1, out _type);
                     int _layer = LuaAPI.xlua_tointeger(L, 2);
                     
-                        UnityEngine.Light[] gen_ret = UnityEngine.Light.GetLights( _type, _layer );
+                        var gen_ret = UnityEngine.Light.GetLights( _type, _layer );
                         translator.Push(L, gen_ret);
                     
                     
@@ -419,7 +419,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.MakeComponentExist(  );
+                        var gen_ret = gen_to_be_invoked.MakeComponentExist(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -474,7 +474,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.LocalIdentity(  );
+                        var gen_ret = gen_to_be_invoked.LocalIdentity(  );
                         translator.Push(L, gen_ret);
                     
                     

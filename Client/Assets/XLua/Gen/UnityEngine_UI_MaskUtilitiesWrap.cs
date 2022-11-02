@@ -57,7 +57,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.UI.MaskUtilities gen_ret = new UnityEngine.UI.MaskUtilities();
+					var gen_ret = new UnityEngine.UI.MaskUtilities();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -143,7 +143,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Transform _start = (UnityEngine.Transform)translator.GetObject(L, 1, typeof(UnityEngine.Transform));
                     
-                        UnityEngine.Transform gen_ret = UnityEngine.UI.MaskUtilities.FindRootSortOverrideCanvas( _start );
+                        var gen_ret = UnityEngine.UI.MaskUtilities.FindRootSortOverrideCanvas( _start );
                         translator.Push(L, gen_ret);
                     
                     
@@ -171,7 +171,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Transform _transform = (UnityEngine.Transform)translator.GetObject(L, 1, typeof(UnityEngine.Transform));
                     UnityEngine.Transform _stopAfter = (UnityEngine.Transform)translator.GetObject(L, 2, typeof(UnityEngine.Transform));
                     
-                        int gen_ret = UnityEngine.UI.MaskUtilities.GetStencilDepth( _transform, _stopAfter );
+                        var gen_ret = UnityEngine.UI.MaskUtilities.GetStencilDepth( _transform, _stopAfter );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -199,7 +199,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Transform _father = (UnityEngine.Transform)translator.GetObject(L, 1, typeof(UnityEngine.Transform));
                     UnityEngine.Transform _child = (UnityEngine.Transform)translator.GetObject(L, 2, typeof(UnityEngine.Transform));
                     
-                        bool gen_ret = UnityEngine.UI.MaskUtilities.IsDescendantOrSelf( _father, _child );
+                        var gen_ret = UnityEngine.UI.MaskUtilities.IsDescendantOrSelf( _father, _child );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -226,7 +226,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.UI.IClippable _clippable = (UnityEngine.UI.IClippable)translator.GetObject(L, 1, typeof(UnityEngine.UI.IClippable));
                     
-                        UnityEngine.UI.RectMask2D gen_ret = UnityEngine.UI.MaskUtilities.GetRectMaskForClippable( _clippable );
+                        var gen_ret = UnityEngine.UI.MaskUtilities.GetRectMaskForClippable( _clippable );
                         translator.Push(L, gen_ret);
                     
                     

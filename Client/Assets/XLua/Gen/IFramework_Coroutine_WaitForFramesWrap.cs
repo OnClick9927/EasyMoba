@@ -51,7 +51,7 @@ namespace XLua.CSObjectWrap
 				{
 					int _count = LuaAPI.xlua_tointeger(L, 2);
 					
-					IFramework.Coroutine.WaitForFrames gen_ret = new IFramework.Coroutine.WaitForFrames(_count);
+					var gen_ret = new IFramework.Coroutine.WaitForFrames(_count);
 					translator.Push(L, gen_ret);
                     
 					return 1;

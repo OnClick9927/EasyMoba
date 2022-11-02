@@ -51,7 +51,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					IFramework.Serialization.DoubleStringConverter gen_ret = new IFramework.Serialization.DoubleStringConverter();
+					var gen_ret = new IFramework.Serialization.DoubleStringConverter();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -88,7 +88,7 @@ namespace XLua.CSObjectWrap
                     string _self = LuaAPI.lua_tostring(L, 2);
                     double _result;
                     
-                        bool gen_ret = gen_to_be_invoked.TryConvert( _self, out _result );
+                        var gen_ret = gen_to_be_invoked.TryConvert( _self, out _result );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     LuaAPI.lua_pushnumber(L, _result);
                         

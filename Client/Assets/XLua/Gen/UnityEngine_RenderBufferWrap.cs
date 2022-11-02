@@ -84,7 +84,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        System.IntPtr gen_ret = gen_to_be_invoked.GetNativeRenderBufferPtr(  );
+                        var gen_ret = gen_to_be_invoked.GetNativeRenderBufferPtr(  );
                         LuaAPI.lua_pushlightuserdata(L, gen_ret);
                     
                     

@@ -133,7 +133,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        bool gen_ret = gen_to_be_invoked.IsComponentValidOnObject(  );
+                        var gen_ret = gen_to_be_invoked.IsComponentValidOnObject(  );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -161,7 +161,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        bool gen_ret = gen_to_be_invoked.IsAspectModeValid(  );
+                        var gen_ret = gen_to_be_invoked.IsAspectModeValid(  );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -189,7 +189,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.MakeComponentExist(  );
+                        var gen_ret = gen_to_be_invoked.MakeComponentExist(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -244,7 +244,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.LocalIdentity(  );
+                        var gen_ret = gen_to_be_invoked.LocalIdentity(  );
                         translator.Push(L, gen_ret);
                     
                     

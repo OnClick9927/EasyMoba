@@ -51,7 +51,7 @@ namespace XLua.CSObjectWrap
 				{
 					string _error = LuaAPI.lua_tostring(L, 2);
 					
-					UnityEngine.PlayerPrefsException gen_ret = new UnityEngine.PlayerPrefsException(_error);
+					var gen_ret = new UnityEngine.PlayerPrefsException(_error);
 					translator.Push(L, gen_ret);
                     
 					return 1;

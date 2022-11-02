@@ -51,7 +51,7 @@ namespace XLua.CSObjectWrap
 				{
 					System.TimeSpan _span;translator.Get(L, 2, out _span);
 					
-					IFramework.Coroutine.WaitForTimeSpan gen_ret = new IFramework.Coroutine.WaitForTimeSpan(_span);
+					var gen_ret = new IFramework.Coroutine.WaitForTimeSpan(_span);
 					translator.Push(L, gen_ret);
                     
 					return 1;

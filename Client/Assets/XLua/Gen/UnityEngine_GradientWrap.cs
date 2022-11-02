@@ -60,7 +60,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.Gradient gen_ret = new UnityEngine.Gradient();
+					var gen_ret = new UnityEngine.Gradient();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -96,7 +96,7 @@ namespace XLua.CSObjectWrap
                 {
                     float _time = (float)LuaAPI.lua_tonumber(L, 2);
                     
-                        UnityEngine.Color gen_ret = gen_to_be_invoked.Evaluate( _time );
+                        var gen_ret = gen_to_be_invoked.Evaluate( _time );
                         translator.PushUnityEngineColor(L, gen_ret);
                     
                     
@@ -156,7 +156,7 @@ namespace XLua.CSObjectWrap
                 {
                     object _o = translator.GetObject(L, 2, typeof(object));
                     
-                        bool gen_ret = gen_to_be_invoked.Equals( _o );
+                        var gen_ret = gen_to_be_invoked.Equals( _o );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -167,7 +167,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Gradient _other = (UnityEngine.Gradient)translator.GetObject(L, 2, typeof(UnityEngine.Gradient));
                     
-                        bool gen_ret = gen_to_be_invoked.Equals( _other );
+                        var gen_ret = gen_to_be_invoked.Equals( _other );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -197,7 +197,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        int gen_ret = gen_to_be_invoked.GetHashCode(  );
+                        var gen_ret = gen_to_be_invoked.GetHashCode(  );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     

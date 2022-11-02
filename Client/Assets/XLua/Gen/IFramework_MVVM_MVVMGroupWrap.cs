@@ -60,7 +60,7 @@ namespace XLua.CSObjectWrap
 					IFramework.MVVM.ViewModel _viewModel = (IFramework.MVVM.ViewModel)translator.GetObject(L, 4, typeof(IFramework.MVVM.ViewModel));
 					IFramework.IModel _model = (IFramework.IModel)translator.GetObject(L, 5, typeof(IFramework.IModel));
 					
-					IFramework.MVVM.MVVMGroup gen_ret = new IFramework.MVVM.MVVMGroup(_name, _view, _viewModel, _model);
+					var gen_ret = new IFramework.MVVM.MVVMGroup(_name, _view, _viewModel, _model);
 					translator.Push(L, gen_ret);
                     
 					return 1;

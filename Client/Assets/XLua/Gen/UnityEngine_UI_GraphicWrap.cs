@@ -353,7 +353,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Vector2 _sp;translator.Get(L, 2, out _sp);
                     UnityEngine.Camera _eventCamera = (UnityEngine.Camera)translator.GetObject(L, 3, typeof(UnityEngine.Camera));
                     
-                        bool gen_ret = gen_to_be_invoked.Raycast( _sp, _eventCamera );
+                        var gen_ret = gen_to_be_invoked.Raycast( _sp, _eventCamera );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -382,7 +382,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Vector2 _point;translator.Get(L, 2, out _point);
                     
-                        UnityEngine.Vector2 gen_ret = gen_to_be_invoked.PixelAdjustPoint( _point );
+                        var gen_ret = gen_to_be_invoked.PixelAdjustPoint( _point );
                         translator.PushUnityEngineVector2(L, gen_ret);
                     
                     
@@ -410,7 +410,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Rect gen_ret = gen_to_be_invoked.GetPixelAdjustedRect(  );
+                        var gen_ret = gen_to_be_invoked.GetPixelAdjustedRect(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -685,7 +685,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.MakeComponentExist(  );
+                        var gen_ret = gen_to_be_invoked.MakeComponentExist(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -740,7 +740,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.LocalIdentity(  );
+                        var gen_ret = gen_to_be_invoked.LocalIdentity(  );
                         translator.Push(L, gen_ret);
                     
                     

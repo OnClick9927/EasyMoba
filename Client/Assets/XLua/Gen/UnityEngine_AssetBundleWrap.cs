@@ -110,7 +110,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        System.Collections.Generic.IEnumerable<UnityEngine.AssetBundle> gen_ret = UnityEngine.AssetBundle.GetAllLoadedAssetBundles(  );
+                        var gen_ret = UnityEngine.AssetBundle.GetAllLoadedAssetBundles(  );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -139,7 +139,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _path = LuaAPI.lua_tostring(L, 1);
                     
-                        UnityEngine.AssetBundleCreateRequest gen_ret = UnityEngine.AssetBundle.LoadFromFileAsync( _path );
+                        var gen_ret = UnityEngine.AssetBundle.LoadFromFileAsync( _path );
                         translator.Push(L, gen_ret);
                     
                     
@@ -151,7 +151,7 @@ namespace XLua.CSObjectWrap
                     string _path = LuaAPI.lua_tostring(L, 1);
                     uint _crc = LuaAPI.xlua_touint(L, 2);
                     
-                        UnityEngine.AssetBundleCreateRequest gen_ret = UnityEngine.AssetBundle.LoadFromFileAsync( _path, _crc );
+                        var gen_ret = UnityEngine.AssetBundle.LoadFromFileAsync( _path, _crc );
                         translator.Push(L, gen_ret);
                     
                     
@@ -164,7 +164,7 @@ namespace XLua.CSObjectWrap
                     uint _crc = LuaAPI.xlua_touint(L, 2);
                     ulong _offset = LuaAPI.lua_touint64(L, 3);
                     
-                        UnityEngine.AssetBundleCreateRequest gen_ret = UnityEngine.AssetBundle.LoadFromFileAsync( _path, _crc, _offset );
+                        var gen_ret = UnityEngine.AssetBundle.LoadFromFileAsync( _path, _crc, _offset );
                         translator.Push(L, gen_ret);
                     
                     
@@ -195,7 +195,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _path = LuaAPI.lua_tostring(L, 1);
                     
-                        UnityEngine.AssetBundle gen_ret = UnityEngine.AssetBundle.LoadFromFile( _path );
+                        var gen_ret = UnityEngine.AssetBundle.LoadFromFile( _path );
                         translator.Push(L, gen_ret);
                     
                     
@@ -207,7 +207,7 @@ namespace XLua.CSObjectWrap
                     string _path = LuaAPI.lua_tostring(L, 1);
                     uint _crc = LuaAPI.xlua_touint(L, 2);
                     
-                        UnityEngine.AssetBundle gen_ret = UnityEngine.AssetBundle.LoadFromFile( _path, _crc );
+                        var gen_ret = UnityEngine.AssetBundle.LoadFromFile( _path, _crc );
                         translator.Push(L, gen_ret);
                     
                     
@@ -220,7 +220,7 @@ namespace XLua.CSObjectWrap
                     uint _crc = LuaAPI.xlua_touint(L, 2);
                     ulong _offset = LuaAPI.lua_touint64(L, 3);
                     
-                        UnityEngine.AssetBundle gen_ret = UnityEngine.AssetBundle.LoadFromFile( _path, _crc, _offset );
+                        var gen_ret = UnityEngine.AssetBundle.LoadFromFile( _path, _crc, _offset );
                         translator.Push(L, gen_ret);
                     
                     
@@ -251,7 +251,7 @@ namespace XLua.CSObjectWrap
                 {
                     byte[] _binary = LuaAPI.lua_tobytes(L, 1);
                     
-                        UnityEngine.AssetBundleCreateRequest gen_ret = UnityEngine.AssetBundle.LoadFromMemoryAsync( _binary );
+                        var gen_ret = UnityEngine.AssetBundle.LoadFromMemoryAsync( _binary );
                         translator.Push(L, gen_ret);
                     
                     
@@ -263,7 +263,7 @@ namespace XLua.CSObjectWrap
                     byte[] _binary = LuaAPI.lua_tobytes(L, 1);
                     uint _crc = LuaAPI.xlua_touint(L, 2);
                     
-                        UnityEngine.AssetBundleCreateRequest gen_ret = UnityEngine.AssetBundle.LoadFromMemoryAsync( _binary, _crc );
+                        var gen_ret = UnityEngine.AssetBundle.LoadFromMemoryAsync( _binary, _crc );
                         translator.Push(L, gen_ret);
                     
                     
@@ -294,7 +294,7 @@ namespace XLua.CSObjectWrap
                 {
                     byte[] _binary = LuaAPI.lua_tobytes(L, 1);
                     
-                        UnityEngine.AssetBundle gen_ret = UnityEngine.AssetBundle.LoadFromMemory( _binary );
+                        var gen_ret = UnityEngine.AssetBundle.LoadFromMemory( _binary );
                         translator.Push(L, gen_ret);
                     
                     
@@ -306,7 +306,7 @@ namespace XLua.CSObjectWrap
                     byte[] _binary = LuaAPI.lua_tobytes(L, 1);
                     uint _crc = LuaAPI.xlua_touint(L, 2);
                     
-                        UnityEngine.AssetBundle gen_ret = UnityEngine.AssetBundle.LoadFromMemory( _binary, _crc );
+                        var gen_ret = UnityEngine.AssetBundle.LoadFromMemory( _binary, _crc );
                         translator.Push(L, gen_ret);
                     
                     
@@ -337,7 +337,7 @@ namespace XLua.CSObjectWrap
                 {
                     System.IO.Stream _stream = (System.IO.Stream)translator.GetObject(L, 1, typeof(System.IO.Stream));
                     
-                        UnityEngine.AssetBundleCreateRequest gen_ret = UnityEngine.AssetBundle.LoadFromStreamAsync( _stream );
+                        var gen_ret = UnityEngine.AssetBundle.LoadFromStreamAsync( _stream );
                         translator.Push(L, gen_ret);
                     
                     
@@ -349,7 +349,7 @@ namespace XLua.CSObjectWrap
                     System.IO.Stream _stream = (System.IO.Stream)translator.GetObject(L, 1, typeof(System.IO.Stream));
                     uint _crc = LuaAPI.xlua_touint(L, 2);
                     
-                        UnityEngine.AssetBundleCreateRequest gen_ret = UnityEngine.AssetBundle.LoadFromStreamAsync( _stream, _crc );
+                        var gen_ret = UnityEngine.AssetBundle.LoadFromStreamAsync( _stream, _crc );
                         translator.Push(L, gen_ret);
                     
                     
@@ -362,7 +362,7 @@ namespace XLua.CSObjectWrap
                     uint _crc = LuaAPI.xlua_touint(L, 2);
                     uint _managedReadBufferSize = LuaAPI.xlua_touint(L, 3);
                     
-                        UnityEngine.AssetBundleCreateRequest gen_ret = UnityEngine.AssetBundle.LoadFromStreamAsync( _stream, _crc, _managedReadBufferSize );
+                        var gen_ret = UnityEngine.AssetBundle.LoadFromStreamAsync( _stream, _crc, _managedReadBufferSize );
                         translator.Push(L, gen_ret);
                     
                     
@@ -393,7 +393,7 @@ namespace XLua.CSObjectWrap
                 {
                     System.IO.Stream _stream = (System.IO.Stream)translator.GetObject(L, 1, typeof(System.IO.Stream));
                     
-                        UnityEngine.AssetBundle gen_ret = UnityEngine.AssetBundle.LoadFromStream( _stream );
+                        var gen_ret = UnityEngine.AssetBundle.LoadFromStream( _stream );
                         translator.Push(L, gen_ret);
                     
                     
@@ -405,7 +405,7 @@ namespace XLua.CSObjectWrap
                     System.IO.Stream _stream = (System.IO.Stream)translator.GetObject(L, 1, typeof(System.IO.Stream));
                     uint _crc = LuaAPI.xlua_touint(L, 2);
                     
-                        UnityEngine.AssetBundle gen_ret = UnityEngine.AssetBundle.LoadFromStream( _stream, _crc );
+                        var gen_ret = UnityEngine.AssetBundle.LoadFromStream( _stream, _crc );
                         translator.Push(L, gen_ret);
                     
                     
@@ -418,7 +418,7 @@ namespace XLua.CSObjectWrap
                     uint _crc = LuaAPI.xlua_touint(L, 2);
                     uint _managedReadBufferSize = LuaAPI.xlua_touint(L, 3);
                     
-                        UnityEngine.AssetBundle gen_ret = UnityEngine.AssetBundle.LoadFromStream( _stream, _crc, _managedReadBufferSize );
+                        var gen_ret = UnityEngine.AssetBundle.LoadFromStream( _stream, _crc, _managedReadBufferSize );
                         translator.Push(L, gen_ret);
                     
                     
@@ -449,7 +449,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _name = LuaAPI.lua_tostring(L, 2);
                     
-                        bool gen_ret = gen_to_be_invoked.Contains( _name );
+                        var gen_ret = gen_to_be_invoked.Contains( _name );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -480,7 +480,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _name = LuaAPI.lua_tostring(L, 2);
                     
-                        UnityEngine.Object gen_ret = gen_to_be_invoked.LoadAsset( _name );
+                        var gen_ret = gen_to_be_invoked.LoadAsset( _name );
                         translator.Push(L, gen_ret);
                     
                     
@@ -492,7 +492,7 @@ namespace XLua.CSObjectWrap
                     string _name = LuaAPI.lua_tostring(L, 2);
                     System.Type _type = (System.Type)translator.GetObject(L, 3, typeof(System.Type));
                     
-                        UnityEngine.Object gen_ret = gen_to_be_invoked.LoadAsset( _name, _type );
+                        var gen_ret = gen_to_be_invoked.LoadAsset( _name, _type );
                         translator.Push(L, gen_ret);
                     
                     
@@ -525,7 +525,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _name = LuaAPI.lua_tostring(L, 2);
                     
-                        UnityEngine.AssetBundleRequest gen_ret = gen_to_be_invoked.LoadAssetAsync( _name );
+                        var gen_ret = gen_to_be_invoked.LoadAssetAsync( _name );
                         translator.Push(L, gen_ret);
                     
                     
@@ -537,7 +537,7 @@ namespace XLua.CSObjectWrap
                     string _name = LuaAPI.lua_tostring(L, 2);
                     System.Type _type = (System.Type)translator.GetObject(L, 3, typeof(System.Type));
                     
-                        UnityEngine.AssetBundleRequest gen_ret = gen_to_be_invoked.LoadAssetAsync( _name, _type );
+                        var gen_ret = gen_to_be_invoked.LoadAssetAsync( _name, _type );
                         translator.Push(L, gen_ret);
                     
                     
@@ -570,7 +570,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _name = LuaAPI.lua_tostring(L, 2);
                     
-                        UnityEngine.Object[] gen_ret = gen_to_be_invoked.LoadAssetWithSubAssets( _name );
+                        var gen_ret = gen_to_be_invoked.LoadAssetWithSubAssets( _name );
                         translator.Push(L, gen_ret);
                     
                     
@@ -582,7 +582,7 @@ namespace XLua.CSObjectWrap
                     string _name = LuaAPI.lua_tostring(L, 2);
                     System.Type _type = (System.Type)translator.GetObject(L, 3, typeof(System.Type));
                     
-                        UnityEngine.Object[] gen_ret = gen_to_be_invoked.LoadAssetWithSubAssets( _name, _type );
+                        var gen_ret = gen_to_be_invoked.LoadAssetWithSubAssets( _name, _type );
                         translator.Push(L, gen_ret);
                     
                     
@@ -615,7 +615,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _name = LuaAPI.lua_tostring(L, 2);
                     
-                        UnityEngine.AssetBundleRequest gen_ret = gen_to_be_invoked.LoadAssetWithSubAssetsAsync( _name );
+                        var gen_ret = gen_to_be_invoked.LoadAssetWithSubAssetsAsync( _name );
                         translator.Push(L, gen_ret);
                     
                     
@@ -627,7 +627,7 @@ namespace XLua.CSObjectWrap
                     string _name = LuaAPI.lua_tostring(L, 2);
                     System.Type _type = (System.Type)translator.GetObject(L, 3, typeof(System.Type));
                     
-                        UnityEngine.AssetBundleRequest gen_ret = gen_to_be_invoked.LoadAssetWithSubAssetsAsync( _name, _type );
+                        var gen_ret = gen_to_be_invoked.LoadAssetWithSubAssetsAsync( _name, _type );
                         translator.Push(L, gen_ret);
                     
                     
@@ -659,7 +659,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 1) 
                 {
                     
-                        UnityEngine.Object[] gen_ret = gen_to_be_invoked.LoadAllAssets(  );
+                        var gen_ret = gen_to_be_invoked.LoadAllAssets(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -670,7 +670,7 @@ namespace XLua.CSObjectWrap
                 {
                     System.Type _type = (System.Type)translator.GetObject(L, 2, typeof(System.Type));
                     
-                        UnityEngine.Object[] gen_ret = gen_to_be_invoked.LoadAllAssets( _type );
+                        var gen_ret = gen_to_be_invoked.LoadAllAssets( _type );
                         translator.Push(L, gen_ret);
                     
                     
@@ -702,7 +702,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 1) 
                 {
                     
-                        UnityEngine.AssetBundleRequest gen_ret = gen_to_be_invoked.LoadAllAssetsAsync(  );
+                        var gen_ret = gen_to_be_invoked.LoadAllAssetsAsync(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -713,7 +713,7 @@ namespace XLua.CSObjectWrap
                 {
                     System.Type _type = (System.Type)translator.GetObject(L, 2, typeof(System.Type));
                     
-                        UnityEngine.AssetBundleRequest gen_ret = gen_to_be_invoked.LoadAllAssetsAsync( _type );
+                        var gen_ret = gen_to_be_invoked.LoadAllAssetsAsync( _type );
                         translator.Push(L, gen_ret);
                     
                     
@@ -771,7 +771,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        string[] gen_ret = gen_to_be_invoked.GetAllAssetNames(  );
+                        var gen_ret = gen_to_be_invoked.GetAllAssetNames(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -799,7 +799,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        string[] gen_ret = gen_to_be_invoked.GetAllScenePaths(  );
+                        var gen_ret = gen_to_be_invoked.GetAllScenePaths(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -832,7 +832,7 @@ namespace XLua.CSObjectWrap
                     uint _expectedCRC = LuaAPI.xlua_touint(L, 4);
                     UnityEngine.ThreadPriority _priority;translator.Get(L, 5, out _priority);
                     
-                        UnityEngine.AssetBundleRecompressOperation gen_ret = UnityEngine.AssetBundle.RecompressAssetBundleAsync( _inputPath, _outputPath, _method, _expectedCRC, _priority );
+                        var gen_ret = UnityEngine.AssetBundle.RecompressAssetBundleAsync( _inputPath, _outputPath, _method, _expectedCRC, _priority );
                         translator.Push(L, gen_ret);
                     
                     
@@ -846,7 +846,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.BuildCompression _method;translator.Get(L, 3, out _method);
                     uint _expectedCRC = LuaAPI.xlua_touint(L, 4);
                     
-                        UnityEngine.AssetBundleRecompressOperation gen_ret = UnityEngine.AssetBundle.RecompressAssetBundleAsync( _inputPath, _outputPath, _method, _expectedCRC );
+                        var gen_ret = UnityEngine.AssetBundle.RecompressAssetBundleAsync( _inputPath, _outputPath, _method, _expectedCRC );
                         translator.Push(L, gen_ret);
                     
                     
@@ -859,7 +859,7 @@ namespace XLua.CSObjectWrap
                     string _outputPath = LuaAPI.lua_tostring(L, 2);
                     UnityEngine.BuildCompression _method;translator.Get(L, 3, out _method);
                     
-                        UnityEngine.AssetBundleRecompressOperation gen_ret = UnityEngine.AssetBundle.RecompressAssetBundleAsync( _inputPath, _outputPath, _method );
+                        var gen_ret = UnityEngine.AssetBundle.RecompressAssetBundleAsync( _inputPath, _outputPath, _method );
                         translator.Push(L, gen_ret);
                     
                     

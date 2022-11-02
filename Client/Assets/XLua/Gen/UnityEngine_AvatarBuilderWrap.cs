@@ -52,7 +52,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.AvatarBuilder gen_ret = new UnityEngine.AvatarBuilder();
+					var gen_ret = new UnityEngine.AvatarBuilder();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -87,7 +87,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.GameObject _go = (UnityEngine.GameObject)translator.GetObject(L, 1, typeof(UnityEngine.GameObject));
                     UnityEngine.HumanDescription _humanDescription;translator.Get(L, 2, out _humanDescription);
                     
-                        UnityEngine.Avatar gen_ret = UnityEngine.AvatarBuilder.BuildHumanAvatar( _go, _humanDescription );
+                        var gen_ret = UnityEngine.AvatarBuilder.BuildHumanAvatar( _go, _humanDescription );
                         translator.Push(L, gen_ret);
                     
                     
@@ -115,7 +115,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.GameObject _go = (UnityEngine.GameObject)translator.GetObject(L, 1, typeof(UnityEngine.GameObject));
                     string _rootMotionTransformName = LuaAPI.lua_tostring(L, 2);
                     
-                        UnityEngine.Avatar gen_ret = UnityEngine.AvatarBuilder.BuildGenericAvatar( _go, _rootMotionTransformName );
+                        var gen_ret = UnityEngine.AvatarBuilder.BuildGenericAvatar( _go, _rootMotionTransformName );
                         translator.Push(L, gen_ret);
                     
                     

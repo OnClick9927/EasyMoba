@@ -73,7 +73,7 @@ namespace XLua.CSObjectWrap
                 {
                     Unity.Collections.NativeArray<byte> _buffer;translator.Get(L, 1, out _buffer);
                     
-                        int gen_ret = UnityEngine.ClusterSerialization.SaveTimeManagerState( _buffer );
+                        var gen_ret = UnityEngine.ClusterSerialization.SaveTimeManagerState( _buffer );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -100,7 +100,7 @@ namespace XLua.CSObjectWrap
                 {
                     Unity.Collections.NativeArray<byte> _buffer;translator.Get(L, 1, out _buffer);
                     
-                        bool gen_ret = UnityEngine.ClusterSerialization.RestoreTimeManagerState( _buffer );
+                        var gen_ret = UnityEngine.ClusterSerialization.RestoreTimeManagerState( _buffer );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -127,7 +127,7 @@ namespace XLua.CSObjectWrap
                 {
                     Unity.Collections.NativeArray<byte> _buffer;translator.Get(L, 1, out _buffer);
                     
-                        int gen_ret = UnityEngine.ClusterSerialization.SaveInputManagerState( _buffer );
+                        var gen_ret = UnityEngine.ClusterSerialization.SaveInputManagerState( _buffer );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -154,7 +154,7 @@ namespace XLua.CSObjectWrap
                 {
                     Unity.Collections.NativeArray<byte> _buffer;translator.Get(L, 1, out _buffer);
                     
-                        bool gen_ret = UnityEngine.ClusterSerialization.RestoreInputManagerState( _buffer );
+                        var gen_ret = UnityEngine.ClusterSerialization.RestoreInputManagerState( _buffer );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -181,7 +181,7 @@ namespace XLua.CSObjectWrap
                 {
                     Unity.Collections.NativeArray<byte> _buffer;translator.Get(L, 1, out _buffer);
                     
-                        int gen_ret = UnityEngine.ClusterSerialization.SaveClusterInputState( _buffer );
+                        var gen_ret = UnityEngine.ClusterSerialization.SaveClusterInputState( _buffer );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -208,7 +208,7 @@ namespace XLua.CSObjectWrap
                 {
                     Unity.Collections.NativeArray<byte> _buffer;translator.Get(L, 1, out _buffer);
                     
-                        bool gen_ret = UnityEngine.ClusterSerialization.RestoreClusterInputState( _buffer );
+                        var gen_ret = UnityEngine.ClusterSerialization.RestoreClusterInputState( _buffer );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     

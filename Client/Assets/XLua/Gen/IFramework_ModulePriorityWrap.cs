@@ -65,7 +65,7 @@ namespace XLua.CSObjectWrap
 				{
 					int _value = LuaAPI.xlua_tointeger(L, 2);
 					
-					IFramework.ModulePriority gen_ret = new IFramework.ModulePriority(_value);
+					var gen_ret = new IFramework.ModulePriority(_value);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -157,7 +157,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _value = LuaAPI.xlua_tointeger(L, 1);
                     
-                        IFramework.ModulePriority gen_ret = IFramework.ModulePriority.FromValue( _value );
+                        var gen_ret = IFramework.ModulePriority.FromValue( _value );
                         translator.Push(L, gen_ret);
                     
                     

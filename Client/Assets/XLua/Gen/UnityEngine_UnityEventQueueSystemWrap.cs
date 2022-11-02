@@ -52,7 +52,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.UnityEventQueueSystem gen_ret = new UnityEngine.UnityEventQueueSystem();
+					var gen_ret = new UnityEngine.UnityEventQueueSystem();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -84,7 +84,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _eventPayloadName = LuaAPI.lua_tostring(L, 1);
                     
-                        string gen_ret = UnityEngine.UnityEventQueueSystem.GenerateEventIdForPayload( _eventPayloadName );
+                        var gen_ret = UnityEngine.UnityEventQueueSystem.GenerateEventIdForPayload( _eventPayloadName );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -108,7 +108,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        System.IntPtr gen_ret = UnityEngine.UnityEventQueueSystem.GetGlobalEventQueue(  );
+                        var gen_ret = UnityEngine.UnityEventQueueSystem.GetGlobalEventQueue(  );
                         LuaAPI.lua_pushlightuserdata(L, gen_ret);
                     
                     

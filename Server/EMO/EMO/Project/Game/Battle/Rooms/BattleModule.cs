@@ -35,7 +35,9 @@ class BattleModule : IFramework.Module
     {
         List<long> roles = new List<long>(sp.enemy);
         roles.AddRange(sp.roles);
-        rooms.Add(sp.roomID, new Room(sp.type, roles, 1000 / ServerConst.battleRoomTrickPerSecond));
+        rooms.Add(sp.roomID, new Room(sp.type, roles, 
+            1000 / ServerConst.battleRoomTrickPerSecond,
+            new ServerCanCallClientBattleMsg()));
     }
 
     private Room FindRoom(string id)

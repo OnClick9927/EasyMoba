@@ -50,7 +50,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.ImageEffectAfterScale gen_ret = new UnityEngine.ImageEffectAfterScale();
+					var gen_ret = new UnityEngine.ImageEffectAfterScale();
 					translator.Push(L, gen_ret);
                     
 					return 1;

@@ -74,7 +74,7 @@ namespace XLua.CSObjectWrap
                     string _buildTarget = LuaAPI.lua_tostring(L, 2);
                     string _bundleName = LuaAPI.lua_tostring(L, 3);
                     
-                        string gen_ret = gen_to_be_invoked.GetUrlByBundleName( _buildTarget, _bundleName );
+                        var gen_ret = gen_to_be_invoked.GetUrlByBundleName( _buildTarget, _bundleName );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -102,7 +102,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        string gen_ret = gen_to_be_invoked.GetVersionUrl(  );
+                        var gen_ret = gen_to_be_invoked.GetVersionUrl(  );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -130,7 +130,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        IFramework.Hotfix.Asset.FileCheckType gen_ret = gen_to_be_invoked.GetFileCheckType(  );
+                        var gen_ret = gen_to_be_invoked.GetFileCheckType(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -158,7 +158,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        int gen_ret = gen_to_be_invoked.GetWebRequestTimeout(  );
+                        var gen_ret = gen_to_be_invoked.GetWebRequestTimeout(  );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     

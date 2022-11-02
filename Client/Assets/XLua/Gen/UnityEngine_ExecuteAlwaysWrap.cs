@@ -50,7 +50,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.ExecuteAlways gen_ret = new UnityEngine.ExecuteAlways();
+					var gen_ret = new UnityEngine.ExecuteAlways();
 					translator.Push(L, gen_ret);
                     
 					return 1;

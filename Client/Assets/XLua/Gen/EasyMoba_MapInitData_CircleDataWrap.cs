@@ -50,7 +50,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					EasyMoba.MapInitData.CircleData gen_ret = new EasyMoba.MapInitData.CircleData();
+					var gen_ret = new EasyMoba.MapInitData.CircleData();
 					translator.Push(L, gen_ret);
                     
 					return 1;

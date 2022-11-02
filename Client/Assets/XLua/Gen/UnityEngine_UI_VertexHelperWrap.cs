@@ -63,7 +63,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.UI.VertexHelper gen_ret = new UnityEngine.UI.VertexHelper();
+					var gen_ret = new UnityEngine.UI.VertexHelper();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -72,7 +72,7 @@ namespace XLua.CSObjectWrap
 				{
 					UnityEngine.Mesh _m = (UnityEngine.Mesh)translator.GetObject(L, 2, typeof(UnityEngine.Mesh));
 					
-					UnityEngine.UI.VertexHelper gen_ret = new UnityEngine.UI.VertexHelper(_m);
+					var gen_ret = new UnityEngine.UI.VertexHelper(_m);
 					translator.Push(L, gen_ret);
                     
 					return 1;

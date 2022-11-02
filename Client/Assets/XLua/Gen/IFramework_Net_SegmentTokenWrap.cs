@@ -54,7 +54,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					IFramework.Net.SegmentToken gen_ret = new IFramework.Net.SegmentToken();
+					var gen_ret = new IFramework.Net.SegmentToken();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -63,7 +63,7 @@ namespace XLua.CSObjectWrap
 				{
 					IFramework.Net.SocketToken _sToken = (IFramework.Net.SocketToken)translator.GetObject(L, 2, typeof(IFramework.Net.SocketToken));
 					
-					IFramework.Net.SegmentToken gen_ret = new IFramework.Net.SegmentToken(_sToken);
+					var gen_ret = new IFramework.Net.SegmentToken(_sToken);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -73,7 +73,7 @@ namespace XLua.CSObjectWrap
 					IFramework.Net.SocketToken _sToken = (IFramework.Net.SocketToken)translator.GetObject(L, 2, typeof(IFramework.Net.SocketToken));
 					IFramework.Net.SegmentOffset _data = (IFramework.Net.SegmentOffset)translator.GetObject(L, 3, typeof(IFramework.Net.SegmentOffset));
 					
-					IFramework.Net.SegmentToken gen_ret = new IFramework.Net.SegmentToken(_sToken, _data);
+					var gen_ret = new IFramework.Net.SegmentToken(_sToken, _data);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -83,7 +83,7 @@ namespace XLua.CSObjectWrap
 					IFramework.Net.SocketToken _sToken = (IFramework.Net.SocketToken)translator.GetObject(L, 2, typeof(IFramework.Net.SocketToken));
 					byte[] _buffer = LuaAPI.lua_tobytes(L, 3);
 					
-					IFramework.Net.SegmentToken gen_ret = new IFramework.Net.SegmentToken(_sToken, _buffer);
+					var gen_ret = new IFramework.Net.SegmentToken(_sToken, _buffer);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -95,7 +95,7 @@ namespace XLua.CSObjectWrap
 					int _offset = LuaAPI.xlua_tointeger(L, 4);
 					int _size = LuaAPI.xlua_tointeger(L, 5);
 					
-					IFramework.Net.SegmentToken gen_ret = new IFramework.Net.SegmentToken(_sToken, _buffer, _offset, _size);
+					var gen_ret = new IFramework.Net.SegmentToken(_sToken, _buffer, _offset, _size);
 					translator.Push(L, gen_ret);
                     
 					return 1;

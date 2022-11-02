@@ -62,7 +62,7 @@ namespace XLua.CSObjectWrap
 					UnityEngine.Experimental.Rendering.DefaultFormat _format;translator.Get(L, 4, out _format);
 					UnityEngine.Experimental.Rendering.TextureCreationFlags _flags;translator.Get(L, 5, out _flags);
 					
-					UnityEngine.CubemapArray gen_ret = new UnityEngine.CubemapArray(_width, _cubemapCount, _format, _flags);
+					var gen_ret = new UnityEngine.CubemapArray(_width, _cubemapCount, _format, _flags);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -74,7 +74,7 @@ namespace XLua.CSObjectWrap
 					UnityEngine.Experimental.Rendering.GraphicsFormat _format;translator.Get(L, 4, out _format);
 					UnityEngine.Experimental.Rendering.TextureCreationFlags _flags;translator.Get(L, 5, out _flags);
 					
-					UnityEngine.CubemapArray gen_ret = new UnityEngine.CubemapArray(_width, _cubemapCount, _format, _flags);
+					var gen_ret = new UnityEngine.CubemapArray(_width, _cubemapCount, _format, _flags);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -87,7 +87,7 @@ namespace XLua.CSObjectWrap
 					UnityEngine.Experimental.Rendering.TextureCreationFlags _flags;translator.Get(L, 5, out _flags);
 					int _mipCount = LuaAPI.xlua_tointeger(L, 6);
 					
-					UnityEngine.CubemapArray gen_ret = new UnityEngine.CubemapArray(_width, _cubemapCount, _format, _flags, _mipCount);
+					var gen_ret = new UnityEngine.CubemapArray(_width, _cubemapCount, _format, _flags, _mipCount);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -100,7 +100,7 @@ namespace XLua.CSObjectWrap
 					int _mipCount = LuaAPI.xlua_tointeger(L, 5);
 					bool _linear = LuaAPI.lua_toboolean(L, 6);
 					
-					UnityEngine.CubemapArray gen_ret = new UnityEngine.CubemapArray(_width, _cubemapCount, _textureFormat, _mipCount, _linear);
+					var gen_ret = new UnityEngine.CubemapArray(_width, _cubemapCount, _textureFormat, _mipCount, _linear);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -113,7 +113,7 @@ namespace XLua.CSObjectWrap
 					bool _mipChain = LuaAPI.lua_toboolean(L, 5);
 					bool _linear = LuaAPI.lua_toboolean(L, 6);
 					
-					UnityEngine.CubemapArray gen_ret = new UnityEngine.CubemapArray(_width, _cubemapCount, _textureFormat, _mipChain, _linear);
+					var gen_ret = new UnityEngine.CubemapArray(_width, _cubemapCount, _textureFormat, _mipChain, _linear);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -125,7 +125,7 @@ namespace XLua.CSObjectWrap
 					UnityEngine.TextureFormat _textureFormat;translator.Get(L, 4, out _textureFormat);
 					bool _mipChain = LuaAPI.lua_toboolean(L, 5);
 					
-					UnityEngine.CubemapArray gen_ret = new UnityEngine.CubemapArray(_width, _cubemapCount, _textureFormat, _mipChain);
+					var gen_ret = new UnityEngine.CubemapArray(_width, _cubemapCount, _textureFormat, _mipChain);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -164,7 +164,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.CubemapFace _face;translator.Get(L, 2, out _face);
                     int _arrayElement = LuaAPI.xlua_tointeger(L, 3);
                     
-                        UnityEngine.Color[] gen_ret = gen_to_be_invoked.GetPixels( _face, _arrayElement );
+                        var gen_ret = gen_to_be_invoked.GetPixels( _face, _arrayElement );
                         translator.Push(L, gen_ret);
                     
                     
@@ -177,7 +177,7 @@ namespace XLua.CSObjectWrap
                     int _arrayElement = LuaAPI.xlua_tointeger(L, 3);
                     int _miplevel = LuaAPI.xlua_tointeger(L, 4);
                     
-                        UnityEngine.Color[] gen_ret = gen_to_be_invoked.GetPixels( _face, _arrayElement, _miplevel );
+                        var gen_ret = gen_to_be_invoked.GetPixels( _face, _arrayElement, _miplevel );
                         translator.Push(L, gen_ret);
                     
                     
@@ -211,7 +211,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.CubemapFace _face;translator.Get(L, 2, out _face);
                     int _arrayElement = LuaAPI.xlua_tointeger(L, 3);
                     
-                        UnityEngine.Color32[] gen_ret = gen_to_be_invoked.GetPixels32( _face, _arrayElement );
+                        var gen_ret = gen_to_be_invoked.GetPixels32( _face, _arrayElement );
                         translator.Push(L, gen_ret);
                     
                     
@@ -224,7 +224,7 @@ namespace XLua.CSObjectWrap
                     int _arrayElement = LuaAPI.xlua_tointeger(L, 3);
                     int _miplevel = LuaAPI.xlua_tointeger(L, 4);
                     
-                        UnityEngine.Color32[] gen_ret = gen_to_be_invoked.GetPixels32( _face, _arrayElement, _miplevel );
+                        var gen_ret = gen_to_be_invoked.GetPixels32( _face, _arrayElement, _miplevel );
                         translator.Push(L, gen_ret);
                     
                     

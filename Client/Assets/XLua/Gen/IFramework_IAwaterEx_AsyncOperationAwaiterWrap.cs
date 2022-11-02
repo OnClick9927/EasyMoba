@@ -55,7 +55,7 @@ namespace XLua.CSObjectWrap
 				{
 					UnityEngine.AsyncOperation _task = (UnityEngine.AsyncOperation)translator.GetObject(L, 2, typeof(UnityEngine.AsyncOperation));
 					
-					IFramework.IAwaterEx.AsyncOperationAwaiter gen_ret = new IFramework.IAwaterEx.AsyncOperationAwaiter(_task);
+					var gen_ret = new IFramework.IAwaterEx.AsyncOperationAwaiter(_task);
 					translator.Push(L, gen_ret);
                     
 					return 1;

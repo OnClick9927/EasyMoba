@@ -55,7 +55,7 @@ namespace XLua.CSObjectWrap
 				{
 					IFramework.Hotfix.Asset.AssetsInternal.CheckBundleVersionOperation _task = (IFramework.Hotfix.Asset.AssetsInternal.CheckBundleVersionOperation)translator.GetObject(L, 2, typeof(IFramework.Hotfix.Asset.AssetsInternal.CheckBundleVersionOperation));
 					
-					IFramework.Hotfix.Asset.AssetsAsyncSupport.CheckBundleVersionOperationAwaiter gen_ret = new IFramework.Hotfix.Asset.AssetsAsyncSupport.CheckBundleVersionOperationAwaiter(_task);
+					var gen_ret = new IFramework.Hotfix.Asset.AssetsAsyncSupport.CheckBundleVersionOperationAwaiter(_task);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -96,7 +96,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        IFramework.Hotfix.Asset.AssetsInternal.CheckBundleVersionOperation gen_ret = gen_to_be_invoked.GetResult(  );
+                        var gen_ret = gen_to_be_invoked.GetResult(  );
                         translator.Push(L, gen_ret);
                     
                     

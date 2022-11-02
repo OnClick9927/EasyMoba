@@ -81,7 +81,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.Time gen_ret = new UnityEngine.Time();
+					var gen_ret = new UnityEngine.Time();
 					translator.Push(L, gen_ret);
                     
 					return 1;

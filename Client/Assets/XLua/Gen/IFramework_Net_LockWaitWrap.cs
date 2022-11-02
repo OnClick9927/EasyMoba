@@ -52,7 +52,7 @@ namespace XLua.CSObjectWrap
 				{
 					IFramework.Net.LockParam _param = (IFramework.Net.LockParam)translator.GetObject(L, 2, typeof(IFramework.Net.LockParam));
 					
-					IFramework.Net.LockWait gen_ret = new IFramework.Net.LockWait(ref _param);
+					var gen_ret = new IFramework.Net.LockWait(ref _param);
 					translator.Push(L, gen_ret);
                     translator.Push(L, _param);
                         

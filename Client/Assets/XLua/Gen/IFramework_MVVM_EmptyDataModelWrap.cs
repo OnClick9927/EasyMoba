@@ -50,7 +50,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					IFramework.MVVM.EmptyDataModel gen_ret = new IFramework.MVVM.EmptyDataModel();
+					var gen_ret = new IFramework.MVVM.EmptyDataModel();
 					translator.Push(L, gen_ret);
                     
 					return 1;

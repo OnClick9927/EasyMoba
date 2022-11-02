@@ -56,7 +56,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.LocalizationAsset gen_ret = new UnityEngine.LocalizationAsset();
+					var gen_ret = new UnityEngine.LocalizationAsset();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -121,7 +121,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _original = LuaAPI.lua_tostring(L, 2);
                     
-                        string gen_ret = gen_to_be_invoked.GetLocalizedString( _original );
+                        var gen_ret = gen_to_be_invoked.GetLocalizedString( _original );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     

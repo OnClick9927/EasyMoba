@@ -53,7 +53,7 @@ namespace XLua.CSObjectWrap
 				{
 					float _a = (float)LuaAPI.lua_tonumber(L, 2);
 					
-					UnityEngine.ArticulationReducedSpace gen_ret = new UnityEngine.ArticulationReducedSpace(_a);
+					var gen_ret = new UnityEngine.ArticulationReducedSpace(_a);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -63,7 +63,7 @@ namespace XLua.CSObjectWrap
 					float _a = (float)LuaAPI.lua_tonumber(L, 2);
 					float _b = (float)LuaAPI.lua_tonumber(L, 3);
 					
-					UnityEngine.ArticulationReducedSpace gen_ret = new UnityEngine.ArticulationReducedSpace(_a, _b);
+					var gen_ret = new UnityEngine.ArticulationReducedSpace(_a, _b);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -74,7 +74,7 @@ namespace XLua.CSObjectWrap
 					float _b = (float)LuaAPI.lua_tonumber(L, 3);
 					float _c = (float)LuaAPI.lua_tonumber(L, 4);
 					
-					UnityEngine.ArticulationReducedSpace gen_ret = new UnityEngine.ArticulationReducedSpace(_a, _b, _c);
+					var gen_ret = new UnityEngine.ArticulationReducedSpace(_a, _b, _c);
 					translator.Push(L, gen_ret);
                     
 					return 1;

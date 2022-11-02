@@ -55,7 +55,7 @@ namespace XLua.CSObjectWrap
 				{
 					UnityEngine.AssetBundleRequest _task = (UnityEngine.AssetBundleRequest)translator.GetObject(L, 2, typeof(UnityEngine.AssetBundleRequest));
 					
-					IFramework.Hotfix.Asset.AssetsAsyncSupport.AssetBundleRequestAwaiter gen_ret = new IFramework.Hotfix.Asset.AssetsAsyncSupport.AssetBundleRequestAwaiter(_task);
+					var gen_ret = new IFramework.Hotfix.Asset.AssetsAsyncSupport.AssetBundleRequestAwaiter(_task);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -96,7 +96,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.AssetBundleRequest gen_ret = gen_to_be_invoked.GetResult(  );
+                        var gen_ret = gen_to_be_invoked.GetResult(  );
                         translator.Push(L, gen_ret);
                     
                     

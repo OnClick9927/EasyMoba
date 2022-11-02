@@ -60,7 +60,7 @@ namespace XLua.CSObjectWrap
 					UnityEngine.Experimental.Rendering.DefaultFormat _format;translator.Get(L, 4, out _format);
 					int _mipCount = LuaAPI.xlua_tointeger(L, 5);
 					
-					UnityEngine.SparseTexture gen_ret = new UnityEngine.SparseTexture(_width, _height, _format, _mipCount);
+					var gen_ret = new UnityEngine.SparseTexture(_width, _height, _format, _mipCount);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -72,7 +72,7 @@ namespace XLua.CSObjectWrap
 					UnityEngine.Experimental.Rendering.GraphicsFormat _format;translator.Get(L, 4, out _format);
 					int _mipCount = LuaAPI.xlua_tointeger(L, 5);
 					
-					UnityEngine.SparseTexture gen_ret = new UnityEngine.SparseTexture(_width, _height, _format, _mipCount);
+					var gen_ret = new UnityEngine.SparseTexture(_width, _height, _format, _mipCount);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -84,7 +84,7 @@ namespace XLua.CSObjectWrap
 					UnityEngine.TextureFormat _textureFormat;translator.Get(L, 4, out _textureFormat);
 					int _mipCount = LuaAPI.xlua_tointeger(L, 5);
 					
-					UnityEngine.SparseTexture gen_ret = new UnityEngine.SparseTexture(_width, _height, _textureFormat, _mipCount);
+					var gen_ret = new UnityEngine.SparseTexture(_width, _height, _textureFormat, _mipCount);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -97,7 +97,7 @@ namespace XLua.CSObjectWrap
 					int _mipCount = LuaAPI.xlua_tointeger(L, 5);
 					bool _linear = LuaAPI.lua_toboolean(L, 6);
 					
-					UnityEngine.SparseTexture gen_ret = new UnityEngine.SparseTexture(_width, _height, _textureFormat, _mipCount, _linear);
+					var gen_ret = new UnityEngine.SparseTexture(_width, _height, _textureFormat, _mipCount, _linear);
 					translator.Push(L, gen_ret);
                     
 					return 1;

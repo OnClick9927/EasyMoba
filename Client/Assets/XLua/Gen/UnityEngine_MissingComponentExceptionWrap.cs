@@ -50,7 +50,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.MissingComponentException gen_ret = new UnityEngine.MissingComponentException();
+					var gen_ret = new UnityEngine.MissingComponentException();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -59,7 +59,7 @@ namespace XLua.CSObjectWrap
 				{
 					string _message = LuaAPI.lua_tostring(L, 2);
 					
-					UnityEngine.MissingComponentException gen_ret = new UnityEngine.MissingComponentException(_message);
+					var gen_ret = new UnityEngine.MissingComponentException(_message);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -69,7 +69,7 @@ namespace XLua.CSObjectWrap
 					string _message = LuaAPI.lua_tostring(L, 2);
 					System.Exception _innerException = (System.Exception)translator.GetObject(L, 3, typeof(System.Exception));
 					
-					UnityEngine.MissingComponentException gen_ret = new UnityEngine.MissingComponentException(_message, _innerException);
+					var gen_ret = new UnityEngine.MissingComponentException(_message, _innerException);
 					translator.Push(L, gen_ret);
                     
 					return 1;

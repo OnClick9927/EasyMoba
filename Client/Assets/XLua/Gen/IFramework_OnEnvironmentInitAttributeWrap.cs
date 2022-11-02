@@ -52,7 +52,7 @@ namespace XLua.CSObjectWrap
 				{
 					IFramework.EnvironmentType _type;translator.Get(L, 2, out _type);
 					
-					IFramework.OnEnvironmentInitAttribute gen_ret = new IFramework.OnEnvironmentInitAttribute(_type);
+					var gen_ret = new IFramework.OnEnvironmentInitAttribute(_type);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -60,7 +60,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					IFramework.OnEnvironmentInitAttribute gen_ret = new IFramework.OnEnvironmentInitAttribute();
+					var gen_ret = new IFramework.OnEnvironmentInitAttribute();
 					translator.Push(L, gen_ret);
                     
 					return 1;

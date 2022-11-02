@@ -58,7 +58,7 @@ namespace XLua.CSObjectWrap
 					float _screenRelativeTransitionHeight = (float)LuaAPI.lua_tonumber(L, 2);
 					UnityEngine.Renderer[] _renderers = (UnityEngine.Renderer[])translator.GetObject(L, 3, typeof(UnityEngine.Renderer[]));
 					
-					UnityEngine.LOD gen_ret = new UnityEngine.LOD(_screenRelativeTransitionHeight, _renderers);
+					var gen_ret = new UnityEngine.LOD(_screenRelativeTransitionHeight, _renderers);
 					translator.Push(L, gen_ret);
                     
 					return 1;

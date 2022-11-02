@@ -140,7 +140,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.SystemInfo gen_ret = new UnityEngine.SystemInfo();
+					var gen_ret = new UnityEngine.SystemInfo();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -174,7 +174,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.RenderTextureFormat _format;translator.Get(L, 1, out _format);
                     
-                        bool gen_ret = UnityEngine.SystemInfo.SupportsRenderTextureFormat( _format );
+                        var gen_ret = UnityEngine.SystemInfo.SupportsRenderTextureFormat( _format );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -201,7 +201,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.RenderTextureFormat _format;translator.Get(L, 1, out _format);
                     
-                        bool gen_ret = UnityEngine.SystemInfo.SupportsBlendingOnRenderTextureFormat( _format );
+                        var gen_ret = UnityEngine.SystemInfo.SupportsBlendingOnRenderTextureFormat( _format );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -228,7 +228,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.TextureFormat _format;translator.Get(L, 1, out _format);
                     
-                        bool gen_ret = UnityEngine.SystemInfo.SupportsTextureFormat( _format );
+                        var gen_ret = UnityEngine.SystemInfo.SupportsTextureFormat( _format );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -256,7 +256,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Rendering.VertexAttributeFormat _format;translator.Get(L, 1, out _format);
                     int _dimension = LuaAPI.xlua_tointeger(L, 2);
                     
-                        bool gen_ret = UnityEngine.SystemInfo.SupportsVertexAttributeFormat( _format, _dimension );
+                        var gen_ret = UnityEngine.SystemInfo.SupportsVertexAttributeFormat( _format, _dimension );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -284,7 +284,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Experimental.Rendering.GraphicsFormat _format;translator.Get(L, 1, out _format);
                     UnityEngine.Experimental.Rendering.FormatUsage _usage;translator.Get(L, 2, out _usage);
                     
-                        bool gen_ret = UnityEngine.SystemInfo.IsFormatSupported( _format, _usage );
+                        var gen_ret = UnityEngine.SystemInfo.IsFormatSupported( _format, _usage );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -312,7 +312,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Experimental.Rendering.GraphicsFormat _format;translator.Get(L, 1, out _format);
                     UnityEngine.Experimental.Rendering.FormatUsage _usage;translator.Get(L, 2, out _usage);
                     
-                        UnityEngine.Experimental.Rendering.GraphicsFormat gen_ret = UnityEngine.SystemInfo.GetCompatibleFormat( _format, _usage );
+                        var gen_ret = UnityEngine.SystemInfo.GetCompatibleFormat( _format, _usage );
                         translator.Push(L, gen_ret);
                     
                     
@@ -339,7 +339,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Experimental.Rendering.DefaultFormat _format;translator.Get(L, 1, out _format);
                     
-                        UnityEngine.Experimental.Rendering.GraphicsFormat gen_ret = UnityEngine.SystemInfo.GetGraphicsFormat( _format );
+                        var gen_ret = UnityEngine.SystemInfo.GetGraphicsFormat( _format );
                         translator.Push(L, gen_ret);
                     
                     
@@ -366,7 +366,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.RenderTextureDescriptor _desc;translator.Get(L, 1, out _desc);
                     
-                        int gen_ret = UnityEngine.SystemInfo.GetRenderTextureSupportedMSAASampleCount( _desc );
+                        var gen_ret = UnityEngine.SystemInfo.GetRenderTextureSupportedMSAASampleCount( _desc );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     

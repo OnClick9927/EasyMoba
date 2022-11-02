@@ -53,7 +53,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					IFramework.BindableObjectHandler gen_ret = new IFramework.BindableObjectHandler();
+					var gen_ret = new IFramework.BindableObjectHandler();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -90,7 +90,7 @@ namespace XLua.CSObjectWrap
                     System.Type _type = (System.Type)translator.GetObject(L, 2, typeof(System.Type));
                     string _name = LuaAPI.lua_tostring(L, 3);
                     
-                        object gen_ret = gen_to_be_invoked.GetValue( _type, _name );
+                        var gen_ret = gen_to_be_invoked.GetValue( _type, _name );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -121,7 +121,7 @@ namespace XLua.CSObjectWrap
                     object _value = translator.GetObject(L, 3, typeof(object));
                     string _propertyName = LuaAPI.lua_tostring(L, 4);
                     
-                        IFramework.BindableObjectHandler gen_ret = gen_to_be_invoked.PublishProperty( _type, _value, _propertyName );
+                        var gen_ret = gen_to_be_invoked.PublishProperty( _type, _value, _propertyName );
                         translator.Push(L, gen_ret);
                     
                     

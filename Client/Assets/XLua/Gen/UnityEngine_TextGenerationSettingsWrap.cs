@@ -121,7 +121,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.TextGenerationSettings _other;translator.Get(L, 2, out _other);
                     
-                        bool gen_ret = gen_to_be_invoked.Equals( _other );
+                        var gen_ret = gen_to_be_invoked.Equals( _other );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     

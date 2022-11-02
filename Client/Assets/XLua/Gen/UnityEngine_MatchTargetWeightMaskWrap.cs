@@ -56,7 +56,7 @@ namespace XLua.CSObjectWrap
 					UnityEngine.Vector3 _positionXYZWeight;translator.Get(L, 2, out _positionXYZWeight);
 					float _rotationWeight = (float)LuaAPI.lua_tonumber(L, 3);
 					
-					UnityEngine.MatchTargetWeightMask gen_ret = new UnityEngine.MatchTargetWeightMask(_positionXYZWeight, _rotationWeight);
+					var gen_ret = new UnityEngine.MatchTargetWeightMask(_positionXYZWeight, _rotationWeight);
 					translator.Push(L, gen_ret);
                     
 					return 1;

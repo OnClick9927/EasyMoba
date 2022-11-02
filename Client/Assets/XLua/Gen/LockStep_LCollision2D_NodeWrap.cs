@@ -70,7 +70,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					LockStep.LCollision2D.Node gen_ret = new LockStep.LCollision2D.Node();
+					var gen_ret = new LockStep.LCollision2D.Node();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -105,7 +105,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        LockStep.Math.LFloat gen_ret = gen_to_be_invoked.UpdateMaxRadius(  );
+                        var gen_ret = gen_to_be_invoked.UpdateMaxRadius(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -133,7 +133,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        bool gen_ret = gen_to_be_invoked.HaveChildren(  );
+                        var gen_ret = gen_to_be_invoked.HaveChildren(  );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -245,7 +245,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        bool gen_ret = gen_to_be_invoked.NeedSplit(  );
+                        var gen_ret = gen_to_be_invoked.NeedSplit(  );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -274,7 +274,7 @@ namespace XLua.CSObjectWrap
                 {
                     LockStep.Math.LVector2 _position;translator.Get(L, 2, out _position);
                     
-                        bool gen_ret = gen_to_be_invoked.CouldAdd( _position );
+                        var gen_ret = gen_to_be_invoked.CouldAdd( _position );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -302,7 +302,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        System.Collections.Generic.List<LockStep.LCollision2D.Node> gen_ret = gen_to_be_invoked.GetChildren(  );
+                        var gen_ret = gen_to_be_invoked.GetChildren(  );
                         translator.Push(L, gen_ret);
                     
                     

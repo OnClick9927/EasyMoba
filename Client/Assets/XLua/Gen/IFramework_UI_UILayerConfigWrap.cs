@@ -52,7 +52,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					IFramework.UI.UILayerConfig gen_ret = new IFramework.UI.UILayerConfig();
+					var gen_ret = new IFramework.UI.UILayerConfig();
 					translator.Push(L, gen_ret);
                     
 					return 1;

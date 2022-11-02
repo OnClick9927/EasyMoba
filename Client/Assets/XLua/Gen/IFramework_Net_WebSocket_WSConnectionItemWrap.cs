@@ -57,7 +57,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					IFramework.Net.WebSocket.WSConnectionItem gen_ret = new IFramework.Net.WebSocket.WSConnectionItem();
+					var gen_ret = new IFramework.Net.WebSocket.WSConnectionItem();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -66,7 +66,7 @@ namespace XLua.CSObjectWrap
 				{
 					string _wsUrl = LuaAPI.lua_tostring(L, 2);
 					
-					IFramework.Net.WebSocket.WSConnectionItem gen_ret = new IFramework.Net.WebSocket.WSConnectionItem(_wsUrl);
+					var gen_ret = new IFramework.Net.WebSocket.WSConnectionItem(_wsUrl);
 					translator.Push(L, gen_ret);
                     
 					return 1;

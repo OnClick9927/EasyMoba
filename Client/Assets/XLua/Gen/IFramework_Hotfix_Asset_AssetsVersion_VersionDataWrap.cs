@@ -56,7 +56,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					IFramework.Hotfix.Asset.AssetsVersion.VersionData gen_ret = new IFramework.Hotfix.Asset.AssetsVersion.VersionData();
+					var gen_ret = new IFramework.Hotfix.Asset.AssetsVersion.VersionData();
 					translator.Push(L, gen_ret);
                     
 					return 1;

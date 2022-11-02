@@ -51,7 +51,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					IFramework.Hotfix.Lua.LuaGame.UnityModules gen_ret = new IFramework.Hotfix.Lua.LuaGame.UnityModules();
+					var gen_ret = new IFramework.Hotfix.Lua.LuaGame.UnityModules();
 					translator.Push(L, gen_ret);
                     
 					return 1;

@@ -76,7 +76,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.CharacterController gen_ret = new UnityEngine.CharacterController();
+					var gen_ret = new UnityEngine.CharacterController();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -112,7 +112,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Vector3 _speed;translator.Get(L, 2, out _speed);
                     
-                        bool gen_ret = gen_to_be_invoked.SimpleMove( _speed );
+                        var gen_ret = gen_to_be_invoked.SimpleMove( _speed );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -141,7 +141,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Vector3 _motion;translator.Get(L, 2, out _motion);
                     
-                        UnityEngine.CollisionFlags gen_ret = gen_to_be_invoked.Move( _motion );
+                        var gen_ret = gen_to_be_invoked.Move( _motion );
                         translator.Push(L, gen_ret);
                     
                     
@@ -169,7 +169,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.MakeComponentExist(  );
+                        var gen_ret = gen_to_be_invoked.MakeComponentExist(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -224,7 +224,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.LocalIdentity(  );
+                        var gen_ret = gen_to_be_invoked.LocalIdentity(  );
                         translator.Push(L, gen_ret);
                     
                     

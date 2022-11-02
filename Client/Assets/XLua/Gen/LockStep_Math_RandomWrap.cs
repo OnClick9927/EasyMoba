@@ -58,7 +58,7 @@ namespace XLua.CSObjectWrap
 				{
 					uint _seed = LuaAPI.xlua_touint(L, 2);
 					
-					LockStep.Math.Random gen_ret = new LockStep.Math.Random(_seed);
+					var gen_ret = new LockStep.Math.Random(_seed);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -66,7 +66,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					LockStep.Math.Random gen_ret = new LockStep.Math.Random();
+					var gen_ret = new LockStep.Math.Random();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -109,7 +109,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 1) 
                 {
                     
-                        uint gen_ret = gen_to_be_invoked.Next(  );
+                        var gen_ret = gen_to_be_invoked.Next(  );
                         LuaAPI.xlua_pushuint(L, gen_ret);
                     
                     
@@ -122,7 +122,7 @@ namespace XLua.CSObjectWrap
                 {
                     uint _max = LuaAPI.xlua_touint(L, 2);
                     
-                        uint gen_ret = gen_to_be_invoked.Next( _max );
+                        var gen_ret = gen_to_be_invoked.Next( _max );
                         LuaAPI.xlua_pushuint(L, gen_ret);
                     
                     
@@ -135,7 +135,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _max = LuaAPI.xlua_tointeger(L, 2);
                     
-                        int gen_ret = gen_to_be_invoked.Next( _max );
+                        var gen_ret = gen_to_be_invoked.Next( _max );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -167,7 +167,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        LockStep.Math.LVector2 gen_ret = gen_to_be_invoked.NextVector2(  );
+                        var gen_ret = gen_to_be_invoked.NextVector2(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -197,7 +197,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        LockStep.Math.LVector3 gen_ret = gen_to_be_invoked.NextVector3(  );
+                        var gen_ret = gen_to_be_invoked.NextVector3(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -231,7 +231,7 @@ namespace XLua.CSObjectWrap
                     uint _min = LuaAPI.xlua_touint(L, 2);
                     uint _max = LuaAPI.xlua_touint(L, 3);
                     
-                        uint gen_ret = gen_to_be_invoked.Range( _min, _max );
+                        var gen_ret = gen_to_be_invoked.Range( _min, _max );
                         LuaAPI.xlua_pushuint(L, gen_ret);
                     
                     
@@ -245,7 +245,7 @@ namespace XLua.CSObjectWrap
                     int _min = LuaAPI.xlua_tointeger(L, 2);
                     int _max = LuaAPI.xlua_tointeger(L, 3);
                     
-                        int gen_ret = gen_to_be_invoked.Range( _min, _max );
+                        var gen_ret = gen_to_be_invoked.Range( _min, _max );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -259,7 +259,7 @@ namespace XLua.CSObjectWrap
                     LockStep.Math.LFloat _min;translator.Get(L, 2, out _min);
                     LockStep.Math.LFloat _max;translator.Get(L, 3, out _max);
                     
-                        LockStep.Math.LFloat gen_ret = gen_to_be_invoked.Range( _min, _max );
+                        var gen_ret = gen_to_be_invoked.Range( _min, _max );
                         translator.Push(L, gen_ret);
                     
                     

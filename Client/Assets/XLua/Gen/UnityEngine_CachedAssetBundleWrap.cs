@@ -56,7 +56,7 @@ namespace XLua.CSObjectWrap
 					string _name = LuaAPI.lua_tostring(L, 2);
 					UnityEngine.Hash128 _hash;translator.Get(L, 3, out _hash);
 					
-					UnityEngine.CachedAssetBundle gen_ret = new UnityEngine.CachedAssetBundle(_name, _hash);
+					var gen_ret = new UnityEngine.CachedAssetBundle(_name, _hash);
 					translator.Push(L, gen_ret);
                     
 					return 1;

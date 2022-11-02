@@ -79,7 +79,7 @@ namespace XLua.CSObjectWrap
                     uint _height = LuaAPI.xlua_touint(L, 4);
                     uint _rowBytes = LuaAPI.xlua_touint(L, 5);
                     
-                        byte[] gen_ret = UnityEngine.ImageConversion.EncodeArrayToTGA( _array, _format, _width, _height, _rowBytes );
+                        var gen_ret = UnityEngine.ImageConversion.EncodeArrayToTGA( _array, _format, _width, _height, _rowBytes );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -93,7 +93,7 @@ namespace XLua.CSObjectWrap
                     uint _width = LuaAPI.xlua_touint(L, 3);
                     uint _height = LuaAPI.xlua_touint(L, 4);
                     
-                        byte[] gen_ret = UnityEngine.ImageConversion.EncodeArrayToTGA( _array, _format, _width, _height );
+                        var gen_ret = UnityEngine.ImageConversion.EncodeArrayToTGA( _array, _format, _width, _height );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -128,7 +128,7 @@ namespace XLua.CSObjectWrap
                     uint _height = LuaAPI.xlua_touint(L, 4);
                     uint _rowBytes = LuaAPI.xlua_touint(L, 5);
                     
-                        byte[] gen_ret = UnityEngine.ImageConversion.EncodeArrayToPNG( _array, _format, _width, _height, _rowBytes );
+                        var gen_ret = UnityEngine.ImageConversion.EncodeArrayToPNG( _array, _format, _width, _height, _rowBytes );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -142,7 +142,7 @@ namespace XLua.CSObjectWrap
                     uint _width = LuaAPI.xlua_touint(L, 3);
                     uint _height = LuaAPI.xlua_touint(L, 4);
                     
-                        byte[] gen_ret = UnityEngine.ImageConversion.EncodeArrayToPNG( _array, _format, _width, _height );
+                        var gen_ret = UnityEngine.ImageConversion.EncodeArrayToPNG( _array, _format, _width, _height );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -178,7 +178,7 @@ namespace XLua.CSObjectWrap
                     uint _rowBytes = LuaAPI.xlua_touint(L, 5);
                     int _quality = LuaAPI.xlua_tointeger(L, 6);
                     
-                        byte[] gen_ret = UnityEngine.ImageConversion.EncodeArrayToJPG( _array, _format, _width, _height, _rowBytes, _quality );
+                        var gen_ret = UnityEngine.ImageConversion.EncodeArrayToJPG( _array, _format, _width, _height, _rowBytes, _quality );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -193,7 +193,7 @@ namespace XLua.CSObjectWrap
                     uint _height = LuaAPI.xlua_touint(L, 4);
                     uint _rowBytes = LuaAPI.xlua_touint(L, 5);
                     
-                        byte[] gen_ret = UnityEngine.ImageConversion.EncodeArrayToJPG( _array, _format, _width, _height, _rowBytes );
+                        var gen_ret = UnityEngine.ImageConversion.EncodeArrayToJPG( _array, _format, _width, _height, _rowBytes );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -207,7 +207,7 @@ namespace XLua.CSObjectWrap
                     uint _width = LuaAPI.xlua_touint(L, 3);
                     uint _height = LuaAPI.xlua_touint(L, 4);
                     
-                        byte[] gen_ret = UnityEngine.ImageConversion.EncodeArrayToJPG( _array, _format, _width, _height );
+                        var gen_ret = UnityEngine.ImageConversion.EncodeArrayToJPG( _array, _format, _width, _height );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -243,7 +243,7 @@ namespace XLua.CSObjectWrap
                     uint _rowBytes = LuaAPI.xlua_touint(L, 5);
                     UnityEngine.Texture2D.EXRFlags _flags;translator.Get(L, 6, out _flags);
                     
-                        byte[] gen_ret = UnityEngine.ImageConversion.EncodeArrayToEXR( _array, _format, _width, _height, _rowBytes, _flags );
+                        var gen_ret = UnityEngine.ImageConversion.EncodeArrayToEXR( _array, _format, _width, _height, _rowBytes, _flags );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -258,7 +258,7 @@ namespace XLua.CSObjectWrap
                     uint _height = LuaAPI.xlua_touint(L, 4);
                     uint _rowBytes = LuaAPI.xlua_touint(L, 5);
                     
-                        byte[] gen_ret = UnityEngine.ImageConversion.EncodeArrayToEXR( _array, _format, _width, _height, _rowBytes );
+                        var gen_ret = UnityEngine.ImageConversion.EncodeArrayToEXR( _array, _format, _width, _height, _rowBytes );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -272,7 +272,7 @@ namespace XLua.CSObjectWrap
                     uint _width = LuaAPI.xlua_touint(L, 3);
                     uint _height = LuaAPI.xlua_touint(L, 4);
                     
-                        byte[] gen_ret = UnityEngine.ImageConversion.EncodeArrayToEXR( _array, _format, _width, _height );
+                        var gen_ret = UnityEngine.ImageConversion.EncodeArrayToEXR( _array, _format, _width, _height );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     

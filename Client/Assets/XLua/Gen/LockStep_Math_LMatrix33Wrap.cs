@@ -81,7 +81,7 @@ namespace XLua.CSObjectWrap
 					LockStep.Math.LVector3 _column1;translator.Get(L, 3, out _column1);
 					LockStep.Math.LVector3 _column2;translator.Get(L, 4, out _column2);
 					
-					LockStep.Math.LMatrix33 gen_ret = new LockStep.Math.LMatrix33(_column0, _column1, _column2);
+					var gen_ret = new LockStep.Math.LMatrix33(_column0, _column1, _column2);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -237,7 +237,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        int gen_ret = gen_to_be_invoked.GetHashCode(  );
+                        var gen_ret = gen_to_be_invoked.GetHashCode(  );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -270,7 +270,7 @@ namespace XLua.CSObjectWrap
                 {
                     object _other = translator.GetObject(L, 2, typeof(object));
                     
-                        bool gen_ret = gen_to_be_invoked.Equals( _other );
+                        var gen_ret = gen_to_be_invoked.Equals( _other );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -283,7 +283,7 @@ namespace XLua.CSObjectWrap
                 {
                     LockStep.Math.LMatrix33 _other;translator.Get(L, 2, out _other);
                     
-                        bool gen_ret = gen_to_be_invoked.Equals( _other );
+                        var gen_ret = gen_to_be_invoked.Equals( _other );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -316,7 +316,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _index = LuaAPI.xlua_tointeger(L, 2);
                     
-                        LockStep.Math.LVector3 gen_ret = gen_to_be_invoked.GetColumn( _index );
+                        var gen_ret = gen_to_be_invoked.GetColumn( _index );
                         translator.Push(L, gen_ret);
                     
                     
@@ -347,7 +347,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _index = LuaAPI.xlua_tointeger(L, 2);
                     
-                        LockStep.Math.LVector3 gen_ret = gen_to_be_invoked.GetRow( _index );
+                        var gen_ret = gen_to_be_invoked.GetRow( _index );
                         translator.Push(L, gen_ret);
                     
                     

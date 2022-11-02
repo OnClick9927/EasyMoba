@@ -1,29 +1,41 @@
 ﻿using System;
+using System.Collections.Generic;
+using XLua;
 
 namespace EasyMoba
 {
     public abstract class BattleModePlayer : IDisposable
     {
         private Action<SPBattleFrame> call;
-        public BattleModePlayer()
+        private Action call_2;
+
+        public MatchRoomType type;
+        public List<long> roles;
+        public BattleModePlayer(MatchRoomType type, List<long> roles)
         {
-            call = MobaGame.Instance.modules.Lua.gtable.Get<Action<SPBattleFrame>>("Battle.OnBattelFrame");
+            var lua = MobaGame.Instance.modules.Lua;
+            var tab = lua.gtable.Get<LuaTable>("Battle");
+            call = tab.Get<Action<SPBattleFrame>>("OnBattelFrame");
+            call_2 = tab.Get<Action>("OnBattleAllReady");
+
+            this.type = type;
+            this.roles = roles;
         }
-        public static BattleModePlayer Create(BattlePlayMode mode)
+        public static BattleModePlayer Create(BattlePlayMode mode, MatchRoomType type, List<long> roles)
         {
             switch (mode)
             {
                 case BattlePlayMode.Nomal:
-                    return new NormalModePlayer();
+                    return new NormalModePlayer(type, roles);
                 case BattlePlayMode.Local:
-                    return new LocalModePlayer();
+                    return new LocalModePlayer(type, roles);
                 case BattlePlayMode.Record:
-                    return new RecordModePlayer();
+                    return new RecordModePlayer(type, roles);
             }
             return null;
         }
 
-
+        public abstract void CallServerReady(long role_id, string room_id);
         public void SendFrameToServer()
         {
             SendBattleFrameToServer(LocalInputRecorder.instance.roomid,
@@ -31,12 +43,35 @@ namespace EasyMoba
                 LocalInputRecorder.instance.curframe, LocalInputRecorder.instance.data);
             LocalInputRecorder.instance.RebuidData();
         }
+        protected CSBattleFrame CreateFrame(string roomid, long roleid, int frame, FrameData op)
+        {
+            return new CSBattleFrame()
+            {
+                data = op,
+                frameID = frame,
+                roleID = roleid,
+                roomID = roomid,
+            };
+        }
+
         protected abstract void SendBattleFrameToServer(string roomid, long roleid, int frame, FrameData op);
 
-        protected void call_lua(SPBattleFrame obj)
+        protected void CallLuaFrame(SPBattleFrame obj)
         {
-            call?.Invoke(obj);
+            MobaGame.Instance.env.WaitEnvironmentFrame(() =>
+            {
+                call?.Invoke(obj);
+            });
+           
         }
+        protected void CallLuaAllReady(SPBattleAllReady response)
+        {
+            MobaGame.Instance.env.WaitEnvironmentFrame(() =>
+            {
+                call_2?.Invoke();
+            });
+        }
+
         public abstract void Dispose();
     }
 }

@@ -76,7 +76,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					IFramework.UI.SuperScrollView.LoopListViewItem gen_ret = new IFramework.UI.SuperScrollView.LoopListViewItem();
+					var gen_ret = new IFramework.UI.SuperScrollView.LoopListViewItem();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -111,7 +111,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.MakeComponentExist(  );
+                        var gen_ret = gen_to_be_invoked.MakeComponentExist(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -166,7 +166,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.LocalIdentity(  );
+                        var gen_ret = gen_to_be_invoked.LocalIdentity(  );
                         translator.Push(L, gen_ret);
                     
                     

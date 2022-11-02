@@ -82,7 +82,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.Animation gen_ret = new UnityEngine.Animation();
+					var gen_ret = new UnityEngine.Animation();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -227,7 +227,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _name = LuaAPI.lua_tostring(L, 2);
                     
-                        bool gen_ret = gen_to_be_invoked.IsPlaying( _name );
+                        var gen_ret = gen_to_be_invoked.IsPlaying( _name );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -285,7 +285,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 1) 
                 {
                     
-                        bool gen_ret = gen_to_be_invoked.Play(  );
+                        var gen_ret = gen_to_be_invoked.Play(  );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -296,7 +296,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.PlayMode _mode;translator.Get(L, 2, out _mode);
                     
-                        bool gen_ret = gen_to_be_invoked.Play( _mode );
+                        var gen_ret = gen_to_be_invoked.Play( _mode );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -307,7 +307,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _animation = LuaAPI.lua_tostring(L, 2);
                     
-                        bool gen_ret = gen_to_be_invoked.Play( _animation );
+                        var gen_ret = gen_to_be_invoked.Play( _animation );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -319,7 +319,7 @@ namespace XLua.CSObjectWrap
                     string _animation = LuaAPI.lua_tostring(L, 2);
                     UnityEngine.PlayMode _mode;translator.Get(L, 3, out _mode);
                     
-                        bool gen_ret = gen_to_be_invoked.Play( _animation, _mode );
+                        var gen_ret = gen_to_be_invoked.Play( _animation, _mode );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -462,7 +462,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _animation = LuaAPI.lua_tostring(L, 2);
                     
-                        UnityEngine.AnimationState gen_ret = gen_to_be_invoked.CrossFadeQueued( _animation );
+                        var gen_ret = gen_to_be_invoked.CrossFadeQueued( _animation );
                         translator.Push(L, gen_ret);
                     
                     
@@ -474,7 +474,7 @@ namespace XLua.CSObjectWrap
                     string _animation = LuaAPI.lua_tostring(L, 2);
                     float _fadeLength = (float)LuaAPI.lua_tonumber(L, 3);
                     
-                        UnityEngine.AnimationState gen_ret = gen_to_be_invoked.CrossFadeQueued( _animation, _fadeLength );
+                        var gen_ret = gen_to_be_invoked.CrossFadeQueued( _animation, _fadeLength );
                         translator.Push(L, gen_ret);
                     
                     
@@ -487,7 +487,7 @@ namespace XLua.CSObjectWrap
                     float _fadeLength = (float)LuaAPI.lua_tonumber(L, 3);
                     UnityEngine.QueueMode _queue;translator.Get(L, 4, out _queue);
                     
-                        UnityEngine.AnimationState gen_ret = gen_to_be_invoked.CrossFadeQueued( _animation, _fadeLength, _queue );
+                        var gen_ret = gen_to_be_invoked.CrossFadeQueued( _animation, _fadeLength, _queue );
                         translator.Push(L, gen_ret);
                     
                     
@@ -501,7 +501,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.QueueMode _queue;translator.Get(L, 4, out _queue);
                     UnityEngine.PlayMode _mode;translator.Get(L, 5, out _mode);
                     
-                        UnityEngine.AnimationState gen_ret = gen_to_be_invoked.CrossFadeQueued( _animation, _fadeLength, _queue, _mode );
+                        var gen_ret = gen_to_be_invoked.CrossFadeQueued( _animation, _fadeLength, _queue, _mode );
                         translator.Push(L, gen_ret);
                     
                     
@@ -534,7 +534,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _animation = LuaAPI.lua_tostring(L, 2);
                     
-                        UnityEngine.AnimationState gen_ret = gen_to_be_invoked.PlayQueued( _animation );
+                        var gen_ret = gen_to_be_invoked.PlayQueued( _animation );
                         translator.Push(L, gen_ret);
                     
                     
@@ -546,7 +546,7 @@ namespace XLua.CSObjectWrap
                     string _animation = LuaAPI.lua_tostring(L, 2);
                     UnityEngine.QueueMode _queue;translator.Get(L, 3, out _queue);
                     
-                        UnityEngine.AnimationState gen_ret = gen_to_be_invoked.PlayQueued( _animation, _queue );
+                        var gen_ret = gen_to_be_invoked.PlayQueued( _animation, _queue );
                         translator.Push(L, gen_ret);
                     
                     
@@ -559,7 +559,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.QueueMode _queue;translator.Get(L, 3, out _queue);
                     UnityEngine.PlayMode _mode;translator.Get(L, 4, out _mode);
                     
-                        UnityEngine.AnimationState gen_ret = gen_to_be_invoked.PlayQueued( _animation, _queue, _mode );
+                        var gen_ret = gen_to_be_invoked.PlayQueued( _animation, _queue, _mode );
                         translator.Push(L, gen_ret);
                     
                     
@@ -691,7 +691,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        int gen_ret = gen_to_be_invoked.GetClipCount(  );
+                        var gen_ret = gen_to_be_invoked.GetClipCount(  );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -747,7 +747,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        System.Collections.IEnumerator gen_ret = gen_to_be_invoked.GetEnumerator(  );
+                        var gen_ret = gen_to_be_invoked.GetEnumerator(  );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -776,7 +776,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _name = LuaAPI.lua_tostring(L, 2);
                     
-                        UnityEngine.AnimationClip gen_ret = gen_to_be_invoked.GetClip( _name );
+                        var gen_ret = gen_to_be_invoked.GetClip( _name );
                         translator.Push(L, gen_ret);
                     
                     
@@ -804,7 +804,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.MakeComponentExist(  );
+                        var gen_ret = gen_to_be_invoked.MakeComponentExist(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -859,7 +859,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.LocalIdentity(  );
+                        var gen_ret = gen_to_be_invoked.LocalIdentity(  );
                         translator.Push(L, gen_ret);
                     
                     

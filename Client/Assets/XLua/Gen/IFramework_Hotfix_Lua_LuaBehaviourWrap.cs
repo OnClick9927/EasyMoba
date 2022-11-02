@@ -68,7 +68,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					IFramework.Hotfix.Lua.LuaBehaviour gen_ret = new IFramework.Hotfix.Lua.LuaBehaviour();
+					var gen_ret = new IFramework.Hotfix.Lua.LuaBehaviour();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -104,7 +104,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _name = LuaAPI.lua_tostring(L, 2);
                     
-                        XLua.LuaFunction gen_ret = gen_to_be_invoked.GetFunction( _name );
+                        var gen_ret = gen_to_be_invoked.GetFunction( _name );
                         translator.Push(L, gen_ret);
                     
                     
@@ -136,7 +136,7 @@ namespace XLua.CSObjectWrap
                     string _name = LuaAPI.lua_tostring(L, 2);
                     object[] _args = translator.GetParams<object>(L, 3);
                     
-                        object[] gen_ret = gen_to_be_invoked.CallFunction( _name, _args );
+                        var gen_ret = gen_to_be_invoked.CallFunction( _name, _args );
                         translator.Push(L, gen_ret);
                     
                     
@@ -149,7 +149,7 @@ namespace XLua.CSObjectWrap
                     object[] _args = (object[])translator.GetObject(L, 3, typeof(object[]));
                     System.Type[] _returnTypes = (System.Type[])translator.GetObject(L, 4, typeof(System.Type[]));
                     
-                        object[] gen_ret = gen_to_be_invoked.CallFunction( _name, _args, _returnTypes );
+                        var gen_ret = gen_to_be_invoked.CallFunction( _name, _args, _returnTypes );
                         translator.Push(L, gen_ret);
                     
                     
@@ -233,7 +233,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.MakeComponentExist(  );
+                        var gen_ret = gen_to_be_invoked.MakeComponentExist(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -288,7 +288,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.LocalIdentity(  );
+                        var gen_ret = gen_to_be_invoked.LocalIdentity(  );
                         translator.Push(L, gen_ret);
                     
                     

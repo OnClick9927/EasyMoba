@@ -348,7 +348,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.UI.Selectable gen_ret = gen_to_be_invoked.FindSelectableOnLeft(  );
+                        var gen_ret = gen_to_be_invoked.FindSelectableOnLeft(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -376,7 +376,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.UI.Selectable gen_ret = gen_to_be_invoked.FindSelectableOnRight(  );
+                        var gen_ret = gen_to_be_invoked.FindSelectableOnRight(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -404,7 +404,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.UI.Selectable gen_ret = gen_to_be_invoked.FindSelectableOnUp(  );
+                        var gen_ret = gen_to_be_invoked.FindSelectableOnUp(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -432,7 +432,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.UI.Selectable gen_ret = gen_to_be_invoked.FindSelectableOnDown(  );
+                        var gen_ret = gen_to_be_invoked.FindSelectableOnDown(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -517,7 +517,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.MakeComponentExist(  );
+                        var gen_ret = gen_to_be_invoked.MakeComponentExist(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -572,7 +572,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.LocalIdentity(  );
+                        var gen_ret = gen_to_be_invoked.LocalIdentity(  );
                         translator.Push(L, gen_ret);
                     
                     

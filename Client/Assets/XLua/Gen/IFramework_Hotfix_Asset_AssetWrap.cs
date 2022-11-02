@@ -59,7 +59,7 @@ namespace XLua.CSObjectWrap
 					System.Collections.Generic.List<IFramework.Hotfix.Asset.Asset> _dps = (System.Collections.Generic.List<IFramework.Hotfix.Asset.Asset>)translator.GetObject(L, 4, typeof(System.Collections.Generic.List<IFramework.Hotfix.Asset.Asset>));
 					IFramework.Hotfix.Asset.AssetLoadArgs _loadArgs;translator.Get(L, 5, out _loadArgs);
 					
-					IFramework.Hotfix.Asset.Asset gen_ret = new IFramework.Hotfix.Asset.Asset(_async, _bundle, _dps, _loadArgs);
+					var gen_ret = new IFramework.Hotfix.Asset.Asset(_async, _bundle, _dps, _loadArgs);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -94,7 +94,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        IFramework.IAwaiter<IFramework.Hotfix.Asset.Asset> gen_ret = gen_to_be_invoked.GetAwaiter(  );
+                        var gen_ret = gen_to_be_invoked.GetAwaiter(  );
                         translator.PushAny(L, gen_ret);
                     
                     

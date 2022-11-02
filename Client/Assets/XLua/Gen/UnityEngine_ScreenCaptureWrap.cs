@@ -123,7 +123,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 0) 
                 {
                     
-                        UnityEngine.Texture2D gen_ret = UnityEngine.ScreenCapture.CaptureScreenshotAsTexture(  );
+                        var gen_ret = UnityEngine.ScreenCapture.CaptureScreenshotAsTexture(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -134,7 +134,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _superSize = LuaAPI.xlua_tointeger(L, 1);
                     
-                        UnityEngine.Texture2D gen_ret = UnityEngine.ScreenCapture.CaptureScreenshotAsTexture( _superSize );
+                        var gen_ret = UnityEngine.ScreenCapture.CaptureScreenshotAsTexture( _superSize );
                         translator.Push(L, gen_ret);
                     
                     
@@ -145,7 +145,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.ScreenCapture.StereoScreenCaptureMode _stereoCaptureMode;translator.Get(L, 1, out _stereoCaptureMode);
                     
-                        UnityEngine.Texture2D gen_ret = UnityEngine.ScreenCapture.CaptureScreenshotAsTexture( _stereoCaptureMode );
+                        var gen_ret = UnityEngine.ScreenCapture.CaptureScreenshotAsTexture( _stereoCaptureMode );
                         translator.Push(L, gen_ret);
                     
                     

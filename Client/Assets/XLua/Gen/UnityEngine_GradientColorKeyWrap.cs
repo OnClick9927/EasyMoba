@@ -56,7 +56,7 @@ namespace XLua.CSObjectWrap
 					UnityEngine.Color _col;translator.Get(L, 2, out _col);
 					float _time = (float)LuaAPI.lua_tonumber(L, 3);
 					
-					UnityEngine.GradientColorKey gen_ret = new UnityEngine.GradientColorKey(_col, _time);
+					var gen_ret = new UnityEngine.GradientColorKey(_col, _time);
 					translator.Push(L, gen_ret);
                     
 					return 1;

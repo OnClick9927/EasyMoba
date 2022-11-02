@@ -71,7 +71,7 @@ namespace XLua.CSObjectWrap
 					uint _conv_ = LuaAPI.xlua_touint(L, 2);
 					IFramework.Net.KCP.IKcpSocket _sender = (IFramework.Net.KCP.IKcpSocket)translator.GetObject(L, 3, typeof(IFramework.Net.KCP.IKcpSocket));
 					
-					IFramework.Net.KCP.Kcp gen_ret = new IFramework.Net.KCP.Kcp(_conv_, _sender);
+					var gen_ret = new IFramework.Net.KCP.Kcp(_conv_, _sender);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -106,7 +106,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        int gen_ret = gen_to_be_invoked.PeekSize(  );
+                        var gen_ret = gen_to_be_invoked.PeekSize(  );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -137,7 +137,7 @@ namespace XLua.CSObjectWrap
                     int _index = LuaAPI.xlua_tointeger(L, 3);
                     int _length = LuaAPI.xlua_tointeger(L, 4);
                     
-                        int gen_ret = gen_to_be_invoked.Recv( _buffer, _index, _length );
+                        var gen_ret = gen_to_be_invoked.Recv( _buffer, _index, _length );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -168,7 +168,7 @@ namespace XLua.CSObjectWrap
                     int _index = LuaAPI.xlua_tointeger(L, 3);
                     int _length = LuaAPI.xlua_tointeger(L, 4);
                     
-                        int gen_ret = gen_to_be_invoked.Send( _buffer, _index, _length );
+                        var gen_ret = gen_to_be_invoked.Send( _buffer, _index, _length );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -201,7 +201,7 @@ namespace XLua.CSObjectWrap
                     bool _regular = LuaAPI.lua_toboolean(L, 5);
                     bool _ackNoDelay = LuaAPI.lua_toboolean(L, 6);
                     
-                        int gen_ret = gen_to_be_invoked.Input( _data, _offset, _size, _regular, _ackNoDelay );
+                        var gen_ret = gen_to_be_invoked.Input( _data, _offset, _size, _regular, _ackNoDelay );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -230,7 +230,7 @@ namespace XLua.CSObjectWrap
                 {
                     bool _ackOnly = LuaAPI.lua_toboolean(L, 2);
                     
-                        uint gen_ret = gen_to_be_invoked.Flush( _ackOnly );
+                        var gen_ret = gen_to_be_invoked.Flush( _ackOnly );
                         LuaAPI.xlua_pushuint(L, gen_ret);
                     
                     
@@ -285,7 +285,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        uint gen_ret = gen_to_be_invoked.Check(  );
+                        var gen_ret = gen_to_be_invoked.Check(  );
                         LuaAPI.xlua_pushuint(L, gen_ret);
                     
                     
@@ -314,7 +314,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _mtu_ = LuaAPI.xlua_tointeger(L, 2);
                     
-                        int gen_ret = gen_to_be_invoked.SetMtu( _mtu_ );
+                        var gen_ret = gen_to_be_invoked.SetMtu( _mtu_ );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -348,7 +348,7 @@ namespace XLua.CSObjectWrap
                     int _resend_ = LuaAPI.xlua_tointeger(L, 4);
                     bool _nc_ = LuaAPI.lua_toboolean(L, 5);
                     
-                        int gen_ret = gen_to_be_invoked.NoDelay( _nodelay_, _interval_, _resend_, _nc_ );
+                        var gen_ret = gen_to_be_invoked.NoDelay( _nodelay_, _interval_, _resend_, _nc_ );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -361,7 +361,7 @@ namespace XLua.CSObjectWrap
                     int _interval_ = LuaAPI.xlua_tointeger(L, 3);
                     int _resend_ = LuaAPI.xlua_tointeger(L, 4);
                     
-                        int gen_ret = gen_to_be_invoked.NoDelay( _nodelay_, _interval_, _resend_ );
+                        var gen_ret = gen_to_be_invoked.NoDelay( _nodelay_, _interval_, _resend_ );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -393,7 +393,7 @@ namespace XLua.CSObjectWrap
                     int _sndwnd = LuaAPI.xlua_tointeger(L, 2);
                     int _rcvwnd = LuaAPI.xlua_tointeger(L, 3);
                     
-                        int gen_ret = gen_to_be_invoked.SetWIndow( _sndwnd, _rcvwnd );
+                        var gen_ret = gen_to_be_invoked.SetWIndow( _sndwnd, _rcvwnd );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -422,7 +422,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _reservedSize = LuaAPI.xlua_tointeger(L, 2);
                     
-                        bool gen_ret = gen_to_be_invoked.ReserveBytes( _reservedSize );
+                        var gen_ret = gen_to_be_invoked.ReserveBytes( _reservedSize );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     

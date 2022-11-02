@@ -92,7 +92,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _name = LuaAPI.lua_tostring(L, 2);
                     
-                        int gen_ret = gen_to_be_invoked.FindKernel( _name );
+                        var gen_ret = gen_to_be_invoked.FindKernel( _name );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -121,7 +121,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _name = LuaAPI.lua_tostring(L, 2);
                     
-                        bool gen_ret = gen_to_be_invoked.HasKernel( _name );
+                        var gen_ret = gen_to_be_invoked.HasKernel( _name );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -754,7 +754,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _keyword = LuaAPI.lua_tostring(L, 2);
                     
-                        bool gen_ret = gen_to_be_invoked.IsKeywordEnabled( _keyword );
+                        var gen_ret = gen_to_be_invoked.IsKeywordEnabled( _keyword );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     

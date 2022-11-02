@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class FrameData
 {
-    public long roleID { get; set; }
+    public long roleID;
 
     public OPJoyStick stick;
     public class OPJoyStick
@@ -16,17 +16,15 @@ public class FrameData
 
 public class CSBattleFrame
 {
-    public string roomID { get; set; }
-    public int frameID { get; set; }
-    public long roleID { get; set; }
-
-
-    public FrameData data { get; set; }
+    public string roomID;
+    public int frameID;
+    public long roleID;
+    public FrameData data;
 }
 
 public class SPBattleFrame
 {
-    public int frameID { get; set; }
+    public int frameID;
 
-    public List<FrameData> datas { get; set; }
+    public List<FrameData> datas;
 }

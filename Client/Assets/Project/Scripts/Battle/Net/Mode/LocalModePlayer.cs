@@ -1,15 +1,41 @@
-﻿namespace EasyMoba
+﻿using System.Collections.Generic;
+using UnityEngine.WSA;
+
+namespace EasyMoba
 {
-    public class LocalModePlayer : BattleModePlayer
+    public class LocalModePlayer : BattleModePlayer, ICanCallClientBattleMsg
     {
-        public LocalModePlayer() : base() { }
+        Room room;
+        public LocalModePlayer(MatchRoomType type, List<long> roles) : base(type, roles)
+        {
+            room = new Room(type, roles, MobaGame.udpGap, this);
+
+        }
+
+        public override void CallServerReady(long role_id, string room_id)
+        {
+            room.Ready(role_id);
+        }
+
         public override void Dispose()
         {
 
         }
 
+        void ICanCallClientBattleMsg.SendBattleFrame(long roleID, SPBattleFrame frame)
+        {
+            CallLuaFrame(frame);
+        }
+
+        void ICanCallClientBattleMsg.SendResponse(long role_id, SPBattleAllReady response)
+        {
+
+            CallLuaAllReady(response);
+        }
+
         protected override void SendBattleFrameToServer(string roomid, long roleid, int frame, FrameData op)
         {
+            room.ReadBattleFrame(CreateFrame(roomid, roleid, frame, op));
 
         }
     }

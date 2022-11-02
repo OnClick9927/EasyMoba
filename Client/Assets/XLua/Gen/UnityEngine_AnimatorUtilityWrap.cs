@@ -52,7 +52,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.AnimatorUtility gen_ret = new UnityEngine.AnimatorUtility();
+					var gen_ret = new UnityEngine.AnimatorUtility();
 					translator.Push(L, gen_ret);
                     
 					return 1;

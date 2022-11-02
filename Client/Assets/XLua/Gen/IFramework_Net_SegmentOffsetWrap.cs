@@ -56,7 +56,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					IFramework.Net.SegmentOffset gen_ret = new IFramework.Net.SegmentOffset();
+					var gen_ret = new IFramework.Net.SegmentOffset();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -65,7 +65,7 @@ namespace XLua.CSObjectWrap
 				{
 					byte[] _buffer = LuaAPI.lua_tobytes(L, 2);
 					
-					IFramework.Net.SegmentOffset gen_ret = new IFramework.Net.SegmentOffset(_buffer);
+					var gen_ret = new IFramework.Net.SegmentOffset(_buffer);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -76,7 +76,7 @@ namespace XLua.CSObjectWrap
 					int _offset = LuaAPI.xlua_tointeger(L, 3);
 					int _size = LuaAPI.xlua_tointeger(L, 4);
 					
-					IFramework.Net.SegmentOffset gen_ret = new IFramework.Net.SegmentOffset(_buffer, _offset, _size);
+					var gen_ret = new IFramework.Net.SegmentOffset(_buffer, _offset, _size);
 					translator.Push(L, gen_ret);
                     
 					return 1;

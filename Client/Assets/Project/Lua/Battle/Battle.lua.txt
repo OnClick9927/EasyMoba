@@ -6,8 +6,8 @@ BattlePlayMode = {
 
 ---@type ModeServer
 local mode_server
-local room_id
-local role_id
+local _room_id
+local _role_id
 ---@type FrameHandler
 local frame_handler
 
@@ -15,18 +15,19 @@ local frame_handler
 Battle = {}
 Battle.ScenePart = require("Battle.Scene.ScenePart")
 Battle.players = nil
-
+Battle.local_input = CS.EasyMoba.LocalInputRecorder.instance
 
 ---@param battle_mode any
----@param room string
+---@param room_id string
 ---@param players number[]
-function Battle.StartGame(battle_mode, room, players)
+function Battle.StartGame(battle_mode, room_id, room_type, players)
     Battle.players = players
-    room_id = room
-    role_id = Models.PlayerModel:GetRoleID()
-    CS.BattleModePlayer.LocalInputRecorder.Instance.roleid = role_id
-    CS.BattleModePlayer.LocalInputRecorder.Instance.roomid = room_id
-    mode_server = CS.BattleModePlayer.Create(battle_mode)
+    _room_id = room_id
+    _role_id = Models.PlayerModel:GetRoleID()
+    Battle.local_input.roleid = _role_id
+    Battle.local_input.roomid = _room_id
+    mode_server = CS.EasyMoba.BattleModePlayer.Create(battle_mode, room_type, players)
+
     frame_handler = require("Battle.FrameHandler")()
     Battle.ScenePart.LoadScene()
 end
@@ -36,14 +37,25 @@ function Battle.CloseGame()
     frame_handler = nil
 end
 
----@param data SPBattleFrame
-function Battle.OnBattelFrame(data)
-    frame_handler:OnBattelFrame(data)
+---------------------------------------------------------------------------------------
+function Battle.CallServerReady()
+    mode_server:CallServerReady(_role_id, _room_id)
 end
 
 function Battle.SendFrame(frame_id)
-    CS.BattleModePlayer.LocalInputRecorder.Instance.roleid = role_id
-    CS.BattleModePlayer.LocalInputRecorder.Instance.roomid = room_id
-    CS.BattleModePlayer.LocalInputRecorder.Instance.curframe = frame_id
+    Battle.local_input.roleid = _role_id
+    Battle.local_input.roomid = _room_id
+    Battle.local_input.curframe = frame_id
     mode_server:SendFrameToServer()
+end
+
+---------------------------------------------------------------------------------------
+
+---@param data SPBattleFrame
+function Battle.OnBattelFrame(data)
+    frame_handler:OnBattleFrame(data)
+end
+
+function Battle.OnBattleAllReady()
+    GameTools.CloseAllUI()
 end

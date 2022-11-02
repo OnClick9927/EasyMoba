@@ -71,7 +71,7 @@ namespace XLua.CSObjectWrap
                     float _val = (float)LuaAPI.lua_tonumber(L, 1);
                     float _snap = (float)LuaAPI.lua_tonumber(L, 2);
                     
-                        float gen_ret = UnityEngine.Snapping.Snap( _val, _snap );
+                        var gen_ret = UnityEngine.Snapping.Snap( _val, _snap );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -83,7 +83,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Vector2 _val;translator.Get(L, 1, out _val);
                     UnityEngine.Vector2 _snap;translator.Get(L, 2, out _snap);
                     
-                        UnityEngine.Vector2 gen_ret = UnityEngine.Snapping.Snap( _val, _snap );
+                        var gen_ret = UnityEngine.Snapping.Snap( _val, _snap );
                         translator.PushUnityEngineVector2(L, gen_ret);
                     
                     
@@ -96,7 +96,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Vector3 _snap;translator.Get(L, 2, out _snap);
                     UnityEngine.SnapAxis _axis;translator.Get(L, 3, out _axis);
                     
-                        UnityEngine.Vector3 gen_ret = UnityEngine.Snapping.Snap( _val, _snap, _axis );
+                        var gen_ret = UnityEngine.Snapping.Snap( _val, _snap, _axis );
                         translator.PushUnityEngineVector3(L, gen_ret);
                     
                     
@@ -108,7 +108,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Vector3 _val;translator.Get(L, 1, out _val);
                     UnityEngine.Vector3 _snap;translator.Get(L, 2, out _snap);
                     
-                        UnityEngine.Vector3 gen_ret = UnityEngine.Snapping.Snap( _val, _snap );
+                        var gen_ret = UnityEngine.Snapping.Snap( _val, _snap );
                         translator.PushUnityEngineVector3(L, gen_ret);
                     
                     

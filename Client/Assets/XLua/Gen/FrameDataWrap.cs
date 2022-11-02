@@ -54,7 +54,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					FrameData gen_ret = new FrameData();
+					var gen_ret = new FrameData();
 					translator.Push(L, gen_ret);
                     
 					return 1;

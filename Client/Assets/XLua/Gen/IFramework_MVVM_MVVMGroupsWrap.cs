@@ -53,7 +53,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					IFramework.MVVM.MVVMGroups gen_ret = new IFramework.MVVM.MVVMGroups();
+					var gen_ret = new IFramework.MVVM.MVVMGroups();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -89,7 +89,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _name = LuaAPI.lua_tostring(L, 2);
                     
-                        IFramework.MVVM.MVVMGroup gen_ret = gen_to_be_invoked.FindGroup( _name );
+                        var gen_ret = gen_to_be_invoked.FindGroup( _name );
                         translator.Push(L, gen_ret);
                     
                     

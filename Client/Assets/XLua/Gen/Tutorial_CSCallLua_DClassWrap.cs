@@ -54,7 +54,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					Tutorial.CSCallLua.DClass gen_ret = new Tutorial.CSCallLua.DClass();
+					var gen_ret = new Tutorial.CSCallLua.DClass();
 					translator.Push(L, gen_ret);
                     
 					return 1;

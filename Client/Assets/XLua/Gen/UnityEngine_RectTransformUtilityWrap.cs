@@ -79,7 +79,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Transform _elementTransform = (UnityEngine.Transform)translator.GetObject(L, 2, typeof(UnityEngine.Transform));
                     UnityEngine.Canvas _canvas = (UnityEngine.Canvas)translator.GetObject(L, 3, typeof(UnityEngine.Canvas));
                     
-                        UnityEngine.Vector2 gen_ret = UnityEngine.RectTransformUtility.PixelAdjustPoint( _point, _elementTransform, _canvas );
+                        var gen_ret = UnityEngine.RectTransformUtility.PixelAdjustPoint( _point, _elementTransform, _canvas );
                         translator.PushUnityEngineVector2(L, gen_ret);
                     
                     
@@ -107,7 +107,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.RectTransform _rectTransform = (UnityEngine.RectTransform)translator.GetObject(L, 1, typeof(UnityEngine.RectTransform));
                     UnityEngine.Canvas _canvas = (UnityEngine.Canvas)translator.GetObject(L, 2, typeof(UnityEngine.Canvas));
                     
-                        UnityEngine.Rect gen_ret = UnityEngine.RectTransformUtility.PixelAdjustRect( _rectTransform, _canvas );
+                        var gen_ret = UnityEngine.RectTransformUtility.PixelAdjustRect( _rectTransform, _canvas );
                         translator.Push(L, gen_ret);
                     
                     
@@ -137,7 +137,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.RectTransform _rect = (UnityEngine.RectTransform)translator.GetObject(L, 1, typeof(UnityEngine.RectTransform));
                     UnityEngine.Vector2 _screenPoint;translator.Get(L, 2, out _screenPoint);
                     
-                        bool gen_ret = UnityEngine.RectTransformUtility.RectangleContainsScreenPoint( _rect, _screenPoint );
+                        var gen_ret = UnityEngine.RectTransformUtility.RectangleContainsScreenPoint( _rect, _screenPoint );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -150,7 +150,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Vector2 _screenPoint;translator.Get(L, 2, out _screenPoint);
                     UnityEngine.Camera _cam = (UnityEngine.Camera)translator.GetObject(L, 3, typeof(UnityEngine.Camera));
                     
-                        bool gen_ret = UnityEngine.RectTransformUtility.RectangleContainsScreenPoint( _rect, _screenPoint, _cam );
+                        var gen_ret = UnityEngine.RectTransformUtility.RectangleContainsScreenPoint( _rect, _screenPoint, _cam );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -164,7 +164,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Camera _cam = (UnityEngine.Camera)translator.GetObject(L, 3, typeof(UnityEngine.Camera));
                     UnityEngine.Vector4 _offset;translator.Get(L, 4, out _offset);
                     
-                        bool gen_ret = UnityEngine.RectTransformUtility.RectangleContainsScreenPoint( _rect, _screenPoint, _cam, _offset );
+                        var gen_ret = UnityEngine.RectTransformUtility.RectangleContainsScreenPoint( _rect, _screenPoint, _cam, _offset );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -196,7 +196,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Camera _cam = (UnityEngine.Camera)translator.GetObject(L, 3, typeof(UnityEngine.Camera));
                     UnityEngine.Vector3 _worldPoint;
                     
-                        bool gen_ret = UnityEngine.RectTransformUtility.ScreenPointToWorldPointInRectangle( _rect, _screenPoint, _cam, out _worldPoint );
+                        var gen_ret = UnityEngine.RectTransformUtility.ScreenPointToWorldPointInRectangle( _rect, _screenPoint, _cam, out _worldPoint );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     translator.PushUnityEngineVector3(L, _worldPoint);
                         
@@ -228,7 +228,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Camera _cam = (UnityEngine.Camera)translator.GetObject(L, 3, typeof(UnityEngine.Camera));
                     UnityEngine.Vector2 _localPoint;
                     
-                        bool gen_ret = UnityEngine.RectTransformUtility.ScreenPointToLocalPointInRectangle( _rect, _screenPoint, _cam, out _localPoint );
+                        var gen_ret = UnityEngine.RectTransformUtility.ScreenPointToLocalPointInRectangle( _rect, _screenPoint, _cam, out _localPoint );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     translator.PushUnityEngineVector2(L, _localPoint);
                         
@@ -258,7 +258,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Camera _cam = (UnityEngine.Camera)translator.GetObject(L, 1, typeof(UnityEngine.Camera));
                     UnityEngine.Vector2 _screenPos;translator.Get(L, 2, out _screenPos);
                     
-                        UnityEngine.Ray gen_ret = UnityEngine.RectTransformUtility.ScreenPointToRay( _cam, _screenPos );
+                        var gen_ret = UnityEngine.RectTransformUtility.ScreenPointToRay( _cam, _screenPos );
                         translator.PushUnityEngineRay(L, gen_ret);
                     
                     
@@ -286,7 +286,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Camera _cam = (UnityEngine.Camera)translator.GetObject(L, 1, typeof(UnityEngine.Camera));
                     UnityEngine.Vector3 _worldPoint;translator.Get(L, 2, out _worldPoint);
                     
-                        UnityEngine.Vector2 gen_ret = UnityEngine.RectTransformUtility.WorldToScreenPoint( _cam, _worldPoint );
+                        var gen_ret = UnityEngine.RectTransformUtility.WorldToScreenPoint( _cam, _worldPoint );
                         translator.PushUnityEngineVector2(L, gen_ret);
                     
                     
@@ -315,7 +315,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Transform _trans = (UnityEngine.Transform)translator.GetObject(L, 1, typeof(UnityEngine.Transform));
                     
-                        UnityEngine.Bounds gen_ret = UnityEngine.RectTransformUtility.CalculateRelativeRectTransformBounds( _trans );
+                        var gen_ret = UnityEngine.RectTransformUtility.CalculateRelativeRectTransformBounds( _trans );
                         translator.PushUnityEngineBounds(L, gen_ret);
                     
                     
@@ -327,7 +327,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Transform _root = (UnityEngine.Transform)translator.GetObject(L, 1, typeof(UnityEngine.Transform));
                     UnityEngine.Transform _child = (UnityEngine.Transform)translator.GetObject(L, 2, typeof(UnityEngine.Transform));
                     
-                        UnityEngine.Bounds gen_ret = UnityEngine.RectTransformUtility.CalculateRelativeRectTransformBounds( _root, _child );
+                        var gen_ret = UnityEngine.RectTransformUtility.CalculateRelativeRectTransformBounds( _root, _child );
                         translator.PushUnityEngineBounds(L, gen_ret);
                     
                     

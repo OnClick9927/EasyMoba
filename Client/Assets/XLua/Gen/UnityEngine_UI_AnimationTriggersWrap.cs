@@ -60,7 +60,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.UI.AnimationTriggers gen_ret = new UnityEngine.UI.AnimationTriggers();
+					var gen_ret = new UnityEngine.UI.AnimationTriggers();
 					translator.Push(L, gen_ret);
                     
 					return 1;

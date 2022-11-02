@@ -51,7 +51,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.ScriptableObject gen_ret = new UnityEngine.ScriptableObject();
+					var gen_ret = new UnityEngine.ScriptableObject();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -87,7 +87,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _className = LuaAPI.lua_tostring(L, 1);
                     
-                        UnityEngine.ScriptableObject gen_ret = UnityEngine.ScriptableObject.CreateInstance( _className );
+                        var gen_ret = UnityEngine.ScriptableObject.CreateInstance( _className );
                         translator.Push(L, gen_ret);
                     
                     
@@ -98,7 +98,7 @@ namespace XLua.CSObjectWrap
                 {
                     System.Type _type = (System.Type)translator.GetObject(L, 1, typeof(System.Type));
                     
-                        UnityEngine.ScriptableObject gen_ret = UnityEngine.ScriptableObject.CreateInstance( _type );
+                        var gen_ret = UnityEngine.ScriptableObject.CreateInstance( _type );
                         translator.Push(L, gen_ret);
                     
                     

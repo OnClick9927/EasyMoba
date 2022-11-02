@@ -52,7 +52,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					IFramework.Hotfix.Asset.AssetsInternal.LoadManifestOperation gen_ret = new IFramework.Hotfix.Asset.AssetsInternal.LoadManifestOperation();
+					var gen_ret = new IFramework.Hotfix.Asset.AssetsInternal.LoadManifestOperation();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -87,7 +87,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        IFramework.IAwaiter<IFramework.Hotfix.Asset.AssetsInternal.LoadManifestOperation> gen_ret = gen_to_be_invoked.GetAwaiter(  );
+                        var gen_ret = gen_to_be_invoked.GetAwaiter(  );
                         translator.PushAny(L, gen_ret);
                     
                     

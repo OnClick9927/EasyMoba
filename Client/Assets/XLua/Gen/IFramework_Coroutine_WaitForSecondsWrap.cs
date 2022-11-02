@@ -51,7 +51,7 @@ namespace XLua.CSObjectWrap
 				{
 					double _seconds = LuaAPI.lua_tonumber(L, 2);
 					
-					IFramework.Coroutine.WaitForSeconds gen_ret = new IFramework.Coroutine.WaitForSeconds(_seconds);
+					var gen_ret = new IFramework.Coroutine.WaitForSeconds(_seconds);
 					translator.Push(L, gen_ret);
                     
 					return 1;

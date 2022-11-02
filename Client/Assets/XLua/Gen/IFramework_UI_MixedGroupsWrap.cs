@@ -52,7 +52,7 @@ namespace XLua.CSObjectWrap
 				{
 					IFramework.UI.IGroups[] _groups = (IFramework.UI.IGroups[])translator.GetObject(L, 2, typeof(IFramework.UI.IGroups[]));
 					
-					IFramework.UI.MixedGroups gen_ret = new IFramework.UI.MixedGroups(_groups);
+					var gen_ret = new IFramework.UI.MixedGroups(_groups);
 					translator.Push(L, gen_ret);
                     
 					return 1;

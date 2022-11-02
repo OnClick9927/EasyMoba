@@ -69,7 +69,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.Collider gen_ret = new UnityEngine.Collider();
+					var gen_ret = new UnityEngine.Collider();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -105,7 +105,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Vector3 _position;translator.Get(L, 2, out _position);
                     
-                        UnityEngine.Vector3 gen_ret = gen_to_be_invoked.ClosestPoint( _position );
+                        var gen_ret = gen_to_be_invoked.ClosestPoint( _position );
                         translator.PushUnityEngineVector3(L, gen_ret);
                     
                     
@@ -136,7 +136,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.RaycastHit _hitInfo;
                     float _maxDistance = (float)LuaAPI.lua_tonumber(L, 3);
                     
-                        bool gen_ret = gen_to_be_invoked.Raycast( _ray, out _hitInfo, _maxDistance );
+                        var gen_ret = gen_to_be_invoked.Raycast( _ray, out _hitInfo, _maxDistance );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     translator.Push(L, _hitInfo);
                         
@@ -167,7 +167,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Vector3 _position;translator.Get(L, 2, out _position);
                     
-                        UnityEngine.Vector3 gen_ret = gen_to_be_invoked.ClosestPointOnBounds( _position );
+                        var gen_ret = gen_to_be_invoked.ClosestPointOnBounds( _position );
                         translator.PushUnityEngineVector3(L, gen_ret);
                     
                     
@@ -195,7 +195,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.MakeComponentExist(  );
+                        var gen_ret = gen_to_be_invoked.MakeComponentExist(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -250,7 +250,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.LocalIdentity(  );
+                        var gen_ret = gen_to_be_invoked.LocalIdentity(  );
                         translator.Push(L, gen_ret);
                     
                     

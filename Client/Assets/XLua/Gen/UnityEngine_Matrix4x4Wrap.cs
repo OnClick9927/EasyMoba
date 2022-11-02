@@ -122,7 +122,7 @@ namespace XLua.CSObjectWrap
 					UnityEngine.Vector4 _column2;translator.Get(L, 4, out _column2);
 					UnityEngine.Vector4 _column3;translator.Get(L, 5, out _column3);
 					
-					UnityEngine.Matrix4x4 gen_ret = new UnityEngine.Matrix4x4(_column0, _column1, _column2, _column3);
+					var gen_ret = new UnityEngine.Matrix4x4(_column0, _column1, _column2, _column3);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -277,7 +277,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        bool gen_ret = gen_to_be_invoked.ValidTRS(  );
+                        var gen_ret = gen_to_be_invoked.ValidTRS(  );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -306,7 +306,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Matrix4x4 _m;translator.Get(L, 1, out _m);
                     
-                        float gen_ret = UnityEngine.Matrix4x4.Determinant( _m );
+                        var gen_ret = UnityEngine.Matrix4x4.Determinant( _m );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -335,7 +335,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Quaternion _q;translator.Get(L, 2, out _q);
                     UnityEngine.Vector3 _s;translator.Get(L, 3, out _s);
                     
-                        UnityEngine.Matrix4x4 gen_ret = UnityEngine.Matrix4x4.TRS( _pos, _q, _s );
+                        var gen_ret = UnityEngine.Matrix4x4.TRS( _pos, _q, _s );
                         translator.Push(L, gen_ret);
                     
                     
@@ -395,7 +395,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Matrix4x4 _input;translator.Get(L, 1, out _input);
                     UnityEngine.Matrix4x4 _result;translator.Get(L, 2, out _result);
                     
-                        bool gen_ret = UnityEngine.Matrix4x4.Inverse3DAffine( _input, ref _result );
+                        var gen_ret = UnityEngine.Matrix4x4.Inverse3DAffine( _input, ref _result );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     translator.Push(L, _result);
                         translator.Update(L, 2, _result);
@@ -425,7 +425,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Matrix4x4 _m;translator.Get(L, 1, out _m);
                     
-                        UnityEngine.Matrix4x4 gen_ret = UnityEngine.Matrix4x4.Inverse( _m );
+                        var gen_ret = UnityEngine.Matrix4x4.Inverse( _m );
                         translator.Push(L, gen_ret);
                     
                     
@@ -452,7 +452,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Matrix4x4 _m;translator.Get(L, 1, out _m);
                     
-                        UnityEngine.Matrix4x4 gen_ret = UnityEngine.Matrix4x4.Transpose( _m );
+                        var gen_ret = UnityEngine.Matrix4x4.Transpose( _m );
                         translator.Push(L, gen_ret);
                     
                     
@@ -484,7 +484,7 @@ namespace XLua.CSObjectWrap
                     float _zNear = (float)LuaAPI.lua_tonumber(L, 5);
                     float _zFar = (float)LuaAPI.lua_tonumber(L, 6);
                     
-                        UnityEngine.Matrix4x4 gen_ret = UnityEngine.Matrix4x4.Ortho( _left, _right, _bottom, _top, _zNear, _zFar );
+                        var gen_ret = UnityEngine.Matrix4x4.Ortho( _left, _right, _bottom, _top, _zNear, _zFar );
                         translator.Push(L, gen_ret);
                     
                     
@@ -514,7 +514,7 @@ namespace XLua.CSObjectWrap
                     float _zNear = (float)LuaAPI.lua_tonumber(L, 3);
                     float _zFar = (float)LuaAPI.lua_tonumber(L, 4);
                     
-                        UnityEngine.Matrix4x4 gen_ret = UnityEngine.Matrix4x4.Perspective( _fov, _aspect, _zNear, _zFar );
+                        var gen_ret = UnityEngine.Matrix4x4.Perspective( _fov, _aspect, _zNear, _zFar );
                         translator.Push(L, gen_ret);
                     
                     
@@ -543,7 +543,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Vector3 _to;translator.Get(L, 2, out _to);
                     UnityEngine.Vector3 _up;translator.Get(L, 3, out _up);
                     
-                        UnityEngine.Matrix4x4 gen_ret = UnityEngine.Matrix4x4.LookAt( _from, _to, _up );
+                        var gen_ret = UnityEngine.Matrix4x4.LookAt( _from, _to, _up );
                         translator.Push(L, gen_ret);
                     
                     
@@ -577,7 +577,7 @@ namespace XLua.CSObjectWrap
                     float _zNear = (float)LuaAPI.lua_tonumber(L, 5);
                     float _zFar = (float)LuaAPI.lua_tonumber(L, 6);
                     
-                        UnityEngine.Matrix4x4 gen_ret = UnityEngine.Matrix4x4.Frustum( _left, _right, _bottom, _top, _zNear, _zFar );
+                        var gen_ret = UnityEngine.Matrix4x4.Frustum( _left, _right, _bottom, _top, _zNear, _zFar );
                         translator.Push(L, gen_ret);
                     
                     
@@ -588,7 +588,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.FrustumPlanes _fp;translator.Get(L, 1, out _fp);
                     
-                        UnityEngine.Matrix4x4 gen_ret = UnityEngine.Matrix4x4.Frustum( _fp );
+                        var gen_ret = UnityEngine.Matrix4x4.Frustum( _fp );
                         translator.Push(L, gen_ret);
                     
                     
@@ -618,7 +618,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        int gen_ret = gen_to_be_invoked.GetHashCode(  );
+                        var gen_ret = gen_to_be_invoked.GetHashCode(  );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -651,7 +651,7 @@ namespace XLua.CSObjectWrap
                 {
                     object _other = translator.GetObject(L, 2, typeof(object));
                     
-                        bool gen_ret = gen_to_be_invoked.Equals( _other );
+                        var gen_ret = gen_to_be_invoked.Equals( _other );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -664,7 +664,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Matrix4x4 _other;translator.Get(L, 2, out _other);
                     
-                        bool gen_ret = gen_to_be_invoked.Equals( _other );
+                        var gen_ret = gen_to_be_invoked.Equals( _other );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -697,7 +697,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _index = LuaAPI.xlua_tointeger(L, 2);
                     
-                        UnityEngine.Vector4 gen_ret = gen_to_be_invoked.GetColumn( _index );
+                        var gen_ret = gen_to_be_invoked.GetColumn( _index );
                         translator.PushUnityEngineVector4(L, gen_ret);
                     
                     
@@ -728,7 +728,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _index = LuaAPI.xlua_tointeger(L, 2);
                     
-                        UnityEngine.Vector4 gen_ret = gen_to_be_invoked.GetRow( _index );
+                        var gen_ret = gen_to_be_invoked.GetRow( _index );
                         translator.PushUnityEngineVector4(L, gen_ret);
                     
                     
@@ -821,7 +821,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Vector3 _point;translator.Get(L, 2, out _point);
                     
-                        UnityEngine.Vector3 gen_ret = gen_to_be_invoked.MultiplyPoint( _point );
+                        var gen_ret = gen_to_be_invoked.MultiplyPoint( _point );
                         translator.PushUnityEngineVector3(L, gen_ret);
                     
                     
@@ -852,7 +852,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Vector3 _point;translator.Get(L, 2, out _point);
                     
-                        UnityEngine.Vector3 gen_ret = gen_to_be_invoked.MultiplyPoint3x4( _point );
+                        var gen_ret = gen_to_be_invoked.MultiplyPoint3x4( _point );
                         translator.PushUnityEngineVector3(L, gen_ret);
                     
                     
@@ -883,7 +883,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Vector3 _vector;translator.Get(L, 2, out _vector);
                     
-                        UnityEngine.Vector3 gen_ret = gen_to_be_invoked.MultiplyVector( _vector );
+                        var gen_ret = gen_to_be_invoked.MultiplyVector( _vector );
                         translator.PushUnityEngineVector3(L, gen_ret);
                     
                     
@@ -914,7 +914,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Plane _plane;translator.Get(L, 2, out _plane);
                     
-                        UnityEngine.Plane gen_ret = gen_to_be_invoked.TransformPlane( _plane );
+                        var gen_ret = gen_to_be_invoked.TransformPlane( _plane );
                         translator.Push(L, gen_ret);
                     
                     
@@ -943,7 +943,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Vector3 _vector;translator.Get(L, 1, out _vector);
                     
-                        UnityEngine.Matrix4x4 gen_ret = UnityEngine.Matrix4x4.Scale( _vector );
+                        var gen_ret = UnityEngine.Matrix4x4.Scale( _vector );
                         translator.Push(L, gen_ret);
                     
                     
@@ -970,7 +970,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Vector3 _vector;translator.Get(L, 1, out _vector);
                     
-                        UnityEngine.Matrix4x4 gen_ret = UnityEngine.Matrix4x4.Translate( _vector );
+                        var gen_ret = UnityEngine.Matrix4x4.Translate( _vector );
                         translator.Push(L, gen_ret);
                     
                     
@@ -997,7 +997,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Quaternion _q;translator.Get(L, 1, out _q);
                     
-                        UnityEngine.Matrix4x4 gen_ret = UnityEngine.Matrix4x4.Rotate( _q );
+                        var gen_ret = UnityEngine.Matrix4x4.Rotate( _q );
                         translator.Push(L, gen_ret);
                     
                     
@@ -1027,7 +1027,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 1) 
                 {
                     
-                        string gen_ret = gen_to_be_invoked.ToString(  );
+                        var gen_ret = gen_to_be_invoked.ToString(  );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -1040,7 +1040,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _format = LuaAPI.lua_tostring(L, 2);
                     
-                        string gen_ret = gen_to_be_invoked.ToString( _format );
+                        var gen_ret = gen_to_be_invoked.ToString( _format );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -1054,7 +1054,7 @@ namespace XLua.CSObjectWrap
                     string _format = LuaAPI.lua_tostring(L, 2);
                     System.IFormatProvider _formatProvider = (System.IFormatProvider)translator.GetObject(L, 3, typeof(System.IFormatProvider));
                     
-                        string gen_ret = gen_to_be_invoked.ToString( _format, _formatProvider );
+                        var gen_ret = gen_to_be_invoked.ToString( _format, _formatProvider );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     

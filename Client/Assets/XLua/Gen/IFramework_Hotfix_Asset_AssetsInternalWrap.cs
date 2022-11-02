@@ -66,7 +66,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					IFramework.Hotfix.Asset.AssetsInternal gen_ret = new IFramework.Hotfix.Asset.AssetsInternal();
+					var gen_ret = new IFramework.Hotfix.Asset.AssetsInternal();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -97,7 +97,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        int gen_ret = IFramework.Hotfix.Asset.AssetsInternal.GetWebRequestTimeout(  );
+                        var gen_ret = IFramework.Hotfix.Asset.AssetsInternal.GetWebRequestTimeout(  );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -123,7 +123,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        System.Collections.Generic.IReadOnlyList<string> gen_ret = IFramework.Hotfix.Asset.AssetsInternal.GetAllAssetPaths(  );
+                        var gen_ret = IFramework.Hotfix.Asset.AssetsInternal.GetAllAssetPaths(  );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -176,7 +176,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _path = LuaAPI.lua_tostring(L, 1);
                     
-                        IFramework.Hotfix.Asset.Asset gen_ret = IFramework.Hotfix.Asset.AssetsInternal.LoadAsset( _path );
+                        var gen_ret = IFramework.Hotfix.Asset.AssetsInternal.LoadAsset( _path );
                         translator.Push(L, gen_ret);
                     
                     
@@ -203,7 +203,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _path = LuaAPI.lua_tostring(L, 1);
                     
-                        IFramework.Hotfix.Asset.Asset gen_ret = IFramework.Hotfix.Asset.AssetsInternal.LoadAssetAsync( _path );
+                        var gen_ret = IFramework.Hotfix.Asset.AssetsInternal.LoadAssetAsync( _path );
                         translator.Push(L, gen_ret);
                     
                     
@@ -230,7 +230,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _path = LuaAPI.lua_tostring(L, 1);
                     
-                        IFramework.Hotfix.Asset.SceneAsset gen_ret = IFramework.Hotfix.Asset.AssetsInternal.LoadSceneAssetAsync( _path );
+                        var gen_ret = IFramework.Hotfix.Asset.AssetsInternal.LoadSceneAssetAsync( _path );
                         translator.Push(L, gen_ret);
                     
                     
@@ -257,7 +257,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _path = LuaAPI.lua_tostring(L, 1);
                     
-                        IFramework.Hotfix.Asset.SceneAsset gen_ret = IFramework.Hotfix.Asset.AssetsInternal.LoadSceneAsset( _path );
+                        var gen_ret = IFramework.Hotfix.Asset.AssetsInternal.LoadSceneAsset( _path );
                         translator.Push(L, gen_ret);
                     
                     
@@ -332,7 +332,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _str = LuaAPI.lua_tostring(L, 1);
                     
-                        string gen_ret = IFramework.Hotfix.Asset.AssetsInternal.GetMd5( _str );
+                        var gen_ret = IFramework.Hotfix.Asset.AssetsInternal.GetMd5( _str );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -357,7 +357,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _path = LuaAPI.lua_tostring(L, 1);
                     
-                        string gen_ret = IFramework.Hotfix.Asset.AssetsInternal.GetFileMD5( _path );
+                        var gen_ret = IFramework.Hotfix.Asset.AssetsInternal.GetFileMD5( _path );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     

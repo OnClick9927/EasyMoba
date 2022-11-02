@@ -59,7 +59,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					LockStep.LCollision2D.PolygonShape gen_ret = new LockStep.LCollision2D.PolygonShape();
+					var gen_ret = new LockStep.LCollision2D.PolygonShape();
 					translator.Push(L, gen_ret);
                     
 					return 1;

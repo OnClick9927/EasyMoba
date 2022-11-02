@@ -68,7 +68,13 @@ ios和osx需要在mac下编译。
 
 ## 报类似“xlua.access, no field __Hitfix0_Update”的错误怎么解决？
 
-按[Hotfix操作指南](hotfix.md)一步步操作。
+按[Hotfix操作指南](hotfix.md)一步步操作，以及注意事项。确保上述步骤完成后，可尝试使用[解决方案](https://github.com/Tencent/xLua/issues/850)。
+
+出现这报错，肯定是这个导致的：最终包的这个方法（函数）没注入。
+
+但造成“最终包的这个方法（函数）没注入”的原因会有很多：比如没按文档操作，注入失败，比如Hotfix列表漏了这个类，比如你的打包脚本在注入后，又触发了重新编译，覆盖了注入结果。。。
+
+统一的解决方式是找出并解决导致“最终包的这个方法（函数）没注入”的具体原因。
 
 ## visual studio 2017下编译UWP原生库
 
@@ -89,6 +95,8 @@ visual studio 2017需要安装：1、“工作负载”下的“通用Window平�
 解决办法，确认XXX（类型名）加上CSharpCallLua后，清除代码后运行。
 
 如果编辑器下没问题，发布到手机报这错，表示你发布前没生成代码（执行“XLua/Generate Code”）。
+
+如果你Unity版本大于或等于2018，看下前面兼容性的章节。
 
 ## unity5.5以上执行"XLua/Hotfix Inject In Editor"菜单会提示"WARNING: The runtime version supported by this application is unavailable."
 
@@ -511,3 +519,10 @@ f2(obj, 1, 2) --调用int版本
 
 常见的不明显的多线程的场景，比如c#异步socket，对象析构函数等。
 
+## maOS10.15以上,启动unity的时候提示xlua.bundle损坏,移动到废纸篓
+
+执行
+
+~~~bash
+sudo xattr -r -d com.apple.quarantine xlua.bundle
+~~~

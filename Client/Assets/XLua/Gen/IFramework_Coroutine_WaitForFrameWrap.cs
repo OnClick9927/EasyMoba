@@ -50,7 +50,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					IFramework.Coroutine.WaitForFrame gen_ret = new IFramework.Coroutine.WaitForFrame();
+					var gen_ret = new IFramework.Coroutine.WaitForFrame();
 					translator.Push(L, gen_ret);
                     
 					return 1;

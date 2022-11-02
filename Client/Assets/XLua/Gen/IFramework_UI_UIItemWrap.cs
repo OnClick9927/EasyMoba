@@ -58,7 +58,7 @@ namespace XLua.CSObjectWrap
 				{
 					IFramework.UI.UIModule.ItemPool _pool = (IFramework.UI.UIModule.ItemPool)translator.GetObject(L, 2, typeof(IFramework.UI.UIModule.ItemPool));
 					
-					IFramework.UI.UIItem gen_ret = new IFramework.UI.UIItem(_pool);
+					var gen_ret = new IFramework.UI.UIItem(_pool);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -93,7 +93,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        IFramework.IAwaiter<IFramework.UI.UIItem> gen_ret = gen_to_be_invoked.GetAwaiter(  );
+                        var gen_ret = gen_to_be_invoked.GetAwaiter(  );
                         translator.PushAny(L, gen_ret);
                     
                     

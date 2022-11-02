@@ -52,7 +52,7 @@ namespace XLua.CSObjectWrap
 				{
 					string _name = LuaAPI.lua_tostring(L, 2);
 					
-					IFramework.Serialization.DataTable.DataColumnNameAttribute gen_ret = new IFramework.Serialization.DataTable.DataColumnNameAttribute(_name);
+					var gen_ret = new IFramework.Serialization.DataTable.DataColumnNameAttribute(_name);
 					translator.Push(L, gen_ret);
                     
 					return 1;

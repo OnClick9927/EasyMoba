@@ -68,7 +68,7 @@ namespace XLua.CSObjectWrap
 					UnityEngine.Experimental.Rendering.DefaultFormat _format;translator.Get(L, 5, out _format);
 					UnityEngine.Experimental.Rendering.TextureCreationFlags _flags;translator.Get(L, 6, out _flags);
 					
-					UnityEngine.Texture3D gen_ret = new UnityEngine.Texture3D(_width, _height, _depth, _format, _flags);
+					var gen_ret = new UnityEngine.Texture3D(_width, _height, _depth, _format, _flags);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -81,7 +81,7 @@ namespace XLua.CSObjectWrap
 					UnityEngine.Experimental.Rendering.GraphicsFormat _format;translator.Get(L, 5, out _format);
 					UnityEngine.Experimental.Rendering.TextureCreationFlags _flags;translator.Get(L, 6, out _flags);
 					
-					UnityEngine.Texture3D gen_ret = new UnityEngine.Texture3D(_width, _height, _depth, _format, _flags);
+					var gen_ret = new UnityEngine.Texture3D(_width, _height, _depth, _format, _flags);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -95,7 +95,7 @@ namespace XLua.CSObjectWrap
 					UnityEngine.Experimental.Rendering.TextureCreationFlags _flags;translator.Get(L, 6, out _flags);
 					int _mipCount = LuaAPI.xlua_tointeger(L, 7);
 					
-					UnityEngine.Texture3D gen_ret = new UnityEngine.Texture3D(_width, _height, _depth, _format, _flags, _mipCount);
+					var gen_ret = new UnityEngine.Texture3D(_width, _height, _depth, _format, _flags, _mipCount);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -108,7 +108,7 @@ namespace XLua.CSObjectWrap
 					UnityEngine.TextureFormat _textureFormat;translator.Get(L, 5, out _textureFormat);
 					int _mipCount = LuaAPI.xlua_tointeger(L, 6);
 					
-					UnityEngine.Texture3D gen_ret = new UnityEngine.Texture3D(_width, _height, _depth, _textureFormat, _mipCount);
+					var gen_ret = new UnityEngine.Texture3D(_width, _height, _depth, _textureFormat, _mipCount);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -122,7 +122,7 @@ namespace XLua.CSObjectWrap
 					int _mipCount = LuaAPI.xlua_tointeger(L, 6);
 					System.IntPtr _nativeTex = LuaAPI.lua_touserdata(L, 7);
 					
-					UnityEngine.Texture3D gen_ret = new UnityEngine.Texture3D(_width, _height, _depth, _textureFormat, _mipCount, _nativeTex);
+					var gen_ret = new UnityEngine.Texture3D(_width, _height, _depth, _textureFormat, _mipCount, _nativeTex);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -135,7 +135,7 @@ namespace XLua.CSObjectWrap
 					UnityEngine.TextureFormat _textureFormat;translator.Get(L, 5, out _textureFormat);
 					bool _mipChain = LuaAPI.lua_toboolean(L, 6);
 					
-					UnityEngine.Texture3D gen_ret = new UnityEngine.Texture3D(_width, _height, _depth, _textureFormat, _mipChain);
+					var gen_ret = new UnityEngine.Texture3D(_width, _height, _depth, _textureFormat, _mipChain);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -149,7 +149,7 @@ namespace XLua.CSObjectWrap
 					bool _mipChain = LuaAPI.lua_toboolean(L, 6);
 					System.IntPtr _nativeTex = LuaAPI.lua_touserdata(L, 7);
 					
-					UnityEngine.Texture3D gen_ret = new UnityEngine.Texture3D(_width, _height, _depth, _textureFormat, _mipChain, _nativeTex);
+					var gen_ret = new UnityEngine.Texture3D(_width, _height, _depth, _textureFormat, _mipChain, _nativeTex);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -214,7 +214,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 1) 
                 {
                     
-                        UnityEngine.Color[] gen_ret = gen_to_be_invoked.GetPixels(  );
+                        var gen_ret = gen_to_be_invoked.GetPixels(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -225,7 +225,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _miplevel = LuaAPI.xlua_tointeger(L, 2);
                     
-                        UnityEngine.Color[] gen_ret = gen_to_be_invoked.GetPixels( _miplevel );
+                        var gen_ret = gen_to_be_invoked.GetPixels( _miplevel );
                         translator.Push(L, gen_ret);
                     
                     
@@ -257,7 +257,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 1) 
                 {
                     
-                        UnityEngine.Color32[] gen_ret = gen_to_be_invoked.GetPixels32(  );
+                        var gen_ret = gen_to_be_invoked.GetPixels32(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -268,7 +268,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _miplevel = LuaAPI.xlua_tointeger(L, 2);
                     
-                        UnityEngine.Color32[] gen_ret = gen_to_be_invoked.GetPixels32( _miplevel );
+                        var gen_ret = gen_to_be_invoked.GetPixels32( _miplevel );
                         translator.Push(L, gen_ret);
                     
                     
@@ -388,7 +388,7 @@ namespace XLua.CSObjectWrap
                     bool _mipChain = LuaAPI.lua_toboolean(L, 5);
                     System.IntPtr _nativeTex = LuaAPI.lua_touserdata(L, 6);
                     
-                        UnityEngine.Texture3D gen_ret = UnityEngine.Texture3D.CreateExternalTexture( _width, _height, _depth, _format, _mipChain, _nativeTex );
+                        var gen_ret = UnityEngine.Texture3D.CreateExternalTexture( _width, _height, _depth, _format, _mipChain, _nativeTex );
                         translator.Push(L, gen_ret);
                     
                     
@@ -522,7 +522,7 @@ namespace XLua.CSObjectWrap
                     int _y = LuaAPI.xlua_tointeger(L, 3);
                     int _z = LuaAPI.xlua_tointeger(L, 4);
                     
-                        UnityEngine.Color gen_ret = gen_to_be_invoked.GetPixel( _x, _y, _z );
+                        var gen_ret = gen_to_be_invoked.GetPixel( _x, _y, _z );
                         translator.PushUnityEngineColor(L, gen_ret);
                     
                     
@@ -536,7 +536,7 @@ namespace XLua.CSObjectWrap
                     int _z = LuaAPI.xlua_tointeger(L, 4);
                     int _mipLevel = LuaAPI.xlua_tointeger(L, 5);
                     
-                        UnityEngine.Color gen_ret = gen_to_be_invoked.GetPixel( _x, _y, _z, _mipLevel );
+                        var gen_ret = gen_to_be_invoked.GetPixel( _x, _y, _z, _mipLevel );
                         translator.PushUnityEngineColor(L, gen_ret);
                     
                     
@@ -571,7 +571,7 @@ namespace XLua.CSObjectWrap
                     float _v = (float)LuaAPI.lua_tonumber(L, 3);
                     float _w = (float)LuaAPI.lua_tonumber(L, 4);
                     
-                        UnityEngine.Color gen_ret = gen_to_be_invoked.GetPixelBilinear( _u, _v, _w );
+                        var gen_ret = gen_to_be_invoked.GetPixelBilinear( _u, _v, _w );
                         translator.PushUnityEngineColor(L, gen_ret);
                     
                     
@@ -585,7 +585,7 @@ namespace XLua.CSObjectWrap
                     float _w = (float)LuaAPI.lua_tonumber(L, 4);
                     int _mipLevel = LuaAPI.xlua_tointeger(L, 5);
                     
-                        UnityEngine.Color gen_ret = gen_to_be_invoked.GetPixelBilinear( _u, _v, _w, _mipLevel );
+                        var gen_ret = gen_to_be_invoked.GetPixelBilinear( _u, _v, _w, _mipLevel );
                         translator.PushUnityEngineColor(L, gen_ret);
                     
                     

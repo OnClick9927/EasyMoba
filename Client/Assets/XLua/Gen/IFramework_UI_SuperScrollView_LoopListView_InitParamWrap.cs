@@ -66,7 +66,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					IFramework.UI.SuperScrollView.LoopListView.InitParam gen_ret = new IFramework.UI.SuperScrollView.LoopListView.InitParam();
+					var gen_ret = new IFramework.UI.SuperScrollView.LoopListView.InitParam();
 					translator.Push(L, gen_ret);
                     
 					return 1;

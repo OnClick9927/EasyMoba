@@ -53,7 +53,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					EasyMoba.MVCMap gen_ret = new EasyMoba.MVCMap();
+					var gen_ret = new EasyMoba.MVCMap();
 					translator.Push(L, gen_ret);
                     
 					return 1;

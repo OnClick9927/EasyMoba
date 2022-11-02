@@ -72,7 +72,7 @@ namespace XLua.CSObjectWrap
                 {
                     object _obj = translator.GetObject(L, 1, typeof(object));
                     
-                        string gen_ret = UnityEngine.JsonUtility.ToJson( _obj );
+                        var gen_ret = UnityEngine.JsonUtility.ToJson( _obj );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -84,7 +84,7 @@ namespace XLua.CSObjectWrap
                     object _obj = translator.GetObject(L, 1, typeof(object));
                     bool _prettyPrint = LuaAPI.lua_toboolean(L, 2);
                     
-                        string gen_ret = UnityEngine.JsonUtility.ToJson( _obj, _prettyPrint );
+                        var gen_ret = UnityEngine.JsonUtility.ToJson( _obj, _prettyPrint );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -114,7 +114,7 @@ namespace XLua.CSObjectWrap
                     string _json = LuaAPI.lua_tostring(L, 1);
                     System.Type _type = (System.Type)translator.GetObject(L, 2, typeof(System.Type));
                     
-                        object gen_ret = UnityEngine.JsonUtility.FromJson( _json, _type );
+                        var gen_ret = UnityEngine.JsonUtility.FromJson( _json, _type );
                         translator.PushAny(L, gen_ret);
                     
                     

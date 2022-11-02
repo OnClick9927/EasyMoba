@@ -132,7 +132,7 @@ namespace XLua.CSObjectWrap
                     int _capacity = LuaAPI.xlua_tointeger(L, 1);
                     bool _fromPool = LuaAPI.lua_toboolean(L, 2);
                     
-                        IFramework.Net.KCP.BufferQueue gen_ret = IFramework.Net.KCP.BufferQueue.Allocate( _capacity, _fromPool );
+                        var gen_ret = IFramework.Net.KCP.BufferQueue.Allocate( _capacity, _fromPool );
                         translator.Push(L, gen_ret);
                     
                     
@@ -143,7 +143,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _capacity = LuaAPI.xlua_tointeger(L, 1);
                     
-                        IFramework.Net.KCP.BufferQueue gen_ret = IFramework.Net.KCP.BufferQueue.Allocate( _capacity );
+                        var gen_ret = IFramework.Net.KCP.BufferQueue.Allocate( _capacity );
                         translator.Push(L, gen_ret);
                     
                     
@@ -155,7 +155,7 @@ namespace XLua.CSObjectWrap
                     byte[] _bytes = LuaAPI.lua_tobytes(L, 1);
                     bool _fromPool = LuaAPI.lua_toboolean(L, 2);
                     
-                        IFramework.Net.KCP.BufferQueue gen_ret = IFramework.Net.KCP.BufferQueue.Allocate( _bytes, _fromPool );
+                        var gen_ret = IFramework.Net.KCP.BufferQueue.Allocate( _bytes, _fromPool );
                         translator.Push(L, gen_ret);
                     
                     
@@ -166,7 +166,7 @@ namespace XLua.CSObjectWrap
                 {
                     byte[] _bytes = LuaAPI.lua_tobytes(L, 1);
                     
-                        IFramework.Net.KCP.BufferQueue gen_ret = IFramework.Net.KCP.BufferQueue.Allocate( _bytes );
+                        var gen_ret = IFramework.Net.KCP.BufferQueue.Allocate( _bytes );
                         translator.Push(L, gen_ret);
                     
                     
@@ -656,7 +656,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        byte gen_ret = gen_to_be_invoked.ReadByte(  );
+                        var gen_ret = gen_to_be_invoked.ReadByte(  );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -684,7 +684,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        ushort gen_ret = gen_to_be_invoked.ReadUshort(  );
+                        var gen_ret = gen_to_be_invoked.ReadUshort(  );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -712,7 +712,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        short gen_ret = gen_to_be_invoked.ReadShort(  );
+                        var gen_ret = gen_to_be_invoked.ReadShort(  );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -740,7 +740,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        uint gen_ret = gen_to_be_invoked.ReadUint(  );
+                        var gen_ret = gen_to_be_invoked.ReadUint(  );
                         LuaAPI.xlua_pushuint(L, gen_ret);
                     
                     
@@ -768,7 +768,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        int gen_ret = gen_to_be_invoked.ReadInt(  );
+                        var gen_ret = gen_to_be_invoked.ReadInt(  );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -796,7 +796,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        ulong gen_ret = gen_to_be_invoked.ReadUlong(  );
+                        var gen_ret = gen_to_be_invoked.ReadUlong(  );
                         LuaAPI.lua_pushuint64(L, gen_ret);
                     
                     
@@ -824,7 +824,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        long gen_ret = gen_to_be_invoked.ReadLong(  );
+                        var gen_ret = gen_to_be_invoked.ReadLong(  );
                         LuaAPI.lua_pushint64(L, gen_ret);
                     
                     
@@ -852,7 +852,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        float gen_ret = gen_to_be_invoked.ReadFloat(  );
+                        var gen_ret = gen_to_be_invoked.ReadFloat(  );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -880,7 +880,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        double gen_ret = gen_to_be_invoked.ReadDouble(  );
+                        var gen_ret = gen_to_be_invoked.ReadDouble(  );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -908,7 +908,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        char gen_ret = gen_to_be_invoked.ReadChar(  );
+                        var gen_ret = gen_to_be_invoked.ReadChar(  );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -936,7 +936,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        bool gen_ret = gen_to_be_invoked.ReadBoolean(  );
+                        var gen_ret = gen_to_be_invoked.ReadBoolean(  );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -967,7 +967,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _len = LuaAPI.xlua_tointeger(L, 2);
                     
-                        byte[] gen_ret = gen_to_be_invoked.ReadBytes( _len );
+                        var gen_ret = gen_to_be_invoked.ReadBytes( _len );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -979,7 +979,7 @@ namespace XLua.CSObjectWrap
                     int _index = LuaAPI.xlua_tointeger(L, 2);
                     int _len = LuaAPI.xlua_tointeger(L, 3);
                     
-                        byte[] gen_ret = gen_to_be_invoked.ReadBytes( _index, _len );
+                        var gen_ret = gen_to_be_invoked.ReadBytes( _index, _len );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -1023,7 +1023,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 1) 
                 {
                     
-                        byte gen_ret = gen_to_be_invoked.GetByte(  );
+                        var gen_ret = gen_to_be_invoked.GetByte(  );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -1034,7 +1034,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _index = LuaAPI.xlua_tointeger(L, 2);
                     
-                        byte gen_ret = gen_to_be_invoked.GetByte( _index );
+                        var gen_ret = gen_to_be_invoked.GetByte( _index );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -1066,7 +1066,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 1) 
                 {
                     
-                        double gen_ret = gen_to_be_invoked.GetDouble(  );
+                        var gen_ret = gen_to_be_invoked.GetDouble(  );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -1077,7 +1077,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _index = LuaAPI.xlua_tointeger(L, 2);
                     
-                        double gen_ret = gen_to_be_invoked.GetDouble( _index );
+                        var gen_ret = gen_to_be_invoked.GetDouble( _index );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -1109,7 +1109,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 1) 
                 {
                     
-                        float gen_ret = gen_to_be_invoked.GetFloat(  );
+                        var gen_ret = gen_to_be_invoked.GetFloat(  );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -1120,7 +1120,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _index = LuaAPI.xlua_tointeger(L, 2);
                     
-                        float gen_ret = gen_to_be_invoked.GetFloat( _index );
+                        var gen_ret = gen_to_be_invoked.GetFloat( _index );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -1152,7 +1152,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 1) 
                 {
                     
-                        long gen_ret = gen_to_be_invoked.GetLong(  );
+                        var gen_ret = gen_to_be_invoked.GetLong(  );
                         LuaAPI.lua_pushint64(L, gen_ret);
                     
                     
@@ -1163,7 +1163,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _index = LuaAPI.xlua_tointeger(L, 2);
                     
-                        long gen_ret = gen_to_be_invoked.GetLong( _index );
+                        var gen_ret = gen_to_be_invoked.GetLong( _index );
                         LuaAPI.lua_pushint64(L, gen_ret);
                     
                     
@@ -1195,7 +1195,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 1) 
                 {
                     
-                        ulong gen_ret = gen_to_be_invoked.GetUlong(  );
+                        var gen_ret = gen_to_be_invoked.GetUlong(  );
                         LuaAPI.lua_pushuint64(L, gen_ret);
                     
                     
@@ -1206,7 +1206,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _index = LuaAPI.xlua_tointeger(L, 2);
                     
-                        ulong gen_ret = gen_to_be_invoked.GetUlong( _index );
+                        var gen_ret = gen_to_be_invoked.GetUlong( _index );
                         LuaAPI.lua_pushuint64(L, gen_ret);
                     
                     
@@ -1238,7 +1238,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 1) 
                 {
                     
-                        int gen_ret = gen_to_be_invoked.GetInt(  );
+                        var gen_ret = gen_to_be_invoked.GetInt(  );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -1249,7 +1249,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _index = LuaAPI.xlua_tointeger(L, 2);
                     
-                        int gen_ret = gen_to_be_invoked.GetInt( _index );
+                        var gen_ret = gen_to_be_invoked.GetInt( _index );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -1281,7 +1281,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 1) 
                 {
                     
-                        uint gen_ret = gen_to_be_invoked.GetUint(  );
+                        var gen_ret = gen_to_be_invoked.GetUint(  );
                         LuaAPI.xlua_pushuint(L, gen_ret);
                     
                     
@@ -1292,7 +1292,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _index = LuaAPI.xlua_tointeger(L, 2);
                     
-                        uint gen_ret = gen_to_be_invoked.GetUint( _index );
+                        var gen_ret = gen_to_be_invoked.GetUint( _index );
                         LuaAPI.xlua_pushuint(L, gen_ret);
                     
                     
@@ -1324,7 +1324,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 1) 
                 {
                     
-                        int gen_ret = gen_to_be_invoked.GetShort(  );
+                        var gen_ret = gen_to_be_invoked.GetShort(  );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -1335,7 +1335,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _index = LuaAPI.xlua_tointeger(L, 2);
                     
-                        int gen_ret = gen_to_be_invoked.GetShort( _index );
+                        var gen_ret = gen_to_be_invoked.GetShort( _index );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -1367,7 +1367,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 1) 
                 {
                     
-                        int gen_ret = gen_to_be_invoked.GetUshort(  );
+                        var gen_ret = gen_to_be_invoked.GetUshort(  );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -1378,7 +1378,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _index = LuaAPI.xlua_tointeger(L, 2);
                     
-                        int gen_ret = gen_to_be_invoked.GetUshort( _index );
+                        var gen_ret = gen_to_be_invoked.GetUshort( _index );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -1410,7 +1410,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 1) 
                 {
                     
-                        char gen_ret = gen_to_be_invoked.GetChar(  );
+                        var gen_ret = gen_to_be_invoked.GetChar(  );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -1421,7 +1421,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _index = LuaAPI.xlua_tointeger(L, 2);
                     
-                        char gen_ret = gen_to_be_invoked.GetChar( _index );
+                        var gen_ret = gen_to_be_invoked.GetChar( _index );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -1453,7 +1453,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 1) 
                 {
                     
-                        bool gen_ret = gen_to_be_invoked.GetBoolean(  );
+                        var gen_ret = gen_to_be_invoked.GetBoolean(  );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -1464,7 +1464,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _index = LuaAPI.xlua_tointeger(L, 2);
                     
-                        bool gen_ret = gen_to_be_invoked.GetBoolean( _index );
+                        var gen_ret = gen_to_be_invoked.GetBoolean( _index );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -1629,7 +1629,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        byte[] gen_ret = gen_to_be_invoked.ToArray(  );
+                        var gen_ret = gen_to_be_invoked.ToArray(  );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -1717,7 +1717,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _len = LuaAPI.xlua_tointeger(L, 2);
                     
-                        string gen_ret = gen_to_be_invoked.ReadUTF8String( _len );
+                        var gen_ret = gen_to_be_invoked.ReadUTF8String( _len );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -1728,7 +1728,7 @@ namespace XLua.CSObjectWrap
                 {
                     IFramework.Net.KCP.BufferQueue.DataType _lenType;translator.Get(L, 2, out _lenType);
                     
-                        string gen_ret = gen_to_be_invoked.ReadUTF8String( _lenType );
+                        var gen_ret = gen_to_be_invoked.ReadUTF8String( _lenType );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -1758,7 +1758,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        string gen_ret = gen_to_be_invoked.ReadUTF(  );
+                        var gen_ret = gen_to_be_invoked.ReadUTF(  );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -1786,7 +1786,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        IFramework.Net.KCP.BufferQueue gen_ret = gen_to_be_invoked.Copy(  );
+                        var gen_ret = gen_to_be_invoked.Copy(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -1814,7 +1814,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        object gen_ret = gen_to_be_invoked.Clone(  );
+                        var gen_ret = gen_to_be_invoked.Clone(  );
                         translator.PushAny(L, gen_ret);
                     
                     

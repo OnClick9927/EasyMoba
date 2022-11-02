@@ -54,7 +54,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.IntegratedSubsystem gen_ret = new UnityEngine.IntegratedSubsystem();
+					var gen_ret = new UnityEngine.IntegratedSubsystem();
 					translator.Push(L, gen_ret);
                     
 					return 1;

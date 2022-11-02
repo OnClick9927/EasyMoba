@@ -56,7 +56,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.Microphone gen_ret = new UnityEngine.Microphone();
+					var gen_ret = new UnityEngine.Microphone();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -93,7 +93,7 @@ namespace XLua.CSObjectWrap
                     int _lengthSec = LuaAPI.xlua_tointeger(L, 3);
                     int _frequency = LuaAPI.xlua_tointeger(L, 4);
                     
-                        UnityEngine.AudioClip gen_ret = UnityEngine.Microphone.Start( _deviceName, _loop, _lengthSec, _frequency );
+                        var gen_ret = UnityEngine.Microphone.Start( _deviceName, _loop, _lengthSec, _frequency );
                         translator.Push(L, gen_ret);
                     
                     
@@ -142,7 +142,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _deviceName = LuaAPI.lua_tostring(L, 1);
                     
-                        bool gen_ret = UnityEngine.Microphone.IsRecording( _deviceName );
+                        var gen_ret = UnityEngine.Microphone.IsRecording( _deviceName );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -167,7 +167,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _deviceName = LuaAPI.lua_tostring(L, 1);
                     
-                        int gen_ret = UnityEngine.Microphone.GetPosition( _deviceName );
+                        var gen_ret = UnityEngine.Microphone.GetPosition( _deviceName );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     

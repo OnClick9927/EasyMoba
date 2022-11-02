@@ -82,7 +82,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        bool gen_ret = gen_to_be_invoked.LoadAudioData(  );
+                        var gen_ret = gen_to_be_invoked.LoadAudioData(  );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -110,7 +110,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        bool gen_ret = gen_to_be_invoked.UnloadAudioData(  );
+                        var gen_ret = gen_to_be_invoked.UnloadAudioData(  );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -140,7 +140,7 @@ namespace XLua.CSObjectWrap
                     float[] _data = (float[])translator.GetObject(L, 2, typeof(float[]));
                     int _offsetSamples = LuaAPI.xlua_tointeger(L, 3);
                     
-                        bool gen_ret = gen_to_be_invoked.GetData( _data, _offsetSamples );
+                        var gen_ret = gen_to_be_invoked.GetData( _data, _offsetSamples );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -170,7 +170,7 @@ namespace XLua.CSObjectWrap
                     float[] _data = (float[])translator.GetObject(L, 2, typeof(float[]));
                     int _offsetSamples = LuaAPI.xlua_tointeger(L, 3);
                     
-                        bool gen_ret = gen_to_be_invoked.SetData( _data, _offsetSamples );
+                        var gen_ret = gen_to_be_invoked.SetData( _data, _offsetSamples );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -203,7 +203,7 @@ namespace XLua.CSObjectWrap
                     int _frequency = LuaAPI.xlua_tointeger(L, 4);
                     bool _stream = LuaAPI.lua_toboolean(L, 5);
                     
-                        UnityEngine.AudioClip gen_ret = UnityEngine.AudioClip.Create( _name, _lengthSamples, _channels, _frequency, _stream );
+                        var gen_ret = UnityEngine.AudioClip.Create( _name, _lengthSamples, _channels, _frequency, _stream );
                         translator.Push(L, gen_ret);
                     
                     
@@ -219,7 +219,7 @@ namespace XLua.CSObjectWrap
                     bool _stream = LuaAPI.lua_toboolean(L, 5);
                     UnityEngine.AudioClip.PCMReaderCallback _pcmreadercallback = translator.GetDelegate<UnityEngine.AudioClip.PCMReaderCallback>(L, 6);
                     
-                        UnityEngine.AudioClip gen_ret = UnityEngine.AudioClip.Create( _name, _lengthSamples, _channels, _frequency, _stream, _pcmreadercallback );
+                        var gen_ret = UnityEngine.AudioClip.Create( _name, _lengthSamples, _channels, _frequency, _stream, _pcmreadercallback );
                         translator.Push(L, gen_ret);
                     
                     
@@ -236,7 +236,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.AudioClip.PCMReaderCallback _pcmreadercallback = translator.GetDelegate<UnityEngine.AudioClip.PCMReaderCallback>(L, 6);
                     UnityEngine.AudioClip.PCMSetPositionCallback _pcmsetpositioncallback = translator.GetDelegate<UnityEngine.AudioClip.PCMSetPositionCallback>(L, 7);
                     
-                        UnityEngine.AudioClip gen_ret = UnityEngine.AudioClip.Create( _name, _lengthSamples, _channels, _frequency, _stream, _pcmreadercallback, _pcmsetpositioncallback );
+                        var gen_ret = UnityEngine.AudioClip.Create( _name, _lengthSamples, _channels, _frequency, _stream, _pcmreadercallback, _pcmsetpositioncallback );
                         translator.Push(L, gen_ret);
                     
                     

@@ -96,7 +96,7 @@ namespace XLua.CSObjectWrap
                     uint _numFrames = LuaAPI.xlua_touint(L, 1);
                     UnityEngine.FrameTiming[] _timings = (UnityEngine.FrameTiming[])translator.GetObject(L, 2, typeof(UnityEngine.FrameTiming[]));
                     
-                        uint gen_ret = UnityEngine.FrameTimingManager.GetLatestTimings( _numFrames, _timings );
+                        var gen_ret = UnityEngine.FrameTimingManager.GetLatestTimings( _numFrames, _timings );
                         LuaAPI.xlua_pushuint(L, gen_ret);
                     
                     
@@ -120,7 +120,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        float gen_ret = UnityEngine.FrameTimingManager.GetVSyncsPerSecond(  );
+                        var gen_ret = UnityEngine.FrameTimingManager.GetVSyncsPerSecond(  );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -144,7 +144,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        ulong gen_ret = UnityEngine.FrameTimingManager.GetGpuTimerFrequency(  );
+                        var gen_ret = UnityEngine.FrameTimingManager.GetGpuTimerFrequency(  );
                         LuaAPI.lua_pushuint64(L, gen_ret);
                     
                     
@@ -168,7 +168,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        ulong gen_ret = UnityEngine.FrameTimingManager.GetCpuTimerFrequency(  );
+                        var gen_ret = UnityEngine.FrameTimingManager.GetCpuTimerFrequency(  );
                         LuaAPI.lua_pushuint64(L, gen_ret);
                     
                     

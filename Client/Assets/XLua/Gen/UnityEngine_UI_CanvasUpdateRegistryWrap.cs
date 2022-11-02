@@ -101,7 +101,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.UI.ICanvasElement _element = (UnityEngine.UI.ICanvasElement)translator.GetObject(L, 1, typeof(UnityEngine.UI.ICanvasElement));
                     
-                        bool gen_ret = UnityEngine.UI.CanvasUpdateRegistry.TryRegisterCanvasElementForLayoutRebuild( _element );
+                        var gen_ret = UnityEngine.UI.CanvasUpdateRegistry.TryRegisterCanvasElementForLayoutRebuild( _element );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -154,7 +154,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.UI.ICanvasElement _element = (UnityEngine.UI.ICanvasElement)translator.GetObject(L, 1, typeof(UnityEngine.UI.ICanvasElement));
                     
-                        bool gen_ret = UnityEngine.UI.CanvasUpdateRegistry.TryRegisterCanvasElementForGraphicRebuild( _element );
+                        var gen_ret = UnityEngine.UI.CanvasUpdateRegistry.TryRegisterCanvasElementForGraphicRebuild( _element );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -204,7 +204,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        bool gen_ret = UnityEngine.UI.CanvasUpdateRegistry.IsRebuildingLayout(  );
+                        var gen_ret = UnityEngine.UI.CanvasUpdateRegistry.IsRebuildingLayout(  );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -228,7 +228,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        bool gen_ret = UnityEngine.UI.CanvasUpdateRegistry.IsRebuildingGraphics(  );
+                        var gen_ret = UnityEngine.UI.CanvasUpdateRegistry.IsRebuildingGraphics(  );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     

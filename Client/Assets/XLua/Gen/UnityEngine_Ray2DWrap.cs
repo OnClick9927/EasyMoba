@@ -58,7 +58,7 @@ namespace XLua.CSObjectWrap
 					UnityEngine.Vector2 _origin;translator.Get(L, 2, out _origin);
 					UnityEngine.Vector2 _direction;translator.Get(L, 3, out _direction);
 					
-					UnityEngine.Ray2D gen_ret = new UnityEngine.Ray2D(_origin, _direction);
+					var gen_ret = new UnityEngine.Ray2D(_origin, _direction);
 					translator.PushUnityEngineRay2D(L, gen_ret);
                     
 					return 1;
@@ -100,7 +100,7 @@ namespace XLua.CSObjectWrap
                 {
                     float _distance = (float)LuaAPI.lua_tonumber(L, 2);
                     
-                        UnityEngine.Vector2 gen_ret = gen_to_be_invoked.GetPoint( _distance );
+                        var gen_ret = gen_to_be_invoked.GetPoint( _distance );
                         translator.PushUnityEngineVector2(L, gen_ret);
                     
                     
@@ -132,7 +132,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 1) 
                 {
                     
-                        string gen_ret = gen_to_be_invoked.ToString(  );
+                        var gen_ret = gen_to_be_invoked.ToString(  );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -145,7 +145,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _format = LuaAPI.lua_tostring(L, 2);
                     
-                        string gen_ret = gen_to_be_invoked.ToString( _format );
+                        var gen_ret = gen_to_be_invoked.ToString( _format );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -159,7 +159,7 @@ namespace XLua.CSObjectWrap
                     string _format = LuaAPI.lua_tostring(L, 2);
                     System.IFormatProvider _formatProvider = (System.IFormatProvider)translator.GetObject(L, 3, typeof(System.IFormatProvider));
                     
-                        string gen_ret = gen_to_be_invoked.ToString( _format, _formatProvider );
+                        var gen_ret = gen_to_be_invoked.ToString( _format, _formatProvider );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     

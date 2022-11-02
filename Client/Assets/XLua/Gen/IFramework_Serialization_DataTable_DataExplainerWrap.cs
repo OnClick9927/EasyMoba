@@ -52,7 +52,7 @@ namespace XLua.CSObjectWrap
 					char _dot = (char)LuaAPI.xlua_tointeger(L, 2);
 					char _quotes = (char)LuaAPI.xlua_tointeger(L, 3);
 					
-					IFramework.Serialization.DataTable.DataExplainer gen_ret = new IFramework.Serialization.DataTable.DataExplainer(_dot, _quotes);
+					var gen_ret = new IFramework.Serialization.DataTable.DataExplainer(_dot, _quotes);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -61,7 +61,7 @@ namespace XLua.CSObjectWrap
 				{
 					char _dot = (char)LuaAPI.xlua_tointeger(L, 2);
 					
-					IFramework.Serialization.DataTable.DataExplainer gen_ret = new IFramework.Serialization.DataTable.DataExplainer(_dot);
+					var gen_ret = new IFramework.Serialization.DataTable.DataExplainer(_dot);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -69,7 +69,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					IFramework.Serialization.DataTable.DataExplainer gen_ret = new IFramework.Serialization.DataTable.DataExplainer();
+					var gen_ret = new IFramework.Serialization.DataTable.DataExplainer();
 					translator.Push(L, gen_ret);
                     
 					return 1;

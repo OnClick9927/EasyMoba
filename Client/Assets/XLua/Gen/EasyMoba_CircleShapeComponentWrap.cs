@@ -56,7 +56,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					EasyMoba.CircleShapeComponent gen_ret = new EasyMoba.CircleShapeComponent();
+					var gen_ret = new EasyMoba.CircleShapeComponent();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -91,7 +91,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        LockStep.LCollision2D.CircleShape gen_ret = gen_to_be_invoked.Build(  );
+                        var gen_ret = gen_to_be_invoked.Build(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -119,7 +119,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.MakeComponentExist(  );
+                        var gen_ret = gen_to_be_invoked.MakeComponentExist(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -174,7 +174,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.LocalIdentity(  );
+                        var gen_ret = gen_to_be_invoked.LocalIdentity(  );
                         translator.Push(L, gen_ret);
                     
                     

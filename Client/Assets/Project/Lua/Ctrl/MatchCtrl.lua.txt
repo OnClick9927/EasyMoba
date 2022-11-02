@@ -44,7 +44,8 @@ NetEvents.SetHandler(NetEventDefine.SCDisMatch, OnSCDisMatch)
 NetEvents.SetHandler(NetEventDefine.SPMatchSuccess, OnMatchSucess)
 
 local function LocalMatch()
-    Battle.StartGame(BattlePlayMode.Normal, "local", { Models.PlayerModel:GetRoleID() })
+    Battle.StartGame(BattlePlayMode.Normal, "local",
+        CS.MatchRoomType.Normal, { Models.PlayerModel:GetRoleID() })
 end
 
 return {

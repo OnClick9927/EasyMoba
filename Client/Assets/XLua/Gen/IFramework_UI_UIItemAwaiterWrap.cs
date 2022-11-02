@@ -55,7 +55,7 @@ namespace XLua.CSObjectWrap
 				{
 					IFramework.UI.UIItem _task = (IFramework.UI.UIItem)translator.GetObject(L, 2, typeof(IFramework.UI.UIItem));
 					
-					IFramework.UI.UIItemAwaiter gen_ret = new IFramework.UI.UIItemAwaiter(_task);
+					var gen_ret = new IFramework.UI.UIItemAwaiter(_task);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -96,7 +96,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        IFramework.UI.UIItem gen_ret = gen_to_be_invoked.GetResult(  );
+                        var gen_ret = gen_to_be_invoked.GetResult(  );
                         translator.Push(L, gen_ret);
                     
                     

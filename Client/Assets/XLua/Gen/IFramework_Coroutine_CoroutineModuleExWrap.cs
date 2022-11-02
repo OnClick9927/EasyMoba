@@ -69,7 +69,7 @@ namespace XLua.CSObjectWrap
                     IFramework.Coroutine.ICoroutine _self = (IFramework.Coroutine.ICoroutine)translator.GetObject(L, 1, typeof(IFramework.Coroutine.ICoroutine));
                     System.Action _action = translator.GetDelegate<System.Action>(L, 2);
                     
-                        IFramework.Coroutine.ICoroutine gen_ret = IFramework.Coroutine.CoroutineModuleEx.OnCompelete( _self, _action );
+                        var gen_ret = IFramework.Coroutine.CoroutineModuleEx.OnCompelete( _self, _action );
                         translator.PushAny(L, gen_ret);
                     
                     

@@ -66,7 +66,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        string gen_ret = UnityEngine.StackTraceUtility.ExtractStackTrace(  );
+                        var gen_ret = UnityEngine.StackTraceUtility.ExtractStackTrace(  );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -93,7 +93,7 @@ namespace XLua.CSObjectWrap
                 {
                     object _exception = translator.GetObject(L, 1, typeof(object));
                     
-                        string gen_ret = UnityEngine.StackTraceUtility.ExtractStringFromException( _exception );
+                        var gen_ret = UnityEngine.StackTraceUtility.ExtractStringFromException( _exception );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     

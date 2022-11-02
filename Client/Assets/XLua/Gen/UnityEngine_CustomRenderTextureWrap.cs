@@ -87,7 +87,7 @@ namespace XLua.CSObjectWrap
 					UnityEngine.RenderTextureFormat _format;translator.Get(L, 4, out _format);
 					UnityEngine.RenderTextureReadWrite _readWrite;translator.Get(L, 5, out _readWrite);
 					
-					UnityEngine.CustomRenderTexture gen_ret = new UnityEngine.CustomRenderTexture(_width, _height, _format, _readWrite);
+					var gen_ret = new UnityEngine.CustomRenderTexture(_width, _height, _format, _readWrite);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -98,7 +98,7 @@ namespace XLua.CSObjectWrap
 					int _height = LuaAPI.xlua_tointeger(L, 3);
 					UnityEngine.RenderTextureFormat _format;translator.Get(L, 4, out _format);
 					
-					UnityEngine.CustomRenderTexture gen_ret = new UnityEngine.CustomRenderTexture(_width, _height, _format);
+					var gen_ret = new UnityEngine.CustomRenderTexture(_width, _height, _format);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -108,7 +108,7 @@ namespace XLua.CSObjectWrap
 					int _width = LuaAPI.xlua_tointeger(L, 2);
 					int _height = LuaAPI.xlua_tointeger(L, 3);
 					
-					UnityEngine.CustomRenderTexture gen_ret = new UnityEngine.CustomRenderTexture(_width, _height);
+					var gen_ret = new UnityEngine.CustomRenderTexture(_width, _height);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -119,7 +119,7 @@ namespace XLua.CSObjectWrap
 					int _height = LuaAPI.xlua_tointeger(L, 3);
 					UnityEngine.Experimental.Rendering.DefaultFormat _defaultFormat;translator.Get(L, 4, out _defaultFormat);
 					
-					UnityEngine.CustomRenderTexture gen_ret = new UnityEngine.CustomRenderTexture(_width, _height, _defaultFormat);
+					var gen_ret = new UnityEngine.CustomRenderTexture(_width, _height, _defaultFormat);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -130,7 +130,7 @@ namespace XLua.CSObjectWrap
 					int _height = LuaAPI.xlua_tointeger(L, 3);
 					UnityEngine.Experimental.Rendering.GraphicsFormat _format;translator.Get(L, 4, out _format);
 					
-					UnityEngine.CustomRenderTexture gen_ret = new UnityEngine.CustomRenderTexture(_width, _height, _format);
+					var gen_ret = new UnityEngine.CustomRenderTexture(_width, _height, _format);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -288,7 +288,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.RenderTexture gen_ret = gen_to_be_invoked.GetDoubleBufferRenderTexture(  );
+                        var gen_ret = gen_to_be_invoked.GetDoubleBufferRenderTexture(  );
                         translator.Push(L, gen_ret);
                     
                     

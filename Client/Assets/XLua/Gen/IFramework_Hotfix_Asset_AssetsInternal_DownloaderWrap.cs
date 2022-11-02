@@ -63,7 +63,7 @@ namespace XLua.CSObjectWrap
 					float _timeout = (float)LuaAPI.lua_tonumber(L, 4);
 					int _retries = LuaAPI.xlua_tointeger(L, 5);
 					
-					IFramework.Hotfix.Asset.AssetsInternal.Downloader gen_ret = new IFramework.Hotfix.Asset.AssetsInternal.Downloader(_url, _downloadPath, _timeout, _retries);
+					var gen_ret = new IFramework.Hotfix.Asset.AssetsInternal.Downloader(_url, _downloadPath, _timeout, _retries);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -74,7 +74,7 @@ namespace XLua.CSObjectWrap
 					string _downloadPath = LuaAPI.lua_tostring(L, 3);
 					float _timeout = (float)LuaAPI.lua_tonumber(L, 4);
 					
-					IFramework.Hotfix.Asset.AssetsInternal.Downloader gen_ret = new IFramework.Hotfix.Asset.AssetsInternal.Downloader(_url, _downloadPath, _timeout);
+					var gen_ret = new IFramework.Hotfix.Asset.AssetsInternal.Downloader(_url, _downloadPath, _timeout);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -84,7 +84,7 @@ namespace XLua.CSObjectWrap
 					string _url = LuaAPI.lua_tostring(L, 2);
 					string _downloadPath = LuaAPI.lua_tostring(L, 3);
 					
-					IFramework.Hotfix.Asset.AssetsInternal.Downloader gen_ret = new IFramework.Hotfix.Asset.AssetsInternal.Downloader(_url, _downloadPath);
+					var gen_ret = new IFramework.Hotfix.Asset.AssetsInternal.Downloader(_url, _downloadPath);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -93,7 +93,7 @@ namespace XLua.CSObjectWrap
 				{
 					string _url = LuaAPI.lua_tostring(L, 2);
 					
-					IFramework.Hotfix.Asset.AssetsInternal.Downloader gen_ret = new IFramework.Hotfix.Asset.AssetsInternal.Downloader(_url);
+					var gen_ret = new IFramework.Hotfix.Asset.AssetsInternal.Downloader(_url);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -128,7 +128,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        System.Threading.Tasks.Task gen_ret = gen_to_be_invoked.Start(  );
+                        var gen_ret = gen_to_be_invoked.Start(  );
                         translator.Push(L, gen_ret);
                     
                     

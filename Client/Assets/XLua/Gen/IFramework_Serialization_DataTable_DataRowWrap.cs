@@ -54,7 +54,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					IFramework.Serialization.DataTable.DataRow gen_ret = new IFramework.Serialization.DataTable.DataRow();
+					var gen_ret = new IFramework.Serialization.DataTable.DataRow();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -91,7 +91,7 @@ namespace XLua.CSObjectWrap
                     string _val = LuaAPI.lua_tostring(L, 2);
                     System.Collections.Generic.List<string> _headNames = (System.Collections.Generic.List<string>)translator.GetObject(L, 3, typeof(System.Collections.Generic.List<string>));
                     
-                        System.Collections.Generic.List<IFramework.Serialization.DataTable.DataColumn> gen_ret = gen_to_be_invoked.ReadLine( _val, _headNames );
+                        var gen_ret = gen_to_be_invoked.ReadLine( _val, _headNames );
                         translator.Push(L, gen_ret);
                     
                     
@@ -120,7 +120,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _val = LuaAPI.lua_tostring(L, 2);
                     
-                        System.Collections.Generic.List<string> gen_ret = gen_to_be_invoked.ReadHeadLine( _val );
+                        var gen_ret = gen_to_be_invoked.ReadHeadLine( _val );
                         translator.Push(L, gen_ret);
                     
                     

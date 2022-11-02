@@ -54,7 +54,7 @@ namespace XLua.CSObjectWrap
 				{
 					IFramework.Net.Http.HttpHeader _header = (IFramework.Net.Http.HttpHeader)translator.GetObject(L, 2, typeof(IFramework.Net.Http.HttpHeader));
 					
-					IFramework.Net.Http.HttpPost gen_ret = new IFramework.Net.Http.HttpPost(_header);
+					var gen_ret = new IFramework.Net.Http.HttpPost(_header);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -90,7 +90,7 @@ namespace XLua.CSObjectWrap
                 {
                     IFramework.Net.SegmentToken _sToken = (IFramework.Net.SegmentToken)translator.GetObject(L, 2, typeof(IFramework.Net.SegmentToken));
                     
-                        IFramework.Net.Http.HttpPayload gen_ret = gen_to_be_invoked.GetDo( _sToken );
+                        var gen_ret = gen_to_be_invoked.GetDo( _sToken );
                         translator.Push(L, gen_ret);
                     
                     
@@ -123,7 +123,7 @@ namespace XLua.CSObjectWrap
                     IFramework.Net.Http.HttpStatusCode _statusCode;translator.Get(L, 3, out _statusCode);
                     string _contentType = LuaAPI.lua_tostring(L, 4);
                     
-                        string gen_ret = gen_to_be_invoked.Response( _content, _statusCode, _contentType );
+                        var gen_ret = gen_to_be_invoked.Response( _content, _statusCode, _contentType );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -135,7 +135,7 @@ namespace XLua.CSObjectWrap
                     string _content = LuaAPI.lua_tostring(L, 2);
                     IFramework.Net.Http.HttpStatusCode _statusCode;translator.Get(L, 3, out _statusCode);
                     
-                        string gen_ret = gen_to_be_invoked.Response( _content, _statusCode );
+                        var gen_ret = gen_to_be_invoked.Response( _content, _statusCode );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -146,7 +146,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _content = LuaAPI.lua_tostring(L, 2);
                     
-                        string gen_ret = gen_to_be_invoked.Response( _content );
+                        var gen_ret = gen_to_be_invoked.Response( _content );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -176,7 +176,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        string gen_ret = gen_to_be_invoked.Request(  );
+                        var gen_ret = gen_to_be_invoked.Request(  );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     

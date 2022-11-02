@@ -94,7 +94,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _name = LuaAPI.lua_tostring(L, 2);
                     
-                        bool gen_ret = gen_to_be_invoked.IsName( _name );
+                        var gen_ret = gen_to_be_invoked.IsName( _name );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -125,7 +125,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _tag = LuaAPI.lua_tostring(L, 2);
                     
-                        bool gen_ret = gen_to_be_invoked.IsTag( _tag );
+                        var gen_ret = gen_to_be_invoked.IsTag( _tag );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     

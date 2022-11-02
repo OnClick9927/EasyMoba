@@ -62,7 +62,7 @@ namespace XLua.CSObjectWrap
 					LockStep.Math.LVector2 _startSize;translator.Get(L, 2, out _startSize);
 					LockStep.LCollision2D.CollisionLayerConfig _layer = (LockStep.LCollision2D.CollisionLayerConfig)translator.GetObject(L, 3, typeof(LockStep.LCollision2D.CollisionLayerConfig));
 					
-					LockStep.LCollision2D.QuadTree gen_ret = new LockStep.LCollision2D.QuadTree(_startSize, _layer);
+					var gen_ret = new LockStep.LCollision2D.QuadTree(_startSize, _layer);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -182,7 +182,7 @@ namespace XLua.CSObjectWrap
                     LockStep.LCollision2D.Shape _shape = (LockStep.LCollision2D.Shape)translator.GetObject(L, 2, typeof(LockStep.LCollision2D.Shape));
                     System.Collections.Generic.List<LockStep.LCollision2D.Shape> _result = (System.Collections.Generic.List<LockStep.LCollision2D.Shape>)translator.GetObject(L, 3, typeof(System.Collections.Generic.List<LockStep.LCollision2D.Shape>));
                     
-                        System.Collections.Generic.List<LockStep.LCollision2D.Shape> gen_ret = gen_to_be_invoked.GetCollision( _shape, _result );
+                        var gen_ret = gen_to_be_invoked.GetCollision( _shape, _result );
                         translator.Push(L, gen_ret);
                     
                     
@@ -212,7 +212,7 @@ namespace XLua.CSObjectWrap
                     LockStep.LCollision2D.Ray _ray;translator.Get(L, 2, out _ray);
                     System.Collections.Generic.List<LockStep.LCollision2D.RayHit> _hit = (System.Collections.Generic.List<LockStep.LCollision2D.RayHit>)translator.GetObject(L, 3, typeof(System.Collections.Generic.List<LockStep.LCollision2D.RayHit>));
                     
-                        bool gen_ret = gen_to_be_invoked.RayCast( _ray, _hit );
+                        var gen_ret = gen_to_be_invoked.RayCast( _ray, _hit );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     

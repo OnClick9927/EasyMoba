@@ -51,7 +51,7 @@ namespace XLua.CSObjectWrap
 				{
 					long _ticks = LuaAPI.lua_toint64(L, 2);
 					
-					IFramework.Coroutine.WaitForTicks gen_ret = new IFramework.Coroutine.WaitForTicks(_ticks);
+					var gen_ret = new IFramework.Coroutine.WaitForTicks(_ticks);
 					translator.Push(L, gen_ret);
                     
 					return 1;

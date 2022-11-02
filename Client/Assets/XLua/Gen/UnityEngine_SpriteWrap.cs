@@ -90,7 +90,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        int gen_ret = gen_to_be_invoked.GetPhysicsShapeCount(  );
+                        var gen_ret = gen_to_be_invoked.GetPhysicsShapeCount(  );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -119,7 +119,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _shapeIdx = LuaAPI.xlua_tointeger(L, 2);
                     
-                        int gen_ret = gen_to_be_invoked.GetPhysicsShapePointCount( _shapeIdx );
+                        var gen_ret = gen_to_be_invoked.GetPhysicsShapePointCount( _shapeIdx );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -149,7 +149,7 @@ namespace XLua.CSObjectWrap
                     int _shapeIdx = LuaAPI.xlua_tointeger(L, 2);
                     System.Collections.Generic.List<UnityEngine.Vector2> _physicsShape = (System.Collections.Generic.List<UnityEngine.Vector2>)translator.GetObject(L, 3, typeof(System.Collections.Generic.List<UnityEngine.Vector2>));
                     
-                        int gen_ret = gen_to_be_invoked.GetPhysicsShape( _shapeIdx, _physicsShape );
+                        var gen_ret = gen_to_be_invoked.GetPhysicsShape( _shapeIdx, _physicsShape );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -237,7 +237,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Rect _rect;translator.Get(L, 2, out _rect);
                     UnityEngine.Vector2 _pivot;translator.Get(L, 3, out _pivot);
                     
-                        UnityEngine.Sprite gen_ret = UnityEngine.Sprite.Create( _texture, _rect, _pivot );
+                        var gen_ret = UnityEngine.Sprite.Create( _texture, _rect, _pivot );
                         translator.Push(L, gen_ret);
                     
                     
@@ -251,7 +251,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Vector2 _pivot;translator.Get(L, 3, out _pivot);
                     float _pixelsPerUnit = (float)LuaAPI.lua_tonumber(L, 4);
                     
-                        UnityEngine.Sprite gen_ret = UnityEngine.Sprite.Create( _texture, _rect, _pivot, _pixelsPerUnit );
+                        var gen_ret = UnityEngine.Sprite.Create( _texture, _rect, _pivot, _pixelsPerUnit );
                         translator.Push(L, gen_ret);
                     
                     
@@ -266,7 +266,7 @@ namespace XLua.CSObjectWrap
                     float _pixelsPerUnit = (float)LuaAPI.lua_tonumber(L, 4);
                     uint _extrude = LuaAPI.xlua_touint(L, 5);
                     
-                        UnityEngine.Sprite gen_ret = UnityEngine.Sprite.Create( _texture, _rect, _pivot, _pixelsPerUnit, _extrude );
+                        var gen_ret = UnityEngine.Sprite.Create( _texture, _rect, _pivot, _pixelsPerUnit, _extrude );
                         translator.Push(L, gen_ret);
                     
                     
@@ -282,7 +282,7 @@ namespace XLua.CSObjectWrap
                     uint _extrude = LuaAPI.xlua_touint(L, 5);
                     UnityEngine.SpriteMeshType _meshType;translator.Get(L, 6, out _meshType);
                     
-                        UnityEngine.Sprite gen_ret = UnityEngine.Sprite.Create( _texture, _rect, _pivot, _pixelsPerUnit, _extrude, _meshType );
+                        var gen_ret = UnityEngine.Sprite.Create( _texture, _rect, _pivot, _pixelsPerUnit, _extrude, _meshType );
                         translator.Push(L, gen_ret);
                     
                     
@@ -299,7 +299,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.SpriteMeshType _meshType;translator.Get(L, 6, out _meshType);
                     UnityEngine.Vector4 _border;translator.Get(L, 7, out _border);
                     
-                        UnityEngine.Sprite gen_ret = UnityEngine.Sprite.Create( _texture, _rect, _pivot, _pixelsPerUnit, _extrude, _meshType, _border );
+                        var gen_ret = UnityEngine.Sprite.Create( _texture, _rect, _pivot, _pixelsPerUnit, _extrude, _meshType, _border );
                         translator.Push(L, gen_ret);
                     
                     
@@ -317,7 +317,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Vector4 _border;translator.Get(L, 7, out _border);
                     bool _generateFallbackPhysicsShape = LuaAPI.lua_toboolean(L, 8);
                     
-                        UnityEngine.Sprite gen_ret = UnityEngine.Sprite.Create( _texture, _rect, _pivot, _pixelsPerUnit, _extrude, _meshType, _border, _generateFallbackPhysicsShape );
+                        var gen_ret = UnityEngine.Sprite.Create( _texture, _rect, _pivot, _pixelsPerUnit, _extrude, _meshType, _border, _generateFallbackPhysicsShape );
                         translator.Push(L, gen_ret);
                     
                     

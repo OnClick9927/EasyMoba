@@ -19,10 +19,10 @@ namespace EasyMoba
     {
         public uint MainId;
         public uint SubId;
-        public NetMessageCode(uint mainId, uint subId)
+        public NetMessageCode(ModuleDefine mainId, uint subId)
         {
-            this.MainId = mainId;
-            this.SubId = subId;
+            MainId = (uint)mainId;
+            SubId = subId;
         }
     }
     public class TcpClient

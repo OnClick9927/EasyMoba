@@ -96,7 +96,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.TrailRenderer gen_ret = new UnityEngine.TrailRenderer();
+					var gen_ret = new UnityEngine.TrailRenderer();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -161,7 +161,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _index = LuaAPI.xlua_tointeger(L, 2);
                     
-                        UnityEngine.Vector3 gen_ret = gen_to_be_invoked.GetPosition( _index );
+                        var gen_ret = gen_to_be_invoked.GetPosition( _index );
                         translator.PushUnityEngineVector3(L, gen_ret);
                     
                     
@@ -285,7 +285,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Vector3[] _positions = (UnityEngine.Vector3[])translator.GetObject(L, 2, typeof(UnityEngine.Vector3[]));
                     
-                        int gen_ret = gen_to_be_invoked.GetPositions( _positions );
+                        var gen_ret = gen_to_be_invoked.GetPositions( _positions );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -296,7 +296,7 @@ namespace XLua.CSObjectWrap
                 {
                     Unity.Collections.NativeArray<UnityEngine.Vector3> _positions;translator.Get(L, 2, out _positions);
                     
-                        int gen_ret = gen_to_be_invoked.GetPositions( _positions );
+                        var gen_ret = gen_to_be_invoked.GetPositions( _positions );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -307,7 +307,7 @@ namespace XLua.CSObjectWrap
                 {
                     Unity.Collections.NativeSlice<UnityEngine.Vector3> _positions;translator.Get(L, 2, out _positions);
                     
-                        int gen_ret = gen_to_be_invoked.GetPositions( _positions );
+                        var gen_ret = gen_to_be_invoked.GetPositions( _positions );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -469,7 +469,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.MakeComponentExist(  );
+                        var gen_ret = gen_to_be_invoked.MakeComponentExist(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -524,7 +524,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.LocalIdentity(  );
+                        var gen_ret = gen_to_be_invoked.LocalIdentity(  );
                         translator.Push(L, gen_ret);
                     
                     

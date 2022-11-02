@@ -73,7 +73,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        string[] gen_ret = gen_to_be_invoked.GetAllAssetBundles(  );
+                        var gen_ret = gen_to_be_invoked.GetAllAssetBundles(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -101,7 +101,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        string[] gen_ret = gen_to_be_invoked.GetAllAssetBundlesWithVariant(  );
+                        var gen_ret = gen_to_be_invoked.GetAllAssetBundlesWithVariant(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -130,7 +130,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _assetBundleName = LuaAPI.lua_tostring(L, 2);
                     
-                        UnityEngine.Hash128 gen_ret = gen_to_be_invoked.GetAssetBundleHash( _assetBundleName );
+                        var gen_ret = gen_to_be_invoked.GetAssetBundleHash( _assetBundleName );
                         translator.Push(L, gen_ret);
                     
                     
@@ -159,7 +159,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _assetBundleName = LuaAPI.lua_tostring(L, 2);
                     
-                        string[] gen_ret = gen_to_be_invoked.GetDirectDependencies( _assetBundleName );
+                        var gen_ret = gen_to_be_invoked.GetDirectDependencies( _assetBundleName );
                         translator.Push(L, gen_ret);
                     
                     
@@ -188,7 +188,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _assetBundleName = LuaAPI.lua_tostring(L, 2);
                     
-                        string[] gen_ret = gen_to_be_invoked.GetAllDependencies( _assetBundleName );
+                        var gen_ret = gen_to_be_invoked.GetAllDependencies( _assetBundleName );
                         translator.Push(L, gen_ret);
                     
                     

@@ -66,7 +66,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.Joint2D gen_ret = new UnityEngine.Joint2D();
+					var gen_ret = new UnityEngine.Joint2D();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -102,7 +102,7 @@ namespace XLua.CSObjectWrap
                 {
                     float _timeStep = (float)LuaAPI.lua_tonumber(L, 2);
                     
-                        UnityEngine.Vector2 gen_ret = gen_to_be_invoked.GetReactionForce( _timeStep );
+                        var gen_ret = gen_to_be_invoked.GetReactionForce( _timeStep );
                         translator.PushUnityEngineVector2(L, gen_ret);
                     
                     
@@ -131,7 +131,7 @@ namespace XLua.CSObjectWrap
                 {
                     float _timeStep = (float)LuaAPI.lua_tonumber(L, 2);
                     
-                        float gen_ret = gen_to_be_invoked.GetReactionTorque( _timeStep );
+                        var gen_ret = gen_to_be_invoked.GetReactionTorque( _timeStep );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -159,7 +159,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.MakeComponentExist(  );
+                        var gen_ret = gen_to_be_invoked.MakeComponentExist(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -214,7 +214,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.LocalIdentity(  );
+                        var gen_ret = gen_to_be_invoked.LocalIdentity(  );
                         translator.Push(L, gen_ret);
                     
                     

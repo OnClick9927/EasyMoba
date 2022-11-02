@@ -7,6 +7,7 @@ namespace EasyMoba
         public string roomid;
         public long roleid;
         public int curframe;
+        protected LocalInputRecorder() { }
         public void RebuidData()
         {
             data = new FrameData();

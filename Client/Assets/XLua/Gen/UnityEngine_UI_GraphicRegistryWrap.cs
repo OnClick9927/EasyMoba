@@ -182,7 +182,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Canvas _canvas = (UnityEngine.Canvas)translator.GetObject(L, 1, typeof(UnityEngine.Canvas));
                     
-                        System.Collections.Generic.IList<UnityEngine.UI.Graphic> gen_ret = UnityEngine.UI.GraphicRegistry.GetGraphicsForCanvas( _canvas );
+                        var gen_ret = UnityEngine.UI.GraphicRegistry.GetGraphicsForCanvas( _canvas );
                         translator.PushAny(L, gen_ret);
                     
                     
@@ -209,7 +209,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Canvas _canvas = (UnityEngine.Canvas)translator.GetObject(L, 1, typeof(UnityEngine.Canvas));
                     
-                        System.Collections.Generic.IList<UnityEngine.UI.Graphic> gen_ret = UnityEngine.UI.GraphicRegistry.GetRaycastableGraphicsForCanvas( _canvas );
+                        var gen_ret = UnityEngine.UI.GraphicRegistry.GetRaycastableGraphicsForCanvas( _canvas );
                         translator.PushAny(L, gen_ret);
                     
                     

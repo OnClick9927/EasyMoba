@@ -152,7 +152,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					UnityEngine.Mesh gen_ret = new UnityEngine.Mesh();
+					var gen_ret = new UnityEngine.Mesh();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -217,7 +217,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _index = LuaAPI.xlua_tointeger(L, 2);
                     
-                        UnityEngine.Rendering.VertexAttributeDescriptor gen_ret = gen_to_be_invoked.GetVertexAttribute( _index );
+                        var gen_ret = gen_to_be_invoked.GetVertexAttribute( _index );
                         translator.Push(L, gen_ret);
                     
                     
@@ -246,7 +246,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Rendering.VertexAttribute _attr;translator.Get(L, 2, out _attr);
                     
-                        bool gen_ret = gen_to_be_invoked.HasVertexAttribute( _attr );
+                        var gen_ret = gen_to_be_invoked.HasVertexAttribute( _attr );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -275,7 +275,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Rendering.VertexAttribute _attr;translator.Get(L, 2, out _attr);
                     
-                        int gen_ret = gen_to_be_invoked.GetVertexAttributeDimension( _attr );
+                        var gen_ret = gen_to_be_invoked.GetVertexAttributeDimension( _attr );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -304,7 +304,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Rendering.VertexAttribute _attr;translator.Get(L, 2, out _attr);
                     
-                        UnityEngine.Rendering.VertexAttributeFormat gen_ret = gen_to_be_invoked.GetVertexAttributeFormat( _attr );
+                        var gen_ret = gen_to_be_invoked.GetVertexAttributeFormat( _attr );
                         translator.Push(L, gen_ret);
                     
                     
@@ -333,7 +333,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _index = LuaAPI.xlua_tointeger(L, 2);
                     
-                        System.IntPtr gen_ret = gen_to_be_invoked.GetNativeVertexBufferPtr( _index );
+                        var gen_ret = gen_to_be_invoked.GetNativeVertexBufferPtr( _index );
                         LuaAPI.lua_pushlightuserdata(L, gen_ret);
                     
                     
@@ -361,7 +361,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        System.IntPtr gen_ret = gen_to_be_invoked.GetNativeIndexBufferPtr(  );
+                        var gen_ret = gen_to_be_invoked.GetNativeIndexBufferPtr(  );
                         LuaAPI.lua_pushlightuserdata(L, gen_ret);
                     
                     
@@ -417,7 +417,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _shapeIndex = LuaAPI.xlua_tointeger(L, 2);
                     
-                        string gen_ret = gen_to_be_invoked.GetBlendShapeName( _shapeIndex );
+                        var gen_ret = gen_to_be_invoked.GetBlendShapeName( _shapeIndex );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -446,7 +446,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _blendShapeName = LuaAPI.lua_tostring(L, 2);
                     
-                        int gen_ret = gen_to_be_invoked.GetBlendShapeIndex( _blendShapeName );
+                        var gen_ret = gen_to_be_invoked.GetBlendShapeIndex( _blendShapeName );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -475,7 +475,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _shapeIndex = LuaAPI.xlua_tointeger(L, 2);
                     
-                        int gen_ret = gen_to_be_invoked.GetBlendShapeFrameCount( _shapeIndex );
+                        var gen_ret = gen_to_be_invoked.GetBlendShapeFrameCount( _shapeIndex );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -505,7 +505,7 @@ namespace XLua.CSObjectWrap
                     int _shapeIndex = LuaAPI.xlua_tointeger(L, 2);
                     int _frameIndex = LuaAPI.xlua_tointeger(L, 3);
                     
-                        float gen_ret = gen_to_be_invoked.GetBlendShapeFrameWeight( _shapeIndex, _frameIndex );
+                        var gen_ret = gen_to_be_invoked.GetBlendShapeFrameWeight( _shapeIndex, _frameIndex );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -626,7 +626,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        Unity.Collections.NativeArray<UnityEngine.BoneWeight1> gen_ret = gen_to_be_invoked.GetAllBoneWeights(  );
+                        var gen_ret = gen_to_be_invoked.GetAllBoneWeights(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -654,7 +654,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        Unity.Collections.NativeArray<byte> gen_ret = gen_to_be_invoked.GetBonesPerVertex(  );
+                        var gen_ret = gen_to_be_invoked.GetBonesPerVertex(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -728,7 +728,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _index = LuaAPI.xlua_tointeger(L, 2);
                     
-                        UnityEngine.Rendering.SubMeshDescriptor gen_ret = gen_to_be_invoked.GetSubMesh( _index );
+                        var gen_ret = gen_to_be_invoked.GetSubMesh( _index );
                         translator.Push(L, gen_ret);
                     
                     
@@ -784,7 +784,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _uvSetIndex = LuaAPI.xlua_tointeger(L, 2);
                     
-                        float gen_ret = gen_to_be_invoked.GetUVDistributionMetric( _uvSetIndex );
+                        var gen_ret = gen_to_be_invoked.GetUVDistributionMetric( _uvSetIndex );
                         LuaAPI.lua_pushnumber(L, gen_ret);
                     
                     
@@ -1683,7 +1683,7 @@ namespace XLua.CSObjectWrap
                 if(gen_param_count == 1) 
                 {
                     
-                        UnityEngine.Rendering.VertexAttributeDescriptor[] gen_ret = gen_to_be_invoked.GetVertexAttributes(  );
+                        var gen_ret = gen_to_be_invoked.GetVertexAttributes(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -1694,7 +1694,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Rendering.VertexAttributeDescriptor[] _attributes = (UnityEngine.Rendering.VertexAttributeDescriptor[])translator.GetObject(L, 2, typeof(UnityEngine.Rendering.VertexAttributeDescriptor[]));
                     
-                        int gen_ret = gen_to_be_invoked.GetVertexAttributes( _attributes );
+                        var gen_ret = gen_to_be_invoked.GetVertexAttributes( _attributes );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -1705,7 +1705,7 @@ namespace XLua.CSObjectWrap
                 {
                     System.Collections.Generic.List<UnityEngine.Rendering.VertexAttributeDescriptor> _attributes = (System.Collections.Generic.List<UnityEngine.Rendering.VertexAttributeDescriptor>)translator.GetObject(L, 2, typeof(System.Collections.Generic.List<UnityEngine.Rendering.VertexAttributeDescriptor>));
                     
-                        int gen_ret = gen_to_be_invoked.GetVertexAttributes( _attributes );
+                        var gen_ret = gen_to_be_invoked.GetVertexAttributes( _attributes );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -1780,7 +1780,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Mesh _mesh = (UnityEngine.Mesh)translator.GetObject(L, 1, typeof(UnityEngine.Mesh));
                     
-                        UnityEngine.Mesh.MeshDataArray gen_ret = UnityEngine.Mesh.AcquireReadOnlyMeshData( _mesh );
+                        var gen_ret = UnityEngine.Mesh.AcquireReadOnlyMeshData( _mesh );
                         translator.Push(L, gen_ret);
                     
                     
@@ -1791,7 +1791,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Mesh[] _meshes = (UnityEngine.Mesh[])translator.GetObject(L, 1, typeof(UnityEngine.Mesh[]));
                     
-                        UnityEngine.Mesh.MeshDataArray gen_ret = UnityEngine.Mesh.AcquireReadOnlyMeshData( _meshes );
+                        var gen_ret = UnityEngine.Mesh.AcquireReadOnlyMeshData( _meshes );
                         translator.Push(L, gen_ret);
                     
                     
@@ -1802,7 +1802,7 @@ namespace XLua.CSObjectWrap
                 {
                     System.Collections.Generic.List<UnityEngine.Mesh> _meshes = (System.Collections.Generic.List<UnityEngine.Mesh>)translator.GetObject(L, 1, typeof(System.Collections.Generic.List<UnityEngine.Mesh>));
                     
-                        UnityEngine.Mesh.MeshDataArray gen_ret = UnityEngine.Mesh.AcquireReadOnlyMeshData( _meshes );
+                        var gen_ret = UnityEngine.Mesh.AcquireReadOnlyMeshData( _meshes );
                         translator.Push(L, gen_ret);
                     
                     
@@ -1831,7 +1831,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _meshCount = LuaAPI.xlua_tointeger(L, 1);
                     
-                        UnityEngine.Mesh.MeshDataArray gen_ret = UnityEngine.Mesh.AllocateWritableMeshData( _meshCount );
+                        var gen_ret = UnityEngine.Mesh.AllocateWritableMeshData( _meshCount );
                         translator.Push(L, gen_ret);
                     
                     
@@ -1951,7 +1951,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _submesh = LuaAPI.xlua_tointeger(L, 2);
                     
-                        int[] gen_ret = gen_to_be_invoked.GetTriangles( _submesh );
+                        var gen_ret = gen_to_be_invoked.GetTriangles( _submesh );
                         translator.Push(L, gen_ret);
                     
                     
@@ -1963,7 +1963,7 @@ namespace XLua.CSObjectWrap
                     int _submesh = LuaAPI.xlua_tointeger(L, 2);
                     bool _applyBaseVertex = LuaAPI.lua_toboolean(L, 3);
                     
-                        int[] gen_ret = gen_to_be_invoked.GetTriangles( _submesh, _applyBaseVertex );
+                        var gen_ret = gen_to_be_invoked.GetTriangles( _submesh, _applyBaseVertex );
                         translator.Push(L, gen_ret);
                     
                     
@@ -2042,7 +2042,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _submesh = LuaAPI.xlua_tointeger(L, 2);
                     
-                        int[] gen_ret = gen_to_be_invoked.GetIndices( _submesh );
+                        var gen_ret = gen_to_be_invoked.GetIndices( _submesh );
                         translator.Push(L, gen_ret);
                     
                     
@@ -2054,7 +2054,7 @@ namespace XLua.CSObjectWrap
                     int _submesh = LuaAPI.xlua_tointeger(L, 2);
                     bool _applyBaseVertex = LuaAPI.lua_toboolean(L, 3);
                     
-                        int[] gen_ret = gen_to_be_invoked.GetIndices( _submesh, _applyBaseVertex );
+                        var gen_ret = gen_to_be_invoked.GetIndices( _submesh, _applyBaseVertex );
                         translator.Push(L, gen_ret);
                     
                     
@@ -2131,7 +2131,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _submesh = LuaAPI.xlua_tointeger(L, 2);
                     
-                        uint gen_ret = gen_to_be_invoked.GetIndexStart( _submesh );
+                        var gen_ret = gen_to_be_invoked.GetIndexStart( _submesh );
                         LuaAPI.xlua_pushuint(L, gen_ret);
                     
                     
@@ -2160,7 +2160,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _submesh = LuaAPI.xlua_tointeger(L, 2);
                     
-                        uint gen_ret = gen_to_be_invoked.GetIndexCount( _submesh );
+                        var gen_ret = gen_to_be_invoked.GetIndexCount( _submesh );
                         LuaAPI.xlua_pushuint(L, gen_ret);
                     
                     
@@ -2189,7 +2189,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _submesh = LuaAPI.xlua_tointeger(L, 2);
                     
-                        uint gen_ret = gen_to_be_invoked.GetBaseVertex( _submesh );
+                        var gen_ret = gen_to_be_invoked.GetBaseVertex( _submesh );
                         LuaAPI.xlua_pushuint(L, gen_ret);
                     
                     
@@ -3464,7 +3464,7 @@ namespace XLua.CSObjectWrap
                 {
                     int _submesh = LuaAPI.xlua_tointeger(L, 2);
                     
-                        UnityEngine.MeshTopology gen_ret = gen_to_be_invoked.GetTopology( _submesh );
+                        var gen_ret = gen_to_be_invoked.GetTopology( _submesh );
                         translator.Push(L, gen_ret);
                     
                     

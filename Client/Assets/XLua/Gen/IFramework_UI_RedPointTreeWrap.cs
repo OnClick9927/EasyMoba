@@ -59,7 +59,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					IFramework.UI.RedPointTree gen_ret = new IFramework.UI.RedPointTree();
+					var gen_ret = new IFramework.UI.RedPointTree();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -210,7 +210,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _key = LuaAPI.lua_tostring(L, 2);
                     
-                        int gen_ret = gen_to_be_invoked.GetCount( _key );
+                        var gen_ret = gen_to_be_invoked.GetCount( _key );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -239,7 +239,7 @@ namespace XLua.CSObjectWrap
                 {
                     string _key = LuaAPI.lua_tostring(L, 2);
                     
-                        string gen_ret = gen_to_be_invoked.GetParentKey( _key );
+                        var gen_ret = gen_to_be_invoked.GetParentKey( _key );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     

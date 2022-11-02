@@ -63,7 +63,7 @@ namespace XLua.CSObjectWrap
 					int _count = LuaAPI.xlua_tointeger(L, 2);
 					int _stride = LuaAPI.xlua_tointeger(L, 3);
 					
-					UnityEngine.ComputeBuffer gen_ret = new UnityEngine.ComputeBuffer(_count, _stride);
+					var gen_ret = new UnityEngine.ComputeBuffer(_count, _stride);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -74,7 +74,7 @@ namespace XLua.CSObjectWrap
 					int _stride = LuaAPI.xlua_tointeger(L, 3);
 					UnityEngine.ComputeBufferType _type;translator.Get(L, 4, out _type);
 					
-					UnityEngine.ComputeBuffer gen_ret = new UnityEngine.ComputeBuffer(_count, _stride, _type);
+					var gen_ret = new UnityEngine.ComputeBuffer(_count, _stride, _type);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -86,7 +86,7 @@ namespace XLua.CSObjectWrap
 					UnityEngine.ComputeBufferType _type;translator.Get(L, 4, out _type);
 					UnityEngine.ComputeBufferMode _usage;translator.Get(L, 5, out _usage);
 					
-					UnityEngine.ComputeBuffer gen_ret = new UnityEngine.ComputeBuffer(_count, _stride, _type, _usage);
+					var gen_ret = new UnityEngine.ComputeBuffer(_count, _stride, _type, _usage);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -175,7 +175,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        bool gen_ret = gen_to_be_invoked.IsValid(  );
+                        var gen_ret = gen_to_be_invoked.IsValid(  );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -349,7 +349,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        System.IntPtr gen_ret = gen_to_be_invoked.GetNativeBufferPtr(  );
+                        var gen_ret = gen_to_be_invoked.GetNativeBufferPtr(  );
                         LuaAPI.lua_pushlightuserdata(L, gen_ret);
                     
                     

@@ -72,7 +72,7 @@ namespace XLua.CSObjectWrap
 				if(LuaAPI.lua_gettop(L) == 1)
 				{
 					
-					IFramework.UI.GuideMask gen_ret = new IFramework.UI.GuideMask();
+					var gen_ret = new IFramework.UI.GuideMask();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -167,7 +167,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.RectTransform _trans = (UnityEngine.RectTransform)translator.GetObject(L, 2, typeof(UnityEngine.RectTransform));
                     UnityEngine.Vector2 _offset;translator.Get(L, 3, out _offset);
                     
-                        UnityEngine.Rect gen_ret = gen_to_be_invoked.GetFocusRect( _trans, _offset );
+                        var gen_ret = gen_to_be_invoked.GetFocusRect( _trans, _offset );
                         translator.Push(L, gen_ret);
                     
                     
@@ -180,7 +180,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Vector2 _size;translator.Get(L, 3, out _size);
                     UnityEngine.Camera _camera = (UnityEngine.Camera)translator.GetObject(L, 4, typeof(UnityEngine.Camera));
                     
-                        UnityEngine.Rect gen_ret = gen_to_be_invoked.GetFocusRect( _trans, _size, _camera );
+                        var gen_ret = gen_to_be_invoked.GetFocusRect( _trans, _size, _camera );
                         translator.Push(L, gen_ret);
                     
                     
@@ -257,7 +257,7 @@ namespace XLua.CSObjectWrap
                     UnityEngine.Vector2 _sp;translator.Get(L, 2, out _sp);
                     UnityEngine.Camera _eventCamera = (UnityEngine.Camera)translator.GetObject(L, 3, typeof(UnityEngine.Camera));
                     
-                        bool gen_ret = gen_to_be_invoked.IsRaycastLocationValid( _sp, _eventCamera );
+                        var gen_ret = gen_to_be_invoked.IsRaycastLocationValid( _sp, _eventCamera );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -285,7 +285,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.MakeComponentExist(  );
+                        var gen_ret = gen_to_be_invoked.MakeComponentExist(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -340,7 +340,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.LocalIdentity(  );
+                        var gen_ret = gen_to_be_invoked.LocalIdentity(  );
                         translator.Push(L, gen_ret);
                     
                     

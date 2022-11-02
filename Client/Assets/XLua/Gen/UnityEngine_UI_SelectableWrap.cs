@@ -104,7 +104,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.UI.Selectable[] _selectables = (UnityEngine.UI.Selectable[])translator.GetObject(L, 1, typeof(UnityEngine.UI.Selectable[]));
                     
-                        int gen_ret = UnityEngine.UI.Selectable.AllSelectablesNoAlloc( _selectables );
+                        var gen_ret = UnityEngine.UI.Selectable.AllSelectablesNoAlloc( _selectables );
                         LuaAPI.xlua_pushinteger(L, gen_ret);
                     
                     
@@ -132,7 +132,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        bool gen_ret = gen_to_be_invoked.IsInteractable(  );
+                        var gen_ret = gen_to_be_invoked.IsInteractable(  );
                         LuaAPI.lua_pushboolean(L, gen_ret);
                     
                     
@@ -161,7 +161,7 @@ namespace XLua.CSObjectWrap
                 {
                     UnityEngine.Vector3 _dir;translator.Get(L, 2, out _dir);
                     
-                        UnityEngine.UI.Selectable gen_ret = gen_to_be_invoked.FindSelectable( _dir );
+                        var gen_ret = gen_to_be_invoked.FindSelectable( _dir );
                         translator.Push(L, gen_ret);
                     
                     
@@ -189,7 +189,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.UI.Selectable gen_ret = gen_to_be_invoked.FindSelectableOnLeft(  );
+                        var gen_ret = gen_to_be_invoked.FindSelectableOnLeft(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -217,7 +217,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.UI.Selectable gen_ret = gen_to_be_invoked.FindSelectableOnRight(  );
+                        var gen_ret = gen_to_be_invoked.FindSelectableOnRight(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -245,7 +245,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.UI.Selectable gen_ret = gen_to_be_invoked.FindSelectableOnUp(  );
+                        var gen_ret = gen_to_be_invoked.FindSelectableOnUp(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -273,7 +273,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.UI.Selectable gen_ret = gen_to_be_invoked.FindSelectableOnDown(  );
+                        var gen_ret = gen_to_be_invoked.FindSelectableOnDown(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -524,7 +524,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.MakeComponentExist(  );
+                        var gen_ret = gen_to_be_invoked.MakeComponentExist(  );
                         translator.Push(L, gen_ret);
                     
                     
@@ -579,7 +579,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     
-                        UnityEngine.Component gen_ret = gen_to_be_invoked.LocalIdentity(  );
+                        var gen_ret = gen_to_be_invoked.LocalIdentity(  );
                         translator.Push(L, gen_ret);
                     
                     
