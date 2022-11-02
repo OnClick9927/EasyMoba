@@ -24,7 +24,7 @@ namespace LockStep.LCollision2D
             base.Build();
 
             Radius = radius * scale;
-            maxRadius = radius;
+            maxRadius = Radius;
         }
     }
 
