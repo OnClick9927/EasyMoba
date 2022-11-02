@@ -537,8 +537,10 @@ namespace LockStep.LCollision2D
                             var move_dir = move.position - lastPos;
                             for (int j = 0; j < p.points.Length; j++)
                             {
-                                int last = (int)CollisionHelper.Repeat(j - 1, p.points.Length);
                                 int _cur = (int)CollisionHelper.Repeat(j, p.points.Length);
+                                if (!IsPointInCapsule(lastPos, move.position, p.points[_cur], move.Radius))
+                                    continue;
+                                int last = (int)CollisionHelper.Repeat(j - 1, p.points.Length);
                                 var normal = p.nomals[j];
 
                                 if (LVector2.Dot(move_dir, normal) > 0) continue;

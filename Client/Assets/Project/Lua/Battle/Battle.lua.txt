@@ -24,15 +24,9 @@ function Battle.StartGame(battle_mode, room, players)
     Battle.players = players
     room_id = room
     role_id = Models.PlayerModel:GetRoleID()
-    local r
-    if battle_mode == BattlePlayMode.Local then
-        r = require "Battle.Mode.LocalModeServer"
-    elseif battle_mode == BattlePlayMode.Recorder then
-        r = require "Battle.Mode.RecordModeServer"
-    elseif battle_mode == BattlePlayMode.Normal then
-        r = require "Battle.Mode.NormalModeServer"
-    end
-    mode_server = r()
+    CS.BattleModePlayer.LocalInputRecorder.Instance.roleid = role_id
+    CS.BattleModePlayer.LocalInputRecorder.Instance.roomid = room_id
+    mode_server = CS.BattleModePlayer.Create(battle_mode)
     frame_handler = require("Battle.FrameHandler")()
     Battle.ScenePart.LoadScene()
 end
@@ -47,10 +41,9 @@ function Battle.OnBattelFrame(data)
     frame_handler:OnBattelFrame(data)
 end
 
----@param frame number
----@param op_tab BattleOp
-function Battle.SendBattleFrame(frame, op_tab)
-    NetEvents.NewJsonObject(op_tab)
-    local op = Json:encode(op_tab)
-    mode_server:SendBattleFrame(room_id, role_id, frame, op)
+function Battle.SendFrame(frame_id)
+    CS.BattleModePlayer.LocalInputRecorder.Instance.roleid = role_id
+    CS.BattleModePlayer.LocalInputRecorder.Instance.roomid = room_id
+    CS.BattleModePlayer.LocalInputRecorder.Instance.curframe = frame_id
+    mode_server:SendFrameToServer()
 end

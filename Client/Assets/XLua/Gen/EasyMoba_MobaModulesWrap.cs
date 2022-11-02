@@ -21,7 +21,7 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(EasyMoba.MobaModules);
-			Utils.BeginObjectRegister(type, L, translator, 0, 0, 6, 3);
+			Utils.BeginObjectRegister(type, L, translator, 0, 0, 5, 2);
 			
 			
 			
@@ -30,11 +30,9 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "Lua", _g_get_Lua);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "update", _g_get_update);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "tcp", _g_get_tcp);
-            Utils.RegisterFunc(L, Utils.GETTER_IDX, "udp", _g_get_udp);
             
 			Utils.RegisterFunc(L, Utils.SETTER_IDX, "update", _s_set_update);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "tcp", _s_set_tcp);
-            Utils.RegisterFunc(L, Utils.SETTER_IDX, "udp", _s_set_udp);
             
 			
 			Utils.EndObjectRegister(type, L, translator, null, null,
@@ -153,20 +151,6 @@ namespace XLua.CSObjectWrap
             return 1;
         }
         
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_udp(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                EasyMoba.MobaModules gen_to_be_invoked = (EasyMoba.MobaModules)translator.FastGetCSObj(L, 1);
-                translator.Push(L, gen_to_be_invoked.udp);
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 1;
-        }
-        
         
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
@@ -192,21 +176,6 @@ namespace XLua.CSObjectWrap
 			
                 EasyMoba.MobaModules gen_to_be_invoked = (EasyMoba.MobaModules)translator.FastGetCSObj(L, 1);
                 gen_to_be_invoked.tcp = (EasyMoba.TcpClient)translator.GetObject(L, 2, typeof(EasyMoba.TcpClient));
-            
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 0;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _s_set_udp(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                EasyMoba.MobaModules gen_to_be_invoked = (EasyMoba.MobaModules)translator.FastGetCSObj(L, 1);
-                gen_to_be_invoked.udp = (EasyMoba.UdpClient)translator.GetObject(L, 2, typeof(EasyMoba.UdpClient));
             
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);

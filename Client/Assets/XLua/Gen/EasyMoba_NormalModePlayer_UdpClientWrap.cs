@@ -15,19 +15,18 @@ using System.Collections.Generic;
 namespace XLua.CSObjectWrap
 {
     using Utils = XLua.Utils;
-    public class EasyMobaUdpClientWrap 
+    public class EasyMobaNormalModePlayerUdpClientWrap 
     {
         public static void __Register(RealStatePtr L)
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			System.Type type = typeof(EasyMoba.UdpClient);
-			Utils.BeginObjectRegister(type, L, translator, 0, 4, 0, 0);
+			System.Type type = typeof(EasyMoba.NormalModePlayer.UdpClient);
+			Utils.BeginObjectRegister(type, L, translator, 0, 3, 0, 0);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "CreateClient", _m_CreateClient);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SendBattleFrame", _m_SendBattleFrame);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "CloseUdp", _m_CloseUdp);
 			
-			Utils.RegisterFunc(L, Utils.METHOD_IDX, "onResponse", _e_onResponse);
 			
 			
 			
@@ -51,13 +50,14 @@ namespace XLua.CSObjectWrap
             
 			try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-				if(LuaAPI.lua_gettop(L) == 4 && LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 2) && LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 3) && (LuaAPI.lua_isnil(L, 4) || LuaAPI.lua_type(L, 4) == LuaTypes.LUA_TSTRING))
+				if(LuaAPI.lua_gettop(L) == 5 && LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 2) && LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 3) && (LuaAPI.lua_isnil(L, 4) || LuaAPI.lua_type(L, 4) == LuaTypes.LUA_TSTRING) && translator.Assignable<EasyMoba.NormalModePlayer>(L, 5))
 				{
 					int _port = LuaAPI.xlua_tointeger(L, 2);
 					int _bufsize = LuaAPI.xlua_tointeger(L, 3);
 					string _ip = LuaAPI.lua_tostring(L, 4);
+					EasyMoba.NormalModePlayer _player = (EasyMoba.NormalModePlayer)translator.GetObject(L, 5, typeof(EasyMoba.NormalModePlayer));
 					
-					EasyMoba.UdpClient gen_ret = new EasyMoba.UdpClient(_port, _bufsize, _ip);
+					EasyMoba.NormalModePlayer.UdpClient gen_ret = new EasyMoba.NormalModePlayer.UdpClient(_port, _bufsize, _ip, _player);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -67,7 +67,7 @@ namespace XLua.CSObjectWrap
 			catch(System.Exception gen_e) {
 				return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
 			}
-            return LuaAPI.luaL_error(L, "invalid arguments to EasyMoba.UdpClient constructor!");
+            return LuaAPI.luaL_error(L, "invalid arguments to EasyMoba.NormalModePlayer.UdpClient constructor!");
             
         }
         
@@ -86,7 +86,7 @@ namespace XLua.CSObjectWrap
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
             
             
-                EasyMoba.UdpClient gen_to_be_invoked = (EasyMoba.UdpClient)translator.FastGetCSObj(L, 1);
+                EasyMoba.NormalModePlayer.UdpClient gen_to_be_invoked = (EasyMoba.NormalModePlayer.UdpClient)translator.FastGetCSObj(L, 1);
             
             
                 
@@ -113,7 +113,7 @@ namespace XLua.CSObjectWrap
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
             
             
-                EasyMoba.UdpClient gen_to_be_invoked = (EasyMoba.UdpClient)translator.FastGetCSObj(L, 1);
+                EasyMoba.NormalModePlayer.UdpClient gen_to_be_invoked = (EasyMoba.NormalModePlayer.UdpClient)translator.FastGetCSObj(L, 1);
             
             
                 
@@ -144,7 +144,7 @@ namespace XLua.CSObjectWrap
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
             
             
-                EasyMoba.UdpClient gen_to_be_invoked = (EasyMoba.UdpClient)translator.FastGetCSObj(L, 1);
+                EasyMoba.NormalModePlayer.UdpClient gen_to_be_invoked = (EasyMoba.NormalModePlayer.UdpClient)translator.FastGetCSObj(L, 1);
             
             
                 
@@ -170,40 +170,6 @@ namespace XLua.CSObjectWrap
         
 		
 		
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _e_onResponse(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			    int gen_param_count = LuaAPI.lua_gettop(L);
-			EasyMoba.UdpClient gen_to_be_invoked = (EasyMoba.UdpClient)translator.FastGetCSObj(L, 1);
-                System.Action<SPBattleFrame> gen_delegate = translator.GetDelegate<System.Action<SPBattleFrame>>(L, 3);
-                if (gen_delegate == null) {
-                    return LuaAPI.luaL_error(L, "#3 need System.Action<SPBattleFrame>!");
-                }
-				
-				if (gen_param_count == 3)
-				{
-					
-					if (LuaAPI.xlua_is_eq_str(L, 2, "+")) {
-						gen_to_be_invoked.onResponse += gen_delegate;
-						return 0;
-					} 
-					
-					
-					if (LuaAPI.xlua_is_eq_str(L, 2, "-")) {
-						gen_to_be_invoked.onResponse -= gen_delegate;
-						return 0;
-					} 
-					
-				}
-			} catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-			LuaAPI.luaL_error(L, "invalid arguments to EasyMoba.UdpClient.onResponse!");
-            return 0;
-        }
-        
 		
 		
     }
