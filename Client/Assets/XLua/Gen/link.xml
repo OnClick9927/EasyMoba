@@ -268,7 +268,7 @@
 		<type fullname="LockStep.LCollision2D.SectorShape" preserve="all"/>
 		<type fullname="LockStep.LCollision2D.Shape" preserve="all"/>
 		<type fullname="LockStep.LCollision2D.LogicUnit" preserve="all"/>
-		<type fullname="LockStep.LCollision2D.LogocWorld" preserve="all"/>
+		<type fullname="LockStep.LCollision2D.LogicWorld" preserve="all"/>
 		<type fullname="EasyMoba.MobaAssetsSetting" preserve="all"/>
 		<type fullname="EasyMoba.MobaAssetsUpdate" preserve="all"/>
 		<type fullname="EasyMoba.CircleShapeComponent" preserve="all"/>
@@ -276,6 +276,8 @@
 		<type fullname="EasyMoba.PolygonShapeComponent" preserve="all"/>
 		<type fullname="EasyMoba.MapInitData" preserve="all"/>
 		<type fullname="EasyMoba.MapInitCollection" preserve="all"/>
+		<type fullname="EasyMoba.MobaLogicWord" preserve="all"/>
+		<type fullname="EasyMoba.MobaLogicUnit" preserve="all"/>
 		<type fullname="EasyMoba.LocalInputRecorder" preserve="all"/>
 		<type fullname="EasyMoba.BattleModePlayer" preserve="all"/>
 		<type fullname="EasyMoba.LocalModePlayer" preserve="all"/>

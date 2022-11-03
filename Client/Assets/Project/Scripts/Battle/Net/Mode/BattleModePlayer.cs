@@ -14,9 +14,10 @@ namespace EasyMoba
         public BattleModePlayer(MatchRoomType type, List<long> roles)
         {
             var lua = MobaGame.Instance.modules.Lua;
-            var tab = lua.gtable.Get<LuaTable>("Battle");
-            call = tab.Get<Action<SPBattleFrame>>("OnBattelFrame");
-            call_2 = tab.Get<Action>("OnBattleAllReady");
+            var battle = lua.gtable.Get<LuaTable>("Battle");
+            var for_cs = battle.Get<LuaTable>("for_cs_call");
+            call = for_cs.Get<Action<SPBattleFrame>>("OnBattelFrame");
+            call_2 = for_cs.Get<Action>("OnBattleAllReady");
 
             this.type = type;
             this.roles = roles;
@@ -62,7 +63,7 @@ namespace EasyMoba
             {
                 call?.Invoke(obj);
             });
-           
+
         }
         protected void CallLuaAllReady(SPBattleAllReady response)
         {

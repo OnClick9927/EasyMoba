@@ -4,58 +4,57 @@ BattlePlayMode = {
     Recorder = 4,
 }
 
----@type ModeServer
+local ScenePart = require("Battle.ScenePart")
+Battle = {}
+Battle.for_cs_call = require("Battle.BattleForCSCall")
+Battle.local_input = CS.EasyMoba.LocalInputRecorder.instance
+Battle.frame_unit_support = require("Battle.Logic.FrameUnitSupport")
+Battle.frame_collection = require("Battle.Logic.FrameCollection")
+Battle.logic = require("Battle.Logic.BattleLogic")
+
+---@type number[]
+local _players = nil
 local mode_server
 local _room_id
 local _role_id
----@type FrameHandler
-local frame_handler
-
-
-Battle = {}
-Battle.ScenePart = require("Battle.Scene.ScenePart")
-Battle.players = nil
-Battle.local_input = CS.EasyMoba.LocalInputRecorder.instance
 
 ---@param battle_mode any
 ---@param room_id string
 ---@param players number[]
 function Battle.StartGame(battle_mode, room_id, room_type, players)
-    Battle.players = players
+    _players = players
     _room_id = room_id
     _role_id = Models.PlayerModel:GetRoleID()
     Battle.local_input.roleid = _role_id
     Battle.local_input.roomid = _room_id
-    mode_server = CS.EasyMoba.BattleModePlayer.Create(battle_mode, room_type, players)
+    local collision_cfg
 
-    frame_handler = require("Battle.FrameHandler")()
-    Battle.ScenePart.LoadScene()
+    mode_server = CS.EasyMoba.BattleModePlayer.Create(battle_mode, room_type, players)
+    Battle.frame_collection.Start()
+    Battle.frame_unit_support.Start(collision_cfg)
+    ScenePart.LoadScene()
 end
 
 function Battle.CloseGame()
+    Battle.frame_collection.Dispose()
+    Battle.frame_unit_support.Dispose()
     mode_server:Dispose()
-    frame_handler = nil
 end
 
 ---------------------------------------------------------------------------------------
 function Battle.CallServerReady()
+    Battle.logic.CreateZeroUnit()
+    Battle.logic.LoadSceneUnit()
     mode_server:CallServerReady(_role_id, _room_id)
 end
 
-function Battle.SendFrame(frame_id)
+function Battle.SendFrameToServer(frame_id)
     Battle.local_input.roleid = _role_id
     Battle.local_input.roomid = _room_id
     Battle.local_input.curframe = frame_id
     mode_server:SendFrameToServer()
 end
 
----------------------------------------------------------------------------------------
-
----@param data SPBattleFrame
-function Battle.OnBattelFrame(data)
-    frame_handler:OnBattleFrame(data)
-end
-
-function Battle.OnBattleAllReady()
+function Battle.StartPlayLogic()
     GameTools.CloseAllUI()
 end

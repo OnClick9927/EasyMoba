@@ -3,28 +3,34 @@ using System.Collections.Generic;
 
 namespace LockStep.LCollision2D
 {
-    public class LogocWorld
+    public class LogicWorld
     {
         public List<LogicUnit> objects = new List<LogicUnit>();
         public QuadTree tree;
+        public LFloat delta;
 
-        public LogocWorld(CollisionLayerConfig layer)
+        public LogicWorld(CollisionLayerConfig layer, LFloat delta)
         {
             tree = new QuadTree(LVector2.one * 100, layer);
+            this.delta = delta;
         }
 
-        public LogicUnit CreateTransform(string name)
+        public LogicUnit CreateUnit<T>(string name) where T : LogicUnit, new()
         {
-            LogicUnit t = new LogicUnit() { name = name };
+            T t = new T() { name = name };
             objects.Add(t);
             t.world = this;
             return t;
         }
-        public void DestoryTransform(LogicUnit trans)
+        public LogicUnit FindUnit(string name)
+        {
+            return objects.Find(x => x.name == name);
+        }
+        public void DestoryUnit(LogicUnit trans)
         {
             trans.need_detory = true;
         }
-        public void FixedUpdate(int trick, LFloat delta)
+        public virtual void FixedUpdate(int trick)
         {
             for (int i = objects.Count - 1; i >= 0; i--)
             {

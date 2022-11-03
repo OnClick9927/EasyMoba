@@ -605,7 +605,7 @@ namespace XLua.CSObjectWrap
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			
                 LockStep.LCollision2D.LogicUnit gen_to_be_invoked = (LockStep.LCollision2D.LogicUnit)translator.FastGetCSObj(L, 1);
-                gen_to_be_invoked.world = (LockStep.LCollision2D.LogocWorld)translator.GetObject(L, 2, typeof(LockStep.LCollision2D.LogocWorld));
+                gen_to_be_invoked.world = (LockStep.LCollision2D.LogicWorld)translator.GetObject(L, 2, typeof(LockStep.LCollision2D.LogicWorld));
             
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);

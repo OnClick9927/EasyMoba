@@ -1,0 +1,43 @@
+local word
+local unit_type = require("Battle.Logic.BattleUnit.lua")
+---@type table<string,BattleUnit>
+local unit_map
+local function Start(layer_config)
+    unit_map = {}
+    word = CS.EasyMoba.MobaLogicWord(layer_config)
+end
+
+local function PlayFrame(frame_id)
+    word:FixedUpdate(frame_id)
+end
+
+local function Dispose()
+    unit_map = nil
+    word = nil
+end
+
+local function CreateUnit(name, type)
+    type = type or unit_type
+    local cs = word:CreateMobaUnit(name)
+    local ins = type(cs)
+    unit_map[name] = ins
+end
+
+local function FindUnit(name)
+    return unit_map[name]
+end
+
+local function DestoryUnit(name)
+    local ins = FindUnit(name)
+    word:DestoryUnit(ins.cs_unit)
+end
+
+local function RemoveUnit(name)
+    unit_map[name] = nil
+end
+
+return {
+    PlayFrame = PlayFrame, Start = Start, Dispose = Dispose,
+    CreateUnit = CreateUnit, FindUnit = FindUnit, DestoryUnit = DestoryUnit,
+    RemoveUnit = RemoveUnit
+}

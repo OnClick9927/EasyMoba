@@ -119,7 +119,7 @@ namespace XLua.CSObjectWrap
             
                 
                 {
-                    LockStep.LCollision2D.LogocWorld _word = (LockStep.LCollision2D.LogocWorld)translator.GetObject(L, 2, typeof(LockStep.LCollision2D.LogocWorld));
+                    LockStep.LCollision2D.LogicWorld _word = (LockStep.LCollision2D.LogicWorld)translator.GetObject(L, 2, typeof(LockStep.LCollision2D.LogicWorld));
                     LockStep.LCollision2D.LogicUnit _transform = (LockStep.LCollision2D.LogicUnit)translator.GetObject(L, 3, typeof(LockStep.LCollision2D.LogicUnit));
                     
                     gen_to_be_invoked.DoCollision( _word, _transform );
@@ -148,7 +148,7 @@ namespace XLua.CSObjectWrap
             
                 
                 {
-                    LockStep.LCollision2D.LogocWorld _world = (LockStep.LCollision2D.LogocWorld)translator.GetObject(L, 2, typeof(LockStep.LCollision2D.LogocWorld));
+                    LockStep.LCollision2D.LogicWorld _world = (LockStep.LCollision2D.LogicWorld)translator.GetObject(L, 2, typeof(LockStep.LCollision2D.LogicWorld));
                     LockStep.LCollision2D.Shape _shape = (LockStep.LCollision2D.Shape)translator.GetObject(L, 3, typeof(LockStep.LCollision2D.Shape));
                     
                     gen_to_be_invoked.DoAdd( _world, _shape );
