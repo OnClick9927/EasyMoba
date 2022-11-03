@@ -57,12 +57,14 @@ namespace EasyMoba
 
         protected abstract void SendBattleFrameToServer(string roomid, long roleid, int frame, FrameData op);
 
+        private void Call() { }
         protected void CallLuaFrame(SPBattleFrame obj)
         {
-            MobaGame.Instance.env.WaitEnvironmentFrame(() =>
-            {
-                call?.Invoke(obj);
-            });
+            var t = MobaGame.Instance.env.time;
+            //MobaGame.Instance.env.WaitEnvironmentFrame(() =>
+            //{
+            //    call?.Invoke(obj);
+            //});
 
         }
         protected void CallLuaAllReady(SPBattleAllReady response)

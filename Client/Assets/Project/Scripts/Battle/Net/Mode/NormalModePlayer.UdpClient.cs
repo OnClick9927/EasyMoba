@@ -45,11 +45,7 @@ namespace EasyMoba
                 Debug.Log(string.Format("<color=#209DBF>收到服务器战斗帧\n{0}</color>", str));
                 SPBattleFrame scfram = JsonUtility.FromJson<SPBattleFrame>(str);
                 if (scfram == null) return;
-                Launcher.env.WaitEnvironmentFrame(() =>
-                {
-                    player.CallLuaFrame(scfram);
-                });
-
+                player.CallLuaFrame(scfram);
             }
             public void CloseUdp()
             {

@@ -634,17 +634,6 @@
             </summary>
             <param name="name"></param>
         </member>
-        <member name="T:IFramework.LoomModule">
-            <summary>
-            线程反馈模块
-            </summary>
-        </member>
-        <member name="M:IFramework.LoomModule.RunDelay(System.Action)">
-            <summary>
-            在主线程跑一个方法
-            </summary>
-            <param name="action"></param>
-        </member>
         <member name="T:IFramework.Message.IStringMessageModule">
             <summary>
             消息模块（String版本）
@@ -3657,6 +3646,17 @@
             <typeparam name="T"></typeparam>
             <param name="name"></param>
             <returns></returns>
+        </member>
+        <member name="T:IFramework.LoomModule">
+            <summary>
+            线程反馈模块
+            </summary>
+        </member>
+        <member name="M:IFramework.LoomModule.RunDelay(System.Action)">
+            <summary>
+            在主线程跑一个方法
+            </summary>
+            <param name="action"></param>
         </member>
         <member name="T:IFramework.MVVM.EmptyDataModel">
             <summary>

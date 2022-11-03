@@ -1,5 +1,5 @@
 local function FindUnit(cs_unit)
-    local ins = Battle.frame_unit_support.FindUnit(cs_unit.name)
+    local ins = Battle.world.FindUnit(cs_unit.name)
     return ins
 end
 
@@ -27,11 +27,11 @@ end
 local function OnUnitDestory(cs_unit)
     local ins = FindUnit(cs_unit)
     ins:OnDestory()
-    Battle.frame_unit_support.RemoveUnit(cs_unit.name)
+    Battle.world.RemoveUnit(cs_unit.name)
 end
 
 local function OnBattleAllReady()
-    Battle.StartPlayLogic()
+    Battle.logic.StartPlayLogic()
 end
 
 local function OnBattleFrame(data)

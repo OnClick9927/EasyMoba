@@ -22,7 +22,7 @@ local function OnBattleFrame(data)
         frames[frame] = data
     end
     while frames[curFrame] do
-        Battle.frame_unit_support.PlayFrame(curFrame)
+        Battle.world.PlayFrame(curFrame)
         curFrame = curFrame + 1
     end
 end

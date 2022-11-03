@@ -115,7 +115,7 @@ class Room
             datas = new List<FrameData>()
         };
     }
-    private void GameEnd()
+    public void GameEnd()
     {
         timer.Dispose();
     }

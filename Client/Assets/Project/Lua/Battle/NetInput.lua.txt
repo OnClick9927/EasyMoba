@@ -1,0 +1,38 @@
+local M = {}
+local local_input = CS.EasyMoba.LocalInputRecorder.instance
+local _room_id
+local _role_id
+local _mode_server
+
+function M.GetRoomID()
+    return _room_id
+end
+
+function M.GetRoleID()
+    return _role_id
+end
+
+function M.Dispose()
+
+end
+
+function M.Start(role_id, room_id, mode_server)
+    _room_id = room_id
+    _role_id = role_id
+    local_input.roleid = _role_id
+    local_input.roomid = _room_id
+    _mode_server = mode_server
+end
+
+function M.SendFrameToServer(frame_id)
+    local_input.roleid = _role_id
+    local_input.roomid = _room_id
+    local_input.curframe = frame_id
+    _mode_server:SendFrameToServer()
+end
+
+function M.CallServerReady()
+    _mode_server:CallServerReady(_role_id, _room_id)
+end
+
+return M
