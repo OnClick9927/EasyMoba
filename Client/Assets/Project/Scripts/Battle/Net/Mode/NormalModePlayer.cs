@@ -23,6 +23,7 @@ namespace EasyMoba
 
         public override void Dispose()
         {
+            base.Dispose();
             udp.CloseUdp();
         }
 

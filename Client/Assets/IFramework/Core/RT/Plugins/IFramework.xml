@@ -69,10 +69,24 @@
             刷新
             </summary>
         </member>
-        <member name="M:IFramework.IEnvironment.WaitEnvironmentFrame(System.Action)">
+        <member name="M:IFramework.IEnvironment.WaitEnvironmentFrame``1(``0)">
             <summary>
             等待环境刷新
             </summary>
+            <param name="action"></param>
+        </member>
+        <member name="M:IFramework.IEnvironment.UnSubscribeWaitEnvironmentFrameHandler``1(System.Action{``0})">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="action"></param>
+        </member>
+        <member name="M:IFramework.IEnvironment.SubscribeWaitEnvironmentFrameHandler``1(System.Action{``0})">
+            <summary>
+            
+            </summary>
+            <typeparam name="T"></typeparam>
             <param name="action"></param>
         </member>
         <member name="T:IFramework.ITimeCalculator">
@@ -3374,7 +3388,7 @@
             刷新环境
             </summary>
         </member>
-        <member name="M:IFramework.Environment.WaitEnvironmentFrame(System.Action)">
+        <member name="M:IFramework.Environment.WaitEnvironmentFrame``1(``0)">
             <summary>
             等待 环境的 update，即等到该环境的线程来临
             </summary>
@@ -3651,12 +3665,6 @@
             <summary>
             线程反馈模块
             </summary>
-        </member>
-        <member name="M:IFramework.LoomModule.RunDelay(System.Action)">
-            <summary>
-            在主线程跑一个方法
-            </summary>
-            <param name="action"></param>
         </member>
         <member name="T:IFramework.MVVM.EmptyDataModel">
             <summary>

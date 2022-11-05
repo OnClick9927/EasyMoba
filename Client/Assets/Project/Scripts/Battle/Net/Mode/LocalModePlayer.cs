@@ -19,7 +19,7 @@ namespace EasyMoba
 
         public override void Dispose()
         {
-            room.GameEnd();
+            base.Dispose();
         }
 
         void ICanCallClientBattleMsg.SendBattleFrame(long roleID, SPBattleFrame frame)

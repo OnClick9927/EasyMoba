@@ -27,8 +27,8 @@ namespace EasyMoba
     }
     public class TcpClient
     {
-        
-        public TcpClient(string ip, int port,int bufsize)
+
+        public TcpClient(string ip, int port, int bufsize)
         {
             this.ip = ip;
             this.port = port;
@@ -73,10 +73,38 @@ namespace EasyMoba
             client.ReceivedOffsetCallback += OnRecieve;
             client.ConnectedCallback += OnConnect;
             client.DisconnectedCallback += OnDIsConnect;
+            Launcher.env.SubscribeWaitEnvironmentFrameHandler<Packet>(PacketHandler);
+            Launcher.env.SubscribeWaitEnvironmentFrameHandler<OnConnectMsg>(OnConnectHandler);
+
         }
+
+        private void OnConnectHandler(OnConnectMsg obj)
+        {
+            if (obj.connnect)
+            {
+                Debug.LogError("连上了");
+                onConnect?.Invoke();
+
+            }
+            else
+            {
+                Debug.LogError("掉线了");
+                onDisconnect?.Invoke();
+
+            }
+        }
+
+        private struct OnConnectMsg
+        {
+            public bool connnect;
+        }
+
 
         private void Dispose()
         {
+            Launcher.env.UnSubscribeWaitEnvironmentFrameHandler<Packet>(PacketHandler);
+            Launcher.env.UnSubscribeWaitEnvironmentFrameHandler<OnConnectMsg>(OnConnectHandler);
+
             if (client != null)
             {
                 client.Disconnect();
@@ -100,20 +128,13 @@ namespace EasyMoba
 
         private void OnDIsConnect(SocketToken sToken)
         {
-            Debug.LogError("掉线了");
-            Launcher.env.WaitEnvironmentFrame(() =>
-            {
-                onDisconnect?.Invoke();
-            });
+            Launcher.env.WaitEnvironmentFrame(new OnConnectMsg() { connnect = false });
+
         }
 
         private void OnConnect(SocketToken sToken, bool isConnected)
         {
-            Debug.LogError("连上了");
-            Launcher.env.WaitEnvironmentFrame(() =>
-            {
-                onConnect?.Invoke();
-            });
+            Launcher.env.WaitEnvironmentFrame(new OnConnectMsg() { connnect = true });
 
         }
         public void SendLuaRequest(uint code, uint subCode, string json)
@@ -135,6 +156,25 @@ namespace EasyMoba
             //var packet = new Packet(1, Convert.ToUInt32(list[0]), Convert.ToUInt32(list[1]), 1, en.GetBytes(JsonUtility.ToJson(req)));
             //client?.Send(new SegmentOffset(packet.Pack()));
         }
+        private void PacketHandler(Packet pkg)
+        {
+            var key = pkg.MainId + "-" + pkg.SubId;
+            var str = en.GetString(pkg.message);
+
+            Debug.Log(string.Format("<color=#209DBF>收到服务器反馈消息\n{0}</color>", str));
+            onLuaResponse?.Invoke(pkg.MainId, pkg.SubId, str);
+
+            //if (responseMap.ContainsKey(key))
+            //{
+            //    var type = responseMap[key];
+            //    INetMsg req = JsonUtility.FromJson(str, type) as INetMsg;
+            //    Launcher.env.WaitEnvironmentFrame(() =>
+            //    {
+            //        onResponse?.Invoke(type, req);
+            //    });
+            //}
+
+        }
         private void OnRecieve(SegmentToken session)
         {
             reader.Set(session.Data.buffer, session.Data.offset, session.Data.size);
@@ -144,23 +184,8 @@ namespace EasyMoba
             for (int i = 0; i < pkgs.Count; i++)
             {
                 var pkg = pkgs[i];
-                var str = en.GetString(pkg.message);
-                Debug.Log(string.Format("<color=#209DBF>收到服务器反馈消息\n{0}</color>", str));
-                var key = pkg.MainId + "-" + pkg.SubId;
+                Launcher.env.WaitEnvironmentFrame(pkg);
 
-                //if (responseMap.ContainsKey(key))
-                //{
-                //    var type = responseMap[key];
-                //    INetMsg req = JsonUtility.FromJson(str, type) as INetMsg;
-                //    Launcher.env.WaitEnvironmentFrame(() =>
-                //    {
-                //        onResponse?.Invoke(type, req);
-                //    });
-                //}
-                Launcher.env.WaitEnvironmentFrame(() =>
-                {
-                    onLuaResponse?.Invoke(pkg.MainId, pkg.SubId, str);
-                });
             }
         }
 

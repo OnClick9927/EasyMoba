@@ -13,7 +13,7 @@ namespace EasyMoba
 
         public override void Dispose()
         {
-
+            base.Dispose();
         }
 
         protected override void SendBattleFrameToServer(string roomid, long roleid, int frame, FrameData op)

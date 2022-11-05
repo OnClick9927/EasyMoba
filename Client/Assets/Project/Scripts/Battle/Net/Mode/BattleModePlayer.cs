@@ -1,4 +1,6 @@
-﻿using System;
+﻿using IFramework;
+using IFramework.Packets;
+using System;
 using System.Collections.Generic;
 using XLua;
 
@@ -16,12 +18,23 @@ namespace EasyMoba
             var lua = MobaGame.Instance.modules.Lua;
             var battle = lua.gtable.Get<LuaTable>("Battle");
             var for_cs = battle.Get<LuaTable>("for_cs_call");
-            call = for_cs.Get<Action<SPBattleFrame>>("OnBattelFrame");
+            call = for_cs.Get<Action<SPBattleFrame>>("OnBattleFrame");
             call_2 = for_cs.Get<Action>("OnBattleAllReady");
 
             this.type = type;
             this.roles = roles;
+            Launcher.env.SubscribeWaitEnvironmentFrameHandler<SPBattleAllReady>(SPAllRealy);
+            Launcher.env.SubscribeWaitEnvironmentFrameHandler<SPBattleFrame>(SPFrame);
+
         }
+        public virtual void Dispose()
+        {
+            Launcher.env.UnSubscribeWaitEnvironmentFrameHandler<SPBattleAllReady>(SPAllRealy);
+            Launcher.env.UnSubscribeWaitEnvironmentFrameHandler<SPBattleFrame>(SPFrame);
+
+        }
+
+
         public static BattleModePlayer Create(BattlePlayMode mode, MatchRoomType type, List<long> roles)
         {
             switch (mode)
@@ -44,6 +57,11 @@ namespace EasyMoba
                 LocalInputRecorder.instance.curframe, LocalInputRecorder.instance.data);
             LocalInputRecorder.instance.RebuidData();
         }
+
+
+
+
+
         protected CSBattleFrame CreateFrame(string roomid, long roleid, int frame, FrameData op)
         {
             return new CSBattleFrame()
@@ -54,28 +72,12 @@ namespace EasyMoba
                 roomID = roomid,
             };
         }
-
         protected abstract void SendBattleFrameToServer(string roomid, long roleid, int frame, FrameData op);
+        protected void CallLuaFrame(SPBattleFrame obj) => MobaGame.Instance.env.WaitEnvironmentFrame(obj);
+        protected void CallLuaAllReady(SPBattleAllReady response) => MobaGame.Instance.env.WaitEnvironmentFrame(response);
+        private void SPFrame(SPBattleFrame obj) => call?.Invoke(obj);
+        private void SPAllRealy(SPBattleAllReady obj) => call_2?.Invoke();
 
-        private void Call() { }
-        protected void CallLuaFrame(SPBattleFrame obj)
-        {
-            var t = MobaGame.Instance.env.time;
-            //MobaGame.Instance.env.WaitEnvironmentFrame(() =>
-            //{
-            //    call?.Invoke(obj);
-            //});
-
-        }
-        protected void CallLuaAllReady(SPBattleAllReady response)
-        {
-            MobaGame.Instance.env.WaitEnvironmentFrame(() =>
-            {
-                call_2?.Invoke();
-            });
-        }
-
-        public abstract void Dispose();
     }
 }
 
