@@ -1,0 +1,16 @@
+require("Ctrl.Base.NetEvents")
+local M = {}
+
+M.SceneCtrl = require("Ctrl.SceneCtrl")
+M.LoginCtrl = require("Ctrl.LoginCtrl")
+M.MatchCtrl = require("Ctrl.MatchCtrl")
+M.BattleCtrl = require("Ctrl.BattleCtrl")
+function M.Init()
+
+end
+
+function M.Quit()
+
+end
+
+return M

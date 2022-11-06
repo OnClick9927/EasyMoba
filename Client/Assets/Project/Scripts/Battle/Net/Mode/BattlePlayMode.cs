@@ -1,8 +1,8 @@
-﻿namespace EasyMoba
+﻿namespace EasyMoba.GameLogic
 {
     public enum BattlePlayMode
     {
-        Nomal,
+        Normal,
         Local,
         Record,
     }

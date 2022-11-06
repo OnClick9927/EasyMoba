@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace EasyMoba
+namespace EasyMoba.GameLogic
 {
     public partial class NormalModePlayer : BattleModePlayer
     {

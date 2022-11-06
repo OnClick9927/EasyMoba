@@ -1,0 +1,13 @@
+local M = {}
+
+function M.StartGame(battle_mode, room_id, room_type, players)
+    local cs_battle = CS.EasyMoba.GameLogic.Battle.Instance
+
+    cs_battle:StartGame(battle_mode, Models.PlayerModel:GetRoleID(), room_id, room_type, players)
+    Ctrls.SceneCtrl.LoadScene(ResDefine.Scene.Battle, function()
+        cs_battle:OnLoadSceneFinish()
+        GameTools.CloseUI(PanelNames.MainPanel)
+    end)
+end
+
+return M

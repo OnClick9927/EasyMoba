@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine.WSA;
 
-namespace EasyMoba
+namespace EasyMoba.GameLogic
 {
     public class LocalModePlayer : BattleModePlayer, ICanCallClientBattleMsg
     {

@@ -11,15 +11,12 @@ Events = EventSystem()
 
 require("Define.ResDefine")
 require("Define.LuaEventTypes")
-require("Ctrl.Net.NetEvents")
 
-Models = require("Model.Models")
-Ctrls = require("Ctrl.Ctrls")
+Models = require("Model.Base.Models")
+Ctrls = require("Ctrl.Base.Ctrls")
 
 ---@type UIItemPool
 UIItems = UIItemPool(UI)
 PanelNames = require("UI.PanelNames")
-require("Battle.Battle.lua")
-
 ---------------------------------------------------------------------------------------
 require("GameTools")

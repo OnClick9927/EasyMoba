@@ -2,9 +2,8 @@
 using IFramework.Net;
 using System.Text;
 using UnityEngine;
-using IFramework;
 
-namespace EasyMoba
+namespace EasyMoba.GameLogic
 {
     public partial class NormalModePlayer
     {

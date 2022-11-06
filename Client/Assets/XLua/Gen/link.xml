@@ -276,13 +276,6 @@
 		<type fullname="EasyMoba.PolygonShapeComponent" preserve="all"/>
 		<type fullname="EasyMoba.MapInitData" preserve="all"/>
 		<type fullname="EasyMoba.MapInitCollection" preserve="all"/>
-		<type fullname="EasyMoba.MobaLogicWord" preserve="all"/>
-		<type fullname="EasyMoba.MobaLogicUnit" preserve="all"/>
-		<type fullname="EasyMoba.LocalInputRecorder" preserve="all"/>
-		<type fullname="EasyMoba.BattleModePlayer" preserve="all"/>
-		<type fullname="EasyMoba.LocalModePlayer" preserve="all"/>
-		<type fullname="EasyMoba.NormalModePlayer" preserve="all"/>
-		<type fullname="EasyMoba.RecordModePlayer" preserve="all"/>
 		<type fullname="EasyMoba.MobaGame" preserve="all"/>
 		<type fullname="EasyMoba.MobaModules" preserve="all"/>
 		<type fullname="EasyMoba.TcpClient" preserve="all"/>
@@ -292,6 +285,15 @@
 		<type fullname="EasyMoba.UpdatePanel" preserve="all"/>
 		<type fullname="EasyMoba.UpdatePanelView" preserve="all"/>
 		<type fullname="EasyMoba.UpdateUIAsset" preserve="all"/>
+		<type fullname="EasyMoba.GameLogic.Battle" preserve="all"/>
+		<type fullname="EasyMoba.GameLogic.BattleInput" preserve="all"/>
+		<type fullname="EasyMoba.GameLogic.BattleLogic" preserve="all"/>
+		<type fullname="EasyMoba.GameLogic.FrameCollection" preserve="all"/>
+		<type fullname="EasyMoba.GameLogic.MobaLogicWord" preserve="all"/>
+		<type fullname="EasyMoba.GameLogic.BattleModePlayer" preserve="all"/>
+		<type fullname="EasyMoba.GameLogic.LocalModePlayer" preserve="all"/>
+		<type fullname="EasyMoba.GameLogic.NormalModePlayer" preserve="all"/>
+		<type fullname="EasyMoba.GameLogic.RecordModePlayer" preserve="all"/>
 		<type fullname="IFramework.Game" preserve="all"/>
 		<type fullname="IFramework.IAwaterEx" preserve="all"/>
 		<type fullname="IFramework.Launcher" preserve="all"/>
@@ -356,7 +358,7 @@
 		<type fullname="LockStep.LCollision2D.LogicUnit+CollisionPart" preserve="all"/>
 		<type fullname="EasyMoba.MapInitData+PolygonData" preserve="all"/>
 		<type fullname="EasyMoba.MapInitData+CircleData" preserve="all"/>
-		<type fullname="EasyMoba.NormalModePlayer+UdpClient" preserve="all"/>
+		<type fullname="EasyMoba.GameLogic.NormalModePlayer+UdpClient" preserve="all"/>
 		<type fullname="IFramework.IAwaterEx+ResourceRequestAwaiter" preserve="all"/>
 		<type fullname="IFramework.IAwaterEx+AsyncOperationAwaiter" preserve="all"/>
 		<type fullname="IFramework.UI.UIModule+ItemPool" preserve="all"/>
