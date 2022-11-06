@@ -12,3 +12,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41866b0289e219747b0ea8e40d7620fa, type: 3}
   m_Name: New Unity Shape Layer Config
   m_EditorClassIdentifier: 
+  cfg:
+    Layers:
+    - name: wall
+      layer: 2
+      collinons: 4
+    - name: player
+      layer: 4
+      collinons: 2
+    - name: 
+      layer: 8
+      collinons: 0
+    - name: 
+      layer: 16
+      collinons: 0
+    - name: 
+      layer: 32
+      collinons: 0
+    - name: 
+      layer: 64
+      collinons: 0
+    - name: 
+      layer: 128
+      collinons: 0
+    - name: 
+      layer: 256
+      collinons: 0
+    - name: 
+      layer: 512
+      collinons: 0
+    - name: 
+      layer: 1024
+      collinons: 0
+    - name: 
+      layer: 2048
+      collinons: 0
+    - name: 
+      layer: 4096
+      collinons: 0
+    - name: 
+      layer: 8192
+      collinons: 0
+    - name: 
+      layer: 16384
+      collinons: 0
+    - name: top
+      layer: 32768
+      collinons: 0

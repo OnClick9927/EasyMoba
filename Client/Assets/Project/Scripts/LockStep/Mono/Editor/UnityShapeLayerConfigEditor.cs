@@ -5,6 +5,7 @@ using System.Linq;
 using System.Collections.Generic;
 using static UnityEditor.Progress;
 using System.IO;
+using IFramework;
 
 namespace LockStep.LCollision2D
 {
@@ -17,11 +18,19 @@ namespace LockStep.LCollision2D
         {
             return (CollisionLayer)Enum.Parse(typeof(CollisionLayer), value);
         }
+        const string path = "Assets/Project/Configs/CollisonLayer.json";
         public override void OnInspectorGUI()
         {
+            if (GUILayout.Button("Load"))
+            {
+                if (File.Exists(path))
+                {
+                    c.cfg = JsonUtility.FromJson<CollisionLayerConfig>(File.ReadAllText(path));
+                }
+            }
             if (GUILayout.Button("Save"))
             {
-                File.WriteAllText("Assets/Project/Configs/CollisonLayer.json", JsonUtility.ToJson(c.cfg, true));
+                File.WriteAllText(path, JsonUtility.ToJson(c.cfg, true));
                 AssetDatabase.Refresh();
             }
             var values = Enum.GetNames(typeof(CollisionLayer));
@@ -38,7 +47,7 @@ namespace LockStep.LCollision2D
                 GUI.matrix = Matrix4x4.identity;
 
             }
-
+            EditorGUI.BeginChangeCheck();
             for (int i = 0; i < values.Length; i++)
             {
                 CollisionLayer r = parse(reverse[i]);
@@ -63,6 +72,10 @@ namespace LockStep.LCollision2D
             {
                 CollisionLayer s = parse(values[i]);
                 c.SetName(s, EditorGUILayout.TextField(values[i], c.GetName(parse(values[i]))));
+            }
+            if (EditorGUI.EndChangeCheck())
+            {
+                EditorTools.AssetTool.Update(c);
             }
         }
     }

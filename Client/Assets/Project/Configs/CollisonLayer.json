@@ -3,12 +3,12 @@
         {
             "name": "wall",
             "layer": 2,
-            "collinons": 32768
+            "collinons": 4
         },
         {
-            "name": "",
+            "name": "player",
             "layer": 4,
-            "collinons": 0
+            "collinons": 2
         },
         {
             "name": "",
@@ -71,9 +71,9 @@
             "collinons": 0
         },
         {
-            "name": "",
+            "name": "top",
             "layer": 32768,
-            "collinons": 2
+            "collinons": 0
         }
     ]
 }

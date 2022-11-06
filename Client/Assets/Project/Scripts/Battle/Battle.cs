@@ -1,5 +1,8 @@
+using IFramework.Hotfix.Asset;
 using IFramework.Singleton;
+using LockStep.LCollision2D;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace EasyMoba.GameLogic
 {
@@ -25,7 +28,10 @@ namespace EasyMoba.GameLogic
             this.room_type = type;
             this.players = players;
             mode_server = BattleModePlayer.Create(mode, type, players);
-            word = new MobaLogicWord(null);
+            var asset = Assets.LoadAssetAsync("Assets/Project/Configs/CollisonLayer.json");
+            TextAsset txt = asset.GetAsset<TextAsset>();
+            Assets.Release(asset);
+            word = new MobaLogicWord(JsonUtility.FromJson<CollisionLayerConfig>(txt.text));
             frams = new FrameCollection(word);
             input = new BattleInput(frams, mode_server);
             logic = new BattleLogic();
