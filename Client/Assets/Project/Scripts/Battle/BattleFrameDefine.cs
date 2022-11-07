@@ -8,12 +8,8 @@ public class FrameData
 {
     public long roleID;
 
-    public OPJoyStick stick;
-    public class OPJoyStick
-    {
-        public LFloat x;
-        public LFloat y;
-    }
+    public LVector2 stick;
+   
 }
 
 public class CSBattleFrame

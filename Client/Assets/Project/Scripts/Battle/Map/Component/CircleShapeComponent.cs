@@ -11,7 +11,7 @@ namespace EasyMoba
         public float radius;
         public override CircleShape Build()
         {
-            return new CircleShape() { radius = radius.ToLFloat(), layer = this.layer, logic = this.logic, rigidbody = this.rigid };
+            return new CircleShape() { radius = new LFloat(radius), layer = this.layer, logic = this.logic, rigidbody = this.rigid };
         }
         protected override void OnDrawGizmos()
         {

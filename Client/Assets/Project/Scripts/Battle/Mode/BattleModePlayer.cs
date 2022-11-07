@@ -43,11 +43,11 @@ namespace EasyMoba.GameLogic
         }
 
         public abstract void CallServerReady(long role_id, string room_id);
-        public void SendFrameToServer(BattleInput recorder)
+        public void SendFrameToServer(int frame, FrameData data)
         {
             SendBattleFrameToServer(Battle.Instance.Room_id,
                 Battle.Instance.Role_id,
-                recorder.curframe, recorder.data);
+                frame, data);
         }
 
 
@@ -67,11 +67,13 @@ namespace EasyMoba.GameLogic
         protected abstract void SendBattleFrameToServer(string roomid, long roleid, int frame, FrameData op);
         protected void CallLuaFrame(SPBattleFrame obj) => MobaGame.Instance.env.WaitEnvironmentFrame(obj);
         protected void CallLuaAllReady(SPBattleAllReady response) => MobaGame.Instance.env.WaitEnvironmentFrame(response);
-        private void SPFrame(SPBattleFrame obj) {
+        private void SPFrame(SPBattleFrame obj)
+        {
 
             Battle.Instance.frams.OnBattleFrame(obj);
         }
-        private void SPAllRealy(SPBattleAllReady obj) {
+        private void SPAllRealy(SPBattleAllReady obj)
+        {
 
             Battle.Instance.logic.StartPlayLogic();
         }

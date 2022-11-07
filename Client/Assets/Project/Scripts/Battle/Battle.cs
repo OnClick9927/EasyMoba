@@ -36,19 +36,20 @@ namespace EasyMoba.GameLogic
             input = new BattleInput(frams, mode_server);
             logic = new BattleLogic();
         }
-
+        private bool gameing;
 
         public void OnLoadSceneFinish()
         {
             logic.LoadBaseUnit();
             mode_server.CallServerReady(Role_id, Room_id);
-
+            gameing = true;
         }
 
 
 
         public void CloseGame()
         {
+            gameing = false;
             mode_server.Dispose();
             input = null;
             mode_server = null;
@@ -56,7 +57,11 @@ namespace EasyMoba.GameLogic
             logic = null;
         }
 
-
+        private void Update()
+        {
+            if (!gameing) return;
+            input.Update();
+        }
     }
 }
 

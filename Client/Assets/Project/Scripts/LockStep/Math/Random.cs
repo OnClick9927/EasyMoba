@@ -8,7 +8,7 @@ namespace LockStep.Math {
         public Random(uint seed = 17){
             randSeed = seed;
         }
-        public LFloat value => new LFloat(true, Range(0, (int)LFloat.Precision));
+        public LFloat value => LFloat.CreateByRaw(Range(0, (int)LFloat.Precision));
 
         public uint Next(){
             randSeed = randSeed * 1103515245 + 36153;
@@ -19,10 +19,10 @@ namespace LockStep.Math {
             return Next() % max;
         }
         public LVector2 NextVector2(){
-            return new LVector2(true, Next((uint)LFloat.Precision),Next((uint)LFloat.Precision));
+            return LVector2.CreateByRaw( Next((uint)LFloat.Precision),Next((uint)LFloat.Precision));
         }
         public LVector3 NextVector3(){
-            return new LVector3(true, Next((uint)LFloat.Precision),Next((uint)LFloat.Precision),Next((uint)LFloat.Precision));
+            return LVector3.CreateByRaw( Next((uint)LFloat.Precision),Next((uint)LFloat.Precision),Next((uint)LFloat.Precision));
         }
         public int Next(int max){
             return (int) (Next() % max);
@@ -50,7 +50,7 @@ namespace LockStep.Math {
                     string.Format("'{0}' cannot be greater than {1}.", min, max));
 
             var num =  (max._val - min._val);
-            return new LFloat(true, Next((uint)num) + min._val);
+            return LFloat.CreateByRaw(Next((uint)num) + min._val);
         }
     }
 #if false

@@ -8,8 +8,8 @@ namespace LockStep.Math
         public static readonly LMatrix33
             zero = new LMatrix33(LVector3.zero, LVector3.zero, LVector3.zero);
 
-        public static readonly LMatrix33 identity = new LMatrix33(new LVector3(true,LFloat.Precision, 0, 0),
-            new LVector3(true,0, LFloat.Precision, 0), new LVector3(true,0, 0, LFloat.Precision));
+        public static readonly LMatrix33 identity = new LMatrix33(LVector3.CreateByRaw( LFloat.Precision, 0, 0),
+            LVector3.CreateByRaw(0, LFloat.Precision, 0), LVector3.CreateByRaw(0, 0, LFloat.Precision));
 
         // mRowCol  列优先存储
         public long m00;
@@ -49,23 +49,23 @@ namespace LockStep.Math
                 switch (index)
                 {
                     case 0:
-                        return new LFloat(true, this.m00);
+                        return LFloat.CreateByRaw(this.m00);
                     case 1:
-                        return new LFloat(true, this.m10);
+                        return LFloat.CreateByRaw(this.m10);
                     case 2:
-                        return new LFloat(true, this.m20);
+                        return LFloat.CreateByRaw(this.m20);
                     case 3:
-                        return new LFloat(true, this.m01);
+                        return LFloat.CreateByRaw(this.m01);
                     case 4:
-                        return new LFloat(true, this.m11);
+                        return LFloat.CreateByRaw(this.m11);
                     case 5:
-                        return new LFloat(true, this.m21);
+                        return LFloat.CreateByRaw(this.m21);
                     case 6:
-                        return new LFloat(true, this.m02);
+                        return LFloat.CreateByRaw(this.m02);
                     case 7:
-                        return new LFloat(true, this.m12);
+                        return LFloat.CreateByRaw(this.m12);
                     case 8:
-                        return new LFloat(true, this.m22);
+                        return LFloat.CreateByRaw(this.m22);
                     default:
                         throw new IndexOutOfRangeException("Invalid matrix index!");
                 }
@@ -117,7 +117,7 @@ namespace LockStep.Math
         {
             if (!(other is LMatrix33))
                 return false;
-            return this.Equals((LMatrix33) other);
+            return this.Equals((LMatrix33)other);
         }
 
         public bool Equals(LMatrix33 other)
@@ -130,36 +130,36 @@ namespace LockStep.Math
         public static LMatrix33 operator *(LMatrix33 lhs, LMatrix33 rhs)
         {
             LMatrix33 mat;
-            mat.m00 = (long) (((long) lhs.m00 * (long) rhs.m00 + (long) lhs.m01 * (long) rhs.m10 +
-                           (long) lhs.m02 * (long) rhs.m20) / LFloat.Precision);
-            mat.m01 = (long) (((long) lhs.m00 * (long) rhs.m01 + (long) lhs.m01 * (long) rhs.m11 +
-                           (long) lhs.m02 * (long) rhs.m21) / LFloat.Precision);
-            mat.m02 = (long) (((long) lhs.m00 * (long) rhs.m02 + (long) lhs.m01 * (long) rhs.m12 +
-                           (long) lhs.m02 * (long) rhs.m22) / LFloat.Precision);
-            mat.m10 = (long) (((long) lhs.m10 * (long) rhs.m00 + (long) lhs.m11 * (long) rhs.m10 +
-                           (long) lhs.m12 * (long) rhs.m20) / LFloat.Precision);
-            mat.m11 = (long) (((long) lhs.m10 * (long) rhs.m01 + (long) lhs.m11 * (long) rhs.m11 +
-                           (long) lhs.m12 * (long) rhs.m21) / LFloat.Precision);
-            mat.m12 = (long) (((long) lhs.m10 * (long) rhs.m02 + (long) lhs.m11 * (long) rhs.m12 +
-                           (long) lhs.m12 * (long) rhs.m22) / LFloat.Precision);
-            mat.m20 = (long) (((long) lhs.m20 * (long) rhs.m00 + (long) lhs.m21 * (long) rhs.m10 +
-                           (long) lhs.m22 * (long) rhs.m20) / LFloat.Precision);
-            mat.m21 = (long) (((long) lhs.m20 * (long) rhs.m01 + (long) lhs.m21 * (long) rhs.m11 +
-                           (long) lhs.m22 * (long) rhs.m21) / LFloat.Precision);
-            mat.m22 = (long) (((long) lhs.m20 * (long) rhs.m02 + (long) lhs.m21 * (long) rhs.m12 +
-                              (long) lhs.m22 * (long) rhs.m22) / LFloat.Precision);
+            mat.m00 = (long)(((long)lhs.m00 * (long)rhs.m00 + (long)lhs.m01 * (long)rhs.m10 +
+                           (long)lhs.m02 * (long)rhs.m20) / LFloat.Precision);
+            mat.m01 = (long)(((long)lhs.m00 * (long)rhs.m01 + (long)lhs.m01 * (long)rhs.m11 +
+                           (long)lhs.m02 * (long)rhs.m21) / LFloat.Precision);
+            mat.m02 = (long)(((long)lhs.m00 * (long)rhs.m02 + (long)lhs.m01 * (long)rhs.m12 +
+                           (long)lhs.m02 * (long)rhs.m22) / LFloat.Precision);
+            mat.m10 = (long)(((long)lhs.m10 * (long)rhs.m00 + (long)lhs.m11 * (long)rhs.m10 +
+                           (long)lhs.m12 * (long)rhs.m20) / LFloat.Precision);
+            mat.m11 = (long)(((long)lhs.m10 * (long)rhs.m01 + (long)lhs.m11 * (long)rhs.m11 +
+                           (long)lhs.m12 * (long)rhs.m21) / LFloat.Precision);
+            mat.m12 = (long)(((long)lhs.m10 * (long)rhs.m02 + (long)lhs.m11 * (long)rhs.m12 +
+                           (long)lhs.m12 * (long)rhs.m22) / LFloat.Precision);
+            mat.m20 = (long)(((long)lhs.m20 * (long)rhs.m00 + (long)lhs.m21 * (long)rhs.m10 +
+                           (long)lhs.m22 * (long)rhs.m20) / LFloat.Precision);
+            mat.m21 = (long)(((long)lhs.m20 * (long)rhs.m01 + (long)lhs.m21 * (long)rhs.m11 +
+                           (long)lhs.m22 * (long)rhs.m21) / LFloat.Precision);
+            mat.m22 = (long)(((long)lhs.m20 * (long)rhs.m02 + (long)lhs.m21 * (long)rhs.m12 +
+                              (long)lhs.m22 * (long)rhs.m22) / LFloat.Precision);
             return mat;
         }
 
         public static LVector3 operator *(LMatrix33 lhs, LVector3 vector3)
         {
             LVector3 vec;
-            vec._x = (long) (((long) lhs.m00 * (long) vector3.x + (long) lhs.m01 * (long) vector3.y +
-                             (long) lhs.m02 * (long) vector3.z) / LFloat.Precision);
-            vec._y = (long) (((long) lhs.m10 * (long) vector3.x + (long) lhs.m11 * (long) vector3.y +
-                             (long) lhs.m12 * (long) vector3.z) / LFloat.Precision);
-            vec._z = (long) (((long) lhs.m20 * (long) vector3.x + (long) lhs.m21 * (long) vector3.y +
-                             (long) lhs.m22 * (long) vector3.z) / LFloat.Precision);
+            vec._x = (long)(((long)lhs.m00 * (long)vector3.x + (long)lhs.m01 * (long)vector3.y +
+                             (long)lhs.m02 * (long)vector3.z) / LFloat.Precision);
+            vec._y = (long)(((long)lhs.m10 * (long)vector3.x + (long)lhs.m11 * (long)vector3.y +
+                             (long)lhs.m12 * (long)vector3.z) / LFloat.Precision);
+            vec._z = (long)(((long)lhs.m20 * (long)vector3.x + (long)lhs.m21 * (long)vector3.y +
+                             (long)lhs.m22 * (long)vector3.z) / LFloat.Precision);
             return vec;
         }
 
@@ -183,11 +183,11 @@ namespace LockStep.Math
             switch (index)
             {
                 case 0:
-                    return new LVector3(true,this.m00, this.m10, this.m20);
+                    return LVector3.CreateByRaw( this.m00, this.m10, this.m20);
                 case 1:
-                    return new LVector3(true,this.m01, this.m11, this.m21);
+                    return LVector3.CreateByRaw( this.m01, this.m11, this.m21);
                 case 2:
-                    return new LVector3(true,this.m02, this.m12, this.m22);
+                    return LVector3.CreateByRaw( this.m02, this.m12, this.m22);
                 default:
                     throw new IndexOutOfRangeException("Invalid column index!");
             }
@@ -202,11 +202,11 @@ namespace LockStep.Math
             switch (index)
             {
                 case 0:
-                    return new LVector3(true,this.m00, this.m01, this.m02);
+                    return LVector3.CreateByRaw( this.m00, this.m01, this.m02);
                 case 1:
-                    return new LVector3(true,this.m10, this.m11, this.m12);
+                    return LVector3.CreateByRaw( this.m10, this.m11, this.m12);
                 case 2:
-                    return new LVector3(true,this.m20, this.m21, this.m22);
+                    return LVector3.CreateByRaw( this.m20, this.m21, this.m22);
                 default:
                     throw new IndexOutOfRangeException("Invalid row index!");
             }

@@ -520,7 +520,7 @@ namespace LockStep.Math
 
             z /= mag;
 
-            LVector3 x = LMath.Cross(upVec, z);
+            LVector3 x = LVector3.Cross(upVec, z);
             mag = x.magnitude;
             if (mag <= 0) {
                 m = LMatrix33.identity;
@@ -528,7 +528,7 @@ namespace LockStep.Math
 
             x /= mag;
 
-            LVector3 y = LMath.Cross(z, x);
+            LVector3 y = LVector3.Cross(z, x);
 
             m[0, 0] = x.x;
             m[0, 1] = y.x;

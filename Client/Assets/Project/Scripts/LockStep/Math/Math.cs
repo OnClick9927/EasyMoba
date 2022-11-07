@@ -11,12 +11,12 @@ namespace LockStep.Math
         public const long LRad2Deg = 57295780L;  //57.2957795
         public const long LDeg2Rad = 17453L;  //0.0174532
         //Precision = 1000000
-        public static readonly LFloat PIQuad = new LFloat(true, LPIHalf);
-        public static readonly LFloat PIHalf = new LFloat(true, LPIHalf);
-        public static readonly LFloat PI = new LFloat(true, LPI);
-        public static readonly LFloat PI2 = new LFloat(true, LPI2);
-        public static readonly LFloat Rad2Deg = new LFloat(true, LRad2Deg);
-        public static readonly LFloat Deg2Rad = new LFloat(true, LDeg2Rad);
+        public static readonly LFloat PIQuad = LFloat.CreateByRaw(LPIHalf);
+        public static readonly LFloat PIHalf = LFloat.CreateByRaw(LPIHalf);
+        public static readonly LFloat PI = LFloat.CreateByRaw(LPI);
+        public static readonly LFloat PI2 = LFloat.CreateByRaw(LPI2);
+        public static readonly LFloat Rad2Deg = LFloat.CreateByRaw(LRad2Deg);
+        public static readonly LFloat Deg2Rad = LFloat.CreateByRaw(LDeg2Rad);
         public static LFloat Pi => PI;
 
         #region Atan2
@@ -115,7 +115,7 @@ namespace LockStep.Math
 
         public static LFloat Atan2(long y, long x)
         {
-            return new LFloat(true, _Atan2(y, x));
+            return LFloat.CreateByRaw(_Atan2(y, x));
         }
 
         public static LFloat Acos(LFloat val)
@@ -123,7 +123,7 @@ namespace LockStep.Math
             int idx = (int)(val._val * LUTAcos.HALF_COUNT / LFloat.Precision) +
                       LUTAcos.HALF_COUNT;
             idx = Clamp(idx, 0, LUTAcos.COUNT);
-            return new LFloat(true, LUTAcos.table[idx]);
+            return LFloat.CreateByRaw(LUTAcos.table[idx]);
         }
 
         public static LFloat Asin(LFloat val)
@@ -131,26 +131,26 @@ namespace LockStep.Math
             int idx = (int)(val._val * LUTAsin.HALF_COUNT / LFloat.Precision) +
                       LUTAsin.HALF_COUNT;
             idx = Clamp(idx, 0, LUTAsin.COUNT);
-            return new LFloat(true, LUTAsin.table[idx]);
+            return LFloat.CreateByRaw(LUTAsin.table[idx]);
         }
 
         //ccw
         public static LFloat Sin(LFloat radians)
         {
-            return new LFloat(true, LUTSin.table[_GetIdx(radians)]);
+            return LFloat.CreateByRaw(LUTSin.table[_GetIdx(radians)]);
         }
 
         //ccw
         public static LFloat Cos(LFloat radians)
         {
-            return new LFloat(true, LUTCos.table[_GetIdx(radians)]);
+            return LFloat.CreateByRaw(LUTCos.table[_GetIdx(radians)]);
         }
 
         private static int _GetIdx(LFloat radians)
         {
             var rawVal = radians._val % LMath.LPI2;
             if (rawVal < 0) rawVal += LMath.LPI2;
-            var val = new LFloat(true, rawVal) / LMath.PI2;
+            var val = LFloat.CreateByRaw(rawVal) / LMath.PI2;
             var idx = (int)(val * LUTCos.COUNT);
             idx = Clamp(idx, 0, LUTCos.COUNT);
             return idx;
@@ -160,8 +160,8 @@ namespace LockStep.Math
         public static void SinCos(out LFloat s, out LFloat c, LFloat radians)
         {
             int idx = _GetIdx(radians);
-            s = new LFloat(true, LUTSin.table[idx]);
-            c = new LFloat(true, LUTCos.table[idx]);
+            s = LFloat.CreateByRaw(LUTSin.table[idx]);
+            c = LFloat.CreateByRaw(LUTCos.table[idx]);
         }
         public static uint Sqrt32(uint a)
         {
@@ -237,7 +237,7 @@ namespace LockStep.Math
                 return LFloat.zero;
             }
 
-            return new LFloat(true, Sqrt((long)a._val * LFloat.Precision));
+            return LFloat.CreateByRaw(Sqrt((long)a._val * LFloat.Precision));
         }
 
         public static LFloat Sqr(LFloat a)
@@ -348,7 +348,7 @@ namespace LockStep.Math
         {
             if (val._val < 0)
             {
-                return new LFloat(true, -val._val);
+                return LFloat.CreateByRaw(-val._val);
             }
 
             return val;
@@ -366,11 +366,11 @@ namespace LockStep.Math
                 var remainder = (-val._val) % LFloat.Precision;
                 if (remainder > LFloat.HalfPrecision)
                 {
-                    return new LFloat(true, val._val + remainder - LFloat.Precision);
+                    return LFloat.CreateByRaw(val._val + remainder - LFloat.Precision);
                 }
                 else
                 {
-                    return new LFloat(true, val._val + remainder);
+                    return LFloat.CreateByRaw(val._val + remainder);
                 }
             }
             else
@@ -378,11 +378,11 @@ namespace LockStep.Math
                 var remainder = (val._val) % LFloat.Precision;
                 if (remainder > LFloat.HalfPrecision)
                 {
-                    return new LFloat(true, val._val - remainder + LFloat.Precision);
+                    return LFloat.CreateByRaw(val._val - remainder + LFloat.Precision);
                 }
                 else
                 {
-                    return new LFloat(true, val._val - remainder);
+                    return LFloat.CreateByRaw(val._val - remainder);
                 }
             }
         }
@@ -470,53 +470,15 @@ namespace LockStep.Math
             return (int)(val / LFloat.Precision);
         }
 
-        public static LFloat ToLFloat(this float a)
-        {
-            return new LFloat(true, (long)(a * LFloat.Precision));
-        }
-        public static LFloat ToLFloat(this int a)
-        {
-            return new LFloat(true, (long)(a * LFloat.Precision));
-        }
-        public static LFloat ToLFloat(this long a)
-        {
-            return new LFloat(true, (long)(a * LFloat.Precision));
-        }
 
-        public static LFloat Min(LFloat a, LFloat b)
-        {
-            return new LFloat(true, Min(a._val, b._val));
-        }
 
-        public static LFloat Max(LFloat a, LFloat b)
-        {
-            return new LFloat(true, Max(a._val, b._val));
-        }
 
-        public static LFloat Lerp(LFloat a, LFloat b, LFloat f)
-        {
-            return new LFloat(true, (int)(((long)(b._val - a._val) * f._val) / LFloat.Precision) + a._val);
-        }
 
         public static LFloat InverseLerp(LFloat a, LFloat b, LFloat value)
         {
             if (a != b)
                 return Clamp01(((value - a) / (b - a)));
             return LFloat.zero;
-        }
-        public static LVector2 Lerp(LVector2 a, LVector2 b, LFloat f)
-        {
-            return new LVector2(true,
-                (int)(((long)(b._x - a._x) * f._val) / LFloat.Precision) + a._x,
-                (int)(((long)(b._y - a._y) * f._val) / LFloat.Precision) + a._y);
-        }
-
-        public static LVector3 Lerp(LVector3 a, LVector3 b, LFloat f)
-        {
-            return new LVector3(true,
-                (int)(((long)(b._x - a._x) * f._val) / LFloat.Precision) + a._x,
-                (int)(((long)(b._y - a._y) * f._val) / LFloat.Precision) + a._y,
-                (int)(((long)(b._z - a._z) * f._val) / LFloat.Precision) + a._z);
         }
 
         public static bool IsPowerOfTwo(int x)
@@ -538,95 +500,7 @@ namespace LockStep.Math
 
         public static LFloat Dot(LVector2 u, LVector2 v)
         {
-            return new LFloat(true, ((long)u._x * v._x + (long)u._y * v._y) / LFloat.Precision);
-        }
-
-        public static LFloat Dot(LVector3 lhs, LVector3 rhs)
-        {
-            var val = ((long)lhs._x) * rhs._x + ((long)lhs._y) * rhs._y + ((long)lhs._z) * rhs._z;
-            return new LFloat(true, val / LFloat.Precision);
-            ;
-        }
-        public static LVector3 Cross(LVector3 lhs, LVector3 rhs)
-        {
-            return new LVector3(true,
-                ((long)lhs._y * rhs._z - (long)lhs._z * rhs._y) / LFloat.Precision,
-                ((long)lhs._z * rhs._x - (long)lhs._x * rhs._z) / LFloat.Precision,
-                ((long)lhs._x * rhs._y - (long)lhs._y * rhs._x) / LFloat.Precision
-            );
-        }
-
-        public static LFloat Cross2D(LVector2 u, LVector2 v)
-        {
-            return new LFloat(true, ((long)u._x * v._y - (long)u._y * v._x) / LFloat.Precision);
-        }
-        public static LFloat Dot2D(LVector2 u, LVector2 v)
-        {
-            return new LFloat(true, ((long)u._x * v._x + (long)u._y * v._y) / LFloat.Precision);
-        }
-
-        public static LVector3 Transform(ref LVector3 point, ref LVector3 axis_x, ref LVector3 axis_y, ref LVector3 axis_z,
-           ref LVector3 trans)
-        {
-            return new LVector3(true,
-                ((axis_x._x * point._x + axis_y._x * point._y + axis_z._x * point._z) / LFloat.Precision) + trans._x,
-                ((axis_x._y * point._x + axis_y._y * point._y + axis_z._y * point._z) / LFloat.Precision) + trans._y,
-                ((axis_x._z * point._x + axis_y._z * point._y + axis_z._z * point._z) / LFloat.Precision) + trans._z);
-        }
-
-        public static LVector3 Transform(LVector3 point, ref LVector3 axis_x, ref LVector3 axis_y, ref LVector3 axis_z,
-            ref LVector3 trans)
-        {
-            return new LVector3(true,
-                ((axis_x._x * point._x + axis_y._x * point._y + axis_z._x * point._z) / LFloat.Precision) + trans._x,
-                ((axis_x._y * point._x + axis_y._y * point._y + axis_z._y * point._z) / LFloat.Precision) + trans._y,
-                ((axis_x._z * point._x + axis_y._z * point._y + axis_z._z * point._z) / LFloat.Precision) + trans._z);
-        }
-
-        public static LVector3 Transform(ref LVector3 point, ref LVector3 axis_x, ref LVector3 axis_y, ref LVector3 axis_z,
-            ref LVector3 trans, ref LVector3 scale)
-        {
-            long num = (long)point._x * (long)scale._x / LFloat.Precision;
-            long num2 = (long)point._y * (long)scale._x / LFloat.Precision;
-            long num3 = (long)point._z * (long)scale._x / LFloat.Precision;
-            return new LVector3(true,
-                (int)(((long)axis_x._x * num + (long)axis_y._x * num2 + (long)axis_z._x * num3) / LFloat.Precision) +
-                trans._x,
-                (int)(((long)axis_x._y * num + (long)axis_y._y * num2 + (long)axis_z._y * num3) / LFloat.Precision) +
-                trans._y,
-                (int)(((long)axis_x._z * num + (long)axis_y._z * num2 + (long)axis_z._z * num3) / LFloat.Precision) +
-                trans._z);
-        }
-
-        public static LVector3 Transform(ref LVector3 point, ref LVector3 forward, ref LVector3 trans)
-        {
-            LVector3 up = LVector3.up;
-            LVector3 vInt = Cross(LVector3.up, forward);
-            return LMath.Transform(ref point, ref vInt, ref up, ref forward, ref trans);
-        }
-
-        public static LVector3 Transform(LVector3 point, LVector3 forward, LVector3 trans)
-        {
-            LVector3 up = LVector3.up;
-            LVector3 vInt = Cross(LVector3.up, forward);
-            return LMath.Transform(ref point, ref vInt, ref up, ref forward, ref trans);
-        }
-
-        public static LVector3 Transform(LVector3 point, LVector3 forward, LVector3 trans, LVector3 scale)
-        {
-            LVector3 up = LVector3.up;
-            LVector3 vInt = Cross(LVector3.up, forward);
-            return LMath.Transform(ref point, ref vInt, ref up, ref forward, ref trans, ref scale);
-        }
-
-        public static LVector3 MoveTowards(LVector3 from, LVector3 to, LFloat dt)
-        {
-            if ((to - from).sqrMagnitude <= (dt * dt))
-            {
-                return to;
-            }
-
-            return from + (to - from).Normalize(dt);
+            return LFloat.CreateByRaw(((long)u._x * v._x + (long)u._y * v._y) / LFloat.Precision);
         }
 
 
@@ -634,91 +508,31 @@ namespace LockStep.Math
         {
             return LMath.Acos(Dot(lhs, rhs));
         }
-#if UNITY_5_3_OR_NEWER
 
-        public static LVector2 ToLVector2(this Vector2Int vec)
+        public static LFloat Min(LFloat a, LFloat b)
         {
-            return new LVector2(true, vec.x * LFloat.Precision, vec.y * LFloat.Precision);
-        }
-
-        public static LVector3 ToLVector3(this Vector3Int vec)
-        {
-            return new LVector3(true, vec.x * LFloat.Precision, vec.y * LFloat.Precision, vec.z * LFloat.Precision);
+            return LFloat.CreateByRaw(LMath.Min(a._val, b._val));
         }
 
-        public static LVector2Int ToLVector2Int(this Vector2Int vec)
+        public static LFloat Max(LFloat a, LFloat b)
         {
-            return new LVector2Int(vec.x, vec.y);
+            return LFloat.CreateByRaw(LMath.Max(a._val, b._val));
         }
 
-        public static LVector3Int ToLVector3Int(this Vector3Int vec)
+        public static LFloat Lerp(LFloat a, LFloat b, LFloat f)
         {
-            return new LVector3Int(vec.x, vec.y, vec.z);
+            return LFloat.CreateByRaw((int)(((long)(b._val - a._val) * f._val) / LFloat.Precision) + a._val);
         }
 
-        public static Vector2Int ToVector2Int(this LVector2Int vec)
-        {
-            return new Vector2Int(vec.x, vec.y);
-        }
-
-        public static Vector3Int ToVector3Int(this LVector3Int vec)
-        {
-            return new Vector3Int(vec.x, vec.y, vec.z);
-        }
-        public static LVector2 ToLVector2(this Vector2 vec)
-        {
-            return new LVector2(
-                LMath.ToLFloat(vec.x),
-                LMath.ToLFloat(vec.y));
-        }
-
-        public static LVector3 ToLVector3(this Vector3 vec)
-        {
-            return new LVector3(
-                LMath.ToLFloat(vec.x),
-                LMath.ToLFloat(vec.y),
-                LMath.ToLFloat(vec.z));
-        }
-        public static LVector2 ToLVector2XZ(this Vector3 vec)
-        {
-            return new LVector2(
-                LMath.ToLFloat(vec.x),
-                LMath.ToLFloat(vec.z));
-        }
-        public static Vector2 ToVector2(this LVector2 vec)
-        {
-            return new Vector2(vec.x.ToFloat(), vec.y.ToFloat());
-        }
-        public static Vector3 ToVector3(this LVector2 vec)
-        {
-            return new Vector3(vec.x.ToFloat(), vec.y.ToFloat(), 0);
-        }
-        public static Vector3 ToVector3XZ(this LVector2 vec, LFloat y)
-        {
-            return new Vector3(vec.x.ToFloat(), y.ToFloat(), vec.y.ToFloat());
-        }
-        public static Vector3 ToVector3XZ(this LVector2 vec)
-        {
-            return new Vector3(vec.x.ToFloat(), 0, vec.y.ToFloat());
-        }
-        public static Vector3 ToVector3(this LVector3 vec)
-        {
-            return new Vector3(vec.x.ToFloat(), vec.y.ToFloat(), vec.z.ToFloat());
-        }
-        public static Rect ToRect(this LRect vec)
-        {
-            return new Rect(vec.position.ToVector2(), vec.size.ToVector2());
-        }
-#endif
 
         public static LVector2 ToLVector2(this LVector2Int vec)
         {
-            return new LVector2(true, vec.x * LFloat.Precision, vec.y * LFloat.Precision);
+            return LVector2.CreateByRaw( vec.x * LFloat.Precision, vec.y * LFloat.Precision);
         }
 
         public static LVector3 ToLVector3(this LVector3Int vec)
         {
-            return new LVector3(true, vec.x * LFloat.Precision, vec.y * LFloat.Precision, vec.z * LFloat.Precision);
+            return LVector3.CreateByRaw( vec.x * LFloat.Precision, vec.y * LFloat.Precision, vec.z * LFloat.Precision);
         }
 
         public static LVector2Int ToLVector2Int(this LVector2 vec)
@@ -746,18 +560,90 @@ namespace LockStep.Math
         }
         public static LVector2 RightVec(this LVector2 vec)
         {
-            return new LVector2(true, vec._y, -vec._x);
+            return LVector2.CreateByRaw( vec._y, -vec._x);
         }
 
         public static LVector2 LeftVec(this LVector2 vec)
         {
-            return new LVector2(true, -vec._y, vec._x);
+            return LVector2.CreateByRaw( -vec._y, vec._x);
         }
 
         public static LVector2 BackVec(this LVector2 vec)
         {
-            return new LVector2(true, -vec._x, -vec._y);
+            return LVector2.CreateByRaw( -vec._x, -vec._y);
         }
+
+
+#if UNITY_5_3_OR_NEWER
+
+        public static LVector2 ToLVector2(this Vector2Int vec)
+        {
+            return LVector2.CreateByRaw( vec.x * LFloat.Precision, vec.y * LFloat.Precision);
+        }
+        public static LVector3 ToLVector3(this Vector3Int vec)
+        {
+            return LVector3.CreateByRaw( vec.x * LFloat.Precision, vec.y * LFloat.Precision, vec.z * LFloat.Precision);
+        }
+        public static LVector2Int ToLVector2Int(this Vector2Int vec)
+        {
+            return new LVector2Int(vec.x, vec.y);
+        }
+        public static LVector3Int ToLVector3Int(this Vector3Int vec)
+        {
+            return new LVector3Int(vec.x, vec.y, vec.z);
+        }
+        public static Vector2Int ToVector2Int(this LVector2Int vec)
+        {
+            return new Vector2Int(vec.x, vec.y);
+        }
+        public static Vector3Int ToVector3Int(this LVector3Int vec)
+        {
+            return new Vector3Int(vec.x, vec.y, vec.z);
+        }
+        public static LVector2 ToLVector2(this Vector2 vec)
+        {
+            return new LVector2(
+                new LFloat(vec.x),
+                new LFloat(vec.y));
+        }
+        public static LVector3 ToLVector3(this Vector3 vec)
+        {
+            return new LVector3(
+                new LFloat(vec.x),
+                new LFloat(vec.y),
+                new LFloat(vec.z));
+        }
+        public static LVector2 ToLVector2XZ(this Vector3 vec)
+        {
+            return new LVector2(
+                new LFloat(vec.x),
+                new LFloat(vec.z));
+        }
+        public static Vector2 ToVector2(this LVector2 vec)
+        {
+            return new Vector2(vec.x.ToFloat(), vec.y.ToFloat());
+        }
+        public static Vector3 ToVector3(this LVector2 vec)
+        {
+            return new Vector3(vec.x.ToFloat(), vec.y.ToFloat(), 0);
+        }
+        public static Vector3 ToVector3XZ(this LVector2 vec, LFloat y)
+        {
+            return new Vector3(vec.x.ToFloat(), y.ToFloat(), vec.y.ToFloat());
+        }
+        public static Vector3 ToVector3XZ(this LVector2 vec)
+        {
+            return new Vector3(vec.x.ToFloat(), 0, vec.y.ToFloat());
+        }
+        public static Vector3 ToVector3(this LVector3 vec)
+        {
+            return new Vector3(vec.x.ToFloat(), vec.y.ToFloat(), vec.z.ToFloat());
+        }
+        public static Rect ToRect(this LRect vec)
+        {
+            return new Rect(vec.position.ToVector2(), vec.size.ToVector2());
+        }
+#endif
 
     }
 }
