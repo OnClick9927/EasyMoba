@@ -12,7 +12,14 @@ namespace EasyMoba.GameLogic
         {
             this.word = word;
         }
-
+        public SPBattleFrame GetFrame(int frame)
+        {
+            return frames[frame];
+        }
+        public FrameData GetFrame(int frame,long role_id)
+        {
+            return frames[frame].datas.Find(x=>x.roleID==role_id);
+        }
         public void OnBattleFrame(SPBattleFrame data)
         {
             var frame = data.frameID;

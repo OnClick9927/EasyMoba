@@ -1,6 +1,5 @@
 ﻿using LockStep.Math;
 using UnityEngine;
-using XLua.Cast;
 
 namespace EasyMoba.GameLogic
 {
@@ -35,6 +34,9 @@ namespace EasyMoba.GameLogic
             {
                 SendFrame();
             }
+            float h = Input.GetAxis("Horizontal");
+            float v = Input.GetAxis("Vertical");
+            SetJoyStick(h, v);
         }
 
 

@@ -56,6 +56,7 @@ namespace EasyMoba.GameLogic
 
         protected CSBattleFrame CreateFrame(string roomid, long roleid, int frame, FrameData op)
         {
+            op.roleID = roleid;
             return new CSBattleFrame()
             {
                 data = op,
@@ -70,7 +71,7 @@ namespace EasyMoba.GameLogic
         private void SPFrame(SPBattleFrame obj)
         {
 
-            Battle.Instance.frams.OnBattleFrame(obj);
+            Battle.Instance.frames.OnBattleFrame(obj);
         }
         private void SPAllRealy(SPBattleAllReady obj)
         {

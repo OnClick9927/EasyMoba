@@ -19,7 +19,7 @@ namespace LockStep.LCollision2D
             node.shapes.Clear();
             node.nodes.Clear();
             node.area = LRect.zero;
-            node.GlobalRecyle();
+            //node.GlobalRecyle();
         }
 
         public static bool CouldCollisionShape(LRect area, LFloat maxRadius, Shape shape)
@@ -55,7 +55,7 @@ namespace LockStep.LCollision2D
 
         public static int Repeat(int value, int length)
         {
-            return value % length;
+            return (value + length) % length;
         }
         private static bool IsRangeCross(LVector2 a, LVector2 b)
         {

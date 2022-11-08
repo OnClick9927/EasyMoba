@@ -7,17 +7,9 @@ namespace LockStep.Math
     [Serializable]
     public struct LVector2
     {
-        public LFloat x
-        {
-            get { return LFloat.CreateByRaw(_x); }
-            set { _x = value._val; }
-        }
+        public LFloat x { get => LFloat.CreateByRaw(_x); set => _x = value._val; }
 
-        public LFloat y
-        {
-            get { return LFloat.CreateByRaw(_y); }
-            set { _y = value._val; }
-        }
+        public LFloat y { get => LFloat.CreateByRaw(_y); set => _y = value._val; }
 
         public long _x;
         public long _y;
@@ -57,10 +49,7 @@ namespace LockStep.Math
         public const int ROTATE_CW_270 = 3;
         public const int ROTATE_CW_360 = 4;
 
-        public static LVector2 CreateByRaw(long x, long y)
-        {
-            return new LVector2() { _y = y, _x = x };
-        }
+        public static LVector2 CreateByRaw(long x, long y) => new LVector2() { _y = y, _x = x };
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public LVector2(LFloat x, LFloat y)
@@ -319,5 +308,27 @@ namespace LockStep.Math
                 (int)(((long)(b._y - a._y) * f._val) / LFloat.Precision) + a._y);
         }
 
+        public LVector2 RightVec()
+        {
+            return LVector2.CreateByRaw(this._y, -this._x);
+        }
+
+        public LVector2 LeftVec()
+        {
+            return LVector2.CreateByRaw(-this._y, this._x);
+        }
+
+        public LVector2 BackVec()
+        {
+            return LVector2.CreateByRaw(-this._x, -this._y);
+        }
+        public LVector2Int ToLVector2Int()
+        {
+            return new LVector2Int(this.x.ToInt(), this.y.ToInt());
+        }
+        public LVector2Int Floor()
+        {
+            return new LVector2Int(LMath.FloorToInt(this.x), LMath.FloorToInt(this.y));
+        }
     }
 }

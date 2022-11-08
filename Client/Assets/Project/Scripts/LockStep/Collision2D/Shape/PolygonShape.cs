@@ -63,16 +63,19 @@ namespace LockStep.LCollision2D
         {
             for (int i = 0; i < points.Count; i++)
             {
-                LVector2 last = points[(int)CollisionHelper.Repeat(i - 1, points.Count)];
+                var _last = (int)CollisionHelper.Repeat(i - 1, points.Count);
+                LVector2 last = points[_last];
                 LVector2 cur = points[i];
                 LVector2 next = points[(int)CollisionHelper.Repeat(i + 1, points.Count)];
 
                 if (CollisionHelper.IsPointInSegment(last, next, cur))
                 {
-                    points.RemoveAt(i);
+                    points.Remove(points[i]);
                     RemoveUselessPoint(points);
                     break;
                 }
+
+
             }
             return points.ToArray();
         }

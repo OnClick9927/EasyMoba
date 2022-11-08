@@ -15,7 +15,7 @@ namespace LockStep.LCollision2D
             this.delta = delta;
         }
 
-        public LogicUnit CreateUnit<T>(string name) where T : LogicUnit, new()
+        public T CreateUnit<T>(string name) where T : LogicUnit, new()
         {
             T t = new T() { name = name };
             objects.Add(t);
@@ -34,12 +34,16 @@ namespace LockStep.LCollision2D
         {
             for (int i = objects.Count - 1; i >= 0; i--)
             {
-                objects[i].OnDestory();
-                if (objects[i].collision != null)
+                if (objects[i].need_detory)
                 {
-                    tree.RemoveShape(objects[i].collision.shape);
+                    objects[i].OnDestory();
+                    if (objects[i].collision != null)
+                    {
+                        tree.RemoveShape(objects[i].collision.shape);
+                    }
+                    objects.Remove(objects[i]);
                 }
-                objects.RemoveAt(i);
+    
             }
             for (int i = 0; i < objects.Count; i++)
             {

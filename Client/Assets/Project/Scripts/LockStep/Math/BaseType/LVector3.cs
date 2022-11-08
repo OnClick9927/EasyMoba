@@ -223,7 +223,10 @@ namespace LockStep.Math
             return (int)(this._x * 73856093 ^ this._y * 19349663 ^ this._z * 83492791);
         }
 
-
+        public static LFloat AngleInt(LVector3 lhs, LVector3 rhs)
+        {
+            return LMath.Acos(Dot(lhs, rhs));
+        }
         public LFloat this[int index]
 
         {
@@ -355,6 +358,19 @@ namespace LockStep.Math
 
             return from + (to - from).Normalize(dt);
         }
+        public LVector3Int ToLVector3Int()
+        {
+            return new LVector3Int(this.x.ToInt(), this.y.ToInt(), this.z.ToInt());
+        }
 
+
+        public LVector3Int Floor()
+        {
+            return new LVector3Int(
+                LMath.FloorToInt(this.x),
+                LMath.FloorToInt(this.y),
+                LMath.FloorToInt(this.z)
+            );
+        }
     }
 }

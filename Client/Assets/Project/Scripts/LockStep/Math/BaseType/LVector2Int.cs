@@ -4,15 +4,18 @@ using System;
 
 namespace LockStep.Math
 {
-    public struct LVector2Int : IEquatable<LVector2Int> {
-        public class Mathf {
+    public struct LVector2Int : IEquatable<LVector2Int>
+    {
+        public class Mathf
+        {
             /// <summary>
             ///   <para>Returns the smallest of two or more values.</para>
             /// </summary>
             /// <param name="a"></param>
             /// <param name="b"></param>
             /// <param name="values"></param>
-            public static int Min(int a, int b){
+            public static int Min(int a, int b)
+            {
                 return a >= b ? b : a;
             }
 
@@ -22,11 +25,13 @@ namespace LockStep.Math
             /// <param name="a"></param>
             /// <param name="b"></param>
             /// <param name="values"></param>
-            public static int Max(int a, int b){
+            public static int Max(int a, int b)
+            {
                 return a <= b ? b : a;
             }
 
-            public static LFloat Sqrt(LFloat val){
+            public static LFloat Sqrt(LFloat val)
+            {
                 return Mathf.Sqrt(val);
             }
         }
@@ -40,7 +45,8 @@ namespace LockStep.Math
         private int m_X;
         private int m_Y;
 
-        public LVector2Int(int x, int y){
+        public LVector2Int(int x, int y)
+        {
             this.m_X = x;
             this.m_Y = y;
         }
@@ -48,7 +54,8 @@ namespace LockStep.Math
         /// <summary>
         ///   <para>X component of the vector.</para>
         /// </summary>
-        public int x {
+        public int x
+        {
             get { return this.m_X; }
             set { this.m_X = value; }
         }
@@ -56,7 +63,8 @@ namespace LockStep.Math
         /// <summary>
         ///   <para>Y component of the vector.</para>
         /// </summary>
-        public int y {
+        public int y
+        {
             get { return this.m_Y; }
             set { this.m_Y = value; }
         }
@@ -66,25 +74,30 @@ namespace LockStep.Math
         /// </summary>
         /// <param name="x"></param>
         /// <param name="y"></param>
-        public void Set(int x, int y){
+        public void Set(int x, int y)
+        {
             this.m_X = x;
             this.m_Y = y;
         }
 
-        public int this[int index] {
-            get {
+        public int this[int index]
+        {
+            get
+            {
                 if (index == 0)
                     return this.x;
                 if (index == 1)
                     return this.y;
                 throw new IndexOutOfRangeException(string.Format("Invalid Vector2Int index addressed: {0}!",
-                    (object) index));
+                    (object)index));
             }
-            set {
-                if (index != 0) {
+            set
+            {
+                if (index != 0)
+                {
                     if (index != 1)
                         throw new IndexOutOfRangeException(string.Format("Invalid Vector2Int index addressed: {0}!",
-                            (object) index));
+                            (object)index));
                     this.y = value;
                 }
                 else
@@ -95,14 +108,16 @@ namespace LockStep.Math
         /// <summary>
         ///   <para>Returns the length of this vector (Read Only).</para>
         /// </summary>
-        public LFloat magnitude {
+        public LFloat magnitude
+        {
             get { return Mathf.Sqrt(new LFloat(this.x * this.x + this.y * this.y)); }
         }
 
         /// <summary>
         ///   <para>Returns the squared length of this vector (Read Only).</para>
         /// </summary>
-        public int sqrMagnitude {
+        public int sqrMagnitude
+        {
             get { return this.x * this.x + this.y * this.y; }
         }
 
@@ -111,7 +126,8 @@ namespace LockStep.Math
         /// </summary>
         /// <param name="a"></param>
         /// <param name="b"></param>
-        public static LFloat Distance(LVector2Int a, LVector2Int b){
+        public static LFloat Distance(LVector2Int a, LVector2Int b)
+        {
             var num1 = (a.x - b.x);
             var num2 = (a.y - b.y);
             return Mathf.Sqrt(new LFloat(num1 * num1 + num2 * num2));
@@ -122,7 +138,8 @@ namespace LockStep.Math
         /// </summary>
         /// <param name="lhs"></param>
         /// <param name="rhs"></param>
-        public static LVector2Int Min(LVector2Int lhs, LVector2Int rhs){
+        public static LVector2Int Min(LVector2Int lhs, LVector2Int rhs)
+        {
             return new LVector2Int(Mathf.Min(lhs.x, rhs.x), Mathf.Min(lhs.y, rhs.y));
         }
 
@@ -131,7 +148,8 @@ namespace LockStep.Math
         /// </summary>
         /// <param name="lhs"></param>
         /// <param name="rhs"></param>
-        public static LVector2Int Max(LVector2Int lhs, LVector2Int rhs){
+        public static LVector2Int Max(LVector2Int lhs, LVector2Int rhs)
+        {
             return new LVector2Int(Mathf.Max(lhs.x, rhs.x), Mathf.Max(lhs.y, rhs.y));
         }
 
@@ -140,7 +158,8 @@ namespace LockStep.Math
         /// </summary>
         /// <param name="a"></param>
         /// <param name="b"></param>
-        public static LVector2Int Scale(LVector2Int a, LVector2Int b){
+        public static LVector2Int Scale(LVector2Int a, LVector2Int b)
+        {
             return new LVector2Int(a.x * b.x, a.y * b.y);
         }
 
@@ -148,7 +167,8 @@ namespace LockStep.Math
         ///   <para>Multiplies every component of this vector by the same component of scale.</para>
         /// </summary>
         /// <param name="scale"></param>
-        public void Scale(LVector2Int scale){
+        public void Scale(LVector2Int scale)
+        {
             this.x *= scale.x;
             this.y *= scale.y;
         }
@@ -158,7 +178,8 @@ namespace LockStep.Math
         /// </summary>
         /// <param name="min"></param>
         /// <param name="max"></param>
-        public void Clamp(LVector2Int min, LVector2Int max){
+        public void Clamp(LVector2Int min, LVector2Int max)
+        {
             this.x = Mathf.Max(min.x, this.x);
             this.x = Mathf.Min(max.x, this.x);
             this.y = Mathf.Max(min.y, this.y);
@@ -166,32 +187,39 @@ namespace LockStep.Math
         }
 
 
-        public static explicit operator LVector3Int(LVector2Int v){
+        public static explicit operator LVector3Int(LVector2Int v)
+        {
             return new LVector3Int(v.x, v.y, 0);
         }
 
 
-        public static LVector2Int operator +(LVector2Int a, LVector2Int b){
+        public static LVector2Int operator +(LVector2Int a, LVector2Int b)
+        {
             return new LVector2Int(a.x + b.x, a.y + b.y);
         }
 
-        public static LVector2Int operator -(LVector2Int a, LVector2Int b){
+        public static LVector2Int operator -(LVector2Int a, LVector2Int b)
+        {
             return new LVector2Int(a.x - b.x, a.y - b.y);
         }
 
-        public static LVector2Int operator *(LVector2Int a, LVector2Int b){
+        public static LVector2Int operator *(LVector2Int a, LVector2Int b)
+        {
             return new LVector2Int(a.x * b.x, a.y * b.y);
         }
 
-        public static LVector2Int operator *(LVector2Int a, int b){
+        public static LVector2Int operator *(LVector2Int a, int b)
+        {
             return new LVector2Int(a.x * b, a.y * b);
         }
 
-        public static bool operator ==(LVector2Int lhs, LVector2Int rhs){
+        public static bool operator ==(LVector2Int lhs, LVector2Int rhs)
+        {
             return lhs.x == rhs.x && lhs.y == rhs.y;
         }
 
-        public static bool operator !=(LVector2Int lhs, LVector2Int rhs){
+        public static bool operator !=(LVector2Int lhs, LVector2Int rhs)
+        {
             return !(lhs == rhs);
         }
 
@@ -199,13 +227,15 @@ namespace LockStep.Math
         ///   <para>Returns true if the objects are equal.</para>
         /// </summary>
         /// <param name="other"></param>
-        public override bool Equals(object other){
+        public override bool Equals(object other)
+        {
             if (!(other is LVector2Int))
                 return false;
-            return this.Equals((LVector2Int) other);
+            return this.Equals((LVector2Int)other);
         }
 
-        public bool Equals(LVector2Int other){
+        public bool Equals(LVector2Int other)
+        {
             return this.x.Equals(other.x) && this.y.Equals(other.y);
         }
 
@@ -215,57 +245,69 @@ namespace LockStep.Math
         /// <returns>
         ///   <para>The hash code of the Vector2Int.</para>
         /// </returns>
-        public override int GetHashCode(){
+        public override int GetHashCode()
+        {
             return this.x.GetHashCode() ^ this.y.GetHashCode() << 2;
         }
 
         /// <summary>
         ///   <para>Returns a nicely formatted string for this vector.</para>
         /// </summary>
-        public override string ToString(){
-            return string.Format("({0}, {1})", (object) this.x, (object) this.y);
+        public override string ToString()
+        {
+            return string.Format("({0}, {1})", (object)this.x, (object)this.y);
         }
 
         /// <summary>
         ///   <para>Shorthand for writing Vector2Int (0, 0).</para>
         /// </summary>
-        public static LVector2Int zero {
+        public static LVector2Int zero
+        {
             get { return LVector2Int.s_Zero; }
         }
 
         /// <summary>
         ///   <para>Shorthand for writing Vector2Int (1, 1).</para>
         /// </summary>
-        public static LVector2Int one {
+        public static LVector2Int one
+        {
             get { return LVector2Int.s_One; }
         }
 
         /// <summary>
         ///   <para>Shorthand for writing Vector2Int (0, 1).</para>
         /// </summary>
-        public static LVector2Int up {
+        public static LVector2Int up
+        {
             get { return LVector2Int.s_Up; }
         }
 
         /// <summary>
         ///   <para>Shorthand for writing Vector2Int (0, -1).</para>
         /// </summary>
-        public static LVector2Int down {
+        public static LVector2Int down
+        {
             get { return LVector2Int.s_Down; }
         }
 
         /// <summary>
         ///   <para>Shorthand for writing Vector2Int (-1, 0).</para>
         /// </summary>
-        public static LVector2Int left {
+        public static LVector2Int left
+        {
             get { return LVector2Int.s_Left; }
         }
 
         /// <summary>
         ///   <para>Shorthand for writing Vector2Int (1, 0).</para>
         /// </summary>
-        public static LVector2Int right {
+        public static LVector2Int right
+        {
             get { return LVector2Int.s_Right; }
+        }
+        public LVector2 ToLVector2()
+        {
+            return LVector2.CreateByRaw(this.x * LFloat.Precision, this.y * LFloat.Precision);
         }
     }
 }

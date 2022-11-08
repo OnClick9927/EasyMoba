@@ -10,7 +10,6 @@ namespace LockStep.Math
         public const long LPI2 = 6283185L;  //6.2831853
         public const long LRad2Deg = 57295780L;  //57.2957795
         public const long LDeg2Rad = 17453L;  //0.0174532
-        //Precision = 1000000
         public static readonly LFloat PIQuad = LFloat.CreateByRaw(LPIHalf);
         public static readonly LFloat PIHalf = LFloat.CreateByRaw(LPIHalf);
         public static readonly LFloat PI = LFloat.CreateByRaw(LPI);
@@ -498,16 +497,6 @@ namespace LockStep.Math
             return x;
         }
 
-        public static LFloat Dot(LVector2 u, LVector2 v)
-        {
-            return LFloat.CreateByRaw(((long)u._x * v._x + (long)u._y * v._y) / LFloat.Precision);
-        }
-
-
-        public static LFloat AngleInt(LVector3 lhs, LVector3 rhs)
-        {
-            return LMath.Acos(Dot(lhs, rhs));
-        }
 
         public static LFloat Min(LFloat a, LFloat b)
         {
@@ -522,55 +511,6 @@ namespace LockStep.Math
         public static LFloat Lerp(LFloat a, LFloat b, LFloat f)
         {
             return LFloat.CreateByRaw((int)(((long)(b._val - a._val) * f._val) / LFloat.Precision) + a._val);
-        }
-
-
-        public static LVector2 ToLVector2(this LVector2Int vec)
-        {
-            return LVector2.CreateByRaw( vec.x * LFloat.Precision, vec.y * LFloat.Precision);
-        }
-
-        public static LVector3 ToLVector3(this LVector3Int vec)
-        {
-            return LVector3.CreateByRaw( vec.x * LFloat.Precision, vec.y * LFloat.Precision, vec.z * LFloat.Precision);
-        }
-
-        public static LVector2Int ToLVector2Int(this LVector2 vec)
-        {
-            return new LVector2Int(vec.x.ToInt(), vec.y.ToInt());
-        }
-
-        public static LVector3Int ToLVector3Int(this LVector3 vec)
-        {
-            return new LVector3Int(vec.x.ToInt(), vec.y.ToInt(), vec.z.ToInt());
-        }
-
-        public static LVector2Int Floor(this LVector2 vec)
-        {
-            return new LVector2Int(LMath.FloorToInt(vec.x), LMath.FloorToInt(vec.y));
-        }
-
-        public static LVector3Int Floor(this LVector3 vec)
-        {
-            return new LVector3Int(
-                LMath.FloorToInt(vec.x),
-                LMath.FloorToInt(vec.y),
-                LMath.FloorToInt(vec.z)
-            );
-        }
-        public static LVector2 RightVec(this LVector2 vec)
-        {
-            return LVector2.CreateByRaw( vec._y, -vec._x);
-        }
-
-        public static LVector2 LeftVec(this LVector2 vec)
-        {
-            return LVector2.CreateByRaw( -vec._y, vec._x);
-        }
-
-        public static LVector2 BackVec(this LVector2 vec)
-        {
-            return LVector2.CreateByRaw( -vec._x, -vec._y);
         }
 
 

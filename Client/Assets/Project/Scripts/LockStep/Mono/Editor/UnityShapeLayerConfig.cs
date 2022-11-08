@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
 
 namespace LockStep.LCollision2D
 {
@@ -8,7 +9,7 @@ namespace LockStep.LCollision2D
         public CollisionLayerConfig cfg = new CollisionLayerConfig();
         public static string[] GetLayerNames()
         {
-            UnityShapeLayerConfig c = Resources.FindObjectsOfTypeAll<UnityShapeLayerConfig>()[0];
+            UnityShapeLayerConfig c = AssetDatabase.LoadAssetAtPath<UnityShapeLayerConfig>("Assets/Project/Scripts/LockStep/Mono/Editor/New Unity Shape Layer Config.asset");
             return c.cfg.Layers.ConvertAll(x => x.name).ToArray();
         }
         public string GetName(CollisionLayer layer)

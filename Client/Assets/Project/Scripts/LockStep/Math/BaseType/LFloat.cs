@@ -29,7 +29,8 @@ namespace LockStep.Math
 
         public static LFloat CreateByRaw(long rawVal)
         {
-            return new LFloat(rawVal) {
+            return new LFloat(rawVal)
+            {
                 _val = rawVal
             };
         }

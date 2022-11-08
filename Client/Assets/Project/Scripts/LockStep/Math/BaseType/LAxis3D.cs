@@ -17,9 +17,9 @@ namespace LockStep.Math
 
         public LVector3 WorldToLocal(LVector3 vec)
         {
-            var _x = LMath.Dot(x, vec);
-            var _y = LMath.Dot(y, vec);
-            var _z = LMath.Dot(z, vec);
+            var _x = LVector3.Dot(x, vec);
+            var _y = LVector3.Dot(y, vec);
+            var _z = LVector3.Dot(z, vec);
             return new LVector3(_x, _y, _z);
         }
         public LVector3 LocalToWorld(LVector3 vec)

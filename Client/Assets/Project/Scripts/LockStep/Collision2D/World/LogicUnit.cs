@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace LockStep.LCollision2D
 {
-    public partial class LogicUnit
+    public abstract partial class LogicUnit
     {
         private LFloat _localangle = LFloat.zero;
         private LVector2 _localPosition = LVector2.zero;
@@ -20,7 +20,7 @@ namespace LockStep.LCollision2D
             }
             set
             {
-                if (parent != null) _localPosition = value;
+                if (parent == null) _localPosition = value;
                 else _localPosition = value - parent.position;
             }
         }
@@ -33,7 +33,7 @@ namespace LockStep.LCollision2D
             }
             set
             {
-                if (parent != null) _localScele = value;
+                if (parent == null) _localScele = value;
                 else _localScele = value / parent.scale;
             }
         }
@@ -46,7 +46,7 @@ namespace LockStep.LCollision2D
             }
             set
             {
-                if (parent != null) _localangle = value;
+                if (parent == null) _localangle = value;
                 else _localangle = value - parent.angle;
             }
         }
@@ -112,12 +112,12 @@ namespace LockStep.LCollision2D
 
         }
 
-        protected virtual void OnFixedUpdate(int trick, LFloat delta) { }
-        protected virtual void OnTriggerEnter(Shape other) { }
-        protected virtual void OnTriggerStay(Shape other) { }
-        protected virtual void OnTriggerExit(Shape other) { }
-       
-        public virtual void OnDestory() { }
+        protected abstract void OnFixedUpdate(int trick, LFloat delta);
+        protected abstract void OnTriggerEnter(Shape other);
+        protected abstract void OnTriggerStay(Shape other);
+        protected abstract void OnTriggerExit(Shape other);
+
+        public abstract void OnDestory();
     }
 
 }

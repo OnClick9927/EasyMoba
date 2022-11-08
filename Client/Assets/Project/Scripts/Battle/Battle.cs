@@ -10,13 +10,13 @@ namespace EasyMoba.GameLogic
     {
         private BattleInput input;
         public BattleLogic logic;
-        public FrameCollection frams;
+        public FrameCollection frames;
         public MobaLogicWord word;
         private BattleModePlayer mode_server;
         private long role_id;
         private string room_id;
         private MatchRoomType room_type;
-        private List<long> players;
+        public List<long> players;
 
         public long Role_id { get => role_id; set => role_id = value; }
         public string Room_id { get => room_id; set => room_id = value; }
@@ -32,9 +32,9 @@ namespace EasyMoba.GameLogic
             TextAsset txt = asset.GetAsset<TextAsset>();
             Assets.Release(asset);
             word = new MobaLogicWord(JsonUtility.FromJson<CollisionLayerConfig>(txt.text));
-            frams = new FrameCollection(word);
-            input = new BattleInput(frams, mode_server);
-            logic = new BattleLogic();
+            frames = new FrameCollection(word);
+            input = new BattleInput(frames, mode_server);
+            logic = new BattleLogic(word);
         }
         private bool gameing;
 
@@ -53,7 +53,7 @@ namespace EasyMoba.GameLogic
             mode_server.Dispose();
             input = null;
             mode_server = null;
-            frams = null;
+            frames = null;
             logic = null;
         }
 
