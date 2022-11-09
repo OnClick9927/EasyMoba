@@ -179,7 +179,13 @@ namespace EasyMoba.GameLogic
                 var unit = word.CreateUnit<PlayerUnit>($"PlayerUnit {id}");
                 unit.role_id = id;
                 unit.position = bs[i];
-                unit.CreateCollision(new CircleShape() { radius = new LFloat(0.5f) });
+                unit.CreateCollision(new CircleShape() {
+                    layer = CollisionLayer._2,
+
+
+                    radius = new LFloat(0.5f), logic = true, rigidbody = true
+
+                }); ;
                 BattleCallLua.OnUnitCreate(unit);
             }
         }

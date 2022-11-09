@@ -124,7 +124,7 @@ namespace LockStep.LCollision2D
         {
             var seg_dir = seg_end - seg_start;
             var dir = point - seg_start;
-            var percent = LMath.Clamp01(LVector2.Dot(seg_dir, dir) / LVector2.Dot(dir, dir));
+            var percent = LMath.Clamp01(LVector2.Dot(seg_dir, dir) / LVector2.Dot(seg_dir, seg_dir));
             return seg_start + percent * seg_dir;
         }
         // 获取点到射线最近的一个点
@@ -537,14 +537,17 @@ namespace LockStep.LCollision2D
                             var move_dir = move.position - lastPos;
                             for (int j = 0; j < p.points.Length; j++)
                             {
-                                int _cur = (int)CollisionHelper.Repeat(j, p.points.Length);
-                                if (!IsPointInCapsule(lastPos, move.position, p.points[_cur], move.Radius))
+                                var curPoint = p.points[(int)CollisionHelper.Repeat(j, p.points.Length)];
+                                var lastpoint = p.points[(int)CollisionHelper.Repeat(j - 1, p.points.Length)];
+                                var p1 = FindNearestPointInSegment(lastpoint, curPoint, lastPos);
+                                var p2 = FindNearestPointInSegment(lastpoint, curPoint, move.position);
+                                var p3 = (p1 + p2) / 2;
+                                if (!IsPointInCapsule(lastPos, move.position, p3, move.Radius))
                                     continue;
-                                int last = (int)CollisionHelper.Repeat(j - 1, p.points.Length);
                                 var normal = p.nomals[j];
 
                                 if (LVector2.Dot(move_dir, normal) > 0) continue;
-                                var jiao = Point2LineIntersection(p.points[last], p.points[_cur], move.position);
+                                var jiao = Point2LineIntersection(lastpoint, curPoint, move.position);
                                 var _dir = shape.position - jiao;
                                 var add_dir = normal;
 

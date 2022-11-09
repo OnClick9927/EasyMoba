@@ -9,7 +9,7 @@ public class FrameData
     public long roleID;
 
     public LVector2 stick;
-   
+
 }
 
 public class CSBattleFrame
@@ -99,10 +99,7 @@ class Room
         }
 
     }
-    private SPBattleFrame GetCurFrame()
-    {
-        return frames[curFrame];
-    }
+
     private void CreateSPFrame()
     {
         frames[curFrame] = new SPBattleFrame()
@@ -125,40 +122,52 @@ class Room
         CreateSPFrame();
         timer = new Timer(Update, null, gap * 2, gap);
     }
-
+    private SPBattleFrame GetFrame(int frame_id)
+    {
+        return frames[frame_id];
+    }
 
     private void Update(object? state)
     {
-        foreach (var p in players.Values)
+        lock (frames)
         {
-            var from = p.frameID;
-            for (int i = from; i <= curFrame; i++)
+            foreach (var p in players.Values)
             {
-                call.SendBattleFrame(p.roleId, frames[i]);
+                var from = p.frameID;
+                for (int i = from; i <= curFrame; i++)
+                {
+                    call.SendBattleFrame(p.roleId, GetFrame(i));
+                }
             }
+            curFrame++;
+            CreateSPFrame();
         }
-        curFrame++;
-        CreateSPFrame();
+
     }
 
     public void ReadBattleFrame(CSBattleFrame frame)
     {
-        var frameID = frame.frameID;
-        var roleId = frame.roleID;
-        if (frameID > curFrame) return;//这个人太快了
-        if (frameID < curFrame)//这个人太慢了，不接受他的操作，只记录他同步到的fram
+        lock (frames)
         {
-            players[roleId].frameID = Math.Min(players[roleId].frameID, frameID);
-        }
-        else//这个人很正常
-        {
-            var scFrame = GetCurFrame();
-            players[roleId].frameID = frameID;
-            if (scFrame.datas.Find(x => x.roleID == roleId) == null)
+            var frameID = frame.frameID;
+            var roleId = frame.roleID;
+            if (frameID > curFrame) return;//这个人太快了
+            if (frameID < curFrame)//这个人太慢了，不接受他的操作，只记录他同步到的fram
             {
-                scFrame.datas.Add(frame.data);
+                players[roleId].frameID = Math.Min(players[roleId].frameID, frameID);
+            }
+            else//这个人很正常
+            {
+
+                var scFrame = GetFrame(curFrame);
+                players[roleId].frameID = frameID;
+                if (scFrame.datas.Find(x => x.roleID == roleId) == null)
+                {
+                    scFrame.datas.Add(frame.data);
+                }
             }
         }
+
     }
 
     internal void OnRoleDisConnect(long roleID)

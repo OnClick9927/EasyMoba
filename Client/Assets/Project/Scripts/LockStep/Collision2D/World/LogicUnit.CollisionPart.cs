@@ -19,7 +19,8 @@ namespace LockStep.LCollision2D
                   shape.scale != transform.scale
                   )
                 {
-                    last_pos = shape.position = transform.position;
+                    last_pos = shape.position;
+                    shape.position = transform.position;
                     shape.angle = transform.angle;
                     shape.scale = transform.scale;
                     shape.SetDirty();
