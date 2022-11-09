@@ -47,10 +47,11 @@ namespace LockStep.LCollision2D
                 var cur_point = points[cur];
                 for (int j = 0; j < bounds.Length; j++)
                 {
-                    if (bounds[i].FindLine(_last_point, cur_point))
+                    var bound = bounds[j];
+                    if (bound.FindLine(_last_point, cur_point))
                     {
-                        var point = CollisionHelper.Point2LineIntersection(_last_point, cur_point, bounds[i].center);
-                        LVector2 normal = (point - bounds[i].center).normalized;
+                        var point = CollisionHelper.Point2LineIntersection(_last_point, cur_point, bound.center);
+                        LVector2 normal = (point - bound.center).normalized;
                         nomals[i] = normal;
                         break;
                     }
@@ -87,7 +88,7 @@ namespace LockStep.LCollision2D
             LVector2 next = points[(int)CollisionHelper.Repeat(i + 1, points.Length)];
             var dir = cur - last;
             var dir2 = next - cur;
-            return LVector3.Cross(dir, dir2).z < 0;
+            return LVector3.Cross(dir, dir2).z > 0;
         }
         private static bool IsLeagal(LVector2[] points)
         {
