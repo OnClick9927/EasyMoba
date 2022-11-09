@@ -271,11 +271,6 @@
 		<type fullname="LockStep.LCollision2D.LogicWorld" preserve="all"/>
 		<type fullname="EasyMoba.MobaAssetsSetting" preserve="all"/>
 		<type fullname="EasyMoba.MobaAssetsUpdate" preserve="all"/>
-		<type fullname="EasyMoba.CircleShapeComponent" preserve="all"/>
-		<type fullname="EasyMoba.PlayerBornPlace" preserve="all"/>
-		<type fullname="EasyMoba.PolygonShapeComponent" preserve="all"/>
-		<type fullname="EasyMoba.MapInitData" preserve="all"/>
-		<type fullname="EasyMoba.MapInitCollection" preserve="all"/>
 		<type fullname="EasyMoba.MobaGame" preserve="all"/>
 		<type fullname="EasyMoba.MobaModules" preserve="all"/>
 		<type fullname="EasyMoba.TcpClient" preserve="all"/>
@@ -286,19 +281,23 @@
 		<type fullname="EasyMoba.UpdatePanelView" preserve="all"/>
 		<type fullname="EasyMoba.UpdateUIAsset" preserve="all"/>
 		<type fullname="EasyMoba.GameLogic.Battle" preserve="all"/>
-		<type fullname="EasyMoba.GameLogic.BattleInput" preserve="all"/>
-		<type fullname="EasyMoba.GameLogic.BattleCallLua" preserve="all"/>
-		<type fullname="EasyMoba.GameLogic.MobaUnit" preserve="all"/>
-		<type fullname="EasyMoba.GameLogic.WallUnit" preserve="all"/>
-		<type fullname="EasyMoba.GameLogic.GUnit" preserve="all"/>
-		<type fullname="EasyMoba.GameLogic.PlayerUnit" preserve="all"/>
 		<type fullname="EasyMoba.GameLogic.BattleLogic" preserve="all"/>
 		<type fullname="EasyMoba.GameLogic.FrameCollection" preserve="all"/>
 		<type fullname="EasyMoba.GameLogic.MobaLogicWord" preserve="all"/>
-		<type fullname="EasyMoba.GameLogic.BattleModePlayer" preserve="all"/>
-		<type fullname="EasyMoba.GameLogic.LocalModePlayer" preserve="all"/>
-		<type fullname="EasyMoba.GameLogic.NormalModePlayer" preserve="all"/>
-		<type fullname="EasyMoba.GameLogic.RecordModePlayer" preserve="all"/>
+		<type fullname="EasyMoba.GameLogic.MobaUnit" preserve="all"/>
+		<type fullname="EasyMoba.GameLogic.PlayerUnit" preserve="all"/>
+		<type fullname="EasyMoba.GameLogic.WallUnit" preserve="all"/>
+		<type fullname="EasyMoba.GameLogic.MapInitData" preserve="all"/>
+		<type fullname="EasyMoba.GameLogic.Mono.BattleInput" preserve="all"/>
+		<type fullname="EasyMoba.GameLogic.Mono.CircleShapeComponent" preserve="all"/>
+		<type fullname="EasyMoba.GameLogic.Mono.PlayerBornPlace" preserve="all"/>
+		<type fullname="EasyMoba.GameLogic.Mono.PolygonShapeComponent" preserve="all"/>
+		<type fullname="EasyMoba.GameLogic.Mono.MapInitCollection" preserve="all"/>
+		<type fullname="EasyMoba.GameLogic.Mono.BattleModePlayer" preserve="all"/>
+		<type fullname="EasyMoba.GameLogic.Mono.LocalModePlayer" preserve="all"/>
+		<type fullname="EasyMoba.GameLogic.Mono.NormalModePlayer" preserve="all"/>
+		<type fullname="EasyMoba.GameLogic.Mono.RecordModePlayer" preserve="all"/>
+		<type fullname="EasyMoba.GameLogic.Mono.MonoBattle" preserve="all"/>
 		<type fullname="IFramework.Game" preserve="all"/>
 		<type fullname="IFramework.IAwaterEx" preserve="all"/>
 		<type fullname="IFramework.Launcher" preserve="all"/>
@@ -360,9 +359,9 @@
 		<type fullname="LockStep.Math.LMath+LutAtan2Helper" preserve="all"/>
 		<type fullname="LockStep.LCollision2D.CollisionLayerConfig+LayerData" preserve="all"/>
 		<type fullname="LockStep.LCollision2D.LogicUnit+CollisionPart" preserve="all"/>
-		<type fullname="EasyMoba.MapInitData+PolygonData" preserve="all"/>
-		<type fullname="EasyMoba.MapInitData+CircleData" preserve="all"/>
-		<type fullname="EasyMoba.GameLogic.NormalModePlayer+UdpClient" preserve="all"/>
+		<type fullname="EasyMoba.GameLogic.MapInitData+PolygonData" preserve="all"/>
+		<type fullname="EasyMoba.GameLogic.MapInitData+CircleData" preserve="all"/>
+		<type fullname="EasyMoba.GameLogic.Mono.NormalModePlayer+UdpClient" preserve="all"/>
 		<type fullname="IFramework.IAwaterEx+ResourceRequestAwaiter" preserve="all"/>
 		<type fullname="IFramework.IAwaterEx+AsyncOperationAwaiter" preserve="all"/>
 		<type fullname="IFramework.UI.UIModule+ItemPool" preserve="all"/>

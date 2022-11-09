@@ -1,0 +1,15 @@
+---@class LogicUnit
+local M = class("LogicUnit")
+
+
+function M:ctor(cs_unit, gameObject)
+    self.cs_unit = cs_unit
+    self.gameObject = gameObject
+    self.transform = self.gameObject.transform
+end
+
+function M:Update()
+
+end
+
+return M

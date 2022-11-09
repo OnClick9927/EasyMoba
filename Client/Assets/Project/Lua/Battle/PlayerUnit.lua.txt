@@ -1,0 +1,10 @@
+local base = require("Battle.LogicUnit")
+---@class PlayerUnit:LogicUnit
+local M = class("PlayerUnit", base)
+
+function M:Update()
+    local pos = self.cs_unit.position:ToVector3XZ()
+    self.transform.position = pos
+end
+
+return M

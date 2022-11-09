@@ -49,11 +49,12 @@ namespace XLua.CSObjectWrap
             
 			try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-				if(LuaAPI.lua_gettop(L) == 2 && translator.Assignable<EasyMoba.GameLogic.MobaLogicWord>(L, 2))
+				if(LuaAPI.lua_gettop(L) == 3 && translator.Assignable<EasyMoba.GameLogic.IBattleView>(L, 2) && translator.Assignable<EasyMoba.GameLogic.MobaLogicWord>(L, 3))
 				{
-					EasyMoba.GameLogic.MobaLogicWord _word = (EasyMoba.GameLogic.MobaLogicWord)translator.GetObject(L, 2, typeof(EasyMoba.GameLogic.MobaLogicWord));
+					EasyMoba.GameLogic.IBattleView _view = (EasyMoba.GameLogic.IBattleView)translator.GetObject(L, 2, typeof(EasyMoba.GameLogic.IBattleView));
+					EasyMoba.GameLogic.MobaLogicWord _word = (EasyMoba.GameLogic.MobaLogicWord)translator.GetObject(L, 3, typeof(EasyMoba.GameLogic.MobaLogicWord));
 					
-					var gen_ret = new EasyMoba.GameLogic.BattleLogic(_word);
+					var gen_ret = new EasyMoba.GameLogic.BattleLogic(_view, _word);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -87,8 +88,10 @@ namespace XLua.CSObjectWrap
             
                 
                 {
+                    EasyMoba.GameLogic.MapInitData _map_data = (EasyMoba.GameLogic.MapInitData)translator.GetObject(L, 2, typeof(EasyMoba.GameLogic.MapInitData));
+                    System.Collections.Generic.List<long> _players = (System.Collections.Generic.List<long>)translator.GetObject(L, 3, typeof(System.Collections.Generic.List<long>));
                     
-                    gen_to_be_invoked.LoadBaseUnit(  );
+                    gen_to_be_invoked.LoadBaseUnit( _map_data, _players );
                     
                     
                     

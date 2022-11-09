@@ -21,12 +21,14 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(EasyMoba.GameLogic.MobaLogicWord);
-			Utils.BeginObjectRegister(type, L, translator, 0, 0, 0, 0);
+			Utils.BeginObjectRegister(type, L, translator, 0, 0, 1, 1);
 			
 			
 			
-			
-			
+			Utils.RegisterFunc(L, Utils.GETTER_IDX, "frames", _g_get_frames);
+            
+			Utils.RegisterFunc(L, Utils.SETTER_IDX, "frames", _s_set_frames);
+            
 			
 			Utils.EndObjectRegister(type, L, translator, null, null,
 			    null, null, null);
@@ -75,7 +77,36 @@ namespace XLua.CSObjectWrap
         
         
         
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _g_get_frames(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                EasyMoba.GameLogic.MobaLogicWord gen_to_be_invoked = (EasyMoba.GameLogic.MobaLogicWord)translator.FastGetCSObj(L, 1);
+                translator.Push(L, gen_to_be_invoked.frames);
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 1;
+        }
         
+        
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _s_set_frames(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                EasyMoba.GameLogic.MobaLogicWord gen_to_be_invoked = (EasyMoba.GameLogic.MobaLogicWord)translator.FastGetCSObj(L, 1);
+                gen_to_be_invoked.frames = (EasyMoba.GameLogic.FrameCollection)translator.GetObject(L, 2, typeof(EasyMoba.GameLogic.FrameCollection));
+            
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 0;
+        }
         
 		
 		
