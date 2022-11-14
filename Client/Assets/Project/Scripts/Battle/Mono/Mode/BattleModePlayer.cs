@@ -15,13 +15,13 @@ namespace EasyMoba.GameLogic.Mono
             this.type = type;
             this.roles = roles;
             Launcher.env.SubscribeWaitEnvironmentFrameHandler<SPBattleAllReady>(MonoBattle.Instance.SPAllRealy);
-            Launcher.env.SubscribeWaitEnvironmentFrameHandler<SPBattleFrame>(MonoBattle.Instance.SPFrame);
+            //Launcher.env.SubscribeWaitEnvironmentFrameHandler<SPBattleFrame>(MonoBattle.Instance.SPFrame);
 
         }
         public virtual void Dispose()
         {
             Launcher.env.UnSubscribeWaitEnvironmentFrameHandler<SPBattleAllReady>(MonoBattle.Instance.SPAllRealy);
-            Launcher.env.UnSubscribeWaitEnvironmentFrameHandler<SPBattleFrame>(MonoBattle.Instance.SPFrame);
+            //Launcher.env.UnSubscribeWaitEnvironmentFrameHandler<SPBattleFrame>(MonoBattle.Instance.SPFrame);
 
         }
 
@@ -64,7 +64,7 @@ namespace EasyMoba.GameLogic.Mono
             };
         }
         protected abstract void SendBattleFrameToServer(string roomid, long roleid, int frame, FrameData op);
-        protected void CallLuaFrame(SPBattleFrame obj) => MobaGame.Instance.env.WaitEnvironmentFrame(obj);
+        protected void CallLuaFrame(SPBattleFrame obj) => MonoBattle.Instance.SPFrame(obj);
         protected void CallLuaAllReady(SPBattleAllReady response) => MobaGame.Instance.env.WaitEnvironmentFrame(response);
       
 

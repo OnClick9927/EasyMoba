@@ -54,6 +54,7 @@ static class ServerTool
     public static void OnAccept(SocketToken sToken)
     {
         Log.L($"用户端上线  {sToken.TokenIpEndPoint.Address}:{sToken.TokenIpEndPoint.Port}");
+        GetModule<BattleModule>();
     }
 
     internal static void OnDisconnect(SocketToken sToken, long id)

@@ -10,6 +10,10 @@ function M.StartGame(battle_mode, room_id, room_type, players)
     end)
 end
 
+NetEvents.SetHandler(NetEventDefine.SPBattleAllReady, function(data)
+    local cs_battle = CS.EasyMoba.GameLogic.Mono.MonoBattle.Instance
+    cs_battle:SPAllRealy(data)
+end)
 
 
 

@@ -5,6 +5,8 @@ using IFramework.Net;
 using IFramework.Net.Udp;
 using Newtonsoft.Json;
 using System.Net;
+using System.Net.Sockets;
+using System.Runtime.Intrinsics.Arm;
 using System.Text;
 
 namespace EMO.Project.Game.Battle.Rooms;
@@ -12,31 +14,40 @@ namespace EMO.Project.Game.Battle.Rooms;
 class BattleModule : IFramework.Module
 {
     private Dictionary<string, Room> rooms = new Dictionary<string, Room>();
-    private IUdpServerProvider server;
+    //private IUdpServerProvider server;
     private Encoding en = Encoding.UTF8;
     private Dictionary<long, IPEndPoint> roles = new Dictionary<long, IPEndPoint>();
-
+    private UdpClient client;
     protected override ModulePriority OnGetDefautPriority()
     {
         return base.OnGetDefautPriority() + 20;
     }
     protected override void Awake()
     {
-        server = NetTool.CreateUdpSever(ServerConst.udppkgSize, ServerConst.connections);
-        server.ReceivedOffsetHanlder += RecieveBattleFrame;
-        server.Start(ServerConst.udpPort);
+        //server = NetTool.CreateUdpSever(ServerConst.udppkgSize, ServerConst.connections);
+        //server.ReceivedOffsetHanlder += RecieveBattleFrame;
+        //server.Start(ServerConst.udpPort);
+        client = new UdpClient(new IPEndPoint(IPAddress.Any,ServerConst.udpPort));
+        Go();
+    }
+    async void Go()
+    {
+        UdpReceiveResult result = await client.ReceiveAsync();
+        RecieveBattleFrame(result.Buffer, result.RemoteEndPoint);
+        Go();
     }
 
     protected override void OnDispose()
     {
-
+        client.Dispose();
+        //server.Dispose();
     }
     public void BuildRoom(SPMatchSuccess sp)
     {
         List<long> roles = new List<long>(sp.enemy);
         roles.AddRange(sp.roles);
         rooms.Add(sp.roomID, new Room(sp.type, roles,
-            1000 / ServerConst.battleRoomTrickPerSecond,
+            66,
             new ServerCanCallClientBattleMsg()));
     }
 
@@ -57,28 +68,28 @@ class BattleModule : IFramework.Module
         }
     }
 
-    public void RecieveBattleFrame(SegmentToken session)
+    public void RecieveBattleFrame(byte[] buffer,IPEndPoint point)
     {
-        var buffer = session.Data.buffer;
         var str = en.GetString(buffer);
         CSBattleFrame? frame = JsonConvert.DeserializeObject<CSBattleFrame>(str);
         var roomID = frame.roomID;
         if (FindRoom(roomID) == null) return;
         var roleID = frame.roleID;
         if (roles.ContainsKey(roleID))
-            roles[roleID] = session.sToken.TokenIpEndPoint;
+            roles[roleID] = point;
         else
-            roles.Add(roleID, session.sToken.TokenIpEndPoint);
+            roles.Add(roleID, point);
         FindRoom(roomID).ReadBattleFrame(frame);
     }
     public void SendBattleFrame(long roleID, SPBattleFrame frame)
     {
         var result = JsonConvert.SerializeObject(frame);
         var bytes = en.GetBytes(result);
-        SegmentOffset dataSegment = new SegmentOffset(bytes);
+        //SegmentOffset dataSegment = new SegmentOffset(bytes);
         if (roles.ContainsKey(roleID))
         {
-            server.Send(dataSegment, roles[roleID]);
+            client.SendAsync(bytes, roles[roleID]);
+            //server.Send(dataSegment, );
         }
 
     }

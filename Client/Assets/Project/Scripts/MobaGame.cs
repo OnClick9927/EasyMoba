@@ -27,11 +27,13 @@ namespace EasyMoba
         public string ip = "127.0.0.1";
         private int tcpPort = 9633;
         [HideInInspector]
-        public int UdpPort = 10568;
+        public int UdpPort = 9634;
 
         public static int udpbufSize = 1024 * 128;
         public static int tcpBufSize = 1024 * 1024;
         public static int udpGap = 1000 / 66;
+        public int Frame;
+
         public override void Init()
         {
             MobaPerfs.SetKey(playerPrefsKey);

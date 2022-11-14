@@ -19,7 +19,11 @@ namespace EasyMoba.GameLogic.Mono
         public long Role_id { get => battle.Role_id; }
         public string Room_id { get => battle.Room_id; }
         public void SPFrame(SPBattleFrame obj) => battle.ReadFrame(obj);
-        public void SPAllRealy(SPBattleAllReady obj) => battle.StartPlayLogic(obj);
+        public void SPAllRealy(SPBattleAllReady obj) {
+            battle.StartPlayLogic(obj);
+            gameing = true;
+
+        }
         public int CurFrame => battle.GetCurFrame();
         public async void StartGame(BattlePlayMode mode, long role_id, string room_id, MatchRoomType type, List<long> players)
         {
@@ -39,7 +43,6 @@ namespace EasyMoba.GameLogic.Mono
             MapInitCollection collection = FindObjectOfType<MapInitCollection>();
             mode_server.CallServerReady(Role_id, Room_id);
             battle.SetMapData(collection.data);
-            gameing = true;
         }
         public void CloseGame()
         {

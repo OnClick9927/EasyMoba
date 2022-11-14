@@ -228,11 +228,11 @@
 		<type fullname="IFramework.Hotfix.Lua.LuaField" preserve="all"/>
 		<type fullname="IFramework.Hotfix.Lua.LuaBehaviour" preserve="all"/>
 		<type fullname="Tutorial.DerivedClass+TestEnumInner" preserve="all"/>
+		<type fullname="MatchRoomType" preserve="all"/>
+		<type fullname="ModuleDefine" preserve="all"/>
 		<type fullname="FrameData" preserve="all"/>
 		<type fullname="CSBattleFrame" preserve="all"/>
 		<type fullname="SPBattleFrame" preserve="all"/>
-		<type fullname="MatchRoomType" preserve="all"/>
-		<type fullname="ModuleDefine" preserve="all"/>
 		<type fullname="SPBattleAllReady" preserve="all"/>
 		<type fullname="CSBattleReady" preserve="all"/>
 		<type fullname="ICanCallClientBattleMsg" preserve="all"/>
@@ -361,7 +361,6 @@
 		<type fullname="LockStep.LCollision2D.LogicUnit+CollisionPart" preserve="all"/>
 		<type fullname="EasyMoba.GameLogic.MapInitData+PolygonData" preserve="all"/>
 		<type fullname="EasyMoba.GameLogic.MapInitData+CircleData" preserve="all"/>
-		<type fullname="EasyMoba.GameLogic.Mono.NormalModePlayer+UdpClient" preserve="all"/>
 		<type fullname="IFramework.IAwaterEx+ResourceRequestAwaiter" preserve="all"/>
 		<type fullname="IFramework.IAwaterEx+AsyncOperationAwaiter" preserve="all"/>
 		<type fullname="IFramework.UI.UIModule+ItemPool" preserve="all"/>

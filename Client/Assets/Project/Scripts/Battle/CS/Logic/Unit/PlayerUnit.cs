@@ -20,7 +20,7 @@ namespace EasyMoba.GameLogic
             var data = GetFrame(trick, role_id);
             if (data != null)
             {
-                LVector2 stick = data.stick;
+                LVector2 stick = new LVector2(data.stick_x, data.stick_y); 
                 this.position += stick;
             }
         }

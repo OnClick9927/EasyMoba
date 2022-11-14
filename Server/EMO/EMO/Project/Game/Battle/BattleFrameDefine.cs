@@ -21,14 +21,16 @@ public enum ModuleDefine
     Battle,
 }
 #endif
+[System.Serializable]
 public class FrameData
 {
     public long roleID;
 
-    public LVector2 stick;
+    public LFloat stick_x;
+    public LFloat stick_y;
 
 }
-
+[System.Serializable]
 public class CSBattleFrame
 {
     public string roomID;
@@ -36,7 +38,7 @@ public class CSBattleFrame
     public long roleID;
     public FrameData data;
 }
-
+[System.Serializable]
 public class SPBattleFrame
 {
     public int frameID;
@@ -124,7 +126,7 @@ class Room
             timer = null;
         }
     }
-    private void GameBegin()
+    private async void GameBegin()
     {
         SPBattleAllReady sp = new SPBattleAllReady();
         foreach (var roleID in players.Keys)
@@ -132,6 +134,7 @@ class Room
             call.SendResponse(roleID, sp);
         }
         CreateSPFrame();
+        //await Task.Delay(1000);
         //Update, null, gap * 2, gap
         timer = new Timer(gap);
         timer.Elapsed += Update;

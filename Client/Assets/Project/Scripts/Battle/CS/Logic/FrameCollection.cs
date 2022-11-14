@@ -31,6 +31,7 @@ namespace EasyMoba.GameLogic
             {
                 word.FixedUpdate(curFrame);
                 curFrame++;
+                MobaGame.Instance.Frame = curFrame;
             }
         }
     }

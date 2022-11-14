@@ -38,7 +38,7 @@ namespace IFramework.Net
         }
         public static IUdpServerProvider CreateUdpSever(int chunkBufferSize = 4096, int maxNumberOfConnections = 32,bool broadcast=false)
         {
-            return new UdpServerProvider(chunkBufferSize, maxNumberOfConnections,broadcast);
+            return new UdpServerProvider( maxNumberOfConnections, chunkBufferSize, broadcast);
         }
         public static IWSClientProvider CreateWSClient(int chunkBufferSize = 4096, int sendConcurrentSize = 8)
         {

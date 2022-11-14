@@ -40,7 +40,8 @@ namespace EasyMoba.GameLogic.Mono
 
         public void SetJoyStick(float x, float y)
         {
-            data.stick = new LVector2(new LFloat(x), new LFloat(y));
+            data.stick_x = new LFloat(x);
+            data.stick_y = new LFloat(y);
         }
     }
 }
