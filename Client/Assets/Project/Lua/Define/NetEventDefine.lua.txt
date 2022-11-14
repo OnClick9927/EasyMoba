@@ -36,14 +36,6 @@ NetEventDefine = {
 		MainId = 3,
 		SubId = 2,
 	},
-	CSBattleFrame = {
-		MainId = 3,
-		SubId = 3,
-	},
-	SPBattleFrame = {
-		MainId = 3,
-		SubId = 4,
-	},
 }
 
 ---@class CSRoleLogin
@@ -83,41 +75,23 @@ NetEventDefine = {
 
 ---@class SPBattleAllReady
 
----@class CSBattleFrame
----@field roomID string
----@field frameID number
----@field roleID number
----@field data FrameData
-
----@class SPBattleFrame
----@field frameID number
----@field datas FrameData[]
-
----@class LoginType Enum
-
----@class LoginErrCode Enum
-
----@class MatchRoomType Enum
-
----@class MatchErrCode Enum
-
----@class FrameData
----@field roleID number
----@field opText string
-
 NetEventDefine.Enums = {
+	---@enum LoginType
 	LoginType = {
 		Login = 0,
 		Signin = 1,
 	},
+	---@enum LoginErrCode
 	LoginErrCode = {
 		Success = 0,
 		NotExistRoleID = 1,
 		PasswordErr = 2,
 	},
+	---@enum MatchRoomType
 	MatchRoomType = {
 		Normal = 0,
 	},
+	---@enum MatchErrCode
 	MatchErrCode = {
 		Success = 0,
 		ReadyInMatch = 1,

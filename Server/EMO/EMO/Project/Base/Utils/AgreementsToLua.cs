@@ -44,6 +44,7 @@ namespace EMO.Project.Base.Utils
             foreach (var type in types)
             {
                 string name = type.Name;
+                result += $"\t---@enum {name}\n";
                 result += $"\t{name} = {left}\n";
                 var arr = Enum.GetValues(type);
                 foreach (var val in arr)
@@ -172,10 +173,11 @@ namespace EMO.Project.Base.Utils
         private static string BuildString(Type type, string result, List<Type> other, List<Type> enumTypes)
         {
             string className = type.Name;
-            result += $"\n---@class {className}";
 
             if (!type.IsEnum)
             {
+                result += $"\n---@class {className}";
+
                 result += $"\n";
                 var fileds = type.GetFields();
                 var ps = type.GetProperties();
@@ -187,7 +189,7 @@ namespace EMO.Project.Base.Utils
             }
             else
             {
-                result += $" Enum\n";
+                //result += $" Enum\n";
                 enumTypes.Add(type);
             }
 

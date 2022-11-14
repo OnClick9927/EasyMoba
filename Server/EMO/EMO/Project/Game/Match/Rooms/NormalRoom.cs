@@ -6,9 +6,13 @@ class NormalRoom : Room
 
     public override void Update()
     {
-        if (roles.Count >= 2)
+        //if (roles.Count >= 2)
+        //{
+        //    Send(new long[] { roles[0] }, new long[] { roles[1] });
+        //}
+        if (roles.Count >= 1)
         {
-            Send(new long[] { roles[0] }, new long[] { roles[1] });
+            Send(new long[] { roles[0] }, new long[0] { });
         }
     }
 }

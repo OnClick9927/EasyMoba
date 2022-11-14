@@ -11,6 +11,7 @@ class BattleRequestHandler
     public static void OnRecieve(SocketToken sToken, CSBattleReady req)
     {
 
+
         ServerTool.GetModule<BattleModule>().PlayerReady(req.roomID, req.roleID);
     }
 }

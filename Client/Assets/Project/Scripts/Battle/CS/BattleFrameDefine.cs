@@ -1,9 +1,26 @@
-﻿using EasyMoba;
+﻿
 using LockStep.Math;
-using System;
-using System.Collections.Generic;
 using System.Timers;
+using Timer = System.Timers.Timer;
+using System.Collections.Generic;
+#if !UNITY_5_3_OR_NEWER
+using EMO.Project.Base.Net;
+using EMO.Project.Game;
+using EMO.Project.Game.Match;
+#else
+using EasyMoba;
 
+public enum MatchRoomType
+{
+    Normal,
+}
+public enum ModuleDefine
+{
+    Role = 1,
+    Match = 2,
+    Battle,
+}
+#endif
 public class FrameData
 {
     public long roleID;
@@ -27,16 +44,7 @@ public class SPBattleFrame
     public List<FrameData> datas;
 }
 
-public enum MatchRoomType
-{
-    Normal,
-}
-public enum ModuleDefine
-{
-    Role = 1,
-    Match = 2,
-    Battle,
-}
+
 [NetMessageCode(ModuleDefine.Battle, 2)]
 public class SPBattleAllReady : INetMsg
 {
@@ -162,7 +170,7 @@ class Room
             if (frameID > curFrame) return;//这个人太快了
             if (frameID < curFrame)//这个人太慢了，不接受他的操作，只记录他同步到的fram
             {
-                players[roleId].frameID = Math.Min(players[roleId].frameID, frameID);
+                players[roleId].frameID = System.Math.Min(players[roleId].frameID, frameID);
             }
             else//这个人很正常
             {

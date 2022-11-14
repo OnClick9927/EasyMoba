@@ -38,8 +38,8 @@ namespace EasyMoba
         private int port = 9633;
         private readonly int bufsize;
         private string ip = "127.0.0.1";
-        //private Dictionary<Type, string> requstMap;
-        //private Dictionary<string, Type> responseMap;
+        private Dictionary<Type, string> requstMap;
+        private Dictionary<string, Type> responseMap;
         private PacketReader reader = new PacketReader(1024 * 1024);
         private Encoding en = Encoding.UTF8;
         public bool connected { get { return client.IsConnected; } }
@@ -48,26 +48,30 @@ namespace EasyMoba
         public event Action onConnect, onDisconnect;
         private void Init()
         {
-            //responseMap = typeof(INetMsg).GetSubTypesInAssemblys().ToList().ConvertAll((type) =>
-            //{
-            //    NetMessageCode h =
-            //        type.GetCustomAttributes(typeof(NetMessageCode), false).First() as NetMessageCode;
-            //    return new { type, h.MainId, h.SubId };
-            //}).ToDictionary(
-            //        (a) => a.MainId + "-" + a.SubId,
-            //        (a) => a.type
-            //    );
+            responseMap = typeof(INetMsg).GetSubTypesInAssemblys()
+                .Where(x => !x.IsAbstract).ToList().
+                ConvertAll((type) =>
+            {
+                NetMessageCode h =
+                    type.GetCustomAttributes(typeof(NetMessageCode), false).First() as NetMessageCode;
+                return new { type, h.MainId, h.SubId };
+            }).ToDictionary(
+                    (a) => a.MainId + "-" + a.SubId,
+                    (a) => a.type
+                );
 
 
-            //requstMap = typeof(INetMsg).GetSubTypesInAssemblys().ToList().ToDictionary(
-            //        (a) => a,
-            //        (type) =>
-            //        {
-            //            NetMessageCode h =
-            //                type.GetCustomAttributes(typeof(NetMessageCode), false).First() as NetMessageCode;
-            //            return h.MainId + "-" + h.SubId;
-            //        }
-            //    );
+            requstMap = typeof(INetMsg).GetSubTypesInAssemblys()
+                .Where(x => !x.IsAbstract).ToList().
+                ToDictionary(
+                    (a) => a,
+                    (type) =>
+                    {
+                        NetMessageCode h =
+                            type.GetCustomAttributes(typeof(NetMessageCode), false).First() as NetMessageCode;
+                        return h.MainId + "-" + h.SubId;
+                    }
+                );
             Launcher.env.BindDispose(Dispose);
             client = NetTool.CreateTcpClient(bufsize);
             client.ReceivedOffsetCallback += OnRecieve;
@@ -146,15 +150,12 @@ namespace EasyMoba
 
         public void SendRequest<TRequest>(TRequest req) where TRequest : INetMsg
         {
-            //Debug.Log(string.Format("<color=#209DBF>发送请求到服务器\n{0}</color>", JsonUtility.ToJson(req, true)));
-
-            //Type type = typeof(TRequest);
-            //var msgHead = requstMap[type];
-            //var list = msgHead.Split('-');
-
-
-            //var packet = new Packet(1, Convert.ToUInt32(list[0]), Convert.ToUInt32(list[1]), 1, en.GetBytes(JsonUtility.ToJson(req)));
-            //client?.Send(new SegmentOffset(packet.Pack()));
+            Debug.Log(string.Format("<color=#209DBF>发送请求到服务器\n{0}</color>", JsonUtility.ToJson(req, true)));
+            Type type = typeof(TRequest);
+            var msgHead = requstMap[type];
+            var list = msgHead.Split('-');
+            var packet = new Packet(1, Convert.ToUInt32(list[0]), Convert.ToUInt32(list[1]), 1, en.GetBytes(JsonUtility.ToJson(req)));
+            client?.Send(new SegmentOffset(packet.Pack()));
         }
         private void PacketHandler(Packet pkg)
         {
@@ -164,15 +165,12 @@ namespace EasyMoba
             Debug.Log(string.Format("<color=#209DBF>收到服务器反馈消息\n{0}</color>", str));
             onLuaResponse?.Invoke(pkg.MainId, pkg.SubId, str);
 
-            //if (responseMap.ContainsKey(key))
-            //{
-            //    var type = responseMap[key];
-            //    INetMsg req = JsonUtility.FromJson(str, type) as INetMsg;
-            //    Launcher.env.WaitEnvironmentFrame(() =>
-            //    {
-            //        onResponse?.Invoke(type, req);
-            //    });
-            //}
+            if (responseMap.ContainsKey(key))
+            {
+                var type = responseMap[key];
+                INetMsg req = JsonUtility.FromJson(str, type) as INetMsg;
+                onResponse?.Invoke(type, req);
+            }
 
         }
         private void OnRecieve(SegmentToken session)

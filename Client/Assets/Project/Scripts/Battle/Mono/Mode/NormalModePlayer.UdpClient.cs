@@ -2,6 +2,7 @@
 using IFramework.Net;
 using System.Text;
 using UnityEngine;
+using UnityEditor.PackageManager;
 
 namespace EasyMoba.GameLogic.Mono
 {

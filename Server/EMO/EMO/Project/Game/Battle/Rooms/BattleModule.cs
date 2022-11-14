@@ -76,11 +76,11 @@ class BattleModule : IFramework.Module
         var result = JsonConvert.SerializeObject(frame);
         var bytes = en.GetBytes(result);
         SegmentOffset dataSegment = new SegmentOffset(bytes);
-        var point = roles[roleID];
-        if (point != null)
+        if (roles.ContainsKey(roleID))
         {
-            server.Send(dataSegment, point);
+            server.Send(dataSegment, roles[roleID]);
         }
+
     }
     public void OnRoleDisConnect(long roleID)
     {

@@ -23,7 +23,7 @@ public static class ServerConst
     public const int connections = 2000;
     public const int pkgSize = 1024 * 1024;
     public const int udppkgSize = 1024 * 128;
-    public const int udpPort = 9634;
+    public const int udpPort = 10568;
     public const int battleRoomTrickPerSecond = 66;
 
     public const string rootPath = "";
