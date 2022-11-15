@@ -39,9 +39,9 @@ public class SPMatchSuccess : INetMsg
 {
     public MatchRoomType type { get; set; }
     public string roomID { get; set; }
-    public long[] roles;
-    public long[] enemy;
+    public BattlePlayer[] roles;
 }
+
 
 public enum MatchErrCode
 {

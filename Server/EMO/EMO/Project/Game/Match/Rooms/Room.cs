@@ -26,8 +26,26 @@ abstract class Room
     {
         SPMatchSuccess sp = new SPMatchSuccess();
         sp.roomID = Guid.NewGuid().ToString();
-        sp.roles = roles;
-        sp.enemy = enemy;
+        if (enemy != null)
+        {
+            sp.roles = new BattlePlayer[roles.Length + enemy.Length];
+            for (int i = 0; i < roles.Length; i++)
+            {
+                sp.roles[i] = new BattlePlayer() { role_id = roles[i], type = TeamType.One };
+            }
+            for (int i = 0; i < enemy.Length; i++)
+            {
+                sp.roles[i + roles.Length] = new BattlePlayer() { role_id = enemy[i], type = TeamType.Two };
+            }
+        }
+        else
+        {
+            sp.roles = new BattlePlayer[roles.Length];
+            for (int i = 0; i < roles.Length; i++)
+            {
+                sp.roles[i] = new BattlePlayer() { role_id = roles[i], type = TeamType.One };
+            }
+        }
         sp.type = type;
         if (roles != null)
             for (int i = 0; i < roles.Length; i++)

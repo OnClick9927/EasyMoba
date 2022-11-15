@@ -44,9 +44,8 @@ class BattleModule : IFramework.Module
     }
     public void BuildRoom(SPMatchSuccess sp)
     {
-        List<long> roles = new List<long>(sp.enemy);
-        roles.AddRange(sp.roles);
-        rooms.Add(sp.roomID, new Room(sp.type, roles,
+      
+        rooms.Add(sp.roomID, new Room(sp.type, sp.roles,
             66,
             new ServerCanCallClientBattleMsg()));
     }

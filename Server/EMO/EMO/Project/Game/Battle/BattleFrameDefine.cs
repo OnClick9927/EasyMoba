@@ -21,6 +21,18 @@ public enum ModuleDefine
     Battle,
 }
 #endif
+
+public enum TeamType
+{
+    One,
+    Two
+}
+public class BattlePlayer
+{
+
+    public long role_id;
+    public TeamType type;
+}
 [System.Serializable]
 public class FrameData
 {
@@ -70,7 +82,8 @@ class Room
     public MatchRoomType type;
     public class Player
     {
-        public long roleId;
+        public BattlePlayer bplayer;
+        public long roleId { get { return bplayer.role_id; } }
         public int frameID;
         public bool ready = false;
 
@@ -82,16 +95,16 @@ class Room
     private int gap;
     private Timer timer;
     private ICanCallClientBattleMsg call;
-    public Room(MatchRoomType type, List<long> roles, int gap, ICanCallClientBattleMsg call)
+    public Room(MatchRoomType type, BattlePlayer[] roles, int gap, ICanCallClientBattleMsg call)
     {
         this.call = call;
         this.type = type;
         this.gap = gap;
-        for (int i = 0; i < roles.Count; i++)
+        for (int i = 0; i < roles.Length; i++)
         {
-            players.Add(roles[i], new Player()
+            players.Add(roles[i].role_id, new Player()
             {
-                roleId = roles[i],
+                bplayer = roles[i],
             });
         }
     }
