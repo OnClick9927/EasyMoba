@@ -21,7 +21,7 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(EasyMoba.MobaGame);
-			Utils.BeginObjectRegister(type, L, translator, 0, 6, 6, 6);
+			Utils.BeginObjectRegister(type, L, translator, 0, 6, 7, 7);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Init", _m_Init);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Startup", _m_Startup);
@@ -37,6 +37,7 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "playerPrefsKey", _g_get_playerPrefsKey);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "ip", _g_get_ip);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "UdpPort", _g_get_UdpPort);
+            Utils.RegisterFunc(L, Utils.GETTER_IDX, "Frame", _g_get_Frame);
             
 			Utils.RegisterFunc(L, Utils.SETTER_IDX, "modules", _s_set_modules);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "canvas", _s_set_canvas);
@@ -44,6 +45,7 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "playerPrefsKey", _s_set_playerPrefsKey);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "ip", _s_set_ip);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "UdpPort", _s_set_UdpPort);
+            Utils.RegisterFunc(L, Utils.SETTER_IDX, "Frame", _s_set_Frame);
             
 			
 			Utils.EndObjectRegister(type, L, translator, null, null,
@@ -395,6 +397,20 @@ namespace XLua.CSObjectWrap
             return 1;
         }
         
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _g_get_Frame(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                EasyMoba.MobaGame gen_to_be_invoked = (EasyMoba.MobaGame)translator.FastGetCSObj(L, 1);
+                LuaAPI.xlua_pushinteger(L, gen_to_be_invoked.Frame);
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 1;
+        }
+        
         
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
@@ -519,6 +535,21 @@ namespace XLua.CSObjectWrap
 		    try {
                 
 			    EasyMoba.MobaGame.udpGap = LuaAPI.xlua_tointeger(L, 1);
+            
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 0;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _s_set_Frame(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                EasyMoba.MobaGame gen_to_be_invoked = (EasyMoba.MobaGame)translator.FastGetCSObj(L, 1);
+                gen_to_be_invoked.Frame = LuaAPI.xlua_tointeger(L, 2);
             
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);

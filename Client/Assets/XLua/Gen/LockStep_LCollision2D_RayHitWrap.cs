@@ -21,17 +21,19 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(LockStep.LCollision2D.RayHit);
-			Utils.BeginObjectRegister(type, L, translator, 0, 0, 3, 3);
+			Utils.BeginObjectRegister(type, L, translator, 0, 0, 4, 4);
 			
 			
 			
 			Utils.RegisterFunc(L, Utils.GETTER_IDX, "point", _g_get_point);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "distance", _g_get_distance);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "shape", _g_get_shape);
+            Utils.RegisterFunc(L, Utils.GETTER_IDX, "normal", _g_get_normal);
             
 			Utils.RegisterFunc(L, Utils.SETTER_IDX, "point", _s_set_point);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "distance", _s_set_distance);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "shape", _s_set_shape);
+            Utils.RegisterFunc(L, Utils.SETTER_IDX, "normal", _s_set_normal);
             
 			
 			Utils.EndObjectRegister(type, L, translator, null, null,
@@ -120,6 +122,20 @@ namespace XLua.CSObjectWrap
             return 1;
         }
         
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _g_get_normal(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                LockStep.LCollision2D.RayHit gen_to_be_invoked;translator.Get(L, 1, out gen_to_be_invoked);
+                translator.Push(L, gen_to_be_invoked.normal);
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 1;
+        }
+        
         
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
@@ -166,6 +182,24 @@ namespace XLua.CSObjectWrap
 			
                 LockStep.LCollision2D.RayHit gen_to_be_invoked;translator.Get(L, 1, out gen_to_be_invoked);
                 gen_to_be_invoked.shape = (LockStep.LCollision2D.Shape)translator.GetObject(L, 2, typeof(LockStep.LCollision2D.Shape));
+            
+                translator.Update(L, 1, gen_to_be_invoked);
+            
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 0;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _s_set_normal(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                LockStep.LCollision2D.RayHit gen_to_be_invoked;translator.Get(L, 1, out gen_to_be_invoked);
+                LockStep.Math.LVector2 gen_value;translator.Get(L, 2, out gen_value);
+				gen_to_be_invoked.normal = gen_value;
             
                 translator.Update(L, 1, gen_to_be_invoked);
             

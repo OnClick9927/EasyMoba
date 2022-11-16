@@ -10,6 +10,7 @@ namespace LockStep.LCollision2D
         public LVector2 point;
         public LFloat distance;
         public Shape shape;
+        public LVector2 normal;
     }
 
 }

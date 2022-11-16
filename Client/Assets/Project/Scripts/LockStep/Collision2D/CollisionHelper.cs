@@ -399,74 +399,45 @@ namespace LockStep.LCollision2D
             }
             return false;
         }
-        private static bool RayBound(Ray ray, Bound a, out RayHit hit)
+        private static bool RayPolygon(Ray ray, PolygonShape c, out RayHit hit)
         {
-            LFloat sqrMagnitude = new LFloat();
-            LVector2 point = new LVector2();
+            hit = new RayHit();
+            var near = FindNearestPointInLight(ray.start, ray.direction, c.position);
+            if (near == ray.start) return false;
+            var _dir = near - c.position;
+            if (_dir.sqrMagnitude > c.maxRadius * c.maxRadius) return false;
             var ray_start = ray.start;
             int index = -1;
-            for (int i = 0; i < a.points.Length; i++)
-            {
-                var last = a.points[Repeat(i - 1, a.points.Length)];
-                var cur = a.points[i];
+            LFloat sqrMagnitude = new LFloat();
+            LVector2 point = new LVector2();
 
+            for (int i = 0; i < c.points.Length; i++)
+            {
+                var last = c.points[Repeat(i - 1, c.points.Length)];
+                var cur = c.points[i];
                 if (CouldLightSegmentIntersect(ray_start, ray.direction, last, cur))
                 {
-                    var _point = LineLineIntersectPoint(ray_start, ray.direction + ray.start, last, cur);
-                    var dir = _point - ray_start;
+                    var __point = LineLineIntersectPoint(ray_start, ray.direction + ray.start, last, cur);
+                    var dir = __point - ray_start;
                     var _sqrMagnitude = dir.sqrMagnitude;
                     if (index == -1 || sqrMagnitude > _sqrMagnitude)
                     {
                         index = i;
                         sqrMagnitude = _sqrMagnitude;
-                        point = _point;
+                        point = __point;
                     }
 
-                }
-            }
-            if (index == -1)
-            {
-                hit = new RayHit();
-            }
-            else
-            {
-                hit = new RayHit() { point = point, distance = LMath.Sqrt(sqrMagnitude) };
-            }
-            return index != -1;
-        }
-
-        private static bool RayPolygon(Ray ray, PolygonShape c, out RayHit hit)
-        {
-            hit = new RayHit();
-            var point = FindNearestPointInLight(ray.start, ray.direction, c.position);
-            if (point == ray.start) return false;
-            var dir = point - c.position;
-            if (dir.sqrMagnitude > c.maxRadius * c.maxRadius) return false;
-            for (int i = 0; i < c.bounds.Length; i++)
-            {
-                if (IsPointInBound(c.bounds[i], ray.start))
-                {
-                    return false;
-                }
-            }
-            int index = -1;
-            for (int i = 0; i < c.bounds.Length; i++)
-            {
-                RayHit _hit;
-                if (RayBound(ray, c.bounds[i], out _hit))
-                {
-                    if (index == -1 || _hit.distance < hit.distance)
-                    {
-                        index = i;
-                        hit = _hit;
-                    }
                 }
             }
             if (index != -1)
             {
+                hit.point = point;
+                hit.distance = LMath.Sqrt(sqrMagnitude);
                 hit.shape = c;
+                hit.normal = c.nomals[index];
             }
             return index != -1;
+
         }
         private static bool RayCircle(Ray ray, CircleShape c, out RayHit hit)
         {
@@ -483,6 +454,7 @@ namespace LockStep.LCollision2D
             var dis_1 = (p1 - ray.direction).sqrMagnitude;
             var dis_2 = (p2 - ray.direction).sqrMagnitude;
             hit.shape = c;
+            hit.normal = -ray.direction;
             if (dis_1 < dis_2)
             {
                 hit.point = p1;
