@@ -15,20 +15,21 @@ using System.Collections.Generic;
 namespace XLua.CSObjectWrap
 {
     using Utils = XLua.Utils;
-    public class EasyMobaGameLogicBattleLogicWrap 
+    public class EasyMobaGameLogicBattleFactoryWrap 
     {
         public static void __Register(RealStatePtr L)
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			System.Type type = typeof(EasyMoba.GameLogic.BattleLogic);
-			Utils.BeginObjectRegister(type, L, translator, 0, 2, 0, 0);
+			System.Type type = typeof(EasyMoba.GameLogic.BattleFactory);
+			Utils.BeginObjectRegister(type, L, translator, 0, 1, 1, 1);
 			
-			Utils.RegisterFunc(L, Utils.METHOD_IDX, "LoadBaseUnit", _m_LoadBaseUnit);
-			Utils.RegisterFunc(L, Utils.METHOD_IDX, "StartPlayLogic", _m_StartPlayLogic);
-			
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "CreatePlayer", _m_CreatePlayer);
 			
 			
-			
+			Utils.RegisterFunc(L, Utils.GETTER_IDX, "battle", _g_get_battle);
+            
+			Utils.RegisterFunc(L, Utils.SETTER_IDX, "battle", _s_set_battle);
+            
 			
 			Utils.EndObjectRegister(type, L, translator, null, null,
 			    null, null, null);
@@ -53,7 +54,7 @@ namespace XLua.CSObjectWrap
 				{
 					EasyMoba.GameLogic.Battle _battle = (EasyMoba.GameLogic.Battle)translator.GetObject(L, 2, typeof(EasyMoba.GameLogic.Battle));
 					
-					var gen_ret = new EasyMoba.GameLogic.BattleLogic(_battle);
+					var gen_ret = new EasyMoba.GameLogic.BattleFactory(_battle);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -63,7 +64,7 @@ namespace XLua.CSObjectWrap
 			catch(System.Exception gen_e) {
 				return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
 			}
-            return LuaAPI.luaL_error(L, "invalid arguments to EasyMoba.GameLogic.BattleLogic constructor!");
+            return LuaAPI.luaL_error(L, "invalid arguments to EasyMoba.GameLogic.BattleFactory constructor!");
             
         }
         
@@ -75,49 +76,22 @@ namespace XLua.CSObjectWrap
         
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_LoadBaseUnit(RealStatePtr L)
+        static int _m_CreatePlayer(RealStatePtr L)
         {
 		    try {
             
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
             
             
-                EasyMoba.GameLogic.BattleLogic gen_to_be_invoked = (EasyMoba.GameLogic.BattleLogic)translator.FastGetCSObj(L, 1);
+                EasyMoba.GameLogic.BattleFactory gen_to_be_invoked = (EasyMoba.GameLogic.BattleFactory)translator.FastGetCSObj(L, 1);
             
             
                 
                 {
-                    EasyMoba.GameLogic.MapInitData _map_data = (EasyMoba.GameLogic.MapInitData)translator.GetObject(L, 2, typeof(EasyMoba.GameLogic.MapInitData));
-                    System.Collections.Generic.List<BattlePlayer> _players = (System.Collections.Generic.List<BattlePlayer>)translator.GetObject(L, 3, typeof(System.Collections.Generic.List<BattlePlayer>));
+                    BattlePlayer _player = (BattlePlayer)translator.GetObject(L, 2, typeof(BattlePlayer));
+                    LockStep.Math.LVector2 _pos;translator.Get(L, 3, out _pos);
                     
-                    gen_to_be_invoked.LoadBaseUnit( _map_data, _players );
-                    
-                    
-                    
-                    return 0;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_StartPlayLogic(RealStatePtr L)
-        {
-		    try {
-            
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-            
-            
-                EasyMoba.GameLogic.BattleLogic gen_to_be_invoked = (EasyMoba.GameLogic.BattleLogic)translator.FastGetCSObj(L, 1);
-            
-            
-                
-                {
-                    
-                    gen_to_be_invoked.StartPlayLogic(  );
+                    gen_to_be_invoked.CreatePlayer( _player, _pos );
                     
                     
                     
@@ -133,7 +107,36 @@ namespace XLua.CSObjectWrap
         
         
         
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _g_get_battle(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                EasyMoba.GameLogic.BattleFactory gen_to_be_invoked = (EasyMoba.GameLogic.BattleFactory)translator.FastGetCSObj(L, 1);
+                translator.Push(L, gen_to_be_invoked.battle);
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 1;
+        }
         
+        
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _s_set_battle(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                EasyMoba.GameLogic.BattleFactory gen_to_be_invoked = (EasyMoba.GameLogic.BattleFactory)translator.FastGetCSObj(L, 1);
+                gen_to_be_invoked.battle = (EasyMoba.GameLogic.Battle)translator.GetObject(L, 2, typeof(EasyMoba.GameLogic.Battle));
+            
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 0;
+        }
         
 		
 		

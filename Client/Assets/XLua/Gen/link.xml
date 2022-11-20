@@ -282,7 +282,13 @@
 		<type fullname="EasyMoba.UpdatePanel" preserve="all"/>
 		<type fullname="EasyMoba.UpdatePanelView" preserve="all"/>
 		<type fullname="EasyMoba.UpdateUIAsset" preserve="all"/>
+		<type fullname="EasyMoba.GameLogic.AttributeCalc" preserve="all"/>
+		<type fullname="EasyMoba.GameLogic.BattleAttributeCollection" preserve="all"/>
 		<type fullname="EasyMoba.GameLogic.Battle" preserve="all"/>
+		<type fullname="EasyMoba.GameLogic.Buff" preserve="all"/>
+		<type fullname="EasyMoba.GameLogic.BuffCollection" preserve="all"/>
+		<type fullname="EasyMoba.GameLogic.BuffData" preserve="all"/>
+		<type fullname="EasyMoba.GameLogic.BattleFactory" preserve="all"/>
 		<type fullname="EasyMoba.GameLogic.BattleLogic" preserve="all"/>
 		<type fullname="EasyMoba.GameLogic.FrameCollection" preserve="all"/>
 		<type fullname="EasyMoba.GameLogic.MobaLogicWord" preserve="all"/>

@@ -6,12 +6,14 @@ namespace EasyMoba.GameLogic
     {
         public int curFrame = 0;
         private Dictionary<int, SPBattleFrame> frames = new Dictionary<int, SPBattleFrame>();
-        private MobaLogicWord word;
 
-        public FrameCollection(MobaLogicWord word)
+        private Battle battle;
+
+        public FrameCollection(Battle battle)
         {
-            this.word = word;
+            this.battle = battle;
         }
+
         public SPBattleFrame GetFrame(int frame)
         {
             return frames[frame];
@@ -29,9 +31,8 @@ namespace EasyMoba.GameLogic
             }
             while (frames.ContainsKey(curFrame))
             {
-                word.FixedUpdate(curFrame);
+                battle.FixedUpdate(curFrame);
                 curFrame++;
-                MobaGame.Instance.Frame = curFrame;
             }
         }
     }

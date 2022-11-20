@@ -5,15 +5,19 @@ namespace EasyMoba.GameLogic
 {
     public class MobaLogicWord : LogicWorld
     {
-        public FrameCollection frames;
+        private Battle battle;
+        public FrameCollection frames { get { return battle.frames; } }
 
-        public MobaLogicWord(CollisionLayerConfig layer) : base(layer, new LFloat(MobaGame.udpGap))
+        public MobaLogicWord(CollisionLayerConfig layer, Battle battle) : base(layer, new LFloat(MobaGame.udpGap))
         {
+            this.battle = battle;
         }
+
+
         public new T CreateUnit<T>(string name) where T : MobaUnit, new()
         {
             T t = base.CreateUnit<T>(name);
-            t.frames = frames;
+            t.battle = battle;
             return t;
         }
 

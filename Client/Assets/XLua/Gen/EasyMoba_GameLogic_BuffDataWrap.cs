@@ -15,19 +15,20 @@ using System.Collections.Generic;
 namespace XLua.CSObjectWrap
 {
     using Utils = XLua.Utils;
-    public class EasyMobaGameLogicMobaLogicWordWrap 
+    public class EasyMobaGameLogicBuffDataWrap 
     {
         public static void __Register(RealStatePtr L)
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			System.Type type = typeof(EasyMoba.GameLogic.MobaLogicWord);
-			Utils.BeginObjectRegister(type, L, translator, 0, 0, 1, 0);
+			System.Type type = typeof(EasyMoba.GameLogic.BuffData);
+			Utils.BeginObjectRegister(type, L, translator, 0, 0, 1, 1);
 			
 			
 			
-			Utils.RegisterFunc(L, Utils.GETTER_IDX, "frames", _g_get_frames);
+			Utils.RegisterFunc(L, Utils.GETTER_IDX, "type", _g_get_type);
             
-			
+			Utils.RegisterFunc(L, Utils.SETTER_IDX, "type", _s_set_type);
+            
 			
 			Utils.EndObjectRegister(type, L, translator, null, null,
 			    null, null, null);
@@ -48,12 +49,10 @@ namespace XLua.CSObjectWrap
             
 			try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-				if(LuaAPI.lua_gettop(L) == 3 && translator.Assignable<LockStep.LCollision2D.CollisionLayerConfig>(L, 2) && translator.Assignable<EasyMoba.GameLogic.Battle>(L, 3))
+				if(LuaAPI.lua_gettop(L) == 1)
 				{
-					LockStep.LCollision2D.CollisionLayerConfig _layer = (LockStep.LCollision2D.CollisionLayerConfig)translator.GetObject(L, 2, typeof(LockStep.LCollision2D.CollisionLayerConfig));
-					EasyMoba.GameLogic.Battle _battle = (EasyMoba.GameLogic.Battle)translator.GetObject(L, 3, typeof(EasyMoba.GameLogic.Battle));
 					
-					var gen_ret = new EasyMoba.GameLogic.MobaLogicWord(_layer, _battle);
+					var gen_ret = new EasyMoba.GameLogic.BuffData();
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -63,7 +62,7 @@ namespace XLua.CSObjectWrap
 			catch(System.Exception gen_e) {
 				return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
 			}
-            return LuaAPI.luaL_error(L, "invalid arguments to EasyMoba.GameLogic.MobaLogicWord constructor!");
+            return LuaAPI.luaL_error(L, "invalid arguments to EasyMoba.GameLogic.BuffData constructor!");
             
         }
         
@@ -78,13 +77,13 @@ namespace XLua.CSObjectWrap
         
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_frames(RealStatePtr L)
+        static int _g_get_type(RealStatePtr L)
         {
 		    try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			
-                EasyMoba.GameLogic.MobaLogicWord gen_to_be_invoked = (EasyMoba.GameLogic.MobaLogicWord)translator.FastGetCSObj(L, 1);
-                translator.Push(L, gen_to_be_invoked.frames);
+                EasyMoba.GameLogic.BuffData gen_to_be_invoked = (EasyMoba.GameLogic.BuffData)translator.FastGetCSObj(L, 1);
+                translator.Push(L, gen_to_be_invoked.type);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
@@ -92,6 +91,22 @@ namespace XLua.CSObjectWrap
         }
         
         
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _s_set_type(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                EasyMoba.GameLogic.BuffData gen_to_be_invoked = (EasyMoba.GameLogic.BuffData)translator.FastGetCSObj(L, 1);
+                EasyMoba.GameLogic.BuffType gen_value;translator.Get(L, 2, out gen_value);
+				gen_to_be_invoked.type = gen_value;
+            
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 0;
+        }
         
 		
 		

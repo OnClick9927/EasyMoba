@@ -15,21 +15,21 @@ using System.Collections.Generic;
 namespace XLua.CSObjectWrap
 {
     using Utils = XLua.Utils;
-    public class EasyMobaGameLogicFrameCollectionWrap 
+    public class EasyMobaGameLogicBuffCollectionWrap 
     {
         public static void __Register(RealStatePtr L)
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			System.Type type = typeof(EasyMoba.GameLogic.FrameCollection);
+			System.Type type = typeof(EasyMoba.GameLogic.BuffCollection);
 			Utils.BeginObjectRegister(type, L, translator, 0, 2, 1, 1);
 			
-			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetFrame", _m_GetFrame);
-			Utils.RegisterFunc(L, Utils.METHOD_IDX, "OnBattleFrame", _m_OnBattleFrame);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "AddBuff", _m_AddBuff);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "FixedUpdate", _m_FixedUpdate);
 			
 			
-			Utils.RegisterFunc(L, Utils.GETTER_IDX, "curFrame", _g_get_curFrame);
+			Utils.RegisterFunc(L, Utils.GETTER_IDX, "battle", _g_get_battle);
             
-			Utils.RegisterFunc(L, Utils.SETTER_IDX, "curFrame", _s_set_curFrame);
+			Utils.RegisterFunc(L, Utils.SETTER_IDX, "battle", _s_set_battle);
             
 			
 			Utils.EndObjectRegister(type, L, translator, null, null,
@@ -55,7 +55,7 @@ namespace XLua.CSObjectWrap
 				{
 					EasyMoba.GameLogic.Battle _battle = (EasyMoba.GameLogic.Battle)translator.GetObject(L, 2, typeof(EasyMoba.GameLogic.Battle));
 					
-					var gen_ret = new EasyMoba.GameLogic.FrameCollection(_battle);
+					var gen_ret = new EasyMoba.GameLogic.BuffCollection(_battle);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -65,7 +65,7 @@ namespace XLua.CSObjectWrap
 			catch(System.Exception gen_e) {
 				return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
 			}
-            return LuaAPI.luaL_error(L, "invalid arguments to EasyMoba.GameLogic.FrameCollection constructor!");
+            return LuaAPI.luaL_error(L, "invalid arguments to EasyMoba.GameLogic.BuffCollection constructor!");
             
         }
         
@@ -77,66 +77,50 @@ namespace XLua.CSObjectWrap
         
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_GetFrame(RealStatePtr L)
+        static int _m_AddBuff(RealStatePtr L)
         {
 		    try {
             
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
             
             
-                EasyMoba.GameLogic.FrameCollection gen_to_be_invoked = (EasyMoba.GameLogic.FrameCollection)translator.FastGetCSObj(L, 1);
+                EasyMoba.GameLogic.BuffCollection gen_to_be_invoked = (EasyMoba.GameLogic.BuffCollection)translator.FastGetCSObj(L, 1);
             
             
-			    int gen_param_count = LuaAPI.lua_gettop(L);
-            
-                if(gen_param_count == 2&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 2)) 
+                
                 {
-                    int _frame = LuaAPI.xlua_tointeger(L, 2);
+                    EasyMoba.GameLogic.BuffData _data = (EasyMoba.GameLogic.BuffData)translator.GetObject(L, 2, typeof(EasyMoba.GameLogic.BuffData));
+                    EasyMoba.GameLogic.MobaUnit _target = (EasyMoba.GameLogic.MobaUnit)translator.GetObject(L, 3, typeof(EasyMoba.GameLogic.MobaUnit));
                     
-                        var gen_ret = gen_to_be_invoked.GetFrame( _frame );
-                        translator.Push(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                if(gen_param_count == 3&& LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 2)&& (LuaTypes.LUA_TNUMBER == LuaAPI.lua_type(L, 3) || LuaAPI.lua_isint64(L, 3))) 
-                {
-                    int _frame = LuaAPI.xlua_tointeger(L, 2);
-                    long _role_id = LuaAPI.lua_toint64(L, 3);
-                    
-                        var gen_ret = gen_to_be_invoked.GetFrame( _frame, _role_id );
-                        translator.Push(L, gen_ret);
+                    gen_to_be_invoked.AddBuff( _data, _target );
                     
                     
                     
-                    return 1;
+                    return 0;
                 }
                 
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
             
-            return LuaAPI.luaL_error(L, "invalid arguments to EasyMoba.GameLogic.FrameCollection.GetFrame!");
-            
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_OnBattleFrame(RealStatePtr L)
+        static int _m_FixedUpdate(RealStatePtr L)
         {
 		    try {
             
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
             
             
-                EasyMoba.GameLogic.FrameCollection gen_to_be_invoked = (EasyMoba.GameLogic.FrameCollection)translator.FastGetCSObj(L, 1);
+                EasyMoba.GameLogic.BuffCollection gen_to_be_invoked = (EasyMoba.GameLogic.BuffCollection)translator.FastGetCSObj(L, 1);
             
             
                 
                 {
-                    SPBattleFrame _data = (SPBattleFrame)translator.GetObject(L, 2, typeof(SPBattleFrame));
+                    int _curFrame = LuaAPI.xlua_tointeger(L, 2);
                     
-                    gen_to_be_invoked.OnBattleFrame( _data );
+                    gen_to_be_invoked.FixedUpdate( _curFrame );
                     
                     
                     
@@ -153,13 +137,13 @@ namespace XLua.CSObjectWrap
         
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_curFrame(RealStatePtr L)
+        static int _g_get_battle(RealStatePtr L)
         {
 		    try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			
-                EasyMoba.GameLogic.FrameCollection gen_to_be_invoked = (EasyMoba.GameLogic.FrameCollection)translator.FastGetCSObj(L, 1);
-                LuaAPI.xlua_pushinteger(L, gen_to_be_invoked.curFrame);
+                EasyMoba.GameLogic.BuffCollection gen_to_be_invoked = (EasyMoba.GameLogic.BuffCollection)translator.FastGetCSObj(L, 1);
+                translator.Push(L, gen_to_be_invoked.battle);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
@@ -169,13 +153,13 @@ namespace XLua.CSObjectWrap
         
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _s_set_curFrame(RealStatePtr L)
+        static int _s_set_battle(RealStatePtr L)
         {
 		    try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			
-                EasyMoba.GameLogic.FrameCollection gen_to_be_invoked = (EasyMoba.GameLogic.FrameCollection)translator.FastGetCSObj(L, 1);
-                gen_to_be_invoked.curFrame = LuaAPI.xlua_tointeger(L, 2);
+                EasyMoba.GameLogic.BuffCollection gen_to_be_invoked = (EasyMoba.GameLogic.BuffCollection)translator.FastGetCSObj(L, 1);
+                gen_to_be_invoked.battle = (EasyMoba.GameLogic.Battle)translator.GetObject(L, 2, typeof(EasyMoba.GameLogic.Battle));
             
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
