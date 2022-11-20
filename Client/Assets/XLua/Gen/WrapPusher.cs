@@ -42,6 +42,7 @@ namespace XLua
 				translator.RegisterPushAndGetAndUpdate<Tutorial.DerivedClass.TestEnumInner>(translator.PushTutorialDerivedClassTestEnumInner, translator.Get, translator.UpdateTutorialDerivedClassTestEnumInner);
 				translator.RegisterPushAndGetAndUpdate<MatchRoomType>(translator.PushMatchRoomType, translator.Get, translator.UpdateMatchRoomType);
 				translator.RegisterPushAndGetAndUpdate<ModuleDefine>(translator.PushModuleDefine, translator.Get, translator.UpdateModuleDefine);
+				translator.RegisterPushAndGetAndUpdate<TeamType>(translator.PushTeamType, translator.Get, translator.UpdateTeamType);
 			
 			}
         }
@@ -1193,6 +1194,90 @@ namespace XLua
             }
         }
         
+        int TeamType_TypeID = -1;
+		int TeamType_EnumRef = -1;
+        
+        public void PushTeamType(RealStatePtr L, TeamType val)
+        {
+            if (TeamType_TypeID == -1)
+            {
+			    bool is_first;
+                TeamType_TypeID = getTypeId(L, typeof(TeamType), out is_first);
+				
+				if (TeamType_EnumRef == -1)
+				{
+				    Utils.LoadCSTable(L, typeof(TeamType));
+				    TeamType_EnumRef = LuaAPI.luaL_ref(L, LuaIndexes.LUA_REGISTRYINDEX);
+				}
+				
+            }
+			
+			if (LuaAPI.xlua_tryget_cachedud(L, (int)val, TeamType_EnumRef) == 1)
+            {
+			    return;
+			}
+			
+            IntPtr buff = LuaAPI.xlua_pushstruct(L, 4, TeamType_TypeID);
+            if (!CopyByValue.Pack(buff, 0, (int)val))
+            {
+                throw new Exception("pack fail fail for TeamType ,value="+val);
+            }
+			
+			LuaAPI.lua_getref(L, TeamType_EnumRef);
+			LuaAPI.lua_pushvalue(L, -2);
+			LuaAPI.xlua_rawseti(L, -2, (int)val);
+			LuaAPI.lua_pop(L, 1);
+			
+        }
+		
+        public void Get(RealStatePtr L, int index, out TeamType val)
+        {
+		    LuaTypes type = LuaAPI.lua_type(L, index);
+            if (type == LuaTypes.LUA_TUSERDATA )
+            {
+			    if (LuaAPI.xlua_gettypeid(L, index) != TeamType_TypeID)
+				{
+				    throw new Exception("invalid userdata for TeamType");
+				}
+				
+                IntPtr buff = LuaAPI.lua_touserdata(L, index);
+				int e;
+                if (!CopyByValue.UnPack(buff, 0, out e))
+                {
+                    throw new Exception("unpack fail for TeamType");
+                }
+				val = (TeamType)e;
+                
+            }
+            else
+            {
+                val = (TeamType)objectCasters.GetCaster(typeof(TeamType))(L, index, null);
+            }
+        }
+		
+        public void UpdateTeamType(RealStatePtr L, int index, TeamType val)
+        {
+		    
+            if (LuaAPI.lua_type(L, index) == LuaTypes.LUA_TUSERDATA)
+            {
+			    if (LuaAPI.xlua_gettypeid(L, index) != TeamType_TypeID)
+				{
+				    throw new Exception("invalid userdata for TeamType");
+				}
+				
+                IntPtr buff = LuaAPI.lua_touserdata(L, index);
+                if (!CopyByValue.Pack(buff, 0,  (int)val))
+                {
+                    throw new Exception("pack fail for TeamType ,value="+val);
+                }
+            }
+			
+            else
+            {
+                throw new Exception("try to update a data with lua type:" + LuaAPI.lua_type(L, index));
+            }
+        }
+        
         
 		// table cast optimze
 		
@@ -1300,6 +1385,12 @@ namespace XLua
 				translator.PushModuleDefine(L, array[index]);
 				return true;
 			}
+			else if (type == typeof(TeamType[]))
+			{
+			    TeamType[] array = obj as TeamType[];
+				translator.PushTeamType(L, array[index]);
+				return true;
+			}
             return false;
 		}
 		
@@ -1399,6 +1490,12 @@ namespace XLua
 			else if (type == typeof(ModuleDefine[]))
 			{
 			    ModuleDefine[] array = obj as ModuleDefine[];
+				translator.Get(L, obj_idx, out array[array_idx]);
+				return true;
+			}
+			else if (type == typeof(TeamType[]))
+			{
+			    TeamType[] array = obj as TeamType[];
 				translator.Get(L, obj_idx, out array[array_idx]);
 				return true;
 			}

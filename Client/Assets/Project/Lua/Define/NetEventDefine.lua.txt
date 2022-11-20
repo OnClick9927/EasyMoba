@@ -1,42 +1,33 @@
-
 NetEventDefine = {
-	CSRoleLogin = {
-		MainId = 1,
-		SubId = 1,
-	},
-	SCRoleLogin = {
-		MainId = 1,
-		SubId = 2,
-	},
-	CSMatch = {
-		MainId = 2,
-		SubId = 1,
-	},
-	SCMatch = {
-		MainId = 2,
-		SubId = 2,
-	},
-	CSDisMatch = {
-		MainId = 2,
-		SubId = 3,
-	},
-	SCDisMatch = {
-		MainId = 2,
-		SubId = 4,
-	},
-	SPMatchSuccess = {
-		MainId = 2,
-		SubId = 5,
-	},
-	CSBattleReady = {
-		MainId = 3,
-		SubId = 1,
-	},
-	SPBattleAllReady = {
-		MainId = 3,
-		SubId = 2,
-	},
+	SPBattleAllReady = { MainId = 3, SubId = 2 },
+	CSBattleReady = { MainId = 3, SubId = 1 },
+	CSRoleLogin = { MainId = 1, SubId = 1 },
+	SCRoleLogin = { MainId = 1, SubId = 2 },
+	CSMatch = { MainId = 2, SubId = 1 },
+	SCMatch = { MainId = 2, SubId = 2 },
+	CSDisMatch = { MainId = 2, SubId = 3 },
+	SCDisMatch = { MainId = 2, SubId = 4 },
+	SPMatchSuccess = { MainId = 2, SubId = 5 },
 }
+
+NetEventDefine.Enums = {
+	---@enum LoginType
+	LoginType = { Login = 0, Signin = 1, },
+	---@enum LoginErrCode
+	LoginErrCode = { Success = 0, NotExistRoleID = 1, PasswordErr = 2, },
+	---@enum MatchRoomType
+	MatchRoomType = { Normal = 0, },
+	---@enum MatchErrCode
+	MatchErrCode = { Success = 0, ReadyInMatch = 1, NotExistRole = 2, },
+	---@enum TeamType
+	TeamType = { One = 0, Two = 1, Mid = 2, },
+}
+
+---@class SPBattleAllReady
+
+---@class CSBattleReady
+---@field roleID number
+---@field roomID string
 
 ---@class CSRoleLogin
 ---@field loginType LoginType
@@ -64,37 +55,10 @@ NetEventDefine = {
 ---@field Code MatchErrCode
 
 ---@class SPMatchSuccess
----@field roles number[]
----@field enemy number[]
+---@field roles BattlePlayer[]
 ---@field type MatchRoomType
 ---@field roomID string
 
----@class CSBattleReady
----@field roleID number
----@field roomID string
-
----@class SPBattleAllReady
-
-NetEventDefine.Enums = {
-	---@enum LoginType
-	LoginType = {
-		Login = 0,
-		Signin = 1,
-	},
-	---@enum LoginErrCode
-	LoginErrCode = {
-		Success = 0,
-		NotExistRoleID = 1,
-		PasswordErr = 2,
-	},
-	---@enum MatchRoomType
-	MatchRoomType = {
-		Normal = 0,
-	},
-	---@enum MatchErrCode
-	MatchErrCode = {
-		Success = 0,
-		ReadyInMatch = 1,
-		NotExistRole = 2,
-	},
-}
+---@class BattlePlayer
+---@field role_id number
+---@field team_type TeamType

@@ -1250,6 +1250,12 @@ namespace XLua.CSObjectWrap
             translator.DelayWrapLoader(typeof(ModuleDefine), ModuleDefineWrap.__Register);
         
         
+            translator.DelayWrapLoader(typeof(TeamType), TeamTypeWrap.__Register);
+        
+        
+            translator.DelayWrapLoader(typeof(BattlePlayer), BattlePlayerWrap.__Register);
+        
+        
             translator.DelayWrapLoader(typeof(FrameData), FrameDataWrap.__Register);
         
         
@@ -1267,16 +1273,16 @@ namespace XLua.CSObjectWrap
         
             translator.DelayWrapLoader(typeof(ICanCallClientBattleMsg), ICanCallClientBattleMsgWrap.__Register);
         
+        }
+        
+        static void wrapInit8(LuaEnv luaenv, ObjectTranslator translator)
+        {
         
             translator.DelayWrapLoader(typeof(ExampleGenConfig), ExampleGenConfigWrap.__Register);
         
         
             translator.DelayWrapLoader(typeof(LuaCallCs), LuaCallCsWrap.__Register);
         
-        }
-        
-        static void wrapInit8(LuaEnv luaenv, ObjectTranslator translator)
-        {
         
             translator.DelayWrapLoader(typeof(Tutorial.CSCallLua), TutorialCSCallLuaWrap.__Register);
         
@@ -1424,16 +1430,16 @@ namespace XLua.CSObjectWrap
         
             translator.DelayWrapLoader(typeof(EasyMoba.GameLogic.WallUnit), EasyMobaGameLogicWallUnitWrap.__Register);
         
+        }
+        
+        static void wrapInit9(LuaEnv luaenv, ObjectTranslator translator)
+        {
         
             translator.DelayWrapLoader(typeof(EasyMoba.GameLogic.MapInitData), EasyMobaGameLogicMapInitDataWrap.__Register);
         
         
             translator.DelayWrapLoader(typeof(EasyMoba.GameLogic.Mono.BattleInput), EasyMobaGameLogicMonoBattleInputWrap.__Register);
         
-        }
-        
-        static void wrapInit9(LuaEnv luaenv, ObjectTranslator translator)
-        {
         
             translator.DelayWrapLoader(typeof(EasyMoba.GameLogic.Mono.CircleShapeComponent), EasyMobaGameLogicMonoCircleShapeComponentWrap.__Register);
         
@@ -1581,16 +1587,16 @@ namespace XLua.CSObjectWrap
         
             translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetsSetting), IFrameworkHotfixAssetAssetsSettingWrap.__Register);
         
+        }
+        
+        static void wrapInit10(LuaEnv luaenv, ObjectTranslator translator)
+        {
         
             translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetsVersion), IFrameworkHotfixAssetAssetsVersionWrap.__Register);
         
         
             translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.Asset), IFrameworkHotfixAssetAssetWrap.__Register);
         
-        }
-        
-        static void wrapInit10(LuaEnv luaenv, ObjectTranslator translator)
-        {
         
             translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetLoadArgs), IFrameworkHotfixAssetAssetLoadArgsWrap.__Register);
         
@@ -1738,16 +1744,16 @@ namespace XLua.CSObjectWrap
         
             translator.DelayWrapLoader(typeof(IFramework.ModulePriority), IFrameworkModulePriorityWrap.__Register);
         
+        }
+        
+        static void wrapInit11(LuaEnv luaenv, ObjectTranslator translator)
+        {
         
             translator.DelayWrapLoader(typeof(IFramework.Ex), IFrameworkExWrap.__Register);
         
         
             translator.DelayWrapLoader(typeof(IFramework.ArrayPoolArg), IFrameworkArrayPoolArgWrap.__Register);
         
-        }
-        
-        static void wrapInit11(LuaEnv luaenv, ObjectTranslator translator)
-        {
         
             translator.DelayWrapLoader(typeof(IFramework.Unit), IFrameworkUnitWrap.__Register);
         
@@ -1895,16 +1901,16 @@ namespace XLua.CSObjectWrap
         
             translator.DelayWrapLoader(typeof(IFramework.Serialization.IntStringConverter), IFrameworkSerializationIntStringConverterWrap.__Register);
         
+        }
+        
+        static void wrapInit12(LuaEnv luaenv, ObjectTranslator translator)
+        {
         
             translator.DelayWrapLoader(typeof(IFramework.Serialization.LongStringConverter), IFrameworkSerializationLongStringConverterWrap.__Register);
         
         
             translator.DelayWrapLoader(typeof(IFramework.Serialization.SByteStringConverter), IFrameworkSerializationSByteStringConverterWrap.__Register);
         
-        }
-        
-        static void wrapInit12(LuaEnv luaenv, ObjectTranslator translator)
-        {
         
             translator.DelayWrapLoader(typeof(IFramework.Serialization.ShortStringConverter), IFrameworkSerializationShortStringConverterWrap.__Register);
         

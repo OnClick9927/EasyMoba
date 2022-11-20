@@ -49,10 +49,10 @@ namespace XLua.CSObjectWrap
             
 			try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-				if(LuaAPI.lua_gettop(L) == 3 && translator.Assignable<MatchRoomType>(L, 2) && translator.Assignable<System.Collections.Generic.List<long>>(L, 3))
+				if(LuaAPI.lua_gettop(L) == 3 && translator.Assignable<MatchRoomType>(L, 2) && translator.Assignable<System.Collections.Generic.List<BattlePlayer>>(L, 3))
 				{
 					MatchRoomType _type;translator.Get(L, 2, out _type);
-					System.Collections.Generic.List<long> _roles = (System.Collections.Generic.List<long>)translator.GetObject(L, 3, typeof(System.Collections.Generic.List<long>));
+					System.Collections.Generic.List<BattlePlayer> _roles = (System.Collections.Generic.List<BattlePlayer>)translator.GetObject(L, 3, typeof(System.Collections.Generic.List<BattlePlayer>));
 					
 					var gen_ret = new EasyMoba.GameLogic.Mono.RecordModePlayer(_type, _roles);
 					translator.Push(L, gen_ret);

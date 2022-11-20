@@ -25,13 +25,14 @@ public enum ModuleDefine
 public enum TeamType
 {
     One,
-    Two
+    Two,
+    Mid,
 }
 public class BattlePlayer
 {
 
     public long role_id;
-    public TeamType type;
+    public TeamType team_type;
 }
 [System.Serializable]
 public class FrameData

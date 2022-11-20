@@ -153,7 +153,7 @@ namespace XLua.CSObjectWrap
                     long _role_id = LuaAPI.lua_toint64(L, 2);
                     string _room_id = LuaAPI.lua_tostring(L, 3);
                     MatchRoomType _type;translator.Get(L, 4, out _type);
-                    System.Collections.Generic.List<long> _players = (System.Collections.Generic.List<long>)translator.GetObject(L, 5, typeof(System.Collections.Generic.List<long>));
+                    System.Collections.Generic.List<BattlePlayer> _players = (System.Collections.Generic.List<BattlePlayer>)translator.GetObject(L, 5, typeof(System.Collections.Generic.List<BattlePlayer>));
                     
                     gen_to_be_invoked.StartGame( _role_id, _room_id, _type, _players );
                     

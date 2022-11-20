@@ -36,14 +36,7 @@ end
 ---@param data SPMatchSuccess
 local function OnMatchSucess(data)
     GameTools.CloseUI(PanelNames.MatchPanel)
-    local players = {}
-    for index, value in ipairs(data.roles or {}) do
-        table.insert(players, value)
-    end
-    for index, value in ipairs(data.enemy or {}) do
-        table.insert(players, value)
-    end
-    Ctrls.BattleCtrl.StartGame(CS.EasyMoba.GameLogic.Mono.BattlePlayMode.Normal, data.roomID, data.type, players)
+    Ctrls.BattleCtrl.StartGame(CS.EasyMoba.GameLogic.Mono.BattlePlayMode.Normal, data.roomID, data.type, data.roles)
 end
 
 NetEvents.SetHandler(NetEventDefine.SCMatch, OnSCMatch)
@@ -51,9 +44,12 @@ NetEvents.SetHandler(NetEventDefine.SCDisMatch, OnSCDisMatch)
 NetEvents.SetHandler(NetEventDefine.SPMatchSuccess, OnMatchSucess)
 
 local function LocalMatch()
-
+    ---@type BattlePlayer
+    local role = {}
+    role.role_id = Models.PlayerModel:GetRoleID()
+    role.team_type = NetEventDefine.Enums.TeamType.One
     Ctrls.BattleCtrl.StartGame(CS.EasyMoba.GameLogic.Mono.BattlePlayMode.Local, "local",
-        CS.MatchRoomType.Normal, { Models.PlayerModel:GetRoleID() })
+        CS.MatchRoomType.Normal, { role })
 end
 
 return {

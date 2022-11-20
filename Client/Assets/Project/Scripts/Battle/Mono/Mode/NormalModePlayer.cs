@@ -18,7 +18,7 @@ namespace EasyMoba.GameLogic.Mono
 
         private UdpClient udp;
         private IPEndPoint point;
-        public NormalModePlayer(MatchRoomType type, List<long> roles) : base(type, roles)
+        public NormalModePlayer(MatchRoomType type, List<BattlePlayer> roles) : base(type, roles)
         {
             udp = new UdpClient();
             point = new IPEndPoint(IPAddress.Parse(MobaGame.Instance.ip), MobaGame.Instance.UdpPort);

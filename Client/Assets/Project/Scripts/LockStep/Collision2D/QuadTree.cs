@@ -76,6 +76,7 @@ namespace LockStep.LCollision2D
                 }
 
                 new_root.RemoveNode(find);
+                nodes.Remove(find);
                 CollisionHelper.RecyleNode(find);
 
                 new_root.AddNode(root);

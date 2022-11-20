@@ -89,7 +89,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     EasyMoba.GameLogic.MapInitData _map_data = (EasyMoba.GameLogic.MapInitData)translator.GetObject(L, 2, typeof(EasyMoba.GameLogic.MapInitData));
-                    System.Collections.Generic.List<long> _players = (System.Collections.Generic.List<long>)translator.GetObject(L, 3, typeof(System.Collections.Generic.List<long>));
+                    System.Collections.Generic.List<BattlePlayer> _players = (System.Collections.Generic.List<BattlePlayer>)translator.GetObject(L, 3, typeof(System.Collections.Generic.List<BattlePlayer>));
                     
                     gen_to_be_invoked.LoadBaseUnit( _map_data, _players );
                     

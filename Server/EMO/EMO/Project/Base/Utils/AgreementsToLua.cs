@@ -30,10 +30,11 @@ namespace EMO.Project.Base.Utils
             List<Type> enumTypes = new List<Type>();
 
             types.AddRange(responseTypes);
-            string result = BuildOther(BuidRequestAndResponse(types), types, enumTypes);
-            result = BuildEnum(result, enumTypes);
+            var org = BuidRequestAndResponse(types);
+            var other = BuildOther("", types, enumTypes);
+            var _enum = BuildEnum("", enumTypes);
 
-            File.WriteAllText(OutPutPathFileName, result);
+            File.WriteAllText(OutPutPathFileName, org + _enum + other);
             Log.L("---------------EmmyLua 协议生成完毕----------------------------");
         }
 
@@ -45,23 +46,23 @@ namespace EMO.Project.Base.Utils
             {
                 string name = type.Name;
                 result += $"\t---@enum {name}\n";
-                result += $"\t{name} = {left}\n";
+                result += $"\t{name} = {left} ";
                 var arr = Enum.GetValues(type);
                 foreach (var val in arr)
                 {
                     string _name = val.ToString();
                     var code = Convert.GetTypeCode(val);
                     long value = Convert.ToInt64(val);
-                    result += $"\t\t{_name} = {value},\n";
+                    result += $"{_name} = {value}, ";
                 }
-                result += $"\t{right},\n";
+                result += $"{right},\n";
             }
             result += "}\n";
             return result;
         }
         private static string BuidRequestAndResponse(List<Type> types)
         {
-            string result = "\nNetEventDefine = {\n";
+            string result = "NetEventDefine = {\n";
 
             foreach (Type type in types)
             {
@@ -69,10 +70,10 @@ namespace EMO.Project.Base.Utils
                 NetMessageCode h = type.GetCustomAttributes(typeof(NetMessageCode), false).First() as NetMessageCode;
                 uint subId = h.SubId;
 
-                result += $"\t{type.Name} = {left}\n" +
-                    $"\t\tMainId = {h.MainId},\n" +
-                    $"\t\tSubId = {h.SubId},\n" +
-                    $"\t{right},\n";
+                result += $"\t{type.Name} = {left} " +
+                    $"MainId = {h.MainId}, " +
+                    $"SubId = {h.SubId} " +
+                    $"{right},\n";
             }
             return result + "}\n";
         }

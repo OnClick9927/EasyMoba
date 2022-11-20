@@ -102,7 +102,7 @@ namespace XLua.CSObjectWrap
                 {
                     EasyMoba.GameLogic.Mono.BattlePlayMode _mode;translator.Get(L, 1, out _mode);
                     MatchRoomType _type;translator.Get(L, 2, out _type);
-                    System.Collections.Generic.List<long> _roles = (System.Collections.Generic.List<long>)translator.GetObject(L, 3, typeof(System.Collections.Generic.List<long>));
+                    System.Collections.Generic.List<BattlePlayer> _roles = (System.Collections.Generic.List<BattlePlayer>)translator.GetObject(L, 3, typeof(System.Collections.Generic.List<BattlePlayer>));
                     
                         var gen_ret = EasyMoba.GameLogic.Mono.BattleModePlayer.Create( _mode, _type, _roles );
                         translator.Push(L, gen_ret);
@@ -232,7 +232,7 @@ namespace XLua.CSObjectWrap
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			
                 EasyMoba.GameLogic.Mono.BattleModePlayer gen_to_be_invoked = (EasyMoba.GameLogic.Mono.BattleModePlayer)translator.FastGetCSObj(L, 1);
-                gen_to_be_invoked.roles = (System.Collections.Generic.List<long>)translator.GetObject(L, 2, typeof(System.Collections.Generic.List<long>));
+                gen_to_be_invoked.roles = (System.Collections.Generic.List<BattlePlayer>)translator.GetObject(L, 2, typeof(System.Collections.Generic.List<BattlePlayer>));
             
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);

@@ -19,7 +19,7 @@ namespace LockStep.LCollision2D
             node.shapes.Clear();
             node.nodes.Clear();
             node.area = LRect.zero;
-            //node.GlobalRecyle();
+            node.GlobalRecyle();
         }
 
         public static bool CouldCollisionShape(LRect area, LFloat maxRadius, Shape shape)

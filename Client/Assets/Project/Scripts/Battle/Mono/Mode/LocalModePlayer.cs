@@ -5,9 +5,9 @@ namespace EasyMoba.GameLogic.Mono
     public class LocalModePlayer : BattleModePlayer, ICanCallClientBattleMsg
     {
         Room room;
-        public LocalModePlayer(MatchRoomType type, List<long> roles) : base(type, roles)
+        public LocalModePlayer(MatchRoomType type, List<BattlePlayer> roles) : base(type, roles)
         {
-            room = new Room(type, roles, MobaGame.udpGap, this);
+            room = new Room(type, roles.ToArray(), MobaGame.udpGap, this);
 
         }
 

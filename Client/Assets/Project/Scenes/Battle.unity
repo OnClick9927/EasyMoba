@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -576,7 +576,6 @@ GameObject:
   - component: {fileID: 446556648}
   - component: {fileID: 446556652}
   - component: {fileID: 446556651}
-  - component: {fileID: 446556650}
   - component: {fileID: 446556649}
   m_Layer: 0
   m_Name: born (4)
@@ -611,19 +610,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9135fed2420c2a746a0630cf373f6440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!135 &446556650
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 446556647}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &446556651
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -631,7 +617,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 446556647}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1112,7 +1098,7 @@ MonoBehaviour:
   data:
     ps:
     - position:
-        _x: 32000000
+        _x: 49200000
         _y: 0
       angle:
         _val: 0
@@ -1142,7 +1128,7 @@ MonoBehaviour:
         bounds: []
         nomals: []
     - position:
-        _x: -32000000
+        _x: -48900005
         _y: 0
       angle:
         _val: 0
@@ -1173,7 +1159,7 @@ MonoBehaviour:
         nomals: []
     - position:
         _x: 0
-        _y: 32000000
+        _y: 22299999
       angle:
         _val: 0
       scale:
@@ -1190,20 +1176,20 @@ MonoBehaviour:
         scale:
           _val: 1000000
         localPoints:
-        - _x: -32000000
+        - _x: -50000000
           _y: -1000000
-        - _x: -32000000
+        - _x: -50000000
           _y: 1000000
-        - _x: 32000000
+        - _x: 50000000
           _y: 1000000
-        - _x: 32000000
+        - _x: 50000000
           _y: -1000000
         points: []
         bounds: []
         nomals: []
     - position:
         _x: 0
-        _y: -32000000
+        _y: -23936000
       angle:
         _val: 0
       scale:
@@ -1220,50 +1206,20 @@ MonoBehaviour:
         scale:
           _val: 1000000
         localPoints:
-        - _x: -32000000
+        - _x: -50000000
           _y: -1000000
-        - _x: -32000000
+        - _x: -50000000
           _y: 1000000
-        - _x: 32000000
+        - _x: 50000000
           _y: 1000000
-        - _x: 32000000
-          _y: -1000000
-        points: []
-        bounds: []
-        nomals: []
-    - position:
-        _x: -13800000
-        _y: -1299999
-      angle:
-        _val: 0
-      scale:
-        _val: 1000000
-      shape:
-        rigidbody: 1
-        logic: 0
-        layer: 2
-        angle:
-          _val: 0
-        position:
-          _x: 0
-          _y: 0
-        scale:
-          _val: 1000000
-        localPoints:
-        - _x: -6000000
-          _y: -1000000
-        - _x: -6000000
-          _y: 1000000
-        - _x: 6000000
-          _y: 1000000
-        - _x: 6000000
+        - _x: 50000000
           _y: -1000000
         points: []
         bounds: []
         nomals: []
     - position:
-        _x: 15300000
-        _y: -2400000
+        _x: -31600000
+        _y: 3799999
       angle:
         _val: 0
       scale:
@@ -1292,8 +1248,68 @@ MonoBehaviour:
         bounds: []
         nomals: []
     - position:
-        _x: -100000
-        _y: 4900000
+        _x: -25048000
+        _y: 249998
+      angle:
+        _val: 0
+      scale:
+        _val: 1000000
+      shape:
+        rigidbody: 1
+        logic: 0
+        layer: 2
+        angle:
+          _val: 0
+        position:
+          _x: 0
+          _y: 0
+        scale:
+          _val: 1000000
+        localPoints:
+        - _x: -1000000
+          _y: -4500000
+        - _x: -1000000
+          _y: 4500000
+        - _x: 1000000
+          _y: 4500000
+        - _x: 1000000
+          _y: -5000000
+        points: []
+        bounds: []
+        nomals: []
+    - position:
+        _x: -37756000
+        _y: 3090000
+      angle:
+        _val: 0
+      scale:
+        _val: 1000000
+      shape:
+        rigidbody: 1
+        logic: 0
+        layer: 2
+        angle:
+          _val: 0
+        position:
+          _x: 0
+          _y: 0
+        scale:
+          _val: 1000000
+        localPoints:
+        - _x: -1000000
+          _y: -14000000
+        - _x: -1000000
+          _y: 14000000
+        - _x: 1000000
+          _y: 14000000
+        - _x: 1000000
+          _y: -14000000
+        points: []
+        bounds: []
+        nomals: []
+    - position:
+        _x: -10699598
+        _y: 4099997
       angle:
         _val: 0
       scale:
@@ -1311,19 +1327,79 @@ MonoBehaviour:
           _val: 1000000
         localPoints:
         - _x: -6000000
-          _y: -1000000
+          _y: -3000000
         - _x: -6000000
-          _y: 1000000
+          _y: 3000000
         - _x: 6000000
-          _y: 1000000
+          _y: 3000000
         - _x: 6000000
+          _y: -3000000
+        points: []
+        bounds: []
+        nomals: []
+    - position:
+        _x: -25128625
+        _y: 12421998
+      angle:
+        _val: 0
+      scale:
+        _val: 1000000
+      shape:
+        rigidbody: 1
+        logic: 0
+        layer: 2
+        angle:
+          _val: 0
+        position:
+          _x: 0
+          _y: 0
+        scale:
+          _val: 1000000
+        localPoints:
+        - _x: -1000000
+          _y: 5000000
+        - _x: 1000000
+          _y: 5000000
+        - _x: 1000000
+          _y: -5000000
+        - _x: -1000000
+          _y: -5000000
+        points: []
+        bounds: []
+        nomals: []
+    - position:
+        _x: 22299999
+        _y: 9000000
+      angle:
+        _val: 0
+      scale:
+        _val: 1000000
+      shape:
+        rigidbody: 1
+        logic: 0
+        layer: 2
+        angle:
+          _val: 0
+        position:
+          _x: 0
+          _y: 0
+        scale:
+          _val: 1000000
+        localPoints:
+        - _x: -12000000
+          _y: -1000000
+        - _x: -12000000
+          _y: 1000000
+        - _x: 12000000
+          _y: 1000000
+        - _x: 12000000
           _y: -1000000
         points: []
         bounds: []
         nomals: []
     - position:
-        _x: -9000000
-        _y: -12199999
+        _x: 34640010
+        _y: 6799992
       angle:
         _val: 0
       scale:
@@ -1340,23 +1416,241 @@ MonoBehaviour:
         scale:
           _val: 1000000
         localPoints:
-        - _x: -3039999
+        - _x: -1000000
+          _y: -3000000
+        - _x: -1000000
+          _y: 3000000
+        - _x: 1000000
+          _y: 3000000
+        - _x: 1000000
+          _y: -3000000
+        points: []
+        bounds: []
+        nomals: []
+    - position:
+        _x: 10038395
+        _y: 1100000
+      angle:
+        _val: 0
+      scale:
+        _val: 1000000
+      shape:
+        rigidbody: 1
+        logic: 0
+        layer: 2
+        angle:
+          _val: 0
+        position:
+          _x: 0
+          _y: 0
+        scale:
+          _val: 1000000
+        localPoints:
+        - _x: -1000000
+          _y: -9000000
+        - _x: -1000000
+          _y: 9000000
+        - _x: 1000000
+          _y: 9000000
+        - _x: 1000000
+          _y: -9000000
+        points: []
+        bounds: []
+        nomals: []
+    - position:
+        _x: 18368799
+        _y: 14920001
+      angle:
+        _val: 0
+      scale:
+        _val: 1000000
+      shape:
+        rigidbody: 1
+        logic: 0
+        layer: 2
+        angle:
+          _val: 0
+        position:
+          _x: 0
+          _y: 0
+        scale:
+          _val: 1000000
+        localPoints:
+        - _x: -20000000
+          _y: 1000000
+        - _x: 20000000
+          _y: 1000000
+        - _x: 20000000
+          _y: -1000000
+        - _x: -20000000
+          _y: -1000000
+        points: []
+        bounds: []
+        nomals: []
+    - position:
+        _x: 35777439
+        _y: -14253999
+      angle:
+        _val: 0
+      scale:
+        _val: 1000000
+      shape:
+        rigidbody: 1
+        logic: 0
+        layer: 2
+        angle:
+          _val: 0
+        position:
+          _x: 0
+          _y: 0
+        scale:
+          _val: 1000000
+        localPoints:
+        - _x: -4000000
           _y: 5429999
-        - _x: -1129999
+        - _x: 4000000
           _y: 6309999
-        - _x: 2940000
+        - _x: 4000000
           _y: -6030000
-        - _x: 1039999
+        - _x: -4000000
           _y: -6739999
+        points: []
+        bounds: []
+        nomals: []
+    - position:
+        _x: 30970577
+        _y: -8371558
+      angle:
+        _val: 0
+      scale:
+        _val: 1000000
+      shape:
+        rigidbody: 1
+        logic: 0
+        layer: 2
+        angle:
+          _val: 0
+        position:
+          _x: 0
+          _y: 0
+        scale:
+          _val: 1000000
+        localPoints:
+        - _x: -12000000
+          _y: 1000000
+        - _x: 12000000
+          _y: 1000000
+        - _x: 12000000
+          _y: -1000000
+        - _x: -12000000
+          _y: -1000000
+        points: []
+        bounds: []
+        nomals: []
+    - position:
+        _x: -5099999
+        _y: -15206000
+      angle:
+        _val: 0
+      scale:
+        _val: 1000000
+      shape:
+        rigidbody: 1
+        logic: 0
+        layer: 2
+        angle:
+          _val: 0
+        position:
+          _x: 0
+          _y: 0
+        scale:
+          _val: 1000000
+        localPoints:
+        - _x: -10000000
+          _y: 4000000
+        - _x: 10000000
+          _y: 4000000
+        - _x: 10000000
+          _y: -4000000
+        - _x: -10000000
+          _y: -4000000
+        points: []
+        bounds: []
+        nomals: []
+    - position:
+        _x: -24003192
+        _y: -17701902
+      angle:
+        _val: 0
+      scale:
+        _val: 1000000
+      shape:
+        rigidbody: 1
+        logic: 0
+        layer: 2
+        angle:
+          _val: 0
+        position:
+          _x: 0
+          _y: 0
+        scale:
+          _val: 1000000
+        localPoints:
+        - _x: -10000000
+          _y: 1000000
+        - _x: 10000000
+          _y: 1000000
+        - _x: 10000000
+          _y: -1000000
+        - _x: -10000000
+          _y: -1000000
+        points: []
+        bounds: []
+        nomals: []
+    - position:
+        _x: 14699998
+        _y: -18483501
+      angle:
+        _val: 0
+      scale:
+        _val: 1000000
+      shape:
+        rigidbody: 1
+        logic: 0
+        layer: 2
+        angle:
+          _val: 0
+        position:
+          _x: 0
+          _y: 0
+        scale:
+          _val: 1000000
+        localPoints:
+        - _x: -6000000
+          _y: 6000000
+        - _x: 6000000
+          _y: 6000000
+        - _x: 6000000
+          _y: -6000000
+        - _x: -6000000
+          _y: -6000000
         points: []
         bounds: []
         nomals: []
     cs: []
     bornPos:
-    - _x: -26700000
-      _y: -23799999
-    - _x: -26100000
-      _y: -27500000
+    - _x: -42599998
+      _y: -13300000
+    - _x: 2599999
+      _y: -21899999
+    - _x: 42700000
+      _y: -15100000
+    - _x: 25399999
+      _y: 11600000
+    - _x: -32200000
+      _y: 11600000
+    - _x: 31899999
+      _y: 4500000
 --- !u!1 &947986137
 GameObject:
   m_ObjectHideFlags: 0
@@ -1368,7 +1662,6 @@ GameObject:
   - component: {fileID: 947986138}
   - component: {fileID: 947986142}
   - component: {fileID: 947986141}
-  - component: {fileID: 947986140}
   - component: {fileID: 947986139}
   m_Layer: 0
   m_Name: born (3)
@@ -1403,19 +1696,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9135fed2420c2a746a0630cf373f6440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!135 &947986140
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 947986137}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &947986141
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1423,7 +1703,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 947986137}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1830,7 +2110,6 @@ GameObject:
   - component: {fileID: 1191029262}
   - component: {fileID: 1191029266}
   - component: {fileID: 1191029265}
-  - component: {fileID: 1191029264}
   - component: {fileID: 1191029263}
   m_Layer: 0
   m_Name: born
@@ -1865,19 +2144,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9135fed2420c2a746a0630cf373f6440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!135 &1191029264
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1191029261}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1191029265
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1885,7 +2151,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1191029261}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -2061,7 +2327,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!108 &1281898041
 Light:
   m_ObjectHideFlags: 0
@@ -2503,7 +2769,6 @@ GameObject:
   - component: {fileID: 1728016684}
   - component: {fileID: 1728016688}
   - component: {fileID: 1728016687}
-  - component: {fileID: 1728016686}
   - component: {fileID: 1728016685}
   m_Layer: 0
   m_Name: born
@@ -2538,19 +2803,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9135fed2420c2a746a0630cf373f6440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!135 &1728016686
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1728016683}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1728016687
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2558,7 +2810,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1728016683}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -3085,7 +3337,6 @@ GameObject:
   - component: {fileID: 1887177348}
   - component: {fileID: 1887177352}
   - component: {fileID: 1887177351}
-  - component: {fileID: 1887177350}
   - component: {fileID: 1887177349}
   m_Layer: 0
   m_Name: born (1)
@@ -3120,19 +3371,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9135fed2420c2a746a0630cf373f6440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!135 &1887177350
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1887177347}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1887177351
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3140,7 +3378,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1887177347}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -3311,7 +3549,6 @@ GameObject:
   - component: {fileID: 1995409011}
   - component: {fileID: 1995409015}
   - component: {fileID: 1995409014}
-  - component: {fileID: 1995409013}
   - component: {fileID: 1995409012}
   m_Layer: 0
   m_Name: born (2)
@@ -3346,19 +3583,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9135fed2420c2a746a0630cf373f6440, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!135 &1995409013
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1995409010}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &1995409014
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -3366,7 +3590,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1995409010}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1

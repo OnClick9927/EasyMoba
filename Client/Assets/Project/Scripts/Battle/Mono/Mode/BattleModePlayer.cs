@@ -9,8 +9,8 @@ namespace EasyMoba.GameLogic.Mono
 
 
         public MatchRoomType type;
-        public List<long> roles;
-        public BattleModePlayer(MatchRoomType type, List<long> roles)
+        public List<BattlePlayer> roles;
+        public BattleModePlayer(MatchRoomType type, List<BattlePlayer> roles)
         {
             this.type = type;
             this.roles = roles;
@@ -26,7 +26,7 @@ namespace EasyMoba.GameLogic.Mono
         }
 
 
-        public static BattleModePlayer Create(BattlePlayMode mode, MatchRoomType type, List<long> roles)
+        public static BattleModePlayer Create(BattlePlayMode mode, MatchRoomType type, List<BattlePlayer> roles)
         {
             switch (mode)
             {

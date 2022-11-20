@@ -31,11 +31,11 @@ abstract class Room
             sp.roles = new BattlePlayer[roles.Length + enemy.Length];
             for (int i = 0; i < roles.Length; i++)
             {
-                sp.roles[i] = new BattlePlayer() { role_id = roles[i], type = TeamType.One };
+                sp.roles[i] = new BattlePlayer() { role_id = roles[i], team_type = TeamType.One };
             }
             for (int i = 0; i < enemy.Length; i++)
             {
-                sp.roles[i + roles.Length] = new BattlePlayer() { role_id = enemy[i], type = TeamType.Two };
+                sp.roles[i + roles.Length] = new BattlePlayer() { role_id = enemy[i], team_type = TeamType.Two };
             }
         }
         else
@@ -43,7 +43,7 @@ abstract class Room
             sp.roles = new BattlePlayer[roles.Length];
             for (int i = 0; i < roles.Length; i++)
             {
-                sp.roles[i] = new BattlePlayer() { role_id = roles[i], type = TeamType.One };
+                sp.roles[i] = new BattlePlayer() { role_id = roles[i], team_type = TeamType.One };
             }
         }
         sp.type = type;

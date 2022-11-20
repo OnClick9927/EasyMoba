@@ -1,4 +1,5 @@
 using LockStep.LCollision2D;
+using LockStep.Math;
 using System.Collections.Generic;
 
 namespace EasyMoba.GameLogic
@@ -15,7 +16,9 @@ namespace EasyMoba.GameLogic
         private long role_id;
         private string room_id;
         private MatchRoomType room_type;
-        private List<long> players;
+        private List<BattlePlayer> players;
+
+        public Random random;
 
         public int GetCurFrame()
         {
@@ -35,8 +38,14 @@ namespace EasyMoba.GameLogic
 
         }
 
-        public void StartGame(long role_id, string room_id, MatchRoomType type, List<long> players)
+        public void StartGame(long role_id, string room_id, MatchRoomType type, List<BattlePlayer> players)
         {
+            uint u = 0;
+            foreach (var item in players)
+            {
+
+            }
+            random = new Random();
             this.role_id = role_id;
             this.room_id = room_id;
             this.room_type = type;

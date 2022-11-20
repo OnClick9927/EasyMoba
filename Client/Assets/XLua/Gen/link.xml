@@ -230,6 +230,8 @@
 		<type fullname="Tutorial.DerivedClass+TestEnumInner" preserve="all"/>
 		<type fullname="MatchRoomType" preserve="all"/>
 		<type fullname="ModuleDefine" preserve="all"/>
+		<type fullname="TeamType" preserve="all"/>
+		<type fullname="BattlePlayer" preserve="all"/>
 		<type fullname="FrameData" preserve="all"/>
 		<type fullname="CSBattleFrame" preserve="all"/>
 		<type fullname="SPBattleFrame" preserve="all"/>

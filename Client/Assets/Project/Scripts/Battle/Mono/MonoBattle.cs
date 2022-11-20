@@ -25,7 +25,7 @@ namespace EasyMoba.GameLogic.Mono
 
         }
         public int CurFrame => battle.GetCurFrame();
-        public async void StartGame(BattlePlayMode mode, long role_id, string room_id, MatchRoomType type, List<long> players)
+        public async void StartGame(BattlePlayMode mode, long role_id, string room_id, MatchRoomType type, List<BattlePlayer> players)
         {
             var asset = await Assets.LoadAssetAsync("Assets/Project/Configs/CollisonLayer.json");
             TextAsset txt = asset.GetAsset<TextAsset>();

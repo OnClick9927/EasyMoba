@@ -17,7 +17,7 @@ namespace EasyMoba.GameLogic
             this.word = word;
         }
 
-        public void LoadBaseUnit(MapInitData map_data, List<long> players)
+        public void LoadBaseUnit(MapInitData map_data, List<BattlePlayer> players)
         {
             var data = map_data;
 
@@ -40,7 +40,7 @@ namespace EasyMoba.GameLogic
             var bs = data.bornPos;
             for (int i = 0; i < players.Count; i++)
             {
-                long id = players[i];
+                long id = players[i].role_id;
                 var unit = word.CreateUnit<PlayerUnit>($"PlayerUnit {id}");
                 unit.role_id = id;
                 unit.position = bs[i];
