@@ -8,7 +8,7 @@ namespace EasyMoba.GameLogic
         private Battle battle;
         public FrameCollection frames { get { return battle.frames; } }
 
-        public MobaLogicWord(CollisionLayerConfig layer, Battle battle) : base(layer, new LFloat(MobaGame.udpGap))
+        public MobaLogicWord(CollisionLayerConfig layer, Battle battle) : base(layer, new LFloat(Battle.delta))
         {
             this.battle = battle;
         }

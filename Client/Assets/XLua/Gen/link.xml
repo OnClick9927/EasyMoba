@@ -285,10 +285,10 @@
 		<type fullname="EasyMoba.GameLogic.AttributeCalc" preserve="all"/>
 		<type fullname="EasyMoba.GameLogic.BattleAttributeCollection" preserve="all"/>
 		<type fullname="EasyMoba.GameLogic.Battle" preserve="all"/>
+		<type fullname="EasyMoba.GameLogic.BattleFactory" preserve="all"/>
 		<type fullname="EasyMoba.GameLogic.Buff" preserve="all"/>
 		<type fullname="EasyMoba.GameLogic.BuffCollection" preserve="all"/>
 		<type fullname="EasyMoba.GameLogic.BuffData" preserve="all"/>
-		<type fullname="EasyMoba.GameLogic.BattleFactory" preserve="all"/>
 		<type fullname="EasyMoba.GameLogic.BattleLogic" preserve="all"/>
 		<type fullname="EasyMoba.GameLogic.FrameCollection" preserve="all"/>
 		<type fullname="EasyMoba.GameLogic.MobaLogicWord" preserve="all"/>
@@ -296,6 +296,13 @@
 		<type fullname="EasyMoba.GameLogic.PlayerUnit" preserve="all"/>
 		<type fullname="EasyMoba.GameLogic.WallUnit" preserve="all"/>
 		<type fullname="EasyMoba.GameLogic.MapInitData" preserve="all"/>
+		<type fullname="EasyMoba.GameLogic.SkillCollection" preserve="all"/>
+		<type fullname="EasyMoba.GameLogic.SkillConfig" preserve="all"/>
+		<type fullname="EasyMoba.GameLogic.SkillData" preserve="all"/>
+		<type fullname="EasyMoba.GameLogic.SkillDirector" preserve="all"/>
+		<type fullname="EasyMoba.GameLogic.SkillEffect" preserve="all"/>
+		<type fullname="EasyMoba.GameLogic.SkillEffectAttribute" preserve="all"/>
+		<type fullname="EasyMoba.GameLogic.SkillEffectExecutor" preserve="all"/>
 		<type fullname="EasyMoba.GameLogic.Mono.BattleInput" preserve="all"/>
 		<type fullname="EasyMoba.GameLogic.Mono.CircleShapeComponent" preserve="all"/>
 		<type fullname="EasyMoba.GameLogic.Mono.PlayerBornPlace" preserve="all"/>

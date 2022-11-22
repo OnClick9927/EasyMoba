@@ -31,7 +31,7 @@ namespace EasyMoba.GameLogic.Mono
             TextAsset txt = asset.GetAsset<TextAsset>();
             Assets.Release(asset);
 
-            battle = new Battle(this, JsonUtility.FromJson<CollisionLayerConfig>(txt.text));
+            battle = new Battle(this, JsonUtility.FromJson<CollisionLayerConfig>(txt.text),null);
             battle.StartGame(role_id, room_id, type, players);
 
             mode_server = BattleModePlayer.Create(mode, type, players);

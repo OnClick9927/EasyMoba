@@ -7,8 +7,7 @@ namespace EasyMoba.GameLogic.Mono
         Room room;
         public LocalModePlayer(MatchRoomType type, List<BattlePlayer> roles) : base(type, roles)
         {
-            room = new Room(type, roles.ToArray(), MobaGame.udpGap, this);
-
+            room = new Room(type, roles.ToArray(), Battle.delta, this);
         }
 
         public override void CallServerReady(long role_id, string room_id)

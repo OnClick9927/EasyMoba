@@ -4,11 +4,14 @@ using System.Collections.Generic;
 
 namespace EasyMoba.GameLogic
 {
-
     public class Battle
     {
+        public static LFloat delta = 1000 / 15;
         public IBattleView view;
         private CollisionLayerConfig collision;
+        private SkillConfig skill_config;
+
+
         private BattleLogic logic;
         public FrameCollection frames;
         public MobaLogicWord word;
@@ -16,8 +19,8 @@ namespace EasyMoba.GameLogic
         public BattleAttributeCollection attributes;
         public AttributeCalc calc;
         public BuffCollection buff;
+        public SkillDirector skill;
         public Random random;
-
 
         private long role_id;
         private string room_id;
@@ -28,10 +31,11 @@ namespace EasyMoba.GameLogic
         {
             return frames.curFrame;
         }
-        public Battle(IBattleView monoBattle, CollisionLayerConfig collision)
+        public Battle(IBattleView monoBattle, CollisionLayerConfig collision, SkillConfig skill_config)
         {
             this.view = monoBattle;
             this.collision = collision;
+            this.skill_config = skill_config;
         }
 
         public long Role_id { get => role_id; }
@@ -61,6 +65,7 @@ namespace EasyMoba.GameLogic
             attributes = new BattleAttributeCollection();
             calc = new AttributeCalc(this);
             buff = new BuffCollection(this);
+            skill = new SkillDirector(skill_config);
         }
 
         public void CloseGame()

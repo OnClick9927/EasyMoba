@@ -21,7 +21,7 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(EasyMoba.GameLogic.Battle);
-			Utils.BeginObjectRegister(type, L, translator, 0, 7, 10, 8);
+			Utils.BeginObjectRegister(type, L, translator, 0, 7, 11, 9);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetCurFrame", _m_GetCurFrame);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SetMapData", _m_SetMapData);
@@ -41,6 +41,7 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "attributes", _g_get_attributes);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "calc", _g_get_calc);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "buff", _g_get_buff);
+            Utils.RegisterFunc(L, Utils.GETTER_IDX, "skill", _g_get_skill);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "random", _g_get_random);
             
 			Utils.RegisterFunc(L, Utils.SETTER_IDX, "view", _s_set_view);
@@ -50,18 +51,21 @@ namespace XLua.CSObjectWrap
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "attributes", _s_set_attributes);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "calc", _s_set_calc);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "buff", _s_set_buff);
+            Utils.RegisterFunc(L, Utils.SETTER_IDX, "skill", _s_set_skill);
             Utils.RegisterFunc(L, Utils.SETTER_IDX, "random", _s_set_random);
             
 			
 			Utils.EndObjectRegister(type, L, translator, null, null,
 			    null, null, null);
 
-		    Utils.BeginClassRegister(type, L, __CreateInstance, 1, 0, 0);
+		    Utils.BeginClassRegister(type, L, __CreateInstance, 1, 1, 1);
 			
 			
             
-			
-			
+			Utils.RegisterFunc(L, Utils.CLS_GETTER_IDX, "delta", _g_get_delta);
+            
+			Utils.RegisterFunc(L, Utils.CLS_SETTER_IDX, "delta", _s_set_delta);
+            
 			
 			Utils.EndClassRegister(type, L, translator);
         }
@@ -72,12 +76,13 @@ namespace XLua.CSObjectWrap
             
 			try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-				if(LuaAPI.lua_gettop(L) == 3 && translator.Assignable<EasyMoba.GameLogic.IBattleView>(L, 2) && translator.Assignable<LockStep.LCollision2D.CollisionLayerConfig>(L, 3))
+				if(LuaAPI.lua_gettop(L) == 4 && translator.Assignable<EasyMoba.GameLogic.IBattleView>(L, 2) && translator.Assignable<LockStep.LCollision2D.CollisionLayerConfig>(L, 3) && translator.Assignable<EasyMoba.GameLogic.SkillConfig>(L, 4))
 				{
 					EasyMoba.GameLogic.IBattleView _monoBattle = (EasyMoba.GameLogic.IBattleView)translator.GetObject(L, 2, typeof(EasyMoba.GameLogic.IBattleView));
 					LockStep.LCollision2D.CollisionLayerConfig _collision = (LockStep.LCollision2D.CollisionLayerConfig)translator.GetObject(L, 3, typeof(LockStep.LCollision2D.CollisionLayerConfig));
+					EasyMoba.GameLogic.SkillConfig _skill_config = (EasyMoba.GameLogic.SkillConfig)translator.GetObject(L, 4, typeof(EasyMoba.GameLogic.SkillConfig));
 					
-					var gen_ret = new EasyMoba.GameLogic.Battle(_monoBattle, _collision);
+					var gen_ret = new EasyMoba.GameLogic.Battle(_monoBattle, _collision, _skill_config);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -328,6 +333,18 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _g_get_delta(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			    translator.Push(L, EasyMoba.GameLogic.Battle.delta);
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 1;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _g_get_view(RealStatePtr L)
         {
 		    try {
@@ -426,6 +443,20 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _g_get_skill(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                EasyMoba.GameLogic.Battle gen_to_be_invoked = (EasyMoba.GameLogic.Battle)translator.FastGetCSObj(L, 1);
+                translator.Push(L, gen_to_be_invoked.skill);
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 1;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _g_get_random(RealStatePtr L)
         {
 		    try {
@@ -440,6 +471,20 @@ namespace XLua.CSObjectWrap
         }
         
         
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _s_set_delta(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			LockStep.Math.LFloat gen_value;translator.Get(L, 1, out gen_value);
+				EasyMoba.GameLogic.Battle.delta = gen_value;
+            
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 0;
+        }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _s_set_view(RealStatePtr L)
@@ -539,6 +584,21 @@ namespace XLua.CSObjectWrap
 			
                 EasyMoba.GameLogic.Battle gen_to_be_invoked = (EasyMoba.GameLogic.Battle)translator.FastGetCSObj(L, 1);
                 gen_to_be_invoked.buff = (EasyMoba.GameLogic.BuffCollection)translator.GetObject(L, 2, typeof(EasyMoba.GameLogic.BuffCollection));
+            
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 0;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _s_set_skill(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                EasyMoba.GameLogic.Battle gen_to_be_invoked = (EasyMoba.GameLogic.Battle)translator.FastGetCSObj(L, 1);
+                gen_to_be_invoked.skill = (EasyMoba.GameLogic.SkillDirector)translator.GetObject(L, 2, typeof(EasyMoba.GameLogic.SkillDirector));
             
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
