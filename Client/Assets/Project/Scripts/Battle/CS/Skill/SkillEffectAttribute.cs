@@ -5,10 +5,10 @@ namespace EasyMoba.GameLogic
     [AttributeUsage(AttributeTargets.Class, Inherited = false, AllowMultiple = true)]
     public class SkillEffectAttribute : Attribute
     {
-        public int effect_id;
-        public SkillEffectAttribute(int effect_id)
+        public int type_code;
+        public SkillEffectAttribute(int type_code)
         {
-            this.effect_id = effect_id;
+            this.type_code = type_code;
         }
     }
 }

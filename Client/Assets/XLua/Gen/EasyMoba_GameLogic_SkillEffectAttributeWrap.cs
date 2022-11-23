@@ -84,7 +84,7 @@ namespace XLua.CSObjectWrap
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			
                 EasyMoba.GameLogic.SkillEffectAttribute gen_to_be_invoked = (EasyMoba.GameLogic.SkillEffectAttribute)translator.FastGetCSObj(L, 1);
-                LuaAPI.xlua_pushinteger(L, gen_to_be_invoked.effect_id);
+                LuaAPI.xlua_pushinteger(L, gen_to_be_invoked.type_code);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
@@ -100,7 +100,7 @@ namespace XLua.CSObjectWrap
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			
                 EasyMoba.GameLogic.SkillEffectAttribute gen_to_be_invoked = (EasyMoba.GameLogic.SkillEffectAttribute)translator.FastGetCSObj(L, 1);
-                gen_to_be_invoked.effect_id = LuaAPI.xlua_tointeger(L, 2);
+                gen_to_be_invoked.type_code = LuaAPI.xlua_tointeger(L, 2);
             
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
