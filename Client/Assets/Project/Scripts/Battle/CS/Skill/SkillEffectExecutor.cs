@@ -31,7 +31,7 @@
             OnFixUpdate(curFrame);
         }
     }
-    public abstract class SkillEffectExecutor<T> : SkillEffectExecutor where T : SkillEffect
+    public abstract class SkillEffectExecutor<T> : SkillEffectExecutor where T : SkillEffectData
     {
         protected T data { get; private set; }
         protected MobaUnit owener { get; private set; }

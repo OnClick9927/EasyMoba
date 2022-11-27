@@ -2,11 +2,11 @@
 {
     class SkillEffectGen
     {
-        public static SkillEffect GetEffect(int id, string txt)
+        public static SkillEffectData GetEffect(int id, string txt)
         {
             return null;
         }
-        public static SkillEffectExecutor GetExecutor(SkillEffect effect, MobaUnit unit)
+        public static SkillEffectExecutor GetExecutor(SkillEffectData effect, MobaUnit unit)
         {
             return null;
         }

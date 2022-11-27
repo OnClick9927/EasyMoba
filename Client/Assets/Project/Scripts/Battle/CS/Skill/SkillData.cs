@@ -1,4 +1,6 @@
-﻿namespace EasyMoba.GameLogic
+﻿using System.Collections.Generic;
+
+namespace EasyMoba.GameLogic
 {
     [System.Serializable]
     public class SkillData
@@ -7,12 +9,12 @@
         public string name;
         public string des;
         public string icon;
-        
+
 
 
 
         public int CD;
-        public int[] effects;
+        public List<int> effects = new List<int>();
     }
 }
 

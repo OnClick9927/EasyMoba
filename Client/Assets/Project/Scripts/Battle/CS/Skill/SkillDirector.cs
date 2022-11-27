@@ -24,9 +24,9 @@ namespace EasyMoba.GameLogic
         }
         public void PlaySkill(SkillData skill, MobaUnit unit)
         {
-            for (int i = 0; i < skill.effects.Length; i++)
+            for (int i = 0; i < skill.effects.Count; i++)
             {
-                SkillEffect effect = config.effets.Find(x => x.effectID == skill.effects[i]);
+                SkillEffectData effect = config.effets.Find(x => x.effectID == skill.effects[i]);
                 SkillEffectExecutor player = SkillEffectGen.GetExecutor(effect, unit);
                 executors.Add(player);
             }

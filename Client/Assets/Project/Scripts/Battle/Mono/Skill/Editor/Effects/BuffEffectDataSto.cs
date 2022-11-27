@@ -1,0 +1,1 @@
+namespace EasyMoba.GameLogic.Mono{public class BuffEffectDataSto: SkillEffectDataSto<BuffEffectData>{}}

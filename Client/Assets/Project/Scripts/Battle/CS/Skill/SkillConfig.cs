@@ -5,7 +5,7 @@ namespace EasyMoba.GameLogic
     public class SkillConfig
     {
         public List<SkillData> skills;
-        public List<SkillEffect> effets;
+        public List<SkillEffectData> effets;
     }
 }
 

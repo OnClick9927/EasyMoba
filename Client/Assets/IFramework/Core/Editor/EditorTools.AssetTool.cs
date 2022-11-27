@@ -93,7 +93,7 @@ namespace IFramework
                         {
                             Object asset = subAssets[i];
                             AssetDatabase.AddObjectToAsset(asset, sto);
-                            asset.hideFlags = HideFlags.HideInHierarchy;
+                            //asset.hideFlags = HideFlags.HideInHierarchy;
                         }
                     }
                     EditorApplication.RepaintProjectWindow();
