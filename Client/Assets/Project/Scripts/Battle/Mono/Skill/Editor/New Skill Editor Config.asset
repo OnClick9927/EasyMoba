@@ -1,5 +1,39 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-4311828705101462261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86d4a461b37e4b64bac4a0f1f17e4d5b, type: 3}
+  m_Name: 9eeec771-3d64-4ede-b535-a7803bd816e0
+  m_EditorClassIdentifier: 
+  effect:
+    effectID: 100
+    delay: 0
+    loop: 0
+    buffs: []
+--- !u!114 &-4117834622008392215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86d4a461b37e4b64bac4a0f1f17e4d5b, type: 3}
+  m_Name: 1cf38774-3caa-4af1-b949-0bb0a92141b8
+  m_EditorClassIdentifier: 
+  effect:
+    effectID: 0
+    delay: 0
+    loop: 0
+    buffs: []
 --- !u!114 &-3186261624230857356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30,8 +64,8 @@ MonoBehaviour:
   m_Name: New Skill Editor Config
   m_EditorClassIdentifier: 
   effects:
-  - {fileID: -3186261624230857356}
-  - {fileID: 8882572819866092105}
+  - {fileID: -4311828705101462261}
+  - {fileID: 684746237713464504}
   skills:
   - {fileID: 5919313366654991195}
 --- !u!114 &618052609448995564
@@ -51,6 +85,40 @@ MonoBehaviour:
     delay: 0
     loop: 0
     test: 0
+--- !u!114 &684746237713464504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86d4a461b37e4b64bac4a0f1f17e4d5b, type: 3}
+  m_Name: b77799e4-78fa-421e-b62b-5ed69207c21a
+  m_EditorClassIdentifier: 
+  effect:
+    effectID: 101
+    delay: 0
+    loop: 0
+    buffs: []
+--- !u!114 &2599913650058852400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86d4a461b37e4b64bac4a0f1f17e4d5b, type: 3}
+  m_Name: 899da5a5-bed0-4ca3-ad9d-23bdf1a02589
+  m_EditorClassIdentifier: 
+  effect:
+    effectID: 0
+    delay: 0
+    loop: 0
+    buffs: []
 --- !u!114 &5919313366654991195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69,8 +137,8 @@ MonoBehaviour:
   icon: 
   CD: 0
   effects:
-  - {fileID: -3186261624230857356}
-  - {fileID: 8882572819866092105}
+  - {fileID: -4311828705101462261}
+  - {fileID: 684746237713464504}
 --- !u!114 &8882572819866092105
 MonoBehaviour:
   m_ObjectHideFlags: 0

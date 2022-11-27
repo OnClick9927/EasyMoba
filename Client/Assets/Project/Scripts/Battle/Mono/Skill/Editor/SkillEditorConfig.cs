@@ -31,6 +31,14 @@ namespace EasyMoba.GameLogic.Mono
 
         private void Update()
         {
+            for (int i = 0; i < effects.Count; i++)
+            {
+                SerializedObject obj = new SerializedObject(effects[i]);
+                var p = obj.FindProperty("effect");
+                var e = p.FindPropertyRelative("effectID");
+                e.intValue = i+100;
+                obj.ApplyModifiedPropertiesWithoutUndo();
+            }
             List<UnityEngine.Object> objs = new List<UnityEngine.Object>();
             objs.AddRange(skills);
             objs.AddRange(effects);
@@ -64,6 +72,7 @@ namespace EasyMoba.GameLogic.Mono
 
             skill.effects.Add(sto);
             effects.Add(sto);
+           
             Update();
         }
 
