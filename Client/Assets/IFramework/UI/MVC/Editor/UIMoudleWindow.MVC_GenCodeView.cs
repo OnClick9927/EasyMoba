@@ -12,6 +12,10 @@ using UnityEngine;
 using System;
 using System.IO;
 using static IFramework.UI.UIMoudleWindow;
+using static IFramework.EditorTools;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace IFramework.UI.MVC
 {
@@ -47,6 +51,9 @@ namespace IFramework.UI.MVC
             [SerializeField] private string UIMapName = "UIMap_MVC";
             [SerializeField] private UIPanel panel;
             [SerializeField] private FloderField FloderField;
+            private ScriptCreaterFieldsDrawer fields;
+            private EditorTools.ScriptCreater creater = new ScriptCreater();
+
             private MVCPanelGenData sto;
             string UIMap_CSName { get { return UIMapName.Append(".cs"); } }
 
@@ -60,6 +67,7 @@ namespace IFramework.UI.MVC
                     this.UIMapName = last.UIMapName;
                 }
                 this.FloderField = new FloderField(UIMapDir);
+                fields = new ScriptCreaterFieldsDrawer(creater);
             }
             public override void OnDisable()
             {
@@ -105,6 +113,10 @@ namespace IFramework.UI.MVC
 
                 EditorGUI.BeginChangeCheck();
                 panel = EditorGUILayout.ObjectField("UIPanel", panel, typeof(UIPanel), true) as UIPanel;
+
+                if (panel != null)
+                    creater.SetGameObject(panel.gameObject);
+
                 EditorGUILayout.LabelField("UIPanelGenPath", PanelGenDir);
                 if (EditorGUI.EndChangeCheck())
                 {
@@ -117,6 +129,7 @@ namespace IFramework.UI.MVC
 
                 GUILayout.Space(10);
 
+                fields.OnGUI();
 
                 GUILayout.Space(10);
                 if (GUILayout.Button("Gen"))
@@ -131,15 +144,14 @@ namespace IFramework.UI.MVC
                         EditorWindow.focusedWindow.ShowNotification(new GUIContent("Select UI Panel"));
                         return;
                     }
-                    string paneltype = panel.GetType().Name;
-                    string vmType = paneltype.Append("ViewModel");
+                    string paneltype = panel.name;
                     string viewType = paneltype.Append("View");
                     if (panel != null && !Directory.Exists(PanelGenDir))
                     {
                         Directory.CreateDirectory(PanelGenDir);
                     }
-                    WriteView(viewType, vmType, panel.GetType(), paneltype, ns);
-                    WriteMap(UIMapDir.CombinePath(UIMap_CSName), panel.name, ns, panel.GetType());
+                    WriteView(viewType, paneltype, ns);
+                    WriteMap(UIMapDir.CombinePath(UIMap_CSName), panel.name);
                     AssetDatabase.Refresh();
                 }
                 GUILayout.Space(10);
@@ -161,7 +173,7 @@ namespace IFramework.UI.MVC
                                     sto.Save();
                                     AssetDatabase.DeleteAsset(sto.workspace.CombinePath(_nm.panelName));
                                     //Directory.Delete(sto.workspace.CombinePath(_nm.panelName), true);
-                                    WriteMap(sto.workspace.CombinePath(UIMap_CSName), sto.ns);
+                                    WriteMap(sto.workspace.CombinePath(UIMap_CSName));
                                 }
                                 GUILayout.EndHorizontal();
                             }
@@ -182,66 +194,92 @@ namespace IFramework.UI.MVC
 
 
 
-
-            private void WriteView(string viewType, string vmType, Type type, string panelType, string ns)
+            private void WriteView(string viewType, string panelType, string ns)
             {
                 string designPath = PanelGenDir.CombinePath(viewType.Append(".Design.cs"));
                 string path = PanelGenDir.CombinePath(viewType.Append(".cs"));
 
                 WriteTxt(designPath, viewDesignScriptOrigin,
-               (str) =>
-               {
+                (str) =>
+                {
+                    return str.Replace("#PanelType#", panelType)
+                    .Replace("#panelfield#", Fields())
+                    .Replace(".Design", "");
+                });
 
-                   return str.Replace("#VMType#", vmType)
-                   .Replace("#PanelType#", panelType)
-                   .Replace("#panelfield#", GetPanelField(type))
-                   .Replace(".Design", "");
-               }, ns
-               );
                 if (!File.Exists(path))
                 {
-                    WriteTxt(path, viewScriptOrigin, null, ns);
+                    WriteTxt(path, viewScriptOrigin, null);
                 }
             }
-            private string GetPanelField(Type panel)
+
+
+            private class tmp
             {
-                string result = "";
-                foreach (var field in panel.GetFields())
-                {
-                    result += string.Format("\t\tprivate {0} {2} {1} get {1} return Tpanel.{2}; {3} {3}\n", field.FieldType.FullName, "{", field.Name, "}");
-
-                }
-
-                return result;
+                public string fieldName;
+                public string path;
+                public string fieldType;
             }
 
-            private void WriteMap(string path, string ns)
+            private string Fields()
+            {
+                List<tmp> fs = new List<tmp>();
+                var marks = creater.GetMarks();
+
+                if (marks != null)
+                {
+                    for (int i = 0; i < marks.Count; i++)
+                    {
+                        string ns = marks[i].fieldType;
+                        fs.Add(new tmp()
+                        {
+                            fieldName = marks[i].fieldName,
+                            fieldType = marks[i].fieldType,
+                            path = marks[i].transform.GetPath().Replace(creater.gameObject.transform.GetPath(), "").Remove(0, 1)
+                        });
+                    }
+                }
+                StringBuilder f = new StringBuilder();
+                StringBuilder functionField = new StringBuilder();
+                for (int i = 0; i < fs.Count; i++)
+                {
+                    f.AppendLine($"\t\tprivate {fs[i].fieldType} {fs[i].fieldName};");
+                    functionField.AppendLine($"\t\t\t{fs[i].fieldName} = panel.transform.Find(\"{fs[i].path}\").GetComponent<{fs[i].fieldType}>();");
+                }
+                f.AppendLine("\t\tprivate void InitComponents()");
+                f.AppendLine("\t\t{");
+                f.Append(functionField);
+                f.AppendLine("\t\t}");
+                return f.ToString();
+            }
+
+            private void WriteMap(string path)
             {
                 string replace = "";
-                string namerp = "";
                 LoadGenData();
                 sto.map.ForEach(_nm =>
                 {
-                    namerp = namerp.Append("\t\tpublic const string " + _nm.panelName + " = " + "\"" + _nm.panelName + "\";\n");
                     replace = replace.Append("\t\t\t" + _nm.content + ",\n");
                 });
-                WriteTxt(path, mapScriptOrigin.Replace("//Names", namerp).Replace("//ToDo", replace), null, ns);
+                WriteTxt(path, mapScriptOrigin.Replace("//ToDo", replace), null);
             }
-            private void WriteMap(string path, string panelName, string ns, Type panelType)
+
+            private void WriteMap(string path, string panelName)
             {
+                var ns = EditorTools.ProjectConfig.NameSpace;
                 LoadGenData();
-                string content = string.Format("{1} {0} ,typeof({3}.{4}View){2}", panelName, "{", "}", ns, panelType.Name);
+                string content = ($"{{ \"{panelName}\" ,typeof({ns}.{panel.name}View)}}");
                 sto.AddMap(panelName, content);
                 sto.ns = ns;
                 sto.workspace = UIMapDir;
                 sto.Save();
-                WriteMap(path, ns);
+                WriteMap(path);
             }
-            private static void WriteTxt(string writePath, string source, Func<string, string> func, string ns)
+            private static void WriteTxt(string writePath, string source, Func<string, string> func)
             {
                 source = source.Replace("#User#", EditorTools.ProjectConfig.UserName)
                          .Replace("#UserSCRIPTNAME#", Path.GetFileNameWithoutExtension(writePath))
-                           .Replace("#UserNameSpace#", ns)
+                           .Replace("#UserNameSpace#", EditorTools.ProjectConfig.NameSpace)
                            .Replace("#UserVERSION#", EditorTools.ProjectConfig.Version)
                            .Replace("#UserDescription#", EditorTools.ProjectConfig.Description)
                            .Replace("#UserUNITYVERSION#", Application.unityVersion)
@@ -266,7 +304,7 @@ namespace IFramework.UI.MVC
             private const string viewDesignScriptOrigin = head +
             "namespace #UserNameSpace#\n" +
             "{\n" +
-            "\tpublic partial class #UserSCRIPTNAME# : IFramework.UI.MVC.UIView<#PanelType#> \n" +
+            "\tpublic partial class #UserSCRIPTNAME# : IFramework.UI.MVC.UIView \n" +
             "\t{\n" +
             "#panelfield#\n" +
             "\t}\n" +
@@ -278,6 +316,7 @@ namespace IFramework.UI.MVC
             "\t{\n" +
             "\t\tprotected override void OnLoad()\n" +
             "\t\t{\n" +
+            "\t\t\tInitComponents();\n" +
             "\t\t}\n" +
             "\n" +
             "\t\tprotected override void OnShow()\n" +
@@ -297,11 +336,7 @@ namespace IFramework.UI.MVC
             private const string mapScriptOrigin = head +
            "namespace #UserNameSpace#\n" +
            "{\n" +
-            "\tpartial class #UserSCRIPTNAME#\n" +
-            "\t{\n" +
-            "//Names\n" +
-            "\t}\n" +
-           "\tpublic partial class #UserSCRIPTNAME# \n" +
+           "\tpublic class #UserSCRIPTNAME# \n" +
            "\t{\n" +
            "\t\tpublic static System.Collections.Generic.Dictionary<string, System.Type> map = \n" +
            "\t\tnew System.Collections.Generic.Dictionary<string, System.Type>()\n" +

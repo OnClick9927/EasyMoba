@@ -11,8 +11,6 @@ using IFramework.Hotfix.Asset;
 using IFramework.Hotfix.Lua;
 using IFramework.UI;
 using System.Collections.Generic;
-using System.Reflection;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 namespace EasyMoba
@@ -43,7 +41,7 @@ namespace EasyMoba
             {
                 MVCMap.map,
             }));
-            modules.UpdateUI.Show(MVCMap.UpdatePanel);
+            modules.UpdateUI.Show(PanelNames.UpdatePanel);
             modules.UpdateUI.canvas.transform.SetParent(this.transform, true);
 
             env.BindDispose(OnDispose);
@@ -61,7 +59,7 @@ namespace EasyMoba
         public async void StartGame()
         {
             await System.Threading.Tasks.Task.Delay(100);
-            modules.UpdateUI.Close(MVCMap.UpdatePanel);
+            modules.UpdateUI.Close(PanelNames.UpdatePanel);
             var asset = await Assets.LoadAsset("Assets/Project/Configs/UICollect.json");
             TextAsset txt = asset.GetAsset<TextAsset>();
             PanelPathCollect _collect = JsonUtility.FromJson<PanelPathCollect>(txt.text);

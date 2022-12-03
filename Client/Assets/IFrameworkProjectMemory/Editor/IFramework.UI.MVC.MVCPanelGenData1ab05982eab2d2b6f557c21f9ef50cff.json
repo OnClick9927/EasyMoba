@@ -5,7 +5,7 @@
     "map": [
         {
             "panelName": "UpdatePanel",
-            "content": "{ UpdatePanel ,typeof(EasyMoba.UpdatePanelView)}"
+            "content": "{ \"UpdatePanel\" ,typeof(EasyMoba.UpdatePanelView)}"
         }
     ]
 }

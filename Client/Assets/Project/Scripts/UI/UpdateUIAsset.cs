@@ -20,7 +20,7 @@ namespace EasyMoba
 
         public override UIPanel LoadPanel(string name)
         {
-            return Resources.Load<UIPanel>($"UI/{name}");
+            return Resources.Load<UIPanel>(name);
         }
 
         public override bool LoadPanelAsync(string name, LoadPanelAsyncOperation op)
