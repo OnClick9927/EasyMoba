@@ -8,15 +8,15 @@
 --*********************************************************************************
 
 ---ViewUseFlag
-local Button = StaticUsing("UnityEngine.UI.Button")
+local RectTransform = StaticUsing("UnityEngine.RectTransform")
 ---ViewUseFlag
 ---@class MatchPanelView : UIView_MVC
 local MatchPanelView = class("MatchPanelView", UIView_MVC)
 
 function MatchPanelView:OnLoad()
     self.Controls = {
-		---@type UnityEngine.UI.Button
-		DisMatch = self:GetComponent("BG/DisMatch", typeof(Button)),
+		---@type UnityEngine.RectTransform
+		DisMatch = self:GetComponent("BG/DisMatch", typeof(RectTransform)),
 	}
     --BindUIEvent
     self:ShowHideBtn(false)

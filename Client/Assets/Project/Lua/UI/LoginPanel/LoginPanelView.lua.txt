@@ -9,16 +9,15 @@
 
 ---ViewUseFlag
 local Button = StaticUsing("UnityEngine.UI.Button")
-
 ---ViewUseFlag
 ---@class LoginPanelView : UIView_MVC
 local LoginPanelView = class("LoginPanelView", UIView_MVC)
 
 function LoginPanelView:OnLoad()
     self.Controls = {
-        ---@type UnityEngine.UI.Button
-        Login = self:GetComponent("Login", typeof(Button)),
-    }
+		---@type UnityEngine.UI.Button
+		Login = self:GetComponent("Login", typeof(Button)),
+	}
     local function call_login()
         Ctrls.LoginCtrl.Login()
 

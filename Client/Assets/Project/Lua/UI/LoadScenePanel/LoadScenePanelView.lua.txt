@@ -10,18 +10,17 @@
 ---ViewUseFlag
 local RectTransform = StaticUsing("UnityEngine.RectTransform")
 local Slider = StaticUsing("UnityEngine.UI.Slider")
-
 ---ViewUseFlag
 ---@class LoadScenePanelView : UIView_MVC
 local LoadScenePanelView = class("LoadScenePanelView", UIView_MVC)
 
 function LoadScenePanelView:OnLoad()
     self.Controls = {
-        ---@type UnityEngine.RectTransform
-        BG = self:GetComponent("BG", typeof(RectTransform)),
-        ---@type UnityEngine.UI.Slider
-        Progress = self:GetComponent("BG/Progress", typeof(Slider)),
-    }
+		---@type UnityEngine.RectTransform
+		BG = self:GetComponent("BG", typeof(RectTransform)),
+		---@type UnityEngine.UI.Slider
+		Progress = self:GetComponent("BG/Progress", typeof(Slider)),
+	}
     GameTools.SetActive(self.gameObject, false)
     --BindUIEvent
     Events:Subscribe(LuaEventTypes.ShowHideLoadSceneUI, function(show)
