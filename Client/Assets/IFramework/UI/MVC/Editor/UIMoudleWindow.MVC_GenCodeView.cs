@@ -281,7 +281,6 @@ namespace IFramework.UI.MVC
                          .Replace("#UserSCRIPTNAME#", Path.GetFileNameWithoutExtension(writePath))
                            .Replace("#UserNameSpace#", EditorTools.ProjectConfig.NameSpace)
                            .Replace("#UserVERSION#", EditorTools.ProjectConfig.Version)
-                           .Replace("#UserDescription#", EditorTools.ProjectConfig.Description)
                            .Replace("#UserUNITYVERSION#", Application.unityVersion)
                            .Replace("#UserDATE#", DateTime.Now.ToString("yyyy-MM-dd")).ToUnixLineEndings();
                 if (func != null)

@@ -37,10 +37,7 @@ namespace EasyMoba
             modules = new MobaModules();
             modules.UpdateUI.SetAsset(new UpdateUIAsset());
             modules.UpdateUI.CreateCanvas();
-            modules.UpdateUI.SetGroups(new IFramework.UI.MVC.MvcGroups(new Dictionary<string, System.Type>[]
-            {
-                MVCMap.map,
-            }));
+            modules.UpdateUI.SetGroups(new IFramework.UI.MVC.MvcGroups(MVCMap.map));
             modules.UpdateUI.Show(PanelNames.UpdatePanel);
             modules.UpdateUI.canvas.transform.SetParent(this.transform, true);
 

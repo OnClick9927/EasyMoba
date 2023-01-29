@@ -7,6 +7,7 @@
  *History:        2018.11--
 *********************************************************************************/
 using IFramework.GUITool;
+using UnityEngine;
 
 namespace IFramework.Hotfix.Lua
 {
@@ -14,9 +15,10 @@ namespace IFramework.Hotfix.Lua
     {
         private class LuaFloderField : FloderField
         {
+            public static string hotFixScriptPath => Application.dataPath.CombinePath("Project/Lua").ToAssetsPath();
             protected override bool Fitter(string path)
             {
-                return path.Contains(MVVM_GenCodeView_Lua.hotFixScriptPath);
+                return path.Contains(hotFixScriptPath);
             }
         }
 

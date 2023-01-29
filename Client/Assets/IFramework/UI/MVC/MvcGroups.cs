@@ -17,14 +17,17 @@ namespace IFramework.UI.MVC
 
         private Dictionary<string, Type> _typemap;
 
-        public MvcGroups(Dictionary<string, Type>[] maps)
+        public MvcGroups(params Dictionary<string, Type>[] maps)
         {
-            _typemap = new Dictionary<string, Type>();
-            foreach (var item in maps)
+            if (maps!=null)
             {
-                foreach (var _item in item)
+                _typemap = new Dictionary<string, Type>();
+                foreach (var item in maps)
                 {
-                    this._typemap.Add(_item.Key, _item.Value);
+                    foreach (var _item in item)
+                    {
+                        this._typemap.Add(_item.Key, _item.Value);
+                    }
                 }
             }
         }

@@ -15,10 +15,8 @@ using System.IO;
 using System.Collections.Generic;
 using IFramework.UI;
 using static IFramework.EditorTools;
-using IFramework.UI.MVVM;
-namespace IFramework.UI
-{
-}
+using IFramework.UI.MVC;
+
 namespace IFramework.Hotfix.Lua
 {
 
@@ -28,7 +26,7 @@ namespace IFramework.Hotfix.Lua
         class MVC_GenCodeView_Lua : UI.UIMoudleWindow.UIMoudleWindowTab
         {
             private Vector2 scroll;
-            private MVVMPanelGenData sto;
+            private MVCPanelGenData sto;
             private EditorTools.ScriptCreater creater = new ScriptCreater();
             private ScriptCreaterFieldsDrawer fields;
             private LuaFloderField field;
@@ -48,7 +46,7 @@ namespace IFramework.Hotfix.Lua
 
             private void LoadNameSto(string work)
             {
-                sto = MVVMPanelGenData.CheckExist<MVVMPanelGenData>(work);
+                sto = MVCPanelGenData.CheckExist<MVCPanelGenData>(work);
             }
             public override void OnGUI()
             {
@@ -273,50 +271,43 @@ namespace IFramework.Hotfix.Lua
                 this.SaveToPrefs(key);
             }
 
-
+            public const string ViewUseFlag = "--using";
+            public const string ViewFeildFlag = "--Find";
             public static string head = "--*********************************************************************************\n" +
               "--Author:         " + EditorTools.ProjectConfig.UserName + "\n" +
               "--Version:        " + EditorTools.ProjectConfig.Version + "\n" +
               "--UnityVersion:   " + Application.unityVersion + "\n" +
               "--Date:           " + DateTime.Now.ToString("yyyy-MM-dd") + "\n" +
-              "--Description:    " + EditorTools.ProjectConfig.Description + "\n" +
-              "--History:        " + DateTime.Now.ToString("yyyy-MM-dd") + "\n" +
               "--*********************************************************************************\n";
             static string vSource = head + "\n" +
              "---ViewUseFlag\n" +
              ViewUseFlag + "\n\n" +
              "---ViewUseFlag\n" +
-              "---@class " + "#PanelName#View" + " : UIView_MVC" + "\n" +
-             "local " + "#PanelName#View" + " = class(\"" + "#PanelName#View" + "\",UIView_MVC)\n" + "\n" +
-             "function " + "#PanelName#View" + ":OnLoad()" + "\n" +
-             "\tself.Controls = {" + "\n" +
-              ViewFeildFlag + "\n" +
-              "\t}" + "\n" +
-              "\t--BindUIEvent" + "\n\n" +
-             "end\n" + "\n" +
-             "function " + "#PanelName#View" + ":OnShow()" + "\n" +
-             "" + "\n" +
-             "end\n" + "\n" +
-             "function " + "#PanelName#View" + ":OnHide()" + "\n" +
-             "" + "\n" +
-             "end\n" + "\n" +
-             "function " + "#PanelName#View" + ":OnClose()" + "\n" +
-             "\tself.Controls = nil" + "\n" +
-             "end\n" + "\n" +
+              "---@class #PanelName#View : UIView_MVC" + "\n" +
+             "local #PanelName#View = class(\"#PanelName#View\",UIView_MVC)\n\n" +
+             "function #PanelName#View:OnLoad()\n" +
+             "\tself.Controls = {\n" +
+              ViewFeildFlag + "\n\t}\n" +
+              "\t--BindUIEvent\n\n" +
+             "end\n\n" +
+             "function #PanelName#View:OnShow()\n\n" +
+             "end\n\n" +
+             "function #PanelName#View:OnHide()\n\n" +
+             "end\n\n" +
+             "function #PanelName#View:OnClose()\n" +
+             "\tself.Controls = nil\n" +
+             "end\n\n" +
 
              "return " + "#PanelName#View";
 
 
             static string mapSource = head +
-            "local map =" + "\n" +
-            "{" + "\n" +
-           mapFlag + "\n" +
-            "}" + "\n" +
+            "local map =\n" +
+            "{\n" +
+             mapFlag + 
+            "\n}\n" +
             "return map";
             const string mapFlag = "--Todo";
-            public const string ViewUseFlag = "--using";
-            public const string ViewFeildFlag = "--Find";
-            const string nameFlag = "--Name";
 
         }
     }

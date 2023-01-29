@@ -24,7 +24,6 @@ namespace IFramework
                 public static GUIContent Name = new GUIContent("UserName", "Project Author's Name");
                 public static GUIContent Version = new GUIContent("Version", "Version of Project");
                 public static GUIContent Namespace = new GUIContent("NameSpace_ProductName", "Script's Namespace and ProductName");
-                public static GUIContent Describe = new GUIContent("Description of Scripts");
                 public static string logset = "LogSetting in Editor mode";
                 public static string enable = "Enable";
                 public static string logenable = "Log Enable";
@@ -67,8 +66,6 @@ namespace IFramework
                 GUI.enabled = true;
                 Info.Version = EditorGUILayout.TextField(Contents.Version, Info.Version);
                 Info.NameSpace = EditorGUILayout.TextField(Contents.Namespace, Info.NameSpace);
-                GUILayout.Label(Contents.Describe);
-                Info.Description = EditorGUILayout.TextArea(Info.Description, GUILayout.Height(100));
                 GUILayout.Space(10);
                 Info.dockWindow = EditorGUILayout.Toggle(Contents.dockWindow, Info.dockWindow);
                 EditorGUI.DrawRect(EditorGUILayout.GetControlRect(GUILayout.Height(2)), new Color(0.5f, 0.5f, 0.5f));

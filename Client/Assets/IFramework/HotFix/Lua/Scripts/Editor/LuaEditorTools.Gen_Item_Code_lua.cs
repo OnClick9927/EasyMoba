@@ -90,7 +90,7 @@ namespace IFramework.Hotfix.Lua
                         field.SetPath(workFolder);
                     GUILayout.EndHorizontal();
                 }
-                _type = (ItemType)EditorGUILayout.EnumPopup("Type",_type);
+                _type = (ItemType)EditorGUILayout.EnumPopup("Type", _type);
 
                 panel = EditorGUILayout.ObjectField("GameObject", panel, typeof(GameObject), true) as GameObject;
                 if (panel != null)
@@ -208,53 +208,60 @@ namespace IFramework.Hotfix.Lua
                 else
                 {
                     string source = vSource;
-                    if (_type== ItemType.LuaObject)
+                    if (_type == ItemType.LuaObject)
                     {
                         source = ObjSource;
                     }
                     string result = source.Replace("#PanelName#", panelName)
-                        .Replace(MVVM_GenCodeView_Lua.ViewUseFlag, StaticUse())
-                            .Replace(MVVM_GenCodeView_Lua.ViewFeildFlag, Fields());
+                        .Replace(MVC_GenCodeView_Lua.ViewUseFlag, StaticUse())
+                            .Replace(MVC_GenCodeView_Lua.ViewFeildFlag, Fields());
                     File.WriteAllText(path, result.ToUnixLineEndings());
                 }
             }
-            static string vSource = MVVM_GenCodeView_Lua.head + "\n" +
- "---ViewUseFlag\n" +
- MVVM_GenCodeView_Lua.ViewUseFlag + "\n\n" +
- "---ViewUseFlag\n" +
-  "---@class " + "#PanelName#" + " : UIItem" + "\n" +
- "local " + "#PanelName#" + " = class(\"" + "#PanelName#" + "\",UIItem)\n" + "\n" +
 
- "function " + "#PanelName#" + ":ctor(gameObject)" + "\n" +
- "\tself.Controls = {" + "\n" +
-  MVVM_GenCodeView_Lua.ViewFeildFlag + "\n" +
-  "\t}" + "\n" +
- "end\n" + "\n" +
-
- "function " + "#PanelName#" + ":OnGet()" + "\n" +
-  "\t--BindUIEvent" + "\n\n" +
- "end\n" + "\n" +
- "function " + "#PanelName#" + ":OnSet()" + "\n" +
- "" + "\n" +
- "end\n" + "\n" +
-
-
- "return " + "#PanelName#";
-            static string ObjSource = MVVM_GenCodeView_Lua.head + "\n" +
+            static string _base
+            {
+                get
+                {
+                    return
+MVC_GenCodeView_Lua.head + "\n" +
 "---ViewUseFlag\n" +
-MVVM_GenCodeView_Lua.ViewUseFlag + "\n\n" +
+MVC_GenCodeView_Lua.ViewUseFlag + "\n\n" +
 "---ViewUseFlag\n" +
-"---@class " + "#PanelName#" + " : LuaObject" + "\n" +
-"local " + "#PanelName#" + " = class(\"" + "#PanelName#" + "\",LuaObject)\n" + "\n" +
+"---@class #PanelName# : UIItem\n" +
+"local #PanelName# = class(\"#PanelName#\",UIItem)\n\n" +
+"function #PanelName#:ctor(gameObject)\n" +
+"\tself.Controls = {\n" +
+MVC_GenCodeView_Lua.ViewFeildFlag + "\n" +
+"\t}\n" +
+"end\n\n";
+                }
+            }
+            static string vSource
+            {
+                get
+                {
+                    return _base +
+    "function #PanelName#:OnGet()\n" +
+    "\t--BindUIEvent\n\n" +
+    "end\n\n" +
+    "function #PanelName#:OnSet()\n\n" +
+    "end\n\n" +
+    "return #PanelName#";
+                }
+            }
 
-"function " + "#PanelName#" + ":ctor(gameObject)" + "\n" +
-"\tself.Controls = {" + "\n" +
-MVVM_GenCodeView_Lua.ViewFeildFlag + "\n" +
-"\t}" + "\n" +
-"end\n" + "\n" +
 
 
-"return " + "#PanelName#";
+            static string ObjSource
+            {
+                get
+                {
+                    return _base + "return " + "#PanelName#";
+                }
+            }
+
+
         }
 
     }
