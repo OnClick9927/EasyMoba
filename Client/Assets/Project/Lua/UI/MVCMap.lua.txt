@@ -6,10 +6,10 @@
 --*********************************************************************************
 local map =
 {
-    { Name = PanelNames.LoadScenePanel, ViewType = require("UI.LoadScenePanel.LoadScenePanelView") },
-    { Name = PanelNames.LoginPanel, ViewType = require("UI.LoginPanel.LoginPanelView") },
-    { Name = PanelNames.MainPanel, ViewType = require("UI.MainPanel.MainPanelView") },
-    { Name = PanelNames.MatchPanel, ViewType = require("UI.MatchPanel.MatchPanelView") },
+    { Name = PanelNames.LoadScenePanel, ViewType = require("UI.LoadScenePanelView") },
+    { Name = PanelNames.LoginPanel, ViewType = require("UI.LoginPanelView") },
+    { Name = PanelNames.MainPanel, ViewType = require("UI.MainPanelView") },
+    { Name = PanelNames.MatchPanel, ViewType = require("UI.MatchPanelView") },
 
 }
 return map
