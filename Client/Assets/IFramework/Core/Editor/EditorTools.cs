@@ -29,7 +29,6 @@ namespace IFramework
     }
     partial class EditorTools
     {
-        private const string copyAssetPathPath = "Assets/IFramework/Copy Path";
         private const string findScriptPath = "CONTEXT/MonoBehaviour/IFramework.FindScript";
 
 
@@ -38,17 +37,6 @@ namespace IFramework
         static void FindScript(MenuCommand command)
         {
             Selection.activeObject = MonoScript.FromMonoBehaviour(command.context as MonoBehaviour);
-        }
-
-        [MenuItem(copyAssetPathPath, priority = -100000000)]
-        public static void CopyAssetPath()
-        {
-            if (EditorApplication.isCompiling)
-            {
-                return;
-            }
-            string path = AssetDatabase.GetAssetPath(Selection.activeInstanceID);
-            GUIUtility.systemCopyBuffer = path;
         }
 
         static class Prefs

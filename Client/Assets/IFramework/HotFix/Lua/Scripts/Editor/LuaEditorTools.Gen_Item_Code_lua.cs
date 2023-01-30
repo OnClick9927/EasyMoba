@@ -138,29 +138,23 @@ namespace IFramework.Hotfix.Lua
             }
             private string Fields()
             {
-                List<tmp> fs = new List<tmp>();
                 var marks = creater.GetMarks();
+                string f = "";
 
                 if (marks != null)
                 {
                     for (int i = 0; i < marks.Count; i++)
                     {
-                        string ns = marks[i].fieldType;
-                        fs.Add(new tmp()
-                        {
-                            ns = marks[i].fieldType,
-                            fn = marks[i].fieldName,
-                            type = ns.Split('.').Last(),
-                            path = marks[i].transform.GetPath().Replace(creater.gameObject.transform.GetPath(), "").Remove(0, 1)
-                        });
+                        string fieldType = marks[i].fieldType;
+                        string fieldName = marks[i].fieldName;
+                        string type = marks[i].fieldType.Split('.').Last();
+
+                        string path = marks[i].transform.GetPath().Replace(creater.gameObject.transform.GetPath(), "").Remove(0, 1);
+                        f = f.Append("\t\t---@type " + fieldType + "\n");
+                        f = f.Append(string.Format("\t\t{0} = self:GetComponent(\"{1}\", typeof({2})),{3}", fieldName, path, type, i == marks.Count - 1 ? "" : "\n"));
                     }
                 }
-                string f = "";
-                for (int i = 0; i < fs.Count; i++)
-                {
-                    f = f.Append("\t\t---@type " + fs[i].ns + "\n");
-                    f = f.Append(string.Format("\t\t{0} = self:GetComponent(\"{1}\", typeof({2})),{3}", fs[i].fn, fs[i].path, fs[i].type, i == fs.Count - 1 ? "" : "\n"));
-                }
+               
                 return f;
             }
 

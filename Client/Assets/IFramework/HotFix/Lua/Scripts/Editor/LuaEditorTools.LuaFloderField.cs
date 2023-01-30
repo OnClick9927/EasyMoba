@@ -15,10 +15,13 @@ namespace IFramework.Hotfix.Lua
     {
         private class LuaFloderField : FloderField
         {
-            public static string hotFixScriptPath => Application.dataPath.CombinePath("Project/Lua").ToAssetsPath();
             protected override bool Fitter(string path)
             {
-                return path.Contains(hotFixScriptPath);
+                if (string.IsNullOrEmpty(path))
+                {
+                    return false;
+                }
+                return path.Contains(LuaEditorPaths.hotFixScriptPath);
             }
         }
 

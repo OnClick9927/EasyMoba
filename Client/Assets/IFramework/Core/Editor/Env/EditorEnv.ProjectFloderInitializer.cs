@@ -20,16 +20,10 @@ namespace IFramework
                 {
                     return new List<string>()
                     {
-                        "Assets/Project",
-                        "Assets/Project/Configs",
-                        "Assets/Project/Shaders",
-                        "Assets/Project/Textures",
-                        "Assets/Project/Images",
-                        "Assets/Project/Scripts",
-                        "Assets/Project/Scenes",
-                        "Assets/Project/Prefabs",
-                        "Assets/Project/Resources",
-                        "Assets/StreamingAssets",
+                        EditorEnvPath.projectMemoryPath,
+                        EditorEnvPath.projectPath,
+                        EditorEnvPath.projectConfigPath,
+                        EditorEnvPath.projectScriptPath,
                     };
                 }
             }

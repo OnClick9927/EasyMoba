@@ -50,7 +50,14 @@ namespace IFramework.UI
             {
                 _name = name;
             };
-            menu.Select(_names[0]);
+            if (string.IsNullOrEmpty(_name))
+            {
+                menu.Select(_names[0]);
+            }
+            else
+            {
+                menu.Select(_name);
+            }
             sp.fistPan += Sp_fistPan;
             sp.secondPan += Sp_secondPan;
 
@@ -72,8 +79,8 @@ namespace IFramework.UI
                 .SearchField((str) => { menu.Fitter(str); }, "", 200);
         }
 
-        const string path = "Assets/Project/Configs/UICollect.json";
-        const string cs_path = "Assets/Project/Scripts/PanelNames.cs";
+        static string path {get{ return EditorEnvPath.projectConfigPath.CombinePath("UICollect.json"); } }
+        static string cs_path { get { return EditorEnvPath.projectScriptPath.CombinePath("PanelNames.cs"); } }
 
         const string res = "Resources";
 

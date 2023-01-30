@@ -13,6 +13,6 @@ namespace IFramework.UI
     /// ui 基类
     /// </summary>
     public class UIPanel : MonoBehaviour {
-        public string path;
+       [HideInInspector] public string path;
     }
 }

@@ -92,7 +92,7 @@ namespace IFramework
                 public string UserName { get; private set; }
 
 
-                private static string path { get { return EditorEnv.projectMemoryPath.CombinePath("ProjectConfig.json"); } }
+                private static string path { get { return EditorEnvPath.projectMemoryPath.CombinePath("ProjectConfig.json"); } }
                 public static ProjectConfigInfo Load()
                 {
                     if (!File.Exists(path))

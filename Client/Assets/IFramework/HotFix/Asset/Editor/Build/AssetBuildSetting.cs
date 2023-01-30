@@ -55,7 +55,7 @@ namespace IFramework.Hotfix.Asset
                 return path;
             }
         }
-        private static string stoPath { get { return EditorEnv.projectMemoryPath.CombinePath("AssetBuildSetting.asset"); } }
+        private static string stoPath { get { return EditorEnvPath.projectMemoryPath.CombinePath("AssetBuildSetting.asset"); } }
 
         public BuildAssetBundleOptions option;
         public static AssetBuildSetting Load()

@@ -9,18 +9,13 @@
 
 namespace IFramework.Hotfix.Lua
 {
-    static partial class LuaEditorTools
+    class LuaEditorPaths
     {
-        private class tmp
-        {
-            public string ns;
-            public string fn;
-            public string path;
-            public string type;
-        }
+        public static string lua_ui_path { get { return hotFixScriptPath.CombinePath("UI"); } }
+        public static string lua_panel_names_path  { get { return lua_ui_path.CombinePath("PanelNames.lua.txt"); } }
+
+        public static string hotFixScriptPath { get { return EditorEnvPath.projectPath.CombinePath("Lua"); } }
 
     }
-
-
 }
 

@@ -14,7 +14,7 @@ namespace EasyMoba
 		new System.Collections.Generic.Dictionary<string, System.Type>()
 		{
 
-			{ "UpdatePanel" ,typeof(EasyMoba.UpdatePanelView)},
+			{ PanelNames.UpdatePanel ,typeof(EasyMoba.UpdatePanelView)},
 
 		}
 ;	 }

@@ -8,11 +8,12 @@
 *********************************************************************************/
 using UnityEditor;
 using System.IO;
+using IFramework.Hotfix.Lua;
+
 namespace IFramework.UI
 {
     partial class UIMoudleWindow
     {
-        const string lua_path = "Assets/Project/Lua/UI/PanelNames.lua.txt";
 
         public static void Lua_BuildPanelNames()
         {
@@ -25,7 +26,7 @@ namespace IFramework.UI
             }
             s = s.Append("}\n" +
                 "return M");
-            File.WriteAllText(lua_path, s);
+            File.WriteAllText(LuaEditorPaths.lua_panel_names_path, s);
             AssetDatabase.Refresh();
         }
     }

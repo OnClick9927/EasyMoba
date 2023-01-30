@@ -8,7 +8,6 @@
 *********************************************************************************/
 using UnityEditor;
 using UnityEditor.Compilation;
-using System.IO;
 using System.Runtime.CompilerServices;
 using UnityEngine;
 
@@ -18,31 +17,12 @@ namespace IFramework
     {
         public const EnvironmentType envType = EnvironmentType.Ev0;
         public static IEnvironment env { get { return Framework.GetEnv(envType); } }
-        public static string frameworkPath
-        {
-            get
-            {
-                var path = GetFilePath().ToAssetsPath();
-                int index = path.IndexOf("Core");
-                path = path.Substring(0, index);
-                return path;
-            }
-        }
-        public static string projectMemoryPath
-        {
-            get {
-                string path = "Assets/IFrameworkProjectMemory/Editor";
-                if (!Directory.Exists(path))
-                    Directory.CreateDirectory(path);
-                return path;
-            }
-        }
         public static event EditorApplication.CallbackFunction delayCall { add { EditorApplication.delayCall += value; } remove { EditorApplication.delayCall -= value; } }
 
         [InitializeOnLoadMethod]
         static void EditorEnvInit()
         {
-            Debug.Log("IFramework: EditorEnv Init?   " + frameworkPath);
+            Debug.Log("IFramework: EditorEnv Init?   " + EditorEnvPath.frameworkPath);
             Framework.CreateEnv(envType).InitWithAttribute();
             CompilationPipeline.assemblyCompilationStarted += Dispose;
             EditorApplication.update += env.Update;

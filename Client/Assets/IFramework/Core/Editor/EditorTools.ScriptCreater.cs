@@ -59,7 +59,7 @@ namespace IFramework
             /// </summary>
             /// <param name="self"></param>
             /// <returns></returns>
-            public static bool IsLegalFieldName( string self)
+            public static bool IsLegalFieldName(string self)
             {
                 if (string.IsNullOrEmpty(self)) return false;
                 return Regex.IsMatch(self, @"^[_a-zA-Z][_a-zA-Z0-9]*$");
@@ -131,9 +131,9 @@ namespace IFramework
                 if (gameObject != this.gameObject)
                 {
                     this.gameObject = gameObject;
+                    marks.Clear();
                     if (this.gameObject != null)
                     {
-                        marks.Clear();
                         SetScriptName(string.Empty);
                         ColllectMarks();
                     }

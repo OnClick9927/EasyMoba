@@ -25,29 +25,39 @@ namespace IFramework.Hotfix.Lua
         [Serializable]
         class MVC_GenCodeView_Lua : UI.UIMoudleWindow.UIMoudleWindowTab
         {
-            private Vector2 scroll;
-            private MVCPanelGenData sto;
             private EditorTools.ScriptCreater creater = new ScriptCreater();
             private ScriptCreaterFieldsDrawer fields;
-            private LuaFloderField field;
+            private LuaFloderField FloderField;
 
-            [SerializeField] private string workFolder;
+            [SerializeField] private string UIdir;
             [SerializeField] private UIPanel panel;
-            private const string UIMapName = "MVCMap";
-            //private const string PanelNamesName = "PanelNames_MVC";
-            private const string key = "MVC_GenCodeView";
+ 
             public override string name => "MVC_Gen_Lua";
 
-            public static string hotFixScriptPath => Application.dataPath.CombinePath("Project/Lua").ToAssetsPath();
-            private string mapPath => workFolder.CombinePath(UIMapName).Append(".lua.txt");
+            private string viewName => panelName.Append("View");
             private string panelName => panel == null ? "" : panel.name;
-            private string panelFolder => panel == null ? "" : workFolder.CombinePath(panelName);
-            private string ViewName => panelName.Append("View");
 
-            private void LoadNameSto(string work)
+            public override void OnEnable()
             {
-                sto = MVCPanelGenData.CheckExist<MVCPanelGenData>(work);
+                var last = this.GetFromPrefs<MVC_GenCodeView_Lua>(name);
+                if (last != null)
+                {
+                    this.UIdir = last.UIdir;
+                    this.panel = last.panel;
+                }
+                FloderField = new LuaFloderField();
+                fields = new ScriptCreaterFieldsDrawer(creater);
+                SetViewData();
             }
+            public override void OnHierarchyChanged()
+            {
+                creater.ColllectMarks();
+            }
+            public override void OnDisable()
+            {
+                this.SaveToPrefs(name);
+            }
+
             public override void OnGUI()
             {
                 if (EditorApplication.isCompiling)
@@ -55,25 +65,6 @@ namespace IFramework.Hotfix.Lua
                     GUILayout.Label("Editor is Compiling\nplease wait");
                     return;
                 }
-                EditorGUILayout.LabelField("UIMap Name", UIMapName);
-                //EditorGUILayout.LabelField("Panel Names", PanelNamesName);
-
-                GUILayout.BeginHorizontal();
-                {
-                    GUILayout.Label("Work Directory For Module", GUIStyles.Get("toolbar"));
-                    GUILayout.Space(20);
-                    field.OnGUI(EditorGUILayout.GetControlRect());
-                    if (field.leagal)
-                        workFolder = field.path;
-                    else
-                        field.SetPath(workFolder);
-                    GUILayout.EndHorizontal();
-                }
-                panel = EditorGUILayout.ObjectField("UIPanel", panel, typeof(UIPanel), true) as UIPanel;
-                if (panel != null)
-                    creater.SetGameObject(panel.gameObject);
-                EditorGUILayout.LabelField("UIPanelGenPath", panelFolder);
-                fields.OnGUI();
                 if (GUILayout.Button("Gen"))
                 {
                     if (panel == null) EditorWindow.focusedWindow.ShowNotification(new GUIContent("Set UI Panel "));
@@ -83,70 +74,64 @@ namespace IFramework.Hotfix.Lua
                         if (!creater.FieldCheck(out err)) EditorUtility.DisplayDialog("Err", err, "ok");
                         else
                         {
-                            if (!Directory.Exists(panelFolder)) Directory.CreateDirectory(panelFolder);
-                            CreateView(panelFolder.CombinePath(ViewName).Append(".lua.txt"));
-                            AddCurrentPanelToMap(mapPath);
+                            if (!Directory.Exists(UIdir)) Directory.CreateDirectory(UIdir);
+                            CreateView(UIdir.CombinePath(viewName).Append(".lua.txt"));
                             AssetDatabase.Refresh();
                         }
                     }
                 }
+                //EditorGUILayout.LabelField("Panel Names", PanelNamesName);
 
-                GUILayout.Space(10);
-                if (GUILayout.Button("Load Panel Names Map")) LoadNameSto(workFolder);
-                if (sto == null) return;
-                scroll = GUILayout.BeginScrollView(scroll);
+                GUILayout.BeginHorizontal();
                 {
-                    for (int i = 0; i < sto.map.Count; i++)
-                    {
-                        var index = i;
-                        var _nm = sto.map[index];
-                        GUILayout.BeginHorizontal();
-                        GUILayout.Label(_nm.panelName);
-                        if (GUILayout.Button("", GUIStyles.minus)) DeletePanelFromMap(_nm.panelName);
-                        GUILayout.EndHorizontal();
-                    }
-                    GUILayout.EndScrollView();
+                    GUILayout.Label("Panel Directory", GUIStyles.Get("toolbar"));
+                    GUILayout.Space(20);
+                    FloderField.OnGUI(EditorGUILayout.GetControlRect());
+                    if (FloderField.leagal)
+                        UIdir = FloderField.path;
+                    else
+                        FloderField.SetPath(UIdir);
+                    GUILayout.EndHorizontal();
                 }
+                EditorGUI.BeginChangeCheck();
 
-            }
-            private void WriteMap(string path)
-            {
-                //string namsPath = path.Replace(UIMapName, PanelNamesName);
-
-                string replace = "";
-                string namerp = "";
-                LoadNameSto(workFolder);
-                sto.map.ForEach(_nm =>
+                panel = EditorGUILayout.ObjectField("UIPanel", panel, typeof(UIPanel), true) as UIPanel;
+                if (EditorGUI.EndChangeCheck())
                 {
-                    namerp = namerp.Append(string.Format("\t{0} = \"{0}\",\n", _nm.panelName));
-                    replace = replace.Append("\t" + _nm.content + "\n");
-                });
-                //string PanelNamesNameSub = namsPath.Replace(hotFixScriptPath, "").Replace(".lua.txt", "").Replace("/", ".").Remove(0, 1);
+                    SetViewData();
+                }
+                fields.OnGUI();               
 
-                //File.WriteAllText(namsPath, NameMapSource.Replace(nameFlag, namerp).ToUnixLineEndings());
-                File.WriteAllText(path, mapSource.Replace(mapFlag, replace)
-                         //.Replace("#requirePath#", PanelNamesNameSub)
-                         .ToUnixLineEndings());
             }
-            private void DeletePanelFromMap(string panelName)
+
+            private void FindDir()
             {
-                sto.RemoveMap(panelName);
-                sto.Save();
-                AssetDatabase.DeleteAsset(sto.workspace.CombinePath(panelName));
-                //FileUtil.DeleteFileOrDirectory(sto.workspace.CombinePath(panelName));
-                //Directory.Delete(sto.workspace.CombinePath(panelName), true);
-                WriteMap(sto.workspace.CombinePath(UIMapName).Append(".lua.txt"));
+                string total = viewName.Append(".lua.txt");
+                string find = AssetDatabase.GetAllAssetPaths().ToList().Find(x => x.EndsWith(total));
+                if (string.IsNullOrEmpty(find))
+                {
+                    FloderField.SetPath(string.Empty);
+                }
+                else
+                {
+                    FloderField.SetPath(find.Replace(total, "").ToAssetsPath());
+                }
             }
-            private void AddCurrentPanelToMap(string path)
+
+            private void SetViewData()
             {
-                string sub = panelFolder.Replace(hotFixScriptPath, "").Replace("/", ".").Remove(0, 1);
-                string content = string.Format("{0} Name = \"{2}\",ViewType = require(\"{3}\") {1},", "{", "}", panelName, sub.Append("." + ViewName));
-                LoadNameSto(workFolder);
-                sto.AddMap(panelName, content);
-                sto.workspace = workFolder;
-                sto.Save();
-                WriteMap(path);
+                if (panel != null)
+                {
+                    creater.SetGameObject(panel.gameObject);
+                    FindDir();
+                }
+                else
+                {
+                    creater.SetGameObject(null);
+                    FloderField.SetPath(string.Empty);
+                }
             }
+
 
 
             private void CreateView(string path)
@@ -192,11 +177,10 @@ namespace IFramework.Hotfix.Lua
                 }
                 else
                 {
-                    string sub = panelFolder.Replace(hotFixScriptPath, "").Replace("/", ".").Remove(0, 1);
 
                     string result = vSource.Replace("#PanelName#", panelName)
                         .Replace(ViewUseFlag, StaticUse())
-                            .Replace(ViewFeildFlag, Fields()).Replace("#sub#", sub + ".");
+                            .Replace(ViewFeildFlag, Fields());
                     File.WriteAllText(path, result.ToUnixLineEndings());
                 }
             }
@@ -224,52 +208,28 @@ namespace IFramework.Hotfix.Lua
             }
             private string Fields()
             {
-                List<tmp> fs = new List<tmp>();
                 var marks = creater.GetMarks();
+
+                string f = "";
 
                 if (marks != null)
                 {
                     for (int i = 0; i < marks.Count; i++)
                     {
-                        string ns = marks[i].fieldType;
-                        fs.Add(new tmp()
-                        {
-                            ns = marks[i].fieldType,
-                            fn = marks[i].fieldName,
-                            type = ns.Split('.').Last(),
-                            path = marks[i].transform.GetPath().Replace(creater.gameObject.transform.GetPath(), "").Remove(0, 1)
-                        });
+                        string fieldType = marks[i].fieldType;
+                        string fieldName = marks[i].fieldName;
+                        string type = marks[i].fieldType.Split('.').Last();
+
+                        string path = marks[i].transform.GetPath().Replace(creater.gameObject.transform.GetPath(), "").Remove(0, 1);
+                        f = f.Append("\t\t---@type " + fieldType + "\n");
+                        f = f.Append(string.Format("\t\t{0} = self:GetComponent(\"{1}\", typeof({2})),{3}", fieldName, path,type, i == marks.Count - 1 ? "" : "\n"));
                     }
                 }
-                string f = "";
-                for (int i = 0; i < fs.Count; i++)
-                {
-                    f = f.Append("\t\t---@type " + fs[i].ns + "\n");
-                    f = f.Append(string.Format("\t\t{0} = self:GetComponent(\"{1}\", typeof({2})),{3}", fs[i].fn, fs[i].path, fs[i].type, i == fs.Count - 1 ? "" : "\n"));
-                }
+
                 return f;
             }
 
-            public override void OnEnable()
-            {
-                var last = this.GetFromPrefs<MVC_GenCodeView_Lua>(key);
-                if (last != null)
-                {
-                    this.workFolder = last.workFolder;
-                    this.panel = last.panel;
-                }
-                field = new LuaFloderField();
-                field.SetPath(workFolder);
-                fields = new ScriptCreaterFieldsDrawer(creater);
-            }
-            public override void OnHierarchyChanged()
-            {
-                creater.ColllectMarks();
-            }
-            public override void OnDisable()
-            {
-                this.SaveToPrefs(key);
-            }
+          
 
             public const string ViewUseFlag = "--using";
             public const string ViewFeildFlag = "--Find";
@@ -301,13 +261,7 @@ namespace IFramework.Hotfix.Lua
              "return " + "#PanelName#View";
 
 
-            static string mapSource = head +
-            "local map =\n" +
-            "{\n" +
-             mapFlag + 
-            "\n}\n" +
-            "return map";
-            const string mapFlag = "--Todo";
+         
 
         }
     }

@@ -13,9 +13,8 @@ using System;
 using System.IO;
 using static IFramework.UI.UIMoudleWindow;
 using static IFramework.EditorTools;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
+using System.Linq;
 
 namespace IFramework.UI.MVC
 {
@@ -24,56 +23,32 @@ namespace IFramework.UI.MVC
         [Serializable]
         public class MVC_GenCodeView : UIMoudleWindowTab
         {
-            private const string key = "MVC_GenCodeView_";
             public override string name { get { return "MVC_Gen_CS"; } }
-            [SerializeField] private string UIMapDir = "Assets/Project";
-            [SerializeField]
-            private string PanelGenDir
-            {
-                get
-                {
-                    if (panel == null) return "";
-                    string path = UIMapDir.CombinePath(panel.name);
-                    return path;
-                }
-            }
-            private string ns
-            {
-                get
-                {
-                    if (panel != null)
-                    {
-                        return panel.GetType().Namespace;
-                    }
-                    return "";
-                }
-            }
-            [SerializeField] private string UIMapName = "UIMap_MVC";
+            [SerializeField] private string UIdir = "";
             [SerializeField] private UIPanel panel;
             [SerializeField] private FloderField FloderField;
             private ScriptCreaterFieldsDrawer fields;
             private EditorTools.ScriptCreater creater = new ScriptCreater();
-
-            private MVCPanelGenData sto;
-            string UIMap_CSName { get { return UIMapName.Append(".cs"); } }
+            private string panelName { get { return panel.name; } }
+            private string viewName { get { return panelName.Append("View"); } }
 
             public override void OnEnable()
             {
-                var last = this.GetFromPrefs<MVC_GenCodeView>(key);
+                var last = this.GetFromPrefs<MVC_GenCodeView>(name);
                 if (last != null)
                 {
                     this.panel = last.panel;
-                    this.UIMapDir = last.UIMapDir;
-                    this.UIMapName = last.UIMapName;
+                    this.UIdir = last.UIdir;
                 }
-                this.FloderField = new FloderField(UIMapDir);
+                this.FloderField = new FloderField(UIdir);
                 fields = new ScriptCreaterFieldsDrawer(creater);
+                SetViewData();
             }
             public override void OnDisable()
             {
-                this.SaveToPrefs(key);
+                this.SaveToPrefs(name);
             }
-
+           
             public override void OnGUI()
             {
                 if (EditorApplication.isCompiling)
@@ -82,128 +57,86 @@ namespace IFramework.UI.MVC
                     GUILayout.Label("please wait");
                     return;
                 }
-                GUILayout.Space(5);
-                GUILayout.BeginHorizontal();
-                {
-                    GUILayout.Label("Work Directory For Module", GUIStyles.toolbar);
-                    GUILayout.Space(20);
-
-                    FloderField.OnGUI(EditorGUILayout.GetControlRect());
-                    UIMapDir = FloderField.path;
-                    GUILayout.EndHorizontal();
-                }
-                GUILayout.BeginHorizontal();
-                {
-                    EditorGUI.BeginChangeCheck();
-                    UIMapName = EditorGUILayout.TextField("UI Map Name", UIMapName);
-                    if (GUILayout.Button("Load Map Config", GUILayout.Width(120)))
-                    {
-                        LoadGenData();
-                    }
-                    if (EditorGUI.EndChangeCheck())
-                    {
-                        if (sto != null)
-                        {
-                            sto.MapName = UIMapName;
-                            sto.Save();
-                        }
-                    }
-                    GUILayout.EndHorizontal();
-                }
-
-                EditorGUI.BeginChangeCheck();
-                panel = EditorGUILayout.ObjectField("UIPanel", panel, typeof(UIPanel), true) as UIPanel;
-
-                if (panel != null)
-                    creater.SetGameObject(panel.gameObject);
-
-                EditorGUILayout.LabelField("UIPanelGenPath", PanelGenDir);
-                if (EditorGUI.EndChangeCheck())
-                {
-                    if (panel != null && !Directory.Exists(PanelGenDir))
-                    {
-                        Directory.CreateDirectory(PanelGenDir);
-                        AssetDatabase.Refresh();
-                    }
-                }
-
-                GUILayout.Space(10);
-
-                fields.OnGUI();
-
-                GUILayout.Space(10);
                 if (GUILayout.Button("Gen"))
                 {
-                    if (string.IsNullOrEmpty(UIMapDir))
-                    {
-                        EditorWindow.focusedWindow.ShowNotification(new GUIContent("Set UI Map Gen Dir "));
-                        return;
-                    }
                     if (panel == null)
                     {
                         EditorWindow.focusedWindow.ShowNotification(new GUIContent("Select UI Panel"));
                         return;
                     }
-                    string paneltype = panel.name;
-                    string viewType = paneltype.Append("View");
-                    if (panel != null && !Directory.Exists(PanelGenDir))
+                    if (string.IsNullOrEmpty(UIdir))
                     {
-                        Directory.CreateDirectory(PanelGenDir);
+                        EditorWindow.focusedWindow.ShowNotification(new GUIContent("Set UI Map Gen Dir "));
+                        return;
                     }
-                    WriteView(viewType, paneltype, ns);
-                    WriteMap(UIMapDir.CombinePath(UIMap_CSName), panel.name);
+                    WriteView();
                     AssetDatabase.Refresh();
                 }
-                GUILayout.Space(10);
-
-                if (sto != null)
+                GUILayout.Space(5);
+                GUILayout.BeginHorizontal();
                 {
-                    scroll = GUILayout.BeginScrollView(scroll);
-                    {
-                        for (int i = 0; i < sto.map.Count; i++)
-                        {
-                            var index = i;
-                            var _nm = sto.map[index];
-                            GUILayout.BeginHorizontal();
-                            {
-                                GUILayout.Label(_nm.panelName);
-                                if (GUILayout.Button("", GUIStyles.minus))
-                                {
-                                    sto.RemoveMap(_nm.panelName);
-                                    sto.Save();
-                                    AssetDatabase.DeleteAsset(sto.workspace.CombinePath(_nm.panelName));
-                                    //Directory.Delete(sto.workspace.CombinePath(_nm.panelName), true);
-                                    WriteMap(sto.workspace.CombinePath(UIMap_CSName));
-                                }
-                                GUILayout.EndHorizontal();
-                            }
-                        }
+                    GUILayout.Label("Panel Directory", GUIStyles.toolbar);
+                    GUILayout.Space(20);
 
-                        GUILayout.EndScrollView();
-                    }
+                    FloderField.OnGUI(EditorGUILayout.GetControlRect());
+                    UIdir = FloderField.path;
+                    GUILayout.EndHorizontal();
                 }
 
+
+                EditorGUI.BeginChangeCheck();
+
+                panel = EditorGUILayout.ObjectField("UIPanel", panel, typeof(UIPanel), false) as UIPanel;
+                if (EditorGUI.EndChangeCheck())
+                {
+                    SetViewData();
+                }
+                GUILayout.Space(10);
+                fields.OnGUI();
             }
-            Vector2 scroll;
-            private void LoadGenData()
+            private void SetViewData()
             {
-                sto = MVCPanelGenData.CheckExist<MVCPanelGenData>(UIMapDir);
-                UIMapName = sto.MapName;
+                if (panel != null)
+                {
+                    creater.SetGameObject(panel.gameObject);
+                    FindDir();
+                }
+                else
+                {
+                    creater.SetGameObject(null);
+                    FloderField.SetPath(string.Empty);
+                }
+            }
+            private void FindDir()
+            {
+                string total = viewName.Append(".cs");
+                string find = AssetDatabase.GetAllAssetPaths().ToList().Find(x => x.EndsWith(total));
+                if (string.IsNullOrEmpty(find))
+                {
+                    FloderField.SetPath(string.Empty);
+                }
+                else
+                {
+                    FloderField.SetPath(find.Replace(total, "").ToAssetsPath());
+                }
             }
 
 
 
-
-            private void WriteView(string viewType, string panelType, string ns)
+            private void WriteView()
             {
-                string designPath = PanelGenDir.CombinePath(viewType.Append(".Design.cs"));
-                string path = PanelGenDir.CombinePath(viewType.Append(".cs"));
+                string designPath = UIdir.CombinePath(viewName.Append(".Design.cs"));
+                string path = UIdir.CombinePath(viewName.Append(".cs"));
 
                 WriteTxt(designPath, viewDesignScriptOrigin,
                 (str) =>
                 {
-                    return str.Replace("#PanelType#", panelType)
-                    .Replace("#panelfield#", Fields())
+                    string field;
+                    string find;
+                    Fields(out field, out find);
+                    return str.Replace("#PanelType#", panelName)
+                    .Replace("#field#", field)
+                    .Replace("#findfield#", find)
                     .Replace(".Design", "");
                 });
 
@@ -214,67 +147,31 @@ namespace IFramework.UI.MVC
             }
 
 
-            private class tmp
-            {
-                public string fieldName;
-                public string path;
-                public string fieldType;
-            }
 
-            private string Fields()
+            private void Fields(out string field, out string find)
             {
-                List<tmp> fs = new List<tmp>();
                 var marks = creater.GetMarks();
 
+
+                StringBuilder f = new StringBuilder();
+                StringBuilder functionField = new StringBuilder();
                 if (marks != null)
                 {
                     for (int i = 0; i < marks.Count; i++)
                     {
-                        string ns = marks[i].fieldType;
-                        fs.Add(new tmp()
-                        {
-                            fieldName = marks[i].fieldName,
-                            fieldType = marks[i].fieldType,
-                            path = marks[i].transform.GetPath().Replace(creater.gameObject.transform.GetPath(), "").Remove(0, 1)
-                        });
+                        string fieldType = marks[i].fieldType;
+                        string fieldName = marks[i].fieldName;
+                        string path = marks[i].transform.GetPath().Replace(creater.gameObject.transform.GetPath(), "").Remove(0, 1);
+                        f.AppendLine($"\t\tprivate {fieldType} {fieldName};");
+                        functionField.AppendLine($"\t\t\t{fieldName} = panel.transform.Find(\"{path}\").GetComponent<{fieldType}>();");
                     }
                 }
-                StringBuilder f = new StringBuilder();
-                StringBuilder functionField = new StringBuilder();
-                for (int i = 0; i < fs.Count; i++)
-                {
-                    f.AppendLine($"\t\tprivate {fs[i].fieldType} {fs[i].fieldName};");
-                    functionField.AppendLine($"\t\t\t{fs[i].fieldName} = panel.transform.Find(\"{fs[i].path}\").GetComponent<{fs[i].fieldType}>();");
-                }
-                f.AppendLine("\t\tprivate void InitComponents()");
-                f.AppendLine("\t\t{");
-                f.Append(functionField);
-                f.AppendLine("\t\t}");
-                return f.ToString();
+                field = f.ToString();
+                find = functionField.ToString();
+
             }
 
-            private void WriteMap(string path)
-            {
-                string replace = "";
-                LoadGenData();
-                sto.map.ForEach(_nm =>
-                {
-                    replace = replace.Append("\t\t\t" + _nm.content + ",\n");
-                });
-                WriteTxt(path, mapScriptOrigin.Replace("//ToDo", replace), null);
-            }
 
-            private void WriteMap(string path, string panelName)
-            {
-                var ns = EditorTools.ProjectConfig.NameSpace;
-                LoadGenData();
-                string content = ($"{{ \"{panelName}\" ,typeof({ns}.{panel.name}View)}}");
-                sto.AddMap(panelName, content);
-                sto.ns = ns;
-                sto.workspace = UIMapDir;
-                sto.Save();
-                WriteMap(path);
-            }
             private static void WriteTxt(string writePath, string source, Func<string, string> func)
             {
                 source = source.Replace("#User#", EditorTools.ProjectConfig.UserName)
@@ -294,8 +191,6 @@ namespace IFramework.UI.MVC
             " *Version:        #UserVERSION#\n" +
             " *UnityVersion:   #UserUNITYVERSION#\n" +
             " *Date:           #UserDATE#\n" +
-            " *Description:    #UserDescription#\n" +
-            " *History:        #UserDATE#--\n" +
             "*********************************************************************************/\n";
 
 
@@ -305,7 +200,11 @@ namespace IFramework.UI.MVC
             "{\n" +
             "\tpublic partial class #UserSCRIPTNAME# : IFramework.UI.MVC.UIView \n" +
             "\t{\n" +
-            "#panelfield#\n" +
+             "#field#\n" +
+            "\t\tprivate void InitComponents()\n" +
+            "\t\t{\n" +
+            "#findfield#\n" +
+            "\t\t}\n" +
             "\t}\n" +
             "}";
             private const string viewScriptOrigin = head +
@@ -332,19 +231,7 @@ namespace IFramework.UI.MVC
             "\n" +
             "\t}\n" +
             "}";
-            private const string mapScriptOrigin = head +
-           "namespace #UserNameSpace#\n" +
-           "{\n" +
-           "\tpublic class #UserSCRIPTNAME# \n" +
-           "\t{\n" +
-           "\t\tpublic static System.Collections.Generic.Dictionary<string, System.Type> map = \n" +
-           "\t\tnew System.Collections.Generic.Dictionary<string, System.Type>()\n" +
-           "\t\t{\n" +
-           "\n" +
-           "//ToDo\n" +
-           "\t\t}\n;" +
-           "\t }\n" +
-           "}\n";
+
 
         }
     }

@@ -22,8 +22,8 @@ namespace IFramework
         class FormatProjectScript
         {
             const string key = "FormatUserScript";
-            private static string cs = EditorEnv.projectMemoryPath.CombinePath("UserCSharpScript.txt");
-            private static string mono = EditorEnv.projectMemoryPath.CombinePath("UserMonoScript.txt");
+            private static string cs = EditorEnvPath.projectMemoryPath.CombinePath("UserCSharpScript.txt");
+            private static string mono = EditorEnvPath.projectMemoryPath.CombinePath("UserMonoScript.txt");
             private static string newScriptName = "newScript.cs";
             [MenuItem("Assets/IFramework/Create/FormatMonoScript", priority = -1000)]
             public static void Create()

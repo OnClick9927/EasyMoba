@@ -21,8 +21,8 @@ namespace IFramework.Hotfix.Lua
                 {
                     return new List<string>()
                     {
-                        "Assets/Project/Lua",
-                        "Assets/Project/Lua/UI"
+                       LuaEditorPaths.hotFixScriptPath,
+                       LuaEditorPaths.lua_ui_path
                     };
                 }
             }
@@ -32,9 +32,9 @@ namespace IFramework.Hotfix.Lua
                 get
                 {
                     return new List<string>() {
-                        "Assets/Project/Lua/FixCsharp.lua.txt",
-                        "Assets/Project/Lua/GameLogic.lua.txt",
-                        "Assets/Project/Lua/GlobalDefine.lua.txt",
+                        LuaEditorPaths.hotFixScriptPath.CombinePath("FixCsharp.lua.txt"),
+                        LuaEditorPaths.hotFixScriptPath.CombinePath("GameLogic.lua.txt"),
+                        LuaEditorPaths.hotFixScriptPath.CombinePath("GlobalDefine.lua.txt"),
                     };
                 }
             }

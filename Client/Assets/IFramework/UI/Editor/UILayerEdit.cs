@@ -24,7 +24,8 @@ namespace IFramework.UI
             public UILayerConfig config = new UILayerConfig();
 
             private ReorderableList list;
-            const string layer_path = "Assets/Project/Configs/UILayer.json";
+           
+            static string layer_path { get { return EditorEnvPath.projectConfigPath.CombinePath("UILayer.json"); } }
 
             public override string name => "BuildUILayer";
             public override void OnEnable()

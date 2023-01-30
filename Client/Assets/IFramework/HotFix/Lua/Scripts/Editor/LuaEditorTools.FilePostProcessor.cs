@@ -23,11 +23,9 @@ namespace IFramework.Hotfix.Lua
             {
                 get
                 {
-                    return EditorEnv.frameworkPath.CombinePath("Hotfix/Lua/Resources");
+                    return EditorEnvPath.frameworkPath.CombinePath("Hotfix/Lua/Resources");
                 }
             }
-            const string projectpath = "Assets/Project/Lua";
-
             private static void OnPostprocessAllAssets(string[] importedAssets, string[] deletedAssets, string[] movedAssets, string[] movedFromAssetPaths)
             {
                 if (!EditorApplication.isPlaying || !Application.isPlaying || !XLuaModule.available) return;
@@ -43,9 +41,9 @@ namespace IFramework.Hotfix.Lua
                         {
                             path = path.Replace(frameworkpath, "");
                         }
-                        else if (path.Contains(projectpath))
+                        else if (path.Contains(LuaEditorPaths.hotFixScriptPath))
                         {
-                            path = path.Replace(projectpath, "");
+                            path = path.Replace(LuaEditorPaths.hotFixScriptPath, "");
                         }
                         path = path.Replace(".lua.txt", "").Replace("/", ".").Remove(0, 1);
                         _changed.Enqueue(path);
