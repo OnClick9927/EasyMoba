@@ -50,8 +50,7 @@ namespace IFramework.UI.MVC
             return this;
         }
         public UIPanel panel;
-        private ViewEventType _lastState = ViewEventType.None;
-        public ViewEventType lastState { get { return _lastState; } }
+     
         protected abstract void OnLoad();
         protected abstract void OnShow();
         protected abstract void OnHide();
@@ -60,26 +59,21 @@ namespace IFramework.UI.MVC
         void IViewEventHandler.OnLoad()
         {
             OnLoad();
-            _lastState = ViewEventType.OnLoad;
         }
 
         void IViewEventHandler.OnShow()
         {
             OnShow();
-            _lastState = ViewEventType.OnShow;
         }
 
         void IViewEventHandler.OnHide()
         {
             OnHide();
-            _lastState = ViewEventType.OnHide;
-
         }
 
         void IViewEventHandler.OnClose()
         {
             OnClose();
-            _lastState = ViewEventType.OnClose;
         }
     }
 }

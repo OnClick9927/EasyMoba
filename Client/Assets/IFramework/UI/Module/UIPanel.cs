@@ -14,5 +14,11 @@ namespace IFramework.UI
     /// </summary>
     public class UIPanel : MonoBehaviour {
        [HideInInspector] public string path;
+        private PanelState _lastState = PanelState.None;
+        public PanelState lastState { get { return _lastState; } }
+        public void SetState(PanelState type)
+        {
+            _lastState = type;
+        }
     }
 }

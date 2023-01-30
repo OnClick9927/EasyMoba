@@ -9,13 +9,10 @@
 namespace IFramework.UI
 {
     /// <summary>
-    /// ui 事件
+    /// ui 状态
     /// </summary>
-    /// <typeparam name="Type"></typeparam>
-    /// <typeparam name="Self"></typeparam>
-    public interface IUIEvent<Type,Self>: IEventArgs
+    public enum PanelState
     {
-        Type type { get; }
-        Self SetType(Type type);
+        None, OnLoad, OnShow, OnHide, OnClose
     }
 }

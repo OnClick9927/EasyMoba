@@ -152,6 +152,7 @@ namespace IFramework.UI
                 panels.Add(path, ui);
                 _groups.Subscribe(path, panelName, ui);
                 _groups.OnLoad(path);
+                ui.SetState(PanelState.OnLoad);
             }
             callback?.Invoke(path, ui);
         }
@@ -171,6 +172,8 @@ namespace IFramework.UI
             if (panel == null) return;
 
             this._groups.OnShow(path);
+            panel.SetState(PanelState.OnShow);
+
         }
         private UIPanel Find(string path)
         {
@@ -301,6 +304,8 @@ namespace IFramework.UI
             if (panel != null)
             {
                 this._groups.OnHide(path);
+                panel.SetState(PanelState.OnHide);
+
             }
         }
         /// <summary>
@@ -314,6 +319,7 @@ namespace IFramework.UI
             if (panel != null)
             {
                 this._groups.OnClose(path);
+                panel.SetState(PanelState.OnClose);
                 _groups.UnSubscribe(path);
                 panels.Remove(path);
                 DestroyPanel(path, panel);
