@@ -8,17 +8,17 @@
 --*********************************************************************************
 
 ---ViewUseFlag
-local RectTransform = StaticUsing("UnityEngine.RectTransform")
+local Button = StaticUsing("UnityEngine.UI.Button")
 ---ViewUseFlag
 ---@class MainPanelView : UIView_MVC
 local MainPanelView = class("MainPanelView", UIView_MVC)
 
 function MainPanelView:OnLoad()
     self.Controls = {
-		---@type UnityEngine.RectTransform
-		Match = self:GetComponent("BG/Match", typeof(RectTransform)),
-		---@type UnityEngine.RectTransform
-		LocalMatch = self:GetComponent("BG/LocalMatch", typeof(RectTransform)),
+		---@type UnityEngine.UI.Button
+		Match = self:GetComponent("BG/Match", typeof(Button)),
+		---@type UnityEngine.UI.Button
+		LocalMatch = self:GetComponent("BG/LocalMatch", typeof(Button)),
 	}
     --BindUIEvent
     self:BindButton(self.Controls.Match, function()

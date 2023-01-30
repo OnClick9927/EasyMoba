@@ -20,7 +20,7 @@ namespace IFramework.UI
         /// 添加 ui 入组
         /// </summary>
         /// <param name="panel"></param>
-        bool Subscribe(string path, string name, UIPanel panel);
+        bool Subscribe(string path, UIPanel panel);
         /// <summary>
         /// 移除 ui
         /// </summary>

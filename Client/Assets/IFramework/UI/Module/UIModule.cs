@@ -150,7 +150,7 @@ namespace IFramework.UI
                 ui.name = panelName;
                 SetOrder(path, ui);
                 panels.Add(path, ui);
-                _groups.Subscribe(path, panelName, ui);
+                _groups.Subscribe(path, ui);
                 _groups.OnLoad(path);
                 ui.SetState(PanelState.OnLoad);
             }

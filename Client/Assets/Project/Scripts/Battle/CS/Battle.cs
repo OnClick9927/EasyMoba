@@ -66,6 +66,7 @@ namespace EasyMoba.GameLogic
             calc = new AttributeCalc(this);
             buff = new BuffCollection(this);
             skill = new SkillDirector(skill_config);
+            this.view.Start();
         }
 
         public void CloseGame()

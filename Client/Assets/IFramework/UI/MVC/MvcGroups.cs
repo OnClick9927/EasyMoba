@@ -64,7 +64,7 @@ namespace IFramework.UI.MVC
 
         }
 
-        public bool Subscribe(string path,string name, UIPanel panel)
+        public bool Subscribe(string path, UIPanel panel)
         {
             var _view = FindView(path);
             if (_view != null)
@@ -73,7 +73,7 @@ namespace IFramework.UI.MVC
                 return false;
             }
             Type viewType;
-            if (!_typemap.TryGetValue(name, out viewType))
+            if (!_typemap.TryGetValue(path, out viewType))
             {
                 return false;
             }

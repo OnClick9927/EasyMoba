@@ -78,12 +78,12 @@ namespace IFramework.UI
             }
         }
 
-        bool IGroups.Subscribe(string path,string name, UIPanel panel)
+        bool IGroups.Subscribe(string path, UIPanel panel)
         {
             bool sucess = false;
             for (int i = 0; i < _groups.Length; i++)
             {
-                sucess |= _groups[i].Subscribe(path,name,panel);
+                sucess |= _groups[i].Subscribe(path,panel);
                 if (sucess)
                 {
                     if (_nameMap.ContainsKey(path))

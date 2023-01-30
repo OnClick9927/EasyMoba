@@ -7,7 +7,7 @@ function LuaGroups_MVC:OnDispose()
     self.groups = nil
 end
 
-function LuaGroups_MVC:OnSubscribe(path, name, panel)
+function LuaGroups_MVC:OnSubscribe(path, panel)
     ---@type table<string,UIView_MVC>
     self.groups = self.groups or {}
     if self:FindView(path) ~= nil then
@@ -17,7 +17,7 @@ function LuaGroups_MVC:OnSubscribe(path, name, panel)
     local vvmType
 
     for i, v in pairs(self.map) do
-        if v.Name == name then
+        if v.Name == path then
             vvmType = v
             break
         end

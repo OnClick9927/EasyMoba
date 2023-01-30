@@ -49,7 +49,7 @@ function LuaGroups:OnDispose()
     self.map = nil
 end
 
-function LuaGroups:OnSubscribe(path, name, panel) end
+function LuaGroups:OnSubscribe(path, panel) end
 
 function LuaGroups:OnUnSubscribe(path) end
 

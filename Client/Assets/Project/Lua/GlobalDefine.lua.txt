@@ -14,7 +14,6 @@ require("Define.LuaEventTypes")
 
 Models = require("Model.Base.Models")
 Ctrls = require("Ctrl.Base.Ctrls")
-require("Battle.Battle")
 
 ---@type UIItemPool
 UIItems = UIItemPool(UI)

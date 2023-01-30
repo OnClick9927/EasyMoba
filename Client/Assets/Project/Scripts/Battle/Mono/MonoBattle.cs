@@ -10,7 +10,7 @@ using XLua;
 
 namespace EasyMoba.GameLogic.Mono
 {
-    public class MonoBattle : MonoSingleton<MonoBattle>, IBattleView
+    public class MonoBattle : MonoSingleton<MonoBattle>
     {
         private BattleInput input;
         private BattleModePlayer mode_server;
@@ -31,12 +31,11 @@ namespace EasyMoba.GameLogic.Mono
             TextAsset txt = asset.GetAsset<TextAsset>();
             Assets.Release(asset);
 
-            battle = new Battle(this, JsonUtility.FromJson<CollisionLayerConfig>(txt.text),null);
+            battle = new Battle(new BattleView(), JsonUtility.FromJson<CollisionLayerConfig>(txt.text),null);
             battle.StartGame(role_id, room_id, type, players);
 
             mode_server = BattleModePlayer.Create(mode, type, players);
             input = new BattleInput(mode_server);
-            start?.Invoke();
         }
         public void OnLoadSceneFinish()
         {
@@ -52,7 +51,6 @@ namespace EasyMoba.GameLogic.Mono
                 battle.CloseGame();
                 mode_server.Dispose();
                 mode_server = null;
-                colse?.Invoke();
                 battle = null;
             }
 
@@ -61,27 +59,14 @@ namespace EasyMoba.GameLogic.Mono
         {
             if (!gameing) return;
             input.Update();
-            update?.Invoke();
         }
 
-        private Action start, update, colse;
-        private Action<MobaUnit> create_unit;
         protected override void OnSingletonInit()
         {
-            var G = MobaGame.Instance.modules.Lua.gtable;
-            var battle = G.Get<LuaTable>("Battle");
-            start = battle.Get<Action>("Start");
-            update = battle.Get<Action>("Update");
-            colse = battle.Get<Action>("Quit");
-            create_unit = battle.Get<Action<MobaUnit>>("CreateUnit");
             Launcher.env.BindDispose(CloseGame);
         }
 
-        public void OnUnitCreate(MobaUnit unit)
-        {
-            create_unit?.Invoke(unit);
-
-        }
+        
     }
 }
 
