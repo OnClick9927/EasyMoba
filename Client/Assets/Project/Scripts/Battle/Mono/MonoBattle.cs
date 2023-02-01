@@ -17,15 +17,16 @@ namespace EasyMoba.GameLogic.Mono
         private bool gameing;
         private Battle battle;
         public long Role_id { get => battle.Role_id; }
-        public string Room_id { get => battle.Room_id; }
+        public long Room_id { get => battle.Room_id; }
         public void SPFrame(SPBattleFrame obj) => battle.ReadFrame(obj);
         public void SPAllRealy(SPBattleAllReady obj) {
             battle.StartPlayLogic(obj);
             gameing = true;
 
         }
+        public int cur;
         public int CurFrame => battle.GetCurFrame();
-        public async void StartGame(BattlePlayMode mode, long role_id, string room_id, MatchRoomType type, List<BattlePlayer> players)
+        public async void StartGame(BattlePlayMode mode, long role_id, long room_id, MatchRoomType type, List<BattlePlayer> players)
         {
             var asset = await Assets.LoadAssetAsync("Assets/Project/Configs/CollisonLayer.json");
             TextAsset txt = asset.GetAsset<TextAsset>();
@@ -57,6 +58,7 @@ namespace EasyMoba.GameLogic.Mono
         }
         private void Update()
         {
+            cur = CurFrame;
             if (!gameing) return;
             input.Update();
         }

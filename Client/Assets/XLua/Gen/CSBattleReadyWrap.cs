@@ -99,7 +99,7 @@ namespace XLua.CSObjectWrap
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			
                 CSBattleReady gen_to_be_invoked = (CSBattleReady)translator.FastGetCSObj(L, 1);
-                LuaAPI.lua_pushstring(L, gen_to_be_invoked.roomID);
+                LuaAPI.lua_pushint64(L, gen_to_be_invoked.roomID);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
@@ -130,7 +130,7 @@ namespace XLua.CSObjectWrap
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			
                 CSBattleReady gen_to_be_invoked = (CSBattleReady)translator.FastGetCSObj(L, 1);
-                gen_to_be_invoked.roomID = LuaAPI.lua_tostring(L, 2);
+                gen_to_be_invoked.roomID = LuaAPI.lua_toint64(L, 2);
             
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);

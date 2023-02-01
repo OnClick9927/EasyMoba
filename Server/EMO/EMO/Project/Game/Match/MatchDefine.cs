@@ -38,7 +38,7 @@ public MatchErrCode Code { get; set; }
 public class SPMatchSuccess : INetMsg
 {
     public MatchRoomType type { get; set; }
-    public string roomID { get; set; }
+    public long roomID { get; set; }
     public BattlePlayer[] roles;
 }
 

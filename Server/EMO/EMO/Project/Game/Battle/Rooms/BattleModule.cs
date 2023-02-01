@@ -13,7 +13,7 @@ namespace EMO.Project.Game.Battle.Rooms;
 
 class BattleModule : IFramework.Module
 {
-    private Dictionary<string, Room> rooms = new Dictionary<string, Room>();
+    private Dictionary<long, Room> rooms = new Dictionary<long, Room>();
     //private IUdpServerProvider server;
     private Encoding en = Encoding.UTF8;
     private Dictionary<long, IPEndPoint> roles = new Dictionary<long, IPEndPoint>();
@@ -50,7 +50,7 @@ class BattleModule : IFramework.Module
             new ServerCanCallClientBattleMsg()));
     }
 
-    private Room FindRoom(string id)
+    private Room FindRoom(long id)
     {
         if (rooms.ContainsKey(id))
         {
@@ -59,7 +59,7 @@ class BattleModule : IFramework.Module
         }
         return null;
     }
-    public void PlayerReady(string roomID, long roleID)
+    public void PlayerReady(long roomID, long roleID)
     {
         if (FindRoom(roomID) != null)
         {
@@ -69,8 +69,7 @@ class BattleModule : IFramework.Module
 
     public void RecieveBattleFrame(byte[] buffer,IPEndPoint point)
     {
-        var str = en.GetString(buffer);
-        CSBattleFrame? frame = JsonConvert.DeserializeObject<CSBattleFrame>(str);
+        CSBattleFrame frame = BattleFrameConvert.ReadCS(buffer);
         var roomID = frame.roomID;
         if (FindRoom(roomID) == null) return;
         var roleID = frame.roleID;
@@ -82,8 +81,7 @@ class BattleModule : IFramework.Module
     }
     public void SendBattleFrame(long roleID, SPBattleFrame frame)
     {
-        var result = JsonConvert.SerializeObject(frame);
-        var bytes = en.GetBytes(result);
+        var bytes = BattleFrameConvert.Tobytes(frame);
         //SegmentOffset dataSegment = new SegmentOffset(bytes);
         if (roles.ContainsKey(roleID))
         {

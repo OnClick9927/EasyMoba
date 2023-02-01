@@ -21,7 +21,7 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(EasyMoba.GameLogic.Mono.MonoBattle);
-			Utils.BeginObjectRegister(type, L, translator, 0, 8, 3, 0);
+			Utils.BeginObjectRegister(type, L, translator, 0, 8, 4, 1);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SPFrame", _m_SPFrame);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "SPAllRealy", _m_SPAllRealy);
@@ -36,8 +36,10 @@ namespace XLua.CSObjectWrap
 			Utils.RegisterFunc(L, Utils.GETTER_IDX, "Role_id", _g_get_Role_id);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "Room_id", _g_get_Room_id);
             Utils.RegisterFunc(L, Utils.GETTER_IDX, "CurFrame", _g_get_CurFrame);
+            Utils.RegisterFunc(L, Utils.GETTER_IDX, "cur", _g_get_cur);
             
-			
+			Utils.RegisterFunc(L, Utils.SETTER_IDX, "cur", _s_set_cur);
+            
 			
 			Utils.EndObjectRegister(type, L, translator, null, null,
 			    null, null, null);
@@ -153,7 +155,7 @@ namespace XLua.CSObjectWrap
                 {
                     EasyMoba.GameLogic.Mono.BattlePlayMode _mode;translator.Get(L, 2, out _mode);
                     long _role_id = LuaAPI.lua_toint64(L, 3);
-                    string _room_id = LuaAPI.lua_tostring(L, 4);
+                    long _room_id = LuaAPI.lua_toint64(L, 4);
                     MatchRoomType _type;translator.Get(L, 5, out _type);
                     System.Collections.Generic.List<BattlePlayer> _players = (System.Collections.Generic.List<BattlePlayer>)translator.GetObject(L, 6, typeof(System.Collections.Generic.List<BattlePlayer>));
                     
@@ -331,7 +333,7 @@ namespace XLua.CSObjectWrap
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			
                 EasyMoba.GameLogic.Mono.MonoBattle gen_to_be_invoked = (EasyMoba.GameLogic.Mono.MonoBattle)translator.FastGetCSObj(L, 1);
-                LuaAPI.lua_pushstring(L, gen_to_be_invoked.Room_id);
+                LuaAPI.lua_pushint64(L, gen_to_be_invoked.Room_id);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
@@ -352,7 +354,36 @@ namespace XLua.CSObjectWrap
             return 1;
         }
         
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _g_get_cur(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                EasyMoba.GameLogic.Mono.MonoBattle gen_to_be_invoked = (EasyMoba.GameLogic.Mono.MonoBattle)translator.FastGetCSObj(L, 1);
+                LuaAPI.xlua_pushinteger(L, gen_to_be_invoked.cur);
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 1;
+        }
         
+        
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _s_set_cur(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                EasyMoba.GameLogic.Mono.MonoBattle gen_to_be_invoked = (EasyMoba.GameLogic.Mono.MonoBattle)translator.FastGetCSObj(L, 1);
+                gen_to_be_invoked.cur = LuaAPI.xlua_tointeger(L, 2);
+            
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 0;
+        }
         
 		
 		

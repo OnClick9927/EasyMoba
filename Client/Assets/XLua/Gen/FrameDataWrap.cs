@@ -37,9 +37,10 @@ namespace XLua.CSObjectWrap
 			Utils.EndObjectRegister(type, L, translator, null, null,
 			    null, null, null);
 
-		    Utils.BeginClassRegister(type, L, __CreateInstance, 1, 0, 0);
+		    Utils.BeginClassRegister(type, L, __CreateInstance, 2, 0, 0);
 			
 			
+            Utils.RegisterObject(L, translator, Utils.CLS_IDX, "length", FrameData.length);
             
 			
 			

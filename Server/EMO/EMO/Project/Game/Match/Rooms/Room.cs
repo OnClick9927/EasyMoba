@@ -25,7 +25,7 @@ abstract class Room
     protected void Send(long[] roles, long[] enemy)
     {
         SPMatchSuccess sp = new SPMatchSuccess();
-        sp.roomID = Guid.NewGuid().ToString();
+        sp.roomID = DateTime.Now.Ticks;
         if (enemy != null)
         {
             sp.roles = new BattlePlayer[roles.Length + enemy.Length];

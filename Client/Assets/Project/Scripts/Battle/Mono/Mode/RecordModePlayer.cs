@@ -6,7 +6,7 @@ namespace EasyMoba.GameLogic.Mono
     {
         public RecordModePlayer(MatchRoomType type, List<BattlePlayer> roles) : base(type,roles) { }
 
-        public override void CallServerReady(long role_id, string room_id)
+        public override void CallServerReady(long role_id, long room_id)
         {
            
         }
@@ -16,7 +16,7 @@ namespace EasyMoba.GameLogic.Mono
             base.Dispose();
         }
 
-        protected override void SendBattleFrameToServer(string roomid, long roleid, int frame, FrameData op)
+        protected override void SendBattleFrameToServer(long roomid, long roleid, int frame, FrameData op)
         {
             return;
         }

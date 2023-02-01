@@ -235,6 +235,7 @@
 		<type fullname="FrameData" preserve="all"/>
 		<type fullname="CSBattleFrame" preserve="all"/>
 		<type fullname="SPBattleFrame" preserve="all"/>
+		<type fullname="BattleFrameConvert" preserve="all"/>
 		<type fullname="SPBattleAllReady" preserve="all"/>
 		<type fullname="CSBattleReady" preserve="all"/>
 		<type fullname="ICanCallClientBattleMsg" preserve="all"/>

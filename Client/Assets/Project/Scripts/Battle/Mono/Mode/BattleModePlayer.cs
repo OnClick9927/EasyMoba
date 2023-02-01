@@ -40,7 +40,7 @@ namespace EasyMoba.GameLogic.Mono
             return null;
         }
 
-        public abstract void CallServerReady(long role_id, string room_id);
+        public abstract void CallServerReady(long role_id, long room_id);
         public void SendFrameToServer(int frame, FrameData data)
         {
             SendBattleFrameToServer(MonoBattle.Instance.Room_id,
@@ -52,18 +52,17 @@ namespace EasyMoba.GameLogic.Mono
 
 
 
-        protected CSBattleFrame CreateFrame(string roomid, long roleid, int frame, FrameData op)
+        protected CSBattleFrame CreateFrame(long roomid, long roleid, int frame, FrameData op)
         {
             op.roleID = roleid;
             return new CSBattleFrame()
             {
                 data = op,
                 frameID = frame,
-                roleID = roleid,
                 roomID = roomid,
             };
         }
-        protected abstract void SendBattleFrameToServer(string roomid, long roleid, int frame, FrameData op);
+        protected abstract void SendBattleFrameToServer(long roomid, long roleid, int frame, FrameData op);
         protected void CallLuaFrame(SPBattleFrame obj) => MonoBattle.Instance.SPFrame(obj);
         protected void CallLuaAllReady(SPBattleAllReady response) => MobaGame.Instance.env.WaitEnvironmentFrame(response);
       

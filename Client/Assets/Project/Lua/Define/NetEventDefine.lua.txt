@@ -27,7 +27,7 @@ NetEventDefine.Enums = {
 
 ---@class CSBattleReady
 ---@field roleID number
----@field roomID string
+---@field roomID number
 
 ---@class CSRoleLogin
 ---@field loginType LoginType
@@ -57,7 +57,7 @@ NetEventDefine.Enums = {
 ---@class SPMatchSuccess
 ---@field roles BattlePlayer[]
 ---@field type MatchRoomType
----@field roomID string
+---@field roomID number
 
 ---@class BattlePlayer
 ---@field role_id number

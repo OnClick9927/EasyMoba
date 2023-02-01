@@ -23,7 +23,7 @@ namespace EasyMoba.GameLogic
         public Random random;
 
         private long role_id;
-        private string room_id;
+        private long room_id;
         private MatchRoomType room_type;
         private List<BattlePlayer> players;
 
@@ -39,14 +39,14 @@ namespace EasyMoba.GameLogic
         }
 
         public long Role_id { get => role_id; }
-        public string Room_id { get => room_id; }
+        public long Room_id { get => room_id; }
         public void SetMapData(MapInitData map_data)
         {
             logic.LoadBaseUnit(map_data, players);
 
         }
 
-        public void StartGame(long role_id, string room_id, MatchRoomType type, List<BattlePlayer> players)
+        public void StartGame(long role_id, long room_id, MatchRoomType type, List<BattlePlayer> players)
         {
             long u = 0;
             foreach (var item in players)

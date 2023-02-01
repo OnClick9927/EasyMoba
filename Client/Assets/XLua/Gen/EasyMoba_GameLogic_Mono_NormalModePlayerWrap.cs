@@ -89,7 +89,7 @@ namespace XLua.CSObjectWrap
                 
                 {
                     long _role_id = LuaAPI.lua_toint64(L, 2);
-                    string _room_id = LuaAPI.lua_tostring(L, 3);
+                    long _room_id = LuaAPI.lua_toint64(L, 3);
                     
                     gen_to_be_invoked.CallServerReady( _role_id, _room_id );
                     

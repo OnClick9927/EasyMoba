@@ -10,7 +10,7 @@ namespace EasyMoba.GameLogic.Mono
             room = new Room(type, roles.ToArray(), Battle.delta, this);
         }
 
-        public override void CallServerReady(long role_id, string room_id)
+        public override void CallServerReady(long role_id, long room_id)
         {
             room.Ready(role_id);
         }
@@ -32,7 +32,7 @@ namespace EasyMoba.GameLogic.Mono
             CallLuaAllReady(response);
         }
 
-        protected override void SendBattleFrameToServer(string roomid, long roleid, int frame, FrameData op)
+        protected override void SendBattleFrameToServer(long roomid, long roleid, int frame, FrameData op)
         {
             room.ReadBattleFrame(CreateFrame(roomid, roleid, frame, op));
 
