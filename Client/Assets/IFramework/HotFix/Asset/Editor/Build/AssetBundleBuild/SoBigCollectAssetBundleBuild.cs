@@ -13,9 +13,9 @@ namespace IFramework.Hotfix.Asset
 {
     public class SoBigCollectAssetBundleBuild : ICollectAssetBundleBuild
     {
-        public void Create(List<AssetInfo> assets, List<string> singles, Dictionary<AssetInfo, List<AssetInfo>> dpsDic, List<AssetBundleBuild> result)
+        public void Create(List<AssetInfo> assets, List<AssetInfo> singles, Dictionary<AssetInfo, List<AssetInfo>> dpsDic, List<AssetBundleBuild> result)
         {
-            List<AssetInfo> scenes = assets.FindAll(x => x.IsScene());
+            List<AssetInfo> scenes = assets.FindAll(x => x.type == AssetInfo.AssetType.Scene);
             foreach (var item in scenes) assets.Remove(item);
             foreach (var scene in scenes)
             {
@@ -27,7 +27,7 @@ namespace IFramework.Hotfix.Asset
             AssetBundleBuild assetBundle = new AssetBundleBuild();
             assetBundle.assetBundleName = "so big";
             var paths = assets.ConvertAll(asset => asset.path.ToRegularPath());
-            paths.AddRange(singles);
+            paths.AddRange(singles.ConvertAll(asset => asset.path.ToRegularPath()));
             assetBundle.assetNames = paths.ToArray();
             result.Add(assetBundle);
         }

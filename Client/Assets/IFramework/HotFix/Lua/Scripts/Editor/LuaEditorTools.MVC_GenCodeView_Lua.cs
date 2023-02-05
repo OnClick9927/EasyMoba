@@ -16,6 +16,7 @@ using System.Collections.Generic;
 using IFramework.UI;
 using static IFramework.EditorTools;
 using IFramework.UI.MVC;
+using UnityEditor.IMGUI.Controls;
 
 namespace IFramework.Hotfix.Lua
 {
@@ -31,7 +32,8 @@ namespace IFramework.Hotfix.Lua
 
             [SerializeField] private string UIdir;
             [SerializeField] private UIPanel panel;
- 
+            [SerializeField] private TreeViewState state = new TreeViewState();
+
             public override string name => "MVC_Gen_Lua";
 
             private string viewName => panelName.Append("View");
@@ -44,9 +46,10 @@ namespace IFramework.Hotfix.Lua
                 {
                     this.UIdir = last.UIdir;
                     this.panel = last.panel;
+                    this.state = last.state;
                 }
                 FloderField = new LuaFloderField();
-                fields = new ScriptCreaterFieldsDrawer(creater);
+                fields = new ScriptCreaterFieldsDrawer(creater,state);
                 SetViewData();
             }
             public override void OnHierarchyChanged()

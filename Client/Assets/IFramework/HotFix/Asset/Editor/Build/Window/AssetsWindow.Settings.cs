@@ -17,6 +17,7 @@ namespace IFramework.Hotfix.Asset
     {
         private class Settings : GUIBase
         {
+            public AssetsWindow window;
             private Vector2 scroll;
             public override void OnGUI(Rect position)
             {
@@ -51,7 +52,7 @@ namespace IFramework.Hotfix.Asset
             }
             private void Build()
             {
-                typeIndex = EditorGUILayout.Popup("AssetBundleBuildCollect", typeIndex, shortTypes);
+                window.typeIndex = EditorGUILayout.Popup("AssetBundleBuildCollect", window.typeIndex, window.shortTypes);
                 var op = (BuildAssetBundleOptions)EditorGUILayout.EnumFlagsField("BuildAssetBundleOptions", buildSetting.option);
                 if (buildSetting.option != op)
                 {

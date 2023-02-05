@@ -13,7 +13,7 @@ namespace IFramework.Hotfix.Asset
 {
     public class SimpleCollectAssetBundleBuild : ICollectAssetBundleBuild
     {
-        public void Create(List<AssetInfo> assets, List<string> singles, Dictionary<AssetInfo, List<AssetInfo>> dic, List<AssetBundleBuild> result)
+        public void Create(List<AssetInfo> assets, List<AssetInfo> singles, Dictionary<AssetInfo, List<AssetInfo>> dic, List<AssetBundleBuild> result)
         {
             foreach (var asset in assets)
             {
@@ -25,7 +25,7 @@ namespace IFramework.Hotfix.Asset
             }
             foreach (var single in singles)
             {
-                var path = single.ToRegularPath();
+                var path = single.path.ToRegularPath();
                 AssetBundleBuild singleBundle = new AssetBundleBuild();
                 singleBundle.assetBundleName = path;
                 singleBundle.assetNames = new string[] { path };

@@ -10,6 +10,11 @@ using UnityEditor;
 using UnityEditor.IMGUI.Controls;
 using System.Collections.Generic;
 using Object = UnityEngine.Object;
+using UnityEngine;
+using System.IO;
+using IFramework.GUITool;
+using static UnityEditor.Progress;
+using UnityEditor.TreeViewExamples;
 
 namespace IFramework.Hotfix.Asset
 {
@@ -21,72 +26,101 @@ namespace IFramework.Hotfix.Asset
             {
                 this.Reload();
                 showAlternatingRowBackgrounds = true;
+                this.multiColumnHeader = new MultiColumnHeader(new MultiColumnHeaderState(new MultiColumnHeaderState.Column[]
+                {
+                    new MultiColumnHeaderState.Column()
+                    {
+
+                    },
+                    new MultiColumnHeaderState.Column()
+                    {
+                         headerContent=new UnityEngine.GUIContent("Type")
+                    },
+
+                }));
+                this.multiColumnHeader.ResizeToFit();
             }
             protected override TreeViewItem BuildRoot()
             {
                 return new TreeViewItem() { id = -10, depth = -1 };
             }
+
             protected override IList<TreeViewItem> BuildRows(TreeViewItem root)
             {
-                List<TreeViewItem> result = new List<TreeViewItem>();
-                var roots = buildSetting.GetRootPaths();
-                foreach (var path in roots)
-                {
-                    LoopCreate(result, root, path);
-                }
-                foreach (var _path in buildSetting.GetSingleFiles())
-                {
-                    var _item = new TreeViewItem()
-                    {
-                        id = result.Count,
-                        depth = root.depth + 1,
-                        displayName = _path,
-                        parent = root,
-                        icon = AssetInfo.GetMiniThumbnail(_path)
-                    };
-                    result.Add(_item);
-                    root.AddChild(_item);
-                }
+                var result = GetRows() ?? new List<TreeViewItem>();
+                result.Clear();
+                BuildDirs(result, root, buildSetting.GetRootDirPaths());
+                BuildFiles(result, root, buildSetting.GetSingleFiles());
                 SetupParentsAndChildrenFromDepths(root, result);
                 return result;
             }
-            private void LoopCreate(List<TreeViewItem> result, TreeViewItem root, AssetInfo path)
+            protected override void DoubleClickedItem(int id)
             {
-                var item = new TreeViewItem()
+                var rows = this.FindRows(new List<int>() { id });
+                EditorGUIUtility.PingObject(AssetDatabase.LoadAssetAtPath<Object>(rows[0].displayName));
+            }
+
+
+
+
+
+            protected override void RowGUI(RowGUIArgs args)
+            {
+                float indet = this.GetContentIndent(args.item);
+                var first = args.GetCellRect(0).Zoom(AnchorType.MiddleRight, new Vector2(-indet, 0));
+                GUI.Label(first, new GUIContent(Path.GetFileName(args.label), args.item.icon));
+                var type = buildSetting.GetAssetInfo(args.label).type;
+                if (type != AssetInfo.AssetType.Directory)
                 {
-                    id = result.Count,
-                    depth = root.depth + 1,
-                    displayName = path.path,
-                    icon = path.GetMiniThumbnail()
+                    GUI.Label(args.GetCellRect(1), type.ToString());
+                }
+            }
+
+
+
+
+
+
+            private static TreeViewItem CreateItem(string path, TreeViewItem parrent, IList<TreeViewItem> result)
+            {
+                Object o = AssetDatabase.LoadAssetAtPath<UnityEngine.Object>(path);
+                var _item = new TreeViewItem()
+                {
+                    id = o.GetInstanceID(),
+                    depth = parrent.depth + 1,
+                    displayName = path,
+                    parent = parrent,
+                    icon = AssetPreview.GetMiniThumbnail(AssetDatabase.LoadAssetAtPath<UnityEngine.Object>(path))
                 };
-                root.AddChild(item);
-                result.Add(item);
-
-                var paths = buildSetting.GetSubFloders(path);
-                var filepaths = buildSetting.GetSubFiles(path);
-
-                if (paths.Count != 0 || filepaths.Count != 0)
+                parrent.AddChild(_item);
+                result.Add(_item);
+                return _item;
+            }
+            private void BuildDirs(IList<TreeViewItem> result, TreeViewItem parrent, List<AssetInfo> dirs)
+            {
+                foreach (var path in dirs)
+                {
+                    LoopCreate(result, parrent, path);
+                }
+            }
+            private static void BuildFiles(IList<TreeViewItem> result, TreeViewItem parrent, List<AssetInfo> paths)
+            {
+                foreach (var _path in paths)
+                {
+                    CreateItem(_path.path, parrent, result);
+                }
+            }
+            private void LoopCreate(IList<TreeViewItem> result, TreeViewItem parrent, AssetInfo info)
+            {
+                var item = CreateItem(info.path, parrent, result);
+                var paths = buildSetting.GetSubFloders(info);
+                var filepaths = buildSetting.GetSubFiles(info);
+                if (paths.Count > 0 || filepaths.Count > 0)
                 {
                     if (IsExpanded(item.id))
                     {
-                        foreach (var _path in paths)
-                        {
-                            LoopCreate(result, item, _path);
-                        }
-                        foreach (var _path in filepaths)
-                        {
-                            var _item = new TreeViewItem()
-                            {
-                                id = result.Count,
-                                depth = root.depth + 2,
-                                displayName = _path.path,
-                                parent = root,
-                                icon = _path.GetMiniThumbnail()
-                            };
-                            result.Add(_item);
-                            root.AddChild(_item);
-
-                        }
+                        BuildDirs(result, item, paths);
+                        BuildFiles(result, item, filepaths);
                     }
                     else
                     {
@@ -95,13 +129,6 @@ namespace IFramework.Hotfix.Asset
                 }
 
             }
-
-            protected override void DoubleClickedItem(int id)
-            {
-                var rows = this.FindRows(new List<int>() { id });
-                EditorGUIUtility.PingObject(AssetDatabase.LoadAssetAtPath<Object>(rows[0].displayName));
-            }
         }
-
     }
 }

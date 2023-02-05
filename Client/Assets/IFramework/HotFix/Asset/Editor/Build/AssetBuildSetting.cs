@@ -11,6 +11,7 @@ using System.IO;
 using System.Linq;
 using UnityEngine;
 using UnityEditor;
+using System;
 
 namespace IFramework.Hotfix.Asset
 {
@@ -72,41 +73,10 @@ namespace IFramework.Hotfix.Asset
         [SerializeField] private List<string> atlasPaths = new List<string>();
         [SerializeField] private List<string> buildPaths = new List<string>();
         [SerializeField] private AssetsTree tree = new AssetsTree();
-        public void AddAtlasPath(string path)
+
+        public List<AssetInfo> GetRootDirPaths()
         {
-            if (atlasPaths.Contains(path)) return;
-            atlasPaths.Add(path);
-        }
-        public void RemoveAtlasPath(string path)
-        {
-            if (atlasPaths.Contains(path))
-            {
-                atlasPaths.Remove(path);
-            }
-        }
-        public List<string> GetAtlasPaths()
-        {
-            return atlasPaths;
-        }
-        public void AddBuildPath(string path)
-        {
-            if (buildPaths.Contains(path)) return;
-            buildPaths.Add(path);
-        }
-        public void RemoveBuildPath(string path)
-        {
-            if (buildPaths.Contains(path))
-            {
-                buildPaths.Remove(path);
-            }
-        }
-        public List<string> GetBuildPaths()
-        {
-            return buildPaths;
-        }
-        public List<AssetInfo> GetRootPaths()
-        {
-            return tree.GetRootPaths();
+            return tree.GetRootDirPaths();
         }
         public List<AssetInfo> GetSubFloders(AssetInfo info)
         {
@@ -116,10 +86,31 @@ namespace IFramework.Hotfix.Asset
         {
             return tree.GetSubFiles(info);
         }
-        public List<string> GetSingleFiles()
+        public List<AssetInfo> GetSingleFiles()
         {
-
             return tree.GetSingleFiles();
+        }
+        public List<AssetInfo> GetAssets()
+        {
+            return tree.GetAssets();
+        }
+        public Dictionary<AssetInfo, List<AssetInfo>> GetDpDic()
+        {
+            return tree.GetDpDic();
+        }
+        public List<string> GetDps(string path)
+        {
+            return tree.GetDps(path);
+        }
+        public AssetInfo GetAssetInfo(string path)
+        {
+            return tree.GetAssetInfo(path);
+        }
+
+
+        public List<string> GetAtlasPaths()
+        {
+            return atlasPaths;
         }
         public static string[] GetDirectories(string path)
         {
@@ -151,18 +142,8 @@ namespace IFramework.Hotfix.Asset
             return list.ToArray();
         }
 
-        public List<string> GetDps(string path)
-        {
-            return tree.GetDps(path);
-        }
-        public Dictionary<AssetInfo, List<AssetInfo>> GetDpDic()
-        {
-            return tree.GetDpDic();
-        }
-        public List<AssetInfo> GetAssets()
-        {
-            return tree.GetAssets();
-        }
+
+
 
         public void Colllect()
         {
@@ -173,8 +154,8 @@ namespace IFramework.Hotfix.Asset
                 tree.AddPath(buildPaths[i]);
             }
             tree.CollectDps();
+            tree.RemoveUselessInfos();
         }
-
         public void Save()
         {
             EditorTools.AssetTool.Update(this);

@@ -13,6 +13,6 @@ namespace IFramework.Hotfix.Asset
 {
     public interface ICollectAssetBundleBuild
     {
-        void Create(List<AssetInfo> assets, List<string> singles, Dictionary<AssetInfo, List<AssetInfo>> dpsDic, List<AssetBundleBuild> result);
+        void Create(List<AssetInfo> assets, List<AssetInfo> singles, Dictionary<AssetInfo, List<AssetInfo>> dpsDic, List<AssetBundleBuild> result);
     }
 }

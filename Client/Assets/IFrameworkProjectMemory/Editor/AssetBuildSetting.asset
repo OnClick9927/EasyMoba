@@ -17,51 +17,230 @@ MonoBehaviour:
   ignoreFileEtend:
   - .cs
   - .meta
-  atlasPaths:
-  - Assets/IFramework/HotFix/Asset/__Example/px
+  atlasPaths: []
   buildPaths:
-  - Assets/IFramework/HotFix/Asset/__Example
+  - Assets/Project
   tree:
-    rootAssets:
-    - path: Assets/IFramework/HotFix/Asset/__Example
-      parentPath: 
+    rootDir:
+    - _path: Assets/Project
+      _parentPath: 
+      _type: 1
       dps: []
     assets:
-    - path: Assets/IFramework/HotFix/Asset/__Example
-      parentPath: 
+    - _path: Assets/Project
+      _parentPath: 
+      _type: 1
       dps: []
-    - path: Assets/IFramework/HotFix/Asset/__Example/New Folder
-      parentPath: Assets/IFramework/HotFix/Asset/__Example
+    - _path: Assets/Project/Configs
+      _parentPath: Assets/Project
+      _type: 1
       dps: []
-    - path: Assets/IFramework/HotFix/Asset/__Example/New Folder/Cube.prefab
-      parentPath: Assets/IFramework/HotFix/Asset/__Example/New Folder
+    - _path: Assets/Project/Configs/CollisonLayer.json
+      _parentPath: Assets/Project/Configs
+      _type: 14
+      dps: []
+    - _path: Assets/Project/Configs/UICollect.json
+      _parentPath: Assets/Project/Configs
+      _type: 14
+      dps: []
+    - _path: Assets/Project/Configs/UILayer.json
+      _parentPath: Assets/Project/Configs
+      _type: 14
+      dps: []
+    - _path: Assets/Project/Lua
+      _parentPath: Assets/Project
+      _type: 1
+      dps: []
+    - _path: Assets/Project/Lua/Ctrl
+      _parentPath: Assets/Project/Lua
+      _type: 1
+      dps: []
+    - _path: Assets/Project/Lua/Ctrl/Base
+      _parentPath: Assets/Project/Lua/Ctrl
+      _type: 1
+      dps: []
+    - _path: Assets/Project/Lua/Ctrl/Base/Ctrls.lua.txt
+      _parentPath: Assets/Project/Lua/Ctrl/Base
+      _type: 14
+      dps: []
+    - _path: Assets/Project/Lua/Ctrl/Base/NetEvents.lua.txt
+      _parentPath: Assets/Project/Lua/Ctrl/Base
+      _type: 14
+      dps: []
+    - _path: Assets/Project/Lua/Ctrl/BattleCtrl.lua.txt
+      _parentPath: Assets/Project/Lua/Ctrl
+      _type: 14
+      dps: []
+    - _path: Assets/Project/Lua/Ctrl/LoginCtrl.lua.txt
+      _parentPath: Assets/Project/Lua/Ctrl
+      _type: 14
+      dps: []
+    - _path: Assets/Project/Lua/Ctrl/MatchCtrl.lua.txt
+      _parentPath: Assets/Project/Lua/Ctrl
+      _type: 14
+      dps: []
+    - _path: Assets/Project/Lua/Ctrl/SceneCtrl.lua.txt
+      _parentPath: Assets/Project/Lua/Ctrl
+      _type: 14
+      dps: []
+    - _path: Assets/Project/Lua/Define
+      _parentPath: Assets/Project/Lua
+      _type: 1
+      dps: []
+    - _path: Assets/Project/Lua/Define/LuaEventTypes.lua.txt
+      _parentPath: Assets/Project/Lua/Define
+      _type: 14
+      dps: []
+    - _path: Assets/Project/Lua/Define/NetEventDefine.lua.txt
+      _parentPath: Assets/Project/Lua/Define
+      _type: 14
+      dps: []
+    - _path: Assets/Project/Lua/Define/ResDefine.lua.txt
+      _parentPath: Assets/Project/Lua/Define
+      _type: 14
+      dps: []
+    - _path: Assets/Project/Lua/Model
+      _parentPath: Assets/Project/Lua
+      _type: 1
+      dps: []
+    - _path: Assets/Project/Lua/Model/Base
+      _parentPath: Assets/Project/Lua/Model
+      _type: 1
+      dps: []
+    - _path: Assets/Project/Lua/Model/Base/ModelBase.lua.txt
+      _parentPath: Assets/Project/Lua/Model/Base
+      _type: 14
+      dps: []
+    - _path: Assets/Project/Lua/Model/Base/Models.lua.txt
+      _parentPath: Assets/Project/Lua/Model/Base
+      _type: 14
+      dps: []
+    - _path: Assets/Project/Lua/Model/PlayerModel.lua.txt
+      _parentPath: Assets/Project/Lua/Model
+      _type: 14
+      dps: []
+    - _path: Assets/Project/Lua/UI
+      _parentPath: Assets/Project/Lua
+      _type: 1
+      dps: []
+    - _path: Assets/Project/Lua/UI/LoadScenePanelView.lua.txt
+      _parentPath: Assets/Project/Lua/UI
+      _type: 14
+      dps: []
+    - _path: Assets/Project/Lua/UI/LoginPanelView.lua.txt
+      _parentPath: Assets/Project/Lua/UI
+      _type: 14
+      dps: []
+    - _path: Assets/Project/Lua/UI/MainPanelView.lua.txt
+      _parentPath: Assets/Project/Lua/UI
+      _type: 14
+      dps: []
+    - _path: Assets/Project/Lua/UI/MatchPanelView.lua.txt
+      _parentPath: Assets/Project/Lua/UI
+      _type: 14
+      dps: []
+    - _path: Assets/Project/Lua/UI/MVCMap.lua.txt
+      _parentPath: Assets/Project/Lua/UI
+      _type: 14
+      dps: []
+    - _path: Assets/Project/Lua/UI/PanelNames.lua.txt
+      _parentPath: Assets/Project/Lua/UI
+      _type: 14
+      dps: []
+    - _path: Assets/Project/Lua/FixCsharp.lua.txt
+      _parentPath: Assets/Project/Lua
+      _type: 14
+      dps: []
+    - _path: Assets/Project/Lua/GameLogic.lua.txt
+      _parentPath: Assets/Project/Lua
+      _type: 14
+      dps: []
+    - _path: Assets/Project/Lua/GameTools.lua.txt
+      _parentPath: Assets/Project/Lua
+      _type: 14
+      dps: []
+    - _path: Assets/Project/Lua/GlobalDefine.lua.txt
+      _parentPath: Assets/Project/Lua
+      _type: 14
+      dps: []
+    - _path: Assets/Project/Materials
+      _parentPath: Assets/Project
+      _type: 1
+      dps: []
+    - _path: Assets/Project/Materials/Ground.mat
+      _parentPath: Assets/Project/Materials
+      _type: 7
+      dps: []
+    - _path: Assets/Project/Materials/Player.mat
+      _parentPath: Assets/Project/Materials
+      _type: 7
+      dps: []
+    - _path: Assets/Project/Materials/PlayerCap.mat
+      _parentPath: Assets/Project/Materials
+      _type: 7
+      dps: []
+    - _path: Assets/Project/Materials/Wall.mat
+      _parentPath: Assets/Project/Materials
+      _type: 7
+      dps: []
+    - _path: Assets/Project/Prefabs
+      _parentPath: Assets/Project
+      _type: 1
+      dps: []
+    - _path: Assets/Project/Prefabs/Battle
+      _parentPath: Assets/Project/Prefabs
+      _type: 1
+      dps: []
+    - _path: Assets/Project/Prefabs/Battle/Character
+      _parentPath: Assets/Project/Prefabs/Battle
+      _type: 1
+      dps: []
+    - _path: Assets/Project/Prefabs/Battle/Character/char_001.prefab
+      _parentPath: Assets/Project/Prefabs/Battle/Character
+      _type: 8
       dps:
-      - Assets/IFramework/HotFix/Asset/__Example/New Folder/New Material.mat
-      - Assets/XLua/XLua/Doc/logo.png
-    - path: Assets/IFramework/HotFix/Asset/__Example/New Folder/New Material.mat
-      parentPath: Assets/IFramework/HotFix/Asset/__Example/New Folder
+      - Assets/Project/Materials/PlayerCap.mat
+      - Assets/Project/Materials/Player.mat
+    - _path: Assets/Project/Prefabs/UI
+      _parentPath: Assets/Project/Prefabs
+      _type: 1
+      dps: []
+    - _path: Assets/Project/Prefabs/UI/LoadScenePanel.prefab
+      _parentPath: Assets/Project/Prefabs/UI
+      _type: 8
+      dps: []
+    - _path: Assets/Project/Prefabs/UI/LoginPanel.prefab
+      _parentPath: Assets/Project/Prefabs/UI
+      _type: 8
+      dps: []
+    - _path: Assets/Project/Prefabs/UI/MainPanel.prefab
+      _parentPath: Assets/Project/Prefabs/UI
+      _type: 8
+      dps: []
+    - _path: Assets/Project/Prefabs/UI/MatchPanel.prefab
+      _parentPath: Assets/Project/Prefabs/UI
+      _type: 8
+      dps: []
+    - _path: Assets/Project/Scenes
+      _parentPath: Assets/Project
+      _type: 1
+      dps: []
+    - _path: Assets/Project/Scenes/Battle.unity
+      _parentPath: Assets/Project/Scenes
+      _type: 6
       dps:
-      - Assets/XLua/XLua/Doc/logo.png
-    - path: Assets/IFramework/HotFix/Asset/__Example/px
-      parentPath: Assets/IFramework/HotFix/Asset/__Example
+      - Assets/Project/Materials/Ground.mat
+      - Assets/Project/Materials/Wall.mat
+    - _path: Assets/Project/Scenes/Home.unity
+      _parentPath: Assets/Project/Scenes
+      _type: 6
       dps: []
-    - path: Assets/IFramework/HotFix/Asset/__Example/px/1.png
-      parentPath: Assets/IFramework/HotFix/Asset/__Example/px
+    - _path: Assets/Project/Scenes/Login.unity
+      _parentPath: Assets/Project/Scenes
+      _type: 6
       dps: []
-    - path: Assets/IFramework/HotFix/Asset/__Example/px/2.png
-      parentPath: Assets/IFramework/HotFix/Asset/__Example/px
+    - _path: Assets/Project/Scenes/Update.unity
+      _parentPath: Assets/Project/Scenes
+      _type: 6
       dps: []
-    - path: Assets/IFramework/HotFix/Asset/__Example/px/3.png
-      parentPath: Assets/IFramework/HotFix/Asset/__Example/px
-      dps: []
-    - path: Assets/IFramework/HotFix/Asset/__Example/New Scene.unity
-      parentPath: Assets/IFramework/HotFix/Asset/__Example
-      dps: []
-    - path: Assets/IFramework/HotFix/Asset/__Example/New Scene2.unity
-      parentPath: Assets/IFramework/HotFix/Asset/__Example
-      dps: []
-    - path: Assets/IFramework/HotFix/Asset/__Example/px.spriteatlas
-      parentPath: Assets/IFramework/HotFix/Asset/__Example
-      dps: []
-    fileassets:
-    - Assets/XLua/XLua/Doc/logo.png
+    singles: []

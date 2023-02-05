@@ -14,6 +14,7 @@ using UnityEngine;
 using System;
 using UnityEditor.IMGUI.Controls;
 using System.IO;
+using System.Collections.Generic;
 
 namespace IFramework.Hotfix.Asset
 {
@@ -22,37 +23,51 @@ namespace IFramework.Hotfix.Asset
     {
         private ToolBarTree tree;
         private SplitView splitView = new SplitView();
-        private static CollectTree col;
+        private CollectTree col;
+        private PreviewTree pre;
         private Settings tools = new Settings();
-        private TreeViewState state=new TreeViewState();
-        private static AssetBuildSetting buildSetting { get { return AssetBuildSetting.Load(); } }
-        private static string[] types;
-        private static string[] shortTypes;
+        private TreeViewState collectstate = new TreeViewState();
+        private TreeViewState previewstate = new TreeViewState();
+        private int treeType = 0;
 
-        private static int typeIndex;
-        private static void BuildAtlas()
+        private static AssetBuildSetting buildSetting { get { return AssetBuildSetting.Load(); } }
+        private string[] types;
+        private string[] shortTypes;
+        private int typeIndex;
+        private List<AssetBundleBuild> previewBundles;
+
+        private void BuildAtlas()
         {
             AssetsBuild.BuildAtlas();
         }
-        private static void Colllect()
+        private void Colllect()
         {
             buildSetting.Colllect();
             buildSetting.Save();
             col.Reload();
         }
-        private static void BuildBundle()
+        private void BuildBundle()
         {
             var type_str = types[typeIndex];
             Type type = Type.GetType(type_str);
             AssetsBuild.Build(type);
         }
-        private static void OpenFolder()
+        private void OpenFolder()
         {
             EditorTools.OpenFolder(AssetBuildSetting.outputPath);
         }
-        private static void ClearFolder()
+        private void ClearFolder()
         {
             Directory.Delete(AssetBuildSetting.outputPath, true);
+        }
+        private void PreView()
+        {
+            Colllect();
+            var type_str = types[typeIndex];
+            Type type = Type.GetType(type_str);
+            previewBundles = AssetsBuild.ColectAssetBundleBuild(type);
+            pre.Reload();
+            treeType = 1;
         }
         private void OnEnable()
         {
@@ -62,22 +77,48 @@ namespace IFramework.Hotfix.Asset
                 GenericMenu menu = new GenericMenu();
                 menu.AddItem(new GUIContent("Build Atlas"), false, BuildAtlas);
                 menu.AddItem(new GUIContent("Collect Asset"), false, Colllect);
+                menu.AddItem(new GUIContent("Bundle/Preview"), false, PreView);
                 menu.AddItem(new GUIContent("Bundle/Build"), false, BuildBundle);
+
                 menu.AddItem(new GUIContent("Bundle/Open Output Floder"), false, OpenFolder);
                 menu.AddItem(new GUIContent("Bundle/Clear Output Floder"), false, ClearFolder);
 
                 menu.DropDown(rect);
+            })
+            .Delegate(rect =>
+            {
+                treeType = GUI.Toolbar(rect, treeType, new GUIContent[] {
+                new GUIContent("Collect"),
+                new GUIContent("Preview")
+
             });
+            },150);
             types = typeof(ICollectAssetBundleBuild).GetSubTypesInAssemblys()
                   .Where(type => !type.IsAbstract)
                   .Select(type => type.FullName).ToArray();
             shortTypes = typeof(ICollectAssetBundleBuild).GetSubTypesInAssemblys()
                   .Where(type => !type.IsAbstract)
                   .Select(type => type.Name).ToArray();
-            col = new CollectTree(state);
+            col = new CollectTree(collectstate);
+            pre = new PreviewTree(previewstate, this);
+            splitView.minSize = 150;
             splitView.fistPan += tools.OnGUI;
-            splitView.secondPan += col.OnGUI;
+            splitView.secondPan += ContentGUI;
+            tools.window = this;
         }
+
+        private void ContentGUI(Rect obj)
+        {
+            if (treeType == 0)
+            {
+                col.OnGUI(obj);
+            }
+            else
+            {
+                pre.OnGUI(obj);
+            }
+        }
+
         private void OnGUI()
         {
             var rs = this.LocalPosition().HorizontalSplit(20);

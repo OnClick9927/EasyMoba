@@ -24,6 +24,11 @@
             "panelPath": "Assets/Project/Prefabs/UI/MatchPanel.prefab",
             "layer": 5,
             "order": 0
+        },
+        {
+            "panelPath": "Assets/Project/Prefabs/UI/MainPanelAA.prefab",
+            "layer": 3,
+            "order": 0
         }
     ]
 }

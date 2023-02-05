@@ -36,14 +36,14 @@ namespace IFramework.Hotfix.Asset
             List<string> list = new List<string>();
             build.GetAssets().ForEach(asset =>
             {
-                if (!asset.IsDirectory())
+                if (asset.type != AssetInfo.AssetType.Directory)
                 {
                     list.Add(asset.path);
                 }
             });
             build.GetSingleFiles().ForEach(asset =>
             {
-                list.Add(asset);
+                list.Add(asset.path);
             });
             return list;
         }

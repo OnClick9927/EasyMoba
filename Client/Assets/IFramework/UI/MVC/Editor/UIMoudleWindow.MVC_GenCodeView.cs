@@ -15,6 +15,7 @@ using static IFramework.UI.UIMoudleWindow;
 using static IFramework.EditorTools;
 using System.Text;
 using System.Linq;
+using UnityEditor.IMGUI.Controls;
 
 namespace IFramework.UI.MVC
 {
@@ -27,28 +28,32 @@ namespace IFramework.UI.MVC
             [SerializeField] private string UIdir = "";
             [SerializeField] private UIPanel panel;
             [SerializeField] private FloderField FloderField;
+            [SerializeField] private TreeViewState state = new TreeViewState();
             private ScriptCreaterFieldsDrawer fields;
             private EditorTools.ScriptCreater creater = new ScriptCreater();
             private string panelName { get { return panel.name; } }
             private string viewName { get { return panelName.Append("View"); } }
-
             public override void OnEnable()
             {
                 var last = this.GetFromPrefs<MVC_GenCodeView>(name);
-                if (last != null)
+                if (last != null) 
                 {
                     this.panel = last.panel;
                     this.UIdir = last.UIdir;
+                    this.state = last.state;
                 }
                 this.FloderField = new FloderField(UIdir);
-                fields = new ScriptCreaterFieldsDrawer(creater);
-                SetViewData();
+                fields = new ScriptCreaterFieldsDrawer(creater,state); 
+                SetViewData(); 
             }
             public override void OnDisable()
             {
                 this.SaveToPrefs(name);
             }
-           
+            public override void OnHierarchyChanged()
+            {
+                creater.ColllectMarks();
+            }
             public override void OnGUI()
             {
                 if (EditorApplication.isCompiling)

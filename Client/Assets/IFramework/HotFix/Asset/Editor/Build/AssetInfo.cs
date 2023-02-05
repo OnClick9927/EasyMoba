@@ -15,82 +15,71 @@ namespace IFramework.Hotfix.Asset
     [System.Serializable]
     public class AssetInfo
     {
-        public string path;
-        public string parentPath;
+        [System.Serializable]
+        public enum AssetType
+        {
+            None,
+            Directory,
+            Texture,
+            Shader,
+            VideoClip,
+            AudioClip,
+            Scene,
+            Material,
+            Prefab,
+            Font,
+            Animation,
+            SpriteAtlas,
+            ScriptObject,
+            Model,
+            TextAsset,
+        }
+        [SerializeField] private string _path;
+        [SerializeField] private string _parentPath;
+        [SerializeField] private AssetType _type;
+        public long FileLength
+        {
+            get
+            {
+                FileInfo fi = new FileInfo(path);
+                return fi.Length;
+            }
+        }
+
+        public AssetType type { get { return _type; } }
+        public string path { get { return _path; } }
+        public string parentPath { get { return _parentPath; } }
+        public AssetInfo(string path, string parentPath)
+        {
+            this._path = path;
+            this._parentPath = parentPath;
+            if (path.IsDirectory())
+            {
+                _type = AssetType.Directory;
+            }
+            else
+            {
+                AssetImporter importer = AssetImporter.GetAtPath(path);
+                if (importer is TextureImporter) _type = AssetType.Texture;
+                else if (importer is ShaderImporter) _type = AssetType.Shader;
+                else if (importer is VideoClipImporter) _type = AssetType.VideoClip;
+                else if (importer is AudioImporter) _type = AssetType.AudioClip;
+                else if (importer is ModelImporter) _type = AssetType.Model;
+                else if (importer is TrueTypeFontImporter) _type = AssetType.Font;
+                else if (AssetDatabase.LoadAssetAtPath<TextAsset>(path) != null) _type = AssetType.TextAsset;
+                else if (path.EndsWith(".unity")) _type = AssetType.Scene;
+                else if (path.EndsWith(".mat")) _type = AssetType.Material;
+                else if (path.EndsWith(".prefab")) _type = AssetType.Prefab;
+                else if (path.EndsWith(".spriteatlas")) _type = AssetType.SpriteAtlas;
+                else if (path.EndsWith(".ani")) _type = AssetType.Animation;
+                else if (path.EndsWith(".asset")) _type = AssetType.ScriptObject;
+
+
+
+            }
+        }
         public List<string> dps = new List<string>();
 
-        public bool IsDirectory()
-        {
-            return path.IsDirectory();
-        }
-        public Texture2D GetMiniThumbnail()
-        {
-            return GetMiniThumbnail(path);
-        }
-        public bool IsTexture()
-        {
-            AssetImporter importer = AssetImporter.GetAtPath(path);
-            return importer is TextureImporter;
-        }
-        public bool IsShader()
-        {
-            AssetImporter importer = AssetImporter.GetAtPath(path);
-            return importer is ShaderImporter;
-        }
-        public bool IsVideoClip()
-        {
-            AssetImporter importer = AssetImporter.GetAtPath(path);
-            return importer is VideoClipImporter;
-        }
-        public bool IsAudioClip()
-        {
-            AssetImporter importer = AssetImporter.GetAtPath(path);
-            return importer is AudioImporter;
-        }
-        public bool IsScene()
-        {
-            return path.EndsWith(".unity");
-        }
-        public bool IsMaterial()
-        {
-            return path.EndsWith(".prefab");
-        }
-        public bool IsPrefab()
-        {
-            return path.EndsWith(".mat");
-        }
-        public bool IsSpriteAtlas()
-        {
-            return path.EndsWith(".spriteatlas");
-        }
 
-        public bool IsModel()
-        {
-            AssetImporter importer = AssetImporter.GetAtPath(path);
-            return importer is ModelImporter;
-        }
-        public bool IsFont()
-        {
-            AssetImporter importer = AssetImporter.GetAtPath(path);
-            return importer is TrueTypeFontImporter;
-        }
-        public bool IsAnimation()
-        {
-            return path.EndsWith(".ani");
-        }
-        public bool IsScriptObject()
-        {
-            return path.EndsWith(".asset");
-        }
-        public long Length()
-        {
-            FileInfo fi = new FileInfo(path);
-            return fi.Length;
-        }
-
-        public static Texture2D GetMiniThumbnail(string path)
-        {
-            return AssetPreview.GetMiniThumbnail(AssetDatabase.LoadAssetAtPath<UnityEngine.Object>(path));
-        }
     }
 }

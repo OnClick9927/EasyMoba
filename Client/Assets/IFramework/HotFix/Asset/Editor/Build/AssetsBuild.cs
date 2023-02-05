@@ -42,13 +42,13 @@ namespace IFramework.Hotfix.Asset
             File.WriteAllText(AssetBuildSetting.outputPath.CombinePath("version"), v);
             return main;
         }
-        static List<AssetBundleBuild> ColectAssetBundleBuild(Type collectType)
+        public static List<AssetBundleBuild> ColectAssetBundleBuild(Type collectType)
         {
             AssetBuildSetting setting = AssetBuildSetting.Load();
             Dictionary<AssetInfo, List<AssetInfo>> dic = setting.GetDpDic();
             List<AssetInfo> all = new List<AssetInfo>(setting.GetAssets());
-            List<string> singles = setting.GetSingleFiles();
-            all.RemoveAll(x => x.IsDirectory());
+            List<AssetInfo> singles = setting.GetSingleFiles();
+            all.RemoveAll(x => x.type == AssetInfo.AssetType.Directory);
             var creater = Activator.CreateInstance(collectType) as ICollectAssetBundleBuild;
             var builds = new List<AssetBundleBuild>();
             creater.Create(all, singles, dic, builds);
@@ -111,8 +111,8 @@ namespace IFramework.Hotfix.Asset
         }
         static List<string> CollectTextures(string directory)
         {
-            var png = Directory.GetFiles(directory,"*.png");
-            var jpg = Directory.GetFiles(directory,"*.jpg");
+            var png = Directory.GetFiles(directory, "*.png");
+            var jpg = Directory.GetFiles(directory, "*.jpg");
             var files = new List<string>(png);
             files.AddRange(jpg);
             return files;

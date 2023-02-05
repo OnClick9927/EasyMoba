@@ -15,6 +15,7 @@ using System.IO;
 using System.Collections.Generic;
 using IFramework.UI;
 using static IFramework.EditorTools;
+using UnityEditor.IMGUI.Controls;
 
 namespace IFramework.Hotfix.Lua
 {
@@ -34,6 +35,8 @@ namespace IFramework.Hotfix.Lua
             [SerializeField] private string workFolder;
             [SerializeField] private GameObject panel;
             [SerializeField] private ItemType _type;
+            [SerializeField] private TreeViewState state = new TreeViewState();
+
             private EditorTools.ScriptCreater creater = new ScriptCreater();
             private ScriptCreaterFieldsDrawer fields;
             private LuaFloderField field;
@@ -58,10 +61,11 @@ namespace IFramework.Hotfix.Lua
                     this.workFolder = last.workFolder;
                     this.panel = last.panel;
                     this._type = last._type;
+                    this.state = last.state;
                 }
                 field = new LuaFloderField();
                 field.SetPath(workFolder);
-                fields = new ScriptCreaterFieldsDrawer(creater);
+                fields = new ScriptCreaterFieldsDrawer(creater,state);
             }
             public override void OnHierarchyChanged()
             {

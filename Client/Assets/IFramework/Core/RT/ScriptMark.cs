@@ -17,8 +17,6 @@ namespace IFramework
 #if UNITY_EDITOR
         [HideInInspector] public string fieldName;
         [HideInInspector] public string fieldType;
-        [HideInInspector] public List<string> componentNames = new List<string>();
-        [HideInInspector] public int index;
 #endif
     }
 }
