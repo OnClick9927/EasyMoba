@@ -52,14 +52,13 @@ namespace XLua.CSObjectWrap
             
 			try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-				if(LuaAPI.lua_gettop(L) == 5 && LuaTypes.LUA_TBOOLEAN == LuaAPI.lua_type(L, 2) && translator.Assignable<IFramework.Hotfix.Asset.Bundle>(L, 3) && translator.Assignable<System.Collections.Generic.List<IFramework.Hotfix.Asset.Asset>>(L, 4) && translator.Assignable<IFramework.Hotfix.Asset.SceneAssetLoadArgs>(L, 5))
+				if(LuaAPI.lua_gettop(L) == 4 && translator.Assignable<IFramework.Hotfix.Asset.Bundle>(L, 2) && translator.Assignable<System.Collections.Generic.List<IFramework.Hotfix.Asset.Asset>>(L, 3) && translator.Assignable<IFramework.Hotfix.Asset.SceneAssetLoadArgs>(L, 4))
 				{
-					bool _async = LuaAPI.lua_toboolean(L, 2);
-					IFramework.Hotfix.Asset.Bundle _bundle = (IFramework.Hotfix.Asset.Bundle)translator.GetObject(L, 3, typeof(IFramework.Hotfix.Asset.Bundle));
-					System.Collections.Generic.List<IFramework.Hotfix.Asset.Asset> _dps = (System.Collections.Generic.List<IFramework.Hotfix.Asset.Asset>)translator.GetObject(L, 4, typeof(System.Collections.Generic.List<IFramework.Hotfix.Asset.Asset>));
-					IFramework.Hotfix.Asset.SceneAssetLoadArgs _loadArgs;translator.Get(L, 5, out _loadArgs);
+					IFramework.Hotfix.Asset.Bundle _bundle = (IFramework.Hotfix.Asset.Bundle)translator.GetObject(L, 2, typeof(IFramework.Hotfix.Asset.Bundle));
+					System.Collections.Generic.List<IFramework.Hotfix.Asset.Asset> _dps = (System.Collections.Generic.List<IFramework.Hotfix.Asset.Asset>)translator.GetObject(L, 3, typeof(System.Collections.Generic.List<IFramework.Hotfix.Asset.Asset>));
+					IFramework.Hotfix.Asset.SceneAssetLoadArgs _loadArgs;translator.Get(L, 4, out _loadArgs);
 					
-					var gen_ret = new IFramework.Hotfix.Asset.SceneAsset(_async, _bundle, _dps, _loadArgs);
+					var gen_ret = new IFramework.Hotfix.Asset.SceneAsset(_bundle, _dps, _loadArgs);
 					translator.Push(L, gen_ret);
                     
 					return 1;

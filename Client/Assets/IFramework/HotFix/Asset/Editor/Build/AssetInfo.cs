@@ -37,7 +37,6 @@ namespace IFramework.Hotfix.Asset
         [SerializeField] private string _path;
         [SerializeField] private string _parentPath;
         [SerializeField] private AssetType _type;
-        public long fileLength;
         public List<string> dps = new List<string>();
         public AssetType type { get { return _type; } }
         public string path { get { return _path; } }
@@ -49,12 +48,9 @@ namespace IFramework.Hotfix.Asset
             if (path.IsDirectory())
             {
                 _type = AssetType.Directory;
-                fileLength = 0;
             }
             else
             {
-                FileInfo fi = new FileInfo(path);
-                fileLength = fi.Length;
                 AssetImporter importer = AssetImporter.GetAtPath(path);
                 if (importer is TextureImporter) _type = AssetType.Texture;
                 else if (importer is ShaderImporter) _type = AssetType.Shader;

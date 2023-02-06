@@ -13,33 +13,121 @@ MonoBehaviour:
   m_Name: manifest
   m_EditorClassIdentifier: 
   assets:
-  - path: Assets/IFramework/HotFix/Asset/__Example/New Scene.unity
-    bundleName: 843a00aab85014c0929ee1f861a32814
+  - path: Assets/Project/Configs/CollisonLayer.json
+    bundleName: 75493d88b43fdb05f141b231acd092b9
     dps: []
-  - path: Assets/IFramework/HotFix/Asset/__Example/New Scene2.unity
-    bundleName: 8acba2473989747421599a0a56c6e09e
+  - path: Assets/Project/Configs/UICollect.json
+    bundleName: 75493d88b43fdb05f141b231acd092b9
     dps: []
-  - path: Assets/IFramework/HotFix/Asset/__Example/New Folder/Cube.prefab
-    bundleName: c16be6930c4cb5736f9620099625d132
+  - path: Assets/Project/Configs/UILayer.json
+    bundleName: 75493d88b43fdb05f141b231acd092b9
+    dps: []
+  - path: Assets/Project/Lua/Ctrl/Base/Ctrls.lua.txt
+    bundleName: 06191b388c898cba933570dcd7af164f
+    dps: []
+  - path: Assets/Project/Lua/Ctrl/Base/NetEvents.lua.txt
+    bundleName: 06191b388c898cba933570dcd7af164f
+    dps: []
+  - path: Assets/Project/Lua/Ctrl/BattleCtrl.lua.txt
+    bundleName: 156321e2dc81074c10c10c856e84efe2
+    dps: []
+  - path: Assets/Project/Lua/Ctrl/LoginCtrl.lua.txt
+    bundleName: 156321e2dc81074c10c10c856e84efe2
+    dps: []
+  - path: Assets/Project/Lua/Ctrl/MatchCtrl.lua.txt
+    bundleName: 156321e2dc81074c10c10c856e84efe2
+    dps: []
+  - path: Assets/Project/Lua/Ctrl/SceneCtrl.lua.txt
+    bundleName: 156321e2dc81074c10c10c856e84efe2
+    dps: []
+  - path: Assets/Project/Lua/Define/LuaEventTypes.lua.txt
+    bundleName: c9f55af8dfa81fb6fcb62004cde14afd
+    dps: []
+  - path: Assets/Project/Lua/Define/NetEventDefine.lua.txt
+    bundleName: c9f55af8dfa81fb6fcb62004cde14afd
+    dps: []
+  - path: Assets/Project/Lua/Define/ResDefine.lua.txt
+    bundleName: c9f55af8dfa81fb6fcb62004cde14afd
+    dps: []
+  - path: Assets/Project/Lua/Model/Base/ModelBase.lua.txt
+    bundleName: 006f78e83a6793ea5c5f4d2133a6df62
+    dps: []
+  - path: Assets/Project/Lua/Model/Base/Models.lua.txt
+    bundleName: 006f78e83a6793ea5c5f4d2133a6df62
+    dps: []
+  - path: Assets/Project/Lua/Model/PlayerModel.lua.txt
+    bundleName: 009fd996c5aabce810939667d4eb3de5
+    dps: []
+  - path: Assets/Project/Lua/UI/LoadScenePanelView.lua.txt
+    bundleName: a3a644d533297da2fed584eb2d6e7d1d
+    dps: []
+  - path: Assets/Project/Lua/UI/LoginPanelView.lua.txt
+    bundleName: a3a644d533297da2fed584eb2d6e7d1d
+    dps: []
+  - path: Assets/Project/Lua/UI/MainPanelView.lua.txt
+    bundleName: a3a644d533297da2fed584eb2d6e7d1d
+    dps: []
+  - path: Assets/Project/Lua/UI/MatchPanelView.lua.txt
+    bundleName: a3a644d533297da2fed584eb2d6e7d1d
+    dps: []
+  - path: Assets/Project/Lua/UI/MVCMap.lua.txt
+    bundleName: a3a644d533297da2fed584eb2d6e7d1d
+    dps: []
+  - path: Assets/Project/Lua/UI/PanelNames.lua.txt
+    bundleName: a3a644d533297da2fed584eb2d6e7d1d
+    dps: []
+  - path: Assets/Project/Lua/FixCsharp.lua.txt
+    bundleName: a47ebd82c57845e090e4af2da3d10748
+    dps: []
+  - path: Assets/Project/Lua/GameLogic.lua.txt
+    bundleName: a47ebd82c57845e090e4af2da3d10748
+    dps: []
+  - path: Assets/Project/Lua/GameTools.lua.txt
+    bundleName: a47ebd82c57845e090e4af2da3d10748
+    dps: []
+  - path: Assets/Project/Lua/GlobalDefine.lua.txt
+    bundleName: a47ebd82c57845e090e4af2da3d10748
+    dps: []
+  - path: Assets/Project/Materials/Ground.mat
+    bundleName: ce6703850f0a6a5b178631481f045da7
+    dps: []
+  - path: Assets/Project/Materials/Player.mat
+    bundleName: ce6703850f0a6a5b178631481f045da7
+    dps: []
+  - path: Assets/Project/Materials/PlayerCap.mat
+    bundleName: ce6703850f0a6a5b178631481f045da7
+    dps: []
+  - path: Assets/Project/Materials/Wall.mat
+    bundleName: ce6703850f0a6a5b178631481f045da7
+    dps: []
+  - path: Assets/Project/Scenes/Battle.unity
+    bundleName: 66f8202f18430fef5265b53adac93bbf
     dps:
-    - Assets/IFramework/HotFix/Asset/__Example/New Folder/New Material.mat
-    - Assets/XLua/XLua/Doc/logo.png
-  - path: Assets/IFramework/HotFix/Asset/__Example/New Folder/New Material.mat
-    bundleName: c16be6930c4cb5736f9620099625d132
+    - Assets/Project/Materials/Ground.mat
+    - Assets/Project/Materials/Wall.mat
+  - path: Assets/Project/Scenes/Home.unity
+    bundleName: 5b7a2c455d636edd68259ed70953514a
+    dps: []
+  - path: Assets/Project/Scenes/Login.unity
+    bundleName: 44c3ae198c3ecc11a34786334d2ece45
+    dps: []
+  - path: Assets/Project/Scenes/Update.unity
+    bundleName: 40f55e8d85db1ba1389ca025ef21b9e1
+    dps: []
+  - path: Assets/Project/Prefabs/Battle/Character/char_001.prefab
+    bundleName: a3127a69ea6c34f2aff2db4417b4966f
     dps:
-    - Assets/XLua/XLua/Doc/logo.png
-  - path: Assets/IFramework/HotFix/Asset/__Example/px/1.png
-    bundleName: c16be6930c4cb5736f9620099625d132
+    - Assets/Project/Materials/PlayerCap.mat
+    - Assets/Project/Materials/Player.mat
+  - path: Assets/Project/Prefabs/UI/LoadScenePanel.prefab
+    bundleName: 9ddeac6234d5ef68115d9175c4d0c827
     dps: []
-  - path: Assets/IFramework/HotFix/Asset/__Example/px/2.png
-    bundleName: c16be6930c4cb5736f9620099625d132
+  - path: Assets/Project/Prefabs/UI/LoginPanel.prefab
+    bundleName: dc8b759e67f19ca1f6a8c2723c5a621e
     dps: []
-  - path: Assets/IFramework/HotFix/Asset/__Example/px/3.png
-    bundleName: c16be6930c4cb5736f9620099625d132
+  - path: Assets/Project/Prefabs/UI/MainPanel.prefab
+    bundleName: 47d6cccc823e71759ed8ddec5568781a
     dps: []
-  - path: Assets/IFramework/HotFix/Asset/__Example/px.spriteatlas
-    bundleName: c16be6930c4cb5736f9620099625d132
-    dps: []
-  - path: Assets/XLua/XLua/Doc/logo.png
-    bundleName: c16be6930c4cb5736f9620099625d132
+  - path: Assets/Project/Prefabs/UI/MatchPanel.prefab
+    bundleName: 0157b1ec518ecc0ba703d7f3a043f6f9
     dps: []

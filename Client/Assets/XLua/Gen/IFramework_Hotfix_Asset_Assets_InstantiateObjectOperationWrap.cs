@@ -53,13 +53,12 @@ namespace XLua.CSObjectWrap
             
 			try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-				if(LuaAPI.lua_gettop(L) == 4 && (LuaAPI.lua_isnil(L, 2) || LuaAPI.lua_type(L, 2) == LuaTypes.LUA_TSTRING) && translator.Assignable<UnityEngine.Transform>(L, 3) && LuaTypes.LUA_TBOOLEAN == LuaAPI.lua_type(L, 4))
+				if(LuaAPI.lua_gettop(L) == 3 && (LuaAPI.lua_isnil(L, 2) || LuaAPI.lua_type(L, 2) == LuaTypes.LUA_TSTRING) && translator.Assignable<UnityEngine.Transform>(L, 3))
 				{
 					string _path = LuaAPI.lua_tostring(L, 2);
 					UnityEngine.Transform _parent = (UnityEngine.Transform)translator.GetObject(L, 3, typeof(UnityEngine.Transform));
-					bool _async = LuaAPI.lua_toboolean(L, 4);
 					
-					var gen_ret = new IFramework.Hotfix.Asset.Assets.InstantiateObjectOperation(_path, _parent, _async);
+					var gen_ret = new IFramework.Hotfix.Asset.Assets.InstantiateObjectOperation(_path, _parent);
 					translator.Push(L, gen_ret);
                     
 					return 1;

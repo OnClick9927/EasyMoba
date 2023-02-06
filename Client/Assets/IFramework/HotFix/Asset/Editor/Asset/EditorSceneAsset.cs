@@ -15,12 +15,12 @@ namespace IFramework.Hotfix.Asset
 {
     public class EditorSceneAsset : SceneAsset
     {
-        public EditorSceneAsset(bool async, SceneAssetLoadArgs loadArgs) : base(async, null, null, loadArgs)
+        public EditorSceneAsset(SceneAssetLoadArgs loadArgs) : base(null, null, loadArgs)
         {
         }
         public override float progress { get { return 1; } }
 
-        protected override void OnLoad(bool async)
+        protected override void OnLoad()
         {
             SetResult(null);
         }

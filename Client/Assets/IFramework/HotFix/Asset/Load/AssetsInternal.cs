@@ -49,13 +49,13 @@ namespace IFramework.Hotfix.Asset
                 return _defaultMode;
             return mode;
         }
-        private static Asset CreateAsset(bool async, string assetPath, List<Asset> dps, AssetLoadArgs arg)
+        private static Asset CreateAsset(string assetPath, List<Asset> dps, AssetLoadArgs arg)
         {
-            return GetAssetMode().CreateAsset(async, assetPath, dps, arg);
+            return GetAssetMode().CreateAsset(assetPath, dps, arg);
         }
-        private static SceneAsset CreateSceneAsset(bool async, string assetPath, List<Asset> dps, SceneAssetLoadArgs arg)
+        private static SceneAsset CreateSceneAsset(string assetPath, List<Asset> dps, SceneAssetLoadArgs arg)
         {
-            return GetAssetMode().CreateSceneAsset(async, assetPath, dps, arg);
+            return GetAssetMode().CreateSceneAsset(assetPath, dps, arg);
         }
         private static FileCheckType GetFileCheckType()
         {
@@ -116,14 +116,7 @@ namespace IFramework.Hotfix.Asset
 
 
 
-        private static Bundle LoadBundle(string bundleName, uint crc = 0u, ulong offset = 0uL)
-        {
-            string filePath = GetBundleLocalPath(bundleName);
-            if (!File.Exists(filePath))
-                return LoadBundleFromWebRequest(GetUrlFromBundleName(bundleName), crc);
-            Bundle bundle = bundles.Load(filePath, crc, offset);
-            return bundle;
-        }
+
         private static Bundle LoadBundleAsync(string bundleName, uint crc = 0u, ulong offset = 0uL)
         {
             string filePath = GetBundleLocalPath(bundleName);
@@ -137,10 +130,10 @@ namespace IFramework.Hotfix.Asset
             Bundle bundle = bundles.RequestLoadAsync(url, crc);
             return bundle;
         }
-        private static Bundle LoadTargetBundle(string assetPath, bool async)
+        private static Bundle LoadTargetBundle(string assetPath)
         {
             string bundleName = GetBundleNameByAssetPath(assetPath);
-            return async ? LoadBundleAsync(bundleName) : LoadBundle(bundleName);
+            return LoadBundleAsync(bundleName);
         }
         private static void ReleseBundleByAssetPath(string assetpath)
         {
@@ -149,17 +142,14 @@ namespace IFramework.Hotfix.Asset
             bundles.Release(bundle);
         }
 
-        private static void LoadDps(string path, bool async)
+        private static void LoadDps(string path)
         {
             List<string> dps = GetAssetDps(path);
             if (dps != null)
             {
                 foreach (var item in dps)
                 {
-                    if (async)
-                        LoadAssetAsync(item);
-                    else
-                        LoadAsset(item);
+                    LoadAssetAsync(item);
                 }
             }
         }
@@ -171,30 +161,20 @@ namespace IFramework.Hotfix.Asset
             AssetsInternal.setting = setting;
         }
 
-        public static Asset LoadAsset(string path)
-        {
-            LoadDps(path, false);
-            Asset asset = assets.LoadAsset(path);
-            return asset;
-        }
+
         public static Asset LoadAssetAsync(string path)
         {
-            LoadDps(path, true);
+            LoadDps(path);
             Asset asset = assets.LoadAssetAyync(path);
             return asset;
         }
         public static SceneAsset LoadSceneAssetAsync(string path)
         {
-            LoadDps(path, false);
+            LoadDps(path);
             SceneAsset asset = assets.LoadSceneAssetAsync(path);
             return asset;
         }
-        public static SceneAsset LoadSceneAsset(string path)
-        {
-            LoadDps(path, false);
-            SceneAsset asset = assets.LoadSceneAsset(path);
-            return asset;
-        }
+
         public static void Release(Asset asset)
         {
             assets.Release(asset.path);

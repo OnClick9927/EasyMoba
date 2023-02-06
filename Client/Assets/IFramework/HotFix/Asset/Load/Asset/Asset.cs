@@ -14,15 +14,13 @@ namespace IFramework.Hotfix.Asset
 {
     public class Asset : RefenceAsset<Object>
     {
-        protected bool async;
         public Bundle bundle;
         private AssetBundleRequest loadOp;
         protected List<Asset> dps;
         public virtual string path { get { return loadArgs.path; } }
         private AssetLoadArgs loadArgs;
-        public Asset(bool async, Bundle bundle, List<Asset> dps, AssetLoadArgs loadArgs)
+        public Asset( Bundle bundle, List<Asset> dps, AssetLoadArgs loadArgs)
         {
-            this.async = async;
             this.bundle = bundle;
             this.dps = dps;
             this.loadArgs = loadArgs;
@@ -34,10 +32,7 @@ namespace IFramework.Hotfix.Asset
                 float sum = 0;
                 if (bundle.isDone)
                 {
-                    if (async)
-                        sum = isDone ? 1 : (loadOp == null) ? 0 : loadOp.progress;
-                    else
-                        sum = isDone ? 1 : 0;
+                    sum = isDone ? 1 : (loadOp == null) ? 0 : loadOp.progress;
                 }
                 if (dps == null) return sum;
                 float dpSum = 0;
@@ -64,20 +59,12 @@ namespace IFramework.Hotfix.Asset
             }
             return value as T;
         }
-        protected async override void OnLoad(bool async)
+        protected async override void OnLoad()
         {
             await bundle;
-            if (async)
-            {
-                loadOp = bundle.LoadAssetAsync(loadArgs.path, typeof(UnityEngine.Object));
-                await loadOp;
-                SetResult(loadOp.asset);
-            }
-            else
-            {
-                Object obj = bundle.LoadAsset(loadArgs.path, typeof(UnityEngine.Object));
-                SetResult(obj);
-            }
+            loadOp = bundle.LoadAssetAsync(loadArgs.path, typeof(UnityEngine.Object));
+            await loadOp;
+            SetResult(loadOp.asset);
         }
         protected override void OnUnLoad()
         {

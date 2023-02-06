@@ -14,39 +14,26 @@ namespace IFramework.Hotfix.Asset
 {
     public class Bundle : RefenceAsset<AssetBundle>
     {
-        private bool async;
         protected BundleLoadArgs loadArgs;
         private AssetBundleCreateRequest loadOp;
-        public Bundle(BundleLoadArgs loadArgs, bool async)
+        public Bundle(BundleLoadArgs loadArgs)
         {
             this.loadArgs = loadArgs;
-            this.async = async;
         }
 
         public override float progress
         {
             get
             {
-                if (async)
-                    return isDone ? 1 : (loadOp == null) ? 0 : loadOp.progress;
-                return isDone ? 1 : 0;
+                return isDone ? 1 : (loadOp == null) ? 0 : loadOp.progress;
             }
         }
 
-        protected override async void OnLoad(bool async)
+        protected override async void OnLoad()
         {
-            if (async)
-            {
-                loadOp = AssetBundle.LoadFromFileAsync(loadArgs.path, loadArgs.crc, loadArgs.offset);
-                await this.loadOp;
-                SetResult(loadOp.assetBundle);
-            }
-            else
-            {
-                AssetBundle value = null;
-                value = AssetBundle.LoadFromFile(loadArgs.path, loadArgs.crc, loadArgs.offset);
-                SetResult(value);
-            }
+            loadOp = AssetBundle.LoadFromFileAsync(loadArgs.path, loadArgs.crc, loadArgs.offset);
+            await this.loadOp;
+            SetResult(loadOp.assetBundle);
         }
 
         protected override void OnUnLoad()
@@ -55,10 +42,6 @@ namespace IFramework.Hotfix.Asset
             Resources.UnloadUnusedAssets();
         }
 
-        public Object LoadAsset(string name, Type type)
-        {
-            return value.LoadAsset(name, type);
-        }
         public AssetBundleRequest LoadAssetAsync(string name, Type type)
         {
             return value.LoadAssetAsync(name, type);

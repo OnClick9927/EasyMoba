@@ -24,26 +24,14 @@ namespace IFramework.Hotfix.Asset
                 }
                 return result;
             }
-            protected T Load(string name, IEventArgs args)
-            {
-                T result = null;
-                if (!map.TryGetValue(name, out result))
-                {
-                    result = CreateNew(name, args, false);
-                    map.Add(name, result);
-                    (result as IRefenceAsset).Load();
-                }
-                result.Retain();
-                return result;
-            }
-            protected abstract T CreateNew(string name, IEventArgs args, bool async);
+            protected abstract T CreateNew(string name, IEventArgs args);
 
             protected T LoadAsync(string name, IEventArgs args)
             {
                 T result = null;
                 if (!map.TryGetValue(name, out result))
                 {
-                    result = CreateNew(name, args, true);
+                    result = CreateNew(name, args);
                     map.Add(name, result);
                     (result as IRefenceAsset).LoadAsync();
                 }

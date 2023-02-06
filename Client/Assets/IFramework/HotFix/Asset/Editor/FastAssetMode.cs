@@ -11,9 +11,9 @@ namespace IFramework.Hotfix.Asset
 {
     class FastAssetMode : IAssetMode
     {
-        public Asset CreateAsset(bool async, string assetPath, List<Asset> dps, AssetLoadArgs arg)
+        public Asset CreateAsset(string assetPath, List<Asset> dps, AssetLoadArgs arg)
         {
-            return new EditorAsset(async, arg);
+            return new EditorAsset(arg);
         }
 
         public IReadOnlyList<string> GetAllAssetPaths()
@@ -22,7 +22,7 @@ namespace IFramework.Hotfix.Asset
             List<string> list = new List<string>();
             build.GetAssets().ForEach(asset =>
             {
-                if (asset.type!= AssetInfo.AssetType.Directory)
+                if (asset.type != AssetInfo.AssetType.Directory)
                 {
                     list.Add(asset.path);
                 }
@@ -34,9 +34,9 @@ namespace IFramework.Hotfix.Asset
             return list;
         }
 
-        public SceneAsset CreateSceneAsset(bool async, string assetPath, List<Asset> dps, SceneAssetLoadArgs arg)
+        public SceneAsset CreateSceneAsset(string assetPath, List<Asset> dps, SceneAssetLoadArgs arg)
         {
-            return new EditorSceneAsset(async, arg);
+            return new EditorSceneAsset(arg);
         }
     }
 }

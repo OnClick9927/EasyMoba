@@ -21,24 +21,15 @@ namespace IFramework.Hotfix.Asset
             public override float progress { get { return isDone ? 1 : 0; } }
             public GameObject gameObject;
 
-            public InstantiateObjectOperation(string path,Transform parent, bool async)
+            public InstantiateObjectOperation(string path,Transform parent)
             {
-                Done(path, parent, async);
+                Done(path, parent);
             }
-            private async void Done(string path, Transform parent, bool async)
+            private async void Done(string path, Transform parent)
             {
-                if (async)
-                {
-                    var asset = LoadAssetAsync(path);
-                    await asset;
-                    Create(asset, parent);
-                }
-                else
-                {
-                    var asset = LoadAsset(path);
-                    asset.WaitForComplete();
-                    Create(asset, parent);
-                }
+                var asset = LoadAssetAsync(path);
+                await asset;
+                Create(asset, parent);
             }
             private void Create(Asset asset, Transform parent)
             {

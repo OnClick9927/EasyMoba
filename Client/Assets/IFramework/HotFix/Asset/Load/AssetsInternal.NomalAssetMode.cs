@@ -14,9 +14,9 @@ namespace IFramework.Hotfix.Asset
     {
         private class NomalAssetMode : IAssetMode
         {
-            public Asset CreateAsset(bool async, string assetPath, List<Asset> dps, AssetLoadArgs arg)
+            public Asset CreateAsset( string assetPath, List<Asset> dps, AssetLoadArgs arg)
             {
-                return new Asset(async, LoadTargetBundle(assetPath, async), dps, arg);
+                return new Asset( LoadTargetBundle(assetPath), dps, arg);
             }
 
             public IReadOnlyList<string> GetAllAssetPaths()
@@ -24,9 +24,9 @@ namespace IFramework.Hotfix.Asset
                 return IsManifestNull() ? null : manifest.GetAssets();
             }
 
-            public SceneAsset CreateSceneAsset(bool async, string assetPath, List<Asset> dps, SceneAssetLoadArgs arg)
+            public SceneAsset CreateSceneAsset( string assetPath, List<Asset> dps, SceneAssetLoadArgs arg)
             {
-                return new SceneAsset(async, LoadTargetBundle(assetPath, async), dps, arg);
+                return new SceneAsset( LoadTargetBundle(assetPath), dps, arg);
             }
         }
     }

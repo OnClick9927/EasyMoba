@@ -48,12 +48,11 @@ namespace XLua.CSObjectWrap
             
 			try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-				if(LuaAPI.lua_gettop(L) == 3 && translator.Assignable<IFramework.Hotfix.Asset.BundleLoadArgs>(L, 2) && LuaTypes.LUA_TBOOLEAN == LuaAPI.lua_type(L, 3))
+				if(LuaAPI.lua_gettop(L) == 2 && translator.Assignable<IFramework.Hotfix.Asset.BundleLoadArgs>(L, 2))
 				{
 					IFramework.Hotfix.Asset.BundleLoadArgs _loadArgs;translator.Get(L, 2, out _loadArgs);
-					bool _async = LuaAPI.lua_toboolean(L, 3);
 					
-					var gen_ret = new IFramework.Hotfix.Asset.WebRequestBundle(_loadArgs, _async);
+					var gen_ret = new IFramework.Hotfix.Asset.WebRequestBundle(_loadArgs);
 					translator.Push(L, gen_ret);
                     
 					return 1;

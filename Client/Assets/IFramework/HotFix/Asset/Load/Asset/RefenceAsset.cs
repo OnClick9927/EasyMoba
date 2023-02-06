@@ -15,13 +15,10 @@ namespace IFramework.Hotfix.Asset
         private int _count;
         int IRefenceAsset.count => _count;
         public T value { get; private set; }
-        void IRefenceAsset.Load()
-        {
-            OnLoad(false);
-        }
+
         void IRefenceAsset.LoadAsync()
         {
-            OnLoad(true);
+            OnLoad();
         }
         void IRefenceAsset.UnLoad()
         {
@@ -38,7 +35,7 @@ namespace IFramework.Hotfix.Asset
 
 
         protected abstract void OnUnLoad();
-        protected abstract void OnLoad(bool async);
+        protected abstract void OnLoad();
 
         protected void SetResult(T value)
         {

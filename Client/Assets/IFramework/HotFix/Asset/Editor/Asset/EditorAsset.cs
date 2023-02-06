@@ -13,11 +13,11 @@ namespace IFramework.Hotfix.Asset
 {
     public class EditorAsset : Asset
     {
-        public EditorAsset(bool async, AssetLoadArgs loadArgs) : base(async, null, null, loadArgs)
+        public EditorAsset(AssetLoadArgs loadArgs) : base(null, null, loadArgs)
         {
         }
         public override float progress { get { return 1; } }
-        protected override void OnLoad(bool async)
+        protected override void OnLoad()
         {
             var result = UnityEditor.AssetDatabase.LoadAssetAtPath(path, typeof(Object));
             SetResult(result);

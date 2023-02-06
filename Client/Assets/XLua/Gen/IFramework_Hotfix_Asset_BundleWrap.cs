@@ -21,9 +21,8 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(IFramework.Hotfix.Asset.Bundle);
-			Utils.BeginObjectRegister(type, L, translator, 0, 3, 1, 0);
+			Utils.BeginObjectRegister(type, L, translator, 0, 2, 1, 0);
 			
-			Utils.RegisterFunc(L, Utils.METHOD_IDX, "LoadAsset", _m_LoadAsset);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "LoadAssetAsync", _m_LoadAssetAsync);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetAwaiter", _m_GetAwaiter);
 			
@@ -51,12 +50,11 @@ namespace XLua.CSObjectWrap
             
 			try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-				if(LuaAPI.lua_gettop(L) == 3 && translator.Assignable<IFramework.Hotfix.Asset.BundleLoadArgs>(L, 2) && LuaTypes.LUA_TBOOLEAN == LuaAPI.lua_type(L, 3))
+				if(LuaAPI.lua_gettop(L) == 2 && translator.Assignable<IFramework.Hotfix.Asset.BundleLoadArgs>(L, 2))
 				{
 					IFramework.Hotfix.Asset.BundleLoadArgs _loadArgs;translator.Get(L, 2, out _loadArgs);
-					bool _async = LuaAPI.lua_toboolean(L, 3);
 					
-					var gen_ret = new IFramework.Hotfix.Asset.Bundle(_loadArgs, _async);
+					var gen_ret = new IFramework.Hotfix.Asset.Bundle(_loadArgs);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -76,36 +74,6 @@ namespace XLua.CSObjectWrap
         
         
         
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_LoadAsset(RealStatePtr L)
-        {
-		    try {
-            
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-            
-            
-                IFramework.Hotfix.Asset.Bundle gen_to_be_invoked = (IFramework.Hotfix.Asset.Bundle)translator.FastGetCSObj(L, 1);
-            
-            
-                
-                {
-                    string _name = LuaAPI.lua_tostring(L, 2);
-                    System.Type _type = (System.Type)translator.GetObject(L, 3, typeof(System.Type));
-                    
-                        var gen_ret = gen_to_be_invoked.LoadAsset( _name, _type );
-                        translator.Push(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-        }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _m_LoadAssetAsync(RealStatePtr L)

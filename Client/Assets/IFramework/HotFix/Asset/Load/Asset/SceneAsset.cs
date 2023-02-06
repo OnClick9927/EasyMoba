@@ -17,7 +17,7 @@ namespace IFramework.Hotfix.Asset
     {
         private SceneAssetLoadArgs loadArgs;
 
-        public SceneAsset(bool async, Bundle bundle, List<Asset> dps, SceneAssetLoadArgs loadArgs) : base(async, bundle, dps, default)
+        public SceneAsset(Bundle bundle, List<Asset> dps, SceneAssetLoadArgs loadArgs) : base(bundle, dps, default)
         {
             this.loadArgs = loadArgs;
         }
@@ -34,7 +34,7 @@ namespace IFramework.Hotfix.Asset
                 return (dpSum + sum) * 0.5f;
             }
         }
-        protected async override void OnLoad(bool async)
+        protected async override void OnLoad()
         {
             await bundle;
             SetResult(null);

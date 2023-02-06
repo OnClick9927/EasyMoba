@@ -53,14 +53,6 @@ namespace IFramework.Hotfix.Asset
             return manifestop;
         }
 
-        public static Asset LoadAsset(string path)
-        {
-            if (IsScene(path))
-            {
-                return LoadSceneAsset(path);
-            }
-            return AssetsInternal.LoadAsset(path);
-        }
         public static Asset LoadAssetAsync(string path)
         {
             if (IsScene(path))
@@ -73,11 +65,7 @@ namespace IFramework.Hotfix.Asset
         {
             return AssetsInternal.LoadSceneAssetAsync(path);
         }
-        public static SceneAsset LoadSceneAsset(string path)
-        {
-            return AssetsInternal.LoadSceneAsset(path);
 
-        }
         public static void Release(Asset asset)
         {
             AssetsInternal.Release(asset);
@@ -87,13 +75,10 @@ namespace IFramework.Hotfix.Asset
             return new AssetsGroupOperation(paths);
         }
 
-        public static InstantiateObjectOperation Instantiate(string path, Transform parent)
-        {
-            return new InstantiateObjectOperation(path, parent, false);
-        }
+
         public static InstantiateObjectOperation InstantiateAsync(string path, Transform parent)
         {
-            return new InstantiateObjectOperation(path, parent, true);
+            return new InstantiateObjectOperation(path, parent);
         }
         public static void Destroy(GameObject gameObject)
         {

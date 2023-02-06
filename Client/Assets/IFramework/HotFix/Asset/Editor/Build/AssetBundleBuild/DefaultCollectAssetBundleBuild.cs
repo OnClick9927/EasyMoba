@@ -9,6 +9,7 @@
 using UnityEditor;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 
 namespace IFramework.Hotfix.Asset
 {
@@ -208,7 +209,8 @@ namespace IFramework.Hotfix.Asset
                     for (int i = 0; i < list.Count; i++)
                     {
                         lastBundle.assetBundleName = dir;
-                        len += list[i].fileLength;
+                        FileInfo fi = new FileInfo(list[i].path);
+                        len += fi.Length; ;
                         if (len > 1024 * 1024 * 8)
                         {
                             lastBundle.assetNames = paths.ToArray();

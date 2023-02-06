@@ -14,12 +14,7 @@ namespace IFramework.Hotfix.Asset
     {
         private class BundleMap : NameMap<Bundle, AssetBundle>
         {
-            public Bundle Load(string name, uint crc, ulong offset)
-            {
-                BundleLoadArgs args = new BundleLoadArgs(BundleLoadType.FromFile, name, crc, offset);
-                Bundle bundle = base.Load(name, args);
-                return bundle;
-            }
+
             public Bundle LoadAsync(string name, uint crc, ulong offset)
             {
                 BundleLoadArgs args = new BundleLoadArgs(BundleLoadType.FromFile, name, crc, offset);
@@ -32,12 +27,12 @@ namespace IFramework.Hotfix.Asset
                 Bundle bundle = base.LoadAsync(url, args);
                 return bundle;
             }
-            protected override Bundle CreateNew(string path, IEventArgs args, bool async)
+            protected override Bundle CreateNew(string path, IEventArgs args)
             {
                 BundleLoadArgs arg = (BundleLoadArgs)args;
                 if (arg.type == BundleLoadType.FromFile)
-                    return new Bundle(arg, async);
-                return new WebRequestBundle(arg, async);
+                    return new Bundle(arg );
+                return new WebRequestBundle(arg);
             }
 
             public override void Release(string name)

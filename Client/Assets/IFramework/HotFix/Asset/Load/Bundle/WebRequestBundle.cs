@@ -14,7 +14,7 @@ namespace IFramework.Hotfix.Asset
 {
     public class WebRequestBundle : Bundle
     {
-        public WebRequestBundle(BundleLoadArgs loadArgs, bool async) : base(loadArgs, async)
+        public WebRequestBundle(BundleLoadArgs loadArgs) : base(loadArgs)
         {
         }
         public override float progress
@@ -30,7 +30,7 @@ namespace IFramework.Hotfix.Asset
         private Downloader downloader;
         private AssetBundleCreateRequest loadOp;
 
-        protected async override void OnLoad(bool async)
+        protected async override void OnLoad()
         {
             downloader = new Downloader(loadArgs.path);
             await downloader.Start();

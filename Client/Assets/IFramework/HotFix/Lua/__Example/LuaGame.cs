@@ -29,7 +29,7 @@ namespace IFramework.Hotfix.Lua
             if (textAsset != null)
                 return textAsset.bytes;
             filepath = projectScriptsPath.CombinePath(filepath + ".txt").ToAssetsPath();
-            var handle = Assets.LoadAsset(filepath);
+            var handle = Assets.LoadAssetAsync(filepath);
             textAsset = handle.GetAsset<TextAsset>();
             while (!handle.isDone)
             {

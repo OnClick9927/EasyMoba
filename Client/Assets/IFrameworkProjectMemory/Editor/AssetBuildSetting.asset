@@ -25,276 +25,222 @@ MonoBehaviour:
     - _path: Assets/Project
       _parentPath: 
       _type: 1
-      fileLength: 0
       dps: []
     assets:
     - _path: Assets/Project
       _parentPath: 
       _type: 1
-      fileLength: 0
       dps: []
     - _path: Assets/Project/Configs
       _parentPath: Assets/Project
       _type: 1
-      fileLength: 0
       dps: []
     - _path: Assets/Project/Configs/CollisonLayer.json
       _parentPath: Assets/Project/Configs
       _type: 14
-      fileLength: 1506
       dps: []
     - _path: Assets/Project/Configs/UICollect.json
       _parentPath: Assets/Project/Configs
       _type: 14
-      fileLength: 616
       dps: []
     - _path: Assets/Project/Configs/UILayer.json
       _parentPath: Assets/Project/Configs
       _type: 14
-      fileLength: 840
       dps: []
     - _path: Assets/Project/Lua
       _parentPath: Assets/Project
       _type: 1
-      fileLength: 0
       dps: []
     - _path: Assets/Project/Lua/Ctrl
       _parentPath: Assets/Project/Lua
       _type: 1
-      fileLength: 0
       dps: []
     - _path: Assets/Project/Lua/Ctrl/Base
       _parentPath: Assets/Project/Lua/Ctrl
       _type: 1
-      fileLength: 0
       dps: []
     - _path: Assets/Project/Lua/Ctrl/Base/Ctrls.lua.txt
       _parentPath: Assets/Project/Lua/Ctrl/Base
       _type: 14
-      fileLength: 280
       dps: []
     - _path: Assets/Project/Lua/Ctrl/Base/NetEvents.lua.txt
       _parentPath: Assets/Project/Lua/Ctrl/Base
       _type: 14
-      fileLength: 1549
       dps: []
     - _path: Assets/Project/Lua/Ctrl/BattleCtrl.lua.txt
       _parentPath: Assets/Project/Lua/Ctrl
       _type: 14
-      fileLength: 616
       dps: []
     - _path: Assets/Project/Lua/Ctrl/LoginCtrl.lua.txt
       _parentPath: Assets/Project/Lua/Ctrl
       _type: 14
-      fileLength: 1227
       dps: []
     - _path: Assets/Project/Lua/Ctrl/MatchCtrl.lua.txt
       _parentPath: Assets/Project/Lua/Ctrl
       _type: 14
-      fileLength: 1745
       dps: []
     - _path: Assets/Project/Lua/Ctrl/SceneCtrl.lua.txt
       _parentPath: Assets/Project/Lua/Ctrl
       _type: 14
-      fileLength: 1449
       dps: []
     - _path: Assets/Project/Lua/Define
       _parentPath: Assets/Project/Lua
       _type: 1
-      fileLength: 0
       dps: []
     - _path: Assets/Project/Lua/Define/LuaEventTypes.lua.txt
       _parentPath: Assets/Project/Lua/Define
       _type: 14
-      fileLength: 204
       dps: []
     - _path: Assets/Project/Lua/Define/NetEventDefine.lua.txt
       _parentPath: Assets/Project/Lua/Define
       _type: 14
-      fileLength: 1637
       dps: []
     - _path: Assets/Project/Lua/Define/ResDefine.lua.txt
       _parentPath: Assets/Project/Lua/Define
       _type: 14
-      fileLength: 251
       dps: []
     - _path: Assets/Project/Lua/Model
       _parentPath: Assets/Project/Lua
       _type: 1
-      fileLength: 0
       dps: []
     - _path: Assets/Project/Lua/Model/Base
       _parentPath: Assets/Project/Lua/Model
       _type: 1
-      fileLength: 0
       dps: []
     - _path: Assets/Project/Lua/Model/Base/ModelBase.lua.txt
       _parentPath: Assets/Project/Lua/Model/Base
       _type: 14
-      fileLength: 370
       dps: []
     - _path: Assets/Project/Lua/Model/Base/Models.lua.txt
       _parentPath: Assets/Project/Lua/Model/Base
       _type: 14
-      fileLength: 670
       dps: []
     - _path: Assets/Project/Lua/Model/PlayerModel.lua.txt
       _parentPath: Assets/Project/Lua/Model
       _type: 14
-      fileLength: 557
       dps: []
     - _path: Assets/Project/Lua/UI
       _parentPath: Assets/Project/Lua
       _type: 1
-      fileLength: 0
       dps: []
     - _path: Assets/Project/Lua/UI/LoadScenePanelView.lua.txt
       _parentPath: Assets/Project/Lua/UI
       _type: 14
-      fileLength: 1403
       dps: []
     - _path: Assets/Project/Lua/UI/LoginPanelView.lua.txt
       _parentPath: Assets/Project/Lua/UI
       _type: 14
-      fileLength: 1156
       dps: []
     - _path: Assets/Project/Lua/UI/MainPanelView.lua.txt
       _parentPath: Assets/Project/Lua/UI
       _type: 14
-      fileLength: 1138
       dps: []
     - _path: Assets/Project/Lua/UI/MatchPanelView.lua.txt
       _parentPath: Assets/Project/Lua/UI
       _type: 14
-      fileLength: 1284
       dps: []
     - _path: Assets/Project/Lua/UI/MVCMap.lua.txt
       _parentPath: Assets/Project/Lua/UI
       _type: 14
-      fileLength: 625
       dps: []
     - _path: Assets/Project/Lua/UI/PanelNames.lua.txt
       _parentPath: Assets/Project/Lua/UI
       _type: 14
-      fileLength: 311
       dps: []
     - _path: Assets/Project/Lua/FixCsharp.lua.txt
       _parentPath: Assets/Project/Lua
       _type: 14
-      fileLength: 23
       dps: []
     - _path: Assets/Project/Lua/GameLogic.lua.txt
       _parentPath: Assets/Project/Lua
       _type: 14
-      fileLength: 602
       dps: []
     - _path: Assets/Project/Lua/GameTools.lua.txt
       _parentPath: Assets/Project/Lua
       _type: 14
-      fileLength: 1168
       dps: []
     - _path: Assets/Project/Lua/GlobalDefine.lua.txt
       _parentPath: Assets/Project/Lua
       _type: 14
-      fileLength: 664
       dps: []
     - _path: Assets/Project/Materials
       _parentPath: Assets/Project
       _type: 1
-      fileLength: 0
       dps: []
     - _path: Assets/Project/Materials/Ground.mat
       _parentPath: Assets/Project/Materials
       _type: 7
-      fileLength: 2063
       dps: []
     - _path: Assets/Project/Materials/Player.mat
       _parentPath: Assets/Project/Materials
       _type: 7
-      fileLength: 2083
       dps: []
     - _path: Assets/Project/Materials/PlayerCap.mat
       _parentPath: Assets/Project/Materials
       _type: 7
-      fileLength: 2077
       dps: []
     - _path: Assets/Project/Materials/Wall.mat
       _parentPath: Assets/Project/Materials
       _type: 7
-      fileLength: 2055
       dps: []
     - _path: Assets/Project/Prefabs
       _parentPath: Assets/Project
       _type: 1
-      fileLength: 0
       dps: []
     - _path: Assets/Project/Prefabs/Battle
       _parentPath: Assets/Project/Prefabs
       _type: 1
-      fileLength: 0
       dps: []
     - _path: Assets/Project/Prefabs/Battle/Character
       _parentPath: Assets/Project/Prefabs/Battle
       _type: 1
-      fileLength: 0
       dps: []
     - _path: Assets/Project/Prefabs/Battle/Character/char_001.prefab
       _parentPath: Assets/Project/Prefabs/Battle/Character
       _type: 8
-      fileLength: 6105
       dps:
       - Assets/Project/Materials/PlayerCap.mat
       - Assets/Project/Materials/Player.mat
     - _path: Assets/Project/Prefabs/UI
       _parentPath: Assets/Project/Prefabs
       _type: 1
-      fileLength: 0
       dps: []
     - _path: Assets/Project/Prefabs/UI/LoadScenePanel.prefab
       _parentPath: Assets/Project/Prefabs/UI
       _type: 8
-      fileLength: 17162
       dps: []
     - _path: Assets/Project/Prefabs/UI/LoginPanel.prefab
       _parentPath: Assets/Project/Prefabs/UI
       _type: 8
-      fileLength: 9290
       dps: []
     - _path: Assets/Project/Prefabs/UI/MainPanel.prefab
       _parentPath: Assets/Project/Prefabs/UI
       _type: 8
-      fileLength: 21799
       dps: []
     - _path: Assets/Project/Prefabs/UI/MatchPanel.prefab
       _parentPath: Assets/Project/Prefabs/UI
       _type: 8
-      fileLength: 11030
       dps: []
     - _path: Assets/Project/Scenes
       _parentPath: Assets/Project
       _type: 1
-      fileLength: 0
       dps: []
     - _path: Assets/Project/Scenes/Battle.unity
       _parentPath: Assets/Project/Scenes
       _type: 6
-      fileLength: 94664
       dps:
       - Assets/Project/Materials/Ground.mat
       - Assets/Project/Materials/Wall.mat
     - _path: Assets/Project/Scenes/Home.unity
       _parentPath: Assets/Project/Scenes
       _type: 6
-      fileLength: 7791
       dps: []
     - _path: Assets/Project/Scenes/Login.unity
       _parentPath: Assets/Project/Scenes
       _type: 6
-      fileLength: 7791
       dps: []
     - _path: Assets/Project/Scenes/Update.unity
       _parentPath: Assets/Project/Scenes
       _type: 6
-      fileLength: 11272
       dps: []
     singles: []

@@ -57,13 +57,13 @@ namespace EasyMoba
         {
             await System.Threading.Tasks.Task.Delay(100);
             modules.UpdateUI.Close(PanelNames.UpdatePanel);
-            var asset = await Assets.LoadAsset("Assets/Project/Configs/UICollect.json");
+            var asset = await Assets.LoadAssetAsync("Assets/Project/Configs/UICollect.json");
             TextAsset txt = asset.GetAsset<TextAsset>();
             PanelPathCollect _collect = JsonUtility.FromJson<PanelPathCollect>(txt.text);
             modules.UI.SetAsset(new NormalUIAsset(_collect, canvas));
             Assets.Release(asset);
             modules.UI.CreateCanvas();
-            asset = await Assets.LoadAsset("Assets/Project/Configs/UILayer.json");
+            asset = await Assets.LoadAssetAsync("Assets/Project/Configs/UILayer.json");
             txt = asset.GetAsset<TextAsset>();
             UILayerConfig _configs = JsonUtility.FromJson<UILayerConfig>(txt.text);
             modules.UI.SetLayerConfig(_configs);

@@ -19,7 +19,6 @@ namespace IFramework.Hotfix.Asset
         void Retain();
 
         void Release();
-        void Load();
         void UnLoad();
         void LoadAsync();
     }

@@ -92,7 +92,7 @@ namespace IFramework.Hotfix.Asset
                 new GUIContent("Preview")
 
             });
-            },150);
+            }, 150);
             types = typeof(ICollectAssetBundleBuild).GetSubTypesInAssemblys()
                   .Where(type => !type.IsAbstract)
                   .Select(type => type.FullName).ToArray();

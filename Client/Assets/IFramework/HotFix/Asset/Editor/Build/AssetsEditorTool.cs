@@ -29,33 +29,5 @@ namespace IFramework.Hotfix.Asset
                 AssetsInternal.mode = null;
             }
         }
-
-        private static List<string> Assets_GetAllAssetPath()
-        {
-            var build = AssetBuildSetting.Load();
-            List<string> list = new List<string>();
-            build.GetAssets().ForEach(asset =>
-            {
-                if (asset.type != AssetInfo.AssetType.Directory)
-                {
-                    list.Add(asset.path);
-                }
-            });
-            build.GetSingleFiles().ForEach(asset =>
-            {
-                list.Add(asset.path);
-            });
-            return list;
-        }
-
-        private static SceneAsset Assets_SceneAssetCreater(bool arg1, Bundle arg2, List<Asset> arg3, SceneAssetLoadArgs arg4)
-        {
-            return new EditorSceneAsset(arg1, arg4);
-        }
-
-        private static Asset Assets_AssetCreater(bool arg1, Bundle arg2, List<Asset> arg3, AssetLoadArgs arg4)
-        {
-            return new EditorAsset(arg1, arg4);
-        }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using LockStep.LCollision2D;
 using LockStep.Math;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 namespace EasyMoba.GameLogic.Mono
 {
@@ -29,7 +28,9 @@ namespace EasyMoba.GameLogic.Mono
                 var last = points[(int)Mathf.Repeat(i - 1, points.Count)] + transform.position;
                 var cur = points[i] + transform.position;
                 Gizmos.DrawLine(last, cur);
-                Handles.Label(points[i] + transform.position, i.ToString());
+#if UNITY_EDITOR
+                UnityEditor. Handles.Label(points[i] + transform.position, i.ToString());
+#endif
             }
 
         }

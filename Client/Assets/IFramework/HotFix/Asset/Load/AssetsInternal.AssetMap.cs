@@ -17,12 +17,7 @@ namespace IFramework.Hotfix.Asset
     {
         private class AssetMap : NameMap<Asset, Object>
         {
-            public Asset LoadAsset(string path)
-            {
-                AssetLoadArgs args = new AssetLoadArgs(path);
-                Asset asset = base.Load(path, args);
-                return asset;
-            }
+
             public Asset LoadAssetAyync(string path)
             {
                 AssetLoadArgs args = new AssetLoadArgs(path);
@@ -30,12 +25,7 @@ namespace IFramework.Hotfix.Asset
                 return asset;
             }
 
-            public SceneAsset LoadSceneAsset(string path)
-            {
-                SceneAssetLoadArgs args = new SceneAssetLoadArgs(path);
-                SceneAsset asset = this.Load(path, args) as SceneAsset;
-                return asset;
-            }
+
             public SceneAsset LoadSceneAssetAsync(string path)
             {
                 SceneAssetLoadArgs args = new SceneAssetLoadArgs(path);
@@ -94,12 +84,12 @@ namespace IFramework.Hotfix.Asset
                 }
             }
 
-            protected override Asset CreateNew(string name, IEventArgs args, bool async)
+            protected override Asset CreateNew(string name, IEventArgs args)
             {
                 if (args is AssetLoadArgs)
-                    return AssetsInternal.CreateAsset(async, name, GetDpAssets(name), (AssetLoadArgs)args);
+                    return AssetsInternal.CreateAsset(name, GetDpAssets(name), (AssetLoadArgs)args);
                 if (args is SceneAssetLoadArgs)
-                    return AssetsInternal.CreateSceneAsset(async, name, GetDpAssets(name), (SceneAssetLoadArgs)args);
+                    return AssetsInternal.CreateSceneAsset(name, GetDpAssets(name), (SceneAssetLoadArgs)args);
                 return null;
             }
         }

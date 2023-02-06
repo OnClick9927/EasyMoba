@@ -12,8 +12,8 @@ namespace IFramework.Hotfix.Asset
 {
     public interface IAssetMode
     {
-        Asset CreateAsset(bool async, string assetPath, List<Asset> dps, AssetLoadArgs arg);
-        SceneAsset CreateSceneAsset(bool async, string assetPath, List<Asset> dps, SceneAssetLoadArgs arg);
+        Asset CreateAsset(string assetPath, List<Asset> dps, AssetLoadArgs arg);
+        SceneAsset CreateSceneAsset(string assetPath, List<Asset> dps, SceneAssetLoadArgs arg);
         IReadOnlyList<string> GetAllAssetPaths();
     }
 }
