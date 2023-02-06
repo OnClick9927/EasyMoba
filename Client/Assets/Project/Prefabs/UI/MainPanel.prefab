@@ -134,10 +134,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a10377ac9d41744f815b91343de8885, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fieldName: 
+  fieldName: Match
   fieldType: 
-  componentNames: []
-  index: 0
 --- !u!1 &1149287174503593637
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,10 +270,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a10377ac9d41744f815b91343de8885, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fieldName: 
+  fieldName: LocalMatch
   fieldType: 
-  componentNames: []
-  index: 0
 --- !u!1 &1176399653477177724
 GameObject:
   m_ObjectHideFlags: 0
