@@ -38,5 +38,10 @@ namespace IFramework.Hotfix.Asset
         {
             return new EditorSceneAsset(arg);
         }
+
+        public string GetLocalBundleSaveDirectory()
+        {
+            return AssetBuildSetting.outputPath;
+        }
     }
 }

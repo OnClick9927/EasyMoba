@@ -454,10 +454,10 @@ namespace IFramework.UI.SuperScrollView
         public Action onEndDrag = null;
         [SerializeField] List<PrefabConfData> prefabDatas = new List<PrefabConfData>();
         [SerializeField] private ArrangeType _arrangeType = ArrangeType.TopToBottom;
-        [SerializeField] Vector2 _viewPortSnapPivot = Vector2.zero;
-        [SerializeField] Vector2 _snapPivot = Vector2.zero;
         [SerializeField] bool _snapEnable = false;
         [SerializeField] bool _supportScrollBar = true;
+        [SerializeField] Vector2 _viewPortSnapPivot = Vector2.zero;
+        [SerializeField] Vector2 _snapPivot = Vector2.zero;
 
         private Dictionary<string, ItemPool> mItemPoolDict = new Dictionary<string, ItemPool>();
         private List<ItemPool> mItemPoolList = new List<ItemPool>();

@@ -12,9 +12,6 @@ using System.Collections.Generic;
 using Object = UnityEngine.Object;
 using UnityEngine;
 using System.IO;
-using IFramework.GUITool;
-using static UnityEditor.Progress;
-using UnityEditor.TreeViewExamples;
 
 namespace IFramework.Hotfix.Asset
 {

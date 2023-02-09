@@ -11,6 +11,7 @@ using System.Collections;
 using System.Linq;
 using IFramework;
 using IFramework.Hotfix.Asset;
+using static IFramework.Hotfix.Asset.Assets;
 using static IFramework.Hotfix.Asset.AssetsInternal;
 
 namespace EasyMoba

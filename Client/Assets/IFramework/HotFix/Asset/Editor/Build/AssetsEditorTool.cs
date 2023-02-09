@@ -19,15 +19,11 @@ namespace IFramework.Hotfix.Asset
         }
         public static void ChangeLoadMode()
         {
-            AssetsInternal.downloadDirectory = AssetBuildSetting.outputPath;
             if (AssetBuildSetting.Load().fastMode)
             {
                 AssetsInternal.mode = new FastAssetMode();
             }
-            else
-            {
-                AssetsInternal.mode = null;
-            }
+          
         }
     }
 }

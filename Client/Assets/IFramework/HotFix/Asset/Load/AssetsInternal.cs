@@ -23,10 +23,27 @@ namespace IFramework.Hotfix.Asset
         private static AssetsSetting setting;
         private static string buildTarget;
         private static AssetManifest manifest;
-        public static bool isNormalMode { get { return mode == null; } }
-        public static string downloadDirectory;
+
         private static IAssetMode _defaultMode = new NomalAssetMode();
-        public static IAssetMode mode;
+        private static IAssetMode _mode;
+        public static bool isNormalMode => _mode == null;
+        public static IAssetMode mode
+        {
+            get
+            {
+                return _mode;
+            }
+            set
+            {
+                if (_mode != value)
+                {
+                    _mode = value;
+                    string dir = _mode.GetLocalBundleSaveDirectory();
+                    Ex.MakeDirectoryExist(dir);
+                }
+            }
+        }
+
 
         static AssetsInternal()
         {
@@ -37,56 +54,59 @@ namespace IFramework.Hotfix.Asset
                 case RuntimePlatform.IPhonePlayer: buildTarget = "iOS"; break;
                 case RuntimePlatform.WebGLPlayer: buildTarget = "WebGL"; break;
             }
-            downloadDirectory = Application.persistentDataPath.CombinePath("DLC");
-            Ex.MakeDirectoryExist(downloadDirectory);
+            mode = _defaultMode;
             bundles = new BundleMap();
             assets = new AssetMap();
         }
 
-        private static IAssetMode GetAssetMode()
-        {
-            if (mode == null)
-                return _defaultMode;
-            return mode;
-        }
-        private static Asset CreateAsset(string assetPath, List<Asset> dps, AssetLoadArgs arg)
-        {
-            return GetAssetMode().CreateAsset(assetPath, dps, arg);
-        }
-        private static SceneAsset CreateSceneAsset(string assetPath, List<Asset> dps, SceneAssetLoadArgs arg)
-        {
-            return GetAssetMode().CreateSceneAsset(assetPath, dps, arg);
-        }
-        private static FileCheckType GetFileCheckType()
-        {
-            return setting.GetFileCheckType();
-        }
-        public static int GetWebRequestTimeout()
-        {
-            return setting.GetWebRequestTimeout();
-        }
+
+
+    }
+    public partial class AssetsInternal
+    {
+
+        private static string GetlocalSaveDirectory() => _mode.GetLocalBundleSaveDirectory();
+        private static Asset CreateAsset(string assetPath, List<Asset> dps, AssetLoadArgs arg) => mode.CreateAsset(assetPath, dps, arg);
+        private static SceneAsset CreateSceneAsset(string assetPath, List<Asset> dps, SceneAssetLoadArgs arg) => mode.CreateSceneAsset(assetPath, dps, arg);
+        public static IReadOnlyList<string> GetAllAssetPaths() => mode.GetAllAssetPaths();
+
+
+
+        public static void SetAssetsSetting(AssetsSetting setting) => AssetsInternal.setting = setting;
         private static void CheckSetting()
         {
             if (setting == null)
                 LogError("setting is null");
         }
-        private static string GetUrlFromBundleName(string bundleName)
+        private static int GetWebRequestTimeout()
+        {
+            CheckSetting();
+            return setting.GetWebRequestTimeout();
+        }
+        public static FileCheckType GetFileCheckType()
+        {
+            CheckSetting();
+            return setting.GetFileCheckType();
+        }
+        public static string GetUrlFromBundleName(string bundleName)
         {
             CheckSetting();
             return setting.GetUrlByBundleName(buildTarget, bundleName);
         }
-        private static string GetVersionUrl()
+        public static string GetVersionUrl()
         {
             CheckSetting();
             return setting.GetVersionUrl();
         }
-        private static string GetBundleLocalPath(string bundleName)
+
+
+
+
+
+        public static string GetBundleLocalPath(string bundleName) => GetlocalSaveDirectory().CombinePath(bundleName);
+        public static string[] GetLocalBundles()
         {
-            return downloadDirectory.CombinePath(bundleName);
-        }
-        private static string[] GetLocalBundles()
-        {
-            var files = Directory.GetFiles(downloadDirectory);
+            var files = Directory.GetFiles(GetlocalSaveDirectory());
             for (int i = 0; i < files.Length; i++)
             {
                 files[i] = files[i].ToRegularPath();
@@ -95,25 +115,7 @@ namespace IFramework.Hotfix.Asset
         }
 
 
-        private static bool IsManifestNull()
-        {
-            return manifest == null;
-        }
-        private static List<string> GetAssetDps(string assetpath)
-        {
-            return IsManifestNull() ? null : manifest.GetAssetDependences(assetpath);
-        }
-        private static string GetBundleNameByAssetPath(string assetPath)
-        {
-
-            string bundleName = manifest.GetBundle(assetPath);
-            return bundleName;
-        }
-        public static IReadOnlyList<string> GetAllAssetPaths()
-        {
-            return GetAssetMode().GetAllAssetPaths();
-        }
-
+        private static bool IsManifestNull() => manifest == null;
 
 
 
@@ -121,16 +123,12 @@ namespace IFramework.Hotfix.Asset
         {
             string filePath = GetBundleLocalPath(bundleName);
             if (!File.Exists(filePath))
-                return LoadBundleFromWebRequest(GetUrlFromBundleName(bundleName), crc);
-            Bundle bundle = bundles.LoadAsync(filePath, crc, offset);
-            return bundle;
+                return bundles.RequestLoadAsync(GetUrlFromBundleName(bundleName), crc, offset);
+            return bundles.LoadAsync(filePath, crc, offset);
         }
-        private static Bundle LoadBundleFromWebRequest(string url, uint crc = 0u)
-        {
-            Bundle bundle = bundles.RequestLoadAsync(url, crc);
-            return bundle;
-        }
-        private static Bundle LoadTargetBundle(string assetPath)
+
+        private static string GetBundleNameByAssetPath(string assetPath) => manifest.GetBundle(assetPath);
+        private static Bundle LoadBundleByAssetPath(string assetPath)
         {
             string bundleName = GetBundleNameByAssetPath(assetPath);
             return LoadBundleAsync(bundleName);
@@ -142,24 +140,8 @@ namespace IFramework.Hotfix.Asset
             bundles.Release(bundle);
         }
 
-        private static void LoadDps(string path)
-        {
-            List<string> dps = GetAssetDps(path);
-            if (dps != null)
-            {
-                foreach (var item in dps)
-                {
-                    LoadAssetAsync(item);
-                }
-            }
-        }
 
 
-
-        public static void SetAssetsSetting(AssetsSetting setting)
-        {
-            AssetsInternal.setting = setting;
-        }
 
 
         public static Asset LoadAssetAsync(string path)
@@ -174,7 +156,21 @@ namespace IFramework.Hotfix.Asset
             SceneAsset asset = assets.LoadSceneAssetAsync(path);
             return asset;
         }
-
+        private static List<string> GetAssetDps(string assetpath)
+        {
+            return IsManifestNull() ? null : manifest.GetAssetDependences(assetpath);
+        }
+        private static void LoadDps(string path)
+        {
+            List<string> dps = GetAssetDps(path);
+            if (dps != null)
+            {
+                foreach (var item in dps)
+                {
+                    LoadAssetAsync(item);
+                }
+            }
+        }
         public static void Release(Asset asset)
         {
             assets.Release(asset.path);

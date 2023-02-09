@@ -98,51 +98,8 @@ namespace IFramework.Hotfix.Lua
         {
             return o == null;
         }
-        public static LuaBehaviour GetLuaBehaviour(this Transform trans, string requireParam)
-        {
-            var list = trans.GetComponents<LuaBehaviour>();
-            if (list == null || list.Length == 0) return null;
-            for (int i = 0; i < list.Length; i++)
-            {
-                if (list[i].requireParam == requireParam)
-                {
-                    return list[i];
-                }
-            }
-            return null;
-        }
-        public static LuaBehaviour GetLuaBehaviour(this Transform trans)
-        {
-            return trans.GetComponent<LuaBehaviour>();
-        }
 
-        public static LuaBehaviour AddLuaBehaviour(this GameObject gameObject, string requireParam)
-        {
-            LuaBehaviour.staticPara = requireParam;
-            LuaBehaviour.useStatic = true;
-            var be = gameObject.AddComponent<LuaBehaviour>();
-            be.requireParam = requireParam;
-            LuaBehaviour.useStatic = false;
-            return be;
-        }
-        public static object GetLuaBehaviourSelf(this Transform trans,string requireParam)
-        {
-            LuaBehaviour lb = GetLuaBehaviour(trans, requireParam);
-            if (lb!=null)
-            {
-                return lb.self;
-            }
-            return null;
-        }
-        public static object GetLuaBehaviourSelf(this Transform trans)
-        {
-            LuaBehaviour lb = GetLuaBehaviour(trans);
-            if (lb != null)
-            {
-                return lb.self;
-            }
-            return null;
-        }
+
 
       
     }
