@@ -6,13 +6,13 @@
  *Description:    IFramework
  *History:        2018.11--
 *********************************************************************************/
-using UnityEditor;
 using System.Collections.Generic;
+using static IFramework.Hotfix.Asset.AssetsBuild;
 
 namespace IFramework.Hotfix.Asset
 {
     public interface ICollectAssetBundleBuild
     {
-        void Create(List<AssetInfo> assets, List<AssetInfo> singles, Dictionary<AssetInfo, List<AssetInfo>> dpsDic, List<AssetBundleBuild> result);
+        void Create(List<AssetInfo> assets, List<AssetInfo> singles, Dictionary<AssetInfo, List<AssetInfo>> dpsDic, List<AssetGroup> result);
     }
 }

@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using Object = UnityEngine.Object;
 using UnityEngine;
 using System.IO;
+using static IFramework.Hotfix.Asset.AssetsBuild;
 
 namespace IFramework.Hotfix.Asset
 {
@@ -20,7 +21,7 @@ namespace IFramework.Hotfix.Asset
         private class PreviewTree : TreeView
         {
             private AssetsWindow window;
-            List<AssetBundleBuild> previewBundles { get { return window.previewBundles; } }
+            List<AssetGroup> previewBundles { get { return window.previewBundles; } }
             public PreviewTree(TreeViewState state, AssetsWindow window) : base(state)
             {
                 this.window = window;
@@ -43,23 +44,23 @@ namespace IFramework.Hotfix.Asset
                 Reload();
             }
 
-          
+     static       Dictionary<TreeViewItem, TreeViewItem> dic = new Dictionary<TreeViewItem, TreeViewItem>();
             protected override TreeViewItem BuildRoot()
             {
                 return new TreeViewItem() { id = -10, depth = -1 };
             }
-            private Dictionary<int, long> size = new Dictionary<int, long>();
             private static TreeViewItem CreateItem(string path, TreeViewItem parrent, IList<TreeViewItem> result)
             {
                 Object o = AssetDatabase.LoadAssetAtPath<UnityEngine.Object>(path);
                 var _item = new TreeViewItem()
                 {
                     id = o.GetInstanceID(),
-                    depth = parrent.depth + 1,
+                    depth = 1,
                     displayName = path,
-                    parent = parrent,
                     icon = AssetPreview.GetMiniThumbnail(AssetDatabase.LoadAssetAtPath<UnityEngine.Object>(path))
                 };
+                dic[_item] = parrent;
+                _item.parent = parrent;
                 parrent.AddChild(_item);
                 result.Add(_item);
                 return _item;
@@ -68,7 +69,6 @@ namespace IFramework.Hotfix.Asset
             protected override IList<TreeViewItem> BuildRows(TreeViewItem root)
             {
                 var result = GetRows() ?? new List<TreeViewItem>();
-                size.Clear();
                 result.Clear();
                 if (previewBundles != null)
                 {
@@ -77,38 +77,32 @@ namespace IFramework.Hotfix.Asset
                         var bundle = previewBundles[i];
                         var _item = new TreeViewItem()
                         {
-                            id = bundle.assetBundleName.GetHashCode(),
-                            depth = root.depth + 1,
-                            displayName = bundle.assetBundleName,
+                            id = i,
+                            depth = 0,
+                            parent = root,
+                            displayName = bundle.name,
                         };
 
                         root.AddChild(_item);
                         result.Add(_item);
-                        long total = 0;
-                        for (int j = 0; j < bundle.assetNames.Length; j++)
+                        if (bundle.assets.Count > 0)
                         {
-                            var path = bundle.assetNames[j];
-                            FileInfo info = new FileInfo(path);
-                            var len = info.Length;
-                            total += len;
-                        }
-                        size[_item.id] = total;
-
-                        if (IsExpanded(_item.id))
-                        {
-                            for (int j = 0; j < bundle.assetNames.Length; j++)
+                            if (IsExpanded(_item.id))
                             {
-                                var path = bundle.assetNames[j];
-                                FileInfo info = new FileInfo(path);
-                                var len = info.Length;
-                                var item = CreateItem(path, _item, result);
-                                size[item.id] = len;
+                                for (int j = 0; j < bundle.assets.Count; j++)
+                                {
+                                    var path = bundle.assets[j];
+
+                                    CreateItem(path, _item, result);
+                                }
+                            }
+                            else
+                            {
+                                _item.children = CreateChildListForCollapsedParent();
                             }
                         }
-                        else
-                        {
-                            _item.children = CreateChildListForCollapsedParent();
-                        }
+
+
 
 
                     }
@@ -120,16 +114,35 @@ namespace IFramework.Hotfix.Asset
             {
                 float indet = this.GetContentIndent(args.item);
                 var first = args.GetCellRect(0).Zoom(AnchorType.MiddleRight, new Vector2(-indet, 0));
+                string group_name = args.label;
                 if (args.item.depth == 0)
                 {
+                    group_name = args.label;
                     GUI.Label(first, new GUIContent(args.label));
                 }
                 else
                 {
+                    
+                    group_name = dic[args.item].displayName;
                     GUI.Label(first, new GUIContent(args.label, args.item.icon));
                 }
+                var find = previewBundles.Find(x => x.name == group_name);
+                if (find==null)
+                {
+                    return;
+                }
+                long len = 0;
+
+                if (args.item.depth == 0)
+                {
+                    len = find.length;
+                }
+                else
+                {
+                    len = find.GetLength(args.label);
+                }
                 var second = args.GetCellRect(1);
-                var len = size[args.item.id];
+
                 var tmp = len;
                 int stage = 0;
                 while (tmp > 1024)

@@ -16,14 +16,22 @@ using UnityEditor.U2D;
 using System.Linq;
 namespace IFramework.Hotfix.Asset
 {
-    class AssetsBuild
+
+    public partial class AssetsBuild
     {
         public static AssetBundleManifest Build(Type collectType)
         {
             var list = ColectAssetBundleBuild(collectType);
             CollectMain(list);
             AssetBuildSetting setting = AssetBuildSetting.Load();
-            AssetBundleManifest main = BuildPipeline.BuildAssetBundles(AssetBuildSetting.outputPath, list.ToArray(), setting.option, EditorUserBuildSettings.activeBuildTarget);
+            AssetBundleManifest main = BuildPipeline.BuildAssetBundles(AssetBuildSetting.outputPath, list.ConvertAll(x =>
+            {
+                return new AssetBundleBuild()
+                {
+                    assetBundleName = x.name,
+                    assetNames = x.assets.ToArray()
+                };
+            }).ToArray(), setting.option, EditorUserBuildSettings.activeBuildTarget);
 
             var bundles = main.GetAllAssetBundles();
             AssetsVersion version = new AssetsVersion();
@@ -42,7 +50,7 @@ namespace IFramework.Hotfix.Asset
             File.WriteAllText(AssetBuildSetting.outputPath.CombinePath("version"), v);
             return main;
         }
-        public static List<AssetBundleBuild> ColectAssetBundleBuild(Type collectType)
+        public static List<AssetGroup> ColectAssetBundleBuild(Type collectType)
         {
             AssetBuildSetting setting = AssetBuildSetting.Load();
             Dictionary<AssetInfo, List<AssetInfo>> dic = setting.GetDpDic();
@@ -50,27 +58,31 @@ namespace IFramework.Hotfix.Asset
             List<AssetInfo> singles = setting.GetSingleFiles();
             all.RemoveAll(x => x.type == AssetInfo.AssetType.Directory);
             var creater = Activator.CreateInstance(collectType) as ICollectAssetBundleBuild;
-            var builds = new List<AssetBundleBuild>();
+            var builds = new List<AssetGroup>();
             creater.Create(all, singles, dic, builds);
+            builds.RemoveAll(x => x.assets.Count == 0);
+            builds.Sort((a, b) =>
+            {
+                return a.length > b.length ? -1 : 1;
+            });
             return builds;
         }
 
-        static void CollectMain(List<AssetBundleBuild> builds)
+        static void CollectMain(List<AssetGroup> builds)
         {
             for (int i = 0; i < builds.Count; i++)
             {
-                AssetBundleBuild build = builds[i];
-                build.assetBundleName = AssetsInternal.GetMd5(build.assetBundleName);
-                builds[i] = build;
+                AssetGroup build = builds[i];
+                build.name = AssetsInternal.GetMd5(build.name);
             }
             Dictionary<string, string> allAssets = new Dictionary<string, string>();
             Dictionary<string, List<string>> assetdps = new Dictionary<string, List<string>>();
 
             foreach (var build in builds)
             {
-                foreach (var assetPath in build.assetNames)
+                foreach (var assetPath in build.assets)
                 {
-                    allAssets.Add(assetPath, build.assetBundleName);
+                    allAssets.Add(assetPath, build.name);
                 }
             }
             AssetBuildSetting setting = AssetBuildSetting.Load();
@@ -86,9 +98,8 @@ namespace IFramework.Hotfix.Asset
             AssetManifest main = EditorTools.AssetTool.Load<AssetManifest>(AssetManifest.Path);
             main.Read(allAssets, assetdps);
             EditorTools.AssetTool.Update(main);
-            AssetBundleBuild mainbuild = new AssetBundleBuild();
-            mainbuild.assetNames = new string[] { AssetManifest.Path };
-            mainbuild.assetBundleName = AssetsInternal.GetMd5(AssetManifest.Path);
+            AssetGroup mainbuild = new AssetGroup(AssetsInternal.GetMd5(AssetManifest.Path));
+            mainbuild.AddAsset(AssetManifest.Path);
             builds.Add(mainbuild);
         }
 

@@ -15,6 +15,7 @@ using System;
 using UnityEditor.IMGUI.Controls;
 using System.IO;
 using System.Collections.Generic;
+using static IFramework.Hotfix.Asset.AssetsBuild;
 
 namespace IFramework.Hotfix.Asset
 {
@@ -34,7 +35,7 @@ namespace IFramework.Hotfix.Asset
         private string[] types;
         private string[] shortTypes;
         private int typeIndex;
-        private List<AssetBundleBuild> previewBundles;
+        private List<AssetGroup> previewBundles;
 
         private void BuildAtlas()
         {
