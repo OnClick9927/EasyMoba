@@ -111,8 +111,8 @@ namespace IFramework.Hotfix.Asset
 
             var bundles = main.GetAllAssetBundles();
             RemoveMetaFiles(outputPath);
-            BuildVersion(outputPath, version_txt, bundles);
             Encrypt(outputPath, bundles);
+            BuildVersion(outputPath, version_txt, bundles);
         }
 
         public static void CopyToStreamPath()
