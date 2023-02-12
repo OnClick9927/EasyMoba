@@ -7,6 +7,11 @@ namespace EasyMoba.GameLogic
     {
         public override MobaUnitType type => MobaUnitType.Wall;
 
+        public override void OnMobaCreate()
+        {
+            
+        }
+
         public override void OnDestory()
         {
 

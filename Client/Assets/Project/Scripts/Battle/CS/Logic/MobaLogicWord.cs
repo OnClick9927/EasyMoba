@@ -18,6 +18,7 @@ namespace EasyMoba.GameLogic
         {
             T t = base.CreateUnit<T>(name);
             t.battle = battle;
+            t.OnMobaCreate();
             return t;
         }
 

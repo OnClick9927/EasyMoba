@@ -10,11 +10,15 @@ namespace EasyMoba.GameLogic
 
         public abstract MobaUnitType type { get; }
         public Battle battle;
-        private BattleAttributeCollection attributes { get { return battle.attributes; } } 
+        private BattleAttributeCollection attributes { get { return battle.attributes; } }
         private FrameCollection frames { get { return battle.frames; } }
         protected T GetAttribute<T>(BattleAttributeType type)
         {
             return attributes.GetAttribute<T>(uid, type);
+        }
+        protected void SetAttribute<T>(BattleAttributeType type, T value)
+        {
+            attributes.SetAttribute<T>(uid, type, value);
         }
         protected SPBattleFrame GetFrame(int frame)
         {
@@ -24,6 +28,7 @@ namespace EasyMoba.GameLogic
         {
             return frames.GetFrame(frame, role_id);
         }
+        public abstract void OnMobaCreate();
     }
 }
 

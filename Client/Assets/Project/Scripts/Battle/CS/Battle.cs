@@ -36,6 +36,14 @@ namespace EasyMoba.GameLogic
             this.view = monoBattle;
             this.collision = collision;
             this.skill_config = skill_config;
+            attributes = new BattleAttributeCollection();
+            word = new MobaLogicWord(collision, this);
+            frames = new FrameCollection(this);
+            logic = new BattleLogic(this);
+            factory = new BattleFactory(this);
+            calc = new AttributeCalc(this);
+            buff = new BuffCollection(this);
+            skill = new SkillDirector(skill_config);
         }
 
         public long Role_id { get => role_id; }
@@ -58,14 +66,6 @@ namespace EasyMoba.GameLogic
             this.room_id = room_id;
             this.room_type = type;
             this.players = players;
-            word = new MobaLogicWord(collision, this);
-            frames = new FrameCollection(this);
-            logic = new BattleLogic(this);
-            factory = new BattleFactory(this);
-            attributes = new BattleAttributeCollection();
-            calc = new AttributeCalc(this);
-            buff = new BuffCollection(this);
-            skill = new SkillDirector(skill_config);
             this.view.Start();
         }
 
