@@ -12,12 +12,54 @@ using System.Linq;
 using UnityEngine;
 using UnityEditor;
 using System;
+using Application = UnityEngine.Application;
 
 namespace IFramework.Hotfix.Asset
 {
+
     class AssetBuildSetting : ScriptableObject
     {
+        public string[] types;
+        public string[] shortTypes;
+        public int typeIndex;
+
+        private void OnEnable()
+        {
+            types = typeof(ICollectAssetGroup).GetSubTypesInAssemblys()
+                   .Where(type => !type.IsAbstract)
+                   .Select(type => type.FullName).ToArray();
+            shortTypes = typeof(ICollectAssetGroup).GetSubTypesInAssemblys()
+                  .Where(type => !type.IsAbstract)
+                  .Select(type => type.Name).ToArray();
+        }
+        public Type GetBuildGroupType()
+        {
+            var type_str = types[typeIndex];
+            Type type = Type.GetType(type_str);
+            return type;
+        }
         public bool fastMode = true;
+        public string version = "0.0.1";
+
+        public string streamPath
+        {
+            get
+            {
+
+                string path = Application.streamingAssetsPath;
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+                path = path.CombinePath(buildTarget);
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+                return path;
+            }
+
+        }
         private static string buildTarget
         {
             get
@@ -39,7 +81,7 @@ namespace IFramework.Hotfix.Asset
             }
         }
 
-        public static string outputPath
+        public string outputPath
         {
             get
             {
@@ -59,6 +101,7 @@ namespace IFramework.Hotfix.Asset
         private static string stoPath { get { return EditorEnvPath.projectMemoryPath.CombinePath("AssetBuildSetting.asset"); } }
 
         public BuildAssetBundleOptions option;
+        public bool encrypt;
         public static AssetBuildSetting Load()
         {
             if (File.Exists(stoPath))
@@ -72,42 +115,10 @@ namespace IFramework.Hotfix.Asset
         };
         [SerializeField] private List<string> atlasPaths = new List<string>();
         [SerializeField] private List<string> buildPaths = new List<string>();
-        [SerializeField] private AssetsTree tree = new AssetsTree();
-
-        public List<AssetInfo> GetRootDirPaths()
+        public List<string> GetBuildPaths()
         {
-            return tree.GetRootDirPaths();
+            return buildPaths;
         }
-        public List<AssetInfo> GetSubFloders(AssetInfo info)
-        {
-            return tree.GetSubFloders(info);
-        }
-        public List<AssetInfo> GetSubFiles(AssetInfo info)
-        {
-            return tree.GetSubFiles(info);
-        }
-        public List<AssetInfo> GetSingleFiles()
-        {
-            return tree.GetSingleFiles();
-        }
-        public List<AssetInfo> GetAssets()
-        {
-            return tree.GetAssets();
-        }
-        public Dictionary<AssetInfo, List<AssetInfo>> GetDpDic()
-        {
-            return tree.GetDpDic();
-        }
-        public List<string> GetDps(string path)
-        {
-            return tree.GetDps(path);
-        }
-        public AssetInfo GetAssetInfo(string path)
-        {
-            return tree.GetAssetInfo(path);
-        }
-
-
         public List<string> GetAtlasPaths()
         {
             return atlasPaths;
@@ -143,19 +154,6 @@ namespace IFramework.Hotfix.Asset
         }
 
 
-
-
-        public void Colllect()
-        {
-            //AssetDatabase.ForceReserializeAssets();
-            tree.Clear();
-            for (int i = 0; i < buildPaths.Count; i++)
-            {
-                tree.AddPath(buildPaths[i]);
-            }
-            tree.CollectDps();
-            tree.RemoveUselessInfos();
-        }
         public void Save()
         {
             EditorTools.AssetTool.Update(this);

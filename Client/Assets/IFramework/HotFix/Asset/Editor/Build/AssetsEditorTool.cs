@@ -23,7 +23,8 @@ namespace IFramework.Hotfix.Asset
             {
                 AssetsInternal.mode = new FastAssetMode();
             }
-          
+            AssetsInternal.localSaveDir = AssetBuildSetting.Load().outputPath;
+
         }
     }
 }

@@ -15,15 +15,15 @@ namespace IFramework.Hotfix.Asset
         private class BundleMap : NameMap<Bundle, AssetBundle>
         {
 
-            public Bundle LoadAsync(string name, uint crc, ulong offset)
+            public Bundle LoadAsync(string path,string bundleName, bool encrypt)
             {
-                BundleLoadArgs args = new BundleLoadArgs(BundleLoadType.FromFile, name, crc, offset);
-                Bundle bundle = base.LoadAsync(name, args);
+                BundleLoadArgs args = new BundleLoadArgs(BundleLoadType.FromFile, path, encrypt, bundleName);
+                Bundle bundle = base.LoadAsync(path, args);
                 return bundle;
             }
-            public Bundle RequestLoadAsync(string url, uint crc, ulong offset)
+            public Bundle RequestLoadAsync(string url, string bundleName, bool encrypt)
             {
-                BundleLoadArgs args = new BundleLoadArgs(BundleLoadType.FromRequest, url, crc, offset);
+                BundleLoadArgs args = new BundleLoadArgs(BundleLoadType.FromRequest, url, encrypt, bundleName);
                 Bundle bundle = base.LoadAsync(url, args);
                 return bundle;
             }
@@ -31,7 +31,7 @@ namespace IFramework.Hotfix.Asset
             {
                 BundleLoadArgs arg = (BundleLoadArgs)args;
                 if (arg.type == BundleLoadType.FromFile)
-                    return new Bundle(arg );
+                    return new Bundle(arg);
                 return new WebRequestBundle(arg);
             }
 

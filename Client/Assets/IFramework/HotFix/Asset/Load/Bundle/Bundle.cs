@@ -8,8 +8,10 @@
 *********************************************************************************/
 
 using System;
+using System.IO;
 using UnityEngine;
-using Object = UnityEngine.Object;
+using static IFramework.Hotfix.Asset.AssetsInternal;
+
 namespace IFramework.Hotfix.Asset
 {
     public class Bundle : RefenceAsset<AssetBundle>
@@ -31,8 +33,21 @@ namespace IFramework.Hotfix.Asset
 
         protected override async void OnLoad()
         {
-            loadOp = AssetBundle.LoadFromFileAsync(loadArgs.path, loadArgs.crc, loadArgs.offset);
+            EncryptStream fileStream = null;
+            if (loadArgs.encrypt)
+            {
+                fileStream = new EncryptStream(loadArgs.bundeName,loadArgs.path, FileMode.Open, FileAccess.Read, FileShare.None, 1024 * 4, false);
+                loadOp = AssetBundle.LoadFromStreamAsync(fileStream);
+            }
+            else
+            {
+                loadOp = AssetBundle.LoadFromFileAsync(loadArgs.path);
+            }
             await this.loadOp;
+            if (loadArgs.encrypt)
+            {
+                fileStream.Dispose();
+            }
             SetResult(loadOp.assetBundle);
         }
 

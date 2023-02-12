@@ -21,7 +21,7 @@ namespace IFramework.Hotfix.Asset
         private class PreviewTree : TreeView
         {
             private AssetsWindow window;
-            List<AssetGroup> previewBundles { get { return window.previewBundles; } }
+            List<AssetGroup> previewBundles { get { return cache.previewBundles; } }
             public PreviewTree(TreeViewState state, AssetsWindow window) : base(state)
             {
                 this.window = window;

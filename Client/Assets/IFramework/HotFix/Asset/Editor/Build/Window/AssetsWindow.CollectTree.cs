@@ -46,8 +46,8 @@ namespace IFramework.Hotfix.Asset
             {
                 var result = GetRows() ?? new List<TreeViewItem>();
                 result.Clear();
-                BuildDirs(result, root, buildSetting.GetRootDirPaths());
-                BuildFiles(result, root, buildSetting.GetSingleFiles());
+                BuildDirs(result, root, cache.GetRootDirPaths());
+                BuildFiles(result, root, cache.GetSingleFiles());
                 SetupParentsAndChildrenFromDepths(root, result);
                 return result;
             }
@@ -66,7 +66,7 @@ namespace IFramework.Hotfix.Asset
                 float indet = this.GetContentIndent(args.item);
                 var first = args.GetCellRect(0).Zoom(AnchorType.MiddleRight, new Vector2(-indet, 0));
                 GUI.Label(first, new GUIContent(Path.GetFileName(args.label), args.item.icon));
-                var type = buildSetting.GetAssetInfo(args.label).type;
+                var type = cache.GetAssetInfo(args.label).type;
                 if (type != AssetInfo.AssetType.Directory)
                 {
                     GUI.Label(args.GetCellRect(1), type.ToString());
@@ -110,8 +110,8 @@ namespace IFramework.Hotfix.Asset
             private void LoopCreate(IList<TreeViewItem> result, TreeViewItem parrent, AssetInfo info)
             {
                 var item = CreateItem(info.path, parrent, result);
-                var paths = buildSetting.GetSubFloders(info);
-                var filepaths = buildSetting.GetSubFiles(info);
+                var paths = cache.GetSubFloders(info);
+                var filepaths = cache.GetSubFiles(info);
                 if (paths.Count > 0 || filepaths.Count > 0)
                 {
                     if (IsExpanded(item.id))

@@ -26,9 +26,9 @@ namespace EasyMoba
         public async void Check()
         {
             MobaGame game = MobaGame.Instance;
+            Assets.SetAssetsSetting(new MobaAssetsSetting());
             if (game.AssetCheck)
             {
-                Assets.SetAssetsSetting(new MobaAssetsSetting());
                 var op = await Assets.VersionCheck();
                 int count = op.downLoadOnes.Count;
                 if (count > 0)

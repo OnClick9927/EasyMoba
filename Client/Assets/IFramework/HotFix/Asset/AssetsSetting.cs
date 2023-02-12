@@ -15,5 +15,7 @@ namespace IFramework.Hotfix.Asset
         public abstract string GetVersionUrl();
         public virtual FileCheckType GetFileCheckType() { return FileCheckType.MD5; }
         public virtual int GetWebRequestTimeout() { return 30; }
+
+        public virtual bool GetEncrypt() { return true; }
     }
 }

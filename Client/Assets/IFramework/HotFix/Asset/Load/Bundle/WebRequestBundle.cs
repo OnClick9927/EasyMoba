@@ -7,6 +7,7 @@
  *History:        2018.11--
 *********************************************************************************/
 
+using System;
 using UnityEngine;
 using static IFramework.Hotfix.Asset.AssetsInternal;
 
@@ -36,7 +37,12 @@ namespace IFramework.Hotfix.Asset
             await downloader.Start();
             if (!downloader.isError)
             {
-                loadOp = await AssetBundle.LoadFromMemoryAsync(downloader.data, loadArgs.crc);
+                byte[] buffer = downloader.data;
+                if (loadArgs.encrypt)
+                {
+                    buffer = EncryptStream.DeCode(loadArgs.bundeName,buffer);
+                }
+                loadOp = await AssetBundle.LoadFromMemoryAsync(buffer);
                 SetResult(loadOp.assetBundle);
             }
             else

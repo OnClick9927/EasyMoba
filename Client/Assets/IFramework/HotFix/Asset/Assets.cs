@@ -9,7 +9,6 @@
 
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Analytics;
 using static IFramework.Hotfix.Asset.AssetsInternal;
 
 namespace IFramework.Hotfix.Asset
@@ -39,12 +38,19 @@ namespace IFramework.Hotfix.Asset
         {
             return new DownLoadBundleOperation(bundleName);
         }
+
+
+        public static void CopyDLCFromSteam()
+        {
+            AssetsInternal.CopyDLCFromSteam();
+        }
+
+
         public static bool Initialized()
         {
             if (manifestop == null) return false;
             return manifestop.isDone;
         }
-
         public static LoadManifestOperation InitAsync(bool again = false)
         {
             if (again)

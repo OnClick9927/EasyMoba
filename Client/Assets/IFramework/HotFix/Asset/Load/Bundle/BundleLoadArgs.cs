@@ -7,22 +7,21 @@
  *History:        2018.11--
 *********************************************************************************/
 
-using System.IO;
 namespace IFramework.Hotfix.Asset
 {
     public struct BundleLoadArgs : IEventArgs
     {
         public BundleLoadType type;
+        public string bundeName;
         public string path;
-        public uint crc;
-        public ulong offset;
+        public bool encrypt;
 
-        public BundleLoadArgs(BundleLoadType type, string path, uint crc, ulong offset)
+        public BundleLoadArgs(BundleLoadType type, string path, bool encrypt, string bundeName)
         {
             this.type = type;
             this.path = path;
-            this.crc = crc;
-            this.offset = offset;
+            this.encrypt = encrypt;
+            this.bundeName = bundeName;
         }
     }
 }

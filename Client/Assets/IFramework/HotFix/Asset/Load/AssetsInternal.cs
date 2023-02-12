@@ -7,12 +7,15 @@
  *History:        2018.11--
 *********************************************************************************/
 
+using LockStep.LCollision2D;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Runtime.InteropServices.ComTypes;
 using System.Security.Cryptography;
 using System.Text;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 namespace IFramework.Hotfix.Asset
 {
@@ -25,24 +28,9 @@ namespace IFramework.Hotfix.Asset
         private static AssetManifest manifest;
 
         private static IAssetMode _defaultMode = new NomalAssetMode();
-        private static IAssetMode _mode;
-        public static bool isNormalMode => _mode == null;
-        public static IAssetMode mode
-        {
-            get
-            {
-                return _mode;
-            }
-            set
-            {
-                if (_mode != value)
-                {
-                    _mode = value;
-                    string dir = _mode.GetLocalBundleSaveDirectory();
-                    Ex.MakeDirectoryExist(dir);
-                }
-            }
-        }
+        public static bool isNormalMode => mode is NomalAssetMode;
+        public static IAssetMode mode { get; set; }
+        public static string localSaveDir;
 
 
         static AssetsInternal()
@@ -57,6 +45,7 @@ namespace IFramework.Hotfix.Asset
             mode = _defaultMode;
             bundles = new BundleMap();
             assets = new AssetMap();
+            localSaveDir = Application.persistentDataPath.CombinePath("DLC");
         }
 
 
@@ -65,7 +54,6 @@ namespace IFramework.Hotfix.Asset
     public partial class AssetsInternal
     {
 
-        private static string GetlocalSaveDirectory() => _mode.GetLocalBundleSaveDirectory();
         private static Asset CreateAsset(string assetPath, List<Asset> dps, AssetLoadArgs arg) => mode.CreateAsset(assetPath, dps, arg);
         private static SceneAsset CreateSceneAsset(string assetPath, List<Asset> dps, SceneAssetLoadArgs arg) => mode.CreateSceneAsset(assetPath, dps, arg);
         public static IReadOnlyList<string> GetAllAssetPaths() => mode.GetAllAssetPaths();
@@ -98,15 +86,20 @@ namespace IFramework.Hotfix.Asset
             CheckSetting();
             return setting.GetVersionUrl();
         }
+        public static bool GetEncrypt()
+        {
+            CheckSetting();
+            return setting.GetEncrypt();
+        }
 
 
 
 
 
-        public static string GetBundleLocalPath(string bundleName) => GetlocalSaveDirectory().CombinePath(bundleName);
+        public static string GetBundleLocalPath(string bundleName) => localSaveDir.CombinePath(bundleName);
         public static string[] GetLocalBundles()
         {
-            var files = Directory.GetFiles(GetlocalSaveDirectory());
+            var files = Directory.GetFiles(localSaveDir);
             for (int i = 0; i < files.Length; i++)
             {
                 files[i] = files[i].ToRegularPath();
@@ -117,14 +110,12 @@ namespace IFramework.Hotfix.Asset
 
         private static bool IsManifestNull() => manifest == null;
 
-
-
-        private static Bundle LoadBundleAsync(string bundleName, uint crc = 0u, ulong offset = 0uL)
+        private static Bundle LoadBundleAsync(string bundleName)
         {
             string filePath = GetBundleLocalPath(bundleName);
             if (!File.Exists(filePath))
-                return bundles.RequestLoadAsync(GetUrlFromBundleName(bundleName), crc, offset);
-            return bundles.LoadAsync(filePath, crc, offset);
+                return bundles.RequestLoadAsync(GetUrlFromBundleName(bundleName), bundleName, GetEncrypt());
+            return bundles.LoadAsync(filePath, bundleName, GetEncrypt());
         }
 
         private static string GetBundleNameByAssetPath(string assetPath) => manifest.GetBundle(assetPath);
@@ -212,5 +203,44 @@ namespace IFramework.Hotfix.Asset
 
             return result;
         }
+
+
+        public static void CopyDLCFromSteam()
+        {
+            CopyDirectory(Application.streamingAssetsPath.CombinePath(buildTarget), localSaveDir);
+        }
+
+        public async static void CopyDirectory(string srcPath, string destPath)
+        {
+            try
+            {
+                DirectoryInfo dir = new DirectoryInfo(srcPath);
+                FileSystemInfo[] fileinfo = dir.GetFileSystemInfos();  //获取目录下（不包含子目录）的文件和子目录
+                foreach (FileSystemInfo i in fileinfo)
+                {
+                    string _destpath = destPath.CombinePath(i.Name);
+                    if (i is DirectoryInfo)     //判断是否文件夹
+                    {
+                        Ex.MakeDirectoryExist(_destpath);
+                        CopyDirectory(i.FullName, _destpath);    //递归调用复制子文件夹
+                    }
+                    else
+                    {
+                        using (FileStream SourceStream = File.Open(i.FullName, FileMode.Open))
+                        {
+                            using (FileStream DestinationStream = File.Create(_destpath))
+                            {
+                                await SourceStream.CopyToAsync(DestinationStream);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
+        }
+
     }
 }

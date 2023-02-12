@@ -6,20 +6,25 @@
  *Description:    Description
  *History:        2022-09-03--
 *********************************************************************************/
+using IFramework;
 using IFramework.Hotfix.Asset;
+using UnityEngine;
 
 namespace EasyMoba
 {
     public class MobaAssetsSetting : AssetsSetting
     {
+
+        private string root = Application.dataPath.CombinePath("../DLC/Windowsx");
+
         public override string GetUrlByBundleName(string buildTarget, string bundleName)
         {
-            return "";
+            return root.CombinePath(bundleName).ToRegularPath();
         }
 
         public override string GetVersionUrl()
         {
-            return "";
+            return root.CombinePath("version").ToRegularPath();
         }
     }
 }
