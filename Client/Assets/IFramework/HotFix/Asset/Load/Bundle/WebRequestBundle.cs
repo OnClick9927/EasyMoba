@@ -39,7 +39,7 @@ namespace IFramework.Hotfix.Asset
             {
                 byte[] buffer = downloader.data;
 
-                buffer = AssetEncryptStream.DeCode(loadArgs.bundeName, buffer);
+                buffer = AssetEncryptStream.DeCode(loadArgs.bundleName, buffer);
                 loadOp = await AssetBundle.LoadFromMemoryAsync(buffer);
                 SetResult(loadOp.assetBundle);
             }

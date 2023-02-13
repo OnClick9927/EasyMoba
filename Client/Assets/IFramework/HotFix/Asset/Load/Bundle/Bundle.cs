@@ -33,7 +33,7 @@ namespace IFramework.Hotfix.Asset
 
         protected override async void OnLoad()
         {
-            AssetEncryptStream fileStream = new AssetEncryptStream(loadArgs.bundeName, loadArgs.path, FileMode.Open, FileAccess.Read, FileShare.None, 1024 * 4, false);
+            AssetEncryptStream fileStream = new AssetEncryptStream(loadArgs.bundleName, loadArgs.path, FileMode.Open, FileAccess.Read, FileShare.None, 1024 * 4, false);
             loadOp = AssetBundle.LoadFromStreamAsync(fileStream);
             await this.loadOp;
             fileStream.Dispose();

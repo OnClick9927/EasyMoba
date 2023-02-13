@@ -12,14 +12,14 @@ namespace IFramework.Hotfix.Asset
     public struct BundleLoadArgs : IEventArgs
     {
         public BundleLoadType type;
-        public string bundeName;
+        public string bundleName;
         public string path;
 
-        public BundleLoadArgs(BundleLoadType type, string path,  string bundeName)
+        public BundleLoadArgs(BundleLoadType type, string path,  string bundleName)
         {
             this.type = type;
             this.path = path;
-            this.bundeName = bundeName;
+            this.bundleName = bundleName;
         }
     }
 }

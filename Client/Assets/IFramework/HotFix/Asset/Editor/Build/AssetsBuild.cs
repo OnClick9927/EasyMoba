@@ -94,7 +94,7 @@ namespace IFramework.Hotfix.Asset
             BuildAssetBundleOptions option = setting.option;
             string version_txt = setting.version;
 
-            var list = ColectAssetGroup();
+            var list = CollectAssetGroup();
             CollectMain(list);
             AssetBundleManifest main = BuildPipeline.BuildAssetBundles(outputPath, list.ConvertAll(x =>
             {
@@ -118,7 +118,7 @@ namespace IFramework.Hotfix.Asset
             AssetsInternal.CopyDirectory(outputPath, streamPath);
             AssetDatabase.Refresh();
         }
-        public static List<AssetGroup> ColectAssetGroup()
+        public static List<AssetGroup> CollectAssetGroup()
         {
             Type collectType = setting.GetBuildGroupType();
             Dictionary<AssetInfo, List<AssetInfo>> dic = cache.GetDpDic();

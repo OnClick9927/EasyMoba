@@ -37,7 +37,11 @@ namespace IFramework.Hotfix.Asset
             public Type GetSelectType()
             {
                 var type_str = types[typeIndex];
-                Type type = Type.GetType(type_str);
+                Type type = baseType.GetSubTypesInAssemblys()
+                   .Where(type => !type.IsAbstract)
+                   .ToList()
+                   .Find(x => x.FullName == type_str);
+
                 return type;
             }
         }

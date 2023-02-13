@@ -45,7 +45,7 @@ namespace IFramework.Hotfix.Asset
         private void PreView()
         {
             Colllect();
-            cache.previewBundles = AssetsBuild.ColectAssetGroup();
+            cache.previewBundles = AssetsBuild.CollectAssetGroup();
             cache.Save();
             pre.Reload();
             treeType = TreeType.Preview;

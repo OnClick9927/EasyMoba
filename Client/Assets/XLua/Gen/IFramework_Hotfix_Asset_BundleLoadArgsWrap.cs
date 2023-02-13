@@ -110,7 +110,7 @@ namespace XLua.CSObjectWrap
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			
                 IFramework.Hotfix.Asset.BundleLoadArgs gen_to_be_invoked;translator.Get(L, 1, out gen_to_be_invoked);
-                LuaAPI.lua_pushstring(L, gen_to_be_invoked.bundeName);
+                LuaAPI.lua_pushstring(L, gen_to_be_invoked.bundleName);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
@@ -158,7 +158,7 @@ namespace XLua.CSObjectWrap
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			
                 IFramework.Hotfix.Asset.BundleLoadArgs gen_to_be_invoked;translator.Get(L, 1, out gen_to_be_invoked);
-                gen_to_be_invoked.bundeName = LuaAPI.lua_tostring(L, 2);
+                gen_to_be_invoked.bundleName = LuaAPI.lua_tostring(L, 2);
             
                 translator.Update(L, 1, gen_to_be_invoked);
             
