@@ -12,8 +12,10 @@ namespace IFramework.Hotfix.Asset
 {
     partial class AssetsInternal
     {
-        private abstract class NameMap<T, V> where T : RefenceAsset<V>, IRefenceAsset
+        private abstract class NameMap<T, V> where T : Asset<V>, IAsset
         {
+            protected RefenceMap<T> refs = new RefenceMap<T>();
+
             protected Dictionary<string, T> map = new Dictionary<string, T>();
             public T Find(string name)
             {
@@ -33,22 +35,11 @@ namespace IFramework.Hotfix.Asset
                 {
                     result = CreateNew(name, args);
                     map.Add(name, result);
-                    (result as IRefenceAsset).LoadAsync();
+                    (result as IAsset).LoadAsync();
                 }
-                result.Retain();
+                refs.Retain(result);
                 return result;
             }
-
-            public int GetCount(string name)
-            {
-                T result = null;
-                if (!map.TryGetValue(name, out result))
-                {
-                    return 0;
-                }
-                return result.count;
-            }
-
             public abstract void Release(string name);
         }
     }

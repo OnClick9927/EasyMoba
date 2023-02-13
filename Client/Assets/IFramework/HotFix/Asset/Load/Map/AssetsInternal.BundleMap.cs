@@ -7,23 +7,26 @@
  *History:        2018.11--
 *********************************************************************************/
 
+using System.Collections.Generic;
 using UnityEngine;
+
 namespace IFramework.Hotfix.Asset
 {
     partial class AssetsInternal
     {
+
+
         private class BundleMap : NameMap<Bundle, AssetBundle>
         {
-
-            public Bundle LoadAsync(string path,string bundleName, bool encrypt)
+            public Bundle LoadAsync(string path, string bundleName)
             {
-                BundleLoadArgs args = new BundleLoadArgs(BundleLoadType.FromFile, path, encrypt, bundleName);
+                BundleLoadArgs args = new BundleLoadArgs(BundleLoadType.FromFile, path, bundleName);
                 Bundle bundle = base.LoadAsync(path, args);
                 return bundle;
             }
-            public Bundle RequestLoadAsync(string url, string bundleName, bool encrypt)
+            public Bundle RequestLoadAsync(string url, string bundleName)
             {
-                BundleLoadArgs args = new BundleLoadArgs(BundleLoadType.FromRequest, url, encrypt, bundleName);
+                BundleLoadArgs args = new BundleLoadArgs(BundleLoadType.FromRequest, url, bundleName);
                 Bundle bundle = base.LoadAsync(url, args);
                 return bundle;
             }
@@ -40,12 +43,33 @@ namespace IFramework.Hotfix.Asset
                 Bundle result = null;
                 if (map.TryGetValue(name, out result))
                 {
-                    (result as IRefenceAsset).Release();
-                    if ((result as IRefenceAsset).count == 0)
+                    refs.Release(result);
+                    if (!GetAutoUnloadBundle()) return;
+                    if (refs.GetCount(result) == 0)
                     {
-                        (result as IRefenceAsset).UnLoad();
+                        (result as IAsset).UnLoad();
                         map.Remove(name);
                     }
+                }
+            }
+            private List<string> useless = new List<string>();
+            public void UnloadBundles()
+            {
+                if (GetAutoUnloadBundle()) return;
+                useless.Clear();
+                foreach (var item in map)
+                {
+                    if (refs.GetCount(item.Value)==0)
+                    {
+                        useless.Add(item.Key);
+                    }
+                }
+                for (int i = 0; i < useless.Count; i++)
+                {
+                    string name = useless[i];
+                    Bundle result = map[name];
+                    (result as IAsset).UnLoad();
+                    map.Remove(name);
                 }
             }
         }

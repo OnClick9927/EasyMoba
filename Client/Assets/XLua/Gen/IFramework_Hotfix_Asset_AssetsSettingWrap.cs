@@ -188,7 +188,7 @@ namespace XLua.CSObjectWrap
                 {
                     
                         var gen_ret = gen_to_be_invoked.GetEncrypt(  );
-                        LuaAPI.lua_pushboolean(L, gen_ret);
+                        translator.PushAny(L, gen_ret);
                     
                     
                     

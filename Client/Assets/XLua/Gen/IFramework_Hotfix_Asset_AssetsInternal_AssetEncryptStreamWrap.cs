@@ -15,12 +15,12 @@ using System.Collections.Generic;
 namespace XLua.CSObjectWrap
 {
     using Utils = XLua.Utils;
-    public class IFrameworkHotfixAssetAssetsInternalEncryptStreamWrap 
+    public class IFrameworkHotfixAssetAssetsInternalAssetEncryptStreamWrap 
     {
         public static void __Register(RealStatePtr L)
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			System.Type type = typeof(IFramework.Hotfix.Asset.AssetsInternal.EncryptStream);
+			System.Type type = typeof(IFramework.Hotfix.Asset.AssetsInternal.AssetEncryptStream);
 			Utils.BeginObjectRegister(type, L, translator, 0, 2, 0, 0);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Read", _m_Read);
@@ -34,8 +34,8 @@ namespace XLua.CSObjectWrap
 			    null, null, null);
 
 		    Utils.BeginClassRegister(type, L, __CreateInstance, 3, 0, 0);
-			Utils.RegisterFunc(L, Utils.CLS_IDX, "EnCode", _m_EnCode_xlua_st_);
-            Utils.RegisterFunc(L, Utils.CLS_IDX, "DeCode", _m_DeCode_xlua_st_);
+			Utils.RegisterFunc(L, Utils.CLS_IDX, "DeCode", _m_DeCode_xlua_st_);
+            Utils.RegisterFunc(L, Utils.CLS_IDX, "EnCode", _m_EnCode_xlua_st_);
             
 			
             
@@ -61,7 +61,7 @@ namespace XLua.CSObjectWrap
 					int _bufferSize = LuaAPI.xlua_tointeger(L, 7);
 					bool _useAsync = LuaAPI.lua_toboolean(L, 8);
 					
-					var gen_ret = new IFramework.Hotfix.Asset.AssetsInternal.EncryptStream(_bundleName, _path, _mode, _access, _share, _bufferSize, _useAsync);
+					var gen_ret = new IFramework.Hotfix.Asset.AssetsInternal.AssetEncryptStream(_bundleName, _path, _mode, _access, _share, _bufferSize, _useAsync);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -72,7 +72,7 @@ namespace XLua.CSObjectWrap
 					string _path = LuaAPI.lua_tostring(L, 3);
 					System.IO.FileMode _mode;translator.Get(L, 4, out _mode);
 					
-					var gen_ret = new IFramework.Hotfix.Asset.AssetsInternal.EncryptStream(_bundleName, _path, _mode);
+					var gen_ret = new IFramework.Hotfix.Asset.AssetsInternal.AssetEncryptStream(_bundleName, _path, _mode);
 					translator.Push(L, gen_ret);
                     
 					return 1;
@@ -82,7 +82,7 @@ namespace XLua.CSObjectWrap
 			catch(System.Exception gen_e) {
 				return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
 			}
-            return LuaAPI.luaL_error(L, "invalid arguments to IFramework.Hotfix.Asset.AssetsInternal.EncryptStream constructor!");
+            return LuaAPI.luaL_error(L, "invalid arguments to IFramework.Hotfix.Asset.AssetsInternal.AssetEncryptStream constructor!");
             
         }
         
@@ -101,7 +101,7 @@ namespace XLua.CSObjectWrap
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
             
             
-                IFramework.Hotfix.Asset.AssetsInternal.EncryptStream gen_to_be_invoked = (IFramework.Hotfix.Asset.AssetsInternal.EncryptStream)translator.FastGetCSObj(L, 1);
+                IFramework.Hotfix.Asset.AssetsInternal.AssetEncryptStream gen_to_be_invoked = (IFramework.Hotfix.Asset.AssetsInternal.AssetEncryptStream)translator.FastGetCSObj(L, 1);
             
             
                 
@@ -132,7 +132,7 @@ namespace XLua.CSObjectWrap
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
             
             
-                IFramework.Hotfix.Asset.AssetsInternal.EncryptStream gen_to_be_invoked = (IFramework.Hotfix.Asset.AssetsInternal.EncryptStream)translator.FastGetCSObj(L, 1);
+                IFramework.Hotfix.Asset.AssetsInternal.AssetEncryptStream gen_to_be_invoked = (IFramework.Hotfix.Asset.AssetsInternal.AssetEncryptStream)translator.FastGetCSObj(L, 1);
             
             
                 
@@ -155,7 +155,7 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_EnCode_xlua_st_(RealStatePtr L)
+        static int _m_DeCode_xlua_st_(RealStatePtr L)
         {
 		    try {
             
@@ -166,7 +166,7 @@ namespace XLua.CSObjectWrap
                     string _bundleName = LuaAPI.lua_tostring(L, 1);
                     byte[] _buffer = LuaAPI.lua_tobytes(L, 2);
                     
-                        var gen_ret = IFramework.Hotfix.Asset.AssetsInternal.EncryptStream.EnCode( _bundleName, _buffer );
+                        var gen_ret = IFramework.Hotfix.Asset.AssetsInternal.AssetEncryptStream.DeCode( _bundleName, _buffer );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     
@@ -181,7 +181,7 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_DeCode_xlua_st_(RealStatePtr L)
+        static int _m_EnCode_xlua_st_(RealStatePtr L)
         {
 		    try {
             
@@ -192,7 +192,7 @@ namespace XLua.CSObjectWrap
                     string _bundleName = LuaAPI.lua_tostring(L, 1);
                     byte[] _buffer = LuaAPI.lua_tobytes(L, 2);
                     
-                        var gen_ret = IFramework.Hotfix.Asset.AssetsInternal.EncryptStream.DeCode( _bundleName, _buffer );
+                        var gen_ret = IFramework.Hotfix.Asset.AssetsInternal.AssetEncryptStream.EnCode( _bundleName, _buffer );
                         LuaAPI.lua_pushstring(L, gen_ret);
                     
                     

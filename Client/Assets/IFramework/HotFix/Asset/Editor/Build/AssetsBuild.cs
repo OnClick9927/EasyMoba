@@ -14,7 +14,6 @@ using System;
 using UnityEngine.U2D;
 using UnityEditor.U2D;
 using System.Linq;
-using static IFramework.Hotfix.Asset.AssetsInternal;
 
 namespace IFramework.Hotfix.Asset
 {
@@ -61,16 +60,13 @@ namespace IFramework.Hotfix.Asset
 
         private static void Encrypt(string outputPath, string[] bundles)
         {
-            if (!setting.encrypt) return;
+            Type type = setting.GetStreamEncryptType();
+            IAssetStraemEncrypt en = Activator.CreateInstance(type) as IAssetStraemEncrypt;
             foreach (var abPath in bundles)
             {
                 string filepath = outputPath.CombinePath(abPath);
                 var data = File.ReadAllBytes(filepath);
-
-                using (var myStream = new EncryptStream(abPath,filepath, FileMode.Create))
-                {
-                    myStream.Write(data, 0, data.Length);
-                }
+                File.WriteAllBytes(filepath, en.EnCode(abPath,data));
             }
 
         }

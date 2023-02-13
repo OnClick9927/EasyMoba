@@ -19,24 +19,45 @@ namespace IFramework.Hotfix.Asset
 
     class AssetBuildSetting : ScriptableObject
     {
-        public string[] types;
-        public string[] shortTypes;
-        public int typeIndex;
+        public class TypeSelect
+        {
+            public string[] types;
+            public string[] shortTypes;
+            public int typeIndex;
+            public Type baseType;
+            public void Enable()
+            {
+                types = baseType.GetSubTypesInAssemblys()
+               .Where(type => !type.IsAbstract)
+               .Select(type => type.FullName).ToArray();
+                shortTypes = baseType.GetSubTypesInAssemblys()
+                      .Where(type => !type.IsAbstract)
+                      .Select(type => type.Name).ToArray();
+            }
+            public Type GetSelectType()
+            {
+                var type_str = types[typeIndex];
+                Type type = Type.GetType(type_str);
+                return type;
+            }
+        }
+        public TypeSelect buildGroup = new TypeSelect();
+        public TypeSelect encrypt = new TypeSelect();
 
         private void OnEnable()
         {
-            types = typeof(ICollectAssetGroup).GetSubTypesInAssemblys()
-                   .Where(type => !type.IsAbstract)
-                   .Select(type => type.FullName).ToArray();
-            shortTypes = typeof(ICollectAssetGroup).GetSubTypesInAssemblys()
-                  .Where(type => !type.IsAbstract)
-                  .Select(type => type.Name).ToArray();
+            encrypt.baseType = typeof(IAssetStraemEncrypt);
+            buildGroup.baseType = typeof(ICollectAssetGroup);
+            buildGroup.Enable();
+            encrypt.Enable();
         }
         public Type GetBuildGroupType()
         {
-            var type_str = types[typeIndex];
-            Type type = Type.GetType(type_str);
-            return type;
+            return buildGroup.GetSelectType();
+        }
+        public Type GetStreamEncryptType()
+        {
+            return encrypt.GetSelectType();
         }
         public bool fastMode = true;
         public string version = "0.0.1";
@@ -101,7 +122,6 @@ namespace IFramework.Hotfix.Asset
         private static string stoPath { get { return EditorEnvPath.projectMemoryPath.CombinePath("AssetBuildSetting.asset"); } }
 
         public BuildAssetBundleOptions option;
-        public bool encrypt;
         public static AssetBuildSetting Load()
         {
             if (File.Exists(stoPath))

@@ -7,15 +7,11 @@
  *History:        2018.11--
 *********************************************************************************/
 
-using System;
-
 namespace IFramework.Hotfix.Asset
 {
-    public interface IAssetOperation
+    public interface IAsset
     {
-        string error { get; }
-        bool isDone { get; }
-        float progress { get; }
-        event Action completed;
+        void UnLoad();
+        void LoadAsync();
     }
 }

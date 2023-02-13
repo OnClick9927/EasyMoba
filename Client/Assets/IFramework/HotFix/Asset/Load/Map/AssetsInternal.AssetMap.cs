@@ -7,9 +7,7 @@
  *History:        2018.11--
 *********************************************************************************/
 
-using System;
 using System.Collections.Generic;
-using UnityEngine.SceneManagement;
 using Object = UnityEngine.Object;
 namespace IFramework.Hotfix.Asset
 {
@@ -37,12 +35,12 @@ namespace IFramework.Hotfix.Asset
                 Asset result = null;
                 if (map.TryGetValue(path, out result))
                 {
-                    (result as IRefenceAsset).Release();
+                    refs.Release(result);
                     AssetsInternal.ReleseBundleByAssetPath(result.path);
                     ReleaseDpAssets(result.path);
-                    if ((result as IRefenceAsset).count == 0)
+                    if (refs.GetCount(result) == 0)
                     {
-                        (result as IRefenceAsset).UnLoad();
+                        (result as IAsset).UnLoad();
                         map.Remove(path);
                     }
                 }

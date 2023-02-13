@@ -14,7 +14,7 @@ using static IFramework.Hotfix.Asset.AssetsInternal;
 
 namespace IFramework.Hotfix.Asset
 {
-    public class Bundle : RefenceAsset<AssetBundle>
+    public class Bundle : Asset<AssetBundle>
     {
         protected BundleLoadArgs loadArgs;
         private AssetBundleCreateRequest loadOp;
@@ -33,21 +33,10 @@ namespace IFramework.Hotfix.Asset
 
         protected override async void OnLoad()
         {
-            EncryptStream fileStream = null;
-            if (loadArgs.encrypt)
-            {
-                fileStream = new EncryptStream(loadArgs.bundeName,loadArgs.path, FileMode.Open, FileAccess.Read, FileShare.None, 1024 * 4, false);
-                loadOp = AssetBundle.LoadFromStreamAsync(fileStream);
-            }
-            else
-            {
-                loadOp = AssetBundle.LoadFromFileAsync(loadArgs.path);
-            }
+            AssetEncryptStream fileStream = new AssetEncryptStream(loadArgs.bundeName, loadArgs.path, FileMode.Open, FileAccess.Read, FileShare.None, 1024 * 4, false);
+            loadOp = AssetBundle.LoadFromStreamAsync(fileStream);
             await this.loadOp;
-            if (loadArgs.encrypt)
-            {
-                fileStream.Dispose();
-            }
+            fileStream.Dispose();
             SetResult(loadOp.assetBundle);
         }
 

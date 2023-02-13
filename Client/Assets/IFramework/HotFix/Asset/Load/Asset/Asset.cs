@@ -12,7 +12,7 @@ using UnityEngine;
 using Object = UnityEngine.Object;
 namespace IFramework.Hotfix.Asset
 {
-    public class Asset : RefenceAsset<Object>
+    public class Asset : Asset<Object>
     {
         public Bundle bundle;
         private AssetBundleRequest loadOp;

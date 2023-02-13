@@ -43,10 +43,11 @@ namespace IFramework.Hotfix.Asset
             EditorGUILayout.PropertyField(prop, new GUIContent("Ignore File Extends"), true);
             prop = obj.FindProperty("buildPaths");
             EditorGUILayout.PropertyField(prop, new GUIContent("Build Directory List"), true);
-            buildSetting.encrypt = EditorGUILayout.Toggle("Encrypt", buildSetting.encrypt);
 
             buildSetting.version = EditorGUILayout.TextField("Version", buildSetting.version);
-            buildSetting.typeIndex = EditorGUILayout.Popup("AssetGroup", buildSetting.typeIndex, buildSetting.shortTypes);
+            buildSetting.buildGroup.typeIndex = EditorGUILayout.Popup("AssetGroup", buildSetting.buildGroup.typeIndex, buildSetting.buildGroup.shortTypes);
+            buildSetting.encrypt.typeIndex = EditorGUILayout.Popup("Encrypt", buildSetting.encrypt.typeIndex, buildSetting.encrypt.shortTypes);
+
             var op = (BuildAssetBundleOptions)EditorGUILayout.EnumFlagsField("BuildAssetBundleOptions", buildSetting.option);
             if (buildSetting.option != op)
             {

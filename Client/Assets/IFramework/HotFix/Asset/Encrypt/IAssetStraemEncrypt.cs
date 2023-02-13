@@ -9,17 +9,9 @@
 
 namespace IFramework.Hotfix.Asset
 {
-    public struct BundleLoadArgs : IEventArgs
+    public interface IAssetStraemEncrypt
     {
-        public BundleLoadType type;
-        public string bundeName;
-        public string path;
-
-        public BundleLoadArgs(BundleLoadType type, string path,  string bundeName)
-        {
-            this.type = type;
-            this.path = path;
-            this.bundeName = bundeName;
-        }
+        byte[] EnCode(string bundleName, byte[] buffer);
+        byte[] DeCode(string bundleName, byte[] buffer);
     }
 }

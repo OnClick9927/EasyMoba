@@ -16,6 +16,8 @@ namespace IFramework.Hotfix.Asset
         public virtual FileCheckType GetFileCheckType() { return FileCheckType.MD5; }
         public virtual int GetWebRequestTimeout() { return 30; }
 
-        public virtual bool GetEncrypt() { return true; }
+        public virtual IAssetStraemEncrypt GetEncrypt() { return new DefaultAssetStraemEncrypt(); }
+        public virtual bool GetAutoUnloadBundle() { return true; }
+
     }
 }

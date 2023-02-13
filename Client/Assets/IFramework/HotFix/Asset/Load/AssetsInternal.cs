@@ -59,39 +59,13 @@ namespace IFramework.Hotfix.Asset
         public static IReadOnlyList<string> GetAllAssetPaths() => mode.GetAllAssetPaths();
 
 
-
         public static void SetAssetsSetting(AssetsSetting setting) => AssetsInternal.setting = setting;
-        private static void CheckSetting()
-        {
-            if (setting == null)
-                LogError("setting is null");
-        }
-        private static int GetWebRequestTimeout()
-        {
-            CheckSetting();
-            return setting.GetWebRequestTimeout();
-        }
-        public static FileCheckType GetFileCheckType()
-        {
-            CheckSetting();
-            return setting.GetFileCheckType();
-        }
-        public static string GetUrlFromBundleName(string bundleName)
-        {
-            CheckSetting();
-            return setting.GetUrlByBundleName(buildTarget, bundleName);
-        }
-        public static string GetVersionUrl()
-        {
-            CheckSetting();
-            return setting.GetVersionUrl();
-        }
-        public static bool GetEncrypt()
-        {
-            CheckSetting();
-            return setting.GetEncrypt();
-        }
-
+        private static int GetWebRequestTimeout() => setting.GetWebRequestTimeout();
+        public static FileCheckType GetFileCheckType() => setting.GetFileCheckType();
+        public static string GetUrlFromBundleName(string bundleName) => setting.GetUrlByBundleName(buildTarget, bundleName);
+        public static string GetVersionUrl() => setting.GetVersionUrl();
+        public static IAssetStraemEncrypt GetEncrypt() => setting.GetEncrypt();
+        public static bool GetAutoUnloadBundle() => setting.GetAutoUnloadBundle();
 
 
 
@@ -106,7 +80,7 @@ namespace IFramework.Hotfix.Asset
             }
             return files;
         }
-
+        public static void UnloadBundles() => bundles.UnloadBundles();
 
         private static bool IsManifestNull() => manifest == null;
 
@@ -114,16 +88,12 @@ namespace IFramework.Hotfix.Asset
         {
             string filePath = GetBundleLocalPath(bundleName);
             if (!File.Exists(filePath))
-                return bundles.RequestLoadAsync(GetUrlFromBundleName(bundleName), bundleName, GetEncrypt());
-            return bundles.LoadAsync(filePath, bundleName, GetEncrypt());
+                return bundles.RequestLoadAsync(GetUrlFromBundleName(bundleName), bundleName);
+            return bundles.LoadAsync(filePath, bundleName);
         }
 
         private static string GetBundleNameByAssetPath(string assetPath) => manifest.GetBundle(assetPath);
-        private static Bundle LoadBundleByAssetPath(string assetPath)
-        {
-            string bundleName = GetBundleNameByAssetPath(assetPath);
-            return LoadBundleAsync(bundleName);
-        }
+        private static Bundle LoadBundleByAssetPath(string assetPath) => LoadBundleAsync(GetBundleNameByAssetPath(assetPath));
         private static void ReleseBundleByAssetPath(string assetpath)
         {
             if (IsManifestNull()) return;

@@ -8,6 +8,7 @@
 *********************************************************************************/
 
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using static IFramework.Hotfix.Asset.AssetsInternal;
 
@@ -59,6 +60,8 @@ namespace IFramework.Hotfix.Asset
                 manifestop = new LoadManifestOperation();
             return manifestop;
         }
+
+        public static void UnloadBundles() => AssetsInternal.UnloadBundles();
 
         public static Asset LoadAssetAsync(string path)
         {

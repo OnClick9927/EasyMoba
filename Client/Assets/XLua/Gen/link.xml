@@ -354,16 +354,18 @@
 		<type fullname="IFramework.Hotfix.Asset.Assets" preserve="all"/>
 		<type fullname="IFramework.Hotfix.Asset.AssetsAsyncSupport" preserve="all"/>
 		<type fullname="IFramework.Hotfix.Asset.AssetsSetting" preserve="all"/>
+		<type fullname="IFramework.Hotfix.Asset.AssetsInternal" preserve="all"/>
+		<type fullname="IFramework.Hotfix.Asset.DefaultAssetStraemEncrypt" preserve="all"/>
+		<type fullname="IFramework.Hotfix.Asset.NoneAssetStraemEncrypt" preserve="all"/>
 		<type fullname="IFramework.Hotfix.Asset.Asset" preserve="all"/>
 		<type fullname="IFramework.Hotfix.Asset.AssetLoadArgs" preserve="all"/>
-		<type fullname="IFramework.Hotfix.Asset.AssetOperation" preserve="all"/>
 		<type fullname="IFramework.Hotfix.Asset.SceneAsset" preserve="all"/>
 		<type fullname="IFramework.Hotfix.Asset.SceneAssetLoadArgs" preserve="all"/>
 		<type fullname="IFramework.Hotfix.Asset.AssetManifest" preserve="all"/>
-		<type fullname="IFramework.Hotfix.Asset.AssetsInternal" preserve="all"/>
 		<type fullname="IFramework.Hotfix.Asset.Bundle" preserve="all"/>
 		<type fullname="IFramework.Hotfix.Asset.BundleLoadArgs" preserve="all"/>
 		<type fullname="IFramework.Hotfix.Asset.WebRequestBundle" preserve="all"/>
+		<type fullname="IFramework.Hotfix.Asset.AssetOperation" preserve="all"/>
 		<type fullname="IFramework.Hotfix.Asset.AssetsVersion" preserve="all"/>
 		<type fullname="IFramework.Hotfix.Asset.LocalSetting" preserve="all"/>
 		<type fullname="IFramework.Hotfix.Asset.AssetExample" preserve="all"/>
@@ -397,12 +399,12 @@
 		<type fullname="IFramework.Hotfix.Asset.AssetsAsyncSupport+LoadManifestOperationAwaiter" preserve="all"/>
 		<type fullname="IFramework.Hotfix.Asset.AssetsAsyncSupport+AssetsGroupOperationAwaiter" preserve="all"/>
 		<type fullname="IFramework.Hotfix.Asset.AssetsAsyncSupport+InstantiateObjectOperationAwaiter" preserve="all"/>
-		<type fullname="IFramework.Hotfix.Asset.AssetManifest+AssetData" preserve="all"/>
+		<type fullname="IFramework.Hotfix.Asset.AssetsInternal+AssetEncryptStream" preserve="all"/>
 		<type fullname="IFramework.Hotfix.Asset.AssetsInternal+LoadManifestOperation" preserve="all"/>
-		<type fullname="IFramework.Hotfix.Asset.AssetsInternal+EncryptStream" preserve="all"/>
 		<type fullname="IFramework.Hotfix.Asset.AssetsInternal+CheckBundleVersionOperation" preserve="all"/>
 		<type fullname="IFramework.Hotfix.Asset.AssetsInternal+DownLoadBundleOperation" preserve="all"/>
 		<type fullname="IFramework.Hotfix.Asset.AssetsInternal+Downloader" preserve="all"/>
+		<type fullname="IFramework.Hotfix.Asset.AssetManifest+AssetData" preserve="all"/>
 		<type fullname="IFramework.Hotfix.Asset.AssetsVersion+VersionData" preserve="all"/>
 		
 	</assembly>

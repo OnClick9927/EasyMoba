@@ -38,10 +38,8 @@ namespace IFramework.Hotfix.Asset
             if (!downloader.isError)
             {
                 byte[] buffer = downloader.data;
-                if (loadArgs.encrypt)
-                {
-                    buffer = EncryptStream.DeCode(loadArgs.bundeName,buffer);
-                }
+
+                buffer = AssetEncryptStream.DeCode(loadArgs.bundeName, buffer);
                 loadOp = await AssetBundle.LoadFromMemoryAsync(buffer);
                 SetResult(loadOp.assetBundle);
             }

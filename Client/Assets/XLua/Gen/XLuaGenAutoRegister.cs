@@ -1634,13 +1634,19 @@ namespace XLua.CSObjectWrap
             translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetsSetting), IFrameworkHotfixAssetAssetsSettingWrap.__Register);
         
         
+            translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetsInternal), IFrameworkHotfixAssetAssetsInternalWrap.__Register);
+        
+        
+            translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.DefaultAssetStraemEncrypt), IFrameworkHotfixAssetDefaultAssetStraemEncryptWrap.__Register);
+        
+        
+            translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.NoneAssetStraemEncrypt), IFrameworkHotfixAssetNoneAssetStraemEncryptWrap.__Register);
+        
+        
             translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.Asset), IFrameworkHotfixAssetAssetWrap.__Register);
         
         
             translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetLoadArgs), IFrameworkHotfixAssetAssetLoadArgsWrap.__Register);
-        
-        
-            translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetOperation), IFrameworkHotfixAssetAssetOperationWrap.__Register);
         
         
             translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.SceneAsset), IFrameworkHotfixAssetSceneAssetWrap.__Register);
@@ -1652,9 +1658,6 @@ namespace XLua.CSObjectWrap
             translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetManifest), IFrameworkHotfixAssetAssetManifestWrap.__Register);
         
         
-            translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetsInternal), IFrameworkHotfixAssetAssetsInternalWrap.__Register);
-        
-        
             translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.Bundle), IFrameworkHotfixAssetBundleWrap.__Register);
         
         
@@ -1662,6 +1665,9 @@ namespace XLua.CSObjectWrap
         
         
             translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.WebRequestBundle), IFrameworkHotfixAssetWebRequestBundleWrap.__Register);
+        
+        
+            translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetOperation), IFrameworkHotfixAssetAssetOperationWrap.__Register);
         
         
             translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetsVersion), IFrameworkHotfixAssetAssetsVersionWrap.__Register);
@@ -1738,16 +1744,16 @@ namespace XLua.CSObjectWrap
         
             translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetsAsyncSupport.AssetAwaiter), IFrameworkHotfixAssetAssetsAsyncSupportAssetAwaiterWrap.__Register);
         
+        }
+        
+        static void wrapInit11(LuaEnv luaenv, ObjectTranslator translator)
+        {
         
             translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetsAsyncSupport.BundleAwaiter), IFrameworkHotfixAssetAssetsAsyncSupportBundleAwaiterWrap.__Register);
         
         
             translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetsAsyncSupport.AssetBundleRequestAwaiter), IFrameworkHotfixAssetAssetsAsyncSupportAssetBundleRequestAwaiterWrap.__Register);
         
-        }
-        
-        static void wrapInit11(LuaEnv luaenv, ObjectTranslator translator)
-        {
         
             translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetsAsyncSupport.AssetBundleCreateRequestAwaiter), IFrameworkHotfixAssetAssetsAsyncSupportAssetBundleCreateRequestAwaiterWrap.__Register);
         
@@ -1767,13 +1773,10 @@ namespace XLua.CSObjectWrap
             translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetsAsyncSupport.InstantiateObjectOperationAwaiter), IFrameworkHotfixAssetAssetsAsyncSupportInstantiateObjectOperationAwaiterWrap.__Register);
         
         
-            translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetManifest.AssetData), IFrameworkHotfixAssetAssetManifestAssetDataWrap.__Register);
+            translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetsInternal.AssetEncryptStream), IFrameworkHotfixAssetAssetsInternalAssetEncryptStreamWrap.__Register);
         
         
             translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetsInternal.LoadManifestOperation), IFrameworkHotfixAssetAssetsInternalLoadManifestOperationWrap.__Register);
-        
-        
-            translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetsInternal.EncryptStream), IFrameworkHotfixAssetAssetsInternalEncryptStreamWrap.__Register);
         
         
             translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetsInternal.CheckBundleVersionOperation), IFrameworkHotfixAssetAssetsInternalCheckBundleVersionOperationWrap.__Register);
@@ -1783,6 +1786,9 @@ namespace XLua.CSObjectWrap
         
         
             translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetsInternal.Downloader), IFrameworkHotfixAssetAssetsInternalDownloaderWrap.__Register);
+        
+        
+            translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetManifest.AssetData), IFrameworkHotfixAssetAssetManifestAssetDataWrap.__Register);
         
         
             translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetsVersion.VersionData), IFrameworkHotfixAssetAssetsVersionVersionDataWrap.__Register);
@@ -1895,16 +1901,16 @@ namespace XLua.CSObjectWrap
         
             translator.DelayWrapLoader(typeof(IFramework.Serialization.BoolStringConverter), IFrameworkSerializationBoolStringConverterWrap.__Register);
         
+        }
+        
+        static void wrapInit12(LuaEnv luaenv, ObjectTranslator translator)
+        {
         
             translator.DelayWrapLoader(typeof(IFramework.Serialization.ByteStringConverter), IFrameworkSerializationByteStringConverterWrap.__Register);
         
         
             translator.DelayWrapLoader(typeof(IFramework.Serialization.CharStringConverter), IFrameworkSerializationCharStringConverterWrap.__Register);
         
-        }
-        
-        static void wrapInit12(LuaEnv luaenv, ObjectTranslator translator)
-        {
         
             translator.DelayWrapLoader(typeof(IFramework.Serialization.DateTimeStringConverter), IFrameworkSerializationDateTimeStringConverterWrap.__Register);
         
@@ -2052,16 +2058,16 @@ namespace XLua.CSObjectWrap
         
             translator.DelayWrapLoader(typeof(IFramework.Coroutine.WaitForSeconds), IFrameworkCoroutineWaitForSecondsWrap.__Register);
         
+        }
+        
+        static void wrapInit13(LuaEnv luaenv, ObjectTranslator translator)
+        {
         
             translator.DelayWrapLoader(typeof(IFramework.Coroutine.WaitForTicks), IFrameworkCoroutineWaitForTicksWrap.__Register);
         
         
             translator.DelayWrapLoader(typeof(IFramework.Coroutine.WaitForTimeSpan), IFrameworkCoroutineWaitForTimeSpanWrap.__Register);
         
-        }
-        
-        static void wrapInit13(LuaEnv luaenv, ObjectTranslator translator)
-        {
         
             translator.DelayWrapLoader(typeof(IFramework.Coroutine.WaitUtil), IFrameworkCoroutineWaitUtilWrap.__Register);
         

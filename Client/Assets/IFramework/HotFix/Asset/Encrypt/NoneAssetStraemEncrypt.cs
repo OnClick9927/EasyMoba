@@ -9,17 +9,16 @@
 
 namespace IFramework.Hotfix.Asset
 {
-    public interface IRefenceAsset
+    public class NoneAssetStraemEncrypt : IAssetStraemEncrypt
     {
-        int count
+        public byte[] DeCode(string bundleName, byte[] buffer)
         {
-            get;
+            return buffer;
         }
 
-        void Retain();
-
-        void Release();
-        void UnLoad();
-        void LoadAsync();
+        public byte[] EnCode(string bundleName, byte[] buffer)
+        {
+            return buffer;
+        }
     }
 }

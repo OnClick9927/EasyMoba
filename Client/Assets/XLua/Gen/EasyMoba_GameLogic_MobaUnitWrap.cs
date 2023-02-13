@@ -21,8 +21,9 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(EasyMoba.GameLogic.MobaUnit);
-			Utils.BeginObjectRegister(type, L, translator, 0, 0, 4, 2);
+			Utils.BeginObjectRegister(type, L, translator, 0, 1, 4, 2);
 			
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "OnMobaCreate", _m_OnMobaCreate);
 			
 			
 			Utils.RegisterFunc(L, Utils.GETTER_IDX, "type", _g_get_type);
@@ -59,6 +60,33 @@ namespace XLua.CSObjectWrap
         
         
         
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_OnMobaCreate(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                EasyMoba.GameLogic.MobaUnit gen_to_be_invoked = (EasyMoba.GameLogic.MobaUnit)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    
+                    gen_to_be_invoked.OnMobaCreate(  );
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
         
         
         

@@ -8,21 +8,20 @@
 *********************************************************************************/
 
 using System.IO;
-using UnityEngine;
 
 namespace IFramework.Hotfix.Asset
 {
     public partial class AssetsInternal
     {
-        public class EncryptStream : FileStream
+        public class AssetEncryptStream : FileStream
         {
 
             private string bundleName;
-            public EncryptStream(string bundleName, string path, FileMode mode, FileAccess access, FileShare share, int bufferSize, bool useAsync) : base(path, mode, access, share, bufferSize, useAsync)
+            public AssetEncryptStream(string bundleName, string path, FileMode mode, FileAccess access, FileShare share, int bufferSize, bool useAsync) : base(path, mode, access, share, bufferSize, useAsync)
             {
                 this.bundleName = bundleName;
             }
-            public EncryptStream(string bundleName, string path, FileMode mode) : base(path, mode)
+            public AssetEncryptStream(string bundleName, string path, FileMode mode) : base(path, mode)
             {
                 this.bundleName = bundleName;
             }
@@ -36,26 +35,16 @@ namespace IFramework.Hotfix.Asset
             public override void Write(byte[] array, int offset, int count)
             {
                 EnCode(bundleName, array);
-
                 base.Write(array, offset, count);
+            }
+
+            public static byte[] DeCode(string bundleName, byte[] buffer)
+            {
+                return GetEncrypt().DeCode(bundleName, buffer);
             }
             public static byte[] EnCode(string bundleName, byte[] buffer)
             {
-                for (int i = 0; i < buffer.Length; i++)
-                {
-                    byte key = (byte)bundleName[(int)Mathf.Repeat(i, bundleName.Length)];
-                    buffer[i] ^= key;
-                }
-                return buffer;
-            }
-            public static byte[] DeCode(string bundleName, byte[] buffer)
-            {
-                for (int i = 0; i < buffer.Length; i++)
-                {
-                    byte key = (byte)bundleName[(int)Mathf.Repeat(i, bundleName.Length)];
-                    buffer[i] ^= key;
-                }
-                return buffer;
+                return GetEncrypt().EnCode(bundleName, buffer);
             }
         }
 

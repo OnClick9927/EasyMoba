@@ -11,7 +11,7 @@ using System;
 
 namespace IFramework.Hotfix.Asset
 {
-    public abstract class AssetOperation : IAssetOperation
+    public abstract class AssetOperation 
     {
         public bool isDone { get; private set; }
 

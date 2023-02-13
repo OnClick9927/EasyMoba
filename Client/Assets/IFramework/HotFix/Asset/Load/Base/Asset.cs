@@ -7,32 +7,20 @@
  *History:        2018.11--
 *********************************************************************************/
 
-using System;
 namespace IFramework.Hotfix.Asset
 {
-    public abstract class RefenceAsset<T> : AssetOperation, IRefenceAsset
+    public abstract class Asset<T> : AssetOperation, IAsset
     {
-        private int _count;
-        int IRefenceAsset.count => _count;
         public T value { get; private set; }
 
-        void IRefenceAsset.LoadAsync()
+        void IAsset.LoadAsync()
         {
             OnLoad();
         }
-        void IRefenceAsset.UnLoad()
+        void IAsset.UnLoad()
         {
             OnUnLoad();
         }
-        void IRefenceAsset.Retain()
-        {
-            _count++;
-        }
-        void IRefenceAsset.Release()
-        {
-            _count--;
-        }
-
 
         protected abstract void OnUnLoad();
         protected abstract void OnLoad();

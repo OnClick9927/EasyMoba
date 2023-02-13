@@ -224,13 +224,15 @@ namespace XLua.CSObjectWrap
         {
 		    try {
             
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
             
             
                 
                 {
                     
                         var gen_ret = IFramework.Hotfix.Asset.AssetsInternal.GetEncrypt(  );
-                        LuaAPI.lua_pushboolean(L, gen_ret);
+                        translator.PushAny(L, gen_ret);
                     
                     
                     
