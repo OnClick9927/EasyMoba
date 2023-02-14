@@ -27,7 +27,7 @@ namespace IFramework.Hotfix.Asset
         private enum TreeType
         {
             Collect,
-            Preview
+            Group
         }
         private TreeType treeType = TreeType.Collect;
 
@@ -48,7 +48,7 @@ namespace IFramework.Hotfix.Asset
             cache.previewBundles = AssetsBuild.CollectAssetGroup();
             cache.Save();
             pre.Reload();
-            treeType = TreeType.Preview;
+            treeType = TreeType.Group;
         }
         private void OnEnable()
         {
@@ -60,7 +60,7 @@ namespace IFramework.Hotfix.Asset
                 menu.AddItem(new GUIContent("Build Atlas"), false, AssetsBuild.BuildAtlas);
                 menu.AddItem(new GUIContent("Collect Asset"), false, Colllect);
                 menu.AddSeparator("");
-                menu.AddItem(new GUIContent("Bundle/Preview"), false, PreView);
+                menu.AddItem(new GUIContent("Bundle/Group Preview"), false, PreView);
                 menu.AddItem(new GUIContent("Bundle/Build"), false, AssetsBuild.Build);
                 menu.AddItem(new GUIContent("Bundle/Copy To Steam"), false, AssetsBuild.CopyToStreamPath);
 
