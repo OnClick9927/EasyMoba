@@ -63,7 +63,7 @@ namespace IFramework.Hotfix.Asset
         private static int GetWebRequestTimeout() => setting.GetWebRequestTimeout();
         public static FileCheckType GetFileCheckType() => setting.GetFileCheckType();
         public static string GetUrlFromBundleName(string bundleName) => setting.GetUrlByBundleName(buildTarget, bundleName);
-        public static string GetVersionUrl() => setting.GetVersionUrl();
+        public static string GetVersionUrl() => setting.GetVersionUrl(buildTarget);
         public static IAssetStraemEncrypt GetEncrypt() => setting.GetEncrypt();
         public static bool GetAutoUnloadBundle() => setting.GetAutoUnloadBundle();
 

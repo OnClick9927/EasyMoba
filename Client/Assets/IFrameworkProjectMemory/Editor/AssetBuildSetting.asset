@@ -12,19 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e032500462931bd4b862324ca75e46f1, type: 3}
   m_Name: AssetBuildSetting
   m_EditorClassIdentifier: 
-  types:
-  - IFramework.Hotfix.Asset.DefaultCollectAssetGroup
-  - IFramework.Hotfix.Asset.SimpleCollectAssetGroup
-  - IFramework.Hotfix.Asset.SoBigCollectAssetGroup
-  shortTypes:
-  - DefaultCollectAssetGroup
-  - SimpleCollectAssetGroup
-  - SoBigCollectAssetGroup
-  typeIndex: 0
+  bundleSize: 8388608
   fastMode: 1
   version: 0.0.1
   option: 0
-  encrypt: 1
   ignoreFileEtend:
   - .cs
   - .meta

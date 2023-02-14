@@ -10,13 +10,13 @@ using System.Collections.Generic;
 using System.IO;
 using static IFramework.Hotfix.Asset.AssetsBuild;
 using static IFramework.Hotfix.Asset.AssetInfo;
+using XLuaTest;
+using NUnit.Framework;
 
 namespace IFramework.Hotfix.Asset
 {
     public class DefaultCollectAssetGroup : ICollectAssetGroup
     {
-        private const int size = 1024 * 1024 * 8;
-
         private static Dictionary<string, List<AssetInfo>> MakeDirDic(List<AssetInfo> list)
         {
             Dictionary<string, List<AssetInfo>> dic = new Dictionary<string, List<AssetInfo>>();
@@ -50,41 +50,55 @@ namespace IFramework.Hotfix.Asset
             result.Add(shaderBundle);
         }
 
+        public static void SizeBundle(string baseName, List<AssetInfo> assets, Dictionary<AssetInfo, List<AssetInfo>> dpdic, List<AssetGroup> result)
+        {
+            var find = assets.FindAll(x => dpdic[x].Count >= 2);
+            assets.RemoveAll(x => dpdic[x].Count >= 2);
+            OneFileBundle(find, result);
+            if (find.Count == assets.Count) return;
+
+            long size = AssetBuildSetting.Load().bundleSize;
+            var tmp = assets.ConvertAll(x => { return new { info = x, length = new FileInfo(x.path).Length }; });
+            var _find = tmp.FindAll(x => x.length >= size);
+            OneFileBundle(_find.ConvertAll(x => x.info), result);
+            tmp.RemoveAll(x => x.length >= size);
+
+
+            tmp.Sort((a, b) =>
+            {
+                return a.length < b.length ? 1 : -1;
+            });
+            Dictionary<int, List<string>> dic = new Dictionary<int, List<string>>();
+            int index = 0;
+            long len = 0;
+            for (int i = 0; i < tmp.Count; i++)
+            {
+                len += tmp[i].length;
+                if (len >= size)
+                {
+                    len = 0;
+                    index++;
+                }
+                if (!dic.ContainsKey(index)) dic[index] = new List<string>();
+                dic[index].Add(tmp[i].info.path);
+            }
+
+            foreach (var _index in dic)
+            {
+                AssetGroup lastBundle = new AssetGroup(baseName.Append($"_{_index.Key}"));
+                foreach (var path in _index.Value)
+                {
+                    lastBundle.AddAsset(path);
+                }
+                result.Add(lastBundle);
+            }
+        }
         public static void SizeAndDirBundle(List<AssetInfo> assets, Dictionary<AssetInfo, List<AssetInfo>> dpdic, List<AssetGroup> result)
         {
             var path_dic = MakeDirDic(assets);
-
             foreach (var item in path_dic)
             {
-                string dir = item.Key;
-                List<AssetInfo> list = item.Value;
-                var find = list.FindAll(x => dpdic[x].Count >= 2);
-                foreach (var _find in find) list.Remove(_find);
-                OneFileBundle(find, result);
-                if (find.Count == list.Count) continue;
-                long len = 0;
-                List<int> index_list = new List<int>();
-                for (int i = 0; i < list.Count; i++)
-                {
-                    FileInfo fi = new FileInfo(list[i].path);
-                    len += fi.Length;
-                    if (len > size)
-                    {
-                        index_list.Add(i);
-                        len = 0;
-                    }
-                }
-                if (!index_list.Contains(list.Count - 1)) index_list.Add(list.Count - 1);
-                int start = 0;
-                for (int i = 0; i < index_list.Count; i++)
-                {
-                    int end = index_list[i];
-                    AssetGroup lastBundle = new AssetGroup(dir.Append($"_{i}"));
-                    for (int j = start; j <= end; j++)
-                        lastBundle.AddAsset(list[j].path);
-                    result.Add(lastBundle);
-                    start = end + 1;
-                }
+                SizeBundle(item.Key, item.Value, dpdic, result);
             }
         }
         public static void OneFileBundle(List<AssetInfo> assets, AssetType type, List<AssetGroup> result)
@@ -93,11 +107,17 @@ namespace IFramework.Hotfix.Asset
             assets.RemoveAll(x => x.type == type);
             OneFileBundle(spriteAtlas, result);
         }
-        public static void OneDirBundle(List<AssetInfo> assets, AssetType type, Dictionary<AssetInfo, List<AssetInfo>> dic, List<AssetGroup> result)
+        public static void OneDirTopBundle(List<AssetInfo> assets, AssetType type, Dictionary<AssetInfo, List<AssetInfo>> dic, List<AssetGroup> result)
         {
             List<AssetInfo> spriteAtlas = assets.FindAll(x => x.type == type);
             assets.RemoveAll(x => x.type == type);
             SizeAndDirBundle(spriteAtlas, dic, result);
+        }
+        public static void TypeSizeBundle(List<AssetInfo> assets, AssetType type, Dictionary<AssetInfo, List<AssetInfo>> dic, List<AssetGroup> result)
+        {
+            List<AssetInfo> spriteAtlas = assets.FindAll(x => x.type == type);
+            assets.RemoveAll(x => x.type == type);
+            SizeBundle(type.ToString(), spriteAtlas, dic, result);
         }
 
         public static void TypeAllTFileBundle(List<AssetInfo> assets, AssetType type, List<AssetGroup> result)
@@ -112,8 +132,8 @@ namespace IFramework.Hotfix.Asset
             OneFileBundle(singles, result);
 
             TypeAllTFileBundle(assets, AssetType.Shader, result);
-            OneDirBundle(assets, AssetType.TextAsset, dic, result);
-            OneDirBundle(assets, AssetType.Texture, dic, result);
+            TypeSizeBundle(assets, AssetType.TextAsset, dic, result);
+            OneDirTopBundle(assets, AssetType.Texture, dic, result);
             OneFileBundle(assets, AssetType.Font, result);
             OneFileBundle(assets, AssetType.Scene, result);
             OneFileBundle(assets, AssetType.SpriteAtlas, result);
@@ -123,7 +143,7 @@ namespace IFramework.Hotfix.Asset
             OneFileBundle(assets, AssetType.Model, result);
             OneFileBundle(assets, AssetType.Animation, result);
             OneFileBundle(assets, AssetType.ScriptObject, result);
-            OneFileBundle(assets, AssetType.Material, result);
+            OneDirTopBundle(assets, AssetType.Material, dic, result);
             SizeAndDirBundle(assets, dic, result);
         }
     }

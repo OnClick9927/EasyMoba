@@ -47,7 +47,7 @@ namespace IFramework.Hotfix.Asset
         }
         public TypeSelect buildGroup = new TypeSelect();
         public TypeSelect encrypt = new TypeSelect();
-
+        public long bundleSize = 8 * 1024 * 1024;
         private void OnEnable()
         {
             encrypt.baseType = typeof(IAssetStraemEncrypt);

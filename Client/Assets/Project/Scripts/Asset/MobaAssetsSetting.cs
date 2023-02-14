@@ -22,7 +22,7 @@ namespace EasyMoba
             return root.CombinePath(bundleName).ToRegularPath();
         }
 
-        public override string GetVersionUrl()
+        public override string GetVersionUrl(string buildTarget)
         {
             return root.CombinePath("version").ToRegularPath();
         }

@@ -47,13 +47,13 @@ MonoBehaviour:
   - path: Assets/Project/Lua/UI/LoadScenePanelView.lua.txt
     bundleName: a52b7a5a1301702479df557e069d5b45
     dps: []
+  - path: Assets/Project/Lua/UI/MatchPanelView.lua.txt
+    bundleName: a52b7a5a1301702479df557e069d5b45
+    dps: []
   - path: Assets/Project/Lua/UI/LoginPanelView.lua.txt
     bundleName: a52b7a5a1301702479df557e069d5b45
     dps: []
   - path: Assets/Project/Lua/UI/MainPanelView.lua.txt
-    bundleName: a52b7a5a1301702479df557e069d5b45
-    dps: []
-  - path: Assets/Project/Lua/UI/MatchPanelView.lua.txt
     bundleName: a52b7a5a1301702479df557e069d5b45
     dps: []
   - path: Assets/Project/Lua/UI/MVCMap.lua.txt
@@ -62,32 +62,26 @@ MonoBehaviour:
   - path: Assets/Project/Lua/UI/PanelNames.lua.txt
     bundleName: a52b7a5a1301702479df557e069d5b45
     dps: []
-  - path: Assets/Project/Lua/Ctrl/BattleCtrl.lua.txt
-    bundleName: 676fff64f35e4dbd4617b083c892cc49
-    dps: []
-  - path: Assets/Project/Lua/Ctrl/LoginCtrl.lua.txt
-    bundleName: 676fff64f35e4dbd4617b083c892cc49
-    dps: []
   - path: Assets/Project/Lua/Ctrl/MatchCtrl.lua.txt
     bundleName: 676fff64f35e4dbd4617b083c892cc49
     dps: []
   - path: Assets/Project/Lua/Ctrl/SceneCtrl.lua.txt
     bundleName: 676fff64f35e4dbd4617b083c892cc49
     dps: []
-  - path: Assets/Project/Configs/CollisonLayer.json
-    bundleName: d0c363b0f9a985d269892dcd41960caa
+  - path: Assets/Project/Lua/Ctrl/LoginCtrl.lua.txt
+    bundleName: 676fff64f35e4dbd4617b083c892cc49
     dps: []
-  - path: Assets/Project/Configs/UICollect.json
+  - path: Assets/Project/Lua/Ctrl/BattleCtrl.lua.txt
+    bundleName: 676fff64f35e4dbd4617b083c892cc49
+    dps: []
+  - path: Assets/Project/Configs/CollisonLayer.json
     bundleName: d0c363b0f9a985d269892dcd41960caa
     dps: []
   - path: Assets/Project/Configs/UILayer.json
     bundleName: d0c363b0f9a985d269892dcd41960caa
     dps: []
-  - path: Assets/Project/Lua/FixCsharp.lua.txt
-    bundleName: 9e812a3c910fad23268f59eaa2f37e62
-    dps: []
-  - path: Assets/Project/Lua/GameLogic.lua.txt
-    bundleName: 9e812a3c910fad23268f59eaa2f37e62
+  - path: Assets/Project/Configs/UICollect.json
+    bundleName: d0c363b0f9a985d269892dcd41960caa
     dps: []
   - path: Assets/Project/Lua/GameTools.lua.txt
     bundleName: 9e812a3c910fad23268f59eaa2f37e62
@@ -95,13 +89,19 @@ MonoBehaviour:
   - path: Assets/Project/Lua/GlobalDefine.lua.txt
     bundleName: 9e812a3c910fad23268f59eaa2f37e62
     dps: []
-  - path: Assets/Project/Lua/Define/LuaEventTypes.lua.txt
-    bundleName: 2264479caf61508cd58127df29615667
+  - path: Assets/Project/Lua/GameLogic.lua.txt
+    bundleName: 9e812a3c910fad23268f59eaa2f37e62
+    dps: []
+  - path: Assets/Project/Lua/FixCsharp.lua.txt
+    bundleName: 9e812a3c910fad23268f59eaa2f37e62
     dps: []
   - path: Assets/Project/Lua/Define/NetEventDefine.lua.txt
     bundleName: 2264479caf61508cd58127df29615667
     dps: []
   - path: Assets/Project/Lua/Define/ResDefine.lua.txt
+    bundleName: 2264479caf61508cd58127df29615667
+    dps: []
+  - path: Assets/Project/Lua/Define/LuaEventTypes.lua.txt
     bundleName: 2264479caf61508cd58127df29615667
     dps: []
   - path: Assets/Project/Materials/Player.mat
@@ -116,16 +116,16 @@ MonoBehaviour:
   - path: Assets/Project/Materials/Wall.mat
     bundleName: 77f42dbea151ed6c4e4a35a1d5b0483c
     dps: []
-  - path: Assets/Project/Lua/Ctrl/Base/Ctrls.lua.txt
-    bundleName: 9e7020f7793bc3474df4734fc247f19b
-    dps: []
   - path: Assets/Project/Lua/Ctrl/Base/NetEvents.lua.txt
     bundleName: 9e7020f7793bc3474df4734fc247f19b
     dps: []
-  - path: Assets/Project/Lua/Model/Base/ModelBase.lua.txt
-    bundleName: 358603e07f3190bffe68b57e611e1b23
+  - path: Assets/Project/Lua/Ctrl/Base/Ctrls.lua.txt
+    bundleName: 9e7020f7793bc3474df4734fc247f19b
     dps: []
   - path: Assets/Project/Lua/Model/Base/Models.lua.txt
+    bundleName: 358603e07f3190bffe68b57e611e1b23
+    dps: []
+  - path: Assets/Project/Lua/Model/Base/ModelBase.lua.txt
     bundleName: 358603e07f3190bffe68b57e611e1b23
     dps: []
   - path: Assets/Project/Lua/Model/PlayerModel.lua.txt

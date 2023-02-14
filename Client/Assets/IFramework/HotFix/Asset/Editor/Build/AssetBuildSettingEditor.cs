@@ -43,6 +43,7 @@ namespace IFramework.Hotfix.Asset
             EditorGUILayout.PropertyField(prop, new GUIContent("Ignore File Extends"), true);
             prop = obj.FindProperty("buildPaths");
             EditorGUILayout.PropertyField(prop, new GUIContent("Build Directory List"), true);
+            buildSetting.bundleSize = EditorGUILayout.LongField("Bundle Size", buildSetting.bundleSize);
 
             buildSetting.version = EditorGUILayout.TextField("Version", buildSetting.version);
             buildSetting.buildGroup.typeIndex = EditorGUILayout.Popup("AssetGroup", buildSetting.buildGroup.typeIndex, buildSetting.buildGroup.shortTypes);
