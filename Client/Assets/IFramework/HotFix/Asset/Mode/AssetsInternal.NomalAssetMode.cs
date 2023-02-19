@@ -16,6 +16,8 @@ namespace IFramework.Hotfix.Asset
     {
         private class NomalAssetMode : IAssetMode
         {
+    
+
             public Asset CreateAsset(string assetPath, List<Asset> dps, AssetLoadArgs arg)
             {
                 return new Asset(LoadBundleByAssetPath(assetPath), dps, arg);
@@ -31,7 +33,7 @@ namespace IFramework.Hotfix.Asset
                 return new SceneAsset(LoadBundleByAssetPath(assetPath), dps, arg);
             }
 
-  
+
         }
     }
 }

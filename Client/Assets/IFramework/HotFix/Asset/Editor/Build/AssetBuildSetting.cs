@@ -124,6 +124,8 @@ namespace IFramework.Hotfix.Asset
             }
         }
         private static string stoPath { get { return EditorEnvPath.projectMemoryPath.CombinePath("AssetBuildSetting.asset"); } }
+        public static string shaderVariantPath { get { return EditorEnvPath.projectPath.CombinePath("shadervariants.shadervariants"); } }
+
 
         public BuildAssetBundleOptions option;
         public static AssetBuildSetting Load()

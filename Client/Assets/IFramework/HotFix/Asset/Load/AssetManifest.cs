@@ -14,7 +14,7 @@ namespace IFramework.Hotfix.Asset
 {
     public class AssetManifest : ScriptableObject
     {
-        public const string Path = "Assets/" + Name + ".asset";
+        public const string Path = "Assets/Project" + Name + ".asset";
         public const string Name = "manifest";
         [Serializable]
         public class AssetData

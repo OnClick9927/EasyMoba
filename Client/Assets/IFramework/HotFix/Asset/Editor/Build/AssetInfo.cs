@@ -10,6 +10,9 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.Video;
+using UnityEngine.U2D;
+
 namespace IFramework.Hotfix.Asset
 {
     [System.Serializable]
@@ -22,6 +25,7 @@ namespace IFramework.Hotfix.Asset
             Directory,
             Texture,
             Shader,
+            ShaderVariant,
             VideoClip,
             AudioClip,
             Scene,
@@ -33,6 +37,7 @@ namespace IFramework.Hotfix.Asset
             ScriptObject,
             Model,
             TextAsset,
+
         }
         [SerializeField] private string _path;
         [SerializeField] private string _parentPath;
@@ -52,22 +57,20 @@ namespace IFramework.Hotfix.Asset
             else
             {
                 AssetImporter importer = AssetImporter.GetAtPath(path);
-                if (importer is TextureImporter) _type = AssetType.Texture;
-                else if (importer is ShaderImporter) _type = AssetType.Shader;
-                else if (importer is VideoClipImporter) _type = AssetType.VideoClip;
-                else if (importer is AudioImporter) _type = AssetType.AudioClip;
-                else if (importer is ModelImporter) _type = AssetType.Model;
-                else if (importer is TrueTypeFontImporter) _type = AssetType.Font;
-                else if (AssetDatabase.LoadAssetAtPath<TextAsset>(path) != null) _type = AssetType.TextAsset;
-                else if (path.EndsWith(".unity")) _type = AssetType.Scene;
-                else if (path.EndsWith(".mat")) _type = AssetType.Material;
+                if (path.EndsWith(".unity")) _type = AssetType.Scene;
                 else if (path.EndsWith(".prefab")) _type = AssetType.Prefab;
-                else if (path.EndsWith(".spriteatlas")) _type = AssetType.SpriteAtlas;
-                else if (path.EndsWith(".ani")) _type = AssetType.Animation;
-                else if (path.EndsWith(".asset")) _type = AssetType.ScriptObject;
-
-
-
+                else if (importer is ModelImporter) _type = AssetType.Model;
+                else if (AssetDatabase.LoadAssetAtPath<ScriptableObject>(path) != null) _type = AssetType.ScriptObject;
+                else if (AssetDatabase.LoadAssetAtPath<Animation>(path) != null) _type = AssetType.Animation;
+                else if (AssetDatabase.LoadAssetAtPath<SpriteAtlas>(path) != null) _type = AssetType.SpriteAtlas;
+                else if (AssetDatabase.LoadAssetAtPath<Material>(path) != null) _type = AssetType.Material;
+                else if (AssetDatabase.LoadAssetAtPath<AudioClip>(path) != null) _type = AssetType.AudioClip;
+                else if (AssetDatabase.LoadAssetAtPath<VideoClip>(path) != null) _type = AssetType.VideoClip;
+                else if (AssetDatabase.LoadAssetAtPath<Texture>(path) != null) _type = AssetType.Texture;
+                else if (AssetDatabase.LoadAssetAtPath<Font>(path) != null) _type = AssetType.Font;
+                else if (AssetDatabase.LoadAssetAtPath<Shader>(path) != null) _type = AssetType.Shader;
+                else if (AssetDatabase.LoadAssetAtPath<TextAsset>(path) != null) _type = AssetType.TextAsset;
+                else if (AssetDatabase.LoadAssetAtPath<ShaderVariantCollection>(path) != null) _type = AssetType.ShaderVariant;
             }
         }
 

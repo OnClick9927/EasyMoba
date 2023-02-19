@@ -20,6 +20,7 @@ namespace IFramework.Hotfix.Asset
 
     public partial class AssetsBuild
     {
+
         static AssetBuildSetting setting { get { return AssetBuildSetting.Load(); } }
         static AssetEditorCache cache { get { return AssetEditorCache.Load(); } }
         private static List<string> GetAllFilesIncludeList(string directory, List<string> exName, List<string> result)
@@ -249,6 +250,11 @@ namespace IFramework.Hotfix.Asset
         public static void ClearOutputFloder()
         {
             Directory.Delete(setting.outputPath, true);
+        }
+
+        public static void CollectShaderVariant(Action call_back)
+        {
+            ShaderVariantCollector.Run(AssetBuildSetting.shaderVariantPath,setting.GetBuildPaths().ToArray(), call_back);
         }
     }
 }

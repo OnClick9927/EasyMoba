@@ -10,8 +10,6 @@ using System.Collections.Generic;
 using System.IO;
 using static IFramework.Hotfix.Asset.AssetsBuild;
 using static IFramework.Hotfix.Asset.AssetInfo;
-using XLuaTest;
-using NUnit.Framework;
 
 namespace IFramework.Hotfix.Asset
 {

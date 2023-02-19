@@ -29,15 +29,15 @@ MonoBehaviour:
       dps: []
     - _path: Assets/Project/Configs/CollisonLayer.json
       _parentPath: Assets/Project/Configs
-      _type: 14
+      _type: 15
       dps: []
     - _path: Assets/Project/Configs/UICollect.json
       _parentPath: Assets/Project/Configs
-      _type: 14
+      _type: 15
       dps: []
     - _path: Assets/Project/Configs/UILayer.json
       _parentPath: Assets/Project/Configs
-      _type: 14
+      _type: 15
       dps: []
     - _path: Assets/Project/Lua
       _parentPath: Assets/Project
@@ -53,27 +53,27 @@ MonoBehaviour:
       dps: []
     - _path: Assets/Project/Lua/Ctrl/Base/Ctrls.lua.txt
       _parentPath: Assets/Project/Lua/Ctrl/Base
-      _type: 14
+      _type: 15
       dps: []
     - _path: Assets/Project/Lua/Ctrl/Base/NetEvents.lua.txt
       _parentPath: Assets/Project/Lua/Ctrl/Base
-      _type: 14
+      _type: 15
       dps: []
     - _path: Assets/Project/Lua/Ctrl/BattleCtrl.lua.txt
       _parentPath: Assets/Project/Lua/Ctrl
-      _type: 14
+      _type: 15
       dps: []
     - _path: Assets/Project/Lua/Ctrl/LoginCtrl.lua.txt
       _parentPath: Assets/Project/Lua/Ctrl
-      _type: 14
+      _type: 15
       dps: []
     - _path: Assets/Project/Lua/Ctrl/MatchCtrl.lua.txt
       _parentPath: Assets/Project/Lua/Ctrl
-      _type: 14
+      _type: 15
       dps: []
     - _path: Assets/Project/Lua/Ctrl/SceneCtrl.lua.txt
       _parentPath: Assets/Project/Lua/Ctrl
-      _type: 14
+      _type: 15
       dps: []
     - _path: Assets/Project/Lua/Define
       _parentPath: Assets/Project/Lua
@@ -81,15 +81,15 @@ MonoBehaviour:
       dps: []
     - _path: Assets/Project/Lua/Define/LuaEventTypes.lua.txt
       _parentPath: Assets/Project/Lua/Define
-      _type: 14
+      _type: 15
       dps: []
     - _path: Assets/Project/Lua/Define/NetEventDefine.lua.txt
       _parentPath: Assets/Project/Lua/Define
-      _type: 14
+      _type: 15
       dps: []
     - _path: Assets/Project/Lua/Define/ResDefine.lua.txt
       _parentPath: Assets/Project/Lua/Define
-      _type: 14
+      _type: 15
       dps: []
     - _path: Assets/Project/Lua/Model
       _parentPath: Assets/Project/Lua
@@ -101,15 +101,15 @@ MonoBehaviour:
       dps: []
     - _path: Assets/Project/Lua/Model/Base/ModelBase.lua.txt
       _parentPath: Assets/Project/Lua/Model/Base
-      _type: 14
+      _type: 15
       dps: []
     - _path: Assets/Project/Lua/Model/Base/Models.lua.txt
       _parentPath: Assets/Project/Lua/Model/Base
-      _type: 14
+      _type: 15
       dps: []
     - _path: Assets/Project/Lua/Model/PlayerModel.lua.txt
       _parentPath: Assets/Project/Lua/Model
-      _type: 14
+      _type: 15
       dps: []
     - _path: Assets/Project/Lua/UI
       _parentPath: Assets/Project/Lua
@@ -117,43 +117,43 @@ MonoBehaviour:
       dps: []
     - _path: Assets/Project/Lua/UI/LoadScenePanelView.lua.txt
       _parentPath: Assets/Project/Lua/UI
-      _type: 14
+      _type: 15
       dps: []
     - _path: Assets/Project/Lua/UI/LoginPanelView.lua.txt
       _parentPath: Assets/Project/Lua/UI
-      _type: 14
+      _type: 15
       dps: []
     - _path: Assets/Project/Lua/UI/MainPanelView.lua.txt
       _parentPath: Assets/Project/Lua/UI
-      _type: 14
+      _type: 15
       dps: []
     - _path: Assets/Project/Lua/UI/MatchPanelView.lua.txt
       _parentPath: Assets/Project/Lua/UI
-      _type: 14
+      _type: 15
       dps: []
     - _path: Assets/Project/Lua/UI/MVCMap.lua.txt
       _parentPath: Assets/Project/Lua/UI
-      _type: 14
+      _type: 15
       dps: []
     - _path: Assets/Project/Lua/UI/PanelNames.lua.txt
       _parentPath: Assets/Project/Lua/UI
-      _type: 14
+      _type: 15
       dps: []
     - _path: Assets/Project/Lua/FixCsharp.lua.txt
       _parentPath: Assets/Project/Lua
-      _type: 14
+      _type: 15
       dps: []
     - _path: Assets/Project/Lua/GameLogic.lua.txt
       _parentPath: Assets/Project/Lua
-      _type: 14
+      _type: 15
       dps: []
     - _path: Assets/Project/Lua/GameTools.lua.txt
       _parentPath: Assets/Project/Lua
-      _type: 14
+      _type: 15
       dps: []
     - _path: Assets/Project/Lua/GlobalDefine.lua.txt
       _parentPath: Assets/Project/Lua
-      _type: 14
+      _type: 15
       dps: []
     - _path: Assets/Project/Materials
       _parentPath: Assets/Project
@@ -161,19 +161,19 @@ MonoBehaviour:
       dps: []
     - _path: Assets/Project/Materials/Ground.mat
       _parentPath: Assets/Project/Materials
-      _type: 7
+      _type: 8
       dps: []
     - _path: Assets/Project/Materials/Player.mat
       _parentPath: Assets/Project/Materials
-      _type: 7
+      _type: 8
       dps: []
     - _path: Assets/Project/Materials/PlayerCap.mat
       _parentPath: Assets/Project/Materials
-      _type: 7
+      _type: 8
       dps: []
     - _path: Assets/Project/Materials/Wall.mat
       _parentPath: Assets/Project/Materials
-      _type: 7
+      _type: 8
       dps: []
     - _path: Assets/Project/Prefabs
       _parentPath: Assets/Project
@@ -189,7 +189,7 @@ MonoBehaviour:
       dps: []
     - _path: Assets/Project/Prefabs/Battle/Character/char_001.prefab
       _parentPath: Assets/Project/Prefabs/Battle/Character
-      _type: 8
+      _type: 9
       dps:
       - Assets/Project/Materials/PlayerCap.mat
       - Assets/Project/Materials/Player.mat
@@ -199,19 +199,19 @@ MonoBehaviour:
       dps: []
     - _path: Assets/Project/Prefabs/UI/LoadScenePanel.prefab
       _parentPath: Assets/Project/Prefabs/UI
-      _type: 8
+      _type: 9
       dps: []
     - _path: Assets/Project/Prefabs/UI/LoginPanel.prefab
       _parentPath: Assets/Project/Prefabs/UI
-      _type: 8
+      _type: 9
       dps: []
     - _path: Assets/Project/Prefabs/UI/MainPanel.prefab
       _parentPath: Assets/Project/Prefabs/UI
-      _type: 8
+      _type: 9
       dps: []
     - _path: Assets/Project/Prefabs/UI/MatchPanel.prefab
       _parentPath: Assets/Project/Prefabs/UI
-      _type: 8
+      _type: 9
       dps: []
     - _path: Assets/Project/Scenes
       _parentPath: Assets/Project
@@ -219,21 +219,25 @@ MonoBehaviour:
       dps: []
     - _path: Assets/Project/Scenes/Battle.unity
       _parentPath: Assets/Project/Scenes
-      _type: 6
+      _type: 7
       dps:
       - Assets/Project/Materials/Ground.mat
       - Assets/Project/Materials/Wall.mat
     - _path: Assets/Project/Scenes/Home.unity
       _parentPath: Assets/Project/Scenes
-      _type: 6
+      _type: 7
       dps: []
     - _path: Assets/Project/Scenes/Login.unity
       _parentPath: Assets/Project/Scenes
-      _type: 6
+      _type: 7
       dps: []
     - _path: Assets/Project/Scenes/Update.unity
       _parentPath: Assets/Project/Scenes
-      _type: 6
+      _type: 7
+      dps: []
+    - _path: Assets/Project/shadervariants.shadervariants
+      _parentPath: Assets/Project
+      _type: 4
       dps: []
     singles: []
   previewBundles:
@@ -395,3 +399,10 @@ MonoBehaviour:
     - path: Assets/Project/Prefabs/Battle/Character/char_001.prefab
       len: 6105
     length: 6105
+  - name: Assets/Project_0
+    assets:
+    - Assets/Project/shadervariants.shadervariants
+    lens:
+    - path: Assets/Project/shadervariants.shadervariants
+      len: 2790
+    length: 2790

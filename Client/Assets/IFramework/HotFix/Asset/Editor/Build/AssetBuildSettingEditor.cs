@@ -40,6 +40,7 @@ namespace IFramework.Hotfix.Asset
 
             GUILayout.Space(5);
             var prop = obj.FindProperty("ignoreFileEtend");
+     
             EditorGUILayout.PropertyField(prop, new GUIContent("Ignore File Extends"), true);
             prop = obj.FindProperty("buildPaths");
             EditorGUILayout.PropertyField(prop, new GUIContent("Build Directory List"), true);
@@ -50,6 +51,8 @@ namespace IFramework.Hotfix.Asset
             buildSetting.encrypt.typeIndex = EditorGUILayout.Popup("Encrypt", buildSetting.encrypt.typeIndex, buildSetting.encrypt.shortTypes);
 
             var op = (BuildAssetBundleOptions)EditorGUILayout.EnumFlagsField("BuildAssetBundleOptions", buildSetting.option);
+            GUI.enabled = false;
+            EditorGUILayout.TextField("OutPut Path", buildSetting.outputPath);
             if (buildSetting.option != op)
             {
                 buildSetting.option = op;

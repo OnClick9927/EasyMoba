@@ -7,12 +7,9 @@
  *History:        2018.11--
 *********************************************************************************/
 using UnityEditor;
-using IFramework.GUITool;
 using IFramework.GUITool.ToorbarMenu;
 using UnityEngine;
 using UnityEditor.IMGUI.Controls;
-using System.IO;
-using System;
 
 namespace IFramework.Hotfix.Asset
 {
@@ -27,7 +24,7 @@ namespace IFramework.Hotfix.Asset
         private enum TreeType
         {
             Collect,
-            Group
+            BundlesPreview
         }
         private TreeType treeType = TreeType.Collect;
 
@@ -35,20 +32,19 @@ namespace IFramework.Hotfix.Asset
         private static AssetEditorCache cache { get { return AssetEditorCache.Load(); } }
 
 
-        private void Colllect()
-        {
-            cache.Colllect(buildSetting.GetBuildPaths());
-            cache.Save();
-            col.Reload();
-            treeType = TreeType.Collect;
-        }
+
         private void PreView()
         {
-            Colllect();
+            cache.Colllect(buildSetting.GetBuildPaths());
             cache.previewBundles = AssetsBuild.CollectAssetGroup();
             cache.Save();
+            col.Reload();
             pre.Reload();
-            treeType = TreeType.Group;
+            //treeType = TreeType.Group;
+        }
+        private void CollectShaderVariant()
+        {
+            AssetsBuild.CollectShaderVariant(PreView);
         }
         private void OnEnable()
         {
@@ -58,22 +54,27 @@ namespace IFramework.Hotfix.Asset
                 GenericMenu menu = new GenericMenu();
                 menu.AddItem(new GUIContent("Edit Setting(Inspector)"), false, () => { Selection.activeObject = buildSetting; });
                 menu.AddItem(new GUIContent("Build Atlas"), false, AssetsBuild.BuildAtlas);
-                menu.AddItem(new GUIContent("Collect Asset"), false, Colllect);
+                menu.AddItem(new GUIContent("Collect Shader Variant"), false, CollectShaderVariant);
+
+
+                menu.AddItem(new GUIContent("Collect Asset"), false, PreView);
+
                 menu.AddSeparator("");
-                menu.AddItem(new GUIContent("Bundle/Group Preview"), false, PreView);
+                //menu.AddItem(new GUIContent("Bundle/Group Preview"), false, PreView);
                 menu.AddItem(new GUIContent("Bundle/Build"), false, AssetsBuild.Build);
                 menu.AddItem(new GUIContent("Bundle/Copy To Steam"), false, AssetsBuild.CopyToStreamPath);
 
-                menu.AddItem(new GUIContent("Open Output Floder"), false, AssetsBuild.OpenOutputFloder);
-                menu.AddItem(new GUIContent("Clear Output Floder"), false, AssetsBuild.ClearOutputFloder);
+                menu.AddItem(new GUIContent("Output/Open Floder"), false, AssetsBuild.OpenOutputFloder);
+                menu.AddItem(new GUIContent("Output/Clear Floder"), false, AssetsBuild.ClearOutputFloder);
 
                 menu.DropDown(rect);
             })
+            .FlexibleSpace()
             .Delegate(rect =>
             {
-                treeType = (TreeType)GUI.Toolbar(rect, (int)treeType, Enum.GetNames(typeof(TreeType)));
+                treeType = (TreeType)GUI.Toolbar(rect, (int)treeType,new string[] {"Assets","Bundle Preview"});
 
-            }, 150);
+            }, 200);
             col = new CollectTree(collectstate);
             pre = new PreviewTree(previewstate, this);
 

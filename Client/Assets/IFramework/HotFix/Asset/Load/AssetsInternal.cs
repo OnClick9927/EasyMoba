@@ -93,14 +93,21 @@ namespace IFramework.Hotfix.Asset
         }
 
         private static string GetBundleNameByAssetPath(string assetPath) => manifest.GetBundle(assetPath);
-        private static Bundle LoadBundleByAssetPath(string assetPath) => LoadBundleAsync(GetBundleNameByAssetPath(assetPath));
         private static void ReleseBundleByAssetPath(string assetpath)
         {
             if (IsManifestNull()) return;
             string bundle = GetBundleNameByAssetPath(assetpath);
             bundles.Release(bundle);
         }
-
+        private static Bundle LoadBundleByAssetPath(string assetPath)
+        {
+            string bundleName = GetBundleNameByAssetPath(assetPath);
+            if (string.IsNullOrEmpty(bundleName))
+            {
+                LogError($"can not find asset {assetPath}");
+            }
+            return LoadBundleAsync(bundleName);
+        }
 
 
 
@@ -146,14 +153,12 @@ namespace IFramework.Hotfix.Asset
         {
             MD5CryptoServiceProvider md5CSP = new MD5CryptoServiceProvider();
             byte[] retVal = md5CSP.ComputeHash(Encoding.Default.GetBytes(str));
-            string retStr = "";
-
+            StringBuilder sb = new StringBuilder();
             for (int i = 0; i < retVal.Length; i++)
             {
-                retStr += retVal[i].ToString("x2");
+                sb.Append(retVal[i].ToString("x2"));
             }
-
-            return retStr;
+            return sb.ToString();
         }
         public static string GetFileMD5(string path)
         {
@@ -164,14 +169,13 @@ namespace IFramework.Hotfix.Asset
             FileStream file = new FileStream(path, FileMode.Open);
             byte[] retVal = md5CSP.ComputeHash(file);
             file.Close();
-            string result = "";
+            StringBuilder sb = new StringBuilder();
 
             for (int i = 0; i < retVal.Length; i++)
             {
-                result += retVal[i].ToString("x2");
+                sb.Append(retVal[i].ToString("x2"));
             }
-
-            return result;
+            return sb.ToString();
         }
 
 
