@@ -1,0 +1,136 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5a73d416caf26d4ea61f26e136fb8d0, type: 3}
+  m_Name: manifest
+  m_EditorClassIdentifier: 
+  assets:
+  - path: Assets/Project/Scenes/Battle.unity
+    bundleName: 7f6c35349c28ede8e672999b4308329c
+    dps:
+    - Assets/Project/Materials/Ground.mat
+    - Assets/Project/Materials/Wall.mat
+  - path: Assets/Project/Lua/Ctrl/MatchCtrl.lua.txt
+    bundleName: 8ebb5659099646fca72a09fd6c0de16a
+    dps: []
+  - path: Assets/Project/Lua/Define/NetEventDefine.lua.txt
+    bundleName: 8ebb5659099646fca72a09fd6c0de16a
+    dps: []
+  - path: Assets/Project/Lua/Ctrl/Base/NetEvents.lua.txt
+    bundleName: 8ebb5659099646fca72a09fd6c0de16a
+    dps: []
+  - path: Assets/Project/Configs/CollisonLayer.json
+    bundleName: 8ebb5659099646fca72a09fd6c0de16a
+    dps: []
+  - path: Assets/Project/Lua/Ctrl/SceneCtrl.lua.txt
+    bundleName: 8ebb5659099646fca72a09fd6c0de16a
+    dps: []
+  - path: Assets/Project/Lua/UI/LoadScenePanelView.lua.txt
+    bundleName: 8ebb5659099646fca72a09fd6c0de16a
+    dps: []
+  - path: Assets/Project/Lua/UI/MatchPanelView.lua.txt
+    bundleName: 8ebb5659099646fca72a09fd6c0de16a
+    dps: []
+  - path: Assets/Project/Lua/Ctrl/LoginCtrl.lua.txt
+    bundleName: 8ebb5659099646fca72a09fd6c0de16a
+    dps: []
+  - path: Assets/Project/Lua/GameTools.lua.txt
+    bundleName: 8ebb5659099646fca72a09fd6c0de16a
+    dps: []
+  - path: Assets/Project/Lua/UI/LoginPanelView.lua.txt
+    bundleName: 8ebb5659099646fca72a09fd6c0de16a
+    dps: []
+  - path: Assets/Project/Lua/UI/MainPanelView.lua.txt
+    bundleName: 8ebb5659099646fca72a09fd6c0de16a
+    dps: []
+  - path: Assets/Project/Configs/UILayer.json
+    bundleName: 8ebb5659099646fca72a09fd6c0de16a
+    dps: []
+  - path: Assets/Project/Lua/Model/Base/Models.lua.txt
+    bundleName: 8ebb5659099646fca72a09fd6c0de16a
+    dps: []
+  - path: Assets/Project/Lua/GlobalDefine.lua.txt
+    bundleName: 8ebb5659099646fca72a09fd6c0de16a
+    dps: []
+  - path: Assets/Project/Lua/UI/MVCMap.lua.txt
+    bundleName: 8ebb5659099646fca72a09fd6c0de16a
+    dps: []
+  - path: Assets/Project/Configs/UICollect.json
+    bundleName: 8ebb5659099646fca72a09fd6c0de16a
+    dps: []
+  - path: Assets/Project/Lua/Ctrl/BattleCtrl.lua.txt
+    bundleName: 8ebb5659099646fca72a09fd6c0de16a
+    dps: []
+  - path: Assets/Project/Lua/GameLogic.lua.txt
+    bundleName: 8ebb5659099646fca72a09fd6c0de16a
+    dps: []
+  - path: Assets/Project/Lua/Model/PlayerModel.lua.txt
+    bundleName: 8ebb5659099646fca72a09fd6c0de16a
+    dps: []
+  - path: Assets/Project/Lua/Model/Base/ModelBase.lua.txt
+    bundleName: 8ebb5659099646fca72a09fd6c0de16a
+    dps: []
+  - path: Assets/Project/Lua/UI/PanelNames.lua.txt
+    bundleName: 8ebb5659099646fca72a09fd6c0de16a
+    dps: []
+  - path: Assets/Project/Lua/Ctrl/Base/Ctrls.lua.txt
+    bundleName: 8ebb5659099646fca72a09fd6c0de16a
+    dps: []
+  - path: Assets/Project/Lua/Define/ResDefine.lua.txt
+    bundleName: 8ebb5659099646fca72a09fd6c0de16a
+    dps: []
+  - path: Assets/Project/Lua/Define/LuaEventTypes.lua.txt
+    bundleName: 8ebb5659099646fca72a09fd6c0de16a
+    dps: []
+  - path: Assets/Project/Lua/FixCsharp.lua.txt
+    bundleName: 8ebb5659099646fca72a09fd6c0de16a
+    dps: []
+  - path: Assets/Project/Prefabs/UI/MainPanel.prefab
+    bundleName: cd4bc12dcea75fe1f67f676515b558bc
+    dps: []
+  - path: Assets/Project/Prefabs/UI/LoadScenePanel.prefab
+    bundleName: ead47266a421b30ea884d2c1f8c89577
+    dps: []
+  - path: Assets/Project/Scenes/Update.unity
+    bundleName: 49d04fe1df584e73fcbc54ecbe0f14c5
+    dps: []
+  - path: Assets/Project/Prefabs/UI/MatchPanel.prefab
+    bundleName: 396e34b4c9996ce3ab1678aa702f428d
+    dps: []
+  - path: Assets/Project/Prefabs/UI/LoginPanel.prefab
+    bundleName: e396cc9fcf1e867defff24aec98f8b4e
+    dps: []
+  - path: Assets/Project/Materials/Player.mat
+    bundleName: 22bcd6cd7f1998914f6c2be6dcf605f8
+    dps: []
+  - path: Assets/Project/Materials/PlayerCap.mat
+    bundleName: 22bcd6cd7f1998914f6c2be6dcf605f8
+    dps: []
+  - path: Assets/Project/Materials/Ground.mat
+    bundleName: 22bcd6cd7f1998914f6c2be6dcf605f8
+    dps: []
+  - path: Assets/Project/Materials/Wall.mat
+    bundleName: 22bcd6cd7f1998914f6c2be6dcf605f8
+    dps: []
+  - path: Assets/Project/Scenes/Home.unity
+    bundleName: 7d1d4ed19f1b39a37cebb31810154b41
+    dps: []
+  - path: Assets/Project/Scenes/Login.unity
+    bundleName: a46c7ef4206e8c80f9600042d7a1f9f9
+    dps: []
+  - path: Assets/Project/Prefabs/Battle/Character/char_001.prefab
+    bundleName: 6f64bbf904bddc0d8065c57e69602fd5
+    dps:
+    - Assets/Project/Materials/PlayerCap.mat
+    - Assets/Project/Materials/Player.mat
+  - path: Assets/Project/shadervariants.shadervariants
+    bundleName: d97e3f8059579087a0bfb588eea7e986
+    dps: []
