@@ -10,6 +10,9 @@ using UnityEditor;
 using IFramework.GUITool.ToorbarMenu;
 using UnityEngine;
 using UnityEditor.IMGUI.Controls;
+using IFramework.GUITool;
+using UnityEditorInternal.VR;
+using UnityEngine.UIElements;
 
 namespace IFramework.Hotfix.Asset
 {
@@ -21,6 +24,8 @@ namespace IFramework.Hotfix.Asset
         private PreviewTree pre;
         private TreeViewState collectstate = new TreeViewState();
         private TreeViewState previewstate = new TreeViewState();
+        private SplitView sp = new SplitView() { split = 300, minSize = 300 };
+        private Editor editor;
         private enum TreeType
         {
             Collect,
@@ -42,6 +47,16 @@ namespace IFramework.Hotfix.Asset
             pre.Reload();
             //treeType = TreeType.Group;
         }
+        private void PreViewMD5()
+        {
+            cache.Colllect(buildSetting.GetBuildPaths());
+            cache.previewBundles = AssetsBuild.CollectMain(AssetsBuild.CollectAssetGroup());
+            cache.Save();
+            col.Reload();
+            pre.Reload();
+            EditorGUIUtility.PingObject(EditorTools.AssetTool.Load<AssetManifest>(AssetManifest.Path));
+            //treeType = TreeType.Group;
+        }
         private void CollectShaderVariant()
         {
             AssetsBuild.CollectShaderVariant(PreView);
@@ -52,15 +67,15 @@ namespace IFramework.Hotfix.Asset
             tree.DropDownButton(new GUIContent("Tools"), (rect) =>
             {
                 GenericMenu menu = new GenericMenu();
-                menu.AddItem(new GUIContent("Edit Setting(Inspector)"), false, () => { Selection.activeObject = buildSetting; });
-                menu.AddItem(new GUIContent("Build Atlas"), false, AssetsBuild.BuildAtlas);
-                menu.AddItem(new GUIContent("Collect Shader Variant"), false, CollectShaderVariant);
+                menu.AddItem(new GUIContent("Help/Build Atlas"), false, AssetsBuild.BuildAtlas);
+                menu.AddItem(new GUIContent("Help/Collect Shader Variant"), false, CollectShaderVariant);
 
 
-                menu.AddItem(new GUIContent("Collect Asset"), false, PreView);
+                menu.AddItem(new GUIContent("Preview/Bundle"), false, PreView);
+                menu.AddItem(new GUIContent("Preview/MD5 Bundle"), false, PreViewMD5);
+
 
                 menu.AddSeparator("");
-                //menu.AddItem(new GUIContent("Bundle/Group Preview"), false, PreView);
                 menu.AddItem(new GUIContent("Bundle/Build"), false, AssetsBuild.Build);
                 menu.AddItem(new GUIContent("Bundle/Copy To Steam"), false, AssetsBuild.CopyToStreamPath);
 
@@ -72,15 +87,17 @@ namespace IFramework.Hotfix.Asset
             .FlexibleSpace()
             .Delegate(rect =>
             {
-                treeType = (TreeType)GUI.Toolbar(rect, (int)treeType,new string[] {"Assets","Bundle Preview"});
+                treeType = (TreeType)GUI.Toolbar(rect, (int)treeType, new string[] { "Assets", "Bundle Preview" });
 
             }, 200);
             col = new CollectTree(collectstate);
             pre = new PreviewTree(previewstate, this);
-
+            sp.fistPan += Sp_fistPan;
+            sp.secondPan += Sp_secondPan;
+            editor = Editor.CreateEditor(buildSetting);
         }
 
-        private void ContentGUI(Rect obj)
+        private void Sp_secondPan(Rect obj)
         {
             if (treeType == 0)
             {
@@ -91,12 +108,22 @@ namespace IFramework.Hotfix.Asset
                 pre.OnGUI(obj);
             }
         }
+        Vector2 scroll;
+        private void Sp_fistPan(Rect obj)
+        {
+            GUILayout.BeginArea(obj);
+            scroll = GUILayout.BeginScrollView(scroll);
+            editor.OnInspectorGUI();
+            GUILayout.EndScrollView();
+            GUILayout.EndArea();
+        }
+
 
         private void OnGUI()
         {
             var rs = this.LocalPosition().HorizontalSplit(20);
             tree.OnGUI(rs[0]);
-            ContentGUI(rs[1]);
+            sp.OnGUI(rs[1]);
         }
     }
 }

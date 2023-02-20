@@ -15,6 +15,7 @@ using System.Runtime.InteropServices.ComTypes;
 using System.Security.Cryptography;
 using System.Text;
 using UnityEngine;
+using static IFramework.Hotfix.Asset.AssetManifest;
 using static UnityEngine.GraphicsBuffer;
 
 namespace IFramework.Hotfix.Asset
@@ -57,7 +58,10 @@ namespace IFramework.Hotfix.Asset
         private static Asset CreateAsset(string assetPath, List<Asset> dps, AssetLoadArgs arg) => mode.CreateAsset(assetPath, dps, arg);
         private static SceneAsset CreateSceneAsset(string assetPath, List<Asset> dps, SceneAssetLoadArgs arg) => mode.CreateSceneAsset(assetPath, dps, arg);
         public static IReadOnlyList<string> GetAllAssetPaths() => mode.GetAllAssetPaths();
-
+        public static IReadOnlyList<string> GetTagAssetPaths(string tag)
+        {
+            return mode.GetTagAssetPaths(tag);
+        }
 
         public static void SetAssetsSetting(AssetsSetting setting) => AssetsInternal.setting = setting;
         private static int GetWebRequestTimeout() => setting.GetWebRequestTimeout();
@@ -128,6 +132,7 @@ namespace IFramework.Hotfix.Asset
         {
             return IsManifestNull() ? null : manifest.GetAssetDependences(assetpath);
         }
+       
         private static void LoadDps(string path)
         {
             List<string> dps = GetAssetDps(path);

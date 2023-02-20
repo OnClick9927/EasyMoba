@@ -141,6 +141,12 @@ namespace IFramework.Hotfix.Asset
         };
         [SerializeField] private List<string> atlasPaths = new List<string>();
         [SerializeField] private List<string> buildPaths = new List<string>();
+        [SerializeField] private List<string> tags = new List<string>();
+
+        public List<string> GetTags()
+        {
+            return tags;
+        }
         public List<string> GetBuildPaths()
         {
             return buildPaths;

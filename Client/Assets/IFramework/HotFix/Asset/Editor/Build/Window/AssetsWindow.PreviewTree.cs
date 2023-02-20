@@ -31,11 +31,17 @@ namespace IFramework.Hotfix.Asset
                 {
                     new MultiColumnHeaderState.Column()
                     {
-
+                        minWidth=400
                     },
                     new MultiColumnHeaderState.Column()
                     {
                          headerContent=new UnityEngine.GUIContent("Size"),
+                         maxWidth=150
+                    },
+                       new MultiColumnHeaderState.Column()
+                    {
+                         headerContent=new UnityEngine.GUIContent("Tag"),
+                             maxWidth=150
                     },
 
                }));
@@ -44,7 +50,7 @@ namespace IFramework.Hotfix.Asset
                 Reload();
             }
 
-     static       Dictionary<TreeViewItem, TreeViewItem> dic = new Dictionary<TreeViewItem, TreeViewItem>();
+            static Dictionary<TreeViewItem, TreeViewItem> dic = new Dictionary<TreeViewItem, TreeViewItem>();
             protected override TreeViewItem BuildRoot()
             {
                 return new TreeViewItem() { id = -10, depth = -1 };
@@ -122,12 +128,12 @@ namespace IFramework.Hotfix.Asset
                 }
                 else
                 {
-                    
+
                     group_name = dic[args.item].displayName;
                     GUI.Label(first, new GUIContent(args.label, args.item.icon));
                 }
                 var find = previewBundles.Find(x => x.name == group_name);
-                if (find==null)
+                if (find == null)
                 {
                     return;
                 }
@@ -141,7 +147,6 @@ namespace IFramework.Hotfix.Asset
                 {
                     len = find.GetLength(args.label);
                 }
-                var second = args.GetCellRect(1);
 
                 var tmp = len;
                 int stage = 0;
@@ -152,8 +157,10 @@ namespace IFramework.Hotfix.Asset
                 }
 
                 var show = $"{(len / Mathf.Pow(1024, stage)).ToString("0.00")} {stages[stage]}";
-                GUI.Label(second, new GUIContent(show));
+                GUI.Label(args.GetCellRect(1), new GUIContent(show));
+                GUI.Label(args.GetCellRect(2), new GUIContent(cache.GetTag(args.label)));
 
+               
 
             }
             List<string> stages = new List<string>()

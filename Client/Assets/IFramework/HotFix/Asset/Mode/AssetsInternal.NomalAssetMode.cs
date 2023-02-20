@@ -33,7 +33,10 @@ namespace IFramework.Hotfix.Asset
                 return new SceneAsset(LoadBundleByAssetPath(assetPath), dps, arg);
             }
 
-
+            public IReadOnlyList<string> GetTagAssetPaths(string tag)
+            {
+                return IsManifestNull() ? null : manifest.GetTagAssetPaths(tag);
+            }
         }
     }
 }

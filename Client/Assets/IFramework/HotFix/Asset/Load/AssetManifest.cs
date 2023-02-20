@@ -21,11 +21,13 @@ namespace IFramework.Hotfix.Asset
         {
             public string path;
             public string bundleName;
+            public string tag;
             public List<string> dps;
         }
+
         [SerializeField] private List<AssetData> assets = new List<AssetData>();
 
-        public void Read(Dictionary<string, string> allAssets, Dictionary<string, List<string>> assetdps)
+        public void Read(Dictionary<string, string> allAssets, Dictionary<string, List<string>> assetdps,Dictionary<string,string> tags)
         {
             if (Application.isEditor)
             {
@@ -39,6 +41,10 @@ namespace IFramework.Hotfix.Asset
                     {
                         data.dps = assetdps[item.Key];
                     }
+                    if (tags.ContainsKey(item.Key))
+                    {
+                        data.tag = tags[item.Key];
+                    }
                     assets.Add(data);
                 }
             }
@@ -47,21 +53,40 @@ namespace IFramework.Hotfix.Asset
         private Dictionary<string, List<string>> assetdps;
         private Dictionary<string, string> allAssets;
         private List<string> allPaths;
-
+        private Dictionary<string, List<string>> tagAssets;
         private void Check()
         {
             if (assetdps == null)
             {
+                tagAssets = new Dictionary<string, List<string>>();
                 assetdps = new Dictionary<string, List<string>>();
                 allAssets = new Dictionary<string, string>();
                 allPaths = new List<string>();
                 for (int i = 0; i < assets.Count; i++)
                 {
-                    assetdps.Add(assets[i].path, assets[i].dps);
-                    allAssets.Add(assets[i].path, assets[i].bundleName);
-                    allPaths.Add(assets[i].path);
+                    string path = assets[i].path;
+                    assetdps.Add(path, assets[i].dps);
+                    allAssets.Add(path, assets[i].bundleName);
+                    allPaths.Add(path);
+                    if (!tagAssets.ContainsKey(assets[i].tag))
+                        tagAssets.Add(assets[i].tag, new List<string>());
+                    tagAssets[assets[i].tag].Add(path);
                 }
             }
+        }
+        public List<string> GetTagAssetPaths(string tag)
+        {
+            try
+            {
+                Check();
+                if (tagAssets.ContainsKey(tag))
+                    return tagAssets[tag];
+            }
+            catch (Exception e)
+            {
+                AssetsInternal.LogError(e.Message);
+            }
+            return null;
         }
         public List<string> GetAssetDependences(string assetPath)
         {

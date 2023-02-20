@@ -39,6 +39,10 @@ namespace IFramework.Hotfix.Asset
             return new EditorSceneAsset(arg);
         }
 
-
+        public IReadOnlyList<string> GetTagAssetPaths(string tag)
+        {
+            var cache = AssetEditorCache.Load();
+            return cache.GetTagAssetPaths(tag);
+        }
     }
 }

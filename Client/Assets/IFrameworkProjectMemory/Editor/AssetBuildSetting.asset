@@ -22,3 +22,7 @@ MonoBehaviour:
   atlasPaths: []
   buildPaths:
   - Assets/Project
+  tags:
+  - lua
+  - scene
+  - config

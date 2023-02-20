@@ -13,76 +13,94 @@ using IFramework.GUITool;
 
 namespace IFramework.Hotfix.Asset
 {
-    [CustomEditor(typeof(AssetBuildSetting))]
-    class AssetBuildSettingEditor : Editor
+    partial class AssetsWindow
     {
-        AssetBuildSetting buildSetting { get { return AssetBuildSetting.Load(); } }
 
-        public override void OnInspectorGUI()
+
+        [CustomEditor(typeof(AssetBuildSetting))]
+        class AssetBuildSettingEditor : Editor
         {
-            SerializedObject obj = new SerializedObject(buildSetting);
-            obj.Update();
+            AssetBuildSetting buildSetting { get { return AssetBuildSetting.Load(); } }
 
-            EditorGUI.BeginChangeCheck();
-            Box("LoadType In Editor Mode", () => { FastMode(obj); });
-            Box("SpriteAtlas Collect", () => { Atlas(obj); });
-            Box("Build Options", () => { Build(obj); });
-            if (EditorGUI.EndChangeCheck())
+            public override void OnInspectorGUI()
             {
-                obj.ApplyModifiedProperties();
-                buildSetting.Save();
+                SerializedObject obj = new SerializedObject(buildSetting);
+                obj.Update();
 
-            }
-        }
+                EditorGUI.BeginChangeCheck();
+                Box("Toos", () => { FastMode(obj); });
+                Box("Build Options", () => { Build(obj); });
 
-        private void Build(SerializedObject obj)
-        {
-
-            GUILayout.Space(5);
-            var prop = obj.FindProperty("ignoreFileEtend");
-     
-            EditorGUILayout.PropertyField(prop, new GUIContent("Ignore File Extends"), true);
-            prop = obj.FindProperty("buildPaths");
-            EditorGUILayout.PropertyField(prop, new GUIContent("Build Directory List"), true);
-            buildSetting.bundleSize = EditorGUILayout.LongField("Bundle Size", buildSetting.bundleSize);
-
-            buildSetting.version = EditorGUILayout.TextField("Version", buildSetting.version);
-            buildSetting.buildGroup.typeIndex = EditorGUILayout.Popup("AssetGroup", buildSetting.buildGroup.typeIndex, buildSetting.buildGroup.shortTypes);
-            buildSetting.encrypt.typeIndex = EditorGUILayout.Popup("Encrypt", buildSetting.encrypt.typeIndex, buildSetting.encrypt.shortTypes);
-
-            var op = (BuildAssetBundleOptions)EditorGUILayout.EnumFlagsField("BuildAssetBundleOptions", buildSetting.option);
-            GUI.enabled = false;
-            EditorGUILayout.TextField("OutPut Path", buildSetting.outputPath);
-            if (buildSetting.option != op)
-            {
-                buildSetting.option = op;
-                buildSetting.Save();
+                if (EditorGUI.EndChangeCheck())
+                {
+                    obj.ApplyModifiedProperties();
+                    buildSetting.Save();
+                }
             }
 
-        }
-        private void FastMode(SerializedObject obj)
-        {
-            var prop = obj.FindProperty("fastMode");
-            EditorGUILayout.PropertyField(prop, new GUIContent("FastMode"));
-        }
-        private void Atlas(SerializedObject obj)
-        {
-            var prop = obj.FindProperty("atlasPaths");
-            EditorGUILayout.PropertyField(prop, new GUIContent("Atlas Directory List"), true);
-
-        }
-        private void Box(string label, Action action)
-        {
-            GUILayout.BeginVertical(GUIStyles.helpBox);
+            private void Build(SerializedObject obj)
             {
-                GUILayout.Label(label, GUIStyles.BoldLabel);
+
                 GUILayout.Space(5);
-                action.Invoke();
-                GUILayout.Space(5);
-            }
-            GUILayout.EndVertical();
-            GUILayout.Space(10);
+                var prop = obj.FindProperty("ignoreFileEtend");
 
+                EditorGUILayout.PropertyField(prop, new GUIContent("Ignore File Extends"), true);
+                prop = obj.FindProperty("buildPaths");
+                EditorGUILayout.PropertyField(prop, new GUIContent("Build Directory List"), true);
+                buildSetting.bundleSize = EditorGUILayout.LongField("Bundle Size", buildSetting.bundleSize);
+
+                buildSetting.version = EditorGUILayout.TextField("Version", buildSetting.version);
+                buildSetting.buildGroup.typeIndex = EditorGUILayout.Popup("AssetGroup", buildSetting.buildGroup.typeIndex, buildSetting.buildGroup.shortTypes);
+                buildSetting.encrypt.typeIndex = EditorGUILayout.Popup("Encrypt", buildSetting.encrypt.typeIndex, buildSetting.encrypt.shortTypes);
+
+                var op = (BuildAssetBundleOptions)EditorGUILayout.EnumFlagsField("BuildAssetBundleOptions", buildSetting.option);
+                GUI.enabled = false;
+                EditorGUILayout.TextField("Output Path", buildSetting.outputPath);
+                EditorGUILayout.EnumPopup("Build Target", EditorUserBuildSettings.activeBuildTarget);
+                GUI.enabled = true;
+                if (buildSetting.option != op)
+                {
+                    buildSetting.option = op;
+                    buildSetting.Save();
+                }
+
+            }
+            private void FastMode(SerializedObject obj)
+            {
+                var prop = obj.FindProperty("fastMode");
+                EditorGUILayout.PropertyField(prop, new GUIContent("FastMode"));
+                GUI.enabled = false;
+                EditorGUILayout.TextField("ShaderVariant Path", AssetBuildSetting.shaderVariantPath);
+                GUI.enabled = true;
+                var prop_2 = obj.FindProperty("atlasPaths");
+                EditorGUILayout.PropertyField(prop_2, new GUIContent("Atlas Directory List"), true);
+                var prop_3 = obj.FindProperty("tags");
+
+                EditorGUI.BeginChangeCheck();
+                EditorGUILayout.PropertyField(prop_3, new GUIContent("Tags"), true);
+                if (EditorGUI.EndChangeCheck())
+                {
+                    var tags = buildSetting.GetTags();
+                    cache.CompareTags(tags);
+                }
+            }
+
+            private void Box(string label, Action action)
+            {
+                GUILayout.BeginVertical(GUIStyles.helpBox);
+                {
+                    GUILayout.Label(label, GUIStyles.BoldLabel);
+                    GUILayout.Space(5);
+                    action.Invoke();
+                    GUILayout.Space(5);
+                }
+                GUILayout.EndVertical();
+                GUILayout.Space(10);
+
+            }
         }
+
+
     }
+
 }

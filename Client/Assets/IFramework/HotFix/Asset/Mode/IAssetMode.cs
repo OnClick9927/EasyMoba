@@ -15,5 +15,6 @@ namespace IFramework.Hotfix.Asset
         Asset CreateAsset(string assetPath, List<Asset> dps, AssetLoadArgs arg);
         SceneAsset CreateSceneAsset(string assetPath, List<Asset> dps, SceneAssetLoadArgs arg);
         IReadOnlyList<string> GetAllAssetPaths();
+        IReadOnlyList<string> GetTagAssetPaths(string tag);
     }
 }

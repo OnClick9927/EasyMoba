@@ -26,6 +26,10 @@ namespace IFramework.Hotfix.Asset
         {
             return AssetsInternal.GetAllAssetPaths();
         }
+        private static IReadOnlyList<string> GetTagAssetPaths(string tag)
+        {
+            return AssetsInternal.GetTagAssetPaths(tag);
+        }
         public static void SetAssetsSetting(AssetsSetting setting)
         {
             AssetsInternal.SetAssetsSetting(setting);

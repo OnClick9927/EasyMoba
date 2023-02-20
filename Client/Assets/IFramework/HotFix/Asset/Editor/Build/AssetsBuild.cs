@@ -67,7 +67,7 @@ namespace IFramework.Hotfix.Asset
             {
                 string filepath = outputPath.CombinePath(abPath);
                 var data = File.ReadAllBytes(filepath);
-                File.WriteAllBytes(filepath, en.EnCode(abPath,data));
+                File.WriteAllBytes(filepath, en.EnCode(abPath, data));
             }
 
         }
@@ -137,7 +137,7 @@ namespace IFramework.Hotfix.Asset
             return builds;
         }
 
-        static void CollectMain(List<AssetGroup> builds)
+        public static List<AssetGroup> CollectMain(List<AssetGroup> builds)
         {
             for (int i = 0; i < builds.Count; i++)
             {
@@ -164,11 +164,12 @@ namespace IFramework.Hotfix.Asset
             if (!File.Exists(AssetManifest.Path))
                 EditorTools.AssetTool.CreateScriptableObject<AssetManifest>(AssetManifest.Path);
             AssetManifest main = EditorTools.AssetTool.Load<AssetManifest>(AssetManifest.Path);
-            main.Read(allAssets, assetdps);
+            main.Read(allAssets, assetdps, cache.GetTagDic());
             EditorTools.AssetTool.Update(main);
             AssetGroup mainbuild = new AssetGroup(AssetsInternal.GetMd5(AssetManifest.Path));
             mainbuild.AddAsset(AssetManifest.Path);
             builds.Add(mainbuild);
+            return builds;
         }
 
         public static void BuildAtlas()
@@ -254,7 +255,7 @@ namespace IFramework.Hotfix.Asset
 
         public static void CollectShaderVariant(Action call_back)
         {
-            ShaderVariantCollector.Run(AssetBuildSetting.shaderVariantPath,setting.GetBuildPaths().ToArray(), call_back);
+            ShaderVariantCollector.Run(AssetBuildSetting.shaderVariantPath, setting.GetBuildPaths().ToArray(), call_back);
         }
     }
 }
