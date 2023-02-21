@@ -37,7 +37,12 @@ namespace IFramework.Hotfix.Asset
         private static AssetEditorCache cache { get { return AssetEditorCache.Load(); } }
 
 
-
+        private void JustCollectAssets()
+        {
+            cache.Colllect(buildSetting.GetBuildPaths());
+            cache.Save();
+            col.Reload();
+        }
         private void PreView()
         {
             cache.Colllect(buildSetting.GetBuildPaths());
@@ -54,7 +59,7 @@ namespace IFramework.Hotfix.Asset
             cache.Save();
             col.Reload();
             pre.Reload();
-            EditorGUIUtility.PingObject(EditorTools.AssetTool.Load<AssetManifest>(AssetManifest.Path));
+            //EditorGUIUtility.PingObject(EditorTools.AssetTool.Load<AssetManifest>(AssetManifest.Path));
             //treeType = TreeType.Group;
         }
         private void CollectShaderVariant()
@@ -70,7 +75,7 @@ namespace IFramework.Hotfix.Asset
                 menu.AddItem(new GUIContent("Help/Build Atlas"), false, AssetsBuild.BuildAtlas);
                 menu.AddItem(new GUIContent("Help/Collect Shader Variant"), false, CollectShaderVariant);
 
-
+                menu.AddItem(new GUIContent("Preview/Just Collect Assets"), false, JustCollectAssets);
                 menu.AddItem(new GUIContent("Preview/Bundle"), false, PreView);
                 menu.AddItem(new GUIContent("Preview/MD5 Bundle"), false, PreViewMD5);
 
@@ -91,7 +96,7 @@ namespace IFramework.Hotfix.Asset
 
             }, 200);
             col = new CollectTree(collectstate);
-            pre = new PreviewTree(previewstate, this);
+            pre = new PreviewTree(previewstate);
             sp.fistPan += Sp_fistPan;
             sp.secondPan += Sp_secondPan;
             editor = Editor.CreateEditor(buildSetting);

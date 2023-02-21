@@ -23,15 +23,16 @@ namespace IFramework.Hotfix.Asset
             private enum SearchType
             {
                 Name,
-                Tag
+                Tag,
+                Type
             }
             private GUITool.SearchField search;
             public CollectTree(TreeViewState state) : base(state)
             {
                 this.Reload();
-                search = new GUITool.SearchField(this.searchString, System.Enum.GetNames(typeof(SearchType)), 0);
+                search = new GUITool.SearchField(this.searchString, System.Enum.GetNames(typeof(SearchType)),0);
                 search.onValueChange += (value) => { this.searchString = value.ToLower(); };
-                showAlternatingRowBackgrounds = true;
+                showAlternatingRowBackgrounds = true; 
                 this.multiColumnHeader = new MultiColumnHeader(new MultiColumnHeaderState(new MultiColumnHeaderState.Column[]
                 {
                     new MultiColumnHeaderState.Column()
@@ -120,7 +121,11 @@ namespace IFramework.Hotfix.Asset
             {
                 float indet = this.GetContentIndent(args.item);
                 var first = args.GetCellRect(0).Zoom(AnchorType.MiddleRight, new Vector2(-indet, 0));
-                GUI.Label(first, new GUIContent(Path.GetFileName(args.label), args.item.icon));
+                if (string.IsNullOrEmpty(searchString))
+                    GUI.Label(first, new GUIContent(Path.GetFileName(args.label), args.item.icon));
+                else
+                    GUI.Label(first, new GUIContent(args.label, args.item.icon));
+
                 var info = cache.GetAssetInfo(args.label);
                 if (info.type != AssetInfo.AssetType.Directory)
                 {
@@ -148,19 +153,22 @@ namespace IFramework.Hotfix.Asset
                     LoopCreateForSearch(result, parrent, path);
                 }
             }
-            private void BuildFilesForSearch(IList<TreeViewItem> result, TreeViewItem parrent, List<AssetInfo> paths)
+            private void BuildFilesForSearch(IList<TreeViewItem> result, TreeViewItem parrent, List<AssetInfo> assets)
             {
-                foreach (var _path in paths)
+                foreach (var asset in assets)
                 {
                     SearchType type = (SearchType)this.search.mode;
                     var source = string.Empty;
                     switch (type)
                     {
                         case SearchType.Name:
-                            source = Path.GetFileName(_path.path);
+                            source = Path.GetFileName(asset.path);
                             break;
                         case SearchType.Tag:
-                            source = cache.GetTag(_path.path);
+                            source = cache.GetTag(asset.path);
+                            break;
+                        case SearchType.Type:
+                            source = asset.type.ToString();
                             break;
                     }
                     if (string.IsNullOrEmpty(source)) continue;
@@ -168,7 +176,7 @@ namespace IFramework.Hotfix.Asset
                     bool could = source.Contains(this.searchString);
                     if (could)
                     {
-                        CreateItem(_path.path, parrent, result);    
+                        CreateItem(asset.path, parrent, result);    
                     }
                 }
             }

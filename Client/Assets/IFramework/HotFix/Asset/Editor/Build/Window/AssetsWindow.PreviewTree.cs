@@ -11,7 +11,6 @@ using UnityEditor.IMGUI.Controls;
 using System.Collections.Generic;
 using Object = UnityEngine.Object;
 using UnityEngine;
-using System.IO;
 using static IFramework.Hotfix.Asset.AssetsBuild;
 
 namespace IFramework.Hotfix.Asset
@@ -20,11 +19,21 @@ namespace IFramework.Hotfix.Asset
     {
         private class PreviewTree : TreeView
         {
-            private AssetsWindow window;
-            List<AssetGroup> previewBundles { get { return cache.previewBundles; } }
-            public PreviewTree(TreeViewState state, AssetsWindow window) : base(state)
+            private enum SearchType
             {
-                this.window = window;
+                Bundle,
+                AssetByPath,
+                AssetByTag
+
+            }
+            List<AssetGroup> previewBundles { get { return cache.previewBundles; } }
+
+            private GUITool.SearchField search;
+
+            public PreviewTree(TreeViewState state) : base(state)
+            {
+                search = new GUITool.SearchField(this.searchString, System.Enum.GetNames(typeof(SearchType)), 0);
+                search.onValueChange += (value) => { this.searchString = value.ToLower(); };
                 showAlternatingRowBackgrounds = true;
 
                 this.multiColumnHeader = new MultiColumnHeader(new MultiColumnHeaderState(new MultiColumnHeaderState.Column[]
@@ -50,7 +59,18 @@ namespace IFramework.Hotfix.Asset
                 Reload();
             }
 
-            static Dictionary<TreeViewItem, TreeViewItem> dic = new Dictionary<TreeViewItem, TreeViewItem>();
+
+            protected override void SearchChanged(string newSearch)
+            {
+                Reload();
+            }
+            public override void OnGUI(Rect rect)
+            {
+                var rs = rect.HorizontalSplit(20);
+                search.OnGUI(rs[0]);
+                base.OnGUI(rs[1]);
+            }
+
             protected override TreeViewItem BuildRoot()
             {
                 return new TreeViewItem() { id = -10, depth = -1 };
@@ -65,54 +85,94 @@ namespace IFramework.Hotfix.Asset
                     displayName = path,
                     icon = AssetPreview.GetMiniThumbnail(AssetDatabase.LoadAssetAtPath<UnityEngine.Object>(path))
                 };
-                dic[_item] = parrent;
                 _item.parent = parrent;
                 parrent.AddChild(_item);
                 result.Add(_item);
                 return _item;
             }
 
+            private TreeViewItem BuildBundle(int i, TreeViewItem root, IList<TreeViewItem> result)
+            {
+                var bundle = previewBundles[i];
+                var _item = new TreeViewItem()
+                {
+                    id = i,
+                    depth = 0,
+                    parent = root,
+                    displayName = bundle.name,
+                    icon = EditorGUIUtility.TrIconContent("Folder Icon").image as Texture2D,
+                    
+
+                };
+                root.AddChild(_item);
+                result.Add(_item);
+                return _item;
+            }
+            private void InnerBuildRows(TreeViewItem root, IList<TreeViewItem> result)
+            {
+                SearchType type = (SearchType)this.search.mode;
+                for (int i = 0; i < previewBundles.Count; i++)
+                {
+                    var bundle = previewBundles[i];
+
+                    if (string.IsNullOrEmpty(searchString))
+                    {
+
+                        var _item = BuildBundle(i, root, result);
+                        if (bundle.assets.Count <= 0) continue;
+                        if (IsExpanded(_item.id))
+                        {
+                            for (int j = 0; j < bundle.assets.Count; j++)
+                            {
+                                var path = bundle.assets[j];
+                                CreateItem(path, _item, result);
+                            }
+                        }
+                        else
+                        {
+                            _item.children = CreateChildListForCollapsedParent();
+                        }
+                    }
+                    else
+                    {
+                        if (type == SearchType.Bundle)
+                        {
+                            if (!bundle.name.ToLower().Contains(searchString)) continue;
+                            BuildBundle(i, root, result);
+                        }
+                        else
+                        {
+                            if (bundle.assets.Count <= 0) continue;
+                            for (int j = 0; j < bundle.assets.Count; j++)
+                            {
+                                var path = bundle.assets[j];
+                                if (type == SearchType.AssetByPath)
+                                {
+                                    if (!path.ToLower().Contains(searchString)) continue;
+                                }
+                                else if (type == SearchType.AssetByTag)
+                                {
+                                    var tag = cache.GetTag(path);
+                                    if (string.IsNullOrEmpty(tag)) continue;
+                                    if (!tag.Contains(searchString)) continue;
+                                }
+                                CreateItem(path, root, result);
+                            }
+                        }
+
+                    }
+                }
+            }
             protected override IList<TreeViewItem> BuildRows(TreeViewItem root)
             {
                 var result = GetRows() ?? new List<TreeViewItem>();
                 result.Clear();
+
                 if (previewBundles != null)
                 {
-                    for (int i = 0; i < previewBundles.Count; i++)
-                    {
-                        var bundle = previewBundles[i];
-                        var _item = new TreeViewItem()
-                        {
-                            id = i,
-                            depth = 0,
-                            parent = root,
-                            displayName = bundle.name,
-                        };
-
-                        root.AddChild(_item);
-                        result.Add(_item);
-                        if (bundle.assets.Count > 0)
-                        {
-                            if (IsExpanded(_item.id))
-                            {
-                                for (int j = 0; j < bundle.assets.Count; j++)
-                                {
-                                    var path = bundle.assets[j];
-
-                                    CreateItem(path, _item, result);
-                                }
-                            }
-                            else
-                            {
-                                _item.children = CreateChildListForCollapsedParent();
-                            }
-                        }
-
-
-
-
-                    }
+                    InnerBuildRows(root, result);
                 }
+
                 SetupParentsAndChildrenFromDepths(root, result);
                 return result;
             }
@@ -120,47 +180,30 @@ namespace IFramework.Hotfix.Asset
             {
                 float indet = this.GetContentIndent(args.item);
                 var first = args.GetCellRect(0).Zoom(AnchorType.MiddleRight, new Vector2(-indet, 0));
-                string group_name = args.label;
+                long length = 0;
                 if (args.item.depth == 0)
                 {
-                    group_name = args.label;
-                    GUI.Label(first, new GUIContent(args.label));
-                }
-                else
-                {
-
-                    group_name = dic[args.item].displayName;
                     GUI.Label(first, new GUIContent(args.label, args.item.icon));
-                }
-                var find = previewBundles.Find(x => x.name == group_name);
-                if (find == null)
-                {
-                    return;
-                }
-                long len = 0;
-
-                if (args.item.depth == 0)
-                {
-                    len = find.length;
+                    AssetGroup group = cache.GetGroupByBundleName(args.label);
+                    length = group.length;
                 }
                 else
                 {
-                    len = find.GetLength(args.label);
+                    string path = args.label;
+                    GUI.Label(first, new GUIContent(path, args.item.icon));
+                    AssetGroup group = cache.GetGroupByAssetPath(path);
+                    length = group.GetLength(path);
+                    GUI.Label(args.GetCellRect(2), new GUIContent(cache.GetTag(path)));
                 }
-
-                var tmp = len;
+                var tmp = length;
                 int stage = 0;
                 while (tmp > 1024)
                 {
                     tmp /= 1024;
                     stage++;
                 }
-
-                var show = $"{(len / Mathf.Pow(1024, stage)).ToString("0.00")} {stages[stage]}";
+                var show = $"{(length / Mathf.Pow(1024, stage)).ToString("0.00")} {stages[stage]}";
                 GUI.Label(args.GetCellRect(1), new GUIContent(show));
-                GUI.Label(args.GetCellRect(2), new GUIContent(cache.GetTag(args.label)));
-
-               
 
             }
             List<string> stages = new List<string>()

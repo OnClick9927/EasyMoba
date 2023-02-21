@@ -33,7 +33,7 @@ MonoBehaviour:
     dps: []
   - path: Assets/Project/Configs/CollisonLayer.json
     bundleName: 8ebb5659099646fca72a09fd6c0de16a
-    tag: 
+    tag: config
     dps: []
   - path: Assets/Project/Lua/Ctrl/SceneCtrl.lua.txt
     bundleName: 8ebb5659099646fca72a09fd6c0de16a
@@ -65,7 +65,7 @@ MonoBehaviour:
     dps: []
   - path: Assets/Project/Configs/UILayer.json
     bundleName: 8ebb5659099646fca72a09fd6c0de16a
-    tag: 
+    tag: config
     dps: []
   - path: Assets/Project/Lua/Model/Base/Models.lua.txt
     bundleName: 8ebb5659099646fca72a09fd6c0de16a
@@ -81,7 +81,7 @@ MonoBehaviour:
     dps: []
   - path: Assets/Project/Configs/UICollect.json
     bundleName: 8ebb5659099646fca72a09fd6c0de16a
-    tag: 
+    tag: config
     dps: []
   - path: Assets/Project/Lua/Ctrl/BattleCtrl.lua.txt
     bundleName: 8ebb5659099646fca72a09fd6c0de16a

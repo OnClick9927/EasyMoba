@@ -85,7 +85,14 @@ namespace IFramework.Hotfix.Asset
         public List<AssetGroup> previewBundles = new List<AssetGroup>();
 
 
-
+        public AssetGroup GetGroupByAssetPath(string assetPath)
+        {
+            return previewBundles.Find(x => x.assets.Contains(assetPath));
+        }
+        public AssetGroup GetGroupByBundleName(string bundleName)
+        {
+            return previewBundles.Find(x => x.name == bundleName);
+        }
         public string GetTag(string assetPath)
         {
             return tags.GetTag(assetPath);
