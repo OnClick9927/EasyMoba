@@ -34,6 +34,8 @@ namespace IFramework.Hotfix.Asset
             {
                 search = new GUITool.SearchField(this.searchString, System.Enum.GetNames(typeof(SearchType)), 0);
                 search.onValueChange += (value) => { this.searchString = value.ToLower(); };
+                search.onModeChange += (value) => { this.Reload(); };
+
                 showAlternatingRowBackgrounds = true;
 
                 this.multiColumnHeader = new MultiColumnHeader(new MultiColumnHeaderState(new MultiColumnHeaderState.Column[]
