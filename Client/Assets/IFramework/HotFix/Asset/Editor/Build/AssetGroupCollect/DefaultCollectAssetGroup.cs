@@ -99,8 +99,8 @@ namespace IFramework.Hotfix.Asset
                 SizeBundle_ALL(item.Key, item.Value, dpdic, result);
             }
         }
-    
-        
+
+
         public static void OneFileBundle(List<AssetInfo> assets, AssetType type, List<AssetGroup> result)
         {
             List<AssetInfo> spriteAtlas = assets.FindAll(x => x.type == type);
@@ -132,7 +132,7 @@ namespace IFramework.Hotfix.Asset
             List<AssetInfo> find = assets.FindAll(x => cache.GetTag(x.path) == tag);
             assets.RemoveAll(x => cache.GetTag(x.path) == tag);
             OneFileBundle(find, AssetType.Scene, result);
-            SizeBundle_ALL($"{tag}_tagbundle", find, dpdic, result);
+            SizeBundle_ALL($"tag_bundle_{tag}", find, dpdic, result);
         }
         public static void TagSizeAndTopDirBundle(List<AssetInfo> assets, string tag, Dictionary<AssetInfo, List<AssetInfo>> dpdic, List<AssetGroup> result)
         {
@@ -148,10 +148,17 @@ namespace IFramework.Hotfix.Asset
             OneFileBundle_ALL(singles, result);
 
             TypeAllTFileBundle(assets, AssetType.Shader, result);
+            OneFileBundle(assets, AssetType.Scene, result);
+
+            AssetBuildSetting seting = AssetBuildSetting.Load();
+            var tags = seting.GetTags();
+            foreach (var tag in tags)
+            {
+                TagSizeBundle(assets, tag, dic, result);
+            }
             TypeSizeBundle(assets, AssetType.TextAsset, dic, result);
             OneTopDirBundle(assets, AssetType.Texture, dic, result);
             OneFileBundle(assets, AssetType.Font, result);
-            OneFileBundle(assets, AssetType.Scene, result);
             OneFileBundle(assets, AssetType.SpriteAtlas, result);
             OneFileBundle(assets, AssetType.AudioClip, result);
             OneFileBundle(assets, AssetType.VideoClip, result);

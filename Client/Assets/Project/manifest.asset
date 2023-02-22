@@ -19,109 +19,97 @@ MonoBehaviour:
     dps:
     - Assets/Project/Materials/Ground.mat
     - Assets/Project/Materials/Wall.mat
-  - path: Assets/Project/Lua/Ctrl/MatchCtrl.lua.txt
-    bundleName: 8ebb5659099646fca72a09fd6c0de16a
-    tag: lua
-    dps: []
-  - path: Assets/Project/Lua/Define/NetEventDefine.lua.txt
-    bundleName: 8ebb5659099646fca72a09fd6c0de16a
-    tag: lua
-    dps: []
-  - path: Assets/Project/Lua/Ctrl/Base/NetEvents.lua.txt
-    bundleName: 8ebb5659099646fca72a09fd6c0de16a
-    tag: lua
-    dps: []
-  - path: Assets/Project/Configs/CollisonLayer.json
-    bundleName: 8ebb5659099646fca72a09fd6c0de16a
-    tag: config
-    dps: []
-  - path: Assets/Project/Lua/Ctrl/SceneCtrl.lua.txt
-    bundleName: 8ebb5659099646fca72a09fd6c0de16a
-    tag: lua
-    dps: []
-  - path: Assets/Project/Lua/UI/LoadScenePanelView.lua.txt
-    bundleName: 8ebb5659099646fca72a09fd6c0de16a
-    tag: lua
-    dps: []
-  - path: Assets/Project/Lua/UI/MatchPanelView.lua.txt
-    bundleName: 8ebb5659099646fca72a09fd6c0de16a
-    tag: lua
-    dps: []
-  - path: Assets/Project/Lua/Ctrl/LoginCtrl.lua.txt
-    bundleName: 8ebb5659099646fca72a09fd6c0de16a
-    tag: lua
-    dps: []
-  - path: Assets/Project/Lua/GameTools.lua.txt
-    bundleName: 8ebb5659099646fca72a09fd6c0de16a
-    tag: lua
-    dps: []
-  - path: Assets/Project/Lua/UI/LoginPanelView.lua.txt
-    bundleName: 8ebb5659099646fca72a09fd6c0de16a
-    tag: lua
-    dps: []
-  - path: Assets/Project/Lua/UI/MainPanelView.lua.txt
-    bundleName: 8ebb5659099646fca72a09fd6c0de16a
-    tag: lua
-    dps: []
-  - path: Assets/Project/Configs/UILayer.json
-    bundleName: 8ebb5659099646fca72a09fd6c0de16a
-    tag: config
-    dps: []
-  - path: Assets/Project/Lua/Model/Base/Models.lua.txt
-    bundleName: 8ebb5659099646fca72a09fd6c0de16a
-    tag: lua
-    dps: []
-  - path: Assets/Project/Lua/GlobalDefine.lua.txt
-    bundleName: 8ebb5659099646fca72a09fd6c0de16a
-    tag: lua
-    dps: []
-  - path: Assets/Project/Lua/UI/MVCMap.lua.txt
-    bundleName: 8ebb5659099646fca72a09fd6c0de16a
-    tag: lua
-    dps: []
-  - path: Assets/Project/Configs/UICollect.json
-    bundleName: 8ebb5659099646fca72a09fd6c0de16a
-    tag: config
-    dps: []
-  - path: Assets/Project/Lua/Ctrl/BattleCtrl.lua.txt
-    bundleName: 8ebb5659099646fca72a09fd6c0de16a
-    tag: lua
-    dps: []
-  - path: Assets/Project/Lua/GameLogic.lua.txt
-    bundleName: 8ebb5659099646fca72a09fd6c0de16a
-    tag: lua
-    dps: []
-  - path: Assets/Project/Lua/Model/PlayerModel.lua.txt
-    bundleName: 8ebb5659099646fca72a09fd6c0de16a
-    tag: lua
-    dps: []
-  - path: Assets/Project/Lua/Model/Base/ModelBase.lua.txt
-    bundleName: 8ebb5659099646fca72a09fd6c0de16a
-    tag: lua
-    dps: []
-  - path: Assets/Project/Lua/UI/PanelNames.lua.txt
-    bundleName: 8ebb5659099646fca72a09fd6c0de16a
-    tag: lua
-    dps: []
-  - path: Assets/Project/Lua/Ctrl/Base/Ctrls.lua.txt
-    bundleName: 8ebb5659099646fca72a09fd6c0de16a
-    tag: lua
-    dps: []
-  - path: Assets/Project/Lua/Define/ResDefine.lua.txt
-    bundleName: 8ebb5659099646fca72a09fd6c0de16a
-    tag: lua
-    dps: []
-  - path: Assets/Project/Lua/Define/LuaEventTypes.lua.txt
-    bundleName: 8ebb5659099646fca72a09fd6c0de16a
-    tag: lua
-    dps: []
-  - path: Assets/Project/Lua/FixCsharp.lua.txt
-    bundleName: 8ebb5659099646fca72a09fd6c0de16a
-    tag: lua
-    dps: []
   - path: Assets/Project/Prefabs/UI/MainPanel.prefab
     bundleName: cd4bc12dcea75fe1f67f676515b558bc
     tag: 
+    dps: []
+  - path: Assets/Project/Lua/Ctrl/MatchCtrl.lua.txt
+    bundleName: 8e35d8e5a210ebd4d168cdd227771bc3
+    tag: lua
+    dps: []
+  - path: Assets/Project/Lua/Define/NetEventDefine.lua.txt
+    bundleName: 8e35d8e5a210ebd4d168cdd227771bc3
+    tag: lua
+    dps: []
+  - path: Assets/Project/Lua/Ctrl/Base/NetEvents.lua.txt
+    bundleName: 8e35d8e5a210ebd4d168cdd227771bc3
+    tag: lua
+    dps: []
+  - path: Assets/Project/Lua/Ctrl/SceneCtrl.lua.txt
+    bundleName: 8e35d8e5a210ebd4d168cdd227771bc3
+    tag: lua
+    dps: []
+  - path: Assets/Project/Lua/UI/LoadScenePanelView.lua.txt
+    bundleName: 8e35d8e5a210ebd4d168cdd227771bc3
+    tag: lua
+    dps: []
+  - path: Assets/Project/Lua/UI/MatchPanelView.lua.txt
+    bundleName: 8e35d8e5a210ebd4d168cdd227771bc3
+    tag: lua
+    dps: []
+  - path: Assets/Project/Lua/Ctrl/LoginCtrl.lua.txt
+    bundleName: 8e35d8e5a210ebd4d168cdd227771bc3
+    tag: lua
+    dps: []
+  - path: Assets/Project/Lua/GameTools.lua.txt
+    bundleName: 8e35d8e5a210ebd4d168cdd227771bc3
+    tag: lua
+    dps: []
+  - path: Assets/Project/Lua/UI/LoginPanelView.lua.txt
+    bundleName: 8e35d8e5a210ebd4d168cdd227771bc3
+    tag: lua
+    dps: []
+  - path: Assets/Project/Lua/UI/MainPanelView.lua.txt
+    bundleName: 8e35d8e5a210ebd4d168cdd227771bc3
+    tag: lua
+    dps: []
+  - path: Assets/Project/Lua/Model/Base/Models.lua.txt
+    bundleName: 8e35d8e5a210ebd4d168cdd227771bc3
+    tag: lua
+    dps: []
+  - path: Assets/Project/Lua/GlobalDefine.lua.txt
+    bundleName: 8e35d8e5a210ebd4d168cdd227771bc3
+    tag: lua
+    dps: []
+  - path: Assets/Project/Lua/UI/MVCMap.lua.txt
+    bundleName: 8e35d8e5a210ebd4d168cdd227771bc3
+    tag: lua
+    dps: []
+  - path: Assets/Project/Lua/Ctrl/BattleCtrl.lua.txt
+    bundleName: 8e35d8e5a210ebd4d168cdd227771bc3
+    tag: lua
+    dps: []
+  - path: Assets/Project/Lua/GameLogic.lua.txt
+    bundleName: 8e35d8e5a210ebd4d168cdd227771bc3
+    tag: lua
+    dps: []
+  - path: Assets/Project/Lua/Model/PlayerModel.lua.txt
+    bundleName: 8e35d8e5a210ebd4d168cdd227771bc3
+    tag: lua
+    dps: []
+  - path: Assets/Project/Lua/Model/Base/ModelBase.lua.txt
+    bundleName: 8e35d8e5a210ebd4d168cdd227771bc3
+    tag: lua
+    dps: []
+  - path: Assets/Project/Lua/UI/PanelNames.lua.txt
+    bundleName: 8e35d8e5a210ebd4d168cdd227771bc3
+    tag: lua
+    dps: []
+  - path: Assets/Project/Lua/Ctrl/Base/Ctrls.lua.txt
+    bundleName: 8e35d8e5a210ebd4d168cdd227771bc3
+    tag: lua
+    dps: []
+  - path: Assets/Project/Lua/Define/ResDefine.lua.txt
+    bundleName: 8e35d8e5a210ebd4d168cdd227771bc3
+    tag: lua
+    dps: []
+  - path: Assets/Project/Lua/Define/LuaEventTypes.lua.txt
+    bundleName: 8e35d8e5a210ebd4d168cdd227771bc3
+    tag: lua
+    dps: []
+  - path: Assets/Project/Lua/FixCsharp.lua.txt
+    bundleName: 8e35d8e5a210ebd4d168cdd227771bc3
+    tag: lua
     dps: []
   - path: Assets/Project/Prefabs/UI/LoadScenePanel.prefab
     bundleName: ead47266a421b30ea884d2c1f8c89577
@@ -169,9 +157,17 @@ MonoBehaviour:
     dps:
     - Assets/Project/Materials/PlayerCap.mat
     - Assets/Project/Materials/Player.mat
-  - path: Assets/Project/manifest.asset
-    bundleName: efca8cc237a6e508543079041f1436e6
-    tag: 
+  - path: Assets/Project/Configs/CollisonLayer.json
+    bundleName: c6e175e120d343ac0d7dc74b8fc822f6
+    tag: config
+    dps: []
+  - path: Assets/Project/Configs/UILayer.json
+    bundleName: c6e175e120d343ac0d7dc74b8fc822f6
+    tag: config
+    dps: []
+  - path: Assets/Project/Configs/UICollect.json
+    bundleName: c6e175e120d343ac0d7dc74b8fc822f6
+    tag: config
     dps: []
   - path: Assets/Project/shadervariants.shadervariants
     bundleName: d97e3f8059579087a0bfb588eea7e986

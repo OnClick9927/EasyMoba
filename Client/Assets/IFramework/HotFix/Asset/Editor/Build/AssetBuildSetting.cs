@@ -13,6 +13,7 @@ using UnityEngine;
 using UnityEditor;
 using System;
 using Application = UnityEngine.Application;
+using UnityEditor.U2D;
 
 namespace IFramework.Hotfix.Asset
 {
@@ -47,7 +48,10 @@ namespace IFramework.Hotfix.Asset
         }
         public TypeSelect buildGroup = new TypeSelect();
         public TypeSelect encrypt = new TypeSelect();
+
         public long bundleSize = 8 * 1024 * 1024;
+        public bool forceRebuild = false;
+        public bool IgnoreTypeTreeChanges = true;
         private void OnEnable()
         {
             encrypt.baseType = typeof(IAssetStraemEncrypt);
@@ -127,7 +131,21 @@ namespace IFramework.Hotfix.Asset
         public static string shaderVariantPath { get { return EditorEnvPath.projectPath.CombinePath("shadervariants.shadervariants"); } }
 
 
-        public BuildAssetBundleOptions option;
+        public BuildAssetBundleOptions Option
+        {
+            get
+            {
+                BuildAssetBundleOptions opt = BuildAssetBundleOptions.None;
+                opt |= BuildAssetBundleOptions.StrictMode;
+                if (forceRebuild)
+                    opt |= BuildAssetBundleOptions.ForceRebuildAssetBundle;
+                if (IgnoreTypeTreeChanges)
+                    opt |= BuildAssetBundleOptions.IgnoreTypeTreeChanges;
+                opt |= BuildAssetBundleOptions.DisableLoadAssetByFileName;
+                opt |= BuildAssetBundleOptions.DisableLoadAssetByFileNameWithExtension;
+                return opt;
+            }
+        }
         public static AssetBuildSetting Load()
         {
             if (File.Exists(stoPath))

@@ -92,7 +92,7 @@ namespace IFramework.Hotfix.Asset
         public static void Build()
         {
             string outputPath = setting.outputPath;
-            BuildAssetBundleOptions option = setting.option;
+            BuildAssetBundleOptions option = setting.Option;
             string version_txt = setting.version;
 
             var list = CollectAssetGroup();
@@ -124,8 +124,10 @@ namespace IFramework.Hotfix.Asset
             Type collectType = setting.GetBuildGroupType();
             Dictionary<AssetInfo, List<AssetInfo>> dic = cache.GetDpDic();
             List<AssetInfo> all = new List<AssetInfo>(cache.GetAssets());
+
             List<AssetInfo> singles = cache.GetSingleFiles();
             all.RemoveAll(x => x.type == AssetInfo.AssetType.Directory);
+            all.RemoveAll(x => x.path == AssetManifest.Path);
             var creater = Activator.CreateInstance(collectType) as ICollectAssetGroup;
             var builds = new List<AssetGroup>();
             creater.Create(all, singles, dic, builds);

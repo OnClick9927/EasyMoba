@@ -10,6 +10,7 @@ using UnityEngine;
 using UnityEditor;
 using System;
 using IFramework.GUITool;
+using UnityEditor.Build.Content;
 
 namespace IFramework.Hotfix.Asset
 {
@@ -40,29 +41,19 @@ namespace IFramework.Hotfix.Asset
 
             private void Build(SerializedObject obj)
             {
-
                 GUILayout.Space(5);
-                var prop = obj.FindProperty("ignoreFileEtend");
-
-                EditorGUILayout.PropertyField(prop, new GUIContent("Ignore File Extends"), true);
-                prop = obj.FindProperty("buildPaths");
-                EditorGUILayout.PropertyField(prop, new GUIContent("Build Directory List"), true);
-                buildSetting.bundleSize = EditorGUILayout.LongField("Bundle Size", buildSetting.bundleSize);
-
-                buildSetting.version = EditorGUILayout.TextField("Version", buildSetting.version);
+                EditorGUILayout.PropertyField(obj.FindProperty("ignoreFileEtend"), new GUIContent("Ignore File Extends"), true);
+                EditorGUILayout.PropertyField(obj.FindProperty("buildPaths"), new GUIContent("Build Directory List"), true);
+                EditorGUILayout.PropertyField(obj.FindProperty("bundleSize"), new GUIContent("Bundle Size"), true);
+                EditorGUILayout.PropertyField(obj.FindProperty("version"), new GUIContent("Version"), true);
+                EditorGUILayout.PropertyField(obj.FindProperty("forceRebuild"), new GUIContent("Force Rebuild"), true);
+                EditorGUILayout.PropertyField(obj.FindProperty("IgnoreTypeTreeChanges"), new GUIContent("IgnoreTypeTreeChanges"), true);
                 buildSetting.buildGroup.typeIndex = EditorGUILayout.Popup("AssetGroup", buildSetting.buildGroup.typeIndex, buildSetting.buildGroup.shortTypes);
                 buildSetting.encrypt.typeIndex = EditorGUILayout.Popup("Encrypt", buildSetting.encrypt.typeIndex, buildSetting.encrypt.shortTypes);
-
-                var op = (BuildAssetBundleOptions)EditorGUILayout.EnumFlagsField("BuildAssetBundleOptions", buildSetting.option);
                 GUI.enabled = false;
                 EditorGUILayout.TextField("Output Path", buildSetting.outputPath);
                 EditorGUILayout.EnumPopup("Build Target", EditorUserBuildSettings.activeBuildTarget);
                 GUI.enabled = true;
-                if (buildSetting.option != op)
-                {
-                    buildSetting.option = op;
-                    buildSetting.Save();
-                }
 
             }
             private void FastMode(SerializedObject obj)

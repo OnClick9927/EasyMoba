@@ -13,9 +13,23 @@ MonoBehaviour:
   m_Name: AssetBuildSetting
   m_EditorClassIdentifier: 
   bundleSize: 8388608
-  fastMode: 1
+  forceRebuild: 0
+  IgnoreTypeTreeChanges: 1
+  atlas:
+    platformSetting:
+      m_Name: DefaultTexturePlatform
+      m_Overridden: 0
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_AndroidETC2FallbackOverride: 0
+  fastMode: 0
   version: 0.0.1
-  option: 0
   ignoreFileEtend:
   - .cs
   - .meta
