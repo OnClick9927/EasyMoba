@@ -12,7 +12,6 @@ using System.Collections.Generic;
 using Object = UnityEngine.Object;
 using UnityEngine;
 using System.IO;
-using System.Runtime.CompilerServices;
 
 namespace IFramework.Hotfix.Asset
 {
@@ -100,7 +99,11 @@ namespace IFramework.Hotfix.Asset
                 foreach (var item in select)
                 {
                     string path = this.FindItem(item, this.rootItem).displayName;
-                    paths.Add(path);
+                    if (cache.GetAssetInfo(path).type!= AssetInfo.AssetType.Directory)
+                    {
+                        paths.Add(path);
+                    }
+              
                 }
                 GenericMenu menu = new GenericMenu();
                 var tags = buildSetting.GetTags();
