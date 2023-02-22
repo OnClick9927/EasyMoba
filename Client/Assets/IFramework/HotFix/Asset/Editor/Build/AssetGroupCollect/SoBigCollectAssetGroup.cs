@@ -18,7 +18,7 @@ namespace IFramework.Hotfix.Asset
         {
             assets.AddRange(singles);
             DefaultCollectAssetGroup.OneFileBundle(assets, AssetType.Scene, result);
-            DefaultCollectAssetGroup.AllInOneBundle(assets, "so_big", result);
+            DefaultCollectAssetGroup.AllInOneBundle_ALL(assets, "so_big", result);
         }
     }
 

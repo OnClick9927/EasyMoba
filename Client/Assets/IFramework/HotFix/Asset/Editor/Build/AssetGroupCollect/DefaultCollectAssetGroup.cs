@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.IO;
 using static IFramework.Hotfix.Asset.AssetsBuild;
 using static IFramework.Hotfix.Asset.AssetInfo;
+using UnityEngine;
 
 namespace IFramework.Hotfix.Asset
 {
@@ -29,7 +30,7 @@ namespace IFramework.Hotfix.Asset
             }
             return dic;
         }
-        public static void OneFileBundle(List<AssetInfo> assets, List<AssetGroup> result)
+        public static void OneFileBundle_ALL(List<AssetInfo> assets, List<AssetGroup> result)
         {
             foreach (var atlas in assets)
             {
@@ -40,25 +41,24 @@ namespace IFramework.Hotfix.Asset
             }
 
         }
-        public static void AllInOneBundle(List<AssetInfo> assets, string bundleName, List<AssetGroup> result)
+        public static void AllInOneBundle_ALL(List<AssetInfo> assets, string bundleName, List<AssetGroup> result)
         {
             AssetGroup shaderBundle = new AssetGroup(bundleName);
             for (int i = 0; i < assets.Count; i++)
                 shaderBundle.AddAsset(assets[i].path);
             result.Add(shaderBundle);
         }
-
-        public static void SizeBundle(string baseName, List<AssetInfo> assets, Dictionary<AssetInfo, List<AssetInfo>> dpdic, List<AssetGroup> result)
+        public static void SizeBundle_ALL(string baseName, List<AssetInfo> assets, Dictionary<AssetInfo, List<AssetInfo>> dpdic, List<AssetGroup> result)
         {
             var find = assets.FindAll(x => dpdic[x].Count >= 2);
             assets.RemoveAll(x => dpdic[x].Count >= 2);
-            OneFileBundle(find, result);
+            OneFileBundle_ALL(find, result);
             if (find.Count == assets.Count) return;
 
             long size = AssetBuildSetting.Load().bundleSize;
             var tmp = assets.ConvertAll(x => { return new { info = x, length = new FileInfo(x.path).Length }; });
             var _find = tmp.FindAll(x => x.length >= size);
-            OneFileBundle(_find.ConvertAll(x => x.info), result);
+            OneFileBundle_ALL(_find.ConvertAll(x => x.info), result);
             tmp.RemoveAll(x => x.length >= size);
 
 
@@ -91,47 +91,65 @@ namespace IFramework.Hotfix.Asset
                 result.Add(lastBundle);
             }
         }
-        public static void SizeAndDirBundle(List<AssetInfo> assets, Dictionary<AssetInfo, List<AssetInfo>> dpdic, List<AssetGroup> result)
+        public static void SizeAndTopDirBundle_ALL(List<AssetInfo> assets, Dictionary<AssetInfo, List<AssetInfo>> dpdic, List<AssetGroup> result)
         {
             var path_dic = MakeDirDic(assets);
             foreach (var item in path_dic)
             {
-                SizeBundle(item.Key, item.Value, dpdic, result);
+                SizeBundle_ALL(item.Key, item.Value, dpdic, result);
             }
         }
+    
+        
         public static void OneFileBundle(List<AssetInfo> assets, AssetType type, List<AssetGroup> result)
         {
             List<AssetInfo> spriteAtlas = assets.FindAll(x => x.type == type);
             assets.RemoveAll(x => x.type == type);
-            OneFileBundle(spriteAtlas, result);
+            OneFileBundle_ALL(spriteAtlas, result);
         }
-        public static void OneDirTopBundle(List<AssetInfo> assets, AssetType type, Dictionary<AssetInfo, List<AssetInfo>> dic, List<AssetGroup> result)
+        public static void OneTopDirBundle(List<AssetInfo> assets, AssetType type, Dictionary<AssetInfo, List<AssetInfo>> dic, List<AssetGroup> result)
         {
             List<AssetInfo> spriteAtlas = assets.FindAll(x => x.type == type);
             assets.RemoveAll(x => x.type == type);
-            SizeAndDirBundle(spriteAtlas, dic, result);
+            SizeAndTopDirBundle_ALL(spriteAtlas, dic, result);
         }
         public static void TypeSizeBundle(List<AssetInfo> assets, AssetType type, Dictionary<AssetInfo, List<AssetInfo>> dic, List<AssetGroup> result)
         {
             List<AssetInfo> spriteAtlas = assets.FindAll(x => x.type == type);
             assets.RemoveAll(x => x.type == type);
-            SizeBundle(type.ToString(), spriteAtlas, dic, result);
+            SizeBundle_ALL(type.ToString(), spriteAtlas, dic, result);
         }
 
         public static void TypeAllTFileBundle(List<AssetInfo> assets, AssetType type, List<AssetGroup> result)
         {
             List<AssetInfo> shaders = assets.FindAll(x => x.type == type);
             assets.RemoveAll(x => x.type == type);
-            AllInOneBundle(shaders, type.ToString(), result);
+            AllInOneBundle_ALL(shaders, type.ToString(), result);
+        }
+        public static void TagSizeBundle(List<AssetInfo> assets, string tag, Dictionary<AssetInfo, List<AssetInfo>> dpdic, List<AssetGroup> result)
+        {
+            AssetEditorCache cache = AssetEditorCache.Load();
+            List<AssetInfo> find = assets.FindAll(x => cache.GetTag(x.path) == tag);
+            assets.RemoveAll(x => cache.GetTag(x.path) == tag);
+            OneFileBundle(find, AssetType.Scene, result);
+            SizeBundle_ALL($"{tag}_tagbundle", find, dpdic, result);
+        }
+        public static void TagSizeAndTopDirBundle(List<AssetInfo> assets, string tag, Dictionary<AssetInfo, List<AssetInfo>> dpdic, List<AssetGroup> result)
+        {
+            AssetEditorCache cache = AssetEditorCache.Load();
+            List<AssetInfo> find = assets.FindAll(x => cache.GetTag(x.path) == tag);
+            assets.RemoveAll(x => cache.GetTag(x.path) == tag);
+            OneFileBundle(find, AssetType.Scene, result);
+            SizeAndTopDirBundle_ALL(find, dpdic, result);
         }
 
         public void Create(List<AssetInfo> assets, List<AssetInfo> singles, Dictionary<AssetInfo, List<AssetInfo>> dic, List<AssetGroup> result)
         {
-            OneFileBundle(singles, result);
+            OneFileBundle_ALL(singles, result);
 
             TypeAllTFileBundle(assets, AssetType.Shader, result);
             TypeSizeBundle(assets, AssetType.TextAsset, dic, result);
-            OneDirTopBundle(assets, AssetType.Texture, dic, result);
+            OneTopDirBundle(assets, AssetType.Texture, dic, result);
             OneFileBundle(assets, AssetType.Font, result);
             OneFileBundle(assets, AssetType.Scene, result);
             OneFileBundle(assets, AssetType.SpriteAtlas, result);
@@ -141,8 +159,8 @@ namespace IFramework.Hotfix.Asset
             OneFileBundle(assets, AssetType.Model, result);
             OneFileBundle(assets, AssetType.Animation, result);
             OneFileBundle(assets, AssetType.ScriptObject, result);
-            OneDirTopBundle(assets, AssetType.Material, dic, result);
-            SizeAndDirBundle(assets, dic, result);
+            OneTopDirBundle(assets, AssetType.Material, dic, result);
+            SizeAndTopDirBundle_ALL(assets, dic, result);
         }
     }
 

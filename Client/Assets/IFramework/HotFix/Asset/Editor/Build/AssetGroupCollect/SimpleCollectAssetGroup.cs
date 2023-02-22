@@ -16,7 +16,7 @@ namespace IFramework.Hotfix.Asset
         public void Create(List<AssetInfo> assets, List<AssetInfo> singles, Dictionary<AssetInfo, List<AssetInfo>> dic, List<AssetGroup> result)
         {
             assets.AddRange(singles);
-            DefaultCollectAssetGroup.OneFileBundle(assets, result);
+            DefaultCollectAssetGroup.OneFileBundle_ALL(assets, result);
         }
     }
 
