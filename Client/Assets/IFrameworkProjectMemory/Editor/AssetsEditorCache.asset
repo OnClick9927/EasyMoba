@@ -250,15 +250,15 @@ MonoBehaviour:
     - Assets/Project/Scenes/Battle.unity
     lens:
     - path: Assets/Project/Scenes/Battle.unity
-      len: 98420
-    length: 98420
+      len: 94664
+    length: 94664
   - name: Assets/Project/Prefabs/UI/MainPanel
     assets:
     - Assets/Project/Prefabs/UI/MainPanel.prefab
     lens:
     - path: Assets/Project/Prefabs/UI/MainPanel.prefab
-      len: 22536
-    length: 22536
+      len: 21799
+    length: 21799
   - name: tag_bundle_lua_0
     assets:
     - Assets/Project/Lua/Ctrl/MatchCtrl.lua.txt
@@ -268,9 +268,9 @@ MonoBehaviour:
     - Assets/Project/Lua/UI/LoadScenePanelView.lua.txt
     - Assets/Project/Lua/UI/MatchPanelView.lua.txt
     - Assets/Project/Lua/Ctrl/LoginCtrl.lua.txt
+    - Assets/Project/Lua/GameTools.lua.txt
     - Assets/Project/Lua/UI/LoginPanelView.lua.txt
     - Assets/Project/Lua/UI/MainPanelView.lua.txt
-    - Assets/Project/Lua/GameTools.lua.txt
     - Assets/Project/Lua/Model/Base/Models.lua.txt
     - Assets/Project/Lua/GlobalDefine.lua.txt
     - Assets/Project/Lua/UI/MVCMap.lua.txt
@@ -293,23 +293,23 @@ MonoBehaviour:
     - path: Assets/Project/Lua/Ctrl/SceneCtrl.lua.txt
       len: 1449
     - path: Assets/Project/Lua/UI/LoadScenePanelView.lua.txt
-      len: 1411
+      len: 1403
     - path: Assets/Project/Lua/UI/MatchPanelView.lua.txt
-      len: 1335
+      len: 1284
     - path: Assets/Project/Lua/Ctrl/LoginCtrl.lua.txt
       len: 1227
-    - path: Assets/Project/Lua/UI/LoginPanelView.lua.txt
-      len: 1204
-    - path: Assets/Project/Lua/UI/MainPanelView.lua.txt
-      len: 1182
     - path: Assets/Project/Lua/GameTools.lua.txt
       len: 1168
+    - path: Assets/Project/Lua/UI/LoginPanelView.lua.txt
+      len: 1156
+    - path: Assets/Project/Lua/UI/MainPanelView.lua.txt
+      len: 1138
     - path: Assets/Project/Lua/Model/Base/Models.lua.txt
       len: 670
     - path: Assets/Project/Lua/GlobalDefine.lua.txt
       len: 664
     - path: Assets/Project/Lua/UI/MVCMap.lua.txt
-      len: 640
+      len: 625
     - path: Assets/Project/Lua/Ctrl/BattleCtrl.lua.txt
       len: 616
     - path: Assets/Project/Lua/GameLogic.lua.txt
@@ -319,7 +319,7 @@ MonoBehaviour:
     - path: Assets/Project/Lua/Model/Base/ModelBase.lua.txt
       len: 370
     - path: Assets/Project/Lua/UI/PanelNames.lua.txt
-      len: 319
+      len: 311
     - path: Assets/Project/Lua/Ctrl/Base/Ctrls.lua.txt
       len: 280
     - path: Assets/Project/Lua/Define/ResDefine.lua.txt
@@ -327,36 +327,36 @@ MonoBehaviour:
     - path: Assets/Project/Lua/Define/LuaEventTypes.lua.txt
       len: 204
     - path: Assets/Project/Lua/FixCsharp.lua.txt
-      len: 24
-    length: 19104
+      len: 23
+    length: 18929
   - name: Assets/Project/Prefabs/UI/LoadScenePanel
     assets:
     - Assets/Project/Prefabs/UI/LoadScenePanel.prefab
     lens:
     - path: Assets/Project/Prefabs/UI/LoadScenePanel.prefab
-      len: 17751
-    length: 17751
+      len: 17162
+    length: 17162
   - name: Assets/Project/Scenes/Update
     assets:
     - Assets/Project/Scenes/Update.unity
     lens:
     - path: Assets/Project/Scenes/Update.unity
-      len: 13172
-    length: 13172
+      len: 12704
+    length: 12704
   - name: Assets/Project/Prefabs/UI/MatchPanel
     assets:
     - Assets/Project/Prefabs/UI/MatchPanel.prefab
     lens:
     - path: Assets/Project/Prefabs/UI/MatchPanel.prefab
-      len: 11401
-    length: 11401
+      len: 11030
+    length: 11030
   - name: Assets/Project/Prefabs/UI/LoginPanel
     assets:
     - Assets/Project/Prefabs/UI/LoginPanel.prefab
     lens:
     - path: Assets/Project/Prefabs/UI/LoginPanel.prefab
-      len: 9604
-    length: 9604
+      len: 9290
+    length: 9290
   - name: Assets/Project/Materials_0
     assets:
     - Assets/Project/Materials/Player.mat
@@ -365,35 +365,35 @@ MonoBehaviour:
     - Assets/Project/Materials/Wall.mat
     lens:
     - path: Assets/Project/Materials/Player.mat
-      len: 2161
+      len: 2083
     - path: Assets/Project/Materials/PlayerCap.mat
-      len: 2155
+      len: 2077
     - path: Assets/Project/Materials/Ground.mat
-      len: 2141
+      len: 2063
     - path: Assets/Project/Materials/Wall.mat
-      len: 2133
-    length: 8590
+      len: 2055
+    length: 8278
   - name: Assets/Project/Scenes/Home
     assets:
     - Assets/Project/Scenes/Home.unity
     lens:
     - path: Assets/Project/Scenes/Home.unity
-      len: 8092
-    length: 8092
+      len: 7791
+    length: 7791
   - name: Assets/Project/Scenes/Login
     assets:
     - Assets/Project/Scenes/Login.unity
     lens:
     - path: Assets/Project/Scenes/Login.unity
-      len: 8092
-    length: 8092
+      len: 7791
+    length: 7791
   - name: Assets/Project/Prefabs/Battle/Character/char_001
     assets:
     - Assets/Project/Prefabs/Battle/Character/char_001.prefab
     lens:
     - path: Assets/Project/Prefabs/Battle/Character/char_001.prefab
-      len: 6319
-    length: 6319
+      len: 6105
+    length: 6105
   - name: TextAsset_0
     assets:
     - Assets/Project/Configs/CollisonLayer.json
@@ -401,19 +401,19 @@ MonoBehaviour:
     - Assets/Project/Configs/UICollect.json
     lens:
     - path: Assets/Project/Configs/CollisonLayer.json
-      len: 1584
+      len: 1506
     - path: Assets/Project/Configs/UILayer.json
-      len: 873
+      len: 840
     - path: Assets/Project/Configs/UICollect.json
       len: 616
-    length: 3073
+    length: 2962
   - name: Assets/Project_0
     assets:
     - Assets/Project/shadervariants.shadervariants
     lens:
     - path: Assets/Project/shadervariants.shadervariants
-      len: 2875
-    length: 2875
+      len: 2961
+    length: 2961
   tags:
     assets:
     - path: Assets/Project/Lua/Ctrl/Base/Ctrls.lua.txt

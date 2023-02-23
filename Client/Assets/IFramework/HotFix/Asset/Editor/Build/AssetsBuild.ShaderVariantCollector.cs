@@ -105,7 +105,7 @@ namespace IFramework.Hotfix.Asset
                 _savePath = tool.shaderVariantDirectory;
                 if (!Directory.Exists(_savePath)) return;
                 _savePath = _savePath.CombinePath("shadervariants.shadervariants");
-                _buildPaths = setting.GetBuildPaths();
+                _buildPaths = setting.buildPaths;
                 _call_back = call_back;
                 _processMaxNum = int.MaxValue;
                 AssetDatabase.DeleteAsset(_savePath);

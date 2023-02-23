@@ -8,7 +8,6 @@
 *********************************************************************************/
 using System.Collections.Generic;
 using UnityEngine;
-using static IFramework.Hotfix.Asset.AssetsBuild;
 
 namespace IFramework.Hotfix.Asset
 {

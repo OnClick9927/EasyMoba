@@ -12,6 +12,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e032500462931bd4b862324ca75e46f1, type: 3}
   m_Name: AssetsBuildSetting
   m_EditorClassIdentifier: 
+  buildGroup:
+    types:
+    - IFramework.Hotfix.Asset.SimpleCollectBundle
+    - IFramework.Hotfix.Asset.SoBigCollectBundle
+    - IFramework.Hotfix.Asset.AssetsBuild+DefaultCollectBundle
+    shortTypes:
+    - SimpleCollectBundle
+    - SoBigCollectBundle
+    - DefaultCollectBundle
+    typeIndex: 2
+  encrypt:
+    types:
+    - IFramework.Hotfix.Asset.DefaultAssetStraemEncrypt
+    - IFramework.Hotfix.Asset.NoneAssetStraemEncrypt
+    shortTypes:
+    - DefaultAssetStraemEncrypt
+    - NoneAssetStraemEncrypt
+    typeIndex: 0
+  tags:
+  - lua
   version: 0.0.1
   bundleSize: 8388608
   forceRebuild: 0
@@ -21,5 +41,3 @@ MonoBehaviour:
   - .meta
   buildPaths:
   - Assets/Project
-  tags:
-  - lua

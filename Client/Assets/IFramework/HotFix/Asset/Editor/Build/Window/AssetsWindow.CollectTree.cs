@@ -19,25 +19,25 @@ namespace IFramework.Hotfix.Asset
     {
         private class CollectTree : TreeView
         {
-            private enum SearchType
+            public enum SearchType
             {
                 Name,
                 Tag,
                 Type
             }
             private GUITool.SearchField search;
-            public CollectTree(TreeViewState state) : base(state)
+            public SearchType _searchType = SearchType.Name;
+            public CollectTree(TreeViewState state, SearchType _searchType) : base(state)
             {
-                this.Reload();
-                search = new GUITool.SearchField(this.searchString, System.Enum.GetNames(typeof(SearchType)),0);
+                this._searchType = _searchType;
+                search = new GUITool.SearchField(this.searchString, System.Enum.GetNames(typeof(SearchType)), (int)_searchType);
                 search.onValueChange += (value) => { this.searchString = value.ToLower(); };
-                search.onModeChange += (value) => { this.Reload(); };
-
-                showAlternatingRowBackgrounds = true; 
+                search.onModeChange += (value) => { this._searchType = (SearchType)value; this.Reload(); };
+                showAlternatingRowBackgrounds = true;
                 this.multiColumnHeader = new MultiColumnHeader(new MultiColumnHeaderState(new MultiColumnHeaderState.Column[]
                 {
                     new MultiColumnHeaderState.Column()
-                    {
+                    { 
                         minWidth=400
                     },
                     new MultiColumnHeaderState.Column()
@@ -53,6 +53,8 @@ namespace IFramework.Hotfix.Asset
 
                 }));
                 this.multiColumnHeader.ResizeToFit();
+                this.Reload();
+
             }
             protected override void SearchChanged(string newSearch)
             {
@@ -99,14 +101,14 @@ namespace IFramework.Hotfix.Asset
                 foreach (var item in select)
                 {
                     string path = this.FindItem(item, this.rootItem).displayName;
-                    if (cache.GetAssetInfo(path).type!= AssetInfo.AssetType.Directory)
+                    if (cache.GetAssetInfo(path).type != AssetInfo.AssetType.Directory)
                     {
                         paths.Add(path);
                     }
-              
+
                 }
                 GenericMenu menu = new GenericMenu();
-                var tags = buildSetting.GetTags();
+                var tags = buildSetting.tags;
                 foreach (var tag in tags)
                 {
                     menu.AddItem(new GUIContent($"SetTag/{tag}"), false, () =>
@@ -162,9 +164,9 @@ namespace IFramework.Hotfix.Asset
             {
                 foreach (var asset in assets)
                 {
-                    SearchType type = (SearchType)this.search.mode;
+                    ;
                     var source = string.Empty;
-                    switch (type)
+                    switch (_searchType)
                     {
                         case SearchType.Name:
                             source = Path.GetFileName(asset.path);
@@ -181,7 +183,7 @@ namespace IFramework.Hotfix.Asset
                     bool could = source.Contains(this.searchString);
                     if (could)
                     {
-                        CreateItem(asset.path, parrent, result);    
+                        CreateItem(asset.path, parrent, result);
                     }
                 }
             }

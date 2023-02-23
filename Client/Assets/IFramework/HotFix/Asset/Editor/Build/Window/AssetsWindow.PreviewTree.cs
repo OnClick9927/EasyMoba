@@ -11,7 +11,6 @@ using UnityEditor.IMGUI.Controls;
 using System.Collections.Generic;
 using Object = UnityEngine.Object;
 using UnityEngine;
-using static IFramework.Hotfix.Asset.AssetsBuild;
 
 namespace IFramework.Hotfix.Asset
 {
@@ -19,7 +18,7 @@ namespace IFramework.Hotfix.Asset
     {
         private class PreviewTree : TreeView
         {
-            private enum SearchType
+            public enum SearchType
             {
                 Bundle,
                 AssetByPath,
@@ -27,14 +26,15 @@ namespace IFramework.Hotfix.Asset
 
             }
             List<BundleGroup> previewBundles { get { return cache.previewBundles; } }
-
+            public SearchType _searchType;
             private GUITool.SearchField search;
 
-            public PreviewTree(TreeViewState state) : base(state)
+            public PreviewTree(TreeViewState state, SearchType _searchType) : base(state)
             {
-                search = new GUITool.SearchField(this.searchString, System.Enum.GetNames(typeof(SearchType)), 0);
+                this._searchType = _searchType;
+                search = new GUITool.SearchField(this.searchString, System.Enum.GetNames(typeof(SearchType)), (int)_searchType);
                 search.onValueChange += (value) => { this.searchString = value.ToLower(); };
-                search.onModeChange += (value) => { this.Reload(); };
+                search.onModeChange += (value) => { this._searchType = (SearchType)value; this.Reload(); };
 
                 showAlternatingRowBackgrounds = true;
 
@@ -112,7 +112,6 @@ namespace IFramework.Hotfix.Asset
             }
             private void InnerBuildRows(TreeViewItem root, IList<TreeViewItem> result)
             {
-                SearchType type = (SearchType)this.search.mode;
                 for (int i = 0; i < previewBundles.Count; i++)
                 {
                     var bundle = previewBundles[i];
@@ -137,7 +136,7 @@ namespace IFramework.Hotfix.Asset
                     }
                     else
                     {
-                        if (type == SearchType.Bundle)
+                        if (_searchType == SearchType.Bundle)
                         {
                             if (!bundle.name.ToLower().Contains(searchString)) continue;
                             BuildBundle(i, root, result);
@@ -148,11 +147,11 @@ namespace IFramework.Hotfix.Asset
                             for (int j = 0; j < bundle.assets.Count; j++)
                             {
                                 var path = bundle.assets[j];
-                                if (type == SearchType.AssetByPath)
+                                if (_searchType == SearchType.AssetByPath)
                                 {
                                     if (!path.ToLower().Contains(searchString)) continue;
                                 }
-                                else if (type == SearchType.AssetByTag)
+                                else if (_searchType == SearchType.AssetByTag)
                                 {
                                     var tag = cache.GetTag(path);
                                     if (string.IsNullOrEmpty(tag)) continue;

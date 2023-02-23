@@ -18,6 +18,7 @@ namespace IFramework.Hotfix.Asset
 {
     class AssetsBuildSetting : AssetsScriptableObject
     {
+        [System.Serializable]
         public class TypeSelect
         {
             public string[] types;
@@ -44,8 +45,10 @@ namespace IFramework.Hotfix.Asset
                 return type;
             }
         }
-        public TypeSelect buildGroup = new TypeSelect();
-        public TypeSelect encrypt = new TypeSelect();
+        [HideInInspector]public TypeSelect buildGroup = new TypeSelect();
+        [HideInInspector]public TypeSelect encrypt = new TypeSelect();
+        [HideInInspector] public List<string> tags = new List<string>();
+
         public string version = "0.0.1";
         public long bundleSize = 8 * 1024 * 1024;
         public bool forceRebuild = false;
@@ -53,10 +56,9 @@ namespace IFramework.Hotfix.Asset
 
         public List<string> ignoreFileEtend = new List<string>() {
             ".cs",
-            ".meta"
+            ".meta" 
         };
-        [SerializeField] private List<string> buildPaths = new List<string>();
-        [SerializeField] private List<string> tags = new List<string>();
+        [SerializeField] public List<string> buildPaths = new List<string>();
         private void OnEnable()
         {
             encrypt.baseType = typeof(IAssetStraemEncrypt);
@@ -89,13 +91,6 @@ namespace IFramework.Hotfix.Asset
             opt |= BuildAssetBundleOptions.DisableLoadAssetByFileNameWithExtension;
             return opt;
         }
-        public List<string> GetTags()
-        {
-            return tags;
-        }
-        public List<string> GetBuildPaths()
-        {
-            return buildPaths;
-        }
+      
     }
 }

@@ -146,7 +146,7 @@ namespace IFramework.Hotfix.Asset
                 TypeAllTFileBundle(assets, AssetType.Shader, result);
                 OneFileBundle(assets, AssetType.Scene, result);
 
-                var tags = setting.GetTags();
+                var tags = setting.tags;
                 foreach (var tag in tags)
                 {
                     TagSizeBundle(assets, tag, dic, result);

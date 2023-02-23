@@ -15,10 +15,6 @@ namespace IFramework.Hotfix.Asset
 {
     class AssetsToolSetting : AssetsScriptableObject
     {
-        public bool fastMode = true;
-        public string shaderVariantDirectory; 
-        public List<string> atlasPaths = new List<string>();
-
         [System.Serializable]
         public class PackingSetting
         {
@@ -36,6 +32,17 @@ namespace IFramework.Hotfix.Asset
             public FilterMode filterMode = FilterMode.Bilinear;
             public int anisoLevel = 1;
         }
+
+        [Tooltip("Asset Database Load In Editor")]
+        public bool fastMode = true;
+        [Tooltip("ShaderVariant")]
+        [Space(20)]
+        public string shaderVariantDirectory;
+
+        [Space(20)]
+        public List<string> atlasPaths = new List<string>();
+
+
         public SpriteAtlasPackingSettings GetPackingSetting()
         {
             return new SpriteAtlasPackingSettings()
@@ -57,12 +64,11 @@ namespace IFramework.Hotfix.Asset
                 sRGB = textureSetting.sRGB,
             };
         }
+
+
+
         public PackingSetting packSetting = new PackingSetting();
-
-
         public TextureSetting textureSetting = new TextureSetting();
-
-
         public TextureImporterPlatformSettings PlatformSetting = new TextureImporterPlatformSettings()
         {
             maxTextureSize = 2048,

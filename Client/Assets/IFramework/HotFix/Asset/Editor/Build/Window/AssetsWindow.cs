@@ -9,10 +9,7 @@
 using UnityEditor;
 using IFramework.GUITool.ToorbarMenu;
 using UnityEngine;
-using UnityEditor.IMGUI.Controls;
 using IFramework.GUITool;
-using UnityEditorInternal.VR;
-using UnityEngine.UIElements;
 
 namespace IFramework.Hotfix.Asset
 {
@@ -20,55 +17,41 @@ namespace IFramework.Hotfix.Asset
     partial class AssetsWindow : EditorWindow
     {
         private ToolBarTree tree;
-        private CollectTree col;
-        private PreviewTree pre;
-        private TreeViewState collectstate = new TreeViewState();
-        private TreeViewState previewstate = new TreeViewState();
+        private WindowLeft left = new WindowLeft();
+        private WindowRight right = new WindowRight();
         private SplitView sp = new SplitView() { split = 300, minSize = 300 };
-        private Editor buildSetting_editor;
-        private Editor toolSetting_editor;
-
-        private enum TreeType
-        {
-            Collect,
-            BundlesPreview
-        }
-        private TreeType treeType = TreeType.Collect;
-
         private static AssetsToolSetting toolSetting { get { return AssetsToolSetting.Load<AssetsToolSetting>(); } }
-
         private static AssetsBuildSetting buildSetting { get { return AssetsBuildSetting.Load<AssetsBuildSetting>(); } }
         private static AssetsEditorCache cache { get { return AssetsEditorCache.Load<AssetsEditorCache>(); } }
 
+        private void JustCollectAssets(bool save)
+        {
+            cache.Colllect(buildSetting.buildPaths);
+            if (save)
+            {
+                cache.Save();
+                right.ReLoad();
+            }
 
-        private void JustCollectAssets()
-        {
-            cache.Colllect(buildSetting.GetBuildPaths());
-            cache.Save();
-            col.Reload();
         }
-        private void PreView()
+        private void PreView(bool md5)
         {
-            cache.Colllect(buildSetting.GetBuildPaths());
+            JustCollectAssets(false);
             cache.previewBundles = AssetsBuild.CollectBundleGroup();
+            if (md5)
+            {
+                cache.previewBundles = AssetsBuild.CollectMain(cache.previewBundles);
+            }
             cache.Save();
-            col.Reload();
-            pre.Reload();
-            //treeType = TreeType.Group;
-        }
-        private void PreViewMD5()
-        {
-            cache.Colllect(buildSetting.GetBuildPaths());
-            cache.previewBundles = AssetsBuild.CollectMain(AssetsBuild.CollectBundleGroup());
-            cache.Save();
-            col.Reload();
-            pre.Reload();
-            //EditorGUIUtility.PingObject(EditorTools.AssetTool.Load<AssetManifest>(AssetManifest.Path));
-            //treeType = TreeType.Group;
+            right.ReLoad();
         }
         private void CollectShaderVariant()
         {
-            AssetsBuild.ShaderVariantCollector.Run(PreView);
+            AssetsBuild.ShaderVariantCollector.Run(() => { PreView(false); });
+        } 
+        private void OnDisable()
+        {
+            right.OnDisable();
         }
         private void OnEnable()
         {
@@ -79,9 +62,9 @@ namespace IFramework.Hotfix.Asset
                 menu.AddItem(new GUIContent("Help/Build Atlas"), false, AssetsBuild.AtlasBuild.Run);
                 menu.AddItem(new GUIContent("Help/Collect Shader Variant"), false, CollectShaderVariant);
 
-                menu.AddItem(new GUIContent("Preview/Just Collect Assets"), false, JustCollectAssets);
-                menu.AddItem(new GUIContent("Preview/Bundle"), false, PreView);
-                menu.AddItem(new GUIContent("Preview/MD5 Bundle"), false, PreViewMD5);
+                menu.AddItem(new GUIContent("Preview/Just Collect Assets"), false, () => { JustCollectAssets(true); });
+                menu.AddItem(new GUIContent("Preview/Bundle"), false, () => { PreView(false); });
+                menu.AddItem(new GUIContent("Preview/MD5 Bundle"), false, () => { PreView(true); });
 
 
                 menu.AddSeparator("");
@@ -96,42 +79,17 @@ namespace IFramework.Hotfix.Asset
             .FlexibleSpace()
             .Delegate(rect =>
             {
-                treeType = (TreeType)GUI.Toolbar(rect, (int)treeType, new string[] { "Assets", "Bundle Preview" });
+                right.treeType = (WindowRight.TreeType)GUI.Toolbar(rect, (int)right.treeType, new string[] { "Assets", "Bundle Preview" });
 
             }, 200);
-            col = new CollectTree(collectstate);
-            pre = new PreviewTree(previewstate);
-            sp.fistPan += Sp_fistPan;
-            sp.secondPan += Sp_secondPan;
-            buildSetting_editor = Editor.CreateEditor(buildSetting);
-            toolSetting_editor = Editor.CreateEditor(toolSetting);
+
+
+            sp.fistPan += left.OnGUI;
+            sp.secondPan += right.OnGUI;
+            left.OnEnable();
+            right.OnEnable();
 
         }
-
-        private void Sp_secondPan(Rect obj)
-        {
-            if (treeType == 0)
-            {
-                col.OnGUI(obj);
-            }
-            else
-            {
-                pre.OnGUI(obj);
-            }
-        }
-        Vector2 scroll;
-        private void Sp_fistPan(Rect obj)
-        {
-            GUILayout.BeginArea(obj);
-            scroll = GUILayout.BeginScrollView(scroll);
-            toolSetting_editor.OnInspectorGUI();
-            GUILayout.Space(10);
-            buildSetting_editor.OnInspectorGUI();
-            GUILayout.EndScrollView();
-            GUILayout.EndArea();
-        }
-
-
         private void OnGUI()
         {
             var rs = this.LocalPosition().HorizontalSplit(20);
