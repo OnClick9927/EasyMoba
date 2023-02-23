@@ -7,16 +7,13 @@
  *History:        2018.11--
 *********************************************************************************/
 
-using LockStep.LCollision2D;
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Runtime.InteropServices.ComTypes;
 using System.Security.Cryptography;
 using System.Text;
 using UnityEngine;
-using static IFramework.Hotfix.Asset.AssetManifest;
-using static UnityEngine.GraphicsBuffer;
+using static IFramework.Hotfix.Asset.AssetsSetting;
 
 namespace IFramework.Hotfix.Asset
 {

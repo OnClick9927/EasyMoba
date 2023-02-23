@@ -7,22 +7,14 @@
  *History:        2018.11--
 *********************************************************************************/
 using System.Collections.Generic;
-using System.IO;
-using System.Linq;
 using UnityEngine;
 using static IFramework.Hotfix.Asset.AssetsBuild;
 
 namespace IFramework.Hotfix.Asset
 {
-    class AssetEditorCache : ScriptableObject
+    class AssetsEditorCache : AssetsScriptableObject
     {
-        private static string stoPath { get { return EditorEnvPath.projectMemoryPath.CombinePath("AssetEditorCache.asset"); } }
-        public static AssetEditorCache Load()
-        {
-            if (File.Exists(stoPath))
-                return EditorTools.AssetTool.Load<AssetEditorCache>(stoPath);
-            return EditorTools.AssetTool.CreateScriptableObject<AssetEditorCache>(stoPath);
-        }
+
         [SerializeField] private AssetsTree tree = new AssetsTree();
 
         public List<AssetInfo> GetRootDirPaths()
@@ -77,19 +69,16 @@ namespace IFramework.Hotfix.Asset
             assets.RemoveAll(x => x.type == AssetInfo.AssetType.Directory);
             tags.ComparePaths(assets.ConvertAll(x => x.path));
         }
-        public void Save()
-        {
-            EditorTools.AssetTool.Update(this);
-        }
-
-        public List<AssetGroup> previewBundles = new List<AssetGroup>();
 
 
-        public AssetGroup GetGroupByAssetPath(string assetPath)
+        public List<BundleGroup> previewBundles = new List<BundleGroup>();
+
+
+        public BundleGroup GetGroupByAssetPath(string assetPath)
         {
             return previewBundles.Find(x => x.assets.Contains(assetPath));
         }
-        public AssetGroup GetGroupByBundleName(string bundleName)
+        public BundleGroup GetGroupByBundleName(string bundleName)
         {
             return previewBundles.Find(x => x.name == bundleName);
         }

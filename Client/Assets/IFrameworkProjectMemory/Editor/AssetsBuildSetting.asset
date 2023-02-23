@@ -10,33 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e032500462931bd4b862324ca75e46f1, type: 3}
-  m_Name: AssetBuildSetting
+  m_Name: AssetsBuildSetting
   m_EditorClassIdentifier: 
+  version: 0.0.1
   bundleSize: 8388608
   forceRebuild: 0
   IgnoreTypeTreeChanges: 1
-  atlas:
-    platformSetting:
-      m_Name: DefaultTexturePlatform
-      m_Overridden: 0
-      m_MaxTextureSize: 2048
-      m_ResizeAlgorithm: 0
-      m_TextureFormat: -1
-      m_TextureCompression: 1
-      m_CompressionQuality: 50
-      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
-      m_CrunchedCompression: 1
-      m_AllowsAlphaSplitting: 0
-      m_AndroidETC2FallbackOverride: 0
-  fastMode: 0
-  version: 0.0.1
   ignoreFileEtend:
   - .cs
   - .meta
-  atlasPaths: []
   buildPaths:
   - Assets/Project
   tags:
   - lua
-  - scene
-  - config

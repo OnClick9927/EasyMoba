@@ -24,9 +24,9 @@ namespace IFramework.Hotfix.Asset
 
     public partial class AssetsBuild
     {
-        private static class ShaderVariantCollector
+        public static class ShaderVariantCollector
         {
-            public static class ShaderVariantCollectionHelper
+             static class ShaderVariantCollectionHelper
             {
                 public static object InvokeNonPublicStaticMethod(System.Type type, string method, params object[] parameters)
                 {
@@ -84,7 +84,7 @@ namespace IFramework.Hotfix.Asset
             private const float WaitMilliseconds = 1000f;
             private const float SleepMilliseconds = 100f;
             private static string _savePath;
-            private static string[] _buildPaths;
+            private static List<string> _buildPaths;
 
             private static int _processMaxNum;
 
@@ -99,15 +99,16 @@ namespace IFramework.Hotfix.Asset
             /// <summary>
             /// 开始收集
             /// </summary>
-            public static void Run(string savePath, string[] buidPaths, Action call_back)
+            public static void Run(Action call_back)
             {
                 if (_steps != ESteps.None) return;
-                AssetDatabase.DeleteAsset(savePath);
-                Ex.MakeDirectoryExist(savePath);
-                _savePath = savePath;
-                _buildPaths = buidPaths;
+                _savePath = tool.shaderVariantDirectory;
+                if (!Directory.Exists(_savePath)) return;
+                _savePath = _savePath.CombinePath("shadervariants.shadervariants");
+                _buildPaths = setting.GetBuildPaths();
                 _call_back = call_back;
                 _processMaxNum = int.MaxValue;
+                AssetDatabase.DeleteAsset(_savePath);
 
 
                 // 聚焦到游戏窗口
@@ -189,7 +190,7 @@ namespace IFramework.Hotfix.Asset
             }
             private static List<string> GetAllMaterials()
             {
-                return AssetDatabase.FindAssets("t:material", _buildPaths).ToList().ConvertAll(x =>
+                return AssetDatabase.FindAssets("t:material", _buildPaths.ToArray()).ToList().ConvertAll(x =>
                 {
                     return AssetDatabase.GUIDToAssetPath(x);
                 });

@@ -7,12 +7,11 @@
  *History:        2018.11--
 *********************************************************************************/
 using System.Collections.Generic;
-using static IFramework.Hotfix.Asset.AssetsBuild;
 
 namespace IFramework.Hotfix.Asset
 {
-    public interface ICollectAssetGroup
+    public interface ICollectBundle
     {
-        void Create(List<AssetInfo> assets, List<AssetInfo> singles, Dictionary<AssetInfo, List<AssetInfo>> dpsDic, List<AssetGroup> result);
+        void Create(List<AssetInfo> assets, Dictionary<AssetInfo, List<AssetInfo>> dpsDic, List<BundleGroup> result);
     }
 }

@@ -26,7 +26,7 @@ namespace IFramework.Hotfix.Asset
                 AssetByTag
 
             }
-            List<AssetGroup> previewBundles { get { return cache.previewBundles; } }
+            List<BundleGroup> previewBundles { get { return cache.previewBundles; } }
 
             private GUITool.SearchField search;
 
@@ -186,14 +186,14 @@ namespace IFramework.Hotfix.Asset
                 if (args.item.depth == 0)
                 {
                     GUI.Label(first, new GUIContent(args.label, args.item.icon));
-                    AssetGroup group = cache.GetGroupByBundleName(args.label);
+                    BundleGroup group = cache.GetGroupByBundleName(args.label);
                     length = group.length;
                 }
                 else
                 {
                     string path = args.label;
                     GUI.Label(first, new GUIContent(path, args.item.icon));
-                    AssetGroup group = cache.GetGroupByAssetPath(path);
+                    BundleGroup group = cache.GetGroupByAssetPath(path);
                     length = group.GetLength(path);
                     GUI.Label(args.GetCellRect(2), new GUIContent(cache.GetTag(path)));
                 }

@@ -59,7 +59,7 @@ namespace IFramework.Hotfix.Asset
             else
             {
                 var find = singles.Find(x => x.path == path);
-                if (find != null || AssetBuildSetting.IsIgnorePath(path)) return;
+                if (find != null || AssetsBuild.IsIgnorePath(path)) return;
                 singles.Add(new AssetInfo(path, ""));
             }
             for (int i = singles.Count - 1; i >= 0; i--)
@@ -88,12 +88,12 @@ namespace IFramework.Hotfix.Asset
             if (string.IsNullOrEmpty(parrent))
                 rootDir.Add(info);
             assets.Add(info);
-            string[] dirs = AssetBuildSetting.GetDirectories(path);
+            string[] dirs = AssetsBuild.GetLegalDirectories(path);
             foreach (var item in dirs)
             {
                 LoopAdd(item.ToRegularPath(), path);
             }
-            string[] files = AssetBuildSetting.GetFiles(path);
+            string[] files = AssetsBuild.GetLegalFiles(path);
             foreach (var item in files)
             {
                 AddPath(item);
@@ -114,7 +114,7 @@ namespace IFramework.Hotfix.Asset
                         if (path != asset.path)
                         {
                             path = path.ToRegularPath();
-                            if (!AssetBuildSetting.IsIgnorePath(path))
+                            if (!AssetsBuild.IsIgnorePath(path))
                             {
                                 if (!asset.dps.Contains(path) && !path.IsDirectory())
                                     asset.dps.Add(path);

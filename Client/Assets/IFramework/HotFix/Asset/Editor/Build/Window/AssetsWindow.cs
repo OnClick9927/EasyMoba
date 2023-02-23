@@ -25,7 +25,9 @@ namespace IFramework.Hotfix.Asset
         private TreeViewState collectstate = new TreeViewState();
         private TreeViewState previewstate = new TreeViewState();
         private SplitView sp = new SplitView() { split = 300, minSize = 300 };
-        private Editor editor;
+        private Editor buildSetting_editor;
+        private Editor toolSetting_editor;
+
         private enum TreeType
         {
             Collect,
@@ -33,8 +35,10 @@ namespace IFramework.Hotfix.Asset
         }
         private TreeType treeType = TreeType.Collect;
 
-        private static AssetBuildSetting buildSetting { get { return AssetBuildSetting.Load(); } }
-        private static AssetEditorCache cache { get { return AssetEditorCache.Load(); } }
+        private static AssetsToolSetting toolSetting { get { return AssetsToolSetting.Load<AssetsToolSetting>(); } }
+
+        private static AssetsBuildSetting buildSetting { get { return AssetsBuildSetting.Load<AssetsBuildSetting>(); } }
+        private static AssetsEditorCache cache { get { return AssetsEditorCache.Load<AssetsEditorCache>(); } }
 
 
         private void JustCollectAssets()
@@ -46,7 +50,7 @@ namespace IFramework.Hotfix.Asset
         private void PreView()
         {
             cache.Colllect(buildSetting.GetBuildPaths());
-            cache.previewBundles = AssetsBuild.CollectAssetGroup();
+            cache.previewBundles = AssetsBuild.CollectBundleGroup();
             cache.Save();
             col.Reload();
             pre.Reload();
@@ -55,7 +59,7 @@ namespace IFramework.Hotfix.Asset
         private void PreViewMD5()
         {
             cache.Colllect(buildSetting.GetBuildPaths());
-            cache.previewBundles = AssetsBuild.CollectMain(AssetsBuild.CollectAssetGroup());
+            cache.previewBundles = AssetsBuild.CollectMain(AssetsBuild.CollectBundleGroup());
             cache.Save();
             col.Reload();
             pre.Reload();
@@ -64,7 +68,7 @@ namespace IFramework.Hotfix.Asset
         }
         private void CollectShaderVariant()
         {
-            AssetsBuild.CollectShaderVariant(PreView);
+            AssetsBuild.ShaderVariantCollector.Run(PreView);
         }
         private void OnEnable()
         {
@@ -72,7 +76,7 @@ namespace IFramework.Hotfix.Asset
             tree.DropDownButton(new GUIContent("Tools"), (rect) =>
             {
                 GenericMenu menu = new GenericMenu();
-                menu.AddItem(new GUIContent("Help/Build Atlas"), false, AssetsBuild.BuildAtlas);
+                menu.AddItem(new GUIContent("Help/Build Atlas"), false, AssetsBuild.AtlasBuild.Run);
                 menu.AddItem(new GUIContent("Help/Collect Shader Variant"), false, CollectShaderVariant);
 
                 menu.AddItem(new GUIContent("Preview/Just Collect Assets"), false, JustCollectAssets);
@@ -99,7 +103,9 @@ namespace IFramework.Hotfix.Asset
             pre = new PreviewTree(previewstate);
             sp.fistPan += Sp_fistPan;
             sp.secondPan += Sp_secondPan;
-            editor = Editor.CreateEditor(buildSetting);
+            buildSetting_editor = Editor.CreateEditor(buildSetting);
+            toolSetting_editor = Editor.CreateEditor(toolSetting);
+
         }
 
         private void Sp_secondPan(Rect obj)
@@ -118,7 +124,9 @@ namespace IFramework.Hotfix.Asset
         {
             GUILayout.BeginArea(obj);
             scroll = GUILayout.BeginScrollView(scroll);
-            editor.OnInspectorGUI();
+            toolSetting_editor.OnInspectorGUI();
+            GUILayout.Space(10);
+            buildSetting_editor.OnInspectorGUI();
             GUILayout.EndScrollView();
             GUILayout.EndArea();
         }

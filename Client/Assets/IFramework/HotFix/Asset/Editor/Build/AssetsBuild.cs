@@ -11,19 +11,73 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.IO;
 using System;
-using UnityEngine.U2D;
-using UnityEditor.U2D;
 using System.Linq;
 
 namespace IFramework.Hotfix.Asset
 {
-
     public partial class AssetsBuild
     {
+        static string streamPath
+        {
+            get
+            {
 
-        static AssetBuildSetting setting { get { return AssetBuildSetting.Load(); } }
-        static AssetEditorCache cache { get { return AssetEditorCache.Load(); } }
-        private static List<string> GetAllFilesIncludeList(string directory, List<string> exName, List<string> result)
+                string path = Application.streamingAssetsPath;
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+                path = path.CombinePath(buildTarget);
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+                return path;
+            }
+
+        }
+        private static string buildTarget
+        {
+            get
+            {
+                switch (EditorUserBuildSettings.activeBuildTarget)
+                {
+                    case BuildTarget.Android:
+                        return "Android";
+                    case BuildTarget.StandaloneWindows:
+                    case BuildTarget.StandaloneWindows64:
+                        return "Windows";
+                    case BuildTarget.iOS:
+                        return "iOS";
+                    case BuildTarget.WebGL:
+                        return "WebGL";
+                    default:
+                        return "";
+                }
+            }
+        }
+        public static string outputPath
+        {
+            get
+            {
+                string path = "Assets/../DLC/";
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+                path = path.CombinePath(buildTarget);
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+                return path;
+            }
+        }
+
+        static AssetsToolSetting tool { get { return AssetsToolSetting.Load<AssetsToolSetting>(); } }
+        static AssetsBuildSetting setting { get { return AssetsBuildSetting.Load<AssetsBuildSetting>(); } }
+        static AssetsEditorCache cache { get { return AssetsEditorCache.Load<AssetsEditorCache>(); } }
+        static List<string> GetAllFilesIncludeList(string directory, List<string> exName, List<string> result)
         {
             DirectoryInfo root = new DirectoryInfo(directory);
             FileInfo[] files = root.GetFiles();
@@ -47,8 +101,7 @@ namespace IFramework.Hotfix.Asset
             return result;
 
         }
-
-        private static void RemoveMetaFiles(string outputPath)
+        static void RemoveMetaFiles(string outputPath)
         {
             List<string> file_paths = GetAllFilesIncludeList(outputPath, new List<string>() { ".meta", ".manifest" }, new List<string>());
             for (int i = 0; i < file_paths.Count; i++)
@@ -57,9 +110,7 @@ namespace IFramework.Hotfix.Asset
                 File.Delete(file);
             }
         }
-
-
-        private static void Encrypt(string outputPath, string[] bundles)
+        static void Encrypt(string outputPath, string[] bundles)
         {
             Type type = setting.GetStreamEncryptType();
             IAssetStraemEncrypt en = Activator.CreateInstance(type) as IAssetStraemEncrypt;
@@ -71,8 +122,7 @@ namespace IFramework.Hotfix.Asset
             }
 
         }
-
-        private static void BuildVersion(string outputPath, string version_txt, string[] bundles)
+        static void BuildVersion(string outputPath, string version_txt, string[] bundles)
         {
             AssetsVersion version = new AssetsVersion();
             foreach (var bundle in bundles)
@@ -91,11 +141,11 @@ namespace IFramework.Hotfix.Asset
         }
         public static void Build()
         {
-            string outputPath = setting.outputPath;
-            BuildAssetBundleOptions option = setting.Option;
+            string outputPath = AssetsBuild.outputPath;
+            BuildAssetBundleOptions option = setting.GetOption();
             string version_txt = setting.version;
 
-            var list = CollectAssetGroup();
+            var list = CollectBundleGroup();
             CollectMain(list);
             AssetBundleManifest main = BuildPipeline.BuildAssetBundles(outputPath, list.ConvertAll(x =>
             {
@@ -111,26 +161,22 @@ namespace IFramework.Hotfix.Asset
             Encrypt(outputPath, bundles);
             BuildVersion(outputPath, version_txt, bundles);
         }
-
         public static void CopyToStreamPath()
         {
-            string outputPath = setting.outputPath;
-            string streamPath = setting.streamPath;
             AssetsInternal.CopyDirectory(outputPath, streamPath);
             AssetDatabase.Refresh();
         }
-        public static List<AssetGroup> CollectAssetGroup()
+        public static List<BundleGroup> CollectBundleGroup()
         {
             Type collectType = setting.GetBuildGroupType();
             Dictionary<AssetInfo, List<AssetInfo>> dic = cache.GetDpDic();
-            List<AssetInfo> all = new List<AssetInfo>(cache.GetAssets());
-
-            List<AssetInfo> singles = cache.GetSingleFiles();
-            all.RemoveAll(x => x.type == AssetInfo.AssetType.Directory);
-            all.RemoveAll(x => x.path == AssetManifest.Path);
-            var creater = Activator.CreateInstance(collectType) as ICollectAssetGroup;
-            var builds = new List<AssetGroup>();
-            creater.Create(all, singles, dic, builds);
+            List<AssetInfo> assets = new List<AssetInfo>(cache.GetAssets());
+            assets.AddRange(cache.GetSingleFiles());
+            assets.RemoveAll(x => x.type == AssetInfo.AssetType.Directory);
+            assets.RemoveAll(x => x.path == AssetManifest.Path);
+            var creater = Activator.CreateInstance(collectType) as ICollectBundle;
+            var builds = new List<BundleGroup>();
+            creater.Create(assets, dic, builds);
             builds.RemoveAll(x => x.assets.Count == 0);
             builds.Sort((a, b) =>
             {
@@ -138,12 +184,11 @@ namespace IFramework.Hotfix.Asset
             });
             return builds;
         }
-
-        public static List<AssetGroup> CollectMain(List<AssetGroup> builds)
+        public static List<BundleGroup> CollectMain(List<BundleGroup> builds)
         {
             for (int i = 0; i < builds.Count; i++)
             {
-                AssetGroup build = builds[i];
+                BundleGroup build = builds[i];
                 build.name = AssetsInternal.GetMd5(build.name);
             }
             Dictionary<string, string> allAssets = new Dictionary<string, string>();
@@ -168,96 +213,48 @@ namespace IFramework.Hotfix.Asset
             AssetManifest main = EditorTools.AssetTool.Load<AssetManifest>(AssetManifest.Path);
             main.Read(allAssets, assetdps, cache.GetTagDic());
             EditorTools.AssetTool.Update(main);
-            AssetGroup mainbuild = new AssetGroup(AssetsInternal.GetMd5(AssetManifest.Path));
+            BundleGroup mainbuild = new BundleGroup(AssetsInternal.GetMd5(AssetManifest.Path));
             mainbuild.AddAsset(AssetManifest.Path);
             builds.Add(mainbuild);
             return builds;
         }
-
-        public static void BuildAtlas()
-        {
-            var _paths = setting.GetAtlasPaths();
-            List<string> paths = new List<string>();
-            foreach (var path in _paths)
-            {
-                paths.Add(path);
-                var sub = Directory.GetDirectories(path, "*", SearchOption.AllDirectories);
-                paths.AddRange(sub);
-            }
-            paths = paths.Distinct().ToList();
-            foreach (var path in paths)
-            {
-                BuildAtlas(path);
-            }
-        }
-        static List<string> CollectTextures(string directory)
-        {
-            var png = Directory.GetFiles(directory, "*.png");
-            var jpg = Directory.GetFiles(directory, "*.jpg");
-            var files = new List<string>(png);
-            files.AddRange(jpg);
-            return files;
-        }
-        static void BuildAtlas(string directory)
-        {
-            var texfiles = CollectTextures(directory);
-            if (texfiles.Count <= 0) return;
-            SpriteAtlas atlas = new SpriteAtlas();
-            // 设置参数 可根据项目具体情况进行设置
-            SpriteAtlasPackingSettings packSetting = new SpriteAtlasPackingSettings()
-            {
-                blockOffset = 1,
-                enableRotation = false,
-                enableTightPacking = false,
-                padding = 2,
-            };
-            atlas.SetPackingSettings(packSetting);
-
-            SpriteAtlasTextureSettings textureSetting = new SpriteAtlasTextureSettings()
-            {
-                readable = false,
-                generateMipMaps = false,
-                sRGB = true,
-                filterMode = FilterMode.Bilinear,
-            };
-            atlas.SetTextureSettings(textureSetting);
-
-            TextureImporterPlatformSettings platformSetting = new TextureImporterPlatformSettings()
-            {
-                maxTextureSize = 2048,
-                format = TextureImporterFormat.Automatic,
-                crunchedCompression = true,
-                textureCompression = TextureImporterCompression.Compressed,
-                compressionQuality = 50,
-            };
-            atlas.SetPlatformSettings(platformSetting);
-            AssetDatabase.CreateAsset(atlas, directory.Append(".spriteatlas"));
-
-            List<Texture> texs = new List<Texture>();
-            foreach (var item in texfiles)
-            {
-                var load = AssetDatabase.LoadAssetAtPath<Texture>(item);
-                if (load)
-                {
-                    texs.Add(load);
-                }
-            }
-            atlas.Add(texs.ToArray());
-            EditorUtility.SetDirty(atlas);
-            AssetDatabase.Refresh();
-        }
         public static void OpenOutputFloder()
         {
-            EditorTools.OpenFolder(setting.outputPath);
+            EditorTools.OpenFolder(outputPath);
         }
         public static void ClearOutputFloder()
         {
-            Directory.Delete(setting.outputPath, true);
+            Directory.Delete(outputPath, true);
         }
 
-        public static void CollectShaderVariant(Action call_back)
+
+        public static string[] GetLegalDirectories(string path)
         {
-            ShaderVariantCollector.Run(AssetBuildSetting.shaderVariantPath, setting.GetBuildPaths().ToArray(), call_back);
+            return Directory.GetDirectories(path, "*", SearchOption.TopDirectoryOnly)
+                .Where(path => { return !IsIgnorePath(path); }).ToArray();
+        }
+        public static bool IsIgnorePath(string path)
+        {
+            var list = path.ToRegularPath().Split('/').ToList();
+            if (!list.Contains("Assets") || list.Contains("Editor") || list.Contains("Resources")) return true;
+            for (int i = 0; i < setting.ignoreFileEtend.Count; i++)
+            {
+                if (path.EndsWith(setting.ignoreFileEtend[i]))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        public static string[] GetLegalFiles(string path)
+        {
+            var paths = Directory.GetFiles(path, "*", SearchOption.TopDirectoryOnly);
+            var list = paths.ToList();
+            list.RemoveAll(s =>
+            {
+                return IsIgnorePath(s);
+            });
+            return list.ToArray();
         }
     }
 }

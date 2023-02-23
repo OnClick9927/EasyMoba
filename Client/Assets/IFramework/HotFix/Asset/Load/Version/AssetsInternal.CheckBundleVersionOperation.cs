@@ -10,6 +10,7 @@
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using static IFramework.Hotfix.Asset.AssetsSetting;
 
 namespace IFramework.Hotfix.Asset
 {

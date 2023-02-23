@@ -7,16 +7,17 @@
  *History:        2018.11--
 *********************************************************************************/
 using System.Collections.Generic;
+using static IFramework.Hotfix.Asset.AssetInfo;
 using static IFramework.Hotfix.Asset.AssetsBuild;
 
 namespace IFramework.Hotfix.Asset
 {
-    public class SimpleCollectAssetGroup : ICollectAssetGroup
+    public class SoBigCollectBundle : ICollectBundle
     {
-        public void Create(List<AssetInfo> assets, List<AssetInfo> singles, Dictionary<AssetInfo, List<AssetInfo>> dic, List<AssetGroup> result)
+        public void Create(List<AssetInfo> assets, Dictionary<AssetInfo, List<AssetInfo>> dpsDic, List<BundleGroup> result)
         {
-            assets.AddRange(singles);
-            DefaultCollectAssetGroup.OneFileBundle_ALL(assets, result);
+            DefaultCollectBundle.OneFileBundle(assets, AssetType.Scene, result);
+            DefaultCollectBundle.AllInOneBundle_ALL(assets, "so_big", result);
         }
     }
 

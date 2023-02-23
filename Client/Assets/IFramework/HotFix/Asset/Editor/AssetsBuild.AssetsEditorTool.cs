@@ -6,25 +6,25 @@
  *Description:    IFramework
  *History:        2018.11--
 *********************************************************************************/
-using System.Collections.Generic;
 using UnityEditor;
 namespace IFramework.Hotfix.Asset
 {
-    [InitializeOnLoad]
-    static class AssetsEditorTool
+    partial class AssetsBuild
     {
-        static AssetsEditorTool()
+        [InitializeOnLoad]
+        static class AssetsEditorTool
         {
-            ChangeLoadMode();
-        }
-        public static void ChangeLoadMode()
-        {
-            if (AssetBuildSetting.Load().fastMode)
+            static AssetsEditorTool()
             {
-                AssetsInternal.mode = new FastAssetMode();
+                ChangeLoadMode();
             }
-            AssetsInternal.localSaveDir = AssetBuildSetting.Load().outputPath;
-
+            public static void ChangeLoadMode()
+            {
+                if (tool.fastMode)
+                    AssetsInternal.mode = new FastAssetMode();
+                AssetsInternal.localSaveDir = outputPath;
+            }
         }
     }
+
 }

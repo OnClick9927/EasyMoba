@@ -15,7 +15,7 @@ MonoBehaviour:
   assets:
   - path: Assets/Project/Scenes/Battle.unity
     bundleName: 7f6c35349c28ede8e672999b4308329c
-    tag: scene
+    tag: 
     dps:
     - Assets/Project/Materials/Ground.mat
     - Assets/Project/Materials/Wall.mat
@@ -51,15 +51,15 @@ MonoBehaviour:
     bundleName: 8e35d8e5a210ebd4d168cdd227771bc3
     tag: lua
     dps: []
-  - path: Assets/Project/Lua/GameTools.lua.txt
-    bundleName: 8e35d8e5a210ebd4d168cdd227771bc3
-    tag: lua
-    dps: []
   - path: Assets/Project/Lua/UI/LoginPanelView.lua.txt
     bundleName: 8e35d8e5a210ebd4d168cdd227771bc3
     tag: lua
     dps: []
   - path: Assets/Project/Lua/UI/MainPanelView.lua.txt
+    bundleName: 8e35d8e5a210ebd4d168cdd227771bc3
+    tag: lua
+    dps: []
+  - path: Assets/Project/Lua/GameTools.lua.txt
     bundleName: 8e35d8e5a210ebd4d168cdd227771bc3
     tag: lua
     dps: []
@@ -117,7 +117,7 @@ MonoBehaviour:
     dps: []
   - path: Assets/Project/Scenes/Update.unity
     bundleName: 49d04fe1df584e73fcbc54ecbe0f14c5
-    tag: scene
+    tag: 
     dps: []
   - path: Assets/Project/Prefabs/UI/MatchPanel.prefab
     bundleName: 396e34b4c9996ce3ab1678aa702f428d
@@ -145,11 +145,11 @@ MonoBehaviour:
     dps: []
   - path: Assets/Project/Scenes/Home.unity
     bundleName: 7d1d4ed19f1b39a37cebb31810154b41
-    tag: scene
+    tag: 
     dps: []
   - path: Assets/Project/Scenes/Login.unity
     bundleName: a46c7ef4206e8c80f9600042d7a1f9f9
-    tag: scene
+    tag: 
     dps: []
   - path: Assets/Project/Prefabs/Battle/Character/char_001.prefab
     bundleName: 6f64bbf904bddc0d8065c57e69602fd5
@@ -158,16 +158,16 @@ MonoBehaviour:
     - Assets/Project/Materials/PlayerCap.mat
     - Assets/Project/Materials/Player.mat
   - path: Assets/Project/Configs/CollisonLayer.json
-    bundleName: c6e175e120d343ac0d7dc74b8fc822f6
-    tag: config
+    bundleName: 8ebb5659099646fca72a09fd6c0de16a
+    tag: 
     dps: []
   - path: Assets/Project/Configs/UILayer.json
-    bundleName: c6e175e120d343ac0d7dc74b8fc822f6
-    tag: config
+    bundleName: 8ebb5659099646fca72a09fd6c0de16a
+    tag: 
     dps: []
   - path: Assets/Project/Configs/UICollect.json
-    bundleName: c6e175e120d343ac0d7dc74b8fc822f6
-    tag: config
+    bundleName: 8ebb5659099646fca72a09fd6c0de16a
+    tag: 
     dps: []
   - path: Assets/Project/shadervariants.shadervariants
     bundleName: d97e3f8059579087a0bfb588eea7e986
