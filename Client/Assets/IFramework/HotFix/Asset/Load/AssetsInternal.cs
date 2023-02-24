@@ -7,7 +7,6 @@
  *History:        2018.11--
 *********************************************************************************/
 
-using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Security.Cryptography;
@@ -129,7 +128,7 @@ namespace IFramework.Hotfix.Asset
         {
             return IsManifestNull() ? null : manifest.GetAssetDependences(assetpath);
         }
-       
+
         private static void LoadDps(string path)
         {
             List<string> dps = GetAssetDps(path);
@@ -181,41 +180,15 @@ namespace IFramework.Hotfix.Asset
         }
 
 
-        public static void CopyDLCFromSteam()
+        public static CopyBundleOperation CopyDLCFromSteam()
         {
-            CopyDirectory(Application.streamingAssetsPath.CombinePath(buildTarget), localSaveDir);
+            return CopyDirectory(Application.streamingAssetsPath.CombinePath(buildTarget), localSaveDir);
         }
 
-        public async static void CopyDirectory(string srcPath, string destPath)
+     
+        public static CopyBundleOperation CopyDirectory(string srcPath, string destPath)
         {
-            try
-            {
-                DirectoryInfo dir = new DirectoryInfo(srcPath);
-                FileSystemInfo[] fileinfo = dir.GetFileSystemInfos();  //获取目录下（不包含子目录）的文件和子目录
-                foreach (FileSystemInfo i in fileinfo)
-                {
-                    string _destpath = destPath.CombinePath(i.Name);
-                    if (i is DirectoryInfo)     //判断是否文件夹
-                    {
-                        Ex.MakeDirectoryExist(_destpath);
-                        CopyDirectory(i.FullName, _destpath);    //递归调用复制子文件夹
-                    }
-                    else
-                    {
-                        using (FileStream SourceStream = File.Open(i.FullName, FileMode.Open))
-                        {
-                            using (FileStream DestinationStream = File.Create(_destpath))
-                            {
-                                await SourceStream.CopyToAsync(DestinationStream);
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                throw;
-            }
+            return new CopyBundleOperation(srcPath, destPath);
         }
 
     }

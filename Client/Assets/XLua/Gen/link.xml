@@ -389,17 +389,8 @@
 		<type fullname="IFramework.Hotfix.Lua.LuaGame+UnityModules" preserve="all"/>
 		<type fullname="IFramework.Hotfix.Asset.Assets+AssetsGroupOperation" preserve="all"/>
 		<type fullname="IFramework.Hotfix.Asset.Assets+InstantiateObjectOperation" preserve="all"/>
-		<type fullname="IFramework.Hotfix.Asset.AssetsAsyncSupport+SceneAssetAwaiter" preserve="all"/>
-		<type fullname="IFramework.Hotfix.Asset.AssetsAsyncSupport+AssetAwaiter" preserve="all"/>
-		<type fullname="IFramework.Hotfix.Asset.AssetsAsyncSupport+BundleAwaiter" preserve="all"/>
-		<type fullname="IFramework.Hotfix.Asset.AssetsAsyncSupport+AssetBundleRequestAwaiter" preserve="all"/>
-		<type fullname="IFramework.Hotfix.Asset.AssetsAsyncSupport+AssetBundleCreateRequestAwaiter" preserve="all"/>
-		<type fullname="IFramework.Hotfix.Asset.AssetsAsyncSupport+CheckBundleVersionOperationAwaiter" preserve="all"/>
-		<type fullname="IFramework.Hotfix.Asset.AssetsAsyncSupport+DownLoadBundleOperationAwaiter" preserve="all"/>
-		<type fullname="IFramework.Hotfix.Asset.AssetsAsyncSupport+LoadManifestOperationAwaiter" preserve="all"/>
-		<type fullname="IFramework.Hotfix.Asset.AssetsAsyncSupport+AssetsGroupOperationAwaiter" preserve="all"/>
-		<type fullname="IFramework.Hotfix.Asset.AssetsAsyncSupport+InstantiateObjectOperationAwaiter" preserve="all"/>
 		<type fullname="IFramework.Hotfix.Asset.AssetsInternal+AssetEncryptStream" preserve="all"/>
+		<type fullname="IFramework.Hotfix.Asset.AssetsInternal+CopyBundleOperation" preserve="all"/>
 		<type fullname="IFramework.Hotfix.Asset.AssetsInternal+LoadManifestOperation" preserve="all"/>
 		<type fullname="IFramework.Hotfix.Asset.AssetsInternal+CheckBundleVersionOperation" preserve="all"/>
 		<type fullname="IFramework.Hotfix.Asset.AssetsInternal+DownLoadBundleOperation" preserve="all"/>

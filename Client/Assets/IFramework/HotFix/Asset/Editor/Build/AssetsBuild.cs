@@ -17,25 +17,6 @@ namespace IFramework.Hotfix.Asset
 {
     public partial class AssetsBuild
     {
-        static string streamPath
-        {
-            get
-            {
-
-                string path = Application.streamingAssetsPath;
-                if (!Directory.Exists(path))
-                {
-                    Directory.CreateDirectory(path);
-                }
-                path = path.CombinePath(buildTarget);
-                if (!Directory.Exists(path))
-                {
-                    Directory.CreateDirectory(path);
-                }
-                return path;
-            }
-
-        }
         private static string buildTarget
         {
             get
@@ -161,9 +142,11 @@ namespace IFramework.Hotfix.Asset
             Encrypt(outputPath, bundles);
             BuildVersion(outputPath, version_txt, bundles);
         }
-        public static void CopyToStreamPath()
+        public async static void CopyToStreamPath()
         {
-            AssetsInternal.CopyDirectory(outputPath, streamPath);
+            AssetsInternal.CopyBundleOperation op = AssetsInternal.CopyDirectory(outputPath,
+                Application.streamingAssetsPath.CombinePath(buildTarget));
+            await op;
             AssetDatabase.Refresh();
         }
         public static List<BundleGroup> CollectBundleGroup()

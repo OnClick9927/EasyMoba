@@ -1739,42 +1739,15 @@ namespace XLua.CSObjectWrap
             translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.Assets.InstantiateObjectOperation), IFrameworkHotfixAssetAssetsInstantiateObjectOperationWrap.__Register);
         
         
-            translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetsAsyncSupport.SceneAssetAwaiter), IFrameworkHotfixAssetAssetsAsyncSupportSceneAssetAwaiterWrap.__Register);
+            translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetsInternal.AssetEncryptStream), IFrameworkHotfixAssetAssetsInternalAssetEncryptStreamWrap.__Register);
         
         
-            translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetsAsyncSupport.AssetAwaiter), IFrameworkHotfixAssetAssetsAsyncSupportAssetAwaiterWrap.__Register);
+            translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetsInternal.CopyBundleOperation), IFrameworkHotfixAssetAssetsInternalCopyBundleOperationWrap.__Register);
         
         }
         
         static void wrapInit11(LuaEnv luaenv, ObjectTranslator translator)
         {
-        
-            translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetsAsyncSupport.BundleAwaiter), IFrameworkHotfixAssetAssetsAsyncSupportBundleAwaiterWrap.__Register);
-        
-        
-            translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetsAsyncSupport.AssetBundleRequestAwaiter), IFrameworkHotfixAssetAssetsAsyncSupportAssetBundleRequestAwaiterWrap.__Register);
-        
-        
-            translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetsAsyncSupport.AssetBundleCreateRequestAwaiter), IFrameworkHotfixAssetAssetsAsyncSupportAssetBundleCreateRequestAwaiterWrap.__Register);
-        
-        
-            translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetsAsyncSupport.CheckBundleVersionOperationAwaiter), IFrameworkHotfixAssetAssetsAsyncSupportCheckBundleVersionOperationAwaiterWrap.__Register);
-        
-        
-            translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetsAsyncSupport.DownLoadBundleOperationAwaiter), IFrameworkHotfixAssetAssetsAsyncSupportDownLoadBundleOperationAwaiterWrap.__Register);
-        
-        
-            translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetsAsyncSupport.LoadManifestOperationAwaiter), IFrameworkHotfixAssetAssetsAsyncSupportLoadManifestOperationAwaiterWrap.__Register);
-        
-        
-            translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetsAsyncSupport.AssetsGroupOperationAwaiter), IFrameworkHotfixAssetAssetsAsyncSupportAssetsGroupOperationAwaiterWrap.__Register);
-        
-        
-            translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetsAsyncSupport.InstantiateObjectOperationAwaiter), IFrameworkHotfixAssetAssetsAsyncSupportInstantiateObjectOperationAwaiterWrap.__Register);
-        
-        
-            translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetsInternal.AssetEncryptStream), IFrameworkHotfixAssetAssetsInternalAssetEncryptStreamWrap.__Register);
-        
         
             translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetsInternal.LoadManifestOperation), IFrameworkHotfixAssetAssetsInternalLoadManifestOperationWrap.__Register);
         
@@ -1901,10 +1874,6 @@ namespace XLua.CSObjectWrap
         
             translator.DelayWrapLoader(typeof(IFramework.Serialization.BoolStringConverter), IFrameworkSerializationBoolStringConverterWrap.__Register);
         
-        }
-        
-        static void wrapInit12(LuaEnv luaenv, ObjectTranslator translator)
-        {
         
             translator.DelayWrapLoader(typeof(IFramework.Serialization.ByteStringConverter), IFrameworkSerializationByteStringConverterWrap.__Register);
         
@@ -1932,6 +1901,10 @@ namespace XLua.CSObjectWrap
         
             translator.DelayWrapLoader(typeof(IFramework.Serialization.SByteStringConverter), IFrameworkSerializationSByteStringConverterWrap.__Register);
         
+        }
+        
+        static void wrapInit12(LuaEnv luaenv, ObjectTranslator translator)
+        {
         
             translator.DelayWrapLoader(typeof(IFramework.Serialization.ShortStringConverter), IFrameworkSerializationShortStringConverterWrap.__Register);
         
@@ -2058,10 +2031,6 @@ namespace XLua.CSObjectWrap
         
             translator.DelayWrapLoader(typeof(IFramework.Coroutine.WaitForSeconds), IFrameworkCoroutineWaitForSecondsWrap.__Register);
         
-        }
-        
-        static void wrapInit13(LuaEnv luaenv, ObjectTranslator translator)
-        {
         
             translator.DelayWrapLoader(typeof(IFramework.Coroutine.WaitForTicks), IFrameworkCoroutineWaitForTicksWrap.__Register);
         
@@ -2106,8 +2075,6 @@ namespace XLua.CSObjectWrap
             wrapInit11(luaenv, translator);
             
             wrapInit12(luaenv, translator);
-            
-            wrapInit13(luaenv, translator);
             
             
             translator.AddInterfaceBridgeCreator(typeof(System.Collections.IEnumerator), SystemCollectionsIEnumeratorBridge.__Create);

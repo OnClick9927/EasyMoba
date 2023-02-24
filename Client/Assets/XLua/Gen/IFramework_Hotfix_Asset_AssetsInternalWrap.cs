@@ -532,16 +532,19 @@ namespace XLua.CSObjectWrap
         {
 		    try {
             
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
             
             
                 
                 {
                     
-                    IFramework.Hotfix.Asset.AssetsInternal.CopyDLCFromSteam(  );
+                        var gen_ret = IFramework.Hotfix.Asset.AssetsInternal.CopyDLCFromSteam(  );
+                        translator.Push(L, gen_ret);
                     
                     
                     
-                    return 0;
+                    return 1;
                 }
                 
             } catch(System.Exception gen_e) {
@@ -555,6 +558,8 @@ namespace XLua.CSObjectWrap
         {
 		    try {
             
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
             
             
                 
@@ -562,11 +567,12 @@ namespace XLua.CSObjectWrap
                     string _srcPath = LuaAPI.lua_tostring(L, 1);
                     string _destPath = LuaAPI.lua_tostring(L, 2);
                     
-                    IFramework.Hotfix.Asset.AssetsInternal.CopyDirectory( _srcPath, _destPath );
+                        var gen_ret = IFramework.Hotfix.Asset.AssetsInternal.CopyDirectory( _srcPath, _destPath );
+                        translator.Push(L, gen_ret);
                     
                     
                     
-                    return 0;
+                    return 1;
                 }
                 
             } catch(System.Exception gen_e) {

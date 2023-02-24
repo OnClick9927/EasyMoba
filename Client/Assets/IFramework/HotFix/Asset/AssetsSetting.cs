@@ -16,8 +16,15 @@ namespace IFramework.Hotfix.Asset
             MD5,
             FileLength
         }
-        public abstract string GetUrlByBundleName(string buildTarget, string bundleName);
-        public abstract string GetVersionUrl(string buildTarget);
+        protected virtual string GetBaseUrl() { return string.Empty; }
+        public virtual string GetUrlByBundleName(string buildTarget, string bundleName)
+        {
+            return GetBaseUrl().CombinePath($"{buildTarget}/{bundleName}").ToRegularPath();
+        }
+        public virtual string GetVersionUrl(string buildTarget)
+        {
+            return GetBaseUrl().CombinePath($"{buildTarget}/version").ToRegularPath();
+        }
         public virtual FileCheckType GetFileCheckType() { return FileCheckType.MD5; }
         public virtual int GetWebRequestTimeout() { return 30; }
 
