@@ -128,15 +128,15 @@ namespace IFramework.Hotfix.Asset
             }
             public static void TagSizeBundle(List<AssetInfo> assets, string tag, Dictionary<AssetInfo, List<AssetInfo>> dpdic, List<BundleGroup> result)
             {
-                List<AssetInfo> find = assets.FindAll(x => cache.GetTag(x.path) == tag);
-                assets.RemoveAll(x => cache.GetTag(x.path) == tag);
+                List<AssetInfo> find = assets.FindAll(x => cache.GetAssetTag(x.path) == tag);
+                assets.RemoveAll(x => cache.GetAssetTag(x.path) == tag);
                 OneFileBundle(find, AssetType.Scene, result);
                 SizeBundle_ALL($"tag_bundle_{tag}", find, dpdic, result);
             }
             public static void TagSizeAndTopDirBundle(List<AssetInfo> assets, string tag, Dictionary<AssetInfo, List<AssetInfo>> dpdic, List<BundleGroup> result)
             {
-                List<AssetInfo> find = assets.FindAll(x => cache.GetTag(x.path) == tag);
-                assets.RemoveAll(x => cache.GetTag(x.path) == tag);
+                List<AssetInfo> find = assets.FindAll(x => cache.GetAssetTag(x.path) == tag);
+                assets.RemoveAll(x => cache.GetAssetTag(x.path) == tag);
                 OneFileBundle(find, AssetType.Scene, result);
                 SizeAndTopDirBundle_ALL(find, dpdic, result);
             }

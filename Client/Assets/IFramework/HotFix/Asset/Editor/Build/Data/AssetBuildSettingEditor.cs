@@ -8,7 +8,6 @@
 *********************************************************************************/
 using UnityEngine;
 using UnityEditor;
-using IFramework.GUITool;
 
 namespace IFramework.Hotfix.Asset
 {
@@ -20,32 +19,22 @@ namespace IFramework.Hotfix.Asset
             public override void OnInspectorGUI()
             {
                 base.OnInspectorGUI();
-
-                SerializedObject obj = new SerializedObject(setting);
-                //obj.Update();
-                EditorGUI.BeginChangeCheck(); 
-                Build(obj);
-
-                if (EditorGUI.EndChangeCheck())
-                {
-                    obj.ApplyModifiedProperties();
-                    setting.Save();
-                    cache.CompareTags(setting.tags);
-                }
-            }
-
-            private void Build(SerializedObject obj)
-            {
+                SerializedObject obj = this.serializedObject;
+                EditorGUI.BeginChangeCheck();
                 GUILayout.Space(5);
                 EditorGUILayout.PropertyField(obj.FindProperty("tags"), new GUIContent("Tags"), true);
-        
-      
                 setting.buildGroup.typeIndex = EditorGUILayout.Popup("Bundle Group", setting.buildGroup.typeIndex, setting.buildGroup.shortTypes);
                 setting.encrypt.typeIndex = EditorGUILayout.Popup("Encrypt", setting.encrypt.typeIndex, setting.encrypt.shortTypes);
                 GUI.enabled = false;
                 EditorGUILayout.TextField("Output Path", AssetsBuild.outputPath);
                 EditorGUILayout.EnumPopup("Build Target", EditorUserBuildSettings.activeBuildTarget);
                 GUI.enabled = true;
+                if (EditorGUI.EndChangeCheck())
+                {
+                    obj.ApplyModifiedProperties();
+                    setting.Save();
+                    AssetsBuild.RemoveUseLessTagAssets();
+                }
             }
         }
 

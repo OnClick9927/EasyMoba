@@ -24,31 +24,20 @@ namespace IFramework.Hotfix.Asset
         private static AssetsBuildSetting buildSetting { get { return AssetsBuildSetting.Load<AssetsBuildSetting>(); } }
         private static AssetsEditorCache cache { get { return AssetsEditorCache.Load<AssetsEditorCache>(); } }
 
-        private void JustCollectAssets(bool save)
+        private void JustCollectAssets()
         {
-            cache.Colllect(buildSetting.buildPaths);
-            if (save)
-            {
-                cache.Save();
-                right.ReLoad();
-            }
-
+            AssetsBuild.CollectInBuildAssets();
+            right.ReLoad();
         }
         private void PreView(bool md5)
         {
-            JustCollectAssets(false);
-            cache.previewBundles = AssetsBuild.CollectBundleGroup();
-            if (md5)
-            {
-                cache.previewBundles = AssetsBuild.CollectMain(cache.previewBundles);
-            }
-            cache.Save();
+            AssetsBuild.FreshPreViewBundles(md5);
             right.ReLoad();
         }
         private void CollectShaderVariant()
         {
             AssetsBuild.ShaderVariantCollector.Run(() => { PreView(false); });
-        } 
+        }
         private void OnDisable()
         {
             right.OnDisable();
@@ -62,7 +51,7 @@ namespace IFramework.Hotfix.Asset
                 menu.AddItem(new GUIContent("Help/Build Atlas"), false, AssetsBuild.AtlasBuild.Run);
                 menu.AddItem(new GUIContent("Help/Collect Shader Variant"), false, CollectShaderVariant);
 
-                menu.AddItem(new GUIContent("Preview/Just Collect Assets"), false, () => { JustCollectAssets(true); });
+                menu.AddItem(new GUIContent("Preview/Just Collect Assets"), false, () => { JustCollectAssets(); });
                 menu.AddItem(new GUIContent("Preview/Bundle"), false, () => { PreView(false); });
                 menu.AddItem(new GUIContent("Preview/MD5 Bundle"), false, () => { PreView(true); });
 
@@ -79,7 +68,7 @@ namespace IFramework.Hotfix.Asset
             .FlexibleSpace()
             .Delegate(rect =>
             {
-                right.treeType = (WindowRight.TreeType)GUI.Toolbar(rect, (int)right.treeType,System.Enum.GetNames(typeof(WindowRight.TreeType)));
+                right.treeType = (WindowRight.TreeType)GUI.Toolbar(rect, (int)right.treeType, System.Enum.GetNames(typeof(WindowRight.TreeType)));
 
             }, 300);
 

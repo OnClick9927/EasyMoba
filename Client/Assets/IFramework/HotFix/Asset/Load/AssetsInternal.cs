@@ -12,8 +12,6 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 using UnityEngine;
-using static IFramework.Hotfix.Asset.AssetManifest;
-using static IFramework.Hotfix.Asset.AssetsInternal;
 using static IFramework.Hotfix.Asset.AssetsSetting;
 
 namespace IFramework.Hotfix.Asset
@@ -68,17 +66,17 @@ namespace IFramework.Hotfix.Asset
 
         public static void SetAssetsSetting(AssetsSetting setting) => AssetsInternal.setting = setting;
         private static int GetWebRequestTimeout() => setting.GetWebRequestTimeout();
-        public static FileCheckType GetFileCheckType() => setting.GetFileCheckType();
-        public static string GetUrlFromBundleName(string bundleName) => setting.GetUrlByBundleName(buildTarget, bundleName);
-        public static string GetVersionUrl() => setting.GetVersionUrl(buildTarget);
-        public static IAssetStraemEncrypt GetEncrypt() => setting.GetEncrypt();
-        public static bool GetAutoUnloadBundle() => setting.GetAutoUnloadBundle();
+        private static FileCheckType GetFileCheckType() => setting.GetFileCheckType();
+        private static string GetUrlFromBundleName(string bundleName) => setting.GetUrlByBundleName(buildTarget, bundleName);
+        private static string GetVersionUrl() => setting.GetVersionUrl(buildTarget);
+        private static IAssetStraemEncrypt GetEncrypt() => setting.GetEncrypt();
+        private static bool GetAutoUnloadBundle() => setting.GetAutoUnloadBundle();
 
 
 
 
-        public static string GetBundleLocalPath(string bundleName) => localSaveDir.CombinePath(bundleName);
-        public static string[] GetLocalBundles()
+        private static string GetBundleLocalPath(string bundleName) => localSaveDir.CombinePath(bundleName);
+        private static string[] GetLocalBundles()
         {
             var files = Directory.GetFiles(localSaveDir);
             for (int i = 0; i < files.Length; i++)

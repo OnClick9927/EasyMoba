@@ -15,9 +15,6 @@ using System.Linq;
 using System.Diagnostics;
 using UnityEditor.SceneManagement;
 using System.Reflection;
-using Debug = UnityEngine.Debug;
-using UnityEditor.SearchService;
-using UnityEngine.SceneManagement;
 
 namespace IFramework.Hotfix.Asset
 {
@@ -26,7 +23,7 @@ namespace IFramework.Hotfix.Asset
     {
         public static class ShaderVariantCollector
         {
-             static class ShaderVariantCollectionHelper
+            static class ShaderVariantCollectionHelper
             {
                 public static object InvokeNonPublicStaticMethod(System.Type type, string method, params object[] parameters)
                 {
@@ -146,17 +143,12 @@ namespace IFramework.Hotfix.Asset
                     List<string> range = _allMaterials.GetRange(0, count);
                     _allMaterials.RemoveRange(0, count);
                     CollectVariants(range);
-
+                    _elapsedTime = Stopwatch.StartNew();
                     if (_allMaterials.Count > 0)
-                    {
-                        _elapsedTime = Stopwatch.StartNew();
                         _steps = ESteps.CollectSleeping;
-                    }
                     else
-                    {
-                        _elapsedTime = Stopwatch.StartNew();
                         _steps = ESteps.WaitingDone;
-                    }
+
                 }
 
                 if (_steps == ESteps.CollectSleeping)

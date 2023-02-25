@@ -37,24 +37,15 @@ namespace IFramework.Hotfix.Asset
                     BuildAtlas(path);
                 }
             }
-            static List<string> CollectTextures(string directory)
-            {
-                var png = Directory.GetFiles(directory, "*.png");
-                var jpg = Directory.GetFiles(directory, "*.jpg");
-                var files = new List<string>(png);
-                files.AddRange(jpg);
-                return files;
-            }
             static void BuildAtlas(string directory)
             {
-                var texfiles = CollectTextures(directory);
-                if (texfiles.Count <= 0) return;
+                var texfiles = AssetDatabase.FindAssets("t:texture", new[] { directory });
+                if (texfiles.Length <= 0) return;
                 SpriteAtlas atlas = new SpriteAtlas();
                 atlas.SetPlatformSettings(tool.PlatformSetting);
                 atlas.SetTextureSettings(tool.GetTextureSetting());
                 atlas.SetPackingSettings(tool.GetPackingSetting());
                 AssetDatabase.CreateAsset(atlas, directory.Append(".spriteatlas"));
-
                 List<Texture> texs = new List<Texture>();
                 foreach (var item in texfiles)
                 {

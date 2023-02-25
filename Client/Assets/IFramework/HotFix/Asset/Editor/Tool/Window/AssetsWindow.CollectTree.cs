@@ -69,15 +69,17 @@ namespace IFramework.Hotfix.Asset
             {
                 var result = GetRows() ?? new List<TreeViewItem>();
                 result.Clear();
+                var root_dirs = cache.GetRootDirPaths();
+                var single_files = cache.GetSingleFiles();
                 if (string.IsNullOrEmpty(this.searchString))
                 {
-                    BuildDirs(result, root, cache.GetRootDirPaths());
-                    BuildFiles(result, root, cache.GetSingleFiles());
+                    BuildDirs(result, root, root_dirs);
+                    BuildFiles(result, root, single_files);
                 }
                 else
                 {
-                    BuildDirsForSearch(result, root, cache.GetRootDirPaths());
-                    BuildFilesForSearch(result, root, cache.GetSingleFiles());
+                    BuildDirsForSearch(result, root, root_dirs);
+                    BuildFilesForSearch(result, root, single_files);
                 }
                 SetupParentsAndChildrenFromDepths(root, result);
                 return result;
@@ -113,12 +115,12 @@ namespace IFramework.Hotfix.Asset
                 {
                     menu.AddItem(new GUIContent($"SetTag/{tag}"), false, () =>
                     {
-                        cache.AddAsset(tag, paths);
+                        AssetsBuild.AddAssetTag(tag, paths);
                     });
                 }
                 menu.AddItem(new GUIContent("RemoveTag"), false, () =>
                 {
-                    cache.RemoveAsset(paths);
+                    AssetsBuild.RemoveTagAssets(paths);
                 });
                 menu.ShowAsContext();
             }
@@ -137,7 +139,7 @@ namespace IFramework.Hotfix.Asset
                 if (info.type != AssetInfo.AssetType.Directory)
                 {
                     GUI.Label(args.GetCellRect(1), info.type.ToString());
-                    GUI.Label(args.GetCellRect(2), cache.GetTag(info.path));
+                    GUI.Label(args.GetCellRect(2), cache.GetAssetTag(info.path));
                 }
             }
 
@@ -172,7 +174,7 @@ namespace IFramework.Hotfix.Asset
                             source = Path.GetFileName(asset.path);
                             break;
                         case SearchType.Tag:
-                            source = cache.GetTag(asset.path);
+                            source = cache.GetAssetTag(asset.path);
                             break;
                         case SearchType.Type:
                             source = asset.type.ToString();

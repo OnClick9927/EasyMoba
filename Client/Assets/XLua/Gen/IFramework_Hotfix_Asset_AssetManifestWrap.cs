@@ -21,9 +21,10 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(IFramework.Hotfix.Asset.AssetManifest);
-			Utils.BeginObjectRegister(type, L, translator, 0, 5, 0, 0);
+			Utils.BeginObjectRegister(type, L, translator, 0, 6, 0, 0);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "Read", _m_Read);
+			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetAssetTag", _m_GetAssetTag);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetTagAssetPaths", _m_GetTagAssetPaths);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetAssetDependences", _m_GetAssetDependences);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetBundle", _m_GetBundle);
@@ -100,6 +101,35 @@ namespace XLua.CSObjectWrap
                     
                     
                     return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_GetAssetTag(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+                IFramework.Hotfix.Asset.AssetManifest gen_to_be_invoked = (IFramework.Hotfix.Asset.AssetManifest)translator.FastGetCSObj(L, 1);
+            
+            
+                
+                {
+                    string _assetPath = LuaAPI.lua_tostring(L, 2);
+                    
+                        var gen_ret = gen_to_be_invoked.GetAssetTag( _assetPath );
+                        LuaAPI.lua_pushstring(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
                 }
                 
             } catch(System.Exception gen_e) {

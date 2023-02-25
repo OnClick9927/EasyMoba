@@ -12,7 +12,6 @@ using System.Collections.Generic;
 using Object = UnityEngine.Object;
 using UnityEngine;
 using IFramework.GUITool;
-using UnityEngine.UIElements;
 
 namespace IFramework.Hotfix.Asset
 {
@@ -27,7 +26,7 @@ namespace IFramework.Hotfix.Asset
                 AssetByTag
 
             }
-            List<BundleGroup> previewBundles { get { return cache.previewBundles; } }
+            List<BundleGroup> previewBundles { get { return cache.GetPreviewBundles(); } }
             public SearchType _searchType;
             private GUITool.SearchField search;
             private DpTree dp;
@@ -177,7 +176,7 @@ namespace IFramework.Hotfix.Asset
                                 }
                                 else if (_searchType == SearchType.AssetByTag)
                                 {
-                                    var tag = cache.GetTag(path);
+                                    var tag = cache.GetAssetTag(path);
                                     if (string.IsNullOrEmpty(tag)) continue;
                                     if (!tag.Contains(searchString)) continue;
                                 }
@@ -209,16 +208,16 @@ namespace IFramework.Hotfix.Asset
                 if (args.item.depth == 0)
                 {
                     GUI.Label(first, new GUIContent(args.label, args.item.icon));
-                    BundleGroup group = cache.GetGroupByBundleName(args.label);
+                    BundleGroup group = cache.GetBundleGroupByBundleName(args.label);
                     length = group.length;
                 }
                 else
                 {
                     string path = args.label;
                     GUI.Label(first, new GUIContent(path, args.item.icon));
-                    BundleGroup group = cache.GetGroupByAssetPath(path);
+                    BundleGroup group = cache.GetBundleGroupByAssetPath(path);
                     length = group.GetLength(path);
-                    GUI.Label(args.GetCellRect(2), new GUIContent(cache.GetTag(path)));
+                    GUI.Label(args.GetCellRect(2), new GUIContent(cache.GetAssetTag(path)));
                 }
 
                 GUI.Label(args.GetCellRect(1), GetSizeString(length));

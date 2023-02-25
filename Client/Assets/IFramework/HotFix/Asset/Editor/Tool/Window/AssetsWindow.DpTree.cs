@@ -106,10 +106,10 @@ namespace IFramework.Hotfix.Asset
                 string path = args.label;
                 float indet = this.GetContentIndent(args.item);
 
-                BundleGroup group = cache.GetGroupByAssetPath(path);
+                BundleGroup group = cache.GetBundleGroupByAssetPath(path);
                 GUI.Label(args.GetCellRect(0).Zoom(AnchorType.MiddleRight, new Vector2(-indet, 0)), new GUIContent(path, args.item.icon));
                 GUI.Label(args.GetCellRect(1), PreviewTree.GetSizeString(group.GetLength(path)));
-                GUI.Label(args.GetCellRect(2), cache.GetTag(path));
+                GUI.Label(args.GetCellRect(2), cache.GetAssetTag(path));
                 EditorGUI.SelectableLabel(args.GetCellRect(3), group.name);
                 GUI.Label(args.GetCellRect(4), PreviewTree.GetSizeString(group.length));
             }

@@ -1631,9 +1631,6 @@ namespace XLua.CSObjectWrap
             translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetsAsyncSupport), IFrameworkHotfixAssetAssetsAsyncSupportWrap.__Register);
         
         
-            translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetsSetting), IFrameworkHotfixAssetAssetsSettingWrap.__Register);
-        
-        
             translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetsInternal), IFrameworkHotfixAssetAssetsInternalWrap.__Register);
         
         
@@ -1641,6 +1638,15 @@ namespace XLua.CSObjectWrap
         
         
             translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.NoneAssetStraemEncrypt), IFrameworkHotfixAssetNoneAssetStraemEncryptWrap.__Register);
+        
+        
+            translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetManifest), IFrameworkHotfixAssetAssetManifestWrap.__Register);
+        
+        
+            translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetOperation), IFrameworkHotfixAssetAssetOperationWrap.__Register);
+        
+        
+            translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetsSetting), IFrameworkHotfixAssetAssetsSettingWrap.__Register);
         
         
             translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.Asset), IFrameworkHotfixAssetAssetWrap.__Register);
@@ -1653,12 +1659,6 @@ namespace XLua.CSObjectWrap
         
         
             translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.SceneAssetLoadArgs), IFrameworkHotfixAssetSceneAssetLoadArgsWrap.__Register);
-        
-        
-            translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetManifest), IFrameworkHotfixAssetAssetManifestWrap.__Register);
-        
-        
-            translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetOperation), IFrameworkHotfixAssetAssetOperationWrap.__Register);
         
         
             translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.Bundle), IFrameworkHotfixAssetBundleWrap.__Register);
@@ -1749,6 +1749,9 @@ namespace XLua.CSObjectWrap
         static void wrapInit11(LuaEnv luaenv, ObjectTranslator translator)
         {
         
+            translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetsInternal.Downloader), IFrameworkHotfixAssetAssetsInternalDownloaderWrap.__Register);
+        
+        
             translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetsInternal.LoadManifestOperation), IFrameworkHotfixAssetAssetsInternalLoadManifestOperationWrap.__Register);
         
         
@@ -1756,9 +1759,6 @@ namespace XLua.CSObjectWrap
         
         
             translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetsInternal.DownLoadBundleOperation), IFrameworkHotfixAssetAssetsInternalDownLoadBundleOperationWrap.__Register);
-        
-        
-            translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetsInternal.Downloader), IFrameworkHotfixAssetAssetsInternalDownloaderWrap.__Register);
         
         
             translator.DelayWrapLoader(typeof(IFramework.Hotfix.Asset.AssetManifest.AssetData), IFrameworkHotfixAssetAssetManifestAssetDataWrap.__Register);

@@ -58,6 +58,38 @@ namespace IFramework.Hotfix.Asset
         static AssetsToolSetting tool { get { return AssetsToolSetting.Load<AssetsToolSetting>(); } }
         static AssetsBuildSetting setting { get { return AssetsBuildSetting.Load<AssetsBuildSetting>(); } }
         static AssetsEditorCache cache { get { return AssetsEditorCache.Load<AssetsEditorCache>(); } }
+
+        public static void AddAssetTag(string tag, List<string> assets)
+        {
+            cache.AddAssetTag(tag, assets);
+            cache.Save();
+        }
+        public static void RemoveTagAssets(List<string> assets)
+        {
+            cache.RemoveTagAssets(assets);
+            cache.Save();
+        }
+        public static void RemoveUseLessTagAssets()
+        {
+            cache.RemoveUseLessTagAssets(setting.tags);
+            cache.Save();
+        }
+        public static void CollectInBuildAssets()
+        {
+            cache.Colllect(setting.buildPaths);
+            cache.Save();
+        }
+        public static void FreshPreViewBundles(bool md5)
+        {
+            CollectInBuildAssets();
+            var result = AssetsBuild.CollectBundleGroup();
+            if (md5)
+            {
+                result = AssetsBuild.CollectMain(result);
+            }
+            cache.SetPreviewBundles(result);
+            cache.Save();
+        }
         static List<string> GetAllFilesIncludeList(string directory, List<string> exName, List<string> result)
         {
             DirectoryInfo root = new DirectoryInfo(directory);
@@ -120,35 +152,8 @@ namespace IFramework.Hotfix.Asset
             var v = JsonUtility.ToJson(version, true);
             File.WriteAllText(outputPath.CombinePath("version"), v);
         }
-        public static void Build()
-        {
-            string outputPath = AssetsBuild.outputPath;
-            BuildAssetBundleOptions option = setting.GetOption();
-            string version_txt = setting.version;
 
-            var list = CollectBundleGroup();
-            CollectMain(list);
-            AssetBundleManifest main = BuildPipeline.BuildAssetBundles(outputPath, list.ConvertAll(x =>
-            {
-                return new AssetBundleBuild()
-                {
-                    assetBundleName = x.name,
-                    assetNames = x.assets.ToArray()
-                };
-            }).ToArray(), option, EditorUserBuildSettings.activeBuildTarget);
 
-            var bundles = main.GetAllAssetBundles();
-            RemoveMetaFiles(outputPath);
-            Encrypt(outputPath, bundles);
-            BuildVersion(outputPath, version_txt, bundles);
-        }
-        public async static void CopyToStreamPath()
-        {
-            AssetsInternal.CopyBundleOperation op = AssetsInternal.CopyDirectory(outputPath,
-                Application.streamingAssetsPath.CombinePath(buildTarget));
-            await op;
-            AssetDatabase.Refresh();
-        }
         public static List<BundleGroup> CollectBundleGroup()
         {
             Type collectType = setting.GetBuildGroupType();
@@ -201,6 +206,36 @@ namespace IFramework.Hotfix.Asset
             builds.Add(mainbuild);
             return builds;
         }
+
+        public static void Build()
+        {
+            AssetsBuild.ShaderVariantCollector.Run(() =>
+            {
+                AssetsBuild.AtlasBuild.Run();
+                string outputPath = AssetsBuild.outputPath;
+                BuildAssetBundleOptions option = setting.GetOption();
+                string version_txt = setting.version;
+                CollectInBuildAssets();
+                AssetBundleManifest main = BuildPipeline.BuildAssetBundles(outputPath, CollectMain(CollectBundleGroup()).ConvertAll(x =>
+                {
+                    return new AssetBundleBuild()
+                    {
+                        assetBundleName = x.name,
+                        assetNames = x.assets.ToArray()
+                    };
+                }).ToArray(), option, EditorUserBuildSettings.activeBuildTarget);
+                var bundles = main.GetAllAssetBundles();
+                RemoveMetaFiles(outputPath);
+                Encrypt(outputPath, bundles);
+                BuildVersion(outputPath, version_txt, bundles);
+            });
+
+        }
+
+
+
+
+
         public static void OpenOutputFloder()
         {
             EditorTools.OpenFolder(outputPath);
@@ -210,6 +245,14 @@ namespace IFramework.Hotfix.Asset
             Directory.Delete(outputPath, true);
         }
 
+
+        public async static void CopyToStreamPath()
+        {
+            AssetsInternal.CopyBundleOperation op = AssetsInternal.CopyDirectory(outputPath,
+                Application.streamingAssetsPath.CombinePath(buildTarget));
+            await op;
+            AssetDatabase.Refresh();
+        }
 
         public static string[] GetLegalDirectories(string path)
         {
@@ -239,5 +282,7 @@ namespace IFramework.Hotfix.Asset
             });
             return list.ToArray();
         }
+
+
     }
 }

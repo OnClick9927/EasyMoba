@@ -31,18 +31,12 @@ namespace XLua.CSObjectWrap
 			Utils.EndObjectRegister(type, L, translator, null, null,
 			    null, null, null);
 
-		    Utils.BeginClassRegister(type, L, __CreateInstance, 21, 3, 2);
+		    Utils.BeginClassRegister(type, L, __CreateInstance, 15, 3, 2);
 			Utils.RegisterFunc(L, Utils.CLS_IDX, "SetAssetListen", _m_SetAssetListen_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "GetAllAssetPaths", _m_GetAllAssetPaths_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "GetTagAssetPaths", _m_GetTagAssetPaths_xlua_st_);
+            Utils.RegisterFunc(L, Utils.CLS_IDX, "GetAssetTag", _m_GetAssetTag_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "SetAssetsSetting", _m_SetAssetsSetting_xlua_st_);
-            Utils.RegisterFunc(L, Utils.CLS_IDX, "GetFileCheckType", _m_GetFileCheckType_xlua_st_);
-            Utils.RegisterFunc(L, Utils.CLS_IDX, "GetUrlFromBundleName", _m_GetUrlFromBundleName_xlua_st_);
-            Utils.RegisterFunc(L, Utils.CLS_IDX, "GetVersionUrl", _m_GetVersionUrl_xlua_st_);
-            Utils.RegisterFunc(L, Utils.CLS_IDX, "GetEncrypt", _m_GetEncrypt_xlua_st_);
-            Utils.RegisterFunc(L, Utils.CLS_IDX, "GetAutoUnloadBundle", _m_GetAutoUnloadBundle_xlua_st_);
-            Utils.RegisterFunc(L, Utils.CLS_IDX, "GetBundleLocalPath", _m_GetBundleLocalPath_xlua_st_);
-            Utils.RegisterFunc(L, Utils.CLS_IDX, "GetLocalBundles", _m_GetLocalBundles_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "UnloadBundles", _m_UnloadBundles_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "LoadAssetAsync", _m_LoadAssetAsync_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "LoadSceneAssetAsync", _m_LoadSceneAssetAsync_xlua_st_);
@@ -177,6 +171,31 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_GetAssetTag_xlua_st_(RealStatePtr L)
+        {
+		    try {
+            
+            
+            
+                
+                {
+                    string _assetPath = LuaAPI.lua_tostring(L, 1);
+                    
+                        var gen_ret = IFramework.Hotfix.Asset.AssetsInternal.GetAssetTag( _assetPath );
+                        LuaAPI.lua_pushstring(L, gen_ret);
+                    
+                    
+                    
+                    return 1;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _m_SetAssetsSetting_xlua_st_(RealStatePtr L)
         {
 		    try {
@@ -194,182 +213,6 @@ namespace XLua.CSObjectWrap
                     
                     
                     return 0;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_GetFileCheckType_xlua_st_(RealStatePtr L)
-        {
-		    try {
-            
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-            
-            
-            
-                
-                {
-                    
-                        var gen_ret = IFramework.Hotfix.Asset.AssetsInternal.GetFileCheckType(  );
-                        translator.Push(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_GetUrlFromBundleName_xlua_st_(RealStatePtr L)
-        {
-		    try {
-            
-            
-            
-                
-                {
-                    string _bundleName = LuaAPI.lua_tostring(L, 1);
-                    
-                        var gen_ret = IFramework.Hotfix.Asset.AssetsInternal.GetUrlFromBundleName( _bundleName );
-                        LuaAPI.lua_pushstring(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_GetVersionUrl_xlua_st_(RealStatePtr L)
-        {
-		    try {
-            
-            
-            
-                
-                {
-                    
-                        var gen_ret = IFramework.Hotfix.Asset.AssetsInternal.GetVersionUrl(  );
-                        LuaAPI.lua_pushstring(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_GetEncrypt_xlua_st_(RealStatePtr L)
-        {
-		    try {
-            
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-            
-            
-            
-                
-                {
-                    
-                        var gen_ret = IFramework.Hotfix.Asset.AssetsInternal.GetEncrypt(  );
-                        translator.PushAny(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_GetAutoUnloadBundle_xlua_st_(RealStatePtr L)
-        {
-		    try {
-            
-            
-            
-                
-                {
-                    
-                        var gen_ret = IFramework.Hotfix.Asset.AssetsInternal.GetAutoUnloadBundle(  );
-                        LuaAPI.lua_pushboolean(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_GetBundleLocalPath_xlua_st_(RealStatePtr L)
-        {
-		    try {
-            
-            
-            
-                
-                {
-                    string _bundleName = LuaAPI.lua_tostring(L, 1);
-                    
-                        var gen_ret = IFramework.Hotfix.Asset.AssetsInternal.GetBundleLocalPath( _bundleName );
-                        LuaAPI.lua_pushstring(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
-                }
-                
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _m_GetLocalBundles_xlua_st_(RealStatePtr L)
-        {
-		    try {
-            
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-            
-            
-            
-                
-                {
-                    
-                        var gen_ret = IFramework.Hotfix.Asset.AssetsInternal.GetLocalBundles(  );
-                        translator.Push(L, gen_ret);
-                    
-                    
-                    
-                    return 1;
                 }
                 
             } catch(System.Exception gen_e) {

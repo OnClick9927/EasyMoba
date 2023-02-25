@@ -25,11 +25,11 @@ namespace XLua.CSObjectWrap
 			
 			
 			
-			Utils.RegisterFunc(L, Utils.GETTER_IDX, "versions", _g_get_versions);
-            Utils.RegisterFunc(L, Utils.GETTER_IDX, "version", _g_get_version);
+			Utils.RegisterFunc(L, Utils.GETTER_IDX, "version", _g_get_version);
+            Utils.RegisterFunc(L, Utils.GETTER_IDX, "datas", _g_get_datas);
             
-			Utils.RegisterFunc(L, Utils.SETTER_IDX, "versions", _s_set_versions);
-            Utils.RegisterFunc(L, Utils.SETTER_IDX, "version", _s_set_version);
+			Utils.RegisterFunc(L, Utils.SETTER_IDX, "version", _s_set_version);
+            Utils.RegisterFunc(L, Utils.SETTER_IDX, "datas", _s_set_datas);
             
 			
 			Utils.EndObjectRegister(type, L, translator, null, null,
@@ -79,20 +79,6 @@ namespace XLua.CSObjectWrap
         
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_versions(RealStatePtr L)
-        {
-		    try {
-                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
-			
-                IFramework.Hotfix.Asset.AssetsVersion gen_to_be_invoked = (IFramework.Hotfix.Asset.AssetsVersion)translator.FastGetCSObj(L, 1);
-                translator.Push(L, gen_to_be_invoked.datas);
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 1;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _g_get_version(RealStatePtr L)
         {
 		    try {
@@ -106,22 +92,21 @@ namespace XLua.CSObjectWrap
             return 1;
         }
         
-        
-        
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _s_set_versions(RealStatePtr L)
+        static int _g_get_datas(RealStatePtr L)
         {
 		    try {
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			
                 IFramework.Hotfix.Asset.AssetsVersion gen_to_be_invoked = (IFramework.Hotfix.Asset.AssetsVersion)translator.FastGetCSObj(L, 1);
-                gen_to_be_invoked.datas = (System.Collections.Generic.List<IFramework.Hotfix.Asset.AssetsVersion.VersionData>)translator.GetObject(L, 2, typeof(System.Collections.Generic.List<IFramework.Hotfix.Asset.AssetsVersion.VersionData>));
-            
+                translator.Push(L, gen_to_be_invoked.datas);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
-            return 0;
+            return 1;
         }
+        
+        
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _s_set_version(RealStatePtr L)
@@ -131,6 +116,21 @@ namespace XLua.CSObjectWrap
 			
                 IFramework.Hotfix.Asset.AssetsVersion gen_to_be_invoked = (IFramework.Hotfix.Asset.AssetsVersion)translator.FastGetCSObj(L, 1);
                 gen_to_be_invoked.version = LuaAPI.lua_tostring(L, 2);
+            
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 0;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _s_set_datas(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                IFramework.Hotfix.Asset.AssetsVersion gen_to_be_invoked = (IFramework.Hotfix.Asset.AssetsVersion)translator.FastGetCSObj(L, 1);
+                gen_to_be_invoked.datas = (System.Collections.Generic.List<IFramework.Hotfix.Asset.AssetsVersion.VersionData>)translator.GetObject(L, 2, typeof(System.Collections.Generic.List<IFramework.Hotfix.Asset.AssetsVersion.VersionData>));
             
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
