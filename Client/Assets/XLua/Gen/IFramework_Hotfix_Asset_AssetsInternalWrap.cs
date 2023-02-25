@@ -31,8 +31,9 @@ namespace XLua.CSObjectWrap
 			Utils.EndObjectRegister(type, L, translator, null, null,
 			    null, null, null);
 
-		    Utils.BeginClassRegister(type, L, __CreateInstance, 20, 3, 2);
-			Utils.RegisterFunc(L, Utils.CLS_IDX, "GetAllAssetPaths", _m_GetAllAssetPaths_xlua_st_);
+		    Utils.BeginClassRegister(type, L, __CreateInstance, 21, 3, 2);
+			Utils.RegisterFunc(L, Utils.CLS_IDX, "SetAssetListen", _m_SetAssetListen_xlua_st_);
+            Utils.RegisterFunc(L, Utils.CLS_IDX, "GetAllAssetPaths", _m_GetAllAssetPaths_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "GetTagAssetPaths", _m_GetTagAssetPaths_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "SetAssetsSetting", _m_SetAssetsSetting_xlua_st_);
             Utils.RegisterFunc(L, Utils.CLS_IDX, "GetFileCheckType", _m_GetFileCheckType_xlua_st_);
@@ -94,6 +95,33 @@ namespace XLua.CSObjectWrap
         
         
         
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _m_SetAssetListen_xlua_st_(RealStatePtr L)
+        {
+		    try {
+            
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+            
+            
+            
+                
+                {
+                    IFramework.Hotfix.Asset.AssetsInternal.IAssetLife<IFramework.Hotfix.Asset.Asset> _asset = (IFramework.Hotfix.Asset.AssetsInternal.IAssetLife<IFramework.Hotfix.Asset.Asset>)translator.GetObject(L, 1, typeof(IFramework.Hotfix.Asset.AssetsInternal.IAssetLife<IFramework.Hotfix.Asset.Asset>));
+                    IFramework.Hotfix.Asset.AssetsInternal.IAssetLife<IFramework.Hotfix.Asset.Bundle> _bundle = (IFramework.Hotfix.Asset.AssetsInternal.IAssetLife<IFramework.Hotfix.Asset.Bundle>)translator.GetObject(L, 2, typeof(IFramework.Hotfix.Asset.AssetsInternal.IAssetLife<IFramework.Hotfix.Asset.Bundle>));
+                    
+                    IFramework.Hotfix.Asset.AssetsInternal.SetAssetListen( _asset, _bundle );
+                    
+                    
+                    
+                    return 0;
+                }
+                
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            
+        }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _m_GetAllAssetPaths_xlua_st_(RealStatePtr L)

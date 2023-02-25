@@ -31,6 +31,8 @@ namespace IFramework.Hotfix.Asset
             }
         }
 
+        public override string path => loadArgs.path;
+
         protected override async void OnLoad()
         {
             AssetEncryptStream fileStream = new AssetEncryptStream(loadArgs.bundleName, loadArgs.path, FileMode.Open, FileAccess.Read, FileShare.None, 1024 * 4, false);

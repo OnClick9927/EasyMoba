@@ -51,15 +51,15 @@ MonoBehaviour:
     bundleName: 8e35d8e5a210ebd4d168cdd227771bc3
     tag: lua
     dps: []
+  - path: Assets/Project/Lua/GameTools.lua.txt
+    bundleName: 8e35d8e5a210ebd4d168cdd227771bc3
+    tag: lua
+    dps: []
   - path: Assets/Project/Lua/UI/LoginPanelView.lua.txt
     bundleName: 8e35d8e5a210ebd4d168cdd227771bc3
     tag: lua
     dps: []
   - path: Assets/Project/Lua/UI/MainPanelView.lua.txt
-    bundleName: 8e35d8e5a210ebd4d168cdd227771bc3
-    tag: lua
-    dps: []
-  - path: Assets/Project/Lua/GameTools.lua.txt
     bundleName: 8e35d8e5a210ebd4d168cdd227771bc3
     tag: lua
     dps: []

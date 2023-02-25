@@ -14,8 +14,6 @@ namespace IFramework.Hotfix.Asset
 {
     partial class AssetsInternal
     {
-
-
         private class BundleMap : NameMap<Bundle, AssetBundle>
         {
             public Bundle LoadAsync(string path, string bundleName)
@@ -38,38 +36,22 @@ namespace IFramework.Hotfix.Asset
                 return new WebRequestBundle(arg);
             }
 
-            public override void Release(string name)
+            public override void Release(string path)
             {
-                Bundle result = null;
-                if (map.TryGetValue(name, out result))
-                {
-                    refs.Release(result);
-                    if (!GetAutoUnloadBundle()) return;
-                    if (refs.GetCount(result) == 0)
-                    {
-                        (result as IAsset).UnLoad();
-                        map.Remove(name);
-                    }
-                }
+                Bundle result = Find(path);
+                if (result == null) return;
+                ReleaseRef(result);
+                if (!GetAutoUnloadBundle()) return;
+                TryRealUnlod(path);
             }
             private List<string> useless = new List<string>();
             public void UnloadBundles()
             {
                 if (GetAutoUnloadBundle()) return;
-                useless.Clear();
-                foreach (var item in map)
-                {
-                    if (refs.GetCount(item.Value)==0)
-                    {
-                        useless.Add(item.Key);
-                    }
-                }
+                GetZeroRefKeys(useless);
                 for (int i = 0; i < useless.Count; i++)
                 {
-                    string name = useless[i];
-                    Bundle result = map[name];
-                    (result as IAsset).UnLoad();
-                    map.Remove(name);
+                    TryRealUnlod(useless[i]);
                 }
             }
         }

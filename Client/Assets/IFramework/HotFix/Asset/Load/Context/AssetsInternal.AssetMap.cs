@@ -16,6 +16,14 @@ namespace IFramework.Hotfix.Asset
         private class AssetMap : NameMap<Asset, Object>
         {
 
+            protected override Asset CreateNew(string name, IEventArgs args)
+            {
+                if (args is AssetLoadArgs)
+                    return AssetsInternal.CreateAsset(name, GetDpAssets(name), (AssetLoadArgs)args);
+                if (args is SceneAssetLoadArgs)
+                    return AssetsInternal.CreateSceneAsset(name, GetDpAssets(name), (SceneAssetLoadArgs)args);
+                return null;
+            }
             public Asset LoadAssetAyync(string path)
             {
                 AssetLoadArgs args = new AssetLoadArgs(path);
@@ -32,25 +40,19 @@ namespace IFramework.Hotfix.Asset
             }
             public override void Release(string path)
             {
-                Asset result = null;
-                if (map.TryGetValue(path, out result))
-                {
-                    refs.Release(result);
-                    AssetsInternal.ReleseBundleByAssetPath(result.path);
-                    ReleaseDpAssets(result.path);
-                    if (refs.GetCount(result) == 0)
-                    {
-                        (result as IAsset).UnLoad();
-                        map.Remove(path);
-                    }
-                }
+                Asset result = Find(path);
+                if (result == null) return;
+                ReleaseRef(result);
+                ReleseBundleByAssetPath(result.path);
+                ReleaseDpAssets(result.path);
+                TryRealUnlod(path);
             }
 
 
             private List<Asset> GetDpAssets(string assetPath)
             {
                 List<Asset> result = null;
-                var paths = GetDps(assetPath);
+                var paths = GetAssetDps(assetPath);
                 if (paths != null)
                 {
                     result = new List<Asset>();
@@ -65,14 +67,9 @@ namespace IFramework.Hotfix.Asset
                 }
                 return result;
             }
-
-            private List<string> GetDps(string assetPath)
-            {
-                return AssetsInternal.GetAssetDps(assetPath);
-            }
             private void ReleaseDpAssets(string assetPath)
             {
-                var paths = GetDps(assetPath);
+                var paths = GetAssetDps(assetPath);
                 if (paths != null)
                 {
                     foreach (var path in paths)
@@ -82,14 +79,7 @@ namespace IFramework.Hotfix.Asset
                 }
             }
 
-            protected override Asset CreateNew(string name, IEventArgs args)
-            {
-                if (args is AssetLoadArgs)
-                    return AssetsInternal.CreateAsset(name, GetDpAssets(name), (AssetLoadArgs)args);
-                if (args is SceneAssetLoadArgs)
-                    return AssetsInternal.CreateSceneAsset(name, GetDpAssets(name), (SceneAssetLoadArgs)args);
-                return null;
-            }
+
         }
     }
 }

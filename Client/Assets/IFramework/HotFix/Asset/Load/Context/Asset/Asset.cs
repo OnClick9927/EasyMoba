@@ -17,9 +17,9 @@ namespace IFramework.Hotfix.Asset
         public Bundle bundle;
         private AssetBundleRequest loadOp;
         protected List<Asset> dps;
-        public virtual string path { get { return loadArgs.path; } }
+        public override string path { get { return loadArgs.path; } }
         private AssetLoadArgs loadArgs;
-        public Asset( Bundle bundle, List<Asset> dps, AssetLoadArgs loadArgs)
+        public Asset(Bundle bundle, List<Asset> dps, AssetLoadArgs loadArgs)
         {
             this.bundle = bundle;
             this.dps = dps;

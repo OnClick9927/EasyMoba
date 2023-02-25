@@ -52,10 +52,10 @@ namespace IFramework.Hotfix.Asset
                     unUseBundles = new List<string>(AssetsInternal.GetLocalBundles());
                     var txt = downloader.text;
                     AssetsVersion remote = JsonUtility.FromJson<AssetsVersion>(txt);
-                    for (int i = 0; i < remote.versions.Count; i++)
+                    for (int i = 0; i < remote.datas.Count; i++)
                     {
-                        _progress = i / (float)remote.versions.Count;
-                        var item = remote.versions[i];
+                        _progress = i / (float)remote.datas.Count;
+                        var item = remote.datas[i];
                         var bundleName = item.bundleName;
                         var localPath = AssetsInternal.GetBundleLocalPath(bundleName).ToRegularPath();
                         if (!File.Exists(localPath)) downLoadOnes.Add(item);

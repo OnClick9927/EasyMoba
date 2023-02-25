@@ -45,6 +45,11 @@ namespace IFramework.Hotfix.Asset
             {
                 return cache.GetTagAssetPaths(tag);
             }
+
+            public string GetAssetTag(string assetPath)
+            {
+                return cache.GetAssetTag(assetPath);
+            }
         }
     }
 

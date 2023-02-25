@@ -13,6 +13,7 @@ namespace IFramework.Hotfix.Asset
     {
         public T value { get; private set; }
 
+        public abstract string path { get; }
         void IAsset.LoadAsync()
         {
             OnLoad();

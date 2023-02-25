@@ -12,6 +12,8 @@ using System.IO;
 using System.Security.Cryptography;
 using System.Text;
 using UnityEngine;
+using static IFramework.Hotfix.Asset.AssetManifest;
+using static IFramework.Hotfix.Asset.AssetsInternal;
 using static IFramework.Hotfix.Asset.AssetsSetting;
 
 namespace IFramework.Hotfix.Asset
@@ -45,7 +47,11 @@ namespace IFramework.Hotfix.Asset
             localSaveDir = Application.persistentDataPath.CombinePath("DLC");
         }
 
-
+        public static void SetAssetListen(IAssetLife<Asset> asset, IAssetLife<Bundle> bundle)
+        {
+            bundles.SetListen(bundle);
+            assets.SetListen(asset);
+        }
 
     }
     public partial class AssetsInternal
@@ -58,6 +64,7 @@ namespace IFramework.Hotfix.Asset
         {
             return mode.GetTagAssetPaths(tag);
         }
+        public static string GetAssetTag(string assetPath) => mode.GetAssetTag(assetPath);
 
         public static void SetAssetsSetting(AssetsSetting setting) => AssetsInternal.setting = setting;
         private static int GetWebRequestTimeout() => setting.GetWebRequestTimeout();

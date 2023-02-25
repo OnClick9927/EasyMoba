@@ -6,6 +6,7 @@
  *Description:    IFramework
  *History:        2018.11--
 *********************************************************************************/
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -117,6 +118,12 @@ namespace IFramework.Hotfix.Asset
         {
             return tags.GetTagAssetPaths(tag);
         }
+
+        public string GetAssetTag(string assetPath)
+        {
+            return tags.GetTag(assetPath);
+        }
+
         [SerializeField] private AssetTagCollection tags = new AssetTagCollection();
         [System.Serializable]
         public class AssetTagCollection
@@ -192,6 +199,8 @@ namespace IFramework.Hotfix.Asset
                 }
                 return find.tag;
             }
+
+
         }
 
 

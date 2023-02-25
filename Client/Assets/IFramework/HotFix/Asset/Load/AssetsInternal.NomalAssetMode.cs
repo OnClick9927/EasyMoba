@@ -37,6 +37,12 @@ namespace IFramework.Hotfix.Asset
             {
                 return IsManifestNull() ? null : manifest.GetTagAssetPaths(tag);
             }
+
+            public string GetAssetTag(string assetPath)
+            {
+                return IsManifestNull() ? null : manifest.GetAssetTag(assetPath);
+
+            }
         }
     }
 }

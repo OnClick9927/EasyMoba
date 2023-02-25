@@ -11,6 +11,8 @@ using UnityEditor.IMGUI.Controls;
 using System.Collections.Generic;
 using Object = UnityEngine.Object;
 using UnityEngine;
+using IFramework.GUITool;
+using UnityEngine.UIElements;
 
 namespace IFramework.Hotfix.Asset
 {
@@ -28,9 +30,12 @@ namespace IFramework.Hotfix.Asset
             List<BundleGroup> previewBundles { get { return cache.previewBundles; } }
             public SearchType _searchType;
             private GUITool.SearchField search;
-
+            private DpTree dp;
+            private SplitView sp = new SplitView() { splitType = SplitType.Horizontal, minSize = 200, split = 300 };
             public PreviewTree(TreeViewState state, SearchType _searchType) : base(state)
             {
+                dp = new DpTree(new TreeViewState());
+
                 this._searchType = _searchType;
                 search = new GUITool.SearchField(this.searchString, System.Enum.GetNames(typeof(SearchType)), (int)_searchType);
                 search.onValueChange += (value) => { this.searchString = value.ToLower(); };
@@ -59,8 +64,19 @@ namespace IFramework.Hotfix.Asset
 
                 this.multiColumnHeader.ResizeToFit();
                 Reload();
+                sp.fistPan += Sp_fistPan;
+                sp.secondPan += Sp_secondPan;
             }
 
+            private void Sp_secondPan(Rect obj)
+            {
+                dp.OnGUI(obj);
+            }
+
+            private void Sp_fistPan(Rect obj)
+            {
+                base.OnGUI(obj);
+            }
 
             protected override void SearchChanged(string newSearch)
             {
@@ -70,7 +86,15 @@ namespace IFramework.Hotfix.Asset
             {
                 var rs = rect.HorizontalSplit(20);
                 search.OnGUI(rs[0]);
-                base.OnGUI(rs[1]);
+                if (dp.assetinfo == null || dp.assetinfo.dps.Count == 0)
+                {
+                    base.OnGUI(rs[1]);
+                }
+                else
+                {
+                    sp.OnGUI(rs[1]);
+                }
+
             }
 
             protected override TreeViewItem BuildRoot()
@@ -103,7 +127,7 @@ namespace IFramework.Hotfix.Asset
                     parent = root,
                     displayName = bundle.name,
                     icon = EditorGUIUtility.TrIconContent("Folder Icon").image as Texture2D,
-                    
+
 
                 };
                 root.AddChild(_item);
@@ -196,18 +220,23 @@ namespace IFramework.Hotfix.Asset
                     length = group.GetLength(path);
                     GUI.Label(args.GetCellRect(2), new GUIContent(cache.GetTag(path)));
                 }
+
+                GUI.Label(args.GetCellRect(1), GetSizeString(length));
+
+            }
+            public static string GetSizeString(long length)
+            {
                 var tmp = length;
+
                 int stage = 0;
                 while (tmp > 1024)
                 {
                     tmp /= 1024;
                     stage++;
                 }
-                var show = $"{(length / Mathf.Pow(1024, stage)).ToString("0.00")} {stages[stage]}";
-                GUI.Label(args.GetCellRect(1), new GUIContent(show));
-
+                return $"{(length / Mathf.Pow(1024, stage)).ToString("0.00")} {stages[stage]}";
             }
-            List<string> stages = new List<string>()
+            private static List<string> stages = new List<string>()
             {
                 "B","KB","MB","GB","TB"
             };
@@ -215,6 +244,24 @@ namespace IFramework.Hotfix.Asset
             {
                 var rows = this.FindRows(new List<int>() { id });
                 EditorGUIUtility.PingObject(AssetDatabase.LoadAssetAtPath<Object>(rows[0].displayName));
+            }
+            protected override void SingleClickedItem(int id)
+            {
+                var find = this.FindItem(id, this.rootItem);
+                if (find.depth == 1)
+                {
+                    string path = find.displayName;
+                    dp.SetAssetInfo(cache.GetAssetInfo(path));
+                }
+                else
+                {
+                    dp.SetAssetInfo(null);
+                }
+                base.SingleClickedItem(id);
+            }
+            protected override bool CanMultiSelect(TreeViewItem item)
+            {
+                return false;
             }
 
         }

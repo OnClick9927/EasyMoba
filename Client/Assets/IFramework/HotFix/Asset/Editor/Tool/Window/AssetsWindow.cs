@@ -79,9 +79,9 @@ namespace IFramework.Hotfix.Asset
             .FlexibleSpace()
             .Delegate(rect =>
             {
-                right.treeType = (WindowRight.TreeType)GUI.Toolbar(rect, (int)right.treeType, new string[] { "Assets", "Bundle Preview" });
+                right.treeType = (WindowRight.TreeType)GUI.Toolbar(rect, (int)right.treeType,System.Enum.GetNames(typeof(WindowRight.TreeType)));
 
-            }, 200);
+            }, 300);
 
 
             sp.fistPan += left.OnGUI;

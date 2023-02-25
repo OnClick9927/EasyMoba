@@ -20,7 +20,7 @@ namespace IFramework.Hotfix.Asset
             public long length;
             public string md5;
         }
-        public List<VersionData> versions = new List<VersionData>();
         public string version;
+        public List<VersionData> datas = new List<VersionData>();
     }
 }

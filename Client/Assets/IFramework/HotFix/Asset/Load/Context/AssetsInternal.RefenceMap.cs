@@ -8,6 +8,8 @@
 *********************************************************************************/
 
 using System.Collections.Generic;
+using System.IO;
+
 namespace IFramework.Hotfix.Asset
 {
     partial class AssetsInternal
@@ -24,13 +26,18 @@ namespace IFramework.Hotfix.Asset
                 map[t] = map[t] + 1;
             }
 
-            public void Release(T t)
+            public int Release(T t)
             {
                 if (!map.ContainsKey(t))
                 {
                     map.Add(t, 0);
                 }
-                map[t] = map[t] - 1;
+                var count = map[t] - 1;
+                if (count <= 0)
+                    map.Remove(t);
+                else
+                    map[t] = count;
+                return count;
             }
             public int GetCount(T t)
             {

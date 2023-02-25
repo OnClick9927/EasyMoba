@@ -114,7 +114,7 @@ namespace IFramework.Hotfix.Asset
                 data.length = fileInfo.Length;
                 data.bundleName = bundle;
                 data.md5 = AssetsInternal.GetFileMD5(path);
-                version.versions.Add(data);
+                version.datas.Add(data);
             }
             version.version = version_txt;
             var v = JsonUtility.ToJson(version, true);

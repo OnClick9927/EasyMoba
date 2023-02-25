@@ -85,7 +85,7 @@ namespace XLua.CSObjectWrap
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			
                 IFramework.Hotfix.Asset.AssetsVersion gen_to_be_invoked = (IFramework.Hotfix.Asset.AssetsVersion)translator.FastGetCSObj(L, 1);
-                translator.Push(L, gen_to_be_invoked.versions);
+                translator.Push(L, gen_to_be_invoked.datas);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
@@ -115,7 +115,7 @@ namespace XLua.CSObjectWrap
                 ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			
                 IFramework.Hotfix.Asset.AssetsVersion gen_to_be_invoked = (IFramework.Hotfix.Asset.AssetsVersion)translator.FastGetCSObj(L, 1);
-                gen_to_be_invoked.versions = (System.Collections.Generic.List<IFramework.Hotfix.Asset.AssetsVersion.VersionData>)translator.GetObject(L, 2, typeof(System.Collections.Generic.List<IFramework.Hotfix.Asset.AssetsVersion.VersionData>));
+                gen_to_be_invoked.datas = (System.Collections.Generic.List<IFramework.Hotfix.Asset.AssetsVersion.VersionData>)translator.GetObject(L, 2, typeof(System.Collections.Generic.List<IFramework.Hotfix.Asset.AssetsVersion.VersionData>));
             
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);

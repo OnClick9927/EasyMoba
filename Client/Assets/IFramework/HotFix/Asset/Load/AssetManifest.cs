@@ -54,6 +54,8 @@ namespace IFramework.Hotfix.Asset
         private Dictionary<string, string> allAssets;
         private List<string> allPaths;
         private Dictionary<string, List<string>> tagAssets;
+        private Dictionary<string, string> assetTags;
+
         private void Check()
         {
             if (assetdps == null)
@@ -62,17 +64,27 @@ namespace IFramework.Hotfix.Asset
                 assetdps = new Dictionary<string, List<string>>();
                 allAssets = new Dictionary<string, string>();
                 allPaths = new List<string>();
+                assetTags = new Dictionary<string, string>();
                 for (int i = 0; i < assets.Count; i++)
                 {
-                    string path = assets[i].path;
-                    assetdps.Add(path, assets[i].dps);
-                    allAssets.Add(path, assets[i].bundleName);
+                    AssetData asset = assets[i];
+                    string path = asset.path;
+                    string tag = asset.tag;
+
+                    assetdps.Add(path, asset.dps);
+                    allAssets.Add(path, asset.bundleName);
                     allPaths.Add(path);
-                    if (!tagAssets.ContainsKey(assets[i].tag))
-                        tagAssets.Add(assets[i].tag, new List<string>());
-                    tagAssets[assets[i].tag].Add(path);
+                    if (!tagAssets.ContainsKey(tag))
+                        tagAssets.Add(tag, new List<string>());
+                    tagAssets[tag].Add(path);
+                    assetTags.Add(path, tag);
                 }
             }
+        }
+        public string GetAssetTag(string assetPath)
+        {
+            Check();
+            return assetTags[assetPath];
         }
         public List<string> GetTagAssetPaths(string tag)
         {

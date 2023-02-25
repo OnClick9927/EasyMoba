@@ -21,13 +21,14 @@ namespace XLua.CSObjectWrap
         {
 			ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
 			System.Type type = typeof(IFramework.Hotfix.Asset.Bundle);
-			Utils.BeginObjectRegister(type, L, translator, 0, 2, 1, 0);
+			Utils.BeginObjectRegister(type, L, translator, 0, 2, 2, 0);
 			
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "LoadAssetAsync", _m_LoadAssetAsync);
 			Utils.RegisterFunc(L, Utils.METHOD_IDX, "GetAwaiter", _m_GetAwaiter);
 			
 			
 			Utils.RegisterFunc(L, Utils.GETTER_IDX, "progress", _g_get_progress);
+            Utils.RegisterFunc(L, Utils.GETTER_IDX, "path", _g_get_path);
             
 			
 			
@@ -144,6 +145,20 @@ namespace XLua.CSObjectWrap
 			
                 IFramework.Hotfix.Asset.Bundle gen_to_be_invoked = (IFramework.Hotfix.Asset.Bundle)translator.FastGetCSObj(L, 1);
                 LuaAPI.lua_pushnumber(L, gen_to_be_invoked.progress);
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 1;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _g_get_path(RealStatePtr L)
+        {
+		    try {
+                ObjectTranslator translator = ObjectTranslatorPool.Instance.Find(L);
+			
+                IFramework.Hotfix.Asset.Bundle gen_to_be_invoked = (IFramework.Hotfix.Asset.Bundle)translator.FastGetCSObj(L, 1);
+                LuaAPI.lua_pushstring(L, gen_to_be_invoked.path);
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
             }
