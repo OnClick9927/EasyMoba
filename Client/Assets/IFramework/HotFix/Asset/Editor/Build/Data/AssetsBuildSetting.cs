@@ -7,12 +7,10 @@
  *History:        2018.11--
 *********************************************************************************/
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using UnityEngine;
 using UnityEditor;
 using System;
-using Application = UnityEngine.Application;
 
 namespace IFramework.Hotfix.Asset
 {
@@ -27,12 +25,10 @@ namespace IFramework.Hotfix.Asset
             public Type baseType;
             public void Enable()
             {
-                types = baseType.GetSubTypesInAssemblys()
-               .Where(type => !type.IsAbstract)
-               .Select(type => type.FullName).ToArray();
-                shortTypes = baseType.GetSubTypesInAssemblys()
-                      .Where(type => !type.IsAbstract)
-                      .Select(type => type.Name).ToArray();
+                var list = baseType.GetSubTypesInAssemblys()
+               .Where(type => !type.IsAbstract);
+                types = list.Select(type => type.FullName).ToArray();
+                shortTypes = list.Select(type => type.Name).ToArray();
             }
             public Type GetSelectType()
             {
@@ -44,9 +40,24 @@ namespace IFramework.Hotfix.Asset
 
                 return type;
             }
+
+            public bool SetType(Type type)
+            {
+                string name = type.FullName;
+                if (type.IsAbstract || !baseType.IsAssignableFrom(type)) return false;
+                for (int i = 0; i < types.Length; i++)
+                {
+                    if (types[i] == name)
+                    {
+                        typeIndex = i;
+                        return true;
+                    }
+                }
+                return false;
+            }
         }
-        [HideInInspector]public TypeSelect buildGroup = new TypeSelect();
-        [HideInInspector]public TypeSelect encrypt = new TypeSelect();
+        [HideInInspector] public TypeSelect buildGroup = new TypeSelect();
+        [HideInInspector] public TypeSelect encrypt = new TypeSelect();
         [HideInInspector] public List<string> tags = new List<string>();
 
         public string version = "0.0.1";
@@ -56,7 +67,7 @@ namespace IFramework.Hotfix.Asset
 
         public List<string> ignoreFileEtend = new List<string>() {
             ".cs",
-            ".meta" 
+            ".meta"
         };
         [SerializeField] public List<string> buildPaths = new List<string>();
         private void OnEnable()
@@ -74,9 +85,26 @@ namespace IFramework.Hotfix.Asset
         {
             return encrypt.GetSelectType();
         }
-      
+        public bool SetBuildGroupType(Type type)
+        {
+            if (buildGroup.SetType(type))
+            {
+                Save();
+                return true;
+            }
+            return false;
+        }
+        public bool SetStreamEncryptType(Type type)
+        {
+            if (encrypt.SetType(type))
+            {
+                Save();
+                return true;
+            }
+            return false;
+        }
 
-  
+
 
 
         public BuildAssetBundleOptions GetOption()
@@ -91,6 +119,6 @@ namespace IFramework.Hotfix.Asset
             opt |= BuildAssetBundleOptions.DisableLoadAssetByFileNameWithExtension;
             return opt;
         }
-      
+
     }
 }

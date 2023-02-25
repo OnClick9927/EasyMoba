@@ -206,7 +206,14 @@ namespace IFramework.Hotfix.Asset
             builds.Add(mainbuild);
             return builds;
         }
-
+        public bool SetBuildGroupType(Type type)
+        {
+            return setting.SetBuildGroupType(type);
+        }
+        public bool SetStreamEncryptType(Type type)
+        {
+            return setting.SetStreamEncryptType(type);
+        }
         public static void Build()
         {
             AssetsBuild.ShaderVariantCollector.Run(() =>
