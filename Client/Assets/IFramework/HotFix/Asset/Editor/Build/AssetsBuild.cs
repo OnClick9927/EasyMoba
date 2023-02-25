@@ -77,6 +77,7 @@ namespace IFramework.Hotfix.Asset
         public static void CollectInBuildAssets()
         {
             cache.Colllect(setting.buildPaths);
+            RemoveUseLessTagAssets();
             cache.Save();
         }
         public static void FreshPreViewBundles(bool md5)
