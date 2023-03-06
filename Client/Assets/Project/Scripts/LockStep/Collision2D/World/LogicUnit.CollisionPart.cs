@@ -38,7 +38,6 @@ namespace LockStep.LCollision2D
                     if (_shape.rigidbody && shape.rigidbody) rigd_result.Add(_shape);
                 }
 
-                transform.PreventPenetration(rigd_result, last_pos);
                 for (int i = 0; i < last_result.Count; i++)
                 {
                     var _shape = last_result[i];
@@ -63,6 +62,7 @@ namespace LockStep.LCollision2D
                 }
                 last_result.Clear();
                 last_result.AddRange(result);
+                transform.PreventPenetration(rigd_result, last_pos);
             }
 
             public void DoAdd(LogicWorld world, Shape shape)

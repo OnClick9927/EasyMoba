@@ -2,6 +2,7 @@
 using LockStep.Math;
 using System.Collections.Generic;
 using System.Runtime.ConstrainedExecution;
+using UnityEngine;
 using LMath = LockStep.Math.LMath;
 
 namespace LockStep.LCollision2D
@@ -469,78 +470,86 @@ namespace LockStep.LCollision2D
         }
 
         //-------------------------------------------------------------------------------
-
-        public static LVector2 PositionCorrection(LVector2 lastPos, Shape shape, List<Shape> collisons)
+        public static LVector2 PositionCorrection(LVector2 lastPos, Shape shape, Shape collison)
         {
             if (!(shape is CircleShape)) return LVector2.zero;
             CircleShape move = shape as CircleShape;
-            LVector2 light = LVector2.zero;
+            var c = collison;
+            var name_b = c.GetType().Name;
             LVector2 cur = shape.position;
-            var dir = cur - lastPos;
-            for (int i = 0; i < collisons.Count; i++)
-            {
-                var c = collisons[i];
-                var name_b = c.GetType().Name;
 
-                switch (name_b)
-                {
-                    case nameof(CircleShape):
+            var dir = cur - lastPos;
+
+            switch (name_b)
+            {
+                case nameof(CircleShape):
+                    {
+                        CircleShape cir = c as CircleShape;
+                        var normal = (lastPos - cir.position).normalized;
+                        var add_dir = normal;
+                        var _dir = move.position - cir.position;
+                        if (LVector2.Dot(normal, dir) > 0)
                         {
-                            CircleShape cir = c as CircleShape;
-                            var normal = (lastPos - cir.position).normalized;
+                            var length = cir.Radius + move.Radius - _dir.magnitude;
+                            add_dir *= length;
+                        }
+                        else
+                        {
+                            var length = cir.Radius + move.Radius + _dir.magnitude;
+                            add_dir *= length;
+                        }
+                        return add_dir;
+                    }
+                case nameof(PolygonShape):
+                    {
+                        PolygonShape p = c as PolygonShape;
+                        var move_dir = move.position - lastPos;
+                        LVector2 light = LVector2.zero;
+
+                        for (int j = 0; j < p.points.Length; j++)
+                        {
+                            var curPoint = p.points[(int)CollisionHelper.Repeat(j, p.points.Length)];
+                            var lastpoint = p.points[(int)CollisionHelper.Repeat(j - 1, p.points.Length)];
+                            var p1 = FindNearestPointInSegment(lastpoint, curPoint, lastPos);
+                            var p2 = FindNearestPointInSegment(lastpoint, curPoint, move.position);
+                            var p3 = (p1 + p2) / 2;
+                            if (!IsPointInCapsule(lastPos, move.position, p3, move.Radius))
+                                continue;
+                            var normal = p.nomals[j];
+
+                            if (LVector2.Dot(move_dir, normal) > 0) continue;
+                            var jiao = Point2LineIntersection(lastpoint, curPoint, move.position);
+                            var _dir = shape.position - jiao;
                             var add_dir = normal;
-                            var _dir = move.position - cir.position;
-                            if (LVector2.Dot(normal, dir) > 0)
+
+                            if (LVector2.Dot(_dir, normal) > 0)
                             {
-                                var length = cir.Radius + move.Radius - _dir.magnitude;
+                                var length = move.Radius - _dir.magnitude;
                                 add_dir *= length;
+
                             }
                             else
                             {
-                                var length = cir.Radius + move.Radius + _dir.magnitude;
+                                var length = move.Radius + _dir.magnitude;
                                 add_dir *= length;
-                            }
-                            light += add_dir;
-                        }
-                        break;
-                    case nameof(PolygonShape):
-                        {
-                            PolygonShape p = c as PolygonShape;
-                            var move_dir = move.position - lastPos;
-                            for (int j = 0; j < p.points.Length; j++)
-                            {
-                                var curPoint = p.points[(int)CollisionHelper.Repeat(j, p.points.Length)];
-                                var lastpoint = p.points[(int)CollisionHelper.Repeat(j - 1, p.points.Length)];
-                                var p1 = FindNearestPointInSegment(lastpoint, curPoint, lastPos);
-                                var p2 = FindNearestPointInSegment(lastpoint, curPoint, move.position);
-                                var p3 = (p1 + p2) / 2;
-                                if (!IsPointInCapsule(lastPos, move.position, p3, move.Radius))
-                                    continue;
-                                var normal = p.nomals[j];
-
-                                if (LVector2.Dot(move_dir, normal) > 0) continue;
-                                var jiao = Point2LineIntersection(lastpoint, curPoint, move.position);
-                                var _dir = shape.position - jiao;
-                                var add_dir = normal;
-
-                                if (LVector2.Dot(_dir, normal) > 0)
-                                {
-                                    var length = move.Radius - _dir.magnitude;
-                                    add_dir *= length;
-
-                                }
-                                else
-                                {
-                                    var length = move.Radius + _dir.magnitude;
-                                    add_dir *= length;
-
-                                }
-                                light += add_dir;
 
                             }
+                            light+= add_dir;
+
                         }
-                        break;
-                }
+                        return light;
+                    }
+                   
+            }
+            return LVector2.zero;
+        }
+        public static LVector2 PositionCorrection(LVector2 lastPos, Shape shape, List<Shape> collisons)
+        {
+            if (!(shape is CircleShape)) return LVector2.zero;
+            LVector2 light = LVector2.zero;
+            for (int i = 0; i < collisons.Count; i++)
+            {
+                light += PositionCorrection(lastPos, shape, collisons[i]);
             }
             return light;
         }

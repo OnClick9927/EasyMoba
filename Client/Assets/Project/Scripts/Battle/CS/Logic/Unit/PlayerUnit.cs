@@ -19,6 +19,7 @@ namespace EasyMoba.GameLogic
         public LFloat Speed { get { return this.GetAttribute<LFloat>(BattleAttributeType.Speed); } set { this.SetAttribute(BattleAttributeType.Speed, value); } }
         public LFloat Damage { get { return this.GetAttribute<LFloat>(BattleAttributeType.Damage); } set { this.SetAttribute(BattleAttributeType.Damage, value); } }
         public LFloat Size { get { return this.GetAttribute<LFloat>(BattleAttributeType.Size); } set { this.SetAttribute(BattleAttributeType.Size, value); } }
+        private LVector2 last_position;
         public override void OnMobaCreate()
         {
             this.MaxEnergy = new LFloat(10);
@@ -39,9 +40,11 @@ namespace EasyMoba.GameLogic
 
         protected override void OnFixedUpdate(int trick, LFloat delta)
         {
+            this.last_position = this.position;
             this.Speed = this.Speed + delta * this.AddSpeedPerTrick;
 
             this.position += this.forward * this.Speed;
+
             //var data = GetFrame(trick, role_id);
             //if (data != null)
             //{
@@ -53,7 +56,13 @@ namespace EasyMoba.GameLogic
 
         protected override void OnTriggerEnter(Shape other)
         {
-            UnityEngine.Debug.Log(other.unit.name);
+            if (other.unit is WallUnit)
+            {
+                var dir = CollisionHelper.PositionCorrection(this.last_position, this.collision.shape, other);
+                this.position += dir * 10;
+                this.Speed = LFloat.zero;
+                //this.collision.SyncData(this);
+            }
         }
 
         protected override void OnTriggerExit(Shape other)
