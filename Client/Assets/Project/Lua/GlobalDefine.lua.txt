@@ -6,7 +6,7 @@ Vector2 = UnityEngine.Vector2
 LuaArgs = CS.IFramework.Hotfix.Lua.LuaArgs
 Game = CS.EasyMoba.MobaGame.Instance
 UI = Game.modules.UI
-Assets = CS.IFramework.Hotfix.Asset.Assets
+Assets = CS.WooAsset.Assets
 Events = EventSystem()
 
 require("Define.ResDefine")

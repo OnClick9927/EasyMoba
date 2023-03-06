@@ -245,6 +245,25 @@
 		<type fullname="Tutorial.ByString" preserve="all"/>
 		<type fullname="Tutorial.CustomLoader" preserve="all"/>
 		<type fullname="Tutorial.Param1" preserve="all"/>
+		<type fullname="WooAsset.Assets" preserve="all"/>
+		<type fullname="WooAsset.AssetsAsyncSupport" preserve="all"/>
+		<type fullname="WooAsset.AssetsInternal" preserve="all"/>
+		<type fullname="WooAsset.DefaultAssetStreamEncrypt" preserve="all"/>
+		<type fullname="WooAsset.NoneAssetStreamEncrypt" preserve="all"/>
+		<type fullname="WooAsset.AssetManifest" preserve="all"/>
+		<type fullname="WooAsset.AssetOperation" preserve="all"/>
+		<type fullname="WooAsset.AssetsSetting" preserve="all"/>
+		<type fullname="WooAsset.Asset" preserve="all"/>
+		<type fullname="WooAsset.AssetLoadArgs" preserve="all"/>
+		<type fullname="WooAsset.ResourcesAsset" preserve="all"/>
+		<type fullname="WooAsset.SceneAsset" preserve="all"/>
+		<type fullname="WooAsset.SceneAssetLoadArgs" preserve="all"/>
+		<type fullname="WooAsset.Bundle" preserve="all"/>
+		<type fullname="WooAsset.BundleLoadArgs" preserve="all"/>
+		<type fullname="WooAsset.WebRequestBundle" preserve="all"/>
+		<type fullname="WooAsset.AssetsVersion" preserve="all"/>
+		<type fullname="WooAsset.LocalSetting" preserve="all"/>
+		<type fullname="WooAsset.AssetExample" preserve="all"/>
 		<type fullname="LockStep.Math.LAxis2D" preserve="all"/>
 		<type fullname="LockStep.Math.LAxis3D" preserve="all"/>
 		<type fullname="LockStep.Math.LFloat" preserve="all"/>
@@ -318,7 +337,6 @@
 		<type fullname="EasyMoba.GameLogic.Mono.ViewUnit" preserve="all"/>
 		<type fullname="EasyMoba.GameLogic.Mono.PlayerUnitView" preserve="all"/>
 		<type fullname="IFramework.Game" preserve="all"/>
-		<type fullname="IFramework.IAwaterEx" preserve="all"/>
 		<type fullname="IFramework.Launcher" preserve="all"/>
 		<type fullname="IFramework.UnityEx" preserve="all"/>
 		<type fullname="IFramework.UI.MixedGroups" preserve="all"/>
@@ -351,26 +369,18 @@
 		<type fullname="IFramework.Hotfix.Lua.LuaGroups" preserve="all"/>
 		<type fullname="IFramework.Hotfix.Lua.AssetsLoader" preserve="all"/>
 		<type fullname="IFramework.Hotfix.Lua.LuaGame" preserve="all"/>
-		<type fullname="IFramework.Hotfix.Asset.Assets" preserve="all"/>
-		<type fullname="IFramework.Hotfix.Asset.AssetsAsyncSupport" preserve="all"/>
-		<type fullname="IFramework.Hotfix.Asset.AssetsInternal" preserve="all"/>
-		<type fullname="IFramework.Hotfix.Asset.DefaultAssetStraemEncrypt" preserve="all"/>
-		<type fullname="IFramework.Hotfix.Asset.NoneAssetStraemEncrypt" preserve="all"/>
-		<type fullname="IFramework.Hotfix.Asset.AssetManifest" preserve="all"/>
-		<type fullname="IFramework.Hotfix.Asset.AssetOperation" preserve="all"/>
-		<type fullname="IFramework.Hotfix.Asset.AssetsSetting" preserve="all"/>
-		<type fullname="IFramework.Hotfix.Asset.Asset" preserve="all"/>
-		<type fullname="IFramework.Hotfix.Asset.AssetLoadArgs" preserve="all"/>
-		<type fullname="IFramework.Hotfix.Asset.SceneAsset" preserve="all"/>
-		<type fullname="IFramework.Hotfix.Asset.SceneAssetLoadArgs" preserve="all"/>
-		<type fullname="IFramework.Hotfix.Asset.Bundle" preserve="all"/>
-		<type fullname="IFramework.Hotfix.Asset.BundleLoadArgs" preserve="all"/>
-		<type fullname="IFramework.Hotfix.Asset.WebRequestBundle" preserve="all"/>
-		<type fullname="IFramework.Hotfix.Asset.AssetsVersion" preserve="all"/>
-		<type fullname="IFramework.Hotfix.Asset.LocalSetting" preserve="all"/>
-		<type fullname="IFramework.Hotfix.Asset.AssetExample" preserve="all"/>
 		<type fullname="IFramework.Singleton.MonoSingletonPath" preserve="all"/>
 		<type fullname="Tutorial.CSCallLua+DClass" preserve="all"/>
+		<type fullname="WooAsset.Assets+AssetsGroupOperation" preserve="all"/>
+		<type fullname="WooAsset.Assets+InstantiateObjectOperation" preserve="all"/>
+		<type fullname="WooAsset.AssetsInternal+AssetEncryptStream" preserve="all"/>
+		<type fullname="WooAsset.AssetsInternal+CopyBundleOperation" preserve="all"/>
+		<type fullname="WooAsset.AssetsInternal+Downloader" preserve="all"/>
+		<type fullname="WooAsset.AssetsInternal+LoadManifestOperation" preserve="all"/>
+		<type fullname="WooAsset.AssetsInternal+CheckBundleVersionOperation" preserve="all"/>
+		<type fullname="WooAsset.AssetsInternal+DownLoadBundleOperation" preserve="all"/>
+		<type fullname="WooAsset.AssetManifest+AssetData" preserve="all"/>
+		<type fullname="WooAsset.AssetsVersion+VersionData" preserve="all"/>
 		<type fullname="LockStep.Math.LVector2Int+Mathf" preserve="all"/>
 		<type fullname="LockStep.Math.LVector3Int+Mathf" preserve="all"/>
 		<type fullname="LockStep.Math.LMath+LutAtan2Helper" preserve="all"/>
@@ -378,8 +388,6 @@
 		<type fullname="LockStep.LCollision2D.LogicUnit+CollisionPart" preserve="all"/>
 		<type fullname="EasyMoba.GameLogic.MapInitData+PolygonData" preserve="all"/>
 		<type fullname="EasyMoba.GameLogic.MapInitData+CircleData" preserve="all"/>
-		<type fullname="IFramework.IAwaterEx+ResourceRequestAwaiter" preserve="all"/>
-		<type fullname="IFramework.IAwaterEx+AsyncOperationAwaiter" preserve="all"/>
 		<type fullname="IFramework.UI.UIModule+ItemPool" preserve="all"/>
 		<type fullname="IFramework.UI.UIModule+ItemsPool" preserve="all"/>
 		<type fullname="IFramework.UI.PanelPathCollect+Data" preserve="all"/>
@@ -387,16 +395,6 @@
 		<type fullname="IFramework.UI.SuperScrollView.LoopListView+InitParam" preserve="all"/>
 		<type fullname="IFramework.Hotfix.Lua.LuaEX+LuaTaskAwaiter" preserve="all"/>
 		<type fullname="IFramework.Hotfix.Lua.LuaGame+UnityModules" preserve="all"/>
-		<type fullname="IFramework.Hotfix.Asset.Assets+AssetsGroupOperation" preserve="all"/>
-		<type fullname="IFramework.Hotfix.Asset.Assets+InstantiateObjectOperation" preserve="all"/>
-		<type fullname="IFramework.Hotfix.Asset.AssetsInternal+AssetEncryptStream" preserve="all"/>
-		<type fullname="IFramework.Hotfix.Asset.AssetsInternal+CopyBundleOperation" preserve="all"/>
-		<type fullname="IFramework.Hotfix.Asset.AssetsInternal+Downloader" preserve="all"/>
-		<type fullname="IFramework.Hotfix.Asset.AssetsInternal+LoadManifestOperation" preserve="all"/>
-		<type fullname="IFramework.Hotfix.Asset.AssetsInternal+CheckBundleVersionOperation" preserve="all"/>
-		<type fullname="IFramework.Hotfix.Asset.AssetsInternal+DownLoadBundleOperation" preserve="all"/>
-		<type fullname="IFramework.Hotfix.Asset.AssetManifest+AssetData" preserve="all"/>
-		<type fullname="IFramework.Hotfix.Asset.AssetsVersion+VersionData" preserve="all"/>
 		
 	</assembly>
 

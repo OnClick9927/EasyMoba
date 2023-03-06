@@ -7,8 +7,8 @@
  *History:        2022-09-03--
 *********************************************************************************/
 using IFramework;
-using IFramework.Hotfix.Asset;
 using UnityEngine;
+using WooAsset;
 
 namespace EasyMoba
 {

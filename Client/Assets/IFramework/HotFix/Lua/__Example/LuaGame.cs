@@ -6,8 +6,8 @@
  *Description:    IFramework
  *History:        2018.11--
 *********************************************************************************/
-using IFramework.Hotfix.Asset;
 using UnityEngine;
+using WooAsset;
 
 namespace IFramework.Hotfix.Lua
 {

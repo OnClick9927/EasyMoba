@@ -10,7 +10,7 @@ using LuaCSFunction = XLua.LuaDLL.lua_CSFunction;
 
 using XLua;
 using System.Collections.Generic;
-using IFramework;
+using WooAsset;
 
 namespace XLua.CSObjectWrap
 {
