@@ -20,6 +20,5 @@ namespace IFramework.UI
         Toast,              //对话框
         Top,                //Top
         AboveTop,             //非常Top
-        Items
     }
 }

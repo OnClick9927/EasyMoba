@@ -13,7 +13,7 @@ namespace IFramework.UI
 {
     public class UIAsyncOperation<T>
     {
-        public Action<string,T> callback;
+        public Action completed;
         public T value;
         public bool _isDone = false;
 
@@ -21,7 +21,7 @@ namespace IFramework.UI
 
         protected void SetToDefault()
         {
-            callback = null;
+            completed = null;
             value = default(T);
             _isDone = false;
         }
@@ -29,6 +29,7 @@ namespace IFramework.UI
         {
             this.value = value;
             _isDone = true;
+            completed?.Invoke();
         }
     }
 }

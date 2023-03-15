@@ -39,7 +39,7 @@ namespace IFramework.UI
             }
             protected override bool OnSet(UIItem t, IEventArgs arg)
             {
-                var parent = module.GetLayerRectTransform(UILayer.Items);
+                var parent = module.GetLayerRectTransform(item_layer);
                 t.gameObject.transform.SetParent(parent, false);
                 return base.OnSet(t, arg);
             }

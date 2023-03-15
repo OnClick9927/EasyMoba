@@ -7,18 +7,13 @@
  *History:        2018.11--
 *********************************************************************************/
 
-using System;
-
 namespace IFramework.UI
 {
-    public class LoadPanelAsyncOperation : UIAsyncOperation<UIPanel>
+    public class ShowPanelAsyncOperation : UIAsyncOperation<bool>
     {
-        public Action<string, UIPanel> callback;
-        public string path;
         public new void SetToDefault()
         {
             base.SetToDefault();
-            path = null;
         }
     }
 }

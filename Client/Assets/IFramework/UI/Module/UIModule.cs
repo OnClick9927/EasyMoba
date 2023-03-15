@@ -11,25 +11,29 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+
 namespace IFramework.UI
 {
     public partial class UIModule : UpdateModule
     {
+        const string item_layer = "items";
+        const string raycast_layer = "raycast";
         public Canvas canvas { get; private set; }
         private IGroups _groups;
         private UIAsset _asset;
         private Dictionary<UILayer, List<UIPanel>> _panelOrders;
-        private Dictionary<UILayer, RectTransform> _layers;
+        private Dictionary<string, RectTransform> _layers;
         private Dictionary<string, UILayerData> _layerSettings;
         private Queue<LoadPanelAsyncOperation> asyncLoadQueue;
         private ItemsPool _itemPool;
         private List<UIPanel> _orderHelp = new List<UIPanel>();
         private Dictionary<string, UIPanel> panels = new Dictionary<string, UIPanel>();
+        private Empty4Raycast raycast;
         protected override void Awake()
         {
             _panelOrders = new Dictionary<UILayer, List<UIPanel>>();
             _layerSettings = new Dictionary<string, UILayerData>();
-            _layers = new Dictionary<UILayer, RectTransform>();
+            _layers = new Dictionary<string, RectTransform>();
             asyncLoadQueue = new Queue<LoadPanelAsyncOperation>();
             _itemPool = new ItemsPool(this);
         }
@@ -60,7 +64,8 @@ namespace IFramework.UI
             rect.anchorMax = Vector2.one;
             rect.localPosition = Vector3.zero;
             rect.sizeDelta = Vector3.zero;
-            rect.LocalIdentity();
+            rect.localRotation = Quaternion.identity;
+            rect.localScale = Vector3.one;
             return rect;
         }
         private void CreateLayers()
@@ -68,14 +73,18 @@ namespace IFramework.UI
             foreach (UILayer item in Enum.GetValues(typeof(UILayer)))
             {
                 var rect = CreateLayer(item.ToString());
-                _layers.Add(item, rect);
+                _layers.Add(item.ToString(), rect);
             }
-            var items = GetLayerRectTransform(UILayer.Items);
+            var items = GetLayerRectTransform(item_layer);
             CanvasGroup group = items.gameObject.AddComponent<CanvasGroup>();
             group.alpha = 0f;
             group.interactable = false;
+            var ray = GetLayerRectTransform(raycast_layer);
+            raycast = ray.gameObject.AddComponent<Empty4Raycast>();
+
         }
-        private RectTransform GetLayerRectTransform(UILayer layer)
+
+        private RectTransform GetLayerRectTransform(string layer)
         {
             return _layers[layer];
         }
@@ -144,7 +153,7 @@ namespace IFramework.UI
         {
             if (ui != null)
             {
-                ui = UnityEngine.Object.Instantiate(ui, GetLayerRectTransform(GetPanelLayer(path)));
+                ui = UnityEngine.Object.Instantiate(ui, GetLayerRectTransform(GetPanelLayer(path).ToString()));
                 string panelName = System.IO.Path.GetFileNameWithoutExtension(path);
                 ui.path = path;
                 ui.name = panelName;
@@ -167,13 +176,16 @@ namespace IFramework.UI
                 op.GlobalRecyle();
             }
         }
-        private void OnShowCallBack(string path, UIPanel panel)
+        private void OnShowCallBack(string path, UIPanel panel, ShowPanelAsyncOperation op)
         {
-            if (panel == null) return;
-
-            this._groups.OnShow(path);
-            panel.SetState(PanelState.OnShow);
-
+            if (panel != null)
+            {
+                this._groups.OnShow(path);
+                panel.SetState(PanelState.OnShow);
+            }
+            op.SetValue(true);
+            op.SetToDefault();
+            op.GlobalRecyle();
         }
         private UIPanel Find(string path)
         {
@@ -227,7 +239,14 @@ namespace IFramework.UI
             _itemPool.Set(path, go);
         }
 
-
+        public void ShowRaycast()
+        {
+            raycast.raycastTarget = true;
+        }
+        public void HideRayCast()
+        {
+            raycast.raycastTarget = false;
+        }
         /// <summary>
         /// 创建 画布
         /// </summary>
@@ -286,13 +305,19 @@ namespace IFramework.UI
         /// 展示一个界面
         /// </summary>
         /// <param name="path"></param>
-        public void Show(string path)
+        public ShowPanelAsyncOperation Show(string path)
         {
+
+            ShowPanelAsyncOperation op = Framework.GlobalAllocate<ShowPanelAsyncOperation>();
             var panel = Find(path);
             if (panel == null)
-                Load(path, OnShowCallBack);
+                Load(path, (path, panel) =>
+                {
+                    OnShowCallBack(path, panel, op);
+                });
             else
-                OnShowCallBack(path, panel);
+                OnShowCallBack(path, panel,op);
+            return op;
         }
         /// <summary>
         /// 藏一个界面
