@@ -29,6 +29,8 @@ namespace IFramework.UI
         private List<UIPanel> _orderHelp = new List<UIPanel>();
         private Dictionary<string, UIPanel> panels = new Dictionary<string, UIPanel>();
         private Empty4Raycast raycast;
+        private bool _loading = false;
+
         protected override void Awake()
         {
             _panelOrders = new Dictionary<UILayer, List<UIPanel>>();
@@ -167,14 +169,26 @@ namespace IFramework.UI
         }
         private void CheckAsyncLoad()
         {
-            if (asyncLoadQueue.Count == 0) return;
-            while (asyncLoadQueue.Count > 0 && asyncLoadQueue.Peek().isDone)
+            if (asyncLoadQueue.Count == 0)
             {
-                LoadPanelAsyncOperation op = asyncLoadQueue.Dequeue();
-                UILoadComplete(op.value, op.path, op.callback);
-                op.SetToDefault();
-                op.GlobalRecyle();
+                if (_loading)
+                {
+                    HideRayCast();
+                    _loading = false;
+                }
             }
+            else
+            {
+                ShowRaycast();
+                while (asyncLoadQueue.Count > 0 && asyncLoadQueue.Peek().isDone)
+                {
+                    LoadPanelAsyncOperation op = asyncLoadQueue.Dequeue();
+                    UILoadComplete(op.value, op.path, op.callback);
+                    op.SetToDefault();
+                    op.GlobalRecyle();
+                }
+            }
+
         }
         private void OnShowCallBack(string path, UIPanel panel, ShowPanelAsyncOperation op)
         {
@@ -211,6 +225,7 @@ namespace IFramework.UI
                 op.path = path;
                 if (_asset.LoadPanelAsync(path, op))
                 {
+                    _loading = true;
                     asyncLoadQueue.Enqueue(op);
                 }
                 else
@@ -316,7 +331,7 @@ namespace IFramework.UI
                     OnShowCallBack(path, panel, op);
                 });
             else
-                OnShowCallBack(path, panel,op);
+                OnShowCallBack(path, panel, op);
             return op;
         }
         /// <summary>

@@ -11,10 +11,9 @@ using System;
 
 namespace IFramework.UI
 {
-    public class UIAsyncOperation<T>
+    public class UIAsyncOperation
     {
         public Action completed;
-        public T value;
         public bool _isDone = false;
 
         public bool isDone { get { return _isDone; } }
@@ -22,14 +21,27 @@ namespace IFramework.UI
         protected void SetToDefault()
         {
             completed = null;
-            value = default(T);
+            _isDone = false;
+        }
+        protected void Compelete()
+        {
+            _isDone = true;
+            completed?.Invoke();
+            completed = null;
+        }
+    }
+    public class UIAsyncOperation<T> : UIAsyncOperation
+    {
+        public T value;
+        protected new void SetToDefault()
+        {
+            base.SetToDefault();
             _isDone = false;
         }
         public void SetValue(T value)
         {
             this.value = value;
-            _isDone = true;
-            completed?.Invoke();
+            base.Compelete();
         }
     }
 }

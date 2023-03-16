@@ -9,16 +9,17 @@
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using System;
+using static IFramework.UI.UIModule;
 
 namespace IFramework.UI
 {
     public static class UIEx
     {
-        public struct UIItemAwaiter : IAwaiter<UIItem>, ICriticalNotifyCompletion
+        public struct UIAsyncOperationAwaiter<T> : IAwaiter<T>, ICriticalNotifyCompletion where T : UIAsyncOperation
         {
-            private UIItem task;
+            private T task;
             private Queue<Action> calls;
-            public UIItemAwaiter(UIItem task)
+            public UIAsyncOperationAwaiter(T task)
             {
                 if (task == null) throw new ArgumentNullException("task");
                 this.task = task;
@@ -36,7 +37,7 @@ namespace IFramework.UI
 
             public bool IsCompleted => task.isDone;
 
-            public UIItem GetResult()
+            public T GetResult()
             {
                 if (!IsCompleted)
                     throw new Exception("The task is not finished yet");
@@ -54,57 +55,24 @@ namespace IFramework.UI
                     throw new ArgumentNullException("continuation");
                 calls.Enqueue(continuation);
             }
-        }
-        public struct ShowUIAwaiter : IAwaiter<ShowPanelAsyncOperation>, ICriticalNotifyCompletion
-        {
-            private ShowPanelAsyncOperation task;
-            private Queue<Action> calls;
-            public ShowUIAwaiter(ShowPanelAsyncOperation task)
-            {
-                if (task == null) throw new ArgumentNullException("task");
-                this.task = task;
-                calls = new Queue<Action>();
-                this.task.completed += Task_completed;
-            }
-
-            private void Task_completed()
-            {
-                while (calls.Count != 0)
-                {
-                    calls.Dequeue()?.Invoke();
-                }
-            }
-
-            public bool IsCompleted => task.isDone;
-
-            public ShowPanelAsyncOperation GetResult()
-            {
-                if (!IsCompleted)
-                    throw new Exception("The task is not finished yet");
-                return task;
-            }
-
-            public void OnCompleted(Action continuation)
-            {
-                UnsafeOnCompleted(continuation);
-            }
-
-            public void UnsafeOnCompleted(Action continuation)
-            {
-                if (continuation == null)
-                    throw new ArgumentNullException("continuation");
-                calls.Enqueue(continuation);
-            }
-        }
 
 
-        public static IAwaiter<UIItem> GetAwaiter(this UIItem target)
-        {
-            return new UIItemAwaiter(target);
         }
         public static IAwaiter<ShowPanelAsyncOperation> GetAwaiter(this ShowPanelAsyncOperation target)
         {
-            return new ShowUIAwaiter(target);
+            return new UIAsyncOperationAwaiter<ShowPanelAsyncOperation>(target);
+        }
+        public static IAwaiter<LoadItemAsyncOperation> GetAwaiter(this LoadItemAsyncOperation target)
+        {
+            return new UIAsyncOperationAwaiter<LoadItemAsyncOperation>(target);
+        }
+        public static IAwaiter<ItemPool> GetAwaiter(this ItemPool target)
+        {
+            return new UIAsyncOperationAwaiter<ItemPool>(target);
+        }
+        public static IAwaiter<UIItem> GetAwaiter(this UIItem target)
+        {
+            return new UIAsyncOperationAwaiter<UIItem>(target);
         }
     }
 

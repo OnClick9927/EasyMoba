@@ -6,32 +6,23 @@
  *Description:    IFramework
  *History:        2018.11--
 *********************************************************************************/
-using System;
 using UnityEngine;
 namespace IFramework.UI
 {
-    public class UIItem
+    public class UIItem : UIAsyncOperation<GameObject>
     {
         public UIModule.ItemPool pool;
-        private GameObject _gameObject;
-        public Action completed;
-        public GameObject gameObject { get { return _gameObject; } }
-        public bool isDone
-        {
-            get
-            {
-                if (!pool.isDone) return false;
-                if (_gameObject == null)
-                {
-                    _gameObject = UnityEngine.GameObject.Instantiate(pool.prefab);
-                    completed?.Invoke();
-                }
-                return true;
-            }
-        }
+        public GameObject gameObject { get { return this.value; } }
         public UIItem(UIModule.ItemPool pool)
         {
             this.pool = pool;
+            Wait(pool);
+        }
+        private async void Wait(UIModule.ItemPool op)
+        {
+            await op;
+            var _gameObject = UnityEngine.GameObject.Instantiate(pool.prefab);
+            base.SetValue(_gameObject);
         }
     }
 
