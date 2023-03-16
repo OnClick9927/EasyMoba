@@ -74,7 +74,7 @@
     <Compile Include="Assets\Project\Scripts\LockStep\Math\Random.cs" />
     <Compile Include="Assets\XLua\XLua\Tutorial\LoadLuaScript\ByFile\ByFile.cs" />
     <Compile Include="Assets\IFramework\HotFix\Lua\Scripts\Base\ILuaTask.cs" />
-    <Compile Include="Assets\IFramework\UI\Module\Layer\UILayer.cs" />
+    <Compile Include="Assets\IFramework\UI\Module\UILayer.cs" />
     <Compile Include="Assets\Woo\Asset\Load\Context\Asset\IAssetArgs.cs" />
     <Compile Include="Assets\IFramework\HotFix\Lua\Scripts\Base\LuaEX.cs" />
     <Compile Include="Assets\Project\Scripts\Battle\CS\Logic\FrameCollection.cs" />
@@ -136,7 +136,6 @@
     <Compile Include="Assets\IFramework\HotFix\Lua\Scripts\Base\IXLuaLoader.cs" />
     <Compile Include="Assets\Woo\Asset\Load\Context\AssetsInternal.AssetMap.cs" />
     <Compile Include="Assets\IFramework\UI\Tools\Scripts\UGUIEventListener.cs" />
-    <Compile Include="Assets\IFramework\UI\Module\Layer\UILayerData.cs" />
     <Compile Include="Assets\Project\Scripts\Battle\CS\IBattleView.cs" />
     <Compile Include="Assets\Project\Scripts\UI\UpdatePanel\UpdatePanelView.Design.cs" />
     <Compile Include="Assets\Project\Scripts\Battle\CS\Skill\SkillData.cs" />
@@ -265,7 +264,6 @@
     <Compile Include="Assets\XLua\XLua\Src\InternalGlobals.cs" />
     <Compile Include="Assets\Project\Scripts\Battle\Mono\MonoBattle.cs" />
     <Compile Include="Assets\Project\Scripts\UI\UpdateUIAsset.cs" />
-    <Compile Include="Assets\IFramework\UI\Module\Layer\UILayerConfig.cs" />
     <Compile Include="Assets\Woo\Asset\Load\AssetsInternal.CopyBundleOperation.cs" />
     <Compile Include="Assets\Project\Scripts\Battle\CS\Logic\Unit\WallUnit.cs" />
     <Compile Include="Assets\Woo\Asset\Load\Version\AssetsInternal.DownLoadBundleOperation.cs" />

@@ -23,7 +23,6 @@ namespace IFramework.UI
         private UIAsset _asset;
         private Dictionary<UILayer, List<UIPanel>> _panelOrders;
         private Dictionary<string, RectTransform> _layers;
-        private Dictionary<string, UILayerData> _layerSettings;
         private Queue<LoadPanelAsyncOperation> asyncLoadQueue;
         private ItemsPool _itemPool;
         private List<UIPanel> _orderHelp = new List<UIPanel>();
@@ -34,7 +33,6 @@ namespace IFramework.UI
         protected override void Awake()
         {
             _panelOrders = new Dictionary<UILayer, List<UIPanel>>();
-            _layerSettings = new Dictionary<string, UILayerData>();
             _layers = new Dictionary<string, RectTransform>();
             asyncLoadQueue = new Queue<LoadPanelAsyncOperation>();
             _itemPool = new ItemsPool(this);
@@ -130,19 +128,12 @@ namespace IFramework.UI
         }
         private UILayer GetPanelLayer(string path)
         {
-            if (_layerSettings.ContainsKey(path))
-            {
-                return _layerSettings[path].layer;
-            }
-            return UILayer.Common;
+            return this._asset.GetPanelLayer(path);
+
         }
         private int GetPanelLayerOrder(string path)
         {
-            if (_layerSettings.ContainsKey(path))
-            {
-                return _layerSettings[path].order;
-            }
-            return 0;
+            return this._asset.GetPanelLayerOrder(path);
         }
 
 
@@ -301,20 +292,7 @@ namespace IFramework.UI
         {
             this._groups = groups;
         }
-        public void SetLayerConfig(UILayerConfig config)
-        {
-            foreach (var item in config.configs)
-            {
-                if (_layerSettings.ContainsKey(item.panelPath))
-                {
-                    _layerSettings[item.panelPath] = item;
-                }
-                else
-                {
-                    _layerSettings.Add(item.panelPath, item);
-                }
-            }
-        }
+
 
         /// <summary>
         /// 展示一个界面

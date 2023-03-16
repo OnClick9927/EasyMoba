@@ -14,6 +14,7 @@ using System.Collections.Generic;
 using IFramework.GUITool;
 using IFramework.GUITool.ToorbarMenu;
 using System.IO;
+using System.Diagnostics;
 
 namespace IFramework.UI
 {
@@ -28,11 +29,11 @@ namespace IFramework.UI
         private string _name;
         private void OnEnable()
         {
-            if (!File.Exists(path))
+            if (!File.Exists(UICollectPath))
             {
-                File.WriteAllText(path, JsonUtility.ToJson(new PanelPathCollect(), true));
+                File.WriteAllText(UICollectPath, JsonUtility.ToJson(new PanelPathCollect(), true));
             }
-            collect = JsonUtility.FromJson<PanelPathCollect>(File.ReadAllText(path));
+            collect = JsonUtility.FromJson<PanelPathCollect>(File.ReadAllText(UICollectPath));
             menu = new MenuTree();
             _tabs = typeof(UIMoudleWindowTab).GetSubTypesInAssemblys()
                                      .ToList()
@@ -79,15 +80,14 @@ namespace IFramework.UI
                 .SearchField((str) => { menu.Fitter(str); }, "", 200);
         }
 
-        static string path {get{ return EditorEnvPath.projectConfigPath.CombinePath("UICollect.json"); } }
+        static string UICollectPath {get{ return EditorEnvPath.projectConfigPath.CombinePath("UICollect.json"); } }
         static string cs_path { get { return EditorEnvPath.projectScriptPath.CombinePath("PanelNames.cs"); } }
 
         const string res = "Resources";
 
         protected static PanelPathCollect collect;
-        protected static void Collect()
+        protected static PanelPathCollect Collect()
         {
-            List<PanelPathCollect.Data> datas = new List<PanelPathCollect.Data>();
             var paths = AssetDatabase.GetAllAssetPaths();
             foreach (var path in paths)
             {
@@ -101,14 +101,17 @@ namespace IFramework.UI
                     var index = path.IndexOf(res);
                     _path = path.Substring(index + res.Length + 1).Replace(".prefab", "");
                 }
-                datas.Add(new PanelPathCollect.Data()
+                if (collect.datas.Find(x => x.path == _path)==null)
                 {
-                    isResourcePath = is_res,
-                    path = _path,
-                });
+                    collect.datas.Add(new PanelPathCollect.Data()
+                    {
+                        isResourcePath = is_res,
+                        path = _path,
+                    });
+                };
             }
-            collect.WriteData(datas);
-            File.WriteAllText(path, JsonUtility.ToJson(collect, true));
+            File.WriteAllText(UICollectPath, JsonUtility.ToJson(collect, true));
+            return collect;
         }
 
 

@@ -2,23 +2,33 @@
     "datas": [
         {
             "path": "Assets/Project/Prefabs/UI/MatchPanel.prefab",
-            "isResourcePath": false
-        },
-        {
-            "path": "Assets/Project/Prefabs/UI/LoadScenePanel.prefab",
-            "isResourcePath": false
-        },
-        {
-            "path": "Assets/Project/Prefabs/UI/MainPanel.prefab",
-            "isResourcePath": false
-        },
-        {
-            "path": "Assets/Project/Prefabs/UI/LoginPanel.prefab",
-            "isResourcePath": false
+            "isResourcePath": false,
+            "layer": 1,
+            "order": 0
         },
         {
             "path": "UI/UpdatePanel",
-            "isResourcePath": true
+            "isResourcePath": true,
+            "layer": 5,
+            "order": 0
+        },
+        {
+            "path": "Assets/Project/Prefabs/UI/LoadScenePanel.prefab",
+            "isResourcePath": false,
+            "layer": 5,
+            "order": 0
+        },
+        {
+            "path": "Assets/Project/Prefabs/UI/MainPanel.prefab",
+            "isResourcePath": false,
+            "layer": 1,
+            "order": 0
+        },
+        {
+            "path": "Assets/Project/Prefabs/UI/LoginPanel.prefab",
+            "isResourcePath": false,
+            "layer": 1,
+            "order": 0
         }
     ]
 }

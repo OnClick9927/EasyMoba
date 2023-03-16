@@ -23,6 +23,8 @@ namespace IFramework.UI
             public string name { get { return System.IO.Path.GetFileNameWithoutExtension(path); } }
             public string path;
             public bool isResourcePath;
+            public UILayer layer;
+            public int order;
         }
         public List<Data> datas = new List<Data>();
         public void WriteData(List<Data> datas)

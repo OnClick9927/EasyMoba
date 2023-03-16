@@ -23,6 +23,16 @@ namespace EasyMoba
             this.collect = collect;
             this.canvas = canvas;
         }
+        public override UILayer GetPanelLayer(string path)
+        {
+            var find = collect.datas.Find(x => x.path == path);
+            return find != null ? find.layer : base.GetPanelLayer(path);
+        }
+        public override int GetPanelLayerOrder(string path)
+        {
+            var find = collect.datas.Find(x => x.path == path);
+            return find != null ? find.order : base.GetPanelLayerOrder(path);
+        }
         private async void LoadItem(LoadItemAsyncOperation op, string path)
         {
             var asset = await Assets.LoadAssetAsync(path);

@@ -7,6 +7,7 @@
  *History:        2018.11--
 *********************************************************************************/
 
+using UnityEditor;
 using UnityEngine;
 
 namespace IFramework.UI
@@ -36,5 +37,13 @@ namespace IFramework.UI
             GameObject.Destroy(gameObject);
         }
         public virtual Canvas GetCanvas() { return null; }
+        public virtual UILayer GetPanelLayer(string path)
+        {
+            return UILayer.Common;
+        }
+        public virtual int GetPanelLayerOrder(string path)
+        {
+            return 0;
+        }
     }
 }

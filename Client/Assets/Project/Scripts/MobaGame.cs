@@ -63,10 +63,6 @@ namespace EasyMoba
             modules.UI.SetAsset(new NormalUIAsset(_collect, canvas));
             Assets.Release(asset);
             modules.UI.CreateCanvas();
-            asset = await Assets.LoadAssetAsync("Assets/Project/Configs/UILayer.json");
-            txt = asset.GetAsset<TextAsset>();
-            UILayerConfig _configs = JsonUtility.FromJson<UILayerConfig>(txt.text);
-            modules.UI.SetLayerConfig(_configs);
             Assets.Release(asset);
             modules.UI.canvas.transform.SetParent(this.transform, true);
             modules.tcp = new TcpClient(ip, tcpPort, tcpBufSize);
