@@ -6,10 +6,12 @@
  *Description:    IFramework
  *History:        2018.11--
 *********************************************************************************/
+using UnityEngine;
 using UnityEngine.UI;
 
 namespace IFramework.UI
 {
+    [RequireComponent(typeof(CanvasRenderer))]
     public class Empty4Raycast : Graphic
     {
         protected Empty4Raycast()

@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 namespace IFramework.UI
 {
@@ -66,6 +67,7 @@ namespace IFramework.UI
             rect.sizeDelta = Vector3.zero;
             rect.localRotation = Quaternion.identity;
             rect.localScale = Vector3.one;
+            _layers.Add(layerName, rect);
             return rect;
         }
         private void CreateLayers()
@@ -73,15 +75,13 @@ namespace IFramework.UI
             foreach (UILayer item in Enum.GetValues(typeof(UILayer)))
             {
                 var rect = CreateLayer(item.ToString());
-                _layers.Add(item.ToString(), rect);
             }
-            var items = GetLayerRectTransform(item_layer);
+            var items = CreateLayer(item_layer);
             CanvasGroup group = items.gameObject.AddComponent<CanvasGroup>();
             group.alpha = 0f;
             group.interactable = false;
-            var ray = GetLayerRectTransform(raycast_layer);
+            var ray = CreateLayer(raycast_layer);
             raycast = ray.gameObject.AddComponent<Empty4Raycast>();
-
         }
 
         private RectTransform GetLayerRectTransform(string layer)
@@ -274,6 +274,7 @@ namespace IFramework.UI
                 this.canvas.name = name;
             }
             CreateLayers();
+            HideRayCast();
         }
 
         /// <summary>
