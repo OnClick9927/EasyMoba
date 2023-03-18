@@ -15,6 +15,7 @@ using IFramework.GUITool;
 using IFramework.GUITool.ToorbarMenu;
 using System.IO;
 using System.Diagnostics;
+using System.Text;
 
 namespace IFramework.UI
 {
@@ -134,14 +135,15 @@ namespace IFramework.UI
         public static void CS_BuildPanelNames()
         {
             Collect();
-            string s = "public class PanelNames\n" +
-                "{\n";
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("public class PanelNames");
+            sb.AppendLine("{");
             foreach (var data in collect.datas)
             {
-                s = s.Append($"\t public static string {data.name} = \"{data.path}\";\n");
+                sb.AppendLine($"\t public static string {data.name} = \"{data.path}\";");
             }
-            s = s.Append("}");
-            File.WriteAllText(cs_path, s);
+            sb.AppendLine("}");
+            File.WriteAllText(cs_path, sb.ToString());
             AssetDatabase.Refresh();
         }
 

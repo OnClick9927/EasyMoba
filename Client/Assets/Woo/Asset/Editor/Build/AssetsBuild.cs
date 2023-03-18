@@ -9,8 +9,23 @@ using System.Text;
 
 namespace WooAsset
 {
+    [InitializeOnLoad]
     public partial class AssetsBuild
     {
+        public static Action onProjectChange;
+        static AssetsBuild()
+        {
+            EditorApplication.projectChanged += delegate ()
+            {
+                ClearNotExistAssets();
+            };
+        }
+        public static void ClearNotExistAssets()
+        {
+            cache.ClearNotExistAssets();
+            cache.Save();
+            onProjectChange?.Invoke();
+        }
         private static string buildTarget
         {
             get

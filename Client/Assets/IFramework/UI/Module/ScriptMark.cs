@@ -8,7 +8,7 @@
 *********************************************************************************/
 using System.Collections.Generic;
 using UnityEngine;
-namespace IFramework
+namespace IFramework.UI
 {
     [DisallowMultipleComponent]
     [AddComponentMenu("IFramework/ScriptMark")]

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 namespace WooAsset
@@ -10,7 +11,15 @@ namespace WooAsset
             tree.Clear();
             previewBundles = new List<BundleGroup>();
         }
-
+        public void ClearNotExistAssets()
+        {
+            tree.ClearEmpty();
+            foreach (var item in previewBundles)
+            {
+                item.assets.RemoveAll(x=>!File.Exists(x));
+            }
+            previewBundles.RemoveAll(x => x.assets.Count == 0);
+        }
         [SerializeField] private AssetsTree tree = new AssetsTree();
 
         public List<AssetInfo> GetRootDirPaths()

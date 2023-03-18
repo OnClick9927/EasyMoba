@@ -69,7 +69,7 @@ namespace IFramework.UI.MVC
             var _view = FindView(path);
             if (_view != null)
             {
-                Log.E(string.Format("Have Subscribe Panel Name: {0} ready", path));
+                UnityEngine.Debug.LogError(string.Format("Have Subscribe Panel Name: {0} ready", path));
                 return false;
             }
             Type viewType;

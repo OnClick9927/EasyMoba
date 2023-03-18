@@ -1585,12 +1585,15 @@ namespace XLua.CSObjectWrap
             translator.DelayWrapLoader(typeof(IFramework.UnityEx), IFrameworkUnityExWrap.__Register);
         
         
-            translator.DelayWrapLoader(typeof(IFramework.UI.MixedGroups), IFrameworkUIMixedGroupsWrap.__Register);
+            translator.DelayWrapLoader(typeof(IFramework.UI.Empty4Raycast), IFrameworkUIEmpty4RaycastWrap.__Register);
         
         }
         
         static void wrapInit10(LuaEnv luaenv, ObjectTranslator translator)
         {
+        
+            translator.DelayWrapLoader(typeof(IFramework.UI.MixedGroups), IFrameworkUIMixedGroupsWrap.__Register);
+        
         
             translator.DelayWrapLoader(typeof(IFramework.UI.UIItem), IFrameworkUIUIItemWrap.__Register);
         
@@ -1616,13 +1619,13 @@ namespace XLua.CSObjectWrap
             translator.DelayWrapLoader(typeof(IFramework.UI.PanelPathCollect), IFrameworkUIPanelPathCollectWrap.__Register);
         
         
+            translator.DelayWrapLoader(typeof(IFramework.UI.ScriptMark), IFrameworkUIScriptMarkWrap.__Register);
+        
+        
             translator.DelayWrapLoader(typeof(IFramework.UI.UIEx), IFrameworkUIUIExWrap.__Register);
         
         
             translator.DelayWrapLoader(typeof(IFramework.UI.UIPanel), IFrameworkUIUIPanelWrap.__Register);
-        
-        
-            translator.DelayWrapLoader(typeof(IFramework.UI.Empty4Raycast), IFrameworkUIEmpty4RaycastWrap.__Register);
         
         
             translator.DelayWrapLoader(typeof(IFramework.UI.GuideMask), IFrameworkUIGuideMaskWrap.__Register);
@@ -1741,13 +1744,13 @@ namespace XLua.CSObjectWrap
         
             translator.DelayWrapLoader(typeof(IFramework.UI.PanelPathCollect.Data), IFrameworkUIPanelPathCollectDataWrap.__Register);
         
-        
-            translator.DelayWrapLoader(typeof(IFramework.UI.SuperScrollView.LoopListView.PrefabConfData), IFrameworkUISuperScrollViewLoopListViewPrefabConfDataWrap.__Register);
-        
         }
         
         static void wrapInit11(LuaEnv luaenv, ObjectTranslator translator)
         {
+        
+            translator.DelayWrapLoader(typeof(IFramework.UI.SuperScrollView.LoopListView.PrefabConfData), IFrameworkUISuperScrollViewLoopListViewPrefabConfDataWrap.__Register);
+        
         
             translator.DelayWrapLoader(typeof(IFramework.UI.SuperScrollView.LoopListView.InitParam), IFrameworkUISuperScrollViewLoopListViewInitParamWrap.__Register);
         
@@ -1898,13 +1901,13 @@ namespace XLua.CSObjectWrap
         
             translator.DelayWrapLoader(typeof(IFramework.Serialization.StringConvert), IFrameworkSerializationStringConvertWrap.__Register);
         
-        
-            translator.DelayWrapLoader(typeof(IFramework.Serialization.StringConverter), IFrameworkSerializationStringConverterWrap.__Register);
-        
         }
         
         static void wrapInit12(LuaEnv luaenv, ObjectTranslator translator)
         {
+        
+            translator.DelayWrapLoader(typeof(IFramework.Serialization.StringConverter), IFrameworkSerializationStringConverterWrap.__Register);
+        
         
             translator.DelayWrapLoader(typeof(IFramework.Serialization.StringStringConverter), IFrameworkSerializationStringStringConverterWrap.__Register);
         

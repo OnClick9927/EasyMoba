@@ -26,7 +26,7 @@ namespace IFramework.Hotfix.Lua
         [Serializable]
         class MVC_GenCodeView_Lua : UI.UIMoudleWindow.UIMoudleWindowTab
         {
-            private EditorTools.ScriptCreater creater = new ScriptCreater();
+            private ScriptCreater creater = new ScriptCreater();
             private ScriptCreaterFieldsDrawer fields;
             private LuaFloderField FloderField;
 

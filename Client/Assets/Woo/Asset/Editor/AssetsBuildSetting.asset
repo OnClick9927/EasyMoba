@@ -21,7 +21,7 @@ MonoBehaviour:
     - SimpleCollectBundle
     - SoBigCollectBundle
     - DefaultCollectBundle
-    typeIndex: 0
+    typeIndex: 2
   encrypt:
     types:
     - WooAsset.DefaultAssetStreamEncrypt
@@ -35,7 +35,8 @@ MonoBehaviour:
   bundleSize: 8388608
   forceRebuild: 0
   IgnoreTypeTreeChanges: 1
-  ignoreFileExtend:
+  ignoreFileEtend:
   - .cs
   - .meta
-  buildPaths: []
+  buildPaths:
+  - Assets/Woo/__Example

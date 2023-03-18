@@ -339,6 +339,7 @@
 		<type fullname="IFramework.Game" preserve="all"/>
 		<type fullname="IFramework.Launcher" preserve="all"/>
 		<type fullname="IFramework.UnityEx" preserve="all"/>
+		<type fullname="IFramework.UI.Empty4Raycast" preserve="all"/>
 		<type fullname="IFramework.UI.MixedGroups" preserve="all"/>
 		<type fullname="IFramework.UI.UIItem" preserve="all"/>
 		<type fullname="IFramework.UI.UIModule" preserve="all"/>
@@ -348,9 +349,9 @@
 		<type fullname="IFramework.UI.UIAsset" preserve="all"/>
 		<type fullname="IFramework.UI.UIAsyncOperation" preserve="all"/>
 		<type fullname="IFramework.UI.PanelPathCollect" preserve="all"/>
+		<type fullname="IFramework.UI.ScriptMark" preserve="all"/>
 		<type fullname="IFramework.UI.UIEx" preserve="all"/>
 		<type fullname="IFramework.UI.UIPanel" preserve="all"/>
-		<type fullname="IFramework.UI.Empty4Raycast" preserve="all"/>
 		<type fullname="IFramework.UI.GuideMask" preserve="all"/>
 		<type fullname="IFramework.UI.LoopScrollRect" preserve="all"/>
 		<type fullname="IFramework.UI.RedPointTree" preserve="all"/>

@@ -30,7 +30,7 @@ namespace IFramework.UI.MVC
             [SerializeField] private FloderField FloderField;
             [SerializeField] private TreeViewState state = new TreeViewState();
             private ScriptCreaterFieldsDrawer fields;
-            private EditorTools.ScriptCreater creater = new ScriptCreater();
+            private ScriptCreater creater = new ScriptCreater();
             private string panelName { get { return panel.name; } }
             private string viewName { get { return panelName.Append("View"); } }
             public override void OnEnable()

@@ -37,7 +37,7 @@ namespace IFramework.Hotfix.Lua
             [SerializeField] private ItemType _type;
             [SerializeField] private TreeViewState state = new TreeViewState();
 
-            private EditorTools.ScriptCreater creater = new ScriptCreater();
+            private ScriptCreater creater = new ScriptCreater();
             private ScriptCreaterFieldsDrawer fields;
             private LuaFloderField field;
             private string panelFolder

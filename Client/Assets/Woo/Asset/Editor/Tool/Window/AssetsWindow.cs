@@ -49,9 +49,12 @@ namespace WooAsset
         private void OnDisable()
         {
             right.OnDisable();
+            AssetsBuild.onProjectChange -= FreshPreview;
+
         }
         private void OnEnable()
         {
+            AssetsBuild.onProjectChange += FreshPreview;
             sp.fistPan += left.OnGUI;
             sp.secondPan += right.OnGUI;
             left.OnEnable();

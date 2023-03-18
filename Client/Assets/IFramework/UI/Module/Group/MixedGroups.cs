@@ -38,7 +38,7 @@ namespace IFramework.UI
             }
             else
             {
-                Log.E("the panel have not subscribe  panel name :" + path);
+                UnityEngine.Debug.LogError("the panel have not subscribe  panel name :" + path);
             }
         }
 
@@ -50,7 +50,7 @@ namespace IFramework.UI
             }
             else
             {
-                Log.E("the panel have not subscribe  panel name :" + path);
+                UnityEngine.Debug.LogError("the panel have not subscribe  panel name :" + path);
             }
         }
 
@@ -62,7 +62,7 @@ namespace IFramework.UI
             }
             else
             {
-                Log.E("the panel have not subscribe  panel name :" + path);
+                UnityEngine.Debug.LogError("the panel have not subscribe  panel name :" + path);
             }
         }
 
@@ -74,7 +74,7 @@ namespace IFramework.UI
             }
             else
             {
-                Log.E("the panel have not subscribe  panel name :" + path);
+                UnityEngine.Debug.LogError("the panel have not subscribe  panel name :" + path);
             }
         }
 
@@ -88,7 +88,7 @@ namespace IFramework.UI
                 {
                     if (_nameMap.ContainsKey(path))
                     {
-                        Log.E("Same name, can't Subscribe the panel with name " + path);
+                        UnityEngine.Debug.LogError("Same name, can't Subscribe the panel with name " + path);
                         return false;
                     }
                     _nameMap[path] = _groups[i];
@@ -97,7 +97,7 @@ namespace IFramework.UI
             }
             if (!sucess)
             {
-                Log.E("can't Subscribe the panel with name " + path);
+                UnityEngine.Debug.LogError("can't Subscribe the panel with name " + path);
             }
             return sucess;
         }
@@ -110,7 +110,7 @@ namespace IFramework.UI
             }
             else
             {
-                Log.E("the panel have not subscribe  panel name :" + path);
+                UnityEngine.Debug.LogError("the panel have not subscribe  panel name :" + path);
                 return false;
             }
         }

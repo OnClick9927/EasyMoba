@@ -120,14 +120,15 @@ namespace WooAsset
 
             protected override void RowGUI(RowGUIArgs args)
             {
+                var info = cache.GetAssetInfo(args.label);
                 float indent = this.GetContentIndent(args.item);
                 var first = args.GetCellRect(0).Zoom(AnchorType.MiddleRight, new Vector2(-indent, 0));
                 if (string.IsNullOrEmpty(searchString))
                     GUI.Label(first, new GUIContent(Path.GetFileName(args.label), args.item.icon));
                 else
                     GUI.Label(first, new GUIContent(args.label, args.item.icon));
-
-                var info = cache.GetAssetInfo(args.label);
+         
+              
                 if (info.type != AssetInfo.AssetType.Directory)
                 {
                     GUI.Label(args.GetCellRect(1), info.type.ToString());

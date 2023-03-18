@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3fe8120c32a4bcf4a84413f3cad2eda6, type: 3}
   m_Name: AssetsToolSetting
   m_EditorClassIdentifier: 
-  fastMode: 1
-  shaderVariantDirectory: 
-  atlasPaths: []
+  fastMode: 0
+  shaderVariantDirectory: Assets/Woo/__Example
+  atlasPaths:
+  - Assets/Woo/__Example
   packSetting:
     blockOffset: 1
     enableRotation: 0

@@ -11,6 +11,16 @@ namespace WooAsset
         [SerializeField] private List<AssetInfo> assets = new List<AssetInfo>();
         [SerializeField] private List<AssetInfo> singles = new List<AssetInfo>();
 
+        public void ClearEmpty()
+        {
+            rootDir = rootDir.FindAll(x => Directory.Exists(x.path));
+            singles = singles.FindAll(x => File.Exists(x.path));
+            assets = assets.FindAll(x => {
+                if (x.type == AssetInfo.AssetType.Directory)
+                    return Directory.Exists(x.path);
+                return File.Exists(x.path);
+            });
+        }
         public List<AssetInfo> GetAssets()
         {
             return assets;

@@ -36,16 +36,16 @@ namespace XLua.CSObjectWrap
 			
             
 			Utils.RegisterFunc(L, Utils.CLS_GETTER_IDX, "MatchPanel", _g_get_MatchPanel);
+            Utils.RegisterFunc(L, Utils.CLS_GETTER_IDX, "UpdatePanel", _g_get_UpdatePanel);
             Utils.RegisterFunc(L, Utils.CLS_GETTER_IDX, "LoadScenePanel", _g_get_LoadScenePanel);
             Utils.RegisterFunc(L, Utils.CLS_GETTER_IDX, "MainPanel", _g_get_MainPanel);
             Utils.RegisterFunc(L, Utils.CLS_GETTER_IDX, "LoginPanel", _g_get_LoginPanel);
-            Utils.RegisterFunc(L, Utils.CLS_GETTER_IDX, "UpdatePanel", _g_get_UpdatePanel);
             
 			Utils.RegisterFunc(L, Utils.CLS_SETTER_IDX, "MatchPanel", _s_set_MatchPanel);
+            Utils.RegisterFunc(L, Utils.CLS_SETTER_IDX, "UpdatePanel", _s_set_UpdatePanel);
             Utils.RegisterFunc(L, Utils.CLS_SETTER_IDX, "LoadScenePanel", _s_set_LoadScenePanel);
             Utils.RegisterFunc(L, Utils.CLS_SETTER_IDX, "MainPanel", _s_set_MainPanel);
             Utils.RegisterFunc(L, Utils.CLS_SETTER_IDX, "LoginPanel", _s_set_LoginPanel);
-            Utils.RegisterFunc(L, Utils.CLS_SETTER_IDX, "UpdatePanel", _s_set_UpdatePanel);
             
 			
 			Utils.EndClassRegister(type, L, translator);
@@ -97,6 +97,18 @@ namespace XLua.CSObjectWrap
         }
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _g_get_UpdatePanel(RealStatePtr L)
+        {
+		    try {
+            
+			    LuaAPI.lua_pushstring(L, PanelNames.UpdatePanel);
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 1;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
         static int _g_get_LoadScenePanel(RealStatePtr L)
         {
 		    try {
@@ -132,18 +144,6 @@ namespace XLua.CSObjectWrap
             return 1;
         }
         
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _g_get_UpdatePanel(RealStatePtr L)
-        {
-		    try {
-            
-			    LuaAPI.lua_pushstring(L, PanelNames.UpdatePanel);
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 1;
-        }
-        
         
         
         [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
@@ -152,6 +152,19 @@ namespace XLua.CSObjectWrap
 		    try {
                 
 			    PanelNames.MatchPanel = LuaAPI.lua_tostring(L, 1);
+            
+            } catch(System.Exception gen_e) {
+                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
+            }
+            return 0;
+        }
+        
+        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
+        static int _s_set_UpdatePanel(RealStatePtr L)
+        {
+		    try {
+                
+			    PanelNames.UpdatePanel = LuaAPI.lua_tostring(L, 1);
             
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
@@ -191,19 +204,6 @@ namespace XLua.CSObjectWrap
 		    try {
                 
 			    PanelNames.LoginPanel = LuaAPI.lua_tostring(L, 1);
-            
-            } catch(System.Exception gen_e) {
-                return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
-            }
-            return 0;
-        }
-        
-        [MonoPInvokeCallbackAttribute(typeof(LuaCSFunction))]
-        static int _s_set_UpdatePanel(RealStatePtr L)
-        {
-		    try {
-                
-			    PanelNames.UpdatePanel = LuaAPI.lua_tostring(L, 1);
             
             } catch(System.Exception gen_e) {
                 return LuaAPI.luaL_error(L, "c# exception:" + gen_e);
